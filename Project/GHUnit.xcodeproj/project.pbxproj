@@ -10,7 +10,6 @@
 		009DD6090F26E1BD0058A2B0 /* GHTestApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009DD5F10F26E1BD0058A2B0 /* GHTestApp.xib */; };
 		009DD60A0F26E1BD0058A2B0 /* GHTestAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 009DD5F20F26E1BD0058A2B0 /* GHTestAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		009DD60B0F26E1BD0058A2B0 /* GHTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD5F30F26E1BD0058A2B0 /* GHTestAppDelegate.m */; };
-		009DD60C0F26E1BD0058A2B0 /* GHTestAppMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD5F40F26E1BD0058A2B0 /* GHTestAppMain.m */; };
 		009DD60D0F26E1BD0058A2B0 /* GHTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009DD5F50F26E1BD0058A2B0 /* GHTestView.xib */; };
 		009DD60E0F26E1BD0058A2B0 /* GHTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 009DD5F60F26E1BD0058A2B0 /* GHTestViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		009DD60F0F26E1BD0058A2B0 /* GHTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD5F70F26E1BD0058A2B0 /* GHTestViewController.m */; };
@@ -31,15 +30,46 @@
 		009DD61F0F26E1BD0058A2B0 /* GHTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD6070F26E1BD0058A2B0 /* GHTest.m */; };
 		009DD6200F26E1BD0058A2B0 /* GHTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		009DD7B00F26EC980058A2B0 /* GHKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009DD7AA0F26EC7C0058A2B0 /* GHKit.framework */; };
+		009DD7ED0F26F5590058A2B0 /* GHKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009DD7AA0F26EC7C0058A2B0 /* GHKit.framework */; };
+		009DD7FC0F26F8260058A2B0 /* GHTestApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 009DD7FA0F26F8260058A2B0 /* GHTestApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		009DD7FD0F26F8260058A2B0 /* GHTestApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD7FB0F26F8260058A2B0 /* GHTestApp.m */; };
+		009DD8200F26FA110058A2B0 /* GHTestViewModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD7A80F26EC6C0058A2B0 /* GHTestViewModelTest.m */; };
+		009DD8210F26FA120058A2B0 /* GHTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD7CC0F26F4A80058A2B0 /* GHTestMain.m */; };
+		009DD8220F26FA120058A2B0 /* GHTestFailed.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD7A60F26EC6C0058A2B0 /* GHTestFailed.m */; };
+		009DD8650F26FC1D0058A2B0 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* GHUnit.framework */; };
+		009DD8DD0F26FFBD0058A2B0 /* GHKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009DD7AA0F26EC7C0058A2B0 /* GHKit.framework */; };
+		009DD8F40F27005D0058A2B0 /* GHKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 009DD7AA0F26EC7C0058A2B0 /* GHKit.framework */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		009DD7E10F26F4F60058A2B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* GHUnit */;
+			remoteInfo = GHUnit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		009DD8F30F27004D0058A2B0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(TARGET_BUILD_DIR)";
+			dstSubfolderSpec = 0;
+			files = (
+				009DD8F40F27005D0058A2B0 /* GHKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		009DD5F10F26E1BD0058A2B0 /* GHTestApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GHTestApp.xib; sourceTree = "<group>"; };
 		009DD5F20F26E1BD0058A2B0 /* GHTestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestAppDelegate.h; sourceTree = "<group>"; };
 		009DD5F30F26E1BD0058A2B0 /* GHTestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestAppDelegate.m; sourceTree = "<group>"; };
-		009DD5F40F26E1BD0058A2B0 /* GHTestAppMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestAppMain.m; sourceTree = "<group>"; };
 		009DD5F50F26E1BD0058A2B0 /* GHTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GHTestView.xib; sourceTree = "<group>"; };
 		009DD5F60F26E1BD0058A2B0 /* GHTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestViewController.h; sourceTree = "<group>"; };
 		009DD5F70F26E1BD0058A2B0 /* GHTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestViewController.m; sourceTree = "<group>"; };
@@ -64,6 +94,12 @@
 		009DD7A70F26EC6C0058A2B0 /* GHTestViewModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestViewModelTest.h; sourceTree = "<group>"; };
 		009DD7A80F26EC6C0058A2B0 /* GHTestViewModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestViewModelTest.m; sourceTree = "<group>"; };
 		009DD7AA0F26EC7C0058A2B0 /* GHKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHKit.framework; sourceTree = "<group>"; };
+		009DD7C10F26F4680058A2B0 /* TestUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		009DD7C30F26F4680058A2B0 /* TestUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestUI-Info.plist"; sourceTree = "<group>"; };
+		009DD7CC0F26F4A80058A2B0 /* GHTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestMain.m; sourceTree = "<group>"; };
+		009DD7FA0F26F8260058A2B0 /* GHTestApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestApp.h; sourceTree = "<group>"; };
+		009DD7FB0F26F8260058A2B0 /* GHTestApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestApp.m; sourceTree = "<group>"; };
+		009DD82F0F26FAE70058A2B0 /* TestUI_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUI_Prefix.pch; sourceTree = "<group>"; };
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -75,6 +111,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		009DD7BF0F26F4680058A2B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				009DD7ED0F26F5590058A2B0 /* GHKit.framework in Frameworks */,
+				009DD8650F26FC1D0058A2B0 /* GHUnit.framework in Frameworks */,
+				009DD8DD0F26FFBD0058A2B0 /* GHKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DC2EF560486A6940098B216 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,10 +136,11 @@
 		009DD5F00F26E1BD0058A2B0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				009DD7FA0F26F8260058A2B0 /* GHTestApp.h */,
+				009DD7FB0F26F8260058A2B0 /* GHTestApp.m */,
 				009DD5F10F26E1BD0058A2B0 /* GHTestApp.xib */,
 				009DD5F20F26E1BD0058A2B0 /* GHTestAppDelegate.h */,
 				009DD5F30F26E1BD0058A2B0 /* GHTestAppDelegate.m */,
-				009DD5F40F26E1BD0058A2B0 /* GHTestAppMain.m */,
 				009DD5F50F26E1BD0058A2B0 /* GHTestView.xib */,
 				009DD5F60F26E1BD0058A2B0 /* GHTestViewController.h */,
 				009DD5F70F26E1BD0058A2B0 /* GHTestViewController.m */,
@@ -113,6 +160,7 @@
 				009DD7A60F26EC6C0058A2B0 /* GHTestFailed.m */,
 				009DD7A70F26EC6C0058A2B0 /* GHTestViewModelTest.h */,
 				009DD7A80F26EC6C0058A2B0 /* GHTestViewModelTest.m */,
+				009DD7CC0F26F4A80058A2B0 /* GHTestMain.m */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -131,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC2EF5B0486A6940098B216 /* GHUnit.framework */,
+				009DD7C10F26F4680058A2B0 /* TestUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,6 +194,7 @@
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
+				009DD7C30F26F4680058A2B0 /* TestUI-Info.plist */,
 			);
 			name = GHUnit;
 			sourceTree = "<group>";
@@ -209,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				32DBCF5E0370ADEE00C91783 /* GHUnit_Prefix.pch */,
+				009DD82F0F26FAE70058A2B0 /* TestUI_Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -230,12 +281,32 @@
 				009DD61C0F26E1BD0058A2B0 /* GHTestMacros.h in Headers */,
 				009DD61E0F26E1BD0058A2B0 /* GHTestCase.h in Headers */,
 				009DD6200F26E1BD0058A2B0 /* GHTest.h in Headers */,
+				009DD7FC0F26F8260058A2B0 /* GHTestApp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		009DD7C00F26F4680058A2B0 /* TestUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 009DD7C60F26F4680058A2B0 /* Build configuration list for PBXNativeTarget "TestUI" */;
+			buildPhases = (
+				009DD7BD0F26F4680058A2B0 /* Resources */,
+				009DD7BE0F26F4680058A2B0 /* Sources */,
+				009DD7BF0F26F4680058A2B0 /* Frameworks */,
+				009DD8F30F27004D0058A2B0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				009DD7E20F26F4F60058A2B0 /* PBXTargetDependency */,
+			);
+			name = TestUI;
+			productName = TestUI;
+			productReference = 009DD7C10F26F4680058A2B0 /* TestUI.app */;
+			productType = "com.apple.product-type.application";
+		};
 		8DC2EF4F0486A6940098B216 /* GHUnit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "GHUnit" */;
@@ -269,11 +340,19 @@
 			projectRoot = "";
 			targets = (
 				8DC2EF4F0486A6940098B216 /* GHUnit */,
+				009DD7C00F26F4680058A2B0 /* TestUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		009DD7BD0F26F4680058A2B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DC2EF520486A6940098B216 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,12 +367,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		009DD7BE0F26F4680058A2B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				009DD8200F26FA110058A2B0 /* GHTestViewModelTest.m in Sources */,
+				009DD8210F26FA120058A2B0 /* GHTestMain.m in Sources */,
+				009DD8220F26FA120058A2B0 /* GHTestFailed.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DC2EF540486A6940098B216 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				009DD60B0F26E1BD0058A2B0 /* GHTestAppDelegate.m in Sources */,
-				009DD60C0F26E1BD0058A2B0 /* GHTestAppMain.m in Sources */,
 				009DD60F0F26E1BD0058A2B0 /* GHTestViewController.m in Sources */,
 				009DD6110F26E1BD0058A2B0 /* GHTestViewModel.m in Sources */,
 				009DD6140F26E1BD0058A2B0 /* GHTestWindowController.m in Sources */,
@@ -302,10 +390,19 @@
 				009DD61B0F26E1BD0058A2B0 /* GHTestMacros.m in Sources */,
 				009DD61D0F26E1BD0058A2B0 /* GHTestCase.m in Sources */,
 				009DD61F0F26E1BD0058A2B0 /* GHTest.m in Sources */,
+				009DD7FD0F26F8260058A2B0 /* GHTestApp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		009DD7E20F26F4F60058A2B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* GHUnit */;
+			targetProxy = 009DD7E10F26F4F60058A2B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C1666FE841158C02AAC07 /* InfoPlist.strings */ = {
@@ -319,6 +416,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		009DD7C40F26F4680058A2B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TestUI_Prefix.pch;
+				INFOPLIST_FILE = "TestUI-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TestUI;
+			};
+			name = Debug;
+		};
+		009DD7C50F26F4680058A2B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TestUI_Prefix.pch;
+				INFOPLIST_FILE = "TestUI-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TestUI;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		1DEB91AE08733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -395,6 +548,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		009DD7C60F26F4680058A2B0 /* Build configuration list for PBXNativeTarget "TestUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				009DD7C40F26F4680058A2B0 /* Debug */,
+				009DD7C50F26F4680058A2B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "GHUnit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
