@@ -8,7 +8,6 @@
 
 #import "GHTestFailed.h"
 
-
 @implementation GHTestFailed
 
 - (void)testException {
