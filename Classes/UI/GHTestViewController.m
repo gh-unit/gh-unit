@@ -40,7 +40,7 @@
 @synthesize detailsTextView=detailsTextView_, consoleTestView=consoleTestView_;
 
 - (id)init {
-	if ((self = [super initWithNibName:@"GHTestView" bundle:nil])) { }
+	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { }
 	return self;
 }
 
