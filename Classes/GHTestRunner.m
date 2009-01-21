@@ -52,7 +52,6 @@
 @end
 
 #import "GHTestCase.h"
-#import "GTMDefines.h"
 
 @interface GHTestRunner (Private)
 - (void)_log:(NSString *)message;
@@ -79,9 +78,9 @@
 	[super dealloc];
 }
 
-- (BOOL)run {
+- (BOOL)invoke {
 	[self didStart];	
-	BOOL passed = [testSuite_ run]; 
+	BOOL passed = [testSuite_ invoke]; 
 	[self didFinish];
 	return passed;
 }

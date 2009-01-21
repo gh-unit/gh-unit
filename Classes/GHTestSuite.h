@@ -34,7 +34,7 @@
 	
 	NSTimeInterval interval_;
 	
-	id<GHTestCaseDelegate> delegate_;
+	id<GHTestCaseDelegate> delegate_; // weak
 	
 	NSInteger runCount_;
 	NSInteger failedCount_;
@@ -58,10 +58,8 @@
 
 + (GHTestSuite *)allTestCases;
 
-+ (BOOL)isTestFixture:(Class)aClass;
-
 - (void)loadTestCases;
 
-- (BOOL)run;
+- (BOOL)invoke;
 
 @end

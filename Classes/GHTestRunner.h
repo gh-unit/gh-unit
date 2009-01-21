@@ -44,8 +44,6 @@
 //  the License.
 //
 
-#import <Foundation/Foundation.h>
-
 #import "GHTestSuite.h"
 #import "GHTestCase.h"
 #import "GHTest.h"
@@ -87,7 +85,7 @@
 
 - (id)initWithTestSuite:(GHTestSuite *)testSuite;
 
-- (BOOL)run;
+- (BOOL)invoke;
 
 @end
 

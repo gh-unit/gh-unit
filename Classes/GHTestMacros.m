@@ -45,11 +45,11 @@
 //  the License.
 //
 
+// GTM_BEGIN
+
 NSString *const GHTestFilenameKey = @"GHTestFilenameKey";
 NSString *const GHTestLineNumberKey = @"GHTestLineNumberKey";
 NSString *const GHTestFailureException = @"GHTestFailureException";
-
-// GTM_BEGIN
 
 @interface NSException (GTMSenTestPrivateAdditions)
 + (NSException *)failureInFile:(NSString *)filename

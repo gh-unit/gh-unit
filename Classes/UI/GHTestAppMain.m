@@ -1,6 +1,5 @@
 //
-//  GHTestWindowController.h
-//  GHKit
+//  GHTestMain.m
 //
 //  Created by Gabriel Handford on 1/17/09.
 //  Copyright 2009. All rights reserved.
@@ -27,12 +26,26 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestViewController.h"
+#import <Foundation/Foundation.h>
+#import <Foundation/NSDebug.h>
 
-@interface GHTestWindowController : NSWindowController {
-	GHTestViewController *viewController_;
+#import <GHKit/GTMStackTrace.h>
+#import "GHTestRunner.h"
+
+void exceptionHandler(NSException *exception) {
+	NSLog(@"%@", GTMStackTraceFromException(exception));
 }
 
-@property (retain, nonatomic) IBOutlet GHTestViewController *viewController;
-
-@end
+int main(int argc, char *argv[]) {
+	
+	NSDebugEnabled = YES;
+	NSZombieEnabled = YES;
+	NSDeallocateZombies = NO;
+	NSHangOnUncaughtException = YES;
+	[NSAutoreleasePool enableFreedObjectCheck:YES];
+	NSSetUncaughtExceptionHandler(&exceptionHandler);
+	
+	[NSApplication sharedApplication];
+	[NSBundle loadNibNamed:@"GHTestApp" owner:NSApp];
+	[NSApp run];
+}

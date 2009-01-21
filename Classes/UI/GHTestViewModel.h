@@ -27,7 +27,7 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestCase.h"
+#import "GHTestSuite.h"
 
 @class GHTestCaseItem;
 @class GHTestItem;
@@ -40,9 +40,10 @@
 	GHTestCaseItem *currentTestCaseItem_;	
 }
 
-@property (readonly) NSArray *testCaseItems;
-@property (retain) GHTestCaseItem *currentTestCaseItem;
-@property (readonly) GHTestStatus status;
+@property (readonly, nonatomic) GHTestSuite *testSuite;
+@property (readonly, nonatomic) NSArray *testCaseItems;
+@property (retain, nonatomic) GHTestCaseItem *currentTestCaseItem;
+@property (readonly, nonatomic) GHTestStatus status;
 
 - (id)initWithTestSuite:(GHTestSuite *)testSuite;
 

@@ -44,10 +44,7 @@
 //  the License.
 //
 
-#import <Foundation/Foundation.h>
-
 #import "GHTestMacros.h"
-
 #import "GHTest.h"
 
 @class GHTestCase;
@@ -166,7 +163,9 @@
  Run all tests in test case.
  @result YES if all passed
  */
-- (BOOL)run;
+- (BOOL)invoke;
+
++ (BOOL)isTestFixture:(Class)aClass;
 
 - (NSString *)statusString;
 

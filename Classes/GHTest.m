@@ -47,8 +47,6 @@
 
 #import "GHTest.h"
 
-#import "GTMStackTrace.h"
-
 @implementation GHTest
 
 @synthesize testCase=testCase_, selector=selector_, interval=interval_, exception=exception_, status=status_;
@@ -117,7 +115,7 @@
 	return [NSString stringWithFormat:@"%@ (%0.3fs)", [GHTest stringFromStatus:status_ withDefault:@""], interval_];
 }
 
-- (BOOL)run {
+- (BOOL)invoke {
 	status_ = GHTestStatusRunning;
 // GTM_BEGIN
 	NSDate *startDate = [NSDate date];

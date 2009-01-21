@@ -37,13 +37,11 @@
 
 - (void)awakeFromNib {
 	windowController_ = [[GHTestWindowController alloc] init];
-	[windowController_ showWindow:nil];
-	
+	[windowController_ showWindow:nil];	
 	[self runTests];
 }
 
 - (void)runTests {	
-	NSLog(@"Running tests");
 	GHTestSuite *testSuite = [GHTestSuite allTestCases];
 	GHTestRunner *runner = [[GHTestRunner alloc] initWithTestSuite:testSuite];
 	runner.delegate = self;
@@ -56,8 +54,7 @@
 
 - (void)_runTests:(GHTestRunner *)runner {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];		
-	[runner run];
-	GTMLoggerDebug(@"Tests done");		
+	[runner invoke];
 	[pool release];
 }
 
@@ -68,7 +65,6 @@
 }
 
 - (void)testRunner:(GHTestRunner *)runner didStartTest:(GHTest *)test {
-	GTMLoggerDebug(@"Add test: %@", test);
 	[windowController_.viewController addTest:test];
 }
 

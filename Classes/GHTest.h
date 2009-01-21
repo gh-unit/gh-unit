@@ -72,7 +72,7 @@ typedef enum {
  After running, the interval and exception properties may be set.
  @result Yes if passed, NO otherwise
  */
-- (BOOL)run;
+- (BOOL)invoke;
 
 + (NSString *)stringFromStatus:(GHTestStatus)status withDefault:(NSString *)defaultValue;
 

@@ -46,7 +46,6 @@
 
 #import "GHTestCase.h"
 
-#import "GTMStackTrace.h"
 #import <objc/runtime.h>
 
 // GTM_BEGIN
@@ -104,7 +103,7 @@ static int MethodSort(const void *a, const void *b) {
 	return [NSString stringWithFormat:@"%@ (%0.3fs)", [GHTest stringFromStatus:status_ withDefault:@""], interval_];
 }
 
-- (BOOL)run {	
+- (BOOL)invoke {	
 	[self _loadTests:NO];
 	
 	status_ = GHTestStatusRunning;
@@ -118,7 +117,7 @@ static int MethodSort(const void *a, const void *b) {
 		if ([delegate_ respondsToSelector:@selector(testCase:didStartTest:)]) 
 			[delegate_ testCase:self didStartTest:test];
 
-		BOOL passed = [test run];
+		BOOL passed = [test invoke];
 		if (!passed) {			
 			failedCount_++;
 			[self failWithException:test.exception];
@@ -150,6 +149,19 @@ static int MethodSort(const void *a, const void *b) {
 }
 
 // GTM_BEGIN
+
+// Return YES if class is subclass (1 or more generations) of GHTestCase
++ (BOOL)isTestFixture:(Class)aClass {
+  BOOL iscase = NO;
+  Class testCaseClass = [self class];
+  Class superclass;
+  for (superclass = aClass; 
+       !iscase && superclass; 
+       superclass = class_getSuperclass(superclass)) {
+    iscase = superclass == testCaseClass ? YES : NO;
+  }
+  return iscase;
+}
 
 - (void)_loadTests:(BOOL)reload {
 	if (testsLoaded_ && !reload) return;

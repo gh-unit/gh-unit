@@ -25,9 +25,6 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
-// Changes:
-//   Renamed STAssert.. to GHAssert.. (To avoid naming conflicts)
-//   Renamed STComposeString to GHComposeString (To avoid naming conflicts)
 
 //
 // Portions of this file fall under the following license, marked with
@@ -80,13 +77,11 @@
 //  the License.
 //
 
-#import <Foundation/Foundation.h>
+// GTM_BEGIN
 
 extern NSString *const GHTestFilenameKey;
 extern NSString *const GHTestLineNumberKey;
 extern NSString *const GHTestFailureException;
-
-// GTM_BEGIN
 
 NSString *GHComposeString(NSString *, ...);
 

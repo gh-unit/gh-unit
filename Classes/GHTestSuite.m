@@ -47,7 +47,6 @@
 
 #import "GHTestSuite.h"
 
-#import "GTMDefines.h"
 #import <objc/runtime.h>
 
 @implementation GHTestSuite
@@ -85,7 +84,7 @@ delegate=delegate_, interval=interval_;
 	return testSuite;
 }
 
-- (BOOL)run {
+- (BOOL)invoke {
 	status_ = GHTestStatusRunning;
 	NSDate *startDate = [NSDate date];
 	BOOL passedAll = YES;
@@ -97,7 +96,7 @@ delegate=delegate_, interval=interval_;
 	
 	for(GHTestCase *testCase in testCases_) {
 		testCase.delegate = self;
-		BOOL passed = [testCase run];
+		BOOL passed = [testCase invoke];
 		failedCount_ = failedCount_ + testCase.failedCount;
 		passedAll = (passedAll && passed);
 		interval_ = [[NSDate date] timeIntervalSinceDate:startDate];
@@ -132,19 +131,6 @@ delegate=delegate_, interval=interval_;
 
 // GTM_BEGIN
 
-// Return YES if class is subclass (1 or more generations) of SenTestCase
-+ (BOOL)isTestFixture:(Class)aClass {
-  BOOL iscase = NO;
-  Class testCaseClass = [GHTestCase class];
-  Class superclass;
-  for (superclass = aClass; 
-       !iscase && superclass; 
-       superclass = class_getSuperclass(superclass)) {
-    iscase = superclass == testCaseClass ? YES : NO;
-  }
-  return iscase;
-}
-
 - (void)loadTestCases {
 	NSMutableArray *testCases = [NSMutableArray array];
 	
@@ -156,7 +142,7 @@ delegate=delegate_, interval=interval_;
 
   for (int i = 0; i < count; ++i) {
     Class currClass = classes[i];
-    if ([GHTestSuite isTestFixture:currClass]) {			
+    if ([GHTestCase isTestFixture:currClass]) {			
       id testcase = [[currClass alloc] initWithTestSuite:self];
 			
       _GTMDevAssert(testcase, @"Unable to instantiate Test Suite: '%@'\n",

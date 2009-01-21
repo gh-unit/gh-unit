@@ -31,7 +31,7 @@
 
 @implementation GHTestViewModel
 
-@synthesize testCaseItems=testCaseItems_, currentTestCaseItem=currentTestCaseItem_;
+@synthesize testCaseItems=testCaseItems_, currentTestCaseItem=currentTestCaseItem_, testSuite=testSuite_;
 
 - (id)initWithTestSuite:(GHTestSuite *)testSuite {
 	if ((self = [super init])) {
@@ -54,7 +54,6 @@
 	self.currentTestCaseItem = testCaseItem;
 	[testCaseMap_ setObject:testCaseItem forKey:testCaseItem.testCase.name];
 	[testCaseItems_ addObject:testCaseItem];
-	GTMLoggerDebug(@"Done");
 }
 
 - (BOOL)isCurrentTestCase:(GHTestCase *)testCase {
