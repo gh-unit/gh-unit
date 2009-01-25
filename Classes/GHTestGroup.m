@@ -87,6 +87,12 @@
 	[super dealloc];
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@, %d %0.3f %d/%d (%d failures)", 
+								 name_, status_, interval_, stats_.runCount, stats_.testCount, stats_.failureCount];
+}
+	
+
 - (NSString *)name {
 	return name_;
 }
@@ -105,32 +111,33 @@
 }
 
 - (void)run {		
-	[delegate_ testWillStart:self];
 	status_ = GHTestStatusRunning;
 	
-	for(id<GHTest> test in children_) {			
-		[test run];		
+	for(id<GHTest> test in children_) {
+		[delegate_ testUpdated:self];
+		[test run];	
+		[delegate_ testUpdated:self];
 	}
 	
 	status_ = GHTestStatusFinished;
-	[delegate_ testDidFinish:self];
 }
 
 #pragma mark Parent Notifications
 
 - (void)testWillStart:(id<GHTest>)test {
-
+	
 }
 
-- (void)testUpdated:(id<GHTest>)test source:(id<GHTest>)source {
-	[delegate_ testUpdated:self source:source];
+- (void)testUpdated:(id<GHTest>)test {
+	[delegate_ testUpdated:test];
 }
 
-- (void)testDidFinish:(id<GHTest>)test {	
+- (void)testDidFinish:(id<GHTest>)test {
 	interval_ += [test interval];
 	stats_.runCount += [test stats].runCount;
 	stats_.failureCount += [test stats].failureCount;
-	GTMLoggerDebug(@"[%@] stats=%@", [self name], NSStringFromGHTestStats(stats_));		
+	GTMLoggerDebug(@"[%@] stats=%@", [self name], NSStringFromGHTestStats(stats_));
+	[delegate_ testDidFinish:test];
 }
 
 @end

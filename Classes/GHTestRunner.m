@@ -99,10 +99,10 @@
 
 #define kGHTestRunnerInvokeWaitUntilDone YES
 
-- (void)_updateTest:(id<GHTest>)test source:(id<GHTest>)source {
-	if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:source:)])
-		[(id)delegate_ gh_performSelector:@selector(testRunner:didUpdateTest:source:) onMainThread:delegateOnMainThread_ 
-												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, test, source, nil];	
+- (void)_updateTest:(id<GHTest>)test {
+	if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:)])
+		[(id)delegate_ gh_performSelector:@selector(testRunner:didUpdateTest:) onMainThread:delegateOnMainThread_ 
+												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, test, nil];	
 }
 
 #pragma mark Delegates (GHTest)
@@ -111,8 +111,8 @@
 
 }
 
-- (void)testUpdated:(id<GHTest>)test source:(id<GHTest>)source {
-	[self _updateTest:test source:source];
+- (void)testUpdated:(id<GHTest>)test {
+	[self _updateTest:test];
 }
 
 - (void)testDidFinish:(id<GHTest>)test {
@@ -120,7 +120,7 @@
 	NSString *message = [NSString stringWithFormat:@"Test '%@' %@ (%0.3f seconds).",
 											 [test name], [test stats].failureCount > 0 ? @"failed" : @"passed", [test interval]];	
 	[self _log:message];
-	[self _updateTest:test source:test];
+	[self _updateTest:test];
 }
 
 #pragma mark Notifications (Private)

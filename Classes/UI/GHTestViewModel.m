@@ -27,6 +27,7 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//#import "GHUnit.h"
 #import "GHTestViewModel.h"
 
 @implementation GHTestViewModel
@@ -83,8 +84,7 @@
 					node = [GHTestNode nodeWithTest:test children:testChildren source:source];
 			} else {
 				node = [GHTestNode nodeWithTest:test children:nil source:source];
-			}
-			GTMLoggerDebug(@"Node: %@", node);
+			}			
 			if (node)
 				[nodeChildren addObject:node];
 		}
@@ -112,11 +112,15 @@
 }
 
 - (NSString *)statusString {
-	return NSStringFromGHTestStats([test_ stats]);
+	return [NSString stringWithFormat:@"%d %@", [test_ status], NSStringFromGHTestStats([test_ stats])];
 }
 
 - (BOOL)failed {
 	return ([test_ stats].failureCount > 0);
+}
+
+- (GHTestStatus)status {
+	return [test_ status];
 }
 
 - (NSString *)detail {

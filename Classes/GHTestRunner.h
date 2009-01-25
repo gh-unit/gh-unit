@@ -53,7 +53,7 @@
 @optional
 - (void)testRunnerDidStart:(GHTestRunner *)runner;
 - (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test;
-- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test source:(id<GHTest>)source;
+- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test;
 - (void)testRunnerDidFinish:(GHTestRunner *)runner;
 
 - (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message;

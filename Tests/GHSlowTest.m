@@ -12,8 +12,16 @@
 
 @implementation GHSlowTest
 
-- (void)testSlow {
-	[NSThread sleepForTimeInterval:5.0];
+- (void)testSlowA {
+	[NSThread sleepForTimeInterval:2.0];
+}
+
+- (void)testSlowB {
+	[NSThread sleepForTimeInterval:2.0];
+}
+
+- (void)testSlowC {
+	[NSThread sleepForTimeInterval:2.0];
 }
 
 @end

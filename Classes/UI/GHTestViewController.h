@@ -59,7 +59,7 @@
 
 - (void)log:(NSString *)log;
 
-- (void)updateTest:(id<GHTest>)test source:(id<GHTest>)source;
+- (void)updateTest:(id<GHTest>)test;
 
 - (void)setRoot:(id<GHTest>)root;
 

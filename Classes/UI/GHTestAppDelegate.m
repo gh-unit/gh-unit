@@ -64,19 +64,20 @@
 }
 
 - (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
-	[windowController_.viewController updateTest:test source:test];
+	[windowController_.viewController updateTest:test];
 }
 
 - (void)testRunner:(GHTestRunner *)runner didFinishTest:(id<GHTest>)test {
-	[windowController_.viewController updateTest:test source:test];
+	[windowController_.viewController updateTest:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test source:(id<GHTest>)source {
-	[windowController_.viewController updateTest:test source:source];
+- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test {
+	[windowController_.viewController updateTest:test];
 }
 
 - (void)testRunnerDidStart:(GHTestRunner *)runner { 
 	[windowController_.viewController setRoot:runner.testable];
+	[windowController_.viewController updateTest:runner.testable];
 }
 
 - (void)testRunnerDidFinish:(GHTestRunner *)runner {

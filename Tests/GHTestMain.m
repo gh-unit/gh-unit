@@ -26,6 +26,11 @@ int main(int argc, char *argv[]) {
 	NSSetUncaughtExceptionHandler(&exceptionHandler);
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+#ifdef DEBUG
+	[GHLogger setLogLevel:kGTMLoggerLevelDebug];
+#endif
+	
 	GHTestApp *app = [[GHTestApp alloc] init];
 	[NSApp run];
 	[app release];

@@ -108,7 +108,7 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 
 @protocol GHTestDelegate <NSObject>
 - (void)testWillStart:(id<GHTest>)test;
-- (void)testUpdated:(id<GHTest>)test source:(id<GHTest>)source;
+- (void)testUpdated:(id<GHTest>)test;
 - (void)testDidFinish:(id<GHTest>)test;
 @end
 

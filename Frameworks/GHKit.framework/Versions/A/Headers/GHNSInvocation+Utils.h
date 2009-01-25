@@ -40,7 +40,7 @@ va_list args; \
 if (object) { \
 [arguments addObject:object]; \
 va_start(args, object); \
-while (arg = va_arg(args, id)) \
+while ((arg = va_arg(args, id))) \
 [arguments addObject:arg]; \
 va_end(args); \
 }

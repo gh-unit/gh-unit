@@ -30,7 +30,7 @@
 #import "GHTestViewController.h"
 
 @interface GHTestViewController (Private)
-- (void)_updateStatus:(id<GHTest>)test source:(id<GHTest>)source;
+- (void)_updateStatus:(id<GHTest>)test;
 @end
 
 @implementation GHTestViewController
@@ -54,10 +54,10 @@
 	self.status = @"Loading tests...";
 }
 
-- (void)setRoot:(id<GHTestGroup>)root {
+- (void)setRoot:(id<GHTestGroup>)rootTest {
 	[model_ release];
-	model_ = [[GHTestViewModel alloc] initWithRoot:root];
-	[self _updateStatus:root source:root];
+	model_ = [[GHTestViewModel alloc] initWithRoot:rootTest];
+	[self _updateStatus:rootTest];
 }
 
 - (void)setStatus:(NSString *)status {
@@ -65,7 +65,7 @@
 }
 
 - (NSString *)stringFromStatus:(GHTestStatus)status interval:(NSTimeInterval)interval {
-	NSString *statusString = @"Unknown";
+	NSString *statusString = @"Loading";
 	if (status == GHTestStatusRunning) statusString = @"Running";
 	else if (status == GHTestStatusFinished) statusString = @"Finished";
 	
@@ -82,19 +82,22 @@
 	
 }
 
-- (void)updateTest:(id<GHTest>)test source:(id<GHTest>)source {
+- (void)updateTest:(id<GHTest>)test {
 	GHTestNode *testNode = [model_ findTestNode:test];
 	[outlineView_ reloadItem:testNode];
 	[outlineView_ expandItem:testNode expandChildren:YES];
-	[self _updateStatus:test source:source];
+	[self _updateStatus:model_.root.test];
 }
 
-- (void)_updateStatus:(id<GHTest>)test source:(id<GHTest>)source {
-	[progressIndicator_ setDoubleValue:((double)[test stats].runCount / (double)[test stats].testCount) * 100.0];
+- (void)_updateStatus:(id<GHTest>)test {
+	GHDebug(@"Update status: %@", test);
+	if ([[test name] isEqual:@"Tests"]) {
+		[progressIndicator_ setDoubleValue:((double)[test stats].runCount / (double)[test stats].testCount) * 100.0];
 
-	self.status = [NSString stringWithFormat:@"%@ %d/%d (%d failures)", 
-									 [self stringFromStatus:[source status] interval:[source interval]], 
-									 [source stats].runCount, [source stats].testCount, [source stats].failureCount];
+		self.status = [NSString stringWithFormat:@"%@ %d/%d (%d failures)", 
+										 [self stringFromStatus:[test status] interval:[test interval]], 
+										 [test stats].runCount, [test stats].testCount, [test stats].failureCount];
+	}
 }
 
 #pragma mark Delegates (NSOutlineView)
@@ -137,12 +140,17 @@
 #pragma mark Delegates (NSOutlineView)
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {	
-	[cell setTextColor:[NSColor blackColor]];
-	
-	if ([item failed] && [[tableColumn identifier] isEqual:@"status"]) {
-		[cell setTextColor:[NSColor redColor]];
-	}
-	
+	if ([[tableColumn identifier] isEqual:@"status"]) {
+		[cell setTextColor:[NSColor lightGrayColor]];	
+		
+		if ([item failed]) {
+			[cell setTextColor:[NSColor redColor]];
+		} else if ([item status] == GHTestStatusFinished) {
+			[cell setTextColor:[NSColor greenColor]];
+		} else if ([item status] == GHTestStatusRunning) {
+			[cell setTextColor:[NSColor blackColor]];
+		}
+	}	
 }
 
 @end

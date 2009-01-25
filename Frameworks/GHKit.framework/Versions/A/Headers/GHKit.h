@@ -44,6 +44,7 @@
 // Utilities
 #import "GHKeychainStore.h"
 #import "GHCGUtils.h"
+#import "GHLogger.h"
 
 // Non-iPhone
 #ifndef TARGET_OS_IPHONE

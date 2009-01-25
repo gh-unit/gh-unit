@@ -67,6 +67,8 @@
 + (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source;
 
 - (NSString *)statusString;
+
+- (GHTestStatus)status;
 - (BOOL)failed;
 - (NSString *)detail;
 
