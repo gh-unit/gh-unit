@@ -55,7 +55,7 @@
 		fRef = 00970AFE0F2842CB00189A9D /* GHTestCase.h */;
 		name = "GHTestCase.h: 11";
 		rLen = 0;
-		rLoc = 171;
+		rLoc = 2063;
 		rType = 0;
 		vrLen = 382;
 		vrLoc = 0;
@@ -155,7 +155,7 @@
 		fRef = 00970AFF0F2842CB00189A9D /* GHTestCase.m */;
 		name = "GHTestCase.m: 45";
 		rLen = 0;
-		rLoc = 1181;
+		rLoc = 3073;
 		rType = 0;
 		vrLen = 347;
 		vrLoc = 856;
@@ -182,7 +182,7 @@
 		fRef = 00970AFF0F2842CB00189A9D /* GHTestCase.m */;
 		name = "GHTestCase.m: 45";
 		rLen = 0;
-		rLoc = 1181;
+		rLoc = 3073;
 		rType = 0;
 		vrLen = 347;
 		vrLoc = 856;
@@ -570,7 +570,7 @@
 		fRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */;
 		name = "GHTest.h: 63";
 		rLen = 0;
-		rLoc = 1985;
+		rLoc = 3877;
 		rType = 0;
 		vrLen = 586;
 		vrLoc = 1645;
@@ -648,7 +648,7 @@
 		fRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */;
 		name = "GHTest.h: 61";
 		rLen = 0;
-		rLoc = 1985;
+		rLoc = 3877;
 		rType = 0;
 		vrLen = 593;
 		vrLoc = 1615;
@@ -668,7 +668,7 @@
 		fRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */;
 		name = "GHTest.h: 63";
 		rLen = 0;
-		rLoc = 1985;
+		rLoc = 3877;
 		rType = 0;
 		vrLen = 586;
 		vrLoc = 1645;
@@ -808,7 +808,7 @@
 		fRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */;
 		name = "GHTest.h: 111";
 		rLen = 0;
-		rLoc = 3274;
+		rLoc = 5166;
 		rType = 0;
 		vrLen = 1051;
 		vrLoc = 2284;
@@ -818,7 +818,7 @@
 		fRef = 009DD6070F26E1BD0058A2B0 /* GHTest.m */;
 		name = "GHTest.m: 190";
 		rLen = 0;
-		rLoc = 6507;
+		rLoc = 8399;
 		rType = 0;
 		vrLen = 844;
 		vrLoc = 4632;
@@ -948,7 +948,7 @@
 		fRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */;
 		name = "GHTest.h: 111";
 		rLen = 0;
-		rLoc = 3274;
+		rLoc = 5166;
 		rType = 0;
 		vrLen = 1051;
 		vrLoc = 2284;
@@ -958,7 +958,7 @@
 		fRef = 009DD6070F26E1BD0058A2B0 /* GHTest.m */;
 		name = "GHTest.m: 190";
 		rLen = 0;
-		rLoc = 6507;
+		rLoc = 8399;
 		rType = 0;
 		vrLen = 844;
 		vrLoc = 4632;
@@ -1377,7 +1377,7 @@
 		fRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */;
 		name = "GHTest.h: 69";
 		rLen = 0;
-		rLoc = 2131;
+		rLoc = 4023;
 		rType = 0;
 		vrLen = 577;
 		vrLoc = 1824;
@@ -1387,7 +1387,7 @@
 		fRef = 009DD6070F26E1BD0058A2B0 /* GHTest.m */;
 		name = "GHTest.m: 151";
 		rLen = 26;
-		rLoc = 5115;
+		rLoc = 7007;
 		rType = 0;
 		vrLen = 844;
 		vrLoc = 4632;
@@ -1465,7 +1465,7 @@
 		fRef = 009DD6070F26E1BD0058A2B0 /* GHTest.m */;
 		name = "GHTest.m: 151";
 		rLen = 26;
-		rLoc = 5115;
+		rLoc = 7007;
 		rType = 0;
 		vrLen = 844;
 		vrLoc = 4632;
@@ -1515,7 +1515,7 @@
 		fRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */;
 		name = "GHTest.h: 69";
 		rLen = 0;
-		rLoc = 2131;
+		rLoc = 4023;
 		rType = 0;
 		vrLen = 577;
 		vrLoc = 1824;
@@ -1525,7 +1525,7 @@
 		fRef = 009DD6070F26E1BD0058A2B0 /* GHTest.m */;
 		name = "GHTest.m: 151";
 		rLen = 26;
-		rLoc = 5115;
+		rLoc = 7007;
 		rType = 0;
 		vrLen = 844;
 		vrLoc = 4632;
@@ -1662,9 +1662,9 @@
 	};
 	002E74860F2C2B3100427636 /* GHSlowTest.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 532}}";
-			sepNavSelRange = "{220, 0}";
-			sepNavVisRange = "{0, 267}";
+			sepNavIntBoundsRect = "{{0, 0}, {1053, 320}}";
+			sepNavSelRange = "{96, 0}";
+			sepNavVisRange = "{0, 196}";
 		};
 	};
 	002E74890F2C2B7800427636 /* PBXTextBookmark */ = {
@@ -1699,7 +1699,7 @@
 		fRef = 002E74860F2C2B3100427636 /* GHSlowTest.m */;
 		name = "GHSlowTest.m: 15";
 		rLen = 0;
-		rLoc = 220;
+		rLoc = 215;
 		rType = 0;
 		vrLen = 267;
 		vrLoc = 0;
@@ -1736,7 +1736,7 @@
 		fRef = 002E74860F2C2B3100427636 /* GHSlowTest.m */;
 		name = "GHSlowTest.m: 15";
 		rLen = 0;
-		rLoc = 220;
+		rLoc = 215;
 		rType = 0;
 		vrLen = 267;
 		vrLoc = 0;
@@ -1791,12 +1791,59 @@
 		vrLen = 932;
 		vrLoc = 1687;
 	};
+	002E74970F2C2C0C00427636 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F70F26E1BD0058A2B0 /* GHTestViewController.m */;
+		name = "GHTestViewController.m: 95";
+		rLen = 0;
+		rLoc = 3201;
+		rType = 0;
+		vrLen = 792;
+		vrLoc = 2763;
+	};
+	002E74980F2C2C0C00427636 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00970B4C0F2866F800189A9D /* GHTestRunner.m */;
+		name = "GHTestRunner.m: 123";
+		rLen = 0;
+		rLoc = 3932;
+		rType = 0;
+		vrLen = 469;
+		vrLoc = 3651;
+	};
+	002E74990F2C2C0C00427636 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 002E74860F2C2B3100427636 /* GHSlowTest.m */;
+		rLen = 0;
+		rLoc = 96;
+		rType = 0;
+	};
+	002E749A0F2C2C0C00427636 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00970B4C0F2866F800189A9D /* GHTestRunner.m */;
+		name = "GHTestRunner.m: 123";
+		rLen = 0;
+		rLoc = 3932;
+		rType = 0;
+		vrLen = 469;
+		vrLoc = 3651;
+	};
+	002E749B0F2C2C0C00427636 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 002E74860F2C2B3100427636 /* GHSlowTest.m */;
+		name = "GHSlowTest.m: 6";
+		rLen = 0;
+		rLoc = 96;
+		rType = 0;
+		vrLen = 196;
+		vrLoc = 0;
+	};
 	0062B4640F2BDFC200B0562A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 009DD6070F26E1BD0058A2B0 /* GHTest.m */;
 		name = "GHTest.m: 193";
 		rLen = 0;
-		rLoc = 6445;
+		rLoc = 8337;
 		rType = 0;
 		vrLen = 1350;
 		vrLoc = 5150;
@@ -1842,8 +1889,14 @@
 		vrLoc = 3;
 	};
 	0062B4F40F2BE5BE00B0562A /* GHTestable.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = GHTestable.h;
+		path = "/Users/gabe/Projects/gh-unit/Classes/GHTestable.h";
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 448}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1108, 532}}";
 			sepNavSelRange = "{119, 0}";
 			sepNavVisRange = "{0, 120}";
 		};
@@ -1873,7 +1926,7 @@
 		fRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */;
 		name = "GHTest.h: 58";
 		rLen = 0;
-		rLoc = 2513;
+		rLoc = 4405;
 		rType = 0;
 		vrLen = 1107;
 		vrLoc = 1532;
@@ -2151,7 +2204,7 @@
 		fRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */;
 		name = "GHTest.h: 58";
 		rLen = 0;
-		rLoc = 2513;
+		rLoc = 4405;
 		rType = 0;
 		vrLen = 1128;
 		vrLoc = 984;
@@ -2215,7 +2268,7 @@
 		fRef = 009DD6070F26E1BD0058A2B0 /* GHTest.m */;
 		name = "GHTest.m: 93";
 		rLen = 0;
-		rLoc = 3326;
+		rLoc = 5218;
 		rType = 0;
 		vrLen = 1520;
 		vrLoc = 723;
@@ -2265,7 +2318,7 @@
 		fRef = 009DD6080F26E1BD0058A2B0 /* GHTest.h */;
 		name = "GHTest.h: 58";
 		rLen = 0;
-		rLoc = 2513;
+		rLoc = 4405;
 		rType = 0;
 		vrLen = 1128;
 		vrLoc = 984;
@@ -2285,7 +2338,7 @@
 		fRef = 009DD6070F26E1BD0058A2B0 /* GHTest.m */;
 		name = "GHTest.m: 79";
 		rLen = 0;
-		rLoc = 2871;
+		rLoc = 4763;
 		rType = 0;
 		vrLen = 1328;
 		vrLoc = 2016;
@@ -2295,7 +2348,7 @@
 		fRef = 009DD6070F26E1BD0058A2B0 /* GHTest.m */;
 		name = "GHTest.m: 79";
 		rLen = 0;
-		rLoc = 2871;
+		rLoc = 4763;
 		rType = 0;
 		vrLen = 1328;
 		vrLoc = 2016;
@@ -2508,16 +2561,16 @@
 	};
 	00970AFE0F2842CB00189A9D /* GHTestCase.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 631}}";
-			sepNavSelRange = "{171, 0}";
-			sepNavVisRange = "{0, 382}";
+			sepNavIntBoundsRect = "{{0, 0}, {1108, 1056}}";
+			sepNavSelRange = "{2013, 0}";
+			sepNavVisRange = "{1315, 959}";
 		};
 	};
 	00970AFF0F2842CB00189A9D /* GHTestCase.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1053, 816}}";
-			sepNavSelRange = "{1181, 0}";
-			sepNavVisRange = "{856, 347}";
+			sepNavIntBoundsRect = "{{0, 0}, {1108, 1488}}";
+			sepNavSelRange = "{2013, 0}";
+			sepNavVisRange = "{1527, 1040}";
 		};
 	};
 	00970B1C0F2843B500189A9D /* PBXTextBookmark */ = {
@@ -2532,9 +2585,9 @@
 	};
 	00970B470F2866F800189A9D /* GHTestGroup.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 3040}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1108, 3024}}";
 			sepNavSelRange = "{3706, 0}";
-			sepNavVisRange = "{3264, 660}";
+			sepNavVisRange = "{0, 1429}";
 		};
 	};
 	00970B480F2866F800189A9D /* GHTest.h */ = {
@@ -2555,7 +2608,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1108, 1600}}";
 			sepNavSelRange = "{2932, 13}";
-			sepNavVisRange = "{2289, 867}";
+			sepNavVisRange = "{915, 1177}";
 		};
 	};
 	00970B4B0F2866F800189A9D /* GHTestRunner.h */ = {
@@ -2577,7 +2630,7 @@
 		fRef = 00970AFF0F2842CB00189A9D /* GHTestCase.m */;
 		name = "GHTestCase.m: 14";
 		rLen = 0;
-		rLoc = 188;
+		rLoc = 2080;
 		rType = 0;
 		vrLen = 625;
 		vrLoc = 0;
@@ -2615,9 +2668,9 @@
 	};
 	009DD5F70F26E1BD0058A2B0 /* GHTestViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 2336}}";
-			sepNavSelRange = "{1996, 0}";
-			sepNavVisRange = "{1687, 932}";
+			sepNavIntBoundsRect = "{{0, 0}, {869, 2384}}";
+			sepNavSelRange = "{3201, 0}";
+			sepNavVisRange = "{2763, 792}";
 		};
 	};
 	009DD5F80F26E1BD0058A2B0 /* GHTestViewModel.h */ = {
@@ -2651,8 +2704,8 @@
 	009DD5FE0F26E1BD0058A2B0 /* GHUnit.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1108, 848}}";
-			sepNavSelRange = "{2020, 0}";
-			sepNavVisRange = "{723, 1297}";
+			sepNavSelRange = "{26, 1894}";
+			sepNavVisRange = "{0, 1354}";
 		};
 	};
 	009DD6030F26E1BD0058A2B0 /* GHTestMacros.m */ = {
@@ -2664,9 +2717,9 @@
 	};
 	009DD6040F26E1BD0058A2B0 /* GHTestMacros.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 15840}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1108, 15792}}";
 			sepNavSelRange = "{1215, 0}";
-			sepNavVisRange = "{578, 1395}";
+			sepNavVisRange = "{69, 1542}";
 		};
 	};
 	009DD6070F26E1BD0058A2B0 /* GHTest.m */ = {
@@ -2677,9 +2730,9 @@
 		path = "/Users/gabe/Projects/gh-unit/Classes/GHTest.m";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 3040}}";
-			sepNavSelRange = "{5115, 26}";
-			sepNavVisRange = "{4632, 844}";
+			sepNavIntBoundsRect = "{{0, 0}, {1181, 3744}}";
+			sepNavSelRange = "{3812, 0}";
+			sepNavVisRange = "{3246, 1268}";
 		};
 	};
 	009DD6080F26E1BD0058A2B0 /* GHTest.h */ = {
@@ -2690,9 +2743,9 @@
 		path = "/Users/gabe/Projects/gh-unit/Classes/GHTest.h";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 1984}}";
-			sepNavSelRange = "{2131, 0}";
-			sepNavVisRange = "{1824, 577}";
+			sepNavIntBoundsRect = "{{0, 0}, {1108, 2608}}";
+			sepNavSelRange = "{3110, 0}";
+			sepNavVisRange = "{2624, 1092}";
 		};
 	};
 	009DD6FC0F26EC0D0058A2B0 /* PBXTextBookmark */ = {
@@ -2807,7 +2860,7 @@
 	};
 	009DD7FA0F26F8260058A2B0 /* GHTestApp.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 481}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1108, 532}}";
 			sepNavSelRange = "{121, 0}";
 			sepNavVisRange = "{0, 199}";
 		};
@@ -3168,6 +3221,11 @@
 			002E74940F2C2BB100427636 /* PBXTextBookmark */ = 002E74940F2C2BB100427636 /* PBXTextBookmark */;
 			002E74950F2C2BB100427636 /* PBXTextBookmark */ = 002E74950F2C2BB100427636 /* PBXTextBookmark */;
 			002E74960F2C2BB600427636 /* PBXTextBookmark */ = 002E74960F2C2BB600427636 /* PBXTextBookmark */;
+			002E74970F2C2C0C00427636 /* PBXTextBookmark */ = 002E74970F2C2C0C00427636 /* PBXTextBookmark */;
+			002E74980F2C2C0C00427636 /* PBXTextBookmark */ = 002E74980F2C2C0C00427636 /* PBXTextBookmark */;
+			002E74990F2C2C0C00427636 /* PBXTextBookmark */ = 002E74990F2C2C0C00427636 /* PBXTextBookmark */;
+			002E749A0F2C2C0C00427636 /* PBXTextBookmark */ = 002E749A0F2C2C0C00427636 /* PBXTextBookmark */;
+			002E749B0F2C2C0C00427636 /* PBXTextBookmark */ = 002E749B0F2C2C0C00427636 /* PBXTextBookmark */;
 			0062B4640F2BDFC200B0562A = 0062B4640F2BDFC200B0562A /* PBXTextBookmark */;
 			0062B4AF0F2BE30900B0562A = 0062B4AF0F2BE30900B0562A /* PBXTextBookmark */;
 			0062B4C80F2BE3CD00B0562A = 0062B4C80F2BE3CD00B0562A /* PBXTextBookmark */;

@@ -3,7 +3,7 @@
 //  GHUnit
 //
 //  Created by Gabriel Handford on 1/24/09.
-//  Copyright 2009 Yelp. All rights reserved.
+//  Copyright 2009. All rights reserved.
 //
 
 @interface GHSlowTest : GHTestCase { }
