@@ -27,77 +27,47 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestSuite.h"
+#import "GHTestGroup.h"
 
-@class GHTestCaseItem;
-@class GHTestItem;
+@class GHTestNode;
 
 @interface GHTestViewModel : NSObject {
-	GHTestSuite *testSuite_;
 	
-	NSMutableArray *testCaseItems_; // of GHTestCaseItem	
-	NSMutableDictionary *testCaseMap_; // of (GHTestCase -> GHTestCaseItem)
-	GHTestCaseItem *currentTestCaseItem_;	
+	GHTestNode *root_;
+	
+	NSMutableDictionary *map_;
+
 }
 
-@property (readonly, nonatomic) GHTestSuite *testSuite;
-@property (readonly, nonatomic) NSArray *testCaseItems;
-@property (retain, nonatomic) GHTestCaseItem *currentTestCaseItem;
-@property (readonly, nonatomic) GHTestStatus status;
+@property (readonly, nonatomic) GHTestNode *root;
 
-- (id)initWithTestSuite:(GHTestSuite *)testSuite;
+- (id)initWithRoot:(id<GHTestGroup>)root;
 
-- (BOOL)isCurrentTestCase:(GHTestCase *)testCase;
-- (void)addTestCaseItem:(GHTestCaseItem *)testCaseItem;
-
-- (GHTestCaseItem *)findTestCaseItem:(GHTestCase *)testCase;
-- (GHTestItem *)findTestItem:(GHTest *)test;
-
-- (NSInteger)numberOfChildren;
-- (id)objectAtIndex:(NSInteger)index;
 - (NSString *)name;
 - (NSString *)statusString;
+
+- (GHTestNode *)findTestNode:(id<GHTest>)test;
+- (void)registerNode:(GHTestNode *)node;
 
 @end
 
-@interface GHTestCaseItem : NSObject {
-	GHTestCase *testCase_;
-	NSMutableArray *testItems_; // of GHTestItem
-	NSMutableDictionary *testItemMap_; // of (Selector Name -> GHTestItem)
-	
-	NSString *name_;
+@interface GHTestNode : NSObject {
+
+	id<GHTest> test_;
+	NSMutableArray *children_;
+
 }
 
-@property (readonly, nonatomic) GHTestCase *testCase;
-@property (readonly, nonatomic) NSArray *testItems; // of GHTestItem
-@property (readonly) GHTestStatus status;
+@property (readonly, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSArray *children;
+@property (readonly, nonatomic) id<GHTest> test;
 
-- (id)initWithTestCase:(GHTestCase *)testCase;
-+ (id)testCaseItemWithTestCase:(GHTestCase *)testCase;
+- (id)initWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source;
++ (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source;
 
-- (void)addTestItem:(GHTestItem *)test;
-- (NSInteger)numberOfChildren;
-- (id)objectAtIndex:(NSInteger)index;
-
-- (NSString *)name;
 - (NSString *)statusString;
-
-- (GHTestItem *)findTestItem:(GHTest *)test;
-
-@end
-
-@interface GHTestItem : NSObject {
-	GHTest *test_;
-}
-
-@property (readonly) GHTest *test;
-@property (readonly) GHTestStatus status;
-
-- (id)initWithTest:(GHTest *)test;
-+ (id)testItemWithTest:(GHTest *)test;
-
-- (NSInteger)numberOfChildren;
-- (NSString *)name;
-- (NSString *)statusString;
+- (BOOL)failed;
+- (NSString *)detail;
 
 @end

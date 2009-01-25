@@ -44,28 +44,25 @@
 //  the License.
 //
 
-#import "GHTestSuite.h"
-#import "GHTestCase.h"
-#import "GHTest.h"
+#import "GHTestGroup.h"
 
 @class GHTestRunner;
 
-// Delegates are guaranteed to be notified on the main thread
+// Delegates can be guaranteed to be notified on the main thread (using #delegateOnMainThread)
 @protocol GHTestRunnerDelegate <NSObject>
 @optional
 - (void)testRunnerDidStart:(GHTestRunner *)runner;
-- (void)testRunner:(GHTestRunner *)runner didStartTestCase:(GHTestCase *)testCase;
-- (void)testRunner:(GHTestRunner *)runner didStartTest:(GHTest *)test;
-- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(GHTest *)test;
-- (void)testRunner:(GHTestRunner *)runner didFinishTestCase:(GHTestCase *)testCase;
+- (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test;
+- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test source:(id<GHTest>)source;
 - (void)testRunnerDidFinish:(GHTestRunner *)runner;
 
 - (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message;
 @end
 
-@interface GHTestRunner : NSObject <GHTestCaseDelegate> { 
+
+@interface GHTestRunner : NSObject <GHTestDelegate> { 
 	
-	GHTestSuite *testSuite_;
+	id<GHTest> testable_;
 	
 	id<GHTestRunnerDelegate> delegate_; // weak
 	
@@ -78,14 +75,16 @@
 
 }
 
+@property (retain) id<GHTest> testable;
 @property (assign) id<GHTestRunnerDelegate> delegate;
 @property (assign) BOOL raiseExceptions;
 @property (assign) BOOL delegateOnMainThread;
-@property (readonly) GHTestSuite *testSuite;
 
-- (id)initWithTestSuite:(GHTestSuite *)testSuite;
+- (id)initWithTestable:(id<GHTest>)testable;
 
-- (BOOL)invoke;
++ (GHTestRunner *)allTests;
+
+- (void)run;
 
 @end
 

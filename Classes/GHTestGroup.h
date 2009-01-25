@@ -1,8 +1,7 @@
 //
-//  GHUnit.h
-//  GHKit
+//  GHTestGroup.h
 //
-//  Created by Gabriel Handford on 1/19/09.
+//  Created by Gabriel Handford on 1/16/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -45,8 +44,56 @@
 //  the License.
 //
 
-#import <GHKit/GHKit.h>
+#import "GHTest.h"
 
-#import "GHTestCase.h"
-#import "GHTestMacros.h"
-#import "GHTestRunner.h"
+@protocol GHTestGroup <GHTest>
+- (id<GHTestGroup>)parent;
+- (NSArray *)children;
+@end
+
+@interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup> {
+	
+	id<GHTestDelegate> delegate_; // weak
+	id<GHTestGroup> parent_; // weak
+	
+	NSMutableArray *children_;
+		
+	NSString *name_;
+	NSTimeInterval interval_;
+	GHTestStatus status_;
+	GHTestStats stats_;
+}
+
+@property (readonly, nonatomic) NSArray *children;
+@property (assign, nonatomic) id<GHTestDelegate> delegate;
+@property (assign, nonatomic) id<GHTestGroup> parent;
+
+@property (readonly, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) GHTestStatus status;
+
+@property (readonly, nonatomic) NSTimeInterval interval;
+@property (readonly, nonatomic) GHTestStats stats;
+
+- (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate;
+
++ (GHTestGroup *)allTests:(id<GHTestDelegate>)delegate;
+
+- (void)addTest:(id<GHTest>)test;
+
+- (void)run;
+
+@end
+
+@interface GHTestGroup (GHTestLoading)
+
++ (BOOL)isSenTestCaseClass:(Class)cls;
+
+// GTM_BEGIN
++ (BOOL)isTestFixture:(Class)aClass;
++ (BOOL)isTestFixture:(Class)aClass testCaseClass:(Class)testCaseClass;
+// GTM_END
+
++ (NSArray *)loadTestCases;
+
+@end

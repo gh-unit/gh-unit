@@ -12,6 +12,10 @@
 #import <GHUnit/GHUnit.h>
 #import <GHUnit/GHTestApp.h>
 
+void exceptionHandler(NSException *exception) {
+	NSLog(@"%@", GTMStackTraceFromException(exception));
+}
+
 int main(int argc, char *argv[]) {
 	
 	NSDebugEnabled = YES;
@@ -19,6 +23,7 @@ int main(int argc, char *argv[]) {
 	NSDeallocateZombies = NO;
 	NSHangOnUncaughtException = YES;
 	[NSAutoreleasePool enableFreedObjectCheck:YES];
+	NSSetUncaughtExceptionHandler(&exceptionHandler);
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	GHTestApp *app = [[GHTestApp alloc] init];

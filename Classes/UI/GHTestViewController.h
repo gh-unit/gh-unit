@@ -28,7 +28,7 @@
 //
 
 #import "GHTestViewModel.h"
-#import "GHTestSuite.h"
+#import "GHTestGroup.h"
 
 @interface GHTestViewController : NSViewController {
 	NSSplitView *splitView_;
@@ -57,11 +57,10 @@
 
 @property (copy, nonatomic) NSString *status;
 
-- (void)addTest:(GHTest *)test;
 - (void)log:(NSString *)log;
 
-- (void)testSuite:(GHTestSuite *)testSuite didUpdateTest:(GHTest *)test;
-- (void)testSuite:(GHTestSuite *)testSuite didUpdateTestCase:(GHTestCase *)testCase;
-- (void)testSuiteDidFinish:(GHTestSuite *)testSuite;
+- (void)updateTest:(id<GHTest>)test source:(id<GHTest>)source;
+
+- (void)setRoot:(id<GHTest>)root;
 
 @end

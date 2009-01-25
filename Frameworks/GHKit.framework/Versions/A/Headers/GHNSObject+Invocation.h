@@ -15,6 +15,21 @@
 @interface NSObject (GHInvocation)
 
 /*!
+ Perform selector if responds.
+ @param selector
+ @result nil if we don't respond to the selector, otherwise the selector result
+ */
+- (id)gh_performIfRespondsToSelector:(SEL)selector;
+
+/*!
+ Perform selector if responds with multiple arguments.
+ @param selector
+ @param withObjects nil terminated variable argument list 
+ @result nil if we don't respond to the selector, otherwise the selector result
+ */
+- (id)gh_performIfRespondsToSelector:(SEL)selector withObjects:object, ...;
+
+/*!
  Invoke selector with arguments.
  @param selector
  @param withObjects nil terminated variable argument list 

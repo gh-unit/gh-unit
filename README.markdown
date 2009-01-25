@@ -85,3 +85,9 @@ you might leave it as nil.
 	GHAssertNoThrow(expr, description, ...)
 	GHAssertNoThrowSpecific(expr, specificException, description, ...)
 	GHAssertNoThrowSpecificNamed(expr, specificException, aName, description, ...)
+
+## Adding a Test Target 
+
+The following steps will give you a test target:
+
+- 

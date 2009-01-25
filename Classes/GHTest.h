@@ -27,53 +27,94 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-@class GHTestCase;
-
 typedef enum {
 	GHTestStatusNone,
 	GHTestStatusRunning,
-	GHTestStatusPassed,
-	GHTestStatusFailed
+	GHTestStatusFinished,
 } GHTestStatus;
 
-@interface GHTest : NSObject {
-	GHTestCase *testCase_;
+typedef struct {
+	NSInteger runCount;
+	NSInteger failureCount;
+	NSInteger testCount;
+} GHTestStats;
+
+static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSInteger testCount) {
+	GHTestStats stats;
+	stats.runCount = runCount;
+	stats.failureCount = failureCount; 
+	stats.testCount = testCount;
+	return stats;
+}
+
+#define NSStringFromGHTestStats(stats) [NSString stringWithFormat:@"%d/%d/%d", stats.runCount, stats.testCount, stats.failureCount]
+
+@protocol GHTest <NSObject>
+
+- (void)run;
+
+- (NSString *)identifier;
+- (NSString *)name;
+
+- (NSTimeInterval)interval;
+- (GHTestStatus)status;
+- (GHTestStats)stats;
+
+- (NSString *)backTrace;
+
+@end
+
+@protocol GHTestDelegate <NSObject>
+- (void)testWillStart:(id<GHTest>)test;
+- (void)testUpdated:(id<GHTest>)test source:(id<GHTest>)source;
+- (void)testDidFinish:(id<GHTest>)test;
+@end
+
+@interface GHTest : NSObject <GHTest> {
+	
+	id<GHTestDelegate> delegate_; // weak
+	
+	id target_;
 	SEL selector_;
+	
+	NSString *name_;
+	GHTestStatus status_;
 	NSTimeInterval interval_;
+	BOOL failed_;
+	
+	GHTestStats stats_;
 	
 	// If errored
 	NSException *exception_; 
 	NSString *backTrace_;
 	
-	GHTestStatus status_;
-	
-	NSString *selectorName_;
 }
 
-- (id)initWithTestCase:(GHTestCase *)testCase selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception;
+- (id)initWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception;
 
-+ (id)testWithTestCase:(GHTestCase *)testCase selector:(SEL)selector;
-+ (id)testWithTestCase:(GHTestCase *)testCase selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception;
++ (id)testWithTarget:(id)target selector:(SEL)selector;
++ (id)testWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception;
 
-@property (readonly) GHTestCase *testCase;
+// Loads all the tests from the specified target
++ (NSArray *)loadTestsFromTarget:(id)target;
+
+@property (readonly) id target;
 @property (readonly) SEL selector;
+@property (readonly) NSString *name;
 @property (readonly) NSTimeInterval interval;
 @property (readonly) NSException *exception;
 @property (readonly) NSString *backTrace;
-
-@property (readonly) NSString *name;
-@property (readonly) NSString *statusString;
-
-@property (assign) GHTestStatus status;
+@property (readonly) GHTestStatus status;
 @property (readonly) BOOL failed;
+@property (readonly) GHTestStats stats;
+
+@property (assign) id<GHTestDelegate> delegate;
 
 /*!
  Run the test.
  After running, the interval and exception properties may be set.
  @result Yes if passed, NO otherwise
  */
-- (BOOL)invoke;
-
-+ (NSString *)stringFromStatus:(GHTestStatus)status withDefault:(NSString *)defaultValue;
+- (void)run;
 
 @end

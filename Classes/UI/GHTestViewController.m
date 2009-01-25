@@ -30,7 +30,7 @@
 #import "GHTestViewController.h"
 
 @interface GHTestViewController (Private)
-- (void)_updateStatus:(GHTestSuite *)testSuite;
+- (void)_updateStatus:(id<GHTest>)test source:(id<GHTest>)source;
 @end
 
 @implementation GHTestViewController
@@ -45,14 +45,7 @@
 }
 
 - (void)dealloc {
-	[model_ release];
-	
-//	[splitView_ release];
-//	[statusView_ release];
-//	[detailsView_ release];
-//	[statusLabel_ release];
-//	[progressIndicator_ release];
-//	[outlineView_ release];
+	[model_ release];	
 	[super dealloc];
 }
 
@@ -61,70 +54,47 @@
 	self.status = @"Loading tests...";
 }
 
+- (void)setRoot:(id<GHTestGroup>)root {
+	[model_ release];
+	model_ = [[GHTestViewModel alloc] initWithRoot:root];
+	[self _updateStatus:root source:root];
+}
+
 - (void)setStatus:(NSString *)status {
 	[statusLabel_ setStringValue:[NSString stringWithFormat:@"Status: %@", status]];
 }
+
+- (NSString *)stringFromStatus:(GHTestStatus)status interval:(NSTimeInterval)interval {
+	NSString *statusString = @"Unknown";
+	if (status == GHTestStatusRunning) statusString = @"Running";
+	else if (status == GHTestStatusFinished) statusString = @"Finished";
+	
+	return [NSString stringWithFormat:@"%@ (%0.3fs)", statusString, interval];
+}
+
 
 - (NSString *)status {
 	[NSException raise:NSGenericException format:@"Operation not supported"];
 	return nil;
 }
 
-- (void)addTest:(GHTest *)test {
-	GHAssertMainThread();
-	if (!model_) {
-		GHTestSuite *testSuite = test.testCase.testSuite;
-		GTMLoggerDebug(@"testSuite=%@", testSuite);
-		model_ = [[GHTestViewModel alloc] initWithTestSuite:testSuite];
-		[outlineView_ expandItem:model_];
-	}
-	
-	self.status = [NSString stringWithFormat:@"%@", test.name];
-	
-	GHTestCaseItem *testCaseItem = nil;
-	BOOL refreshRoot = NO;
-	if (![model_ isCurrentTestCase:test.testCase]) {
-		testCaseItem = [GHTestCaseItem testCaseItemWithTestCase:test.testCase];
-		[model_ addTestCaseItem:testCaseItem];
-		refreshRoot = YES;
-	} else {
-		testCaseItem = model_.currentTestCaseItem;
-	}
-
-	[testCaseItem addTestItem:[GHTestItem testItemWithTest:test]];
-	if (refreshRoot) {
-		[outlineView_ reloadItem:nil];
-	} else {
-		[outlineView_ reloadItem:testCaseItem reloadChildren:YES];
-	}
-}
-
 - (void)log:(NSString *)log {
 	
 }
 
-- (void)testSuite:(GHTestSuite *)testSuite didUpdateTest:(GHTest *)test {	
-	[progressIndicator_ setDoubleValue:((double)testSuite.runCount / (double)testSuite.totalCount) * 100.0];
-	GHTestItem *testItem = [model_ findTestItem:test];
-	[outlineView_ reloadItem:testItem];
-	[outlineView_ expandItem:testItem expandChildren:YES];
-	[self _updateStatus:testSuite];
+- (void)updateTest:(id<GHTest>)test source:(id<GHTest>)source {
+	GHTestNode *testNode = [model_ findTestNode:test];
+	[outlineView_ reloadItem:testNode];
+	[outlineView_ expandItem:testNode expandChildren:YES];
+	[self _updateStatus:test source:source];
 }
 
-- (void)testSuite:(GHTestSuite *)testSuite didUpdateTestCase:(GHTestCase *)testCase {	
-	GHTestCaseItem *testCaseItem = [model_ findTestCaseItem:testCase];
-	[outlineView_ reloadItem:testCaseItem];
-	[outlineView_ expandItem:testCaseItem expandChildren:YES];
-	[self _updateStatus:testSuite];
-}
+- (void)_updateStatus:(id<GHTest>)test source:(id<GHTest>)source {
+	[progressIndicator_ setDoubleValue:((double)[test stats].runCount / (double)[test stats].testCount) * 100.0];
 
-- (void)testSuiteDidFinish:(GHTestSuite *)testSuite {	
-	[self _updateStatus:testSuite];
-}
-
-- (void)_updateStatus:(GHTestSuite *)testSuite {
 	self.status = [NSString stringWithFormat:@"%@ %d/%d (%d failures)", 
-								 testSuite.statusString, testSuite.runCount, testSuite.totalCount, testSuite.failedCount];
+									 [self stringFromStatus:[source status] interval:[source interval]], 
+									 [source stats].runCount, [source stats].testCount, [source stats].failureCount];
 }
 
 #pragma mark Delegates (NSOutlineView)
@@ -133,30 +103,25 @@
 	[detailsTextView_ setStringValue:@""];
 	
 	id item = [outlineView_ itemAtRow:[outlineView_ selectedRow]];
-	if ([item isKindOfClass:[GHTestItem class]]) {
-		GHTest *test = (GHTest *)[item test];
-		if ([test exception])
-			[detailsTextView_ setStringValue:[test backTrace]];
-	}
-	
+	[detailsTextView_ setStringValue:[item detail]];
 }
 
 #pragma mark DataSource (NSOutlineView)
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
 	if (!item) {
-		return model_;
+		return [model_ root];
 	} else {
-		return [item objectAtIndex:index];
+		return [[item children] objectAtIndex:index];
 	}
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-	return (!item) ? YES : ([item numberOfChildren] > 0);
+	return (!item) ? YES : ([[item children] count] > 0);
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-	return (!item) ? (model_ ? 1 : 0) : [item numberOfChildren];
+	return (!item) ? (model_ ? 1 : 0) : [[item children] count];
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
@@ -174,13 +139,8 @@
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {	
 	[cell setTextColor:[NSColor blackColor]];
 	
-	if ([item status] == GHTestStatusFailed && [[tableColumn identifier] isEqual:@"status"]) {
-		if ([item isKindOfClass:[GHTestItem class]]) {
-			//[cell setDrawsBackground:YES];
-			[cell setTextColor:[NSColor redColor]];
-		} else {
-			// Nothing yet
-		}
+	if ([item failed] && [[tableColumn identifier] isEqual:@"status"]) {
+		[cell setTextColor:[NSColor redColor]];
 	}
 	
 }

@@ -31,135 +31,65 @@
 
 @implementation GHTestViewModel
 
-@synthesize testCaseItems=testCaseItems_, currentTestCaseItem=currentTestCaseItem_, testSuite=testSuite_;
+@synthesize root=root_;
 
-- (id)initWithTestSuite:(GHTestSuite *)testSuite {
+- (id)initWithRoot:(id<GHTestGroup>)root {
 	if ((self = [super init])) {
-		testSuite_ = [testSuite retain];
-		testCaseItems_ = [[NSMutableArray array] retain];
-		testCaseMap_ = [[NSMutableDictionary dictionary] retain];
+		root_ = [[GHTestNode alloc] initWithTest:root children:[root children] source:self];
+		map_ = [[NSMutableDictionary dictionary] retain];
 	}
 	return self;
 }
 
 - (void)dealloc {
-	[testSuite_ release];
-	[testCaseMap_ release];
-	[testCaseItems_ release];
-	[currentTestCaseItem_ release];
+	[root_ release];
+	[map_ release];
 	[super dealloc];
 }
 
-- (void)addTestCaseItem:(GHTestCaseItem *)testCaseItem {
-	self.currentTestCaseItem = testCaseItem;
-	[testCaseMap_ setObject:testCaseItem forKey:testCaseItem.testCase.name];
-	[testCaseItems_ addObject:testCaseItem];
-}
-
-- (BOOL)isCurrentTestCase:(GHTestCase *)testCase {
-	return (currentTestCaseItem_ && currentTestCaseItem_.testCase == testCase);
-}
-
-- (GHTestCaseItem *)findTestCaseItem:(GHTestCase *)testCase {
-	return [testCaseMap_ objectForKey:testCase.name];
-}
-
-- (GHTestItem *)findTestItem:(GHTest *)test {
-	GHTestCaseItem *testCaseItem = [self findTestCaseItem:test.testCase];
-	return [testCaseItem findTestItem:test];
-}
-
-- (NSInteger)numberOfChildren {
-	return [testCaseItems_ count];
-}
-
-- (id)objectAtIndex:(NSInteger)index {
-	return [testCaseItems_ objectAtIndex:index];
-}
-
 - (NSString *)name {
-	return [testSuite_ name];
+	return [root_ name];
 }
 
 - (NSString *)statusString {
-	return [testSuite_ statusString];
+	return [root_ statusString];
 }
 
-- (GHTestStatus)status {
-	return [testSuite_ status];
+- (void)registerNode:(GHTestNode *)node {
+	[map_ setObject:node forKey:node.identifier];
+}
+
+- (GHTestNode *)findTestNode:(id<GHTest>)test {
+	return [map_ objectForKey:[test identifier]];
 }
 
 @end
 
-@implementation GHTestCaseItem
+@implementation GHTestNode
 
-@synthesize testCase=testCase_, testItems=testItems_;
+@synthesize test=test_, identifier=identifier_, name=name_, children=children_;
 
-- (id)initWithTestCase:(GHTestCase *)testCase {
-	if ((self = [super init])) {
-		testCase_ = [testCase retain];
-		testItems_ = [[NSMutableArray array] retain];
-		testItemMap_ = [[NSMutableDictionary dictionary] retain];
-		
-		name_ = [NSStringFromClass([testCase_ class]) retain];
-	}
-	return self;
-}
-
-+ (id)testCaseItemWithTestCase:(GHTestCase *)testCase {
-	return [[[self alloc] initWithTestCase:testCase] autorelease];
-}
-
-- (void)dealloc {
-	[testCase_ release];
-	[name_ release];
-	[testItems_ release];
-	[testItemMap_ release];
-	[super dealloc];
-}
-
-- (NSString *)description {
-	return GHDescription(self, @"testCase", @"testItems");
-}
-
-- (void)addTestItem:(GHTestItem *)testItem {
-	[testItemMap_ setObject:testItem forKey:testItem.test.name];
-	[testItems_ addObject:testItem];
-}
-
-- (NSInteger)numberOfChildren {
-	return [testItems_ count];
-}
-
-- (id)objectAtIndex:(NSInteger)index {
-	return [testItems_ objectAtIndex:index];
-}
-
-- (NSString *)name {
-	return name_;
-}
-
-- (NSString *)statusString {
-	return [testCase_ statusString];
-}
-
-- (GHTestStatus)status {
-	return [testCase_ status];
-}
-
-- (GHTestItem *)findTestItem:(GHTest *)test {
-	return [testItemMap_ objectForKey:test.name];
-}
-
-@end
-
-@implementation GHTestItem
-
-@synthesize test=test_;
-
-- (id)initWithTest:(GHTest *)test {
+- (id)initWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source {
 	if ((self = [super init])) {
 		test_ = [test retain];
+		
+		NSMutableArray *nodeChildren = [NSMutableArray array];
+		for(id<GHTest> test in children) {	
+			
+			GHTestNode *node = nil;
+			if ([test conformsToProtocol:@protocol(GHTestGroup)]) {
+				NSArray *testChildren = [(id<GHTestGroup>)test children];
+				if ([testChildren count] > 0) 
+					node = [GHTestNode nodeWithTest:test children:testChildren source:source];
+			} else {
+				node = [GHTestNode nodeWithTest:test children:nil source:source];
+			}
+			GTMLoggerDebug(@"Node: %@", node);
+			if (node)
+				[nodeChildren addObject:node];
+		}
+		children_ = [nodeChildren retain];
+		[source registerNode:self];
 	}
 	return self;
 }
@@ -169,30 +99,28 @@
 	[super dealloc];
 }
 
-+ (id)testItemWithTest:(GHTest *)test {
-	return [[[self alloc] initWithTest:test] autorelease];
-}
-
-- (NSString *)description {
-	return GHDescription(self, @"name", @"statusString");
++ (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source {
+	return [[[GHTestNode alloc] initWithTest:test children:children source:source] autorelease];
 }
 
 - (NSString *)name {
-	return test_.name;
+	return [test_ name];
+}
+
+- (NSString *)identifier {
+	return [test_ identifier];
 }
 
 - (NSString *)statusString {
-	return test_.statusString;
+	return NSStringFromGHTestStats([test_ stats]);
 }
 
-- (GHTestStatus)status {
-	return [test_ status];
+- (BOOL)failed {
+	return ([test_ stats].failureCount > 0);
 }
 
-- (NSInteger)numberOfChildren {
-	return 0;
+- (NSString *)detail {
+	return [test_ backTrace];
 }
 
 @end
-
-

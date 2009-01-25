@@ -42,19 +42,18 @@
 }
 
 - (void)runTests {	
-	GHTestSuite *testSuite = [GHTestSuite allTestCases];
-	GHTestRunner *runner = [[GHTestRunner alloc] initWithTestSuite:testSuite];
+	[NSThread detachNewThreadSelector:@selector(_runTests) toTarget:self withObject:nil];	
+}
+
+- (void)_runTests {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];		
+	GHTestRunner *runner = [[GHTestRunner allTests] retain];
 	runner.delegate = self;
 	runner.delegateOnMainThread = YES;
 	// To allow exceptions to raise into the debugger, uncomment below
 	//runner.raiseExceptions = YES;
-
-	[NSThread detachNewThreadSelector:@selector(_runTests:) toTarget:self withObject:runner];	
-}
-
-- (void)_runTests:(GHTestRunner *)runner {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];		
-	[runner invoke];
+	
+	[runner run];
 	[pool release];
 }
 
@@ -64,27 +63,24 @@
 	[windowController_.viewController log:message];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didStartTest:(GHTest *)test {
-	[windowController_.viewController addTest:test];
+- (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
+	[windowController_.viewController updateTest:test source:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(GHTest *)test {
-	[windowController_.viewController testSuite:runner.testSuite didUpdateTest:test];
+- (void)testRunner:(GHTestRunner *)runner didFinishTest:(id<GHTest>)test {
+	[windowController_.viewController updateTest:test source:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didStartTestCase:(GHTestCase *)testCase { 
-	[windowController_.viewController testSuite:runner.testSuite didUpdateTestCase:testCase];
+- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test source:(id<GHTest>)source {
+	[windowController_.viewController updateTest:test source:source];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didFinishTestCase:(GHTestCase *)testCase { 
-	[windowController_.viewController testSuite:runner.testSuite didUpdateTestCase:testCase];
+- (void)testRunnerDidStart:(GHTestRunner *)runner { 
+	[windowController_.viewController setRoot:runner.testable];
 }
 
 - (void)testRunnerDidFinish:(GHTestRunner *)runner {
-	[windowController_.viewController testSuiteDidFinish:runner.testSuite];
 	//[[NSApplication sharedApplication] terminate:nil];
 }
-
-- (void)testRunnerDidStart:(GHTestRunner *)runner { }
 
 @end

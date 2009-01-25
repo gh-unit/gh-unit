@@ -6,7 +6,10 @@
 //  Copyright 2009. All rights reserved.
 //
 
-#import "GHTestFailed.h"
+#import "GHTestCase.h"
+
+@interface GHTestFailed : GHTestCase { }
+@end
 
 @implementation GHTestFailed
 

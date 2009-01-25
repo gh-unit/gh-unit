@@ -46,15 +46,11 @@
 
 #import "GHTestRunner.h"
 
-@interface GHTestRunner (Notifications)
-- (void)didStart;
-- (void)didFinish;
-@end
-
-#import "GHTestCase.h"
-
 @interface GHTestRunner (Private)
+- (void)_notifyStart;
+- (void)_notifyFinished;
 - (void)_log:(NSString *)message;
+- (void)_updateTest:(id<GHTest>)test;
 @end
 
 // GTM_BEGIN
@@ -62,27 +58,33 @@
 
 @implementation GHTestRunner
 
-@synthesize testSuite=testSuite_, raiseExceptions=raiseExceptions_, delegate=delegate_, delegateOnMainThread=delegateOnMainThread_;
+@synthesize testable=testable_, raiseExceptions=raiseExceptions_, delegate=delegate_, delegateOnMainThread=delegateOnMainThread_;
 
-- (id)initWithTestSuite:(GHTestSuite *)testSuite {
+- (id)initWithTestable:(id<GHTest>)testable {
 	if ((self = [super init])) {
-		testSuite_ = [testSuite retain];
-		testSuite_.delegate = self;
+		testable_ = [testable retain];
 		delegateOnMainThread_ = YES;
 	}
 	return self;
 }
 
++ (GHTestRunner *)allTests {
+	GHTestGroup *allGroup = [GHTestGroup allTests:nil];
+	GHTestRunner *runner = [[GHTestRunner alloc] initWithTestable:allGroup];
+	allGroup.delegate = runner;
+	return [runner autorelease];
+}
+
 - (void)dealloc {
-	[testSuite_ release];
+	[testable_ release];
 	[super dealloc];
 }
 
-- (BOOL)invoke {
-	[self didStart];	
-	BOOL passed = [testSuite_ invoke]; 
-	[self didFinish];
-	return passed;
+- (void)run {
+	NSParameterAssert(testable_);
+	[self _notifyStart];	
+	[testable_ run]; 
+	[self _notifyFinished];
 }
 
 // GTM_END
@@ -97,48 +99,34 @@
 
 #define kGHTestRunnerInvokeWaitUntilDone YES
 
-- (void)testCaseDidStart:(GHTestCase *)testCase {
-	if ([delegate_ respondsToSelector:@selector(testRunner:didStartTestCase:)])
-		[(id)delegate_ gh_performSelector:@selector(testRunner:didStartTestCase:) onMainThread:delegateOnMainThread_ 
-												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, testCase, nil];
+- (void)_updateTest:(id<GHTest>)test source:(id<GHTest>)source {
+	if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:source:)])
+		[(id)delegate_ gh_performSelector:@selector(testRunner:didUpdateTest:source:) onMainThread:delegateOnMainThread_ 
+												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, test, source, nil];	
+}
+
+#pragma mark Delegates (GHTest)
+
+- (void)testWillStart:(id<GHTest>)test {
 
 }
 
-- (void)testCase:(GHTestCase *)testCase didStartTest:(GHTest *)test {
-	if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)]) 
-		[(id)delegate_ gh_performSelector:@selector(testRunner:didStartTest:) onMainThread:delegateOnMainThread_ 
-												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, test, nil];	
-
+- (void)testUpdated:(id<GHTest>)test source:(id<GHTest>)source {
+	[self _updateTest:test source:source];
 }
 
-- (void)testCase:(GHTestCase *)testCase didFinishTest:(GHTest *)test passed:(BOOL)passed {
+- (void)testDidFinish:(id<GHTest>)test {
 	
-	NSString *message = [NSString stringWithFormat:@"Test '-[%@ %@]' %@ (%0.3f seconds).",
-											 testCase.name, test.name, passed ? @"passed" : @"failed", test.interval];	
+	NSString *message = [NSString stringWithFormat:@"Test '%@' %@ (%0.3f seconds).",
+											 [test name], [test stats].failureCount > 0 ? @"failed" : @"passed", [test interval]];	
 	[self _log:message];
-	
-	if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:)])
-		[(id)delegate_ gh_performSelector:@selector(testRunner:didUpdateTest:) onMainThread:delegateOnMainThread_ 
-												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, test, nil];
+	[self _updateTest:test source:test];
 }
 
-- (void)testCaseDidFinish:(GHTestCase *)testCase {
+#pragma mark Notifications (Private)
 
-	NSString *message = [NSString stringWithFormat:@"Test Case '%@' finished.\n"
-											 "Executed %d tests, with %d failures in %0.3f seconds.\n",
-											 testCase.name, testCase.totalCount, testCase.failedCount, testCase.interval];
-	[self _log:message];
-	
-	
-	if ([delegate_ respondsToSelector:@selector(testRunner:didFinishTestCase:)]) 
-		[(id)delegate_ gh_performSelector:@selector(testRunner:didFinishTestCase:) onMainThread:delegateOnMainThread_ 
-												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, testCase, nil];
-
-}
-
-
-- (void)didStart {	
-	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' started.", testSuite_.name];
+- (void)_notifyStart {	
+	NSString *message = [NSString stringWithFormat:@"Test Group '%@' started.", [testable_ name]];
 	[self _log:message];
 	
 	if ([delegate_ respondsToSelector:@selector(testRunnerDidStart:)])
@@ -146,10 +134,10 @@
 												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, nil];
 }
 
-- (void)didFinish {
-	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' finished.\n"
+- (void)_notifyFinished {
+	NSString *message = [NSString stringWithFormat:@"Test Group '%@' finished.\n"
 											 "Executed %d tests, with %d failures in %0.3f seconds.\n",
-											 testSuite_.name, testSuite_.totalCount, testSuite_.failedCount, testSuite_.interval];
+											 [testable_ name], [testable_ stats].testCount, [testable_ stats].failureCount, [testable_ interval]];
 	[self _log:message];
 	
 	

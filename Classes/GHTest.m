@@ -47,63 +47,104 @@
 
 #import "GHTest.h"
 
+#import <objc/runtime.h>
+
+// GTM_BEGIN
+
+// Used for sorting methods below
+static int MethodSort(const void *a, const void *b) {
+  const char *nameA = sel_getName(method_getName(*(Method*)a));
+  const char *nameB = sel_getName(method_getName(*(Method*)b));
+  return strcmp(nameA, nameB);
+}
+
+// GTM_END
+
 @implementation GHTest
 
-@synthesize testCase=testCase_, selector=selector_, interval=interval_, exception=exception_, status=status_;
+@synthesize delegate=delegate_, target=target_, selector=selector_, name=name_, interval=interval_, exception=exception_, status=status_, failed=failed_, stats=stats_;
 
-- (id)initWithTestCase:(GHTestCase *)testCase selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception {
+- (id)initWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception {
 	if ((self = [super init])) {
-		testCase_ = [testCase retain];
+		target_ = [target retain];
 		selector_ = selector;
+		name_ = [NSStringFromSelector(selector_) retain];
 		interval_ = interval;
 		exception_ = [exception retain];
-		
-		selectorName_ = [NSStringFromSelector(selector_) retain];
+		stats_ = GHTestStatsMake(0, 0, 1);
 	}
 	return self;	
 }
 
-+ (id)testWithTestCase:(GHTestCase *)testCase selector:(SEL)selector {
-	return [[[self alloc] initWithTestCase:testCase selector:selector interval:-1 exception:nil] autorelease];
++ (id)testWithTarget:(id)target selector:(SEL)selector {
+	return [[[self alloc] initWithTarget:target selector:selector interval:-1 exception:nil] autorelease];
 }
 
 
-+ (id)testWithTestCase:(GHTestCase *)testCase selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception {
-	return [[[self alloc] initWithTestCase:testCase selector:selector interval:interval exception:exception] autorelease];
++ (id)testWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception {
+	return [[[self alloc] initWithTarget:target selector:selector interval:interval exception:exception] autorelease];
 }
 
 - (void)dealloc {
-	[testCase_ release];
+	[name_ release];
+	[target_ release];
 	[exception_ release];
 	[backTrace_ release];
-	[selectorName_ release];
 	[super dealloc];
 }
 
-- (NSUInteger)hash {
-	return [selectorName_ hash];
+- (NSString *)identifier {
+	return [NSString stringWithFormat:@"%@/%@", NSStringFromClass([target_ class]), NSStringFromSelector(selector_)];
 }
 
-- (BOOL)isEqual:(id)obj {
-	return ([obj isMemberOfClass:[self class]] && [[obj name] isEqual:[self name]]);
+// GTM_BEGIN
+
++ (NSArray *)loadTestsFromTarget:(id)target {
+	NSMutableArray *tests = [NSMutableArray array];
+	
+	unsigned int methodCount;
+	Method *methods = class_copyMethodList([target class], &methodCount);
+	if (!methods) {
+		return nil;
+	}
+	// This handles disposing of methods for us even if an
+	// exception should fly. 
+	[NSData dataWithBytesNoCopy:methods
+											 length:sizeof(Method) * methodCount];
+	// Sort our methods so they are called in Alphabetical order just
+	// because we can.
+	qsort(methods, methodCount, sizeof(Method), MethodSort);
+	for (size_t j = 0; j < methodCount; ++j) {
+		Method currMethod = methods[j];
+		SEL sel = method_getName(currMethod);
+		char *returnType = NULL;
+		const char *name = sel_getName(sel);
+		// If it starts with test, takes 2 args (target and sel) and returns
+		// void run it.
+		if (strstr(name, "test") == name) {
+			returnType = method_copyReturnType(currMethod);
+			if (returnType) {
+				// This handles disposing of returnType for us even if an
+				// exception should fly. Length +1 for the terminator, not that
+				// the length really matters here, as we never reference inside
+				// the data block.
+				[NSData dataWithBytesNoCopy:returnType
+														 length:strlen(returnType) + 1];
+			}
+		}
+		if (returnType  // True if name starts with "test"
+				&& strcmp(returnType, @encode(void)) == 0
+				&& method_getNumberOfArguments(currMethod) == 2) {
+			
+			GHTest *test = [GHTest testWithTarget:target selector:sel];
+			[tests addObject:test];
+		}
+	}
+	
+	return tests;
 }
 
-- (NSString *)name {
-	return selectorName_;
-}
-
-+ (NSString *)stringFromStatus:(GHTestStatus)status withDefault:(NSString *)defaultValue {
-	switch(status) {
-		case GHTestStatusRunning: return @"Running";
-		case GHTestStatusPassed: return @"Passed";
-		case GHTestStatusFailed: return @"Failed";
-	}			
-	return defaultValue;
-}	
-
-- (BOOL)failed {
-	return (status_ == GHTestStatusFailed);
-}
+// GTM_END
 
 - (NSString *)backTrace {
 	if (!backTrace_ && exception_)
@@ -111,11 +152,8 @@
 	return backTrace_;
 }
 
-- (NSString *)statusString {
-	return [NSString stringWithFormat:@"%@ (%0.3fs)", [GHTest stringFromStatus:status_ withDefault:@""], interval_];
-}
-
-- (BOOL)invoke {
+- (void)run {
+	[delegate_ testWillStart:self];
 	status_ = GHTestStatusRunning;
 // GTM_BEGIN
 	NSDate *startDate = [NSDate date];
@@ -128,13 +166,15 @@
     // this log the exception.  This ensures they are only logged once but the
     // outer layers get the exceptions to report counts, etc.
     @try {
-      [testCase_ performSelector:@selector(setUp)];
-      @try {				
-        [testCase_ performSelector:selector_];
+			if ([target_ respondsToSelector:@selector(setUp)])
+				[target_ performSelector:@selector(setUp)];
+      @try {	
+        [target_ performSelector:selector_];
       } @catch (NSException *exception) {
         exception_ = [exception retain];
       }
-      [testCase_ performSelector:@selector(tearDown)];
+			if ([target_ respondsToSelector:@selector(tearDown)])
+				[target_ performSelector:@selector(tearDown)];
     } @catch (NSException *exception) {
       exception_ = [exception retain];
     }
@@ -144,10 +184,10 @@
   }
 // GTM_END	
 	interval_ = [[NSDate date] timeIntervalSinceDate:startDate];
-	
-	BOOL passed = (!exception_);
-	status_ = passed ? GHTestStatusPassed : GHTestStatusFailed;
-	return passed;
+	status_ = GHTestStatusFinished;	
+	failed_ = (!!exception_);
+	stats_ = GHTestStatsMake(1, failed_ ? 1 : 0, 1);
+	[delegate_ testDidFinish:self];
 }
 
 @end

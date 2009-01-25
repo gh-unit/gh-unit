@@ -27,8 +27,33 @@
 
 @interface NSString (GHUtils)
 
+/*!
+ @method gh_isBlank
+ @result YES if string is empty (after stripping)
+ */
 - (BOOL)gh_isBlank;
+
+/*!
+ @method gh_strip
+ @result String with characters trimmed
+ */
 - (NSString *)gh_strip;
+
+/*!
+ Trim whitespace from right side only.
+ */
+- (NSString *)gh_rightStrip;
+
+/*!
+ Trim white space from left side only.
+ */
+- (NSString *)gh_leftStrip;
+
+/*!
+ @method gh_isBlank
+ @param s
+ @result YES if string is nil, empty or whitespace characters
+ */
 + (BOOL)gh_isBlank:(NSString *)s;
 
 #ifndef TARGET_OS_IPHONE
@@ -73,6 +98,17 @@
  @result String cut up into array
 */
 - (NSArray *)gh_cutWithString:(NSString *)cutWith options:(NSStringCompareOptions)options;
+
+/*!
+ @method gh_cutWithString
+ @abstract Cuts the word up. Like split, but all the characters are kept.
+ For example, [@"foo:bar" gh_cutWithString:@":"] => [ "foo:", "bar" ]
+ @param s String to cut on
+ @param options Options
+ @param cutAfter If YES, then [ "foo:", "bar" ], otherwise [ "foo", ":bar" ]
+ @result String cut up into array
+ */
+- (NSArray *)gh_cutWithString:(NSString *)cutWith options:(NSStringCompareOptions)options cutAfter:(BOOL)cutAfter;
 
 /*!
  @method gh_subStringSegmentsWithinStart
