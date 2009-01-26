@@ -1,11 +1,11 @@
 # GHUnit
 
-GHUnit is a test framework for Objective-C. Its meant to be an alternative to SenTestingKit, target 10.5 (and iPhone 2.0) and above.
-It can be used with SenTestingKit or standalone for environments without SenTestingKit support (like the iPhone).
-GHUnit uses lots of GTM (google-toolbox-for-mac) code, specifically from the [UnitTesting](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/) parts, 
-which is a great alternative as well.
+GHUnit is a test framework for Objective-C (Mac OS X 10.5 and iPhone 2.0 and above).
+It can be used with SenTestingKit or by itself.
+GHUnit uses lots of GTM (google-toolbox-for-mac) code, specifically from the [UnitTesting](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/) parts.
 
 The goals of GHUnit are:
+
 - Runs unit tests within XCode, allowing you to fully utilize the XCode Debugger.
 - A simple GUI to help you visualize your tests.
 - Show stack traces.
@@ -46,40 +46,6 @@ You know, pretty much like every test framework in existence.
 	}
 	
 	@end
-	
-## Using SenTestingKit
-
-You can also use GHUnit with SenTestCase, for example:
-
-	#import <SenTestingKit/SenTestingKit.h>
-
-	@interface MyTest : SenTestCase { }
-	@end
-
-	@implementation MyTest
-
-	- (void)setUp {
-		// Run before each test method
-	}
-
-	- (void)tearDown {
-		// Run after each test method
-	}
-
-	- (void)testFoo {
-		// Assert a is not NULL, with no custom error description
-		STAssertNotNULL(a, nil);
-	
-		// Assert equal objects, add custom error description
-		STAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
-	}
-
-	- (void)testBar {
-		// Another test
-	}
-
-	@end
-
 
 ## Test Macros
  
@@ -125,11 +91,11 @@ The following steps will give you a test target:
 
 - Install GHKit.framework by copying it to /Library/Frameworks/
 - Install GHUnit.framework by copying it to /Library/Frameworks/
-
 - Add a New Target. Select Cocoa Application. Name it something like 'Tests'.
 - Add the GHUnit.framework as a linked library to the test target.
 - Create a test main. For example, add a file called TestsMain.m (or similar) with the following:
 
+.
 	#import <Foundation/Foundation.h>
 	#import <Foundation/NSDebug.h>
 
@@ -146,6 +112,7 @@ The following steps will give you a test target:
 	
 - Create a test (either by subclassing SenTestCase or GHTestCase). Adding it to your test target. For example MyTest.m:
 
+.
 	#import <GHUnit/GHUnit.h>
 
 	@interface MyTest : GHTestCase { }
@@ -174,13 +141,45 @@ The following steps will give you a test target:
 	}
 
 	@end
-	
+
 - Make sure the Test target is currently selected and click Build & Go.
-- You should see the following:
-TODO(gabe)
+- You should see the following: TODO(gabe)
 
 Optionally, you can create a prefix header (Tests_Prefix.pch) and add #import <GHUnit/GHUnit.h> to it, and then you won't have to include that import for every test.
 
 ## Adding a GHUnit Test Target (iPhone)
 
 Coming soon!
+
+## Using SenTestingKit
+
+You can also use GHUnit with SenTestCase, for example:
+
+	#import <SenTestingKit/SenTestingKit.h>
+
+	@interface MyTest : SenTestCase { }
+	@end
+
+	@implementation MyTest
+
+	- (void)setUp {
+		// Run before each test method
+	}
+
+	- (void)tearDown {
+		// Run after each test method
+	}
+
+	- (void)testFoo {
+		// Assert a is not NULL, with no custom error description
+		STAssertNotNULL(a, nil);
+	
+		// Assert equal objects, add custom error description
+		STAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
+	}
+
+	- (void)testBar {
+		// Another test
+	}
+
+	@end
