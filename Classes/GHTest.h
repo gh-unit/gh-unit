@@ -75,6 +75,16 @@ typedef enum {
 	GHTestStatusFinished,
 } GHTestStatus;
 
+static __inline__ NSString* 
+NSStringFromGHTestStatus(GHTestStatus status) {
+	switch(status) {
+		case GHTestStatusNone: return NSLocalizedString(@"Waiting", @"Test status / Waiting");
+		case GHTestStatusRunning: return NSLocalizedString(@"Running", @"Test status / Running");
+		case GHTestStatusFinished: return NSLocalizedString(@"Finished", @"Test status / Finished");
+		default: return NSLocalizedString(@"Unknown", @"Test status / Unknown");
+	}
+}
+
 typedef struct {
 	NSInteger runCount;
 	NSInteger failureCount;
@@ -107,8 +117,7 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 @end
 
 @protocol GHTestDelegate <NSObject>
-- (void)testWillStart:(id<GHTest>)test;
-- (void)testUpdated:(id<GHTest>)test;
+- (void)testDidStart:(id<GHTest>)test;
 - (void)testDidFinish:(id<GHTest>)test;
 @end
 

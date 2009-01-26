@@ -1,8 +1,9 @@
 //
-//  GHNSXMLElement+Utils.h
+//  GHTestSuite.h
+//  GHUnit
 //
-//  Created by Gabe on 6/30/08.
-//  Copyright 2008 Gabriel Handford
+//  Created by Gabriel Handford on 1/25/09.
+//  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -26,11 +27,27 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import "GHTestGroup.h"
 
-@interface NSXMLElement (GHUtils)
+/*!
+ Test suite is an alias for test group.
+ */
+@interface GHTestSuite : GHTestGroup {
 
-- (NSString *)stringAt:(NSString *)name;
-- (NSNumber *)numberAt:(NSString *)name;
-- (NSXMLElement *)elementAt:(NSString *)name;
+}
+
+/*! Create test suite with test cases.
+ @param name
+ @param testCases
+ @param delegate
+ */
+- (id)initWithName:(NSString *)name testCases:(NSArray *)testCases delegate:(id<GHTestDelegate>)delegate;
+
+/*!
+ Creates a suite of all tests.
+ Will load all classes that subclass from GHTestCase or SenTestCase.
+ @param delegate
+ */
++ (GHTestSuite *)allTests:(id<GHTestDelegate>)delegate;
 
 @end

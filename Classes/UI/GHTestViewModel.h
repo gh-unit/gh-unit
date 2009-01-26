@@ -62,14 +62,19 @@
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSArray *children;
 @property (readonly, nonatomic) id<GHTest> test;
+@property (readonly, nonatomic) GHTestStatus status;
+@property (readonly, nonatomic) BOOL failed;
+@property (readonly, nonatomic) NSString *statusString;
+@property (readonly, nonatomic) NSString *detail;
+@property (readonly, nonatomic) BOOL isRunning;
+@property (readonly, nonatomic) BOOL isFinished;
+@property (readonly, nonatomic) BOOL isGroupTest; // YES if test has "sub tests"
 
 - (id)initWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source;
 + (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source;
 
 - (NSString *)statusString;
 
-- (GHTestStatus)status;
-- (BOOL)failed;
 - (NSString *)detail;
 
 @end

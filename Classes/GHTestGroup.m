@@ -62,23 +62,15 @@
 	return self;
 }
 
-+ (GHTestGroup *)allTests:(id<GHTestDelegate>)delegate {
-	NSArray *testCases = [self loadTestCases];
-	
-	GHTestGroup *allTestGroup = [[GHTestGroup alloc] initWithName:@"Tests" delegate:delegate];
-	
-	for(id testCase in testCases) {
-		GHTestGroup *testCaseGroup = [[GHTestGroup alloc] initWithName:NSStringFromClass([testCase class]) delegate:allTestGroup];
-		NSArray *tests = [GHTest loadTestsFromTarget:testCase];
-		for(GHTest *test in tests) {
-			[test setDelegate:testCaseGroup];
-			[testCaseGroup addTest:test];
-		}
-		[allTestGroup addTest:testCaseGroup];
-		[testCaseGroup setParent:allTestGroup];
-		[testCaseGroup release];
+- (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
+	if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
+		[self addTestsFromTestCase:testCase];
 	}
-	return [allTestGroup autorelease];;
+	return self;
+}
+
++ (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
+	return [[[GHTestGroup alloc] initWithTestCase:testCase delegate:delegate] autorelease];
 }
 
 - (void)dealloc {
@@ -92,9 +84,31 @@
 								 name_, status_, interval_, stats_.runCount, stats_.testCount, stats_.failureCount];
 }
 	
-
 - (NSString *)name {
 	return name_;
+}
+
+- (void)addTestsFromTestCase:(id)testCase {
+	NSArray *tests = [GHTest loadTestsFromTarget:testCase];
+	for(GHTest *test in tests) {
+		[test setDelegate:self];
+		[self addTest:test];
+	}
+}
+
+- (void)addTestCase:(id)testCase {
+	GHTestGroup *testCaseGroup = [[GHTestGroup alloc] initWithTestCase:testCase delegate:self];
+	[self addTest:testCaseGroup];
+	[testCaseGroup setParent:self];
+	[testCaseGroup release];
+}
+
+- (void)addTests:(NSArray *)tests {
+	for(id test in tests) {
+		if (![test conformsToProtocol:@protocol(GHTest)]) 
+			[NSException raise:NSInvalidArgumentException format:@"Tests must conform to GHTest protocol"];
+		[self addTest:(id<GHTest>)test];
+	}
 }
 
 - (void)addTest:(id<GHTest>)test {
@@ -113,10 +127,8 @@
 - (void)run {		
 	status_ = GHTestStatusRunning;
 	
-	for(id<GHTest> test in children_) {
-		[delegate_ testUpdated:self];
-		[test run];	
-		[delegate_ testUpdated:self];
+	for(id<GHTest> test in children_) {				
+		[test run];			
 	}
 	
 	status_ = GHTestStatusFinished;
@@ -124,19 +136,15 @@
 
 #pragma mark Parent Notifications
 
-- (void)testWillStart:(id<GHTest>)test {
-	
-}
-
-- (void)testUpdated:(id<GHTest>)test {
-	[delegate_ testUpdated:test];
+- (void)testDidStart:(id<GHTest>)test {
+	stats_.runCount += [test stats].runCount;
+	[delegate_ testDidStart:test];
 }
 
 - (void)testDidFinish:(id<GHTest>)test {
 	interval_ += [test interval];
-	stats_.runCount += [test stats].runCount;
+	//stats_.runCount += [test stats].runCount;
 	stats_.failureCount += [test stats].failureCount;
-	GTMLoggerDebug(@"[%@] stats=%@", [self name], NSStringFromGHTestStats(stats_));
 	[delegate_ testDidFinish:test];
 }
 
@@ -174,7 +182,7 @@
 	int count = objc_getClassList(NULL, 0);
   NSMutableData *classData = [NSMutableData dataWithLength:sizeof(Class) * count];
   Class *classes = (Class*)[classData mutableBytes];
-  _GTMDevAssert(classes, @"Couldn't allocate class list");
+  //_GTMDevAssert(classes, @"Couldn't allocate class list");
   objc_getClassList(classes, count);
 	
   for (int i = 0; i < count; ++i) {

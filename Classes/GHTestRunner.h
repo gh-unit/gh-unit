@@ -53,7 +53,7 @@
 @optional
 - (void)testRunnerDidStart:(GHTestRunner *)runner;
 - (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test;
-- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test;
+- (void)testRunner:(GHTestRunner *)runner didFinishTest:(id<GHTest>)test;
 - (void)testRunnerDidFinish:(GHTestRunner *)runner;
 
 - (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message;
@@ -62,7 +62,7 @@
 
 @interface GHTestRunner : NSObject <GHTestDelegate> { 
 	
-	id<GHTest> testable_;
+	id<GHTest> test_;
 	
 	id<GHTestRunnerDelegate> delegate_; // weak
 	
@@ -75,14 +75,14 @@
 
 }
 
-@property (retain) id<GHTest> testable;
+@property (retain) id<GHTest> test;
 @property (assign) id<GHTestRunnerDelegate> delegate;
 @property (assign) BOOL raiseExceptions;
 @property (assign) BOOL delegateOnMainThread;
 
-- (id)initWithTestable:(id<GHTest>)testable;
+- (id)initWithTest:(id<GHTest>)test;
 
-+ (GHTestRunner *)allTests;
++ (GHTestRunner *)runnerForAllTests;
 
 - (void)run;
 

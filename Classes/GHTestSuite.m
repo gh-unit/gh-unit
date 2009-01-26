@@ -1,8 +1,9 @@
 //
-//  GHCGUtils.h
+//  GHTestSuite.m
+//  GHUnit
 //
-//  Created by Gabriel Handford on 12/30/08.
-//  Copyright 2008 Gabriel Handford
+//  Created by Gabriel Handford on 1/25/09.
+//  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -26,8 +27,27 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "GHTestSuite.h"
 
-void GHContextAddRoundedRect(CGContextRef context, CGRect rect, CGFloat cornerWidth, CGFloat cornerHeight, CGFloat strokeWidth);
+@implementation GHTestSuite
 
-void GHContextDrawRoundedRect(CGContextRef context, CGRect rect, CGColorRef fillColor, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerWidth, CGFloat cornerHeight);
+- (id)initWithName:(NSString *)name testCases:(NSArray *)testCases delegate:(id<GHTestDelegate>)delegate {
+	if ((self = [super initWithName:name delegate:delegate])) {
+		for(id testCase in testCases) {
+			[self addTestCase:testCase];
+		}
+	}
+	return self;
+}
+
++ (GHTestSuite *)allTests:(id<GHTestDelegate>)delegate {
+	NSArray *testCases = [self loadTestCases];
+	GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" delegate:delegate];	
+	for(id testCase in testCases) {
+		[allTests addTestCase:testCase];
+	}
+	return [allTests autorelease];;
+}
+
+
+@end

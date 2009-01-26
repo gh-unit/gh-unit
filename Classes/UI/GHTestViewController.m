@@ -50,8 +50,11 @@
 }
 
 - (void)awakeFromNib {
-	[detailsTextView_ setStringValue:@""];
+	[detailsTextView_ setTextColor:[NSColor whiteColor]];
+	[detailsTextView_ setFont:[NSFont fontWithName:@"Monaco" size:9.0]];
+	[detailsTextView_ setString:@""];
 	self.status = @"Loading tests...";
+	
 }
 
 - (void)setRoot:(id<GHTestGroup>)rootTest {
@@ -64,14 +67,9 @@
 	[statusLabel_ setStringValue:[NSString stringWithFormat:@"Status: %@", status]];
 }
 
-- (NSString *)stringFromStatus:(GHTestStatus)status interval:(NSTimeInterval)interval {
-	NSString *statusString = @"Loading";
-	if (status == GHTestStatusRunning) statusString = @"Running";
-	else if (status == GHTestStatusFinished) statusString = @"Finished";
-	
-	return [NSString stringWithFormat:@"%@ (%0.3fs)", statusString, interval];
+- (NSString *)stringFromStatus:(GHTestStatus)status interval:(NSTimeInterval)interval {	
+	return [NSString stringWithFormat:@"%@ (%0.3fs)", NSStringFromGHTestStatus(status), interval];
 }
-
 
 - (NSString *)status {
 	[NSException raise:NSGenericException format:@"Operation not supported"];
@@ -82,6 +80,28 @@
 	
 }
 
+- (GHTestNode *)findFailure {
+	GHTestNode *node = [model_ root];
+	return [self findFailureFromNode:node];
+}
+
+- (GHTestNode *)findFailureFromNode:(GHTestNode *)node {
+	if (node.failed && node.detail) return node;
+	for(GHTestNode *childNode in node.children) {
+		GHTestNode *foundNode = [self findFailureFromNode:childNode];
+		if (foundNode) return foundNode;
+	}
+	return nil;
+}
+
+- (void)selectFirstFailure {
+	GHTestNode *failedNode = [self findFailure];
+	GHDebug(@"Failure node: %@", failedNode);
+	NSInteger row = [outlineView_ rowForItem:failedNode];
+	if (row >= 0)
+		[outlineView_ selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+}
+
 - (void)updateTest:(id<GHTest>)test {
 	GHTestNode *testNode = [model_ findTestNode:test];
 	[outlineView_ reloadItem:testNode];
@@ -90,7 +110,6 @@
 }
 
 - (void)_updateStatus:(id<GHTest>)test {
-	GHDebug(@"Update status: %@", test);
 	if ([[test name] isEqual:@"Tests"]) {
 		[progressIndicator_ setDoubleValue:((double)[test stats].runCount / (double)[test stats].testCount) * 100.0];
 
@@ -98,15 +117,6 @@
 										 [self stringFromStatus:[test status] interval:[test interval]], 
 										 [test stats].runCount, [test stats].testCount, [test stats].failureCount];
 	}
-}
-
-#pragma mark Delegates (NSOutlineView)
-
-- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
-	[detailsTextView_ setStringValue:@""];
-	
-	id item = [outlineView_ itemAtRow:[outlineView_ selectedRow]];
-	[detailsTextView_ setStringValue:[item detail]];
 }
 
 #pragma mark DataSource (NSOutlineView)
@@ -138,6 +148,22 @@
 }
 
 #pragma mark Delegates (NSOutlineView)
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+	[detailsTextView_ setString:@""];
+	
+	id item = [outlineView_ itemAtRow:[outlineView_ selectedRow]];
+	NSString *detail = [item detail];
+	[detailsTextView_ setString:detail ? detail : @""];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
+	return (![[item test] conformsToProtocol:@protocol(GHTestGroup)]);
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item {
+	return ([[item test] conformsToProtocol:@protocol(GHTestGroup)]);
+}
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {	
 	if ([[tableColumn identifier] isEqual:@"status"]) {

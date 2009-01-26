@@ -39,8 +39,8 @@
 	NSProgressIndicator *progressIndicator_;
 	NSOutlineView *outlineView_;
 	
-	NSTextField *detailsTextView_;
-	NSTextField *consoleTestView_;
+	NSTextView *detailsTextView_;
+	NSTextView *consoleTestView_;
 	
 	GHTestViewModel *model_;
 }
@@ -52,8 +52,8 @@
 @property (assign, nonatomic) IBOutlet NSTextField *statusLabel;
 @property (assign, nonatomic) IBOutlet NSProgressIndicator *progressIndicator;
 @property (assign, nonatomic) IBOutlet NSOutlineView *outlineView;
-@property (assign, nonatomic) IBOutlet NSTextField *detailsTextView;
-@property (assign, nonatomic) IBOutlet NSTextField *consoleTestView;
+@property (assign, nonatomic) IBOutlet NSTextView *detailsTextView;
+@property (assign, nonatomic) IBOutlet NSTextView *consoleTestView;
 
 @property (copy, nonatomic) NSString *status;
 
@@ -62,5 +62,11 @@
 - (void)updateTest:(id<GHTest>)test;
 
 - (void)setRoot:(id<GHTest>)root;
+
+- (void)selectFirstFailure;
+
+- (GHTestNode *)findFailure;
+- (GHTestNode *)findFailureFromNode:(GHTestNode *)node;
+
 
 @end

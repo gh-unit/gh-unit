@@ -47,7 +47,7 @@
 
 - (void)_runTests {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];		
-	GHTestRunner *runner = [[GHTestRunner allTests] retain];
+	GHTestRunner *runner = [[[GHTestRunner runnerForAllTests] retain] autorelease];
 	runner.delegate = self;
 	runner.delegateOnMainThread = YES;
 	// To allow exceptions to raise into the debugger, uncomment below
@@ -71,16 +71,13 @@
 	[windowController_.viewController updateTest:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test {
-	[windowController_.viewController updateTest:test];
-}
-
 - (void)testRunnerDidStart:(GHTestRunner *)runner { 
-	[windowController_.viewController setRoot:runner.testable];
-	[windowController_.viewController updateTest:runner.testable];
+	[windowController_.viewController setRoot:runner.test];
+	[windowController_.viewController updateTest:runner.test];
 }
 
 - (void)testRunnerDidFinish:(GHTestRunner *)runner {
+	[windowController_.viewController selectFirstFailure];
 	//[[NSApplication sharedApplication] terminate:nil];
 }
 

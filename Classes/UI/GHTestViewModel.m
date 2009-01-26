@@ -112,11 +112,39 @@
 }
 
 - (NSString *)statusString {
-	return [NSString stringWithFormat:@"%d %@", [test_ status], NSStringFromGHTestStats([test_ stats])];
+	// TODO(gabe): Some other special chars: ☐✖✗✘✓
+	NSString *status = @"✶";
+	NSString *interval = @"";
+	if (self.isRunning) {
+		status = @"✸";
+		if (self.isGroupTest)
+			interval = [NSString stringWithFormat:@"%0.2fs", [test_ interval]];
+	} else if (self.isFinished) {
+		if (self.failed) status = @"✘";
+		else status = @"✔";
+		interval = [NSString stringWithFormat:@"%0.2fs", [test_ interval]];
+	}
+	if (self.isGroupTest) {
+		return [NSString stringWithFormat:@"%@ %@ %@", status, NSStringFromGHTestStats([test_ stats]), interval];
+	} else {
+		return [NSString stringWithFormat:@"%@ %@", status, interval];
+	}
+}
+
+- (BOOL)isGroupTest {
+	return ([test_ conformsToProtocol:@protocol(GHTestGroup)]);
 }
 
 - (BOOL)failed {
 	return ([test_ stats].failureCount > 0);
+}
+	
+- (BOOL)isRunning {
+	return ([test_ status] == GHTestStatusRunning);
+}
+
+- (BOOL)isFinished {
+	return ([test_ status] == GHTestStatusFinished);
 }
 
 - (GHTestStatus)status {
@@ -125,6 +153,10 @@
 
 - (NSString *)detail {
 	return [test_ backTrace];
+}
+
+- (NSString *)description {
+	return [test_ description];
 }
 
 @end

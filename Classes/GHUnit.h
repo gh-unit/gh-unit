@@ -45,8 +45,11 @@
 //  the License.
 //
 
+#ifndef TARGET_OS_IPHONE
 #import <GHKit/GHKit.h>
+#endif
 
 #import "GHTestCase.h"
+#import "GHTestSuite.h"
 #import "GHTestMacros.h"
 #import "GHTestRunner.h"

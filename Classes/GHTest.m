@@ -194,9 +194,10 @@ static int MethodSort(const void *a, const void *b) {
 	return backTrace_;
 }
 
-- (void)run {
-	[delegate_ testWillStart:self];
+- (void)run {	
 	status_ = GHTestStatusRunning;
+	stats_ = GHTestStatsMake(1, 0, 1);
+	[delegate_ testDidStart:self];
 // GTM_BEGIN
 	NSDate *startDate = [NSDate date];
   @try {

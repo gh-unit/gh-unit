@@ -76,11 +76,46 @@
 @property (readonly, nonatomic) GHTestStats stats;
 
 - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate;
+- (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
 
-+ (GHTestGroup *)allTests:(id<GHTestDelegate>)delegate;
+/*!
+ Create test group from test case.
+ A test case contains a set of test methods.
+ @param testCase
+ @param delegate
+ */
++ (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
 
+/*!
+ Add tests from the specified test case to group.
+ You may want to use initWithTestCase or addTestCase instead.
+ Generally a test group represents a set of a single test case's methods.
+ @param testCase
+ */
+- (void)addTestsFromTestCase:(id)testCase;
+
+/*!
+ Add a test case (test group) to this test group.
+ @param testCase
+ */
+- (void)addTestCase:(id)testCase;
+
+/*!
+ Add a test.
+ @param test
+ */
 - (void)addTest:(id<GHTest>)test;
 
+/*!
+ Add a set of tests.
+ @param tests
+ */
+- (void)addTests:(NSArray *)tests;
+
+/*!
+ Run test group.
+ Will notify delegate as tests are run.
+ */
 - (void)run;
 
 @end
