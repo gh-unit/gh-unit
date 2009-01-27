@@ -96,7 +96,6 @@
 
 - (void)selectFirstFailure {
 	GHTestNode *failedNode = [self findFailure];
-	GHDebug(@"Failure node: %@", failedNode);
 	NSInteger row = [outlineView_ rowForItem:failedNode];
 	if (row >= 0)
 		[outlineView_ selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];

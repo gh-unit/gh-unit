@@ -5,7 +5,7 @@ It can be used with SenTestingKit or by itself.
 
 ## Download
 
-[GHUnit-0.2.1.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.1.zip) (2009/01/27) [168kb]
+[GHUnit-0.2.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.2.zip) (2009/01/27) [164kb]
 
 ## Why?
 
@@ -163,6 +163,8 @@ You should see something similar to the following:
 ## Adding a GHUnit Test Target (iPhone)
 
 Coming soon!
+
+![gh-unit-iphone1](https://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit-iphone1.jpg)
 
 ## Embedding GHUnit in your project (Mac OS X)
 
