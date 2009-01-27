@@ -5,7 +5,7 @@ It can be used with SenTestingKit or by itself.
 
 ## Download
 
-[GHUnit-0.2.zip](https://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.zip)
+[GHUnit-0.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.zip) - 2009/01/27 (165kb)
 
 ## Why?
 
@@ -14,7 +14,7 @@ The goals of GHUnit are:
 - Runs unit tests within XCode, allowing you to fully utilize the XCode Debugger.
 - A simple GUI to help you visualize your tests.
 - Show stack traces.
-- Be installable as a framework (for Cocoa apps) with a simple target setup; or easy to package into your iPhone project.
+- Be installable as a framework (for Cocoa apps) with a simple (or not) target setup; or easy to package into your iPhone project.
 
 `GHTestCase` is the base class for your tests.
 Tests are defined by methods that start with 'test', take no arguments and return void. 
