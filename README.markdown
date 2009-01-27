@@ -90,11 +90,11 @@ To add GHUnit.framework to your project:
 
 - Copy GHUnit.framework to /Library/Frameworks/ or copy into your project directory somewhere.
 - Add a New Target. Select Cocoa Application. Name it 'Tests' (or something similar).
-- Add an 'Existing Framework' and select GHUnit.framework (from /Library/Frameworks or from your project directory). Select to add to your test target. (Double check to make sure GHUnit.framework is a linked library in the test target info).
+- Add an 'Existing Framework' and select GHUnit.framework (from /Library/Frameworks or from your project directory). (Double check to make sure GHUnit.framework is a linked library in the test target info).
 - Make your application or framework a direct dependency in the test target info (This will cause your application or framework to build before the test target).
 - Add a New Build Phase | New Copy Files Build Phase to the test target.
- - For a framework: Select Absolute Path (hidden in drop-down), and for the path enter: `$(TARGET_BUILD_DIR)`
- - For an application: Select Frameworks from drop-down and leave path blank.
+	- For a framework: Select Absolute Path (hidden in drop-down), and for the path enter: `$(TARGET_BUILD_DIR)`
+	- For an application: Select Frameworks from drop-down and leave path blank.
 - Create a test main. For example, create a file called TestsMain.m (or similar), that loads and runs the test application.
 
 The TestMain.m might look like:
@@ -148,9 +148,11 @@ For example MyTest.m:
 
 Now you should be ready to Build and Run the test target.
 
-You should see the following:
+You should see something similar to the following:
 
-Optionally, you can create a prefix header (Tests_Prefix.pch) and add #import <GHUnit/GHUnit.h> to it, and then you won't have to include that import for every test.
+![gh-unit1](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit1.jpg)
+
+Optionally, you can create and and set a prefix header (Tests_Prefix.pch) and add #import <GHUnit/GHUnit.h> to it, and then you won't have to include that import for every test.
 
 ## Adding a GHUnit Test Target (iPhone)
 
