@@ -102,6 +102,10 @@ static int MethodSort(const void *a, const void *b) {
 
 // GTM_END
 
+/*!
+ GHTest represents a single test method. It is composed of a target and selector.
+ A GHTestGroup is a collection of GHTests (or GHTestGroups).
+ */
 @implementation GHTest
 
 @synthesize delegate=delegate_, target=target_, selector=selector_, name=name_, interval=interval_, exception=exception_, status=status_, failed=failed_, stats=stats_;

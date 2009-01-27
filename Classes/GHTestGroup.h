@@ -75,13 +75,26 @@
 @property (readonly, nonatomic) NSTimeInterval interval;
 @property (readonly, nonatomic) GHTestStats stats;
 
+/*!
+ Create empty test group.
+ @param name
+ @param delegate
+ */
 - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate;
+
+/*!
+ Create test group from test case.
+ A test group is a collection of GHTest.
+ 
+ @param testCase Should be a subclass of SenTestCase or GHTestCase
+ @param delegate
+ */
 - (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
 
 /*!
  Create test group from test case.
  A test case contains a set of test methods.
- @param testCase
+ @param testCase Should be a subclass of SenTestCase or GHTestCase
  @param delegate
  */
 + (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
@@ -90,13 +103,13 @@
  Add tests from the specified test case to group.
  You may want to use initWithTestCase or addTestCase instead.
  Generally a test group represents a set of a single test case's methods.
- @param testCase
+ @param testCase Should be a subclass of SenTestCase or GHTestCase
  */
 - (void)addTestsFromTestCase:(id)testCase;
 
 /*!
  Add a test case (test group) to this test group.
- @param testCase
+ @param testCase Should be a subclass of SenTestCase or GHTestCase
  */
 - (void)addTestCase:(id)testCase;
 

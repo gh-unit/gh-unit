@@ -33,7 +33,7 @@
 	};
 	0029B6D50F2EDC60003EAFC1 /* README.markdown */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1286, 3360}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1108, 3488}}";
 			sepNavSelRange = "{263, 0}";
 			sepNavVisRange = "{0, 940}";
 		};
@@ -461,7 +461,7 @@
 	};
 	00970B490F2866F800189A9D /* GHTest.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1181, 3744}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1181, 3808}}";
 			sepNavSelRange = "{5195, 0}";
 			sepNavVisRange = "{4998, 363}";
 		};
@@ -738,7 +738,7 @@
 		fRef = 00970B4A0F2866F800189A9D /* GHTestGroup.h */;
 		name = "GHTestGroup.h: 88";
 		rLen = 0;
-		rLoc = 3084;
+		rLoc = 3369;
 		rType = 0;
 		vrLen = 708;
 		vrLoc = 2910;
@@ -758,7 +758,7 @@
 		fRef = 00970B4A0F2866F800189A9D /* GHTestGroup.h */;
 		name = "GHTestGroup.h: 85";
 		rLen = 0;
-		rLoc = 2988;
+		rLoc = 3273;
 		rType = 0;
 		vrLen = 447;
 		vrLoc = 3301;
@@ -816,7 +816,7 @@
 		fRef = 00970B490F2866F800189A9D /* GHTest.m */;
 		name = "GHTest.m: 134";
 		rLen = 0;
-		rLoc = 5195;
+		rLoc = 5346;
 		rType = 0;
 		vrLen = 487;
 		vrLoc = 4898;
@@ -843,7 +843,7 @@
 		fRef = 00970B490F2866F800189A9D /* GHTest.m */;
 		name = "GHTest.m: 134";
 		rLen = 0;
-		rLoc = 5195;
+		rLoc = 5346;
 		rType = 0;
 		vrLen = 487;
 		vrLoc = 4898;
@@ -863,7 +863,7 @@
 		fRef = 00970B490F2866F800189A9D /* GHTest.m */;
 		name = "GHTest.m: 133";
 		rLen = 0;
-		rLoc = 5195;
+		rLoc = 5346;
 		rType = 0;
 		vrLen = 363;
 		vrLoc = 4998;
@@ -973,7 +973,7 @@
 		fRef = 00970B490F2866F800189A9D /* GHTest.m */;
 		name = "GHTest.m: 192";
 		rLen = 0;
-		rLoc = 6909;
+		rLoc = 7060;
 		rType = 0;
 		vrLen = 598;
 		vrLoc = 6616;
@@ -983,7 +983,7 @@
 		fRef = 00970B490F2866F800189A9D /* GHTest.m */;
 		name = "GHTest.m: 105";
 		rLen = 0;
-		rLoc = 4135;
+		rLoc = 4286;
 		rType = 0;
 		vrLen = 899;
 		vrLoc = 3834;
@@ -993,7 +993,7 @@
 		fRef = 00970B4A0F2866F800189A9D /* GHTestGroup.h */;
 		name = "GHTestGroup.h: 88";
 		rLen = 0;
-		rLoc = 3084;
+		rLoc = 3369;
 		rType = 0;
 		vrLen = 648;
 		vrLoc = 2910;
@@ -1143,7 +1143,7 @@
 		fRef = 00970B490F2866F800189A9D /* GHTest.m */;
 		name = "GHTest.m: 133";
 		rLen = 0;
-		rLoc = 5195;
+		rLoc = 5346;
 		rType = 0;
 		vrLen = 363;
 		vrLoc = 4998;
@@ -1193,7 +1193,7 @@
 		fRef = 00970B490F2866F800189A9D /* GHTest.m */;
 		name = "GHTest.m: 133";
 		rLen = 0;
-		rLoc = 5195;
+		rLoc = 5346;
 		rType = 0;
 		vrLen = 363;
 		vrLoc = 4998;

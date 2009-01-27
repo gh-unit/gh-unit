@@ -31,6 +31,19 @@
 
 /*!
  Test suite is an alias for test group.
+ A test group is a collection of GHTests (or GHTestGroups).
+ 
+ For example, if you have 2 test cases, GHTestCase1 (with some test methods) and GHTestCase2 (with some test methods), 
+ your test suite might look like:
+ 
+"Tests" (GHTestSuite)
+	"GHTestCase1" (GHTestGroup)
+		- (void)testA1 (GHTest with target (GHTestCase) + selector)
+		- (void)testA2 (GHTest with target (GHTestCase) + selector)
+	"GHTestCase2" (GHTestGroup)
+		- (void)testB1; (GHTest with target (GHTestCase) + selector)
+		- (void)testB2; (GHTest with target (GHTestCase) + selector) 
+ 
  */
 @interface GHTestSuite : GHTestGroup {
 

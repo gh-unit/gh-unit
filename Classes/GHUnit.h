@@ -45,8 +45,6 @@
 //  the License.
 //
 
-#import "GHLogger.h"
-
 #import "GHTestCase.h"
 #import "GHTestSuite.h"
 #import "GHTestMacros.h"
