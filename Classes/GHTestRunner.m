@@ -69,7 +69,11 @@
 }
 
 + (GHTestRunner *)runnerForAllTests {
-	GHTestSuite *suite = [GHTestSuite allTests:nil];
+	GHTestSuite *suite = [GHTestSuite allTests];
+	return [self runnerForSuite:suite];
+}
+
++ (GHTestRunner *)runnerForSuite:(GHTestSuite *)suite {	
 	GHTestRunner *runner = [[GHTestRunner alloc] initWithTest:suite];
 	suite.delegate = runner;
 	return [runner autorelease];

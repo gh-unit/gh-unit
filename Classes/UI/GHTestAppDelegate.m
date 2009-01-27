@@ -72,7 +72,7 @@
 }
 
 - (void)testRunnerDidStart:(GHTestRunner *)runner { 
-	[windowController_.viewController setRoot:runner.test];
+	[windowController_.viewController setRoot:(id<GHTestGroup>)runner.test];
 	[windowController_.viewController updateTest:runner.test];
 }
 

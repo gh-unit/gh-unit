@@ -50,6 +50,8 @@
 
 #import "GHTestCase.h"
 
+#import "GTMStackTrace.h"
+
 
 @implementation GHTestCase
 

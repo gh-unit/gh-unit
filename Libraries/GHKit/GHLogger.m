@@ -1,8 +1,8 @@
 //
-//  GHTestSuite.h
-//  GHUnit
+//  GHLogger.m
+//  GHKit
 //
-//  Created by Gabriel Handford on 1/25/09.
+//  Created by Gabriel Handford on 1/24/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,29 +27,29 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestGroup.h"
+#import "GHLogger.h"
 
-/*!
- Test suite is an alias for test group.
- */
-@interface GHTestSuite : GHTestGroup {
+@implementation GHLogger
 
++ (void)setLogLevel:(GTMLoggerLevel)level {
+	[[GTMLogger sharedLogger] setFilter:[[[GHLogLevelFilter alloc] initWithLevel:level] autorelease]];
 }
 
-/*! Create test suite with test cases.
- @param name
- @param testCases
- @param delegate
- */
-- (id)initWithName:(NSString *)name testCases:(NSArray *)testCases delegate:(id<GHTestDelegate>)delegate;
+@end
 
-/*!
- Creates a suite of all tests.
- Will load all classes that subclass from GHTestCase or SenTestCase.
- */
-+ (GHTestSuite *)allTests;
+@implementation GHLogLevelFilter
 
-// If flatten is YES, returns a test suite with all tests grouped here.
-+ (GHTestSuite *)allTests:(BOOL)flatten;
+@synthesize level=level_;
+
+- (id)initWithLevel:(GTMLoggerLevel)level {
+	if ((self = [super init])) {
+		level_ = level;
+	}
+	return self;
+}
+
+- (BOOL)filterAllowsMessage:(NSString *)msg level:(GTMLoggerLevel)level {
+	return (level >= level_);
+}
 
 @end

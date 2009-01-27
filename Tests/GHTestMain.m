@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <Foundation/NSDebug.h>
 
+#import "GTMStackTrace.h"
+#import "GHLogger.h"
+
 #import <GHUnit/GHUnit.h>
 #import <GHUnit/GHTestApp.h>
 

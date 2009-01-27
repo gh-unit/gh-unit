@@ -40,14 +40,23 @@
 	return self;
 }
 
-+ (GHTestSuite *)allTests:(id<GHTestDelegate>)delegate {
++ (GHTestSuite *)allTests {
+	return [self allTests:NO];
+}
+
++ (GHTestSuite *)allTests:(BOOL)flatten {
 	NSArray *testCases = [self loadTestCases];
-	GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" delegate:delegate];	
+	GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" delegate:nil];	
 	for(id testCase in testCases) {
-		[allTests addTestCase:testCase];
+		if (flatten) {
+			[allTests addTestsFromTestCase:testCase];
+		} else {
+			[allTests addTestCase:testCase];
+		}
 	}
 	return [allTests autorelease];;
 }
+
 
 
 @end

@@ -45,6 +45,7 @@
 //
 
 #import "GHTestGroup.h"
+#import "GHTestSuite.h"
 
 @class GHTestRunner;
 
@@ -83,6 +84,8 @@
 - (id)initWithTest:(id<GHTest>)test;
 
 + (GHTestRunner *)runnerForAllTests;
+
++ (GHTestRunner *)runnerForSuite:(GHTestSuite *)suite;
 
 - (void)run;
 

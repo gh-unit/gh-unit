@@ -61,7 +61,7 @@
 
 - (void)updateTest:(id<GHTest>)test;
 
-- (void)setRoot:(id<GHTest>)root;
+- (void)setRoot:(id<GHTestGroup>)root;
 
 - (void)selectFirstFailure;
 

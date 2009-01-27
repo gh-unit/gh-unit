@@ -3,7 +3,11 @@
 //
 
 #ifdef __OBJC__
-  #import <Cocoa/Cocoa.h>
-  #import <GHKit/GHKit.h>
-  #import "GHUnit.h"
+#import <Cocoa/Cocoa.h>
+
+// GHKit Dependencies
+#import "GHNSInvocation+Utils.h"
+#import "GHNSObject+Invocation.h"
+
+#import "GHUnit.h"
 #endif

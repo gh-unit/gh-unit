@@ -89,6 +89,7 @@
 
 #import "GHTest.h"
 
+#import "GTMStackTrace.h"
 #import <objc/runtime.h>
 
 // GTM_BEGIN
