@@ -2,7 +2,6 @@
 
 GHUnit is a test framework for Objective-C (Mac OS X 10.5 and iPhone 2.0 and above).
 It can be used with SenTestingKit or by itself.
-GHUnit uses lots of GTM (google-toolbox-for-mac) code, specifically from the [UnitTesting](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/) parts.
 
 The goals of GHUnit are:
 
@@ -189,3 +188,7 @@ You can also use GHUnit with SenTestCase, for example:
 	}
 
 	@end
+
+## Notes
+
+GHUnit was inspired by and uses parts of GTM (google-toolbox-for-mac) code, most from [UnitTesting](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/).
