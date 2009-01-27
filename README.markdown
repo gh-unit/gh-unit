@@ -154,8 +154,8 @@ Now you should be ready to Build and Run the test target.
 
 You should see something similar to the following:
 
-![gh-unit1](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit1.jpg)
-![gh-unit2](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit2.jpg)
+![gh-unit1](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit2.jpg)
+![gh-unit2](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit3.jpg)
 
 - Optionally, you can create and and set a prefix header (Tests_Prefix.pch) and add #import <GHUnit/GHUnit.h> to it, and then you won't have to include that import for every test.
 - To embed GHUnit in your project see below.
