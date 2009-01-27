@@ -112,7 +112,7 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 - (GHTestStatus)status;
 - (GHTestStats)stats;
 
-- (NSString *)backTrace;
+- (NSException *)exception;
 
 @end
 
@@ -137,7 +137,6 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 	
 	// If errored
 	NSException *exception_; 
-	NSString *backTrace_;
 	
 }
 
@@ -154,7 +153,6 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 @property (readonly) NSString *name;
 @property (readonly) NSTimeInterval interval;
 @property (readonly) NSException *exception;
-@property (readonly) NSString *backTrace;
 @property (readonly) GHTestStatus status;
 @property (readonly) BOOL failed;
 @property (readonly) GHTestStats stats;

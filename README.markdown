@@ -5,7 +5,7 @@ It can be used with SenTestingKit or by itself.
 
 ## Download
 
-[GHUnit-0.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.zip) (2009/01/27) [165kb]
+[GHUnit-0.2.1.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.1.zip) (2009/01/27) [168kb]
 
 ## Why?
 

@@ -51,7 +51,7 @@
 
 - (void)awakeFromNib {
 	[detailsTextView_ setTextColor:[NSColor whiteColor]];
-	[detailsTextView_ setFont:[NSFont fontWithName:@"Monaco" size:9.0]];
+	[detailsTextView_ setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
 	[detailsTextView_ setString:@""];
 	self.status = @"Loading tests...";
 	

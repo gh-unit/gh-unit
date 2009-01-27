@@ -89,7 +89,6 @@
 
 #import "GHTest.h"
 
-#import "GTMStackTrace.h"
 #import <objc/runtime.h>
 
 // GTM_BEGIN
@@ -132,7 +131,6 @@ static int MethodSort(const void *a, const void *b) {
 	[name_ release];
 	[target_ release];
 	[exception_ release];
-	[backTrace_ release];
 	[super dealloc];
 }
 
@@ -188,12 +186,6 @@ static int MethodSort(const void *a, const void *b) {
 }
 
 // GTM_END
-
-- (NSString *)backTrace {
-	if (!backTrace_ && exception_)
-		backTrace_ = [GTMStackTraceFromException(exception_) retain];
-	return backTrace_;
-}
 
 - (void)run {	
 	status_ = GHTestStatusRunning;

@@ -77,6 +77,7 @@
 }
 
 - (void)testRunnerDidFinish:(GHTestRunner *)runner {
+	[windowController_.viewController updateTest:runner.test];
 	[windowController_.viewController selectFirstFailure];
 	//[[NSApplication sharedApplication] terminate:nil];
 }

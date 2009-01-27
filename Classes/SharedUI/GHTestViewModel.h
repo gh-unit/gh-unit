@@ -55,6 +55,8 @@
 
 	id<GHTest> test_;
 	NSMutableArray *children_;
+	
+	NSString *detail_;
 
 }
 

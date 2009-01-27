@@ -120,7 +120,7 @@
 	return name_;
 }
 
-- (NSString *)backTrace {
+- (NSException *)exception {
 	return nil;
 }
 

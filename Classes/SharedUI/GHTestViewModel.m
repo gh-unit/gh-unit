@@ -27,8 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//#import "GHUnit.h"
 #import "GHTestViewModel.h"
+#import "GTMStackTrace.h"
 
 @implementation GHTestViewModel
 
@@ -96,6 +96,7 @@
 
 - (void)dealloc {
 	[test_ release];
+	[detail_ release];
 	[super dealloc];
 }
 
@@ -152,7 +153,15 @@
 }
 
 - (NSString *)detail {
-	return [test_ backTrace];
+	if (![test_ exception]) return nil;
+
+	if (!detail_) {
+		detail_ = [[NSString stringWithFormat:@"%@ - %@\n%@", 
+								[[test_ exception] name],
+								[[test_ exception] reason], 
+								GTMStackTraceFromException([test_ exception])] retain];
+	}		
+	return detail_;
 }
 
 - (NSString *)description {
