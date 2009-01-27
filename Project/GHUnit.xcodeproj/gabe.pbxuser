@@ -43,9 +43,9 @@
 	};
 	0029B6D50F2EDC60003EAFC1 /* README.markdown */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1265, 2976}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1069}";
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 2992}}";
+			sepNavSelRange = "{6331, 0}";
+			sepNavVisRange = "{2272, 1555}";
 		};
 	};
 	0029B6F00F2EDDDF003EAFC1 /* GTMGarbageCollection.h */ = {
@@ -429,6 +429,136 @@
 		rType = 0;
 		vrLen = 410;
 		vrLoc = 1535;
+	};
+	0029B8EE0F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD7CC0F26F4A80058A2B0 /* GHTestMain.m */;
+		name = "GHTestMain.m: 23";
+		rLen = 0;
+		rLoc = 434;
+		rType = 0;
+		vrLen = 655;
+		vrLoc = 215;
+	};
+	0029B8EF0F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F20F26E1BD0058A2B0 /* GHTestAppDelegate.h */;
+		name = "GHTestAppDelegate.h: 34";
+		rLen = 0;
+		rLoc = 1421;
+		rType = 0;
+		vrLen = 1074;
+		vrLoc = 375;
+	};
+	0029B8F00F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F70F26E1BD0058A2B0 /* GHTestViewController.m */;
+		name = "GHTestViewController.m: 60";
+		rLen = 44;
+		rLoc = 2093;
+		rType = 0;
+		vrLen = 845;
+		vrLoc = 1828;
+	};
+	0029B8F10F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F60F26E1BD0058A2B0 /* GHTestViewController.h */;
+		name = "GHTestViewController.h: 64";
+		rLen = 0;
+		rLoc = 2330;
+		rType = 0;
+		vrLen = 883;
+		vrLoc = 1577;
+	};
+	0029B8F20F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F30F26E1BD0058A2B0 /* GHTestAppDelegate.m */;
+		name = "GHTestAppDelegate.m: 50";
+		rLen = 17;
+		rLoc = 1752;
+		rType = 0;
+		vrLen = 810;
+		vrLoc = 1341;
+	};
+	0029B8F30F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD7CC0F26F4A80058A2B0 /* GHTestMain.m */;
+		name = "GHTestMain.m: 23";
+		rLen = 0;
+		rLoc = 434;
+		rType = 0;
+		vrLen = 655;
+		vrLoc = 215;
+	};
+	0029B8F40F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F20F26E1BD0058A2B0 /* GHTestAppDelegate.h */;
+		name = "GHTestAppDelegate.h: 34";
+		rLen = 0;
+		rLoc = 1421;
+		rType = 0;
+		vrLen = 1004;
+		vrLoc = 445;
+	};
+	0029B8F50F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F70F26E1BD0058A2B0 /* GHTestViewController.m */;
+		name = "GHTestViewController.m: 62";
+		rLen = 12;
+		rLoc = 2191;
+		rType = 0;
+		vrLen = 845;
+		vrLoc = 1828;
+	};
+	0029B8F60F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F20F26E1BD0058A2B0 /* GHTestAppDelegate.h */;
+		name = "GHTestAppDelegate.h: 34";
+		rLen = 0;
+		rLoc = 1421;
+		rType = 0;
+		vrLen = 1074;
+		vrLoc = 375;
+	};
+	0029B8F70F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F70F26E1BD0058A2B0 /* GHTestViewController.m */;
+		name = "GHTestViewController.m: 60";
+		rLen = 44;
+		rLoc = 2093;
+		rType = 0;
+		vrLen = 845;
+		vrLoc = 1828;
+	};
+	0029B8F80F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F60F26E1BD0058A2B0 /* GHTestViewController.h */;
+		name = "GHTestViewController.h: 64";
+		rLen = 0;
+		rLoc = 2330;
+		rType = 0;
+		vrLen = 883;
+		vrLoc = 1577;
+	};
+	0029B8F90F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 009DD5F30F26E1BD0058A2B0 /* GHTestAppDelegate.m */;
+		name = "GHTestAppDelegate.m: 50";
+		rLen = 17;
+		rLoc = 1752;
+		rType = 0;
+		vrLen = 810;
+		vrLoc = 1341;
+	};
+	0029B8FA0F2EFCBA003EAFC1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0029B6D50F2EDC60003EAFC1 /* README.markdown */;
+		name = "README.markdown: 203";
+		rLen = 0;
+		rLoc = 6331;
+		rType = 0;
+		vrLen = 1555;
+		vrLoc = 2272;
 	};
 	002E73B50F2C213700427636 /* GHUnitUI */ = {
 		activeExec = 0;
@@ -1121,7 +1251,7 @@
 	0867D690FE84028FC02AAC07 /* Project object */ = {
 		activeBuildConfigurationName = Release;
 		activeExecutable = 002E73B70F2C213700427636 /* GHUnitUI */;
-		activeTarget = 8DC2EF4F0486A6940098B216 /* GHUnit */;
+		activeTarget = 002E73B50F2C213700427636 /* GHUnitUI */;
 		addToTargets = (
 			8DC2EF4F0486A6940098B216 /* GHUnit */,
 		);
@@ -1231,6 +1361,19 @@
 			0029B82A0F2EEB22003EAFC1 /* PBXTextBookmark */ = 0029B82A0F2EEB22003EAFC1 /* PBXTextBookmark */;
 			0029B82B0F2EEB22003EAFC1 /* PBXTextBookmark */ = 0029B82B0F2EEB22003EAFC1 /* PBXTextBookmark */;
 			0029B82C0F2EEB22003EAFC1 /* PBXTextBookmark */ = 0029B82C0F2EEB22003EAFC1 /* PBXTextBookmark */;
+			0029B8EE0F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8EE0F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8EF0F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8EF0F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8F00F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8F00F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8F10F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8F10F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8F20F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8F20F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8F30F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8F30F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8F40F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8F40F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8F50F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8F50F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8F60F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8F60F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8F70F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8F70F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8F80F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8F80F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8F90F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8F90F2EFCBA003EAFC1 /* PBXTextBookmark */;
+			0029B8FA0F2EFCBA003EAFC1 /* PBXTextBookmark */ = 0029B8FA0F2EFCBA003EAFC1 /* PBXTextBookmark */;
 			002E74050F2C24F900427636 = 002E74050F2C24F900427636 /* PBXTextBookmark */;
 			002E74BF0F2C378800427636 = 002E74BF0F2C378800427636 /* PBXTextBookmark */;
 			002E74C00F2C378800427636 = 002E74C00F2C378800427636 /* PBXTextBookmark */;
