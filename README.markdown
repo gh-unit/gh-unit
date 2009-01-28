@@ -69,6 +69,9 @@ For example `MyTest.m`:
 	}
 
 	- (void)testFoo {
+		
+		GHTestLog(@"I can log to the GHUnit test console: %@", foo);
+		
 		// Assert a is not NULL, with no custom error description
 		GHAssertNotNULL(a, nil);
 	
@@ -84,9 +87,11 @@ For example `MyTest.m`:
 
 Now you should be ready to Build and Run the test target.
 
-You should see something similar to the following:
+You should see something similar to the following screen shots:
 
-![gh-unit1](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit2.jpg)
+![gh-unit2](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit2.jpg)
+
+![gh-unit4](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit4.jpg)
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import <GHUnit/GHUnit.h>` to it, and then you won't have to include that import for every test.
 - To embed GHUnit in your project (to use it without having to install in `/Library/Frameworks/`) see below.
