@@ -530,13 +530,13 @@
 								<reference key="NSHScroller" ref="73625544"/>
 								<reference key="NSContentView" ref="473602858"/>
 							</object>
-							<object class="NSSegmentedControl" id="174277769">
+							<object class="NSSegmentedControl" id="7855149">
 								<reference key="NSNextResponder" ref="186507322"/>
 								<int key="NSvFlags">269</int>
 								<string key="NSFrame">{{78, 442}, {187, 25}}</string>
 								<reference key="NSSuperview" ref="186507322"/>
 								<bool key="NSEnabled">YES</bool>
-								<object class="NSSegmentedCell" key="NSCell" id="54896821">
+								<object class="NSSegmentedCell" key="NSCell" id="603260049">
 									<int key="NSCellFlags">67239424</int>
 									<int key="NSCellFlags2">0</int>
 									<object class="NSFont" key="NSSupport">
@@ -544,7 +544,7 @@
 										<double key="NSSize">1.300000e+01</double>
 										<int key="NSfFlags">16</int>
 									</object>
-									<reference key="NSControlView" ref="174277769"/>
+									<reference key="NSControlView" ref="7855149"/>
 									<object class="NSMutableArray" key="NSSegmentImages">
 										<bool key="EncodedWithXMLCoder">YES</bool>
 										<object class="NSSegmentItem">
@@ -664,7 +664,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">textSegmentedControl</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="174277769"/>
+						<reference key="destination" ref="7855149"/>
 					</object>
 					<int key="connectionID">50</int>
 				</object>
@@ -791,7 +791,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="484672511"/>
-							<reference ref="174277769"/>
+							<reference ref="7855149"/>
 						</object>
 						<reference key="parent" ref="431271474"/>
 						<string key="objectName">Test Details</string>
@@ -843,17 +843,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">46</int>
-						<reference key="object" ref="174277769"/>
+						<reference key="object" ref="7855149"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="54896821"/>
+							<reference ref="603260049"/>
 						</object>
 						<reference key="parent" ref="186507322"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">47</int>
-						<reference key="object" ref="54896821"/>
-						<reference key="parent" ref="174277769"/>
+						<reference key="object" ref="603260049"/>
+						<reference key="parent" ref="7855149"/>
 					</object>
 				</object>
 			</object>
