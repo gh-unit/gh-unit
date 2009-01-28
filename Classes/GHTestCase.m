@@ -50,10 +50,9 @@
 
 #import "GHTestCase.h"
 
-#import "GTMStackTrace.h"
-
-
 @implementation GHTestCase
+
+@synthesize logDelegate=logDelegate_;
 
 // GTM_BEGIN
 
@@ -65,31 +64,10 @@
 
 - (void)tearDown { }
 
-+ (void)printException:(NSException *)exception fromTestName:(NSString *)name {
-	
-	NSDictionary *userInfo = [exception userInfo];
-  NSString *filename = [userInfo objectForKey:GHTestFilenameKey];
-  NSNumber *lineNumber = [userInfo objectForKey:GHTestLineNumberKey];
-  if ([filename length] == 0) {
-    filename = @"Unknown.m";
-  }
-	
-	NSString *className = NSStringFromClass([self class]);
-	NSString *exceptionInfo = [NSString stringWithFormat:@"%@:%d: error: -[%@ %@] %@\n", 
-														 filename,
-														 [lineNumber integerValue],
-														 className, 
-														 name,
-														 [exception reason]];
-	
-	NSString *exceptionTrace = [NSString stringWithFormat:@"%@\n%@\n", 
-															exceptionInfo, 
-															GTMStackTraceFromException(exception)];
-	
-  fprintf(stderr, [exceptionInfo UTF8String]);
-  fflush(stderr);
-	fprintf(stderr, [exceptionTrace UTF8String]);
-	fflush(stderr);
+#pragma mark Logging
+
+- (void)_log:(NSString *)message {
+	[logDelegate_ testCase:self didLog:message];
 }
 
 @end

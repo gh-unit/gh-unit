@@ -5,7 +5,7 @@ It can be used with SenTestingKit or by itself.
 
 ## Download
 
-[GHUnit-0.2.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.2.zip) (2009/01/27) [164kb]
+[GHUnit-0.2.3.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.3.zip) (2009/01/28) [168kb]
 
 ## Why?
 
@@ -21,36 +21,81 @@ Tests are defined by methods that start with 'test', take no arguments and retur
 Your setup and tear down methods are `- (void)setUp;` and `- (void)tearDown;`. 
 You know, pretty much like every test framework in existence.
 
-## A Test Case
+## Adding a GHUnit Test Target (Mac OS X)
+
+To add `GHUnit.framework` to your project:
+
+- Copy `GHUnit.framework` to `/Library/Frameworks/`
+- Add a `New Target`. Select `Cocoa -> Application`. Name it `Tests` (or something similar).
+- In the `Target 'Tests' Info` window, `General` tab:
+	- Add a linked library, under `Mac OS X 10.5 SDK` section, select `GHUnit.framework`
+	- Add a linked library, select your project.
+	- Add a direct dependency, and select your project. (This will cause your application or framework to build before the test target.)
+- Create a test main. For example, create a file called `TestsMain.m` (or similar), that loads and runs the test application. This file and your tests need only to exist in the test target. 
+
+The `TestMain.m` should look like:
+ 
+	#import <Foundation/Foundation.h>
+	#import <Foundation/NSDebug.h>
 
 	#import <GHUnit/GHUnit.h>
+	#import <GHUnit/GHTestApp.h>
+
+	int main(int argc, char *argv[]) {
+		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		GHTestApp *app = [[GHTestApp alloc] init];
+		[NSApp run];
+		[app release];
+		[pool release];
+	}
 	
+- Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target. 
+
+For example `MyTest.m`:
+
+	#import <GHUnit/GHUnit.h>
+
 	@interface MyTest : GHTestCase { }
 	@end
-	
+
 	@implementation MyTest
-	
+
 	- (void)setUp {
 		// Run before each test method
 	}
-	
+
 	- (void)tearDown {
 		// Run after each test method
 	}
- 
+
 	- (void)testFoo {
 		// Assert a is not NULL, with no custom error description
 		GHAssertNotNULL(a, nil);
-		
+	
 		// Assert equal objects, add custom error description
 		GHAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
 	}
-	
+
 	- (void)testBar {
 		// Another test
 	}
-	
+
 	@end
+
+Now you should be ready to Build and Run the test target.
+
+You should see something similar to the following:
+
+![gh-unit1](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit2.jpg)
+
+- Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import <GHUnit/GHUnit.h>` to it, and then you won't have to include that import for every test.
+- To embed GHUnit in your project (to use it without having to install in `/Library/Frameworks/`) see below.
+
+## Adding a GHUnit Test Target (iPhone)
+
+Coming soon!
+
+![gh-unit-iphone1](https://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit-iphone1.jpg)
 
 ## Test Macros
  
@@ -89,81 +134,6 @@ The `description` arg appends extra information for when the assert fails; thoug
 	GHAssertNoThrow(expr, description, ...)
 	GHAssertNoThrowSpecific(expr, specificException, description, ...)
 	GHAssertNoThrowSpecificNamed(expr, specificException, aName, description, ...)
-
-## Adding a GHUnit Test Target (Mac OS X)
-
-To add GHUnit.framework to your project:
-
-- Copy GHUnit.framework to `/Library/Frameworks/`
-- Add a New Target. Select Cocoa Application. Name it 'Tests' (or something similar).
-- Add an 'Existing Framework' and select GHUnit.framework (from /Library/Frameworks or from your project directory). 
-- Double check to make sure GHUnit.framework is a linked library in the test target info.
-- Make your application or framework a direct dependency in the test target info. (This will cause your application or framework to build before the test target.)
-- Create a test main. For example, create a file called TestsMain.m (or similar), that loads and runs the test application.
-
-The TestMain.m should look like:
- 
-	#import <Foundation/Foundation.h>
-	#import <Foundation/NSDebug.h>
-
-	#import <GHUnit/GHUnit.h>
-	#import <GHUnit/GHTestApp.h>
-
-	int main(int argc, char *argv[]) {
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		GHTestApp *app = [[GHTestApp alloc] init];
-		[NSApp run];
-		[app release];
-		[pool release];
-	}
-	
-- Now create a test (either by subclassing SenTestCase or GHTestCase). Add it to your test target. 
-
-For example MyTest.m:
-
-	#import <GHUnit/GHUnit.h>
-
-	@interface MyTest : GHTestCase { }
-	@end
-
-	@implementation MyTest
-
-	- (void)setUp {
-		// Run before each test method
-	}
-
-	- (void)tearDown {
-		// Run after each test method
-	}
-
-	- (void)testFoo {
-		// Assert a is not NULL, with no custom error description
-		GHAssertNotNULL(a, nil);
-	
-		// Assert equal objects, add custom error description
-		GHAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
-	}
-
-	- (void)testBar {
-		// Another test
-	}
-
-	@end
-
-Now you should be ready to Build and Run the test target.
-
-You should see something similar to the following:
-
-![gh-unit1](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit2.jpg)
-
-- Optionally, you can create and and set a prefix header (Tests_Prefix.pch) and add #import <GHUnit/GHUnit.h> to it, and then you won't have to include that import for every test.
-- To embed GHUnit in your project see below.
-
-## Adding a GHUnit Test Target (iPhone)
-
-Coming soon!
-
-![gh-unit-iphone1](https://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit-iphone1.jpg)
 
 ## Embedding GHUnit in your project (Mac OS X)
 

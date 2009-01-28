@@ -96,7 +96,7 @@
 
 - (void)dealloc {
 	[test_ release];
-	[detail_ release];
+	[children_ release];
 	[super dealloc];
 }
 
@@ -152,16 +152,17 @@
 	return [test_ status];
 }
 
-- (NSString *)detail {
+- (NSString *)stackTrace {
 	if (![test_ exception]) return nil;
 
-	if (!detail_) {
-		detail_ = [[NSString stringWithFormat:@"%@ - %@\n%@", 
-								[[test_ exception] name],
-								[[test_ exception] reason], 
-								GTMStackTraceFromException([test_ exception])] retain];
-	}		
-	return detail_;
+	return [[NSString stringWithFormat:@"%@ - %@\n%@", 
+					 [[test_ exception] name],
+					 [[test_ exception] reason], 
+					 GTMStackTraceFromException([test_ exception])] retain];
+}
+
+- (NSString *)log {
+	return [[test_ log] componentsJoinedByString:@"\n"];
 }
 
 - (NSString *)description {

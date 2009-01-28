@@ -50,16 +50,26 @@
 
 #import "GHTestMacros.h"
 
-@interface GHTestCase : NSObject {
+// Log to your test case logger.
+// For example, GHTestLog(@"Some debug info, %@", obj)
+#define GHTestLog(...) [self _log:[NSString stringWithFormat:__VA_ARGS__, nil]]
 
+@protocol GHTestCaseLogDelegate <NSObject>
+- (void)testCase:(id)testCase didLog:(NSString *)message;
+@end
+
+@interface GHTestCase : NSObject {
+	id<GHTestCaseLogDelegate> logDelegate_;
 }
+
+@property (assign) id<GHTestCaseLogDelegate> logDelegate;
+
+- (void)_log:(NSString *)message;
 
 // GTM_BEGIN
 - (void)setUp;
 - (void)tearDown;
 - (void)failWithException:(NSException*)exception;
-
-+ (void)printException:(NSException *)exception fromTestName:(NSString *)name;
 // GTM_END
 
 @end

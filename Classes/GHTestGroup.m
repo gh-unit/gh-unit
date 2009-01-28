@@ -113,6 +113,11 @@
 
 - (void)addTest:(id<GHTest>)test {
 	stats_.testCount += [test stats].testCount;
+	
+	// TODO(gabe): This logging stuff seems a little convoluted
+	if ([test respondsToSelector:@selector(setLogDelegate:)])
+		[(id)test setLogDelegate:self];
+
 	[children_ addObject:test];
 }
 
@@ -120,7 +125,22 @@
 	return name_;
 }
 
+// Send log messages to current test
+- (void)testCase:(id)testCase didLog:(NSString *)message {
+	[self log:message];
+}
+
+- (NSArray *)log {
+	// Not supported for group
+	return nil;
+}
+
+- (void)log:(NSString *)message {
+	[currentTest_ log:message];
+}
+
 - (NSException *)exception {
+	// Not supported for group
 	return nil;
 }
 
@@ -128,7 +148,9 @@
 	status_ = GHTestStatusRunning;
 	
 	for(id<GHTest> test in children_) {				
+		currentTest_ = test;
 		[test run];			
+		currentTest_ = nil;
 	}
 	
 	status_ = GHTestStatusFinished;

@@ -51,7 +51,7 @@
 - (NSArray *)children;
 @end
 
-@interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup> {
+@interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup, GHTestCaseLogDelegate> {
 	
 	id<GHTestDelegate> delegate_; // weak
 	id<GHTestGroup> parent_; // weak
@@ -62,6 +62,8 @@
 	NSTimeInterval interval_;
 	GHTestStatus status_;
 	GHTestStats stats_;
+	
+	id<GHTest> currentTest_; // weak
 }
 
 @property (readonly, nonatomic) NSArray *children;

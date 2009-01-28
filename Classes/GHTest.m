@@ -108,7 +108,8 @@ static int MethodSort(const void *a, const void *b) {
  */
 @implementation GHTest
 
-@synthesize delegate=delegate_, target=target_, selector=selector_, name=name_, interval=interval_, exception=exception_, status=status_, failed=failed_, stats=stats_;
+@synthesize delegate=delegate_, target=target_, selector=selector_, name=name_, interval=interval_, 
+exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_;
 
 - (id)initWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception {
 	if ((self = [super init])) {
@@ -126,7 +127,6 @@ static int MethodSort(const void *a, const void *b) {
 	return [[[self alloc] initWithTarget:target selector:selector interval:-1 exception:nil] autorelease];
 }
 
-
 + (id)testWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception {
 	return [[[self alloc] initWithTarget:target selector:selector interval:interval exception:exception] autorelease];
 }
@@ -135,12 +135,30 @@ static int MethodSort(const void *a, const void *b) {
 	[name_ release];
 	[target_ release];
 	[exception_ release];
+	[log_ release];
 	[super dealloc];
 }
 
 - (NSString *)identifier {
 	return [NSString stringWithFormat:@"%@/%@", NSStringFromClass([target_ class]), NSStringFromSelector(selector_)];
 }
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@ %@", self.identifier, [super description]];
+}
+
+- (void)setLogDelegate:(id<GHTestCaseLogDelegate>)delegate {
+	if ([target_ respondsToSelector:@selector(setLogDelegate:)])
+		[target_ setLogDelegate:delegate];
+}
+
+- (void)log:(NSString *)message {	
+	@synchronized(self) {
+		if (!log_) log_ = [[NSMutableArray array] retain];
+		[log_ addObject:message];
+	}
+}
+
 
 // GTM_BEGIN
 
@@ -223,6 +241,7 @@ static int MethodSort(const void *a, const void *b) {
     exception_ = [exception retain];
   }
 // GTM_END	
+		
 	interval_ = [[NSDate date] timeIntervalSinceDate:startDate];
 	status_ = GHTestStatusFinished;	
 	failed_ = (!!exception_);

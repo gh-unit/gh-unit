@@ -37,7 +37,7 @@
 
 @synthesize splitView=splitView_, statusView=statusView_, detailsView=detailsView_;
 @synthesize statusLabel=statusLabel_, progressIndicator=progressIndicator_, outlineView=outlineView_;
-@synthesize detailsTextView=detailsTextView_, consoleTestView=consoleTestView_;
+@synthesize textSegmentedControl=textSegmentedControl_, textView=textView_;
 
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { }
@@ -50,11 +50,28 @@
 }
 
 - (void)awakeFromNib {
-	[detailsTextView_ setTextColor:[NSColor whiteColor]];
-	[detailsTextView_ setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
-	[detailsTextView_ setString:@""];
+	[textView_ setTextColor:[NSColor whiteColor]];
+	[textView_ setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
+	[textView_ setString:@""];
+	[textSegmentedControl_ setTarget:self];
+	[textSegmentedControl_ setAction:@selector(_textSegmentChanged:)];
 	self.status = @"Loading tests...";
-	
+}
+
+- (void)_setText:(NSInteger)row selector:(SEL)selector {
+	if (row < 0) return;
+	id item = [outlineView_ itemAtRow:row];
+	NSString *text = [item performSelector:selector];
+	NSLog(@"Setting text: %@ at row %d for %@", text, row, NSStringFromSelector(selector));
+	[textView_ setString:text ? text : @""];	
+}
+
+- (void)_textSegmentChanged:(id)sender {
+	if ([sender selectedSegment] == 0) {
+		[self _setText:[outlineView_ selectedRow] selector:@selector(stackTrace)];
+	} else {
+		[self _setText:[outlineView_ selectedRow] selector:@selector(log)];
+	}
 }
 
 - (void)setRoot:(id<GHTestGroup>)rootTest {
@@ -86,7 +103,7 @@
 }
 
 - (GHTestNode *)findFailureFromNode:(GHTestNode *)node {
-	if (node.failed && node.detail) return node;
+	if (node.failed && [node.test exception]) return node;
 	for(GHTestNode *childNode in node.children) {
 		GHTestNode *foundNode = [self findFailureFromNode:childNode];
 		if (foundNode) return foundNode;
@@ -149,11 +166,8 @@
 #pragma mark Delegates (NSOutlineView)
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification {
-	[detailsTextView_ setString:@""];
-	
-	id item = [outlineView_ itemAtRow:[outlineView_ selectedRow]];
-	NSString *detail = [item detail];
-	[detailsTextView_ setString:detail ? detail : @""];
+	[textView_ setString:@""];
+	[self _textSegmentChanged:textSegmentedControl_];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {

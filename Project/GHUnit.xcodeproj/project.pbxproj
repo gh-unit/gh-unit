@@ -24,7 +24,7 @@
 		0029B79F0F2EE469003EAFC1 /* GHTestViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0029B79D0F2EE469003EAFC1 /* GHTestViewModel.h */; };
 		0029B7A00F2EE469003EAFC1 /* GHTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0029B79E0F2EE469003EAFC1 /* GHTestViewModel.m */; };
 		002E73BF0F2C219600427636 /* GHSenTestingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00970A2F0F2836CE00189A9D /* GHSenTestingTest.m */; };
-		002E73C00F2C219600427636 /* GHTestFailed.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD7A60F26EC6C0058A2B0 /* GHTestFailed.m */; };
+		002E73C00F2C219600427636 /* GHTestCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD7A60F26EC6C0058A2B0 /* GHTestCore.m */; };
 		002E73C10F2C219700427636 /* GHTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD7CC0F26F4A80058A2B0 /* GHTestMain.m */; };
 		002E73C70F2C21B200427636 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* GHUnit.framework */; };
 		002E73D50F2C21DE00427636 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00970A550F28397F00189A9D /* SenTestingKit.framework */; };
@@ -193,7 +193,7 @@
 		009DD5FE0F26E1BD0058A2B0 /* GHUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnit.h; sourceTree = "<group>"; };
 		009DD6030F26E1BD0058A2B0 /* GHTestMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestMacros.m; sourceTree = "<group>"; };
 		009DD6040F26E1BD0058A2B0 /* GHTestMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestMacros.h; sourceTree = "<group>"; };
-		009DD7A60F26EC6C0058A2B0 /* GHTestFailed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestFailed.m; sourceTree = "<group>"; };
+		009DD7A60F26EC6C0058A2B0 /* GHTestCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestCore.m; sourceTree = "<group>"; };
 		009DD7C30F26F4680058A2B0 /* TestUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestUI-Info.plist"; sourceTree = "<group>"; };
 		009DD7CC0F26F4A80058A2B0 /* GHTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestMain.m; sourceTree = "<group>"; };
 		009DD7FA0F26F8260058A2B0 /* GHTestApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestApp.h; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 		009DD7A40F26EC6C0058A2B0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				009DD7A60F26EC6C0058A2B0 /* GHTestFailed.m */,
+				009DD7A60F26EC6C0058A2B0 /* GHTestCore.m */,
 				009DD7CC0F26F4A80058A2B0 /* GHTestMain.m */,
 				00970A2F0F2836CE00189A9D /* GHSenTestingTest.m */,
 				002E74860F2C2B3100427636 /* GHSlowTest.m */,
@@ -631,7 +631,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				002E73BF0F2C219600427636 /* GHSenTestingTest.m in Sources */,
-				002E73C00F2C219600427636 /* GHTestFailed.m in Sources */,
+				002E73C00F2C219600427636 /* GHTestCore.m in Sources */,
 				002E73C10F2C219700427636 /* GHTestMain.m in Sources */,
 				002E74870F2C2B3100427636 /* GHSlowTest.m in Sources */,
 			);

@@ -14,16 +14,18 @@
 
 @implementation GHSlowTest
 
+#define kSlowTestTimeInterval 0.3
+
 - (void)testSlowA {
-	[NSThread sleepForTimeInterval:1.0];
+	[NSThread sleepForTimeInterval:kSlowTestTimeInterval];
 }
 
 - (void)testSlowB {
-	[NSThread sleepForTimeInterval:1.0];
+	[NSThread sleepForTimeInterval:kSlowTestTimeInterval];
 }
 
 - (void)testSlowC {
-	[NSThread sleepForTimeInterval:1.0];
+	[NSThread sleepForTimeInterval:kSlowTestTimeInterval];
 }
 
 @end

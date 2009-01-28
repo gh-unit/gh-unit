@@ -39,8 +39,8 @@
 	NSProgressIndicator *progressIndicator_;
 	NSOutlineView *outlineView_;
 	
-	NSTextView *detailsTextView_;
-	NSTextView *consoleTestView_;
+	NSSegmentedControl *textSegmentedControl_;
+	NSTextView *textView_;
 	
 	GHTestViewModel *model_;
 }
@@ -52,8 +52,8 @@
 @property (assign, nonatomic) IBOutlet NSTextField *statusLabel;
 @property (assign, nonatomic) IBOutlet NSProgressIndicator *progressIndicator;
 @property (assign, nonatomic) IBOutlet NSOutlineView *outlineView;
-@property (assign, nonatomic) IBOutlet NSTextView *detailsTextView;
-@property (assign, nonatomic) IBOutlet NSTextView *consoleTestView;
+@property (assign, nonatomic) IBOutlet NSSegmentedControl *textSegmentedControl;
+@property (assign, nonatomic) IBOutlet NSTextView *textView;
 
 @property (copy, nonatomic) NSString *status;
 

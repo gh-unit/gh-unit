@@ -114,6 +114,9 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 
 - (NSException *)exception;
 
+- (void)log:(NSString *)message;
+- (NSArray *)log;
+
 @end
 
 @protocol GHTestDelegate <NSObject>
@@ -134,6 +137,9 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 	BOOL failed_;
 	
 	GHTestStats stats_;
+	
+	// Log
+	NSMutableArray *log_;
 	
 	// If errored
 	NSException *exception_; 
@@ -156,8 +162,11 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 @property (readonly) GHTestStatus status;
 @property (readonly) BOOL failed;
 @property (readonly) GHTestStats stats;
+@property (readonly) NSArray *log;
 
 @property (assign) id<GHTestDelegate> delegate;
+
+- (void)setLogDelegate:(id<GHTestCaseLogDelegate>)logDelegate;
 
 /*!
  Run the test.
