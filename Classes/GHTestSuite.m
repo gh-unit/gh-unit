@@ -57,6 +57,4 @@
 	return [allTests autorelease];;
 }
 
-
-
 @end

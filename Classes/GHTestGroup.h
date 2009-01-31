@@ -25,6 +25,7 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
+
 //
 // Portions of this file fall under the following license, marked with:
 // GTM_BEGIN : GTM_END
@@ -137,11 +138,12 @@
 
 @interface GHTestGroup (GHTestLoading)
 
-+ (BOOL)isSenTestCaseClass:(Class)cls;
+BOOL isSenTestCaseClass(Class aClass);
+BOOL isGTMTestCaseClass(Class aClass);
 
 // GTM_BEGIN
-+ (BOOL)isTestFixture:(Class)aClass;
-+ (BOOL)isTestFixture:(Class)aClass testCaseClass:(Class)testCaseClass;
+BOOL isTestFixture(Class aClass);
+BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass);
 // GTM_END
 
 + (NSArray *)loadTestCases;

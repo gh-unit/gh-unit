@@ -29,6 +29,8 @@
 		002E73C70F2C21B200427636 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* GHUnit.framework */; };
 		002E73D50F2C21DE00427636 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00970A550F28397F00189A9D /* SenTestingKit.framework */; };
 		002E74870F2C2B3100427636 /* GHSlowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002E74860F2C2B3100427636 /* GHSlowTest.m */; };
+		005FDD220F33D259006B369F /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD210F33D259006B369F /* GTMSenTestCase.m */; };
+		005FDD390F33D373006B369F /* GHGTMTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */; };
 		0062B7610F2C1F9200B0562A /* DebugiPhone.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B73D0F2C1F9200B0562A /* DebugiPhone.xcconfig */; };
 		0062B7620F2C1F9200B0562A /* DebugiPhone20.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B73E0F2C1F9200B0562A /* DebugiPhone20.xcconfig */; };
 		0062B7630F2C1F9200B0562A /* DebugiPhone21.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B73F0F2C1F9200B0562A /* DebugiPhone21.xcconfig */; };
@@ -137,6 +139,10 @@
 		002E73B60F2C213700427636 /* GHUnitUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHUnitUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		002E73B80F2C213700427636 /* GHUnitUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GHUnitUI-Info.plist"; sourceTree = "<group>"; };
 		002E74860F2C2B3100427636 /* GHSlowTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSlowTest.m; sourceTree = "<group>"; };
+		005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHGTMTestCaseTest.m; sourceTree = "<group>"; };
+		005FDD200F33D259006B369F /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMSenTestCase.h; sourceTree = "<group>"; };
+		005FDD210F33D259006B369F /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSenTestCase.m; sourceTree = "<group>"; };
+		005FDD230F33D275006B369F /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		0062B73D0F2C1F9200B0562A /* DebugiPhone.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugiPhone.xcconfig; sourceTree = "<group>"; };
 		0062B73E0F2C1F9200B0562A /* DebugiPhone20.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugiPhone20.xcconfig; sourceTree = "<group>"; };
 		0062B73F0F2C1F9200B0562A /* DebugiPhone21.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugiPhone21.xcconfig; sourceTree = "<group>"; };
@@ -288,6 +294,16 @@
 			path = SharedUI;
 			sourceTree = "<group>";
 		};
+		005FDD1F0F33D259006B369F /* GTM */ = {
+			isa = PBXGroup;
+			children = (
+				005FDD230F33D275006B369F /* GTMDefines.h */,
+				005FDD200F33D259006B369F /* GTMSenTestCase.h */,
+				005FDD210F33D259006B369F /* GTMSenTestCase.m */,
+			);
+			path = GTM;
+			sourceTree = "<group>";
+		};
 		0062B73B0F2C1F9200B0562A /* XcodeConfig */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,10 +391,12 @@
 		009DD7A40F26EC6C0058A2B0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				005FDD1F0F33D259006B369F /* GTM */,
 				009DD7A60F26EC6C0058A2B0 /* GHTestCore.m */,
 				009DD7CC0F26F4A80058A2B0 /* GHTestMain.m */,
 				00970A2F0F2836CE00189A9D /* GHSenTestingTest.m */,
 				002E74860F2C2B3100427636 /* GHSlowTest.m */,
+				005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -634,6 +652,8 @@
 				002E73C00F2C219600427636 /* GHTestCore.m in Sources */,
 				002E73C10F2C219700427636 /* GHTestMain.m in Sources */,
 				002E74870F2C2B3100427636 /* GHSlowTest.m in Sources */,
+				005FDD220F33D259006B369F /* GTMSenTestCase.m in Sources */,
+				005FDD390F33D373006B369F /* GHGTMTestCaseTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,6 +25,7 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
+
 //
 // Portions of this file fall under the following license, marked with:
 // GTM_BEGIN : GTM_END
