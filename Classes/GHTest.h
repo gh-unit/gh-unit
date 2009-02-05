@@ -128,9 +128,6 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 + (id)testWithTarget:(id)target selector:(SEL)selector;
 + (id)testWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception;
 
-// Loads all the tests from the specified target
-+ (NSArray *)loadTestsFromTarget:(id)target;
-
 @property (readonly) id target;
 @property (readonly) SEL selector;
 @property (readonly) NSString *name;

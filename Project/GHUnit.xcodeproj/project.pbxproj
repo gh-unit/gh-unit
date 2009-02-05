@@ -31,6 +31,8 @@
 		002E74870F2C2B3100427636 /* GHSlowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002E74860F2C2B3100427636 /* GHSlowTest.m */; };
 		005FDD220F33D259006B369F /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD210F33D259006B369F /* GTMSenTestCase.m */; };
 		005FDD390F33D373006B369F /* GHGTMTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */; };
+		005FDD8D0F33D7E3006B369F /* GHTestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 005FDD7F0F33D56D006B369F /* GHTestUtils.h */; };
+		005FDD8E0F33D7E4006B369F /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD800F33D56D006B369F /* GHTestUtils.m */; };
 		0062B7610F2C1F9200B0562A /* DebugiPhone.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B73D0F2C1F9200B0562A /* DebugiPhone.xcconfig */; };
 		0062B7620F2C1F9200B0562A /* DebugiPhone20.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B73E0F2C1F9200B0562A /* DebugiPhone20.xcconfig */; };
 		0062B7630F2C1F9200B0562A /* DebugiPhone21.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B73F0F2C1F9200B0562A /* DebugiPhone21.xcconfig */; };
@@ -143,6 +145,8 @@
 		005FDD200F33D259006B369F /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMSenTestCase.h; sourceTree = "<group>"; };
 		005FDD210F33D259006B369F /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSenTestCase.m; sourceTree = "<group>"; };
 		005FDD230F33D275006B369F /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		005FDD7F0F33D56D006B369F /* GHTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestUtils.h; sourceTree = "<group>"; };
+		005FDD800F33D56D006B369F /* GHTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestUtils.m; sourceTree = "<group>"; };
 		0062B73D0F2C1F9200B0562A /* DebugiPhone.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugiPhone.xcconfig; sourceTree = "<group>"; };
 		0062B73E0F2C1F9200B0562A /* DebugiPhone20.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugiPhone20.xcconfig; sourceTree = "<group>"; };
 		0062B73F0F2C1F9200B0562A /* DebugiPhone21.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugiPhone21.xcconfig; sourceTree = "<group>"; };
@@ -465,6 +469,8 @@
 				00970B4C0F2866F800189A9D /* GHTestRunner.m */,
 				00AF0F7C0F2D19B7009F0ABA /* GHTestSuite.h */,
 				00AF0F7D0F2D19B7009F0ABA /* GHTestSuite.m */,
+				005FDD7F0F33D56D006B369F /* GHTestUtils.h */,
+				005FDD800F33D56D006B369F /* GHTestUtils.m */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -525,6 +531,7 @@
 				0029B6FC0F2EDDDF003EAFC1 /* GTMStackTrace.h in Headers */,
 				0029B7040F2EDEB2003EAFC1 /* GHLogger.h in Headers */,
 				0029B79F0F2EE469003EAFC1 /* GHTestViewModel.h in Headers */,
+				005FDD8D0F33D7E3006B369F /* GHTestUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,6 +685,7 @@
 				0029B6FD0F2EDDDF003EAFC1 /* GTMStackTrace.m in Sources */,
 				0029B7030F2EDEB2003EAFC1 /* GHLogger.m in Sources */,
 				0029B7A00F2EE469003EAFC1 /* GHTestViewModel.m in Sources */,
+				005FDD8E0F33D7E4006B369F /* GHTestUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

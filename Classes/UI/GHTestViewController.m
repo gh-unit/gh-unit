@@ -58,6 +58,10 @@
 	self.status = @"Loading tests...";
 }
 
+- (IBAction)copy:(id)sender {
+	[textView_ copy:sender];
+}
+
 - (void)_setText:(NSInteger)row selector:(SEL)selector {
 	if (row < 0) return;
 	id item = [outlineView_ itemAtRow:row];

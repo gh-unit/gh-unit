@@ -47,18 +47,7 @@
 
 #import "GHTest.h"
 
-#import <objc/runtime.h>
-
-// GTM_BEGIN
-
-// Used for sorting methods below
-static int MethodSort(const void *a, const void *b) {
-  const char *nameA = sel_getName(method_getName(*(Method*)a));
-  const char *nameB = sel_getName(method_getName(*(Method*)b));
-  return strcmp(nameA, nameB);
-}
-
-// GTM_END
+#import "GHTestUtils.h"
 
 /*!
  GHTest represents a single test method. It is composed of a target and selector.
@@ -117,92 +106,14 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_;
 	}
 }
 
-
-// GTM_BEGIN
-
-+ (NSArray *)loadTestsFromTarget:(id)target {
-	NSMutableArray *tests = [NSMutableArray array];
-	
-	unsigned int methodCount;
-	Method *methods = class_copyMethodList([target class], &methodCount);
-	if (!methods) {
-		return nil;
-	}
-	// This handles disposing of methods for us even if an
-	// exception should fly. 
-	[NSData dataWithBytesNoCopy:methods
-											 length:sizeof(Method) * methodCount];
-	// Sort our methods so they are called in Alphabetical order just
-	// because we can.
-	qsort(methods, methodCount, sizeof(Method), MethodSort);
-	for (size_t j = 0; j < methodCount; ++j) {
-		Method currMethod = methods[j];
-		SEL sel = method_getName(currMethod);
-		char *returnType = NULL;
-		const char *name = sel_getName(sel);
-		// If it starts with test, takes 2 args (target and sel) and returns
-		// void run it.
-		if (strstr(name, "test") == name) {
-			returnType = method_copyReturnType(currMethod);
-			if (returnType) {
-				// This handles disposing of returnType for us even if an
-				// exception should fly. Length +1 for the terminator, not that
-				// the length really matters here, as we never reference inside
-				// the data block.
-				[NSData dataWithBytesNoCopy:returnType
-														 length:strlen(returnType) + 1];
-			}
-		}
-		if (returnType  // True if name starts with "test"
-				&& strcmp(returnType, @encode(void)) == 0
-				&& method_getNumberOfArguments(currMethod) == 2) {
-			
-			GHTest *test = [GHTest testWithTarget:target selector:sel];
-			[tests addObject:test];
-		}
-	}
-	
-	return tests;
-}
-
-// GTM_END
-
 - (void)run {	
 	status_ = GHTestStatusRunning;
 	stats_ = GHTestStatsMake(1, 0, 1);
 	[delegate_ testDidStart:self];
-// GTM_BEGIN
-	NSDate *startDate = [NSDate date];
-  @try {
-    // Wrap things in autorelease pools because they may
-    // have an STMacro in their dealloc which may get called
-    // when the pool is cleaned up
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    // We don't log exceptions here, instead we let the person that called
-    // this log the exception.  This ensures they are only logged once but the
-    // outer layers get the exceptions to report counts, etc.
-    @try {
-			if ([target_ respondsToSelector:@selector(setUp)])
-				[target_ performSelector:@selector(setUp)];
-      @try {	
-        [target_ performSelector:selector_];
-      } @catch (NSException *exception) {
-        exception_ = [exception retain];
-      }
-			if ([target_ respondsToSelector:@selector(tearDown)])
-				[target_ performSelector:@selector(tearDown)];
-    } @catch (NSException *exception) {
-      exception_ = [exception retain];
-    }
-    [pool release];
-  } @catch (NSException *exception) {
-    exception_ = [exception retain];
-  }
-// GTM_END	
-		
-	interval_ = [[NSDate date] timeIntervalSinceDate:startDate];
+
+	failed_ = ![GHTestUtils runTest:target_ selector:selector_ exception:&exception_ interval:&interval_];				
+	
 	status_ = GHTestStatusFinished;	
-	failed_ = (!!exception_);
 	stats_ = GHTestStatsMake(1, failed_ ? 1 : 0, 1);
 	[delegate_ testDidFinish:self];
 }

@@ -48,7 +48,7 @@
 #import "GHTestGroup.h"
 #import "GHTestCase.h"
 
-#import <objc/runtime.h>
+#import "GHTestUtils.h"
 
 @implementation GHTestGroup
 
@@ -90,7 +90,7 @@
 }
 
 - (void)addTestsFromTestCase:(id)testCase {
-	NSArray *tests = [GHTest loadTestsFromTarget:testCase];
+	NSArray *tests = [GHTestUtils loadTestsFromTarget:testCase];
 	for(GHTest *test in tests) {
 		[test setDelegate:self];
 		[self addTest:test];
@@ -169,64 +169,6 @@
 	//stats_.runCount += [test stats].runCount;
 	stats_.failureCount += [test stats].failureCount;
 	[delegate_ testDidFinish:test];
-}
-
-@end
-
-@implementation GHTestGroup (GHTestLoading)
-
-
-BOOL isSenTestCaseClass(Class aClass) {
-	return isTestFixtureOfClass(aClass, NSClassFromString(@"SenTestCase"));
-}
-
-BOOL isGTMTestCaseClass(Class aClass) {
-	return isTestFixtureOfClass(aClass, NSClassFromString(@"GTMTestCase"));
-}
-
-// GTM_BEGIN
-
-// Return YES if class is subclass (1 or more generations) of GHTestCase
-BOOL isTestFixture(Class aClass) {
-	return isTestFixtureOfClass(aClass, NSClassFromString(@"GHTestCase"));
-}
-
-BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
-	if (testCaseClass == NULL) return NO;
-  BOOL iscase = NO;
-  Class superclass;
-  for (superclass = aClass; 
-       !iscase && superclass; 
-       superclass = class_getSuperclass(superclass)) {
-    iscase = superclass == testCaseClass ? YES : NO;
-  }
-  return iscase;
-}
-
-+ (NSArray *)loadTestCases {
-	NSMutableArray *testCases = [NSMutableArray array];
-	
-	int count = objc_getClassList(NULL, 0);
-  NSMutableData *classData = [NSMutableData dataWithLength:sizeof(Class) * count];
-  Class *classes = (Class*)[classData mutableBytes];
-  //_GTMDevAssert(classes, @"Couldn't allocate class list");
-  objc_getClassList(classes, count);
-	
-  for (int i = 0; i < count; ++i) {
-    Class currClass = classes[i];
-		id testcase = nil;
-		
-    if (isTestFixture(currClass) || isSenTestCaseClass(currClass) || isGTMTestCaseClass(currClass)) {			
-			testcase = [[currClass alloc] init];
-		} else {
-			continue;
-		}
-		
-		[testCases addObject:testcase];
-		[testcase release];
-  }
-	return testCases;
-	// GTM_END
 }
 
 @end

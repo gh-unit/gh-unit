@@ -1,11 +1,19 @@
 # GHUnit
 
 GHUnit is a test framework for Objective-C (Mac OS X 10.5 and iPhone 2.0 and above).
-It can be used with SenTestingKit or by itself.
+It can be used with SenTestingKit or by itself. 
+
+For example, your test cases will be run if they subclass any of the following:
+
+- GHTestCase
+- SenTestCase
+- GTMTestCase
+
+(Although you can register additional classes at runtime; if you have your own.)
 
 ## Download
 
-[GHUnit-0.2.3.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.3.zip) (2009/01/28) [168kb]
+[GHUnit-0.2.5.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.5.zip) (2009/02/05)
 
 ## Why?
 

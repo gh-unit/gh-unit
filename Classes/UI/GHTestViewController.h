@@ -68,5 +68,6 @@
 - (GHTestNode *)findFailure;
 - (GHTestNode *)findFailureFromNode:(GHTestNode *)node;
 
+- (IBAction)copy:(id)sender;
 
 @end

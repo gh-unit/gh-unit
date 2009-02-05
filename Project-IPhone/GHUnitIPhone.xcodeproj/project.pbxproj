@@ -26,7 +26,6 @@
 		00AF12CE0F2D86FE009F0ABA /* GHTestMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AF12C80F2D86FE009F0ABA /* GHTestMacros.m */; };
 		00AF12D50F2D875F009F0ABA /* GHUnitIPhoneTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AF12D40F2D875F009F0ABA /* GHUnitIPhoneTestMain.m */; };
 		00AF12ED0F2D880E009F0ABA /* GHSlowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AF12E90F2D880E009F0ABA /* GHSlowTest.m */; };
-		00AF12EE0F2D880E009F0ABA /* GHTestFailed.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AF12EA0F2D880E009F0ABA /* GHTestFailed.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -70,7 +69,6 @@
 		00AF12C80F2D86FE009F0ABA /* GHTestMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestMacros.m; sourceTree = "<group>"; };
 		00AF12D40F2D875F009F0ABA /* GHUnitIPhoneTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTestMain.m; sourceTree = "<group>"; };
 		00AF12E90F2D880E009F0ABA /* GHSlowTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSlowTest.m; sourceTree = "<group>"; };
-		00AF12EA0F2D880E009F0ABA /* GHTestFailed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestFailed.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* GHUnitIPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHUnitIPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -166,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				00AF12E90F2D880E009F0ABA /* GHSlowTest.m */,
-				00AF12EA0F2D880E009F0ABA /* GHTestFailed.m */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -307,7 +304,6 @@
 				00AF12CE0F2D86FE009F0ABA /* GHTestMacros.m in Sources */,
 				00AF12D50F2D875F009F0ABA /* GHUnitIPhoneTestMain.m in Sources */,
 				00AF12ED0F2D880E009F0ABA /* GHSlowTest.m in Sources */,
-				00AF12EE0F2D880E009F0ABA /* GHTestFailed.m in Sources */,
 				0029B7680F2EE0B9003EAFC1 /* GHLogger.m in Sources */,
 				0029B7690F2EE0B9003EAFC1 /* GHNSInvocation+Utils.m in Sources */,
 				0029B76A0F2EE0B9003EAFC1 /* GHNSObject+Invocation.m in Sources */,
