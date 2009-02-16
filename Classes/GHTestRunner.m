@@ -46,6 +46,7 @@
 
 #import "GHTestRunner.h"
 #import "GHTestSuite.h"
+#import "GHNSObject+Invocation.h"
 
 @interface GHTestRunner (Private)
 - (void)_notifyStart;

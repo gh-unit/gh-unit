@@ -68,7 +68,7 @@
 #pragma mark Logging
 
 - (void)_log:(NSString *)message {
-	[logDelegate_ testCase:self didLog:message];
+	[logDelegate_ testCase:self log:message];
 }
 
 @end

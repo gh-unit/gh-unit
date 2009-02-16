@@ -13,14 +13,14 @@
 // SenTestCase, outputs results and test run time, and terminates right
 // afterwards.
 int main(int argc, char *argv[]) {
-	[NSAutoreleasePool enableFreedObjectCheck:YES];
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	
 	NSDebugEnabled = YES;
 	NSZombieEnabled = YES;
 	NSDeallocateZombies = NO;
 	NSHangOnUncaughtException = YES;
+	[NSAutoreleasePool enableFreedObjectCheck:YES];
+	setenv("NSAutoreleaseFreedObjectCheckEnabled", "1", 1);
 	
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];	
 	int retVal = UIApplicationMain(argc, argv, nil, @"GHUnitIPhoneAppDelegate");
 	[pool release];
 	return retVal;

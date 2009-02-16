@@ -46,6 +46,7 @@
 //
 
 #import "GHTest.h"
+#import "GHTestCase.h"
 
 @protocol GHTestGroup <GHTest>
 - (id<GHTestGroup>)parent;

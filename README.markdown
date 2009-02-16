@@ -106,7 +106,55 @@ You should see something similar to the following screen shots:
 
 ## Adding a GHUnit Test Target (iPhone)
 
-Coming soon!
+Frameworks are not supported in the iPhone environment. So you'll need to copy and add the gh-unit files directly into your project.
+
+- Add a `New Target`. Select `Cocoa Touch -> Application`. Name it `Tests` (or something similar).
+- Set the Main Nib file to `GHUnitIPhone.xib`
+- Make sure all your project files are included in the `Test` target.
+- Make sure your test project is linked to CoreGraphics.framework
+- Copy (or symlink) into your project:
+	- `Classes/` (Core files)
+	- `Classes-IPhone/` (iPhone specific files)
+	- `Libraries/` (External libraries, ghkit and GTM); If you already have these included in your iPhone project, you shouldn't add them again.
+- Add these gh-unit files to your project, but only in the `Test` target.
+- Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target. 
+
+For example `MyTest.m`:
+
+	#import "GHUnit.h"
+
+	@interface MyTest : GHTestCase { }
+	@end
+
+	@implementation MyTest
+
+	- (void)setUp {
+		// Run before each test method
+	}
+
+	- (void)tearDown {
+		// Run after each test method
+	}
+
+	- (void)testFoo {
+		// Assert a is not NULL, with no custom error description
+		GHAssertNotNULL(a, nil);
+	
+		// Assert equal objects, add custom error description
+		GHAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
+	}
+
+	- (void)testBar {
+		// Another test
+	}
+
+	@end
+
+Now you should be ready to Build and Run the `Test` target.
+
+You should see something similar to the following screen shots:
+
+- Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
 ![gh-unit-iphone1](https://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit-iphone1.jpg)
 

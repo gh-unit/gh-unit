@@ -115,9 +115,9 @@
 - (void)addTest:(id<GHTest>)test {
 	stats_.testCount += [test stats].testCount;
 	
-	// TODO(gabe): This logging stuff seems a little convoluted
+	// TODO(gabe): Logging stuff may need some refactoring
 	if ([test respondsToSelector:@selector(setLogDelegate:)])
-		[(id)test setLogDelegate:self];
+		[test performSelector:@selector(setLogDelegate:) withObject:self];
 
 	[children_ addObject:test];
 }
@@ -127,7 +127,7 @@
 }
 
 // Send log messages to current test
-- (void)testCase:(id)testCase didLog:(NSString *)message {
+- (void)testCase:(id)testCase log:(NSString *)message {
 	[self log:message];
 }
 

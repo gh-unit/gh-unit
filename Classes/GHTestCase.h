@@ -56,7 +56,7 @@
 #define GHTestLog(...) [self _log:[NSString stringWithFormat:__VA_ARGS__, nil]]
 
 @protocol GHTestCaseLogDelegate <NSObject>
-- (void)testCase:(id)testCase didLog:(NSString *)message;
+- (void)testCase:(id)testCase log:(NSString *)message;
 @end
 
 @interface GHTestCase : NSObject {

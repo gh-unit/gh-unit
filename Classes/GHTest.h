@@ -52,8 +52,7 @@ typedef enum {
 	GHTestStatusFinished,
 } GHTestStatus;
 
-static __inline__ NSString* 
-NSStringFromGHTestStatus(GHTestStatus status) {
+static __inline__ NSString* NSStringFromGHTestStatus(GHTestStatus status) {
 	switch(status) {
 		case GHTestStatusNone: return NSLocalizedString(@"Waiting", @"Test status / Waiting");
 		case GHTestStatusRunning: return NSLocalizedString(@"Running", @"Test status / Running");
@@ -128,19 +127,17 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 + (id)testWithTarget:(id)target selector:(SEL)selector;
 + (id)testWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception;
 
-@property (readonly) id target;
-@property (readonly) SEL selector;
-@property (readonly) NSString *name;
-@property (readonly) NSTimeInterval interval;
-@property (readonly) NSException *exception;
-@property (readonly) GHTestStatus status;
-@property (readonly) BOOL failed;
-@property (readonly) GHTestStats stats;
-@property (readonly) NSArray *log;
+@property (readonly, nonatomic) id target;
+@property (readonly, nonatomic) SEL selector;
+@property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSTimeInterval interval;
+@property (readonly, nonatomic) NSException *exception;
+@property (readonly, nonatomic) GHTestStatus status;
+@property (readonly, nonatomic) BOOL failed;
+@property (readonly, nonatomic) GHTestStats stats;
+@property (readonly, nonatomic) NSArray *log;
 
-@property (assign) id<GHTestDelegate> delegate;
-
-- (void)setLogDelegate:(id<GHTestCaseLogDelegate>)logDelegate;
+@property (assign, nonatomic) id<GHTestDelegate> delegate;
 
 /*!
  Run the test.

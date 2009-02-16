@@ -94,7 +94,7 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_;
 	return [NSString stringWithFormat:@"%@ %@", self.identifier, [super description]];
 }
 
-- (void)setLogDelegate:(id<GHTestCaseLogDelegate>)delegate {
+- (void)setLogDelegate:(id)delegate {
 	if ([target_ respondsToSelector:@selector(setLogDelegate:)])
 		[target_ setLogDelegate:delegate];
 }

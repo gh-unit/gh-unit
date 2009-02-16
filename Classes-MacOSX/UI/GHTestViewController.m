@@ -66,7 +66,6 @@
 	if (row < 0) return;
 	id item = [outlineView_ itemAtRow:row];
 	NSString *text = [item performSelector:selector];
-	NSLog(@"Setting text: %@ at row %d for %@", text, row, NSStringFromSelector(selector));
 	[textView_ setString:text ? text : @""];	
 }
 
@@ -118,8 +117,11 @@
 - (void)selectFirstFailure {
 	GHTestNode *failedNode = [self findFailure];
 	NSInteger row = [outlineView_ rowForItem:failedNode];
-	if (row >= 0)
+	if (row >= 0) {
 		[outlineView_ selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+		[textSegmentedControl_ setSelectedSegment:0];
+		[self _textSegmentChanged:textSegmentedControl_];
+	}
 }
 
 - (void)updateTest:(id<GHTest>)test {

@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
 	NSDeallocateZombies = NO;
 	NSHangOnUncaughtException = YES;
 	[NSAutoreleasePool enableFreedObjectCheck:YES];
+	setenv("NSAutoreleaseFreedObjectCheckEnabled", "1", 1);
 	NSSetUncaughtExceptionHandler(&exceptionHandler);
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];

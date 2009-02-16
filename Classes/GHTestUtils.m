@@ -47,6 +47,7 @@
 //
 
 #import "GHTestUtils.h"
+#import "GHTest.h"
 
 #import <objc/runtime.h>
 
