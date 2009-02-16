@@ -158,6 +158,8 @@ You should see something similar to the following:
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
+An example of a iPhone test project can be found at: [MyTestable](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable). This project symlinks to the gh-unit files.
+
 ## Test Macros
  
 The following test macros are included. They are the same or similar to SenTest macros (STAssertTrue, etc). 
