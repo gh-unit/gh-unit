@@ -32,14 +32,15 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	viewController_ = [[GHUnitIPhoneViewController alloc] init];
-	
-	[window_ addSubview:viewController_.view];
+	navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController_];
+	[window_ addSubview:navigationController_.view];
 	[window_ makeKeyAndVisible];
 	
 	[self runTests];
 }
 
 - (void)dealloc {
+	[navigationController_ release];
 	[viewController_ release];
 	[window_ release];
 	[super dealloc];

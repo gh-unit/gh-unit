@@ -13,8 +13,10 @@
 @class GHUnitIPhoneViewController;
 
 @interface GHUnitIPhoneAppDelegate : NSObject <UIApplicationDelegate, GHTestRunnerDelegate> {
-    UIWindow *window_;
-    GHUnitIPhoneViewController *viewController_;
+	UIWindow *window_;
+	
+	UINavigationController *navigationController_;
+	GHUnitIPhoneViewController *viewController_;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
