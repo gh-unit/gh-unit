@@ -1,7 +1,7 @@
 # GHUnit
 
 GHUnit is a test framework for Objective-C (Mac OS X 10.5 and iPhone 2.0 and above).
-It can be used with SenTestingKit or by itself. 
+It can be used with SenTestingKit, GTM or by itself. 
 
 For example, your test cases will be run if they subclass any of the following:
 
@@ -13,7 +13,9 @@ For example, your test cases will be run if they subclass any of the following:
 
 ## Download
 
-[GHUnit-0.2.5.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.5.zip) (2009/02/05)
+GHUnit.framework [GHUnit-0.2.6.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.6.zip) (2009/02/20)
+
+For iPhone you have to embed the source in your project. See below.
 
 ## Why?
 
@@ -97,9 +99,9 @@ Now you should be ready to Build and Run the test target.
 
 You should see something similar to the following screen shots:
 
-![gh-unit2](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit2.jpg)
+![gh-unit4](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit5.jpg)
 
-![gh-unit4](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit4.jpg)
+![gh-unit2](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit2.jpg)
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import <GHUnit/GHUnit.h>` to it, and then you won't have to include that import for every test.
 - To embed GHUnit in your project (to use it without having to install in `/Library/Frameworks/`) see below.

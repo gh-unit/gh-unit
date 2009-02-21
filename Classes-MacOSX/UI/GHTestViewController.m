@@ -37,7 +37,7 @@
 
 @synthesize splitView=splitView_, statusView=statusView_, detailsView=detailsView_;
 @synthesize statusLabel=statusLabel_, progressIndicator=progressIndicator_, outlineView=outlineView_;
-@synthesize textSegmentedControl=textSegmentedControl_, textView=textView_;
+@synthesize textSegmentedControl=textSegmentedControl_, textView=textView_, wrapInTextView=wrapInTextView_;
 
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { }
@@ -53,9 +53,33 @@
 	[textView_ setTextColor:[NSColor whiteColor]];
 	[textView_ setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
 	[textView_ setString:@""];
+	self.wrapInTextView = NO;
+	
 	[textSegmentedControl_ setTarget:self];
 	[textSegmentedControl_ setAction:@selector(_textSegmentChanged:)];
 	self.status = @"Loading tests...";
+}
+
+- (void)setWrapInTextView:(BOOL)wrapInTextView {
+	wrapInTextView_ = wrapInTextView;
+	if (wrapInTextView_) {
+		// No horizontal scroll, word wrapping
+		[[textView_ enclosingScrollView] setHasHorizontalScroller:NO];		
+		[textView_ setHorizontallyResizable:NO];
+		NSSize size = [[textView_ enclosingScrollView] frame].size;
+		[[textView_ textContainer] setContainerSize:NSMakeSize(size.width, FLT_MAX)];	
+		[[textView_ textContainer] setWidthTracksTextView:YES];
+		NSRect frame = [textView_ frame];
+		frame.size.width = size.width;
+		[textView_ setFrame:frame];
+	} else {
+		// So we have horizontal scroll
+		[[textView_ enclosingScrollView] setHasHorizontalScroller:YES];		
+		[textView_ setHorizontallyResizable:YES];
+		[[textView_ textContainer] setContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)];	
+		[[textView_ textContainer] setWidthTracksTextView:NO];		
+	}
+	[textView_ setNeedsDisplay:YES];
 }
 
 - (IBAction)copy:(id)sender {

@@ -42,6 +42,8 @@
 	NSSegmentedControl *textSegmentedControl_;
 	NSTextView *textView_;
 	
+	BOOL wrapInTextView_;
+	
 	GHTestViewModel *model_;
 }
 
@@ -54,6 +56,7 @@
 @property (assign, nonatomic) IBOutlet NSOutlineView *outlineView;
 @property (assign, nonatomic) IBOutlet NSSegmentedControl *textSegmentedControl;
 @property (assign, nonatomic) IBOutlet NSTextView *textView;
+@property (assign, nonatomic) BOOL wrapInTextView;
 
 @property (copy, nonatomic) NSString *status;
 

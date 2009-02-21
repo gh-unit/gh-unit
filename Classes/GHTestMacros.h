@@ -970,7 +970,7 @@ continue; \
 } while (0)
 
 
-@interface NSException (GTMSenTestAdditions)
+@interface NSException (GHTestMacros_GTMSenTestAdditions)
 + (NSException *)failureInFile:(NSString *)filename 
                         atLine:(int)lineNumber 
                withDescription:(NSString *)formatString, ...;

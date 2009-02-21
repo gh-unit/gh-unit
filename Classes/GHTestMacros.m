@@ -51,13 +51,13 @@ NSString *const GHTestFilenameKey = @"GHTestFilenameKey";
 NSString *const GHTestLineNumberKey = @"GHTestLineNumberKey";
 NSString *const GHTestFailureException = @"GHTestFailureException";
 
-@interface NSException (GTMSenTestPrivateAdditions)
+@interface NSException (GHTestMacros_GTMSenTestPrivateAdditions)
 + (NSException *)failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                         reason:(NSString *)reason;
 @end
 
-@implementation NSException (GTMSenTestPrivateAdditions)
+@implementation NSException (GHTestMacros_GTMSenTestPrivateAdditions)
 + (NSException *)failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                         reason:(NSString *)reason {
@@ -73,7 +73,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
 }
 @end
 
-@implementation NSException (GTMSenTestAdditions)
+@implementation NSException (GHTestMacros_GTMSenTestAdditions)
 
 + (NSException *)failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
