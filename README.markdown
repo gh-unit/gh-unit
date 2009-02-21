@@ -166,7 +166,7 @@ An example of a iPhone test project can be found at: [MyTestable](http://github.
  
 The following test macros are included. 
 
-These macros are directly from: [GTMSenTestCase.h](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/GTMSenTestCase.h
+These macros are directly from: [GTMSenTestCase.h](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/GTMSenTestCase.h)
 prefixed with GH so as not to conflict with the GTM macros if you are using those in your project.
 
 The `description` argument appends extra information for when the assert fails; though most of the time you might leave it as nil.
