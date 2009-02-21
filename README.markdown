@@ -164,8 +164,12 @@ An example of a iPhone test project can be found at: [MyTestable](http://github.
 
 ## Test Macros
  
-The following test macros are included. They are the same or similar to SenTest macros (STAssertTrue, etc). 
-The `description` arg appends extra information for when the assert fails; though most of the time you might leave it as nil.
+The following test macros are included. 
+
+These macros are directly from: [GTMSenTestCase.h](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/GTMSenTestCase.h
+prefixed with GH so as not to conflict with the GTM macros if you are using those in your project.
+
+The `description` argument appends extra information for when the assert fails; though most of the time you might leave it as nil.
  
 	GHAssertNoErr(a1, description, ...)
 	GHAssertErr(a1, a2, description, ...)
