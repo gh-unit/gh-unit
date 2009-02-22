@@ -17,6 +17,10 @@ GHUnit.framework [GHUnit-0.2.6.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUni
 
 For iPhone you have to embed the source in your project. See below.
 
+## Group
+
+For questions and discussions see the [GHUnit Google Group](http://groups.google.com/group/ghunit)
+
 ## Why?
 
 The goals of GHUnit are:
