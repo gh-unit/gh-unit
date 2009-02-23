@@ -7,48 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		002D9C0A0F49158F007932FE /* GHTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BD80F49158F007932FE /* GHTest.h */; };
+		002D9C0A0F49158F007932FE /* GHTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BD80F49158F007932FE /* GHTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C0B0F49158F007932FE /* GHTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BD90F49158F007932FE /* GHTest.m */; };
-		002D9C0C0F49158F007932FE /* GHTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BDA0F49158F007932FE /* GHTestCase.h */; };
+		002D9C0C0F49158F007932FE /* GHTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BDA0F49158F007932FE /* GHTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C0D0F49158F007932FE /* GHTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BDB0F49158F007932FE /* GHTestCase.m */; };
-		002D9C0E0F49158F007932FE /* GHTestGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BDC0F49158F007932FE /* GHTestGroup.h */; };
+		002D9C0E0F49158F007932FE /* GHTestGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BDC0F49158F007932FE /* GHTestGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C0F0F49158F007932FE /* GHTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BDD0F49158F007932FE /* GHTestGroup.m */; };
-		002D9C100F49158F007932FE /* GHTestMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BDE0F49158F007932FE /* GHTestMacros.h */; };
+		002D9C100F49158F007932FE /* GHTestMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BDE0F49158F007932FE /* GHTestMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C110F49158F007932FE /* GHTestMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BDF0F49158F007932FE /* GHTestMacros.m */; };
-		002D9C120F49158F007932FE /* GHTestRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE00F49158F007932FE /* GHTestRunner.h */; };
+		002D9C120F49158F007932FE /* GHTestRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE00F49158F007932FE /* GHTestRunner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C130F49158F007932FE /* GHTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE10F49158F007932FE /* GHTestRunner.m */; };
-		002D9C140F49158F007932FE /* GHTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE20F49158F007932FE /* GHTestSuite.h */; };
+		002D9C140F49158F007932FE /* GHTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE20F49158F007932FE /* GHTestSuite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C150F49158F007932FE /* GHTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE30F49158F007932FE /* GHTestSuite.m */; };
-		002D9C160F49158F007932FE /* GHTestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE40F49158F007932FE /* GHTestUtils.h */; };
+		002D9C160F49158F007932FE /* GHTestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE40F49158F007932FE /* GHTestUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C170F49158F007932FE /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE50F49158F007932FE /* GHTestUtils.m */; };
-		002D9C180F49158F007932FE /* GHUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE60F49158F007932FE /* GHUnit.h */; };
-		002D9C190F49158F007932FE /* GHTestViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE80F49158F007932FE /* GHTestViewModel.h */; };
+		002D9C180F49158F007932FE /* GHUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE60F49158F007932FE /* GHUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002D9C190F49158F007932FE /* GHTestViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE80F49158F007932FE /* GHTestViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C1A0F49158F007932FE /* GHTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE90F49158F007932FE /* GHTestViewModel.m */; };
-		002D9C1B0F49158F007932FE /* GHTestApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BEC0F49158F007932FE /* GHTestApp.h */; };
+		002D9C1B0F49158F007932FE /* GHTestApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BEC0F49158F007932FE /* GHTestApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C1C0F49158F007932FE /* GHTestApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BED0F49158F007932FE /* GHTestApp.m */; };
 		002D9C1D0F49158F007932FE /* GHTestApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002D9BEE0F49158F007932FE /* GHTestApp.xib */; };
-		002D9C1E0F49158F007932FE /* GHTestAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BEF0F49158F007932FE /* GHTestAppDelegate.h */; };
+		002D9C1E0F49158F007932FE /* GHTestAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BEF0F49158F007932FE /* GHTestAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C1F0F49158F007932FE /* GHTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BF00F49158F007932FE /* GHTestAppDelegate.m */; };
 		002D9C200F49158F007932FE /* GHTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002D9BF10F49158F007932FE /* GHTestView.xib */; };
-		002D9C210F49158F007932FE /* GHTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BF20F49158F007932FE /* GHTestViewController.h */; };
+		002D9C210F49158F007932FE /* GHTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BF20F49158F007932FE /* GHTestViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C220F49158F007932FE /* GHTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BF30F49158F007932FE /* GHTestViewController.m */; };
 		002D9C230F49158F007932FE /* GHTestWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002D9BF40F49158F007932FE /* GHTestWindow.xib */; };
-		002D9C240F49158F007932FE /* GHTestWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BF50F49158F007932FE /* GHTestWindowController.h */; };
+		002D9C240F49158F007932FE /* GHTestWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BF50F49158F007932FE /* GHTestWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C250F49158F007932FE /* GHTestWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BF60F49158F007932FE /* GHTestWindowController.m */; };
-		002D9C260F49158F007932FE /* GHLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BF90F49158F007932FE /* GHLogger.h */; };
+		002D9C260F49158F007932FE /* GHLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BF90F49158F007932FE /* GHLogger.h */; settings = {ATTRIBUTES = (); }; };
 		002D9C270F49158F007932FE /* GHLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFA0F49158F007932FE /* GHLogger.m */; };
 		002D9C280F49158F007932FE /* GHNSInvocation+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BFB0F49158F007932FE /* GHNSInvocation+Utils.h */; };
 		002D9C290F49158F007932FE /* GHNSInvocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFC0F49158F007932FE /* GHNSInvocation+Utils.m */; };
 		002D9C2A0F49158F007932FE /* GHNSObject+Invocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BFD0F49158F007932FE /* GHNSObject+Invocation.h */; };
 		002D9C2B0F49158F007932FE /* GHNSObject+Invocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFE0F49158F007932FE /* GHNSObject+Invocation.m */; };
-		002D9C2C0F49158F007932FE /* GTMGarbageCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C010F49158F007932FE /* GTMGarbageCollection.h */; };
+		002D9C2C0F49158F007932FE /* GTMGarbageCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C010F49158F007932FE /* GTMGarbageCollection.h */; settings = {ATTRIBUTES = (); }; };
 		002D9C2D0F49158F007932FE /* GTMLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C020F49158F007932FE /* GTMLogger.h */; };
 		002D9C2E0F49158F007932FE /* GTMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9C030F49158F007932FE /* GTMLogger.m */; };
 		002D9C2F0F49158F007932FE /* GTMObjC2Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C040F49158F007932FE /* GTMObjC2Runtime.h */; };
 		002D9C300F49158F007932FE /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9C050F49158F007932FE /* GTMObjC2Runtime.m */; };
 		002D9C310F49158F007932FE /* GTMStackTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C060F49158F007932FE /* GTMStackTrace.h */; };
 		002D9C320F49158F007932FE /* GTMStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9C070F49158F007932FE /* GTMStackTrace.m */; };
-		002D9C330F49158F007932FE /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C080F49158F007932FE /* GTMDefines.h */; };
+		002D9C330F49158F007932FE /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C080F49158F007932FE /* GTMDefines.h */; settings = {ATTRIBUTES = (); }; };
 		002D9C340F49158F007932FE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 002D9C090F49158F007932FE /* README.md */; };
 		002E73BF0F2C219600427636 /* GHSenTestingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00970A2F0F2836CE00189A9D /* GHSenTestingTest.m */; };
 		002E73C00F2C219600427636 /* GHTestCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 009DD7A60F26EC6C0058A2B0 /* GHTestCore.m */; };
@@ -58,40 +58,6 @@
 		002E74870F2C2B3100427636 /* GHSlowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002E74860F2C2B3100427636 /* GHSlowTest.m */; };
 		005FDD220F33D259006B369F /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD210F33D259006B369F /* GTMSenTestCase.m */; };
 		005FDD390F33D373006B369F /* GHGTMTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */; };
-		0062B7610F2C1F9200B0562A /* DebugiPhone.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B73D0F2C1F9200B0562A /* DebugiPhone.xcconfig */; };
-		0062B7620F2C1F9200B0562A /* DebugiPhone20.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B73E0F2C1F9200B0562A /* DebugiPhone20.xcconfig */; };
-		0062B7630F2C1F9200B0562A /* DebugiPhone21.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B73F0F2C1F9200B0562A /* DebugiPhone21.xcconfig */; };
-		0062B7640F2C1F9200B0562A /* DebugLeopardOrLater.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7400F2C1F9200B0562A /* DebugLeopardOrLater.xcconfig */; };
-		0062B7650F2C1F9200B0562A /* DebugSnowLeopardOrLater.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7410F2C1F9200B0562A /* DebugSnowLeopardOrLater.xcconfig */; };
-		0062B7660F2C1F9200B0562A /* DebugTigerOrLater.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7420F2C1F9200B0562A /* DebugTigerOrLater.xcconfig */; };
-		0062B7670F2C1F9200B0562A /* ReleaseiPhone.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7430F2C1F9200B0562A /* ReleaseiPhone.xcconfig */; };
-		0062B7680F2C1F9200B0562A /* ReleaseiPhone20.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7440F2C1F9200B0562A /* ReleaseiPhone20.xcconfig */; };
-		0062B7690F2C1F9200B0562A /* ReleaseiPhone21.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7450F2C1F9200B0562A /* ReleaseiPhone21.xcconfig */; };
-		0062B76A0F2C1F9200B0562A /* ReleaseLeopardOrLater.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7460F2C1F9200B0562A /* ReleaseLeopardOrLater.xcconfig */; };
-		0062B76B0F2C1F9200B0562A /* ReleaseSnowLeopardOrLater.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7470F2C1F9200B0562A /* ReleaseSnowLeopardOrLater.xcconfig */; };
-		0062B76C0F2C1F9200B0562A /* ReleaseTigerOrLater.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7480F2C1F9200B0562A /* ReleaseTigerOrLater.xcconfig */; };
-		0062B76D0F2C1F9200B0562A /* CodeCoverage.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B74A0F2C1F9200B0562A /* CodeCoverage.xcconfig */; };
-		0062B76E0F2C1F9200B0562A /* CodeCoverageStatic.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B74B0F2C1F9200B0562A /* CodeCoverageStatic.xcconfig */; };
-		0062B76F0F2C1F9200B0562A /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B74C0F2C1F9200B0562A /* Debug.xcconfig */; };
-		0062B7700F2C1F9200B0562A /* GCSupported.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B74D0F2C1F9200B0562A /* GCSupported.xcconfig */; };
-		0062B7710F2C1F9200B0562A /* General.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B74E0F2C1F9200B0562A /* General.xcconfig */; };
-		0062B7720F2C1F9200B0562A /* GTMMerge.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B74F0F2C1F9200B0562A /* GTMMerge.xcconfig */; };
-		0062B7730F2C1F9200B0562A /* iPhone20.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7500F2C1F9200B0562A /* iPhone20.xcconfig */; };
-		0062B7740F2C1F9200B0562A /* iPhone21.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7510F2C1F9200B0562A /* iPhone21.xcconfig */; };
-		0062B7750F2C1F9200B0562A /* LeopardOrLater.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7520F2C1F9200B0562A /* LeopardOrLater.xcconfig */; };
-		0062B7760F2C1F9200B0562A /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7530F2C1F9200B0562A /* Release.xcconfig */; };
-		0062B7770F2C1F9200B0562A /* SnowLeopardOrLater.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7540F2C1F9200B0562A /* SnowLeopardOrLater.xcconfig */; };
-		0062B7780F2C1F9200B0562A /* TigerOrLater.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7550F2C1F9200B0562A /* TigerOrLater.xcconfig */; };
-		0062B7790F2C1F9200B0562A /* Unittest.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7560F2C1F9200B0562A /* Unittest.xcconfig */; };
-		0062B77A0F2C1F9200B0562A /* DebugUnittest.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7580F2C1F9200B0562A /* DebugUnittest.xcconfig */; };
-		0062B77B0F2C1F9200B0562A /* LoadableBundle.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7590F2C1F9200B0562A /* LoadableBundle.xcconfig */; };
-		0062B77C0F2C1F9200B0562A /* LoadableBundleGCSupported.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B75A0F2C1F9200B0562A /* LoadableBundleGCSupported.xcconfig */; };
-		0062B77D0F2C1F9200B0562A /* ReleaseUnittest.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B75B0F2C1F9200B0562A /* ReleaseUnittest.xcconfig */; };
-		0062B77E0F2C1F9200B0562A /* SharedLibrary.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B75C0F2C1F9200B0562A /* SharedLibrary.xcconfig */; };
-		0062B77F0F2C1F9200B0562A /* SharedLibraryGCSupported.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B75D0F2C1F9200B0562A /* SharedLibraryGCSupported.xcconfig */; };
-		0062B7800F2C1F9200B0562A /* StaticLibrary.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B75E0F2C1F9200B0562A /* StaticLibrary.xcconfig */; };
-		0062B7810F2C1F9200B0562A /* StaticLibraryGCSupported.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0062B75F0F2C1F9200B0562A /* StaticLibraryGCSupported.xcconfig */; };
-		0062B7820F2C1F9200B0562A /* xcconfigs-readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0062B7600F2C1F9200B0562A /* xcconfigs-readme.txt */; };
 		00AF0E3A0F2C4D47009F0ABA /* SenTestingKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00970A550F28397F00189A9D /* SenTestingKit.framework */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
@@ -452,10 +418,10 @@
 		0867D691FE84028FC02AAC07 /* GHUnit */ = {
 			isa = PBXGroup;
 			children = (
+				0029B6D50F2EDC60003EAFC1 /* README.markdown */,
 				002D9BD70F49158F007932FE /* Classes */,
 				002D9BEA0F49158F007932FE /* Classes-MacOSX */,
 				002D9BF70F49158F007932FE /* Libraries */,
-				0029B6D50F2EDC60003EAFC1 /* README.markdown */,
 				009DD7A40F26EC6C0058A2B0 /* Tests */,
 				0062B73B0F2C1F9200B0562A /* XcodeConfig */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -618,40 +584,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
-				0062B7610F2C1F9200B0562A /* DebugiPhone.xcconfig in Resources */,
-				0062B7620F2C1F9200B0562A /* DebugiPhone20.xcconfig in Resources */,
-				0062B7630F2C1F9200B0562A /* DebugiPhone21.xcconfig in Resources */,
-				0062B7640F2C1F9200B0562A /* DebugLeopardOrLater.xcconfig in Resources */,
-				0062B7650F2C1F9200B0562A /* DebugSnowLeopardOrLater.xcconfig in Resources */,
-				0062B7660F2C1F9200B0562A /* DebugTigerOrLater.xcconfig in Resources */,
-				0062B7670F2C1F9200B0562A /* ReleaseiPhone.xcconfig in Resources */,
-				0062B7680F2C1F9200B0562A /* ReleaseiPhone20.xcconfig in Resources */,
-				0062B7690F2C1F9200B0562A /* ReleaseiPhone21.xcconfig in Resources */,
-				0062B76A0F2C1F9200B0562A /* ReleaseLeopardOrLater.xcconfig in Resources */,
-				0062B76B0F2C1F9200B0562A /* ReleaseSnowLeopardOrLater.xcconfig in Resources */,
-				0062B76C0F2C1F9200B0562A /* ReleaseTigerOrLater.xcconfig in Resources */,
-				0062B76D0F2C1F9200B0562A /* CodeCoverage.xcconfig in Resources */,
-				0062B76E0F2C1F9200B0562A /* CodeCoverageStatic.xcconfig in Resources */,
-				0062B76F0F2C1F9200B0562A /* Debug.xcconfig in Resources */,
-				0062B7700F2C1F9200B0562A /* GCSupported.xcconfig in Resources */,
-				0062B7710F2C1F9200B0562A /* General.xcconfig in Resources */,
-				0062B7720F2C1F9200B0562A /* GTMMerge.xcconfig in Resources */,
-				0062B7730F2C1F9200B0562A /* iPhone20.xcconfig in Resources */,
-				0062B7740F2C1F9200B0562A /* iPhone21.xcconfig in Resources */,
-				0062B7750F2C1F9200B0562A /* LeopardOrLater.xcconfig in Resources */,
-				0062B7760F2C1F9200B0562A /* Release.xcconfig in Resources */,
-				0062B7770F2C1F9200B0562A /* SnowLeopardOrLater.xcconfig in Resources */,
-				0062B7780F2C1F9200B0562A /* TigerOrLater.xcconfig in Resources */,
-				0062B7790F2C1F9200B0562A /* Unittest.xcconfig in Resources */,
-				0062B77A0F2C1F9200B0562A /* DebugUnittest.xcconfig in Resources */,
-				0062B77B0F2C1F9200B0562A /* LoadableBundle.xcconfig in Resources */,
-				0062B77C0F2C1F9200B0562A /* LoadableBundleGCSupported.xcconfig in Resources */,
-				0062B77D0F2C1F9200B0562A /* ReleaseUnittest.xcconfig in Resources */,
-				0062B77E0F2C1F9200B0562A /* SharedLibrary.xcconfig in Resources */,
-				0062B77F0F2C1F9200B0562A /* SharedLibraryGCSupported.xcconfig in Resources */,
-				0062B7800F2C1F9200B0562A /* StaticLibrary.xcconfig in Resources */,
-				0062B7810F2C1F9200B0562A /* StaticLibraryGCSupported.xcconfig in Resources */,
-				0062B7820F2C1F9200B0562A /* xcconfigs-readme.txt in Resources */,
 				002D9C1D0F49158F007932FE /* GHTestApp.xib in Resources */,
 				002D9C200F49158F007932FE /* GHTestView.xib in Resources */,
 				002D9C230F49158F007932FE /* GHTestWindow.xib in Resources */,

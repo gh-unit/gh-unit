@@ -13,7 +13,7 @@ For example, your test cases will be run if they subclass any of the following:
 
 ## Download
 
-GHUnit.framework [GHUnit-0.2.6.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.6.zip) (2009/02/20)
+GHUnit.framework [GHUnit-0.2.7.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.7.zip) (2009/02/22)
 
 For iPhone you have to embed the source in your project. See below.
 
