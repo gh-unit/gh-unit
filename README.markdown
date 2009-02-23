@@ -15,6 +15,9 @@ For example, your test cases will be run if they subclass any of the following:
 
 GHUnit.framework [GHUnit-0.2.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.8.zip) (2009/02/23)
 
+Release Notes:
+- A GHUnitTestMain is now included for Mac OS X application testing. You may need to remove your existing test main.
+
 For iPhone you have to embed the source in your project. See below.
 
 ## Group
