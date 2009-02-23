@@ -171,7 +171,7 @@ From the command line, run the tests from xcodebuild (with the TEST_CLI environm
 If you are wondering, the `RunTests.sh` script will only run the tests if the env variable TESTS_CLI is set. 
 This is why this phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.
 
-For an example Makefiles see:
+Example Makefiles:
 
 - [Makefile](http://github.com/gabriel/gh-unit/tree/master/Project/Makefile) (for a Mac App)
 - [Makefile](http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile) (for an iPhone App)
