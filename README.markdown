@@ -13,13 +13,11 @@ For example, your test cases will be run if they subclass any of the following:
 
 ## Download
 
-GHUnit.framework [GHUnit-0.2.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.8.zip) (2009/02/23)
+**GHUnit.framework** [GHUnit-0.2.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.8.zip) (2009/02/23)
 
-Release Notes:
+_A GHUnitTestMain is now included for Mac OS X application testing. You may need to remove your existing test main._
 
-A GHUnitTestMain is now included for Mac OS X application testing. You may need to remove your existing test main.
-
-For an iPhone application, you have to embed the source in your project. See below.
+_For an iPhone application, you have to embed the source in your project. See below._
 
 ## Group
 
@@ -176,10 +174,10 @@ To run the tests from the command line:
 If you are wondering, the `RunTests.sh` script will only run the tests if the env variable TESTS_CLI is set. 
 This is why this phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.
 
-For an example Makefile see:
+For an example Makefiles see:
 
-(Makefile)[http://github.com/gabriel/gh-unit/tree/master/Project/Makefile] (for Mac App)
-(Makefile)[http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile] (for iPhone App)
+- [Makefile](http://github.com/gabriel/gh-unit/tree/master/Project/Makefile) (for a Mac App)
+- [Makefile](http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile) (for an iPhone App)
 
 The script will return a non-zero exit code on test failure so your continuous integration scripts work.
 
