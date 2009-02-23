@@ -160,12 +160,13 @@ To run the tests from the command line:
   - To the `Tests` target, Add | New Build Phase | New Run Script Build Phrase
   - Enter in the path to the RunTests.sh file. (The path should be relative to the xcode project file!)
 
-From the command line, run the tests from xcodebuild (with the TEST_CLI environment variable set):
+From the command line, run the tests from xcodebuild (with the TEST_CLI environment variable set) :
 
-  // For mac app
-  TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
-	// For iPhone app
-	TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator2.2 build
+    // For mac app
+    TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
+
+    // For iPhone app
+    TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator2.2 build
 
 If you are wondering, the `RunTests.sh` script will only run the tests if the env variable TESTS_CLI is set. 
 This is why this phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.
