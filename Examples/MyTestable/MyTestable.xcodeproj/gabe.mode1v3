@@ -249,6 +249,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -286,21 +288,23 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>002D9E160F491B8D007932FE</string>
+								<string>002D9E170F491B8D007932FE</string>
+								<string>002D9E2A0F491B8D007932FE</string>
 								<string>002D9D4B0F4918E5007932FE</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>002D9DB20F491A3B007932FE</string>
-								<string>002D9E7E0F491BC2007932FE</string>
-								<string>002D9E7F0F491BC2007932FE</string>
+								<string>00C1A30A0F52872700FCCA14</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>0</integer>
+									<integer>44</integer>
+									<integer>40</integer>
+									<integer>38</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {230, 673}}</string>
+							<string>{{0, 136}, {230, 673}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -330,14 +334,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MyTest.m</string>
+								<string>GHUnitIPhoneExceptionViewController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -345,20 +347,22 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MyTest.m</string>
+										<string>GHUnitIPhoneExceptionViewController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>002D9E820F491C70007932FE</string>
+										<string>00C1A32D0F5287D500FCCA14</string>
 										<key>history</key>
 										<array>
 											<string>002D9DB40F491A3B007932FE</string>
-											<string>002D9E800F491BC2007932FE</string>
+											<string>00C1A3230F52878400FCCA14</string>
+											<string>00C1A3240F52878400FCCA14</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>002D9DB70F491A3B007932FE</string>
 											<string>002D9DB80F491A3B007932FE</string>
+											<string>00C1A3250F52878400FCCA14</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -416,9 +420,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>002D9CF30F4916EF007932FE</string>
+				<string>00C1A3270F52878400FCCA14</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>002D9CF40F4916EF007932FE</string>
+				<string>00C1A3280F52878400FCCA14</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -537,7 +541,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>256449648.13621399</real>
+	<real>257066965.57608601</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -552,9 +556,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>002D9CF50F4916EF007932FE</string>
 		<string>/Users/gabe/Projects/gh-unit/Examples/MyTestable/MyTestable.xcodeproj</string>
 	</array>
@@ -580,7 +581,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MyTest.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -638,7 +639,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>002D9CF50F4916EF007932FE</string>
-				<string>002D9CF60F4916EF007932FE</string>
+				<string>00C1A31E0F52876A00FCCA14</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

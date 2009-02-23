@@ -91,6 +91,10 @@
 	[self _notifyFinished];
 }
 
+- (GHTestStats)stats {
+	return [test_ stats];
+}
+
 - (void)_log:(NSString *)message {
 	fputs([[message stringByAppendingString:@"\n"] UTF8String], stderr);
   fflush(stderr);

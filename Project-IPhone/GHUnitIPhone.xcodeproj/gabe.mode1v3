@@ -249,6 +249,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -294,18 +296,18 @@
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>1C37FBAC04509CD000000102</string>
+								<string>00C1A2FA0F5286BD00FCCA14</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>24</integer>
-									<integer>18</integer>
-									<integer>0</integer>
+									<integer>51</integer>
+									<integer>50</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 261}, {328, 673}}</string>
+							<string>{{0, 347}, {328, 673}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -335,14 +337,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>GHUnitIPhoneViewController.m</string>
+								<string>GHUnitIPhoneTestMain.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -350,40 +350,44 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>GHUnitIPhoneViewController.m</string>
+										<string>GHUnitIPhoneTestMain.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>000811850F4FD8190034DF4C</string>
+										<string>00C1A3020F52871C00FCCA14</string>
 										<key>history</key>
 										<array>
 											<string>0029B85A0F2EED9B003EAFC1</string>
-											<string>0064A9420F490AE000422485</string>
-											<string>000811190F4FD4C40034DF4C</string>
 											<string>0008111A0F4FD4C40034DF4C</string>
 											<string>0008111B0F4FD4C40034DF4C</string>
 											<string>0008111C0F4FD4C40034DF4C</string>
 											<string>0008111E0F4FD4C40034DF4C</string>
-											<string>0008111F0F4FD4C40034DF4C</string>
 											<string>000811520F4FD6330034DF4C</string>
 											<string>000811710F4FD76C0034DF4C</string>
 											<string>0008117C0F4FD8000034DF4C</string>
-											<string>0008117D0F4FD8000034DF4C</string>
+											<string>00C1A2AA0F5280E300FCCA14</string>
+											<string>00C1A2AB0F5280E300FCCA14</string>
+											<string>00C1A2AC0F5280E300FCCA14</string>
+											<string>00C1A2AE0F5280E300FCCA14</string>
+											<string>00C1A2AF0F5280E300FCCA14</string>
+											<string>00C1A2B10F5280E300FCCA14</string>
+											<string>00C1A2FB0F5286BD00FCCA14</string>
+											<string>00C1A2FC0F5286BD00FCCA14</string>
+										</array>
+										<key>nextStack</key>
+										<array>
+											<string>00C1A2B50F5280E300FCCA14</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>00AF135A0F2D8DD0009F0ABA</string>
 											<string>000810070F4FC95B0034DF4C</string>
-											<string>0008100D0F4FC95B0034DF4C</string>
-											<string>000811210F4FD4C40034DF4C</string>
 											<string>000811220F4FD4C40034DF4C</string>
-											<string>000811240F4FD4C40034DF4C</string>
-											<string>000811250F4FD4C40034DF4C</string>
-											<string>000811270F4FD4C40034DF4C</string>
 											<string>000811280F4FD4C40034DF4C</string>
-											<string>000811290F4FD4C40034DF4C</string>
 											<string>000811740F4FD76C0034DF4C</string>
 											<string>0008117E0F4FD8000034DF4C</string>
+											<string>00C1A2B30F5280E300FCCA14</string>
+											<string>00C1A2FD0F5286BD00FCCA14</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -441,9 +445,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>0008112B0F4FD4C40034DF4C</string>
+				<string>00C1A2B70F5280E300FCCA14</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>0008112C0F4FD4C40034DF4C</string>
+				<string>00C1A2B80F5280E300FCCA14</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -562,7 +566,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>256890905.60731801</real>
+	<real>257066780.02082199</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -577,10 +581,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>00AF130E0F2D8AC8009F0ABA</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -605,7 +608,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>GHUnitIPhoneExceptionViewController.m</string>
+								<string>GHUnitIPhoneTestMain.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -663,7 +666,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>00AF130E0F2D8AC8009F0ABA</string>
-				<string>000810E10F4FD1F90034DF4C</string>
+				<string>00C1A2A20F5280B900FCCA14</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -783,13 +786,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>000811100F4FD4880034DF4C</string>
+				<string>00C1A2A30F5280B900FCCA14</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>000811110F4FD4880034DF4C</string>
-				<string>000811120F4FD4880034DF4C</string>
-				<string>000811130F4FD4880034DF4C</string>
-				<string>000811140F4FD4880034DF4C</string>
-				<string>000811150F4FD4880034DF4C</string>
+				<string>00C1A2A40F5280B900FCCA14</string>
+				<string>00C1A2A50F5280B900FCCA14</string>
+				<string>00C1A2A60F5280B900FCCA14</string>
+				<string>00C1A2A70F5280B900FCCA14</string>
+				<string>00C1A2A80F5280B900FCCA14</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -943,7 +946,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>000811160F4FD4880034DF4C</string>
+				<string>00C1A2A90F5280B900FCCA14</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

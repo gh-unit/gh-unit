@@ -13,7 +13,7 @@ For example, your test cases will be run if they subclass any of the following:
 
 ## Download
 
-GHUnit.framework [GHUnit-0.2.7.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.7.zip) (2009/02/22)
+GHUnit.framework [GHUnit-0.2.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.8.zip) (2009/02/23)
 
 For iPhone you have to embed the source in your project. See below.
 
@@ -45,24 +45,7 @@ To add `GHUnit.framework` to your project:
 	- Add a linked library, under `Mac OS X 10.5 SDK` section, select `GHUnit.framework`
 	- Add a linked library, select your project.
 	- Add a direct dependency, and select your project. (This will cause your application or framework to build before the test target.)
-- Create a test main. For example, create a file called `TestsMain.m` (or similar), that loads and runs the test application. This file and your tests need only to exist in the test target. 
 
-The `TestMain.m` should look like:
- 
-	#import <Foundation/Foundation.h>
-	#import <Foundation/NSDebug.h>
-
-	#import <GHUnit/GHUnit.h>
-	#import <GHUnit/GHTestApp.h>
-
-	int main(int argc, char *argv[]) {
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		GHTestApp *app = [[GHTestApp alloc] init];
-		[NSApp run];
-		[app release];
-		[pool release];
-	}
-	
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target. 
 
 For example `MyTest.m`:
@@ -123,7 +106,7 @@ Frameworks are not supported in the iPhone environment. So you'll need to copy a
 	- `Classes-IPhone/` (iPhone specific files)
 	- `Libraries/` (External libraries, ghkit and GTM); If you already have these included in your iPhone project, you shouldn't add them again.
 - Add these gh-unit files to your project, but only in the `Test` target.
-- Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target. 
+- Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target.
 
 For example `MyTest.m`:
 
@@ -165,6 +148,36 @@ You should see something similar to the following:
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
 An example of a iPhone test project can be found at: [MyTestable](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable). This project symlinks to the gh-unit files.
+
+## Command Line
+
+You make want to run tests from the command line, from a Makefile for continuous integration, returning a non-zero exit code on failures.
+
+To run the tests from the command line:
+
+- Copy the (RunTests.sh)[http://github.com/gabriel/gh-unit/tree/master/Classes/RunTests.sh] file into your project directory.
+- In XCode:
+  - To the `Tests` target, Add | New Build Phase | New Run Script Build Phrase
+  - Enter in the path to the RunTests.sh file. (The path should be relative to the xcode project file!)
+
+- From the command line:
+  - Run the tests from xcodebuild (with the TEST_CLI environment variable set):
+
+  // For mac app
+  TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build
+	
+	// For iPhone app
+	TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator2.2 build
+
+If you are wondering, the `RunTests.sh` script will only run the tests if the env variable TESTS_CLI is set. 
+This is why this phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.
+
+For an example Makefile see:
+
+(Makefile)[http://github.com/gabriel/gh-unit/tree/master/Project/Makefile] (for Mac App)
+(Makefile)[http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile] (for iPhone App)
+
+The script will return a non-zero exit code on test failure so your continuous integration scripts work.
 
 ## Test Macros
  

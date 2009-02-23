@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/NSDebug.h>
+#import "GHUnit.h"
 
 // Creates an application that runs all tests from classes extending
 // SenTestCase, outputs results and test run time, and terminates right
@@ -17,11 +18,17 @@ int main(int argc, char *argv[]) {
 	NSZombieEnabled = YES;
 	NSDeallocateZombies = NO;
 	NSHangOnUncaughtException = YES;
-	[NSAutoreleasePool enableFreedObjectCheck:YES];
 	setenv("NSAutoreleaseFreedObjectCheckEnabled", "1", 1);
 	
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];	
-	int retVal = UIApplicationMain(argc, argv, nil, @"GHUnitIPhoneAppDelegate");
+	int retVal = -1;
+	if (getenv("TEST_CLI")) {
+		GHTestRunner *testRunner = [GHTestRunner runnerForAllTests];
+		[testRunner run];
+		retVal = testRunner.stats.failureCount;
+	} else {		
+		retVal = UIApplicationMain(argc, argv, nil, @"GHUnitIPhoneAppDelegate");
+	}
 	[pool release];
 	return retVal;
 }

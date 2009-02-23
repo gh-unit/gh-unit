@@ -81,6 +81,7 @@
 @property (assign) id<GHTestRunnerDelegate> delegate;
 @property (assign) BOOL raiseExceptions;
 @property (assign) BOOL delegateOnMainThread;
+@property (readonly) GHTestStats stats;
 
 - (id)initWithTest:(id<GHTest>)test;
 
