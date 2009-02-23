@@ -1,8 +1,6 @@
 
 TEST_TARGET=Tests
 SDK=macosx10.5
-# For iPhone
-#SDK=iphonesimulator2.2
 COMMAND=xcodebuild
 
 default:

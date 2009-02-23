@@ -153,8 +153,6 @@ An example of a iPhone test project can be found at: [MyTestable](http://github.
 
 ## Command Line
 
-You make want to run tests from the command line, from a Makefile for continuous integration, returning a non-zero exit code on failures.
-
 To run the tests from the command line:
 
 - Copy the [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Classes/RunTests.sh) file into your project directory.
@@ -162,12 +160,10 @@ To run the tests from the command line:
   - To the `Tests` target, Add | New Build Phase | New Run Script Build Phrase
   - Enter in the path to the RunTests.sh file. (The path should be relative to the xcode project file!)
 
-
 From the command line, run the tests from xcodebuild (with the TEST_CLI environment variable set):
 
   // For mac app
-  TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build
-	
+  TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
 	// For iPhone app
 	TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator2.2 build
 
