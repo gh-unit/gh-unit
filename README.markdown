@@ -97,7 +97,7 @@ You should see something similar to the following screen shots:
 
 ## Adding a GHUnit Test Target (iPhone)
 
-Frameworks are not supported in the iPhone environment. So you'll need to copy and add the gh-unit files directly into your project.
+Frameworks are not supported in the iPhone environment. So you'll need to copy and add the GHUnit files directly into your project.
 
 - Add a `New Target`. Select `Cocoa Touch -> Application`. Name it `Tests` (or something similar).
 - Set the Main Nib file to `GHUnitIPhone.xib`
@@ -106,8 +106,8 @@ Frameworks are not supported in the iPhone environment. So you'll need to copy a
 - Copy (or symlink) into your project:
 	- `Classes/` (Core files)
 	- `Classes-IPhone/` (iPhone specific files)
-	- `Libraries/` (External libraries, ghkit and GTM); If you already have these included in your iPhone project, you shouldn't add them again.
-- Add these gh-unit files to your project, but only in the `Test` target.
+	- `Libraries/` (External libraries, [GHKit](http://github.com/gabriel/gh-kit/tree/master) and [GTM](http://code.google.com/p/google-toolbox-for-mac/); If you already have these included in your iPhone project, you shouldn't add them again.
+- Add these GHUnit files to your project, but only in the `Test` target.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target.
 
 For example `MyTest.m`:
@@ -149,7 +149,7 @@ You should see something similar to the following:
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
-An example of a iPhone test project can be found at: [MyTestable](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable). This project symlinks to the gh-unit files.
+An example of a iPhone test project can be found at: [MyTestable](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable). This project symlinks to the GHUnit files.
 
 ## Command Line
 
