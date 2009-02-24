@@ -696,7 +696,7 @@ BOOL _evaluatedExpression = (expr);\
 if (!_evaluatedExpression) {\
 NSString *_expression = [NSString stringWithUTF8String: #expr];\
 [self failWithException:[NSException failureInCondition: _expression \
-isTrue: NO \
+isTrue: YES \
 inFile: [NSString stringWithUTF8String:__FILE__] \
 atLine: __LINE__ \
 withDescription: GHComposeString(description, ##__VA_ARGS__)]]; \
@@ -746,7 +746,7 @@ BOOL _evaluatedExpression = (expr);\
 if (_evaluatedExpression) {\
 NSString *_expression = [NSString stringWithUTF8String: #expr];\
 [self failWithException:[NSException failureInCondition: _expression \
-isTrue: YES \
+isTrue: NO \
 inFile: [NSString stringWithUTF8String:__FILE__] \
 atLine: __LINE__ \
 withDescription: GHComposeString(description, ##__VA_ARGS__)]]; \
