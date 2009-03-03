@@ -301,7 +301,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 160}, {284, 673}}</string>
+							<string>{{0, 86}, {284, 673}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -348,7 +348,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>003DC57A0F5DB8EA005959DA</string>
+										<string>003DC5CB0F5DBB36005959DA</string>
 										<key>history</key>
 										<array>
 											<string>00970AE90F283D8800189A9D</string>
@@ -379,7 +379,7 @@
 											<string>00C1A3740F5321B400FCCA14</string>
 											<string>00CF749D0F53C38700DBAA98</string>
 											<string>003DC5770F5DB8EA005959DA</string>
-											<string>003DC5780F5DB8EA005959DA</string>
+											<string>003DC5900F5DBA3B005959DA</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -461,9 +461,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>003DC56B0F5DB597005959DA</string>
+				<string>003DC5BD0F5DBB0C005959DA</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>003DC56C0F5DB597005959DA</string>
+				<string>003DC5BE0F5DBB0C005959DA</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -582,7 +582,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>257800426.826359</real>
+	<real>257801014.37774399</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -680,7 +680,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>009DD6540F26E4C80058A2B0</string>
-				<string>003DC5700F5DB705005959DA</string>
+				<string>003DC5BF0F5DBB0C005959DA</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -691,7 +691,7 @@
 			<key>WindowToolGUID</key>
 			<string>009DD6540F26E4C80058A2B0</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

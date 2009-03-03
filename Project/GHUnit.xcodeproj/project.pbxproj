@@ -771,8 +771,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GHUnit_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Frameworks";
-				LD_DYLIB_INSTALL_NAME = "/Library/Frameworks/$(EXECUTABLE_PATH)";
+				INSTALL_PATH = /Library/Frameworks;
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)";
 				PRODUCT_NAME = GHUnit;
 				WRAPPER_EXTENSION = framework;
 			};
