@@ -145,7 +145,7 @@ Now you should be ready to Build and Run the `Test` target.
 
 You should see something similar to the following:
 
-![gh-unit-iphone1](https://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit-iphone1.jpg)
+![gh-unit-iphone1](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit-iphone1.jpg)
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
