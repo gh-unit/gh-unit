@@ -27,56 +27,40 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//
-// Portions of this file fall under the following license, marked with:
-// GTM_BEGIN : GTM_END
-//
-//  Copyright 2008 Google Inc.
-//
-//  Licensed under the Apache License, Version 2.0 (the "License"); you may not
-//  use this file except in compliance with the License.  You may obtain a copy
-//  of the License at
-// 
-//  http://www.apache.org/licenses/LICENSE-2.0
-// 
-//  Unless required by applicable law or agreed to in writing, software
-//  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-//  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
-//  License for the specific language governing permissions and limitations under
-//  the License.
-//
-
+/*!
+ Test status.
+ */
 typedef enum {
 	GHTestStatusNone,
 	GHTestStatusRunning,
 	GHTestStatusFinished,
 } GHTestStatus;
 
-static __inline__ NSString* NSStringFromGHTestStatus(GHTestStatus status) {
-	switch(status) {
-		case GHTestStatusNone: return NSLocalizedString(@"Waiting", @"Test status / Waiting");
-		case GHTestStatusRunning: return NSLocalizedString(@"Running", @"Test status / Running");
-		case GHTestStatusFinished: return NSLocalizedString(@"Finished", @"Test status / Finished");
-		default: return NSLocalizedString(@"Unknown", @"Test status / Unknown");
-	}
-}
+/*!
+ Generate string from GHTestStatus
+ @param status
+ */
+NSString* NSStringFromGHTestStatus(GHTestStatus status);
 
+/*!
+ Test stats.
+ */
 typedef struct {
 	NSInteger runCount;
 	NSInteger failureCount;
 	NSInteger testCount;
 } GHTestStats;
 
-static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSInteger testCount) {
-	GHTestStats stats;
-	stats.runCount = runCount;
-	stats.failureCount = failureCount; 
-	stats.testCount = testCount;
-	return stats;
-}
+/*!
+ Create GHTestStats.
+ */
+GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSInteger testCount);
 
 #define NSStringFromGHTestStats(stats) [NSString stringWithFormat:@"%d/%d/%d", stats.runCount, stats.testCount, stats.failureCount]
 
+/*!
+ Protocol for a test.
+ */
 @protocol GHTest <NSObject>
 
 - (void)run;
@@ -95,11 +79,21 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 
 @end
 
+/*!
+ Protocol for test delegate, that notifies when a test starts and ends.
+ */
 @protocol GHTestDelegate <NSObject>
 - (void)testDidStart:(id<GHTest>)test;
 - (void)testDidFinish:(id<GHTest>)test;
 @end
 
+/*!
+ Default test implementation.
+ - Consists of a target/selector
+ - Notifies a test delegate
+ - Keeps track of status, running time and failures
+ - Stores any test specific logging
+ */
 @interface GHTest : NSObject <GHTest> {
 	
 	id<GHTestDelegate> delegate_; // weak
@@ -111,21 +105,27 @@ static __inline__ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger fail
 	GHTestStatus status_;
 	NSTimeInterval interval_;
 	BOOL failed_;
+	NSException *exception_; // If failed
 	
 	GHTestStats stats_;
-	
-	// Log
-	NSMutableArray *log_;
-	
-	// If errored
-	NSException *exception_; 
+		
+	NSMutableArray *log_;	
 	
 }
 
-- (id)initWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception;
+/*!
+ Create test with target/selector.
+ @param target Target (usually a test case)
+ @param selector Selector (usually a test method)
+ */
+- (id)initWithTarget:(id)target selector:(SEL)selector;
 
+/*!
+ Create autoreleased test with target/selector.
+ @param target Target (usually a test case)
+ @param selector Selector (usually a test method)
+ */
 + (id)testWithTarget:(id)target selector:(SEL)selector;
-+ (id)testWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception;
 
 @property (readonly, nonatomic) id target;
 @property (readonly, nonatomic) SEL selector;

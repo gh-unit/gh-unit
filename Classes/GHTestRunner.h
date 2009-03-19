@@ -61,10 +61,14 @@
 - (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message;
 @end
 
-
+/*!
+ Runs the tests.
+ Tests are run a separate thread though delegates are called on the 
+ main thread by default (see #delegateOnMainThread).
+ */
 @interface GHTestRunner : NSObject <GHTestDelegate> { 
 	
-	id<GHTest> test_;
+	id<GHTest> test_; // The test to run; Could be a GHTestGroup (suite), GHTestGroup (test case), or GHTest (target/selector)
 	
 	id<GHTestRunnerDelegate> delegate_; // weak
 	
@@ -83,12 +87,27 @@
 @property (assign) BOOL delegateOnMainThread;
 @property (readonly) GHTestStats stats;
 
+/*!
+ Create runner for test.
+ @param test
+ */
 - (id)initWithTest:(id<GHTest>)test;
 
+/*!
+ Create runner for all tests.
+ @see GHTesting#loadTestCases.
+ */
 + (GHTestRunner *)runnerForAllTests;
 
+/*!
+ Create runner for test suite.
+ @param suite
+ */
 + (GHTestRunner *)runnerForSuite:(GHTestSuite *)suite;
 
+/*!
+ Start the test runner.
+ */
 - (void)run;
 
 @end

@@ -29,7 +29,7 @@
 
 #import "GHTestSuite.h"
 
-#import "GHTestUtils.h"
+#import "GHTesting.h"
 
 @implementation GHTestSuite
 
@@ -47,7 +47,7 @@
 }
 
 + (GHTestSuite *)allTests:(BOOL)flatten {
-	NSArray *testCases = [GHTestUtils loadTestCases];
+	NSArray *testCases = [[GHTesting sharedInstance] loadTestCases];
 	GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" delegate:nil];	
 	for(id testCase in testCases) {
 		if (flatten) {

@@ -55,16 +55,28 @@
 // For example, GHTestLog(@"Some debug info, %@", obj)
 #define GHTestLog(...) [self _log:[NSString stringWithFormat:__VA_ARGS__, nil]]
 
+/*!
+ Delegate which is notified of log messages from inside GHTestCase.
+ */
 @protocol GHTestCaseLogDelegate <NSObject>
 - (void)testCase:(id)testCase log:(NSString *)message;
 @end
 
+/*!
+ Test case. 
+ Tests can subclass and write tests by adding methods with the 'test' prefix.
+ The setUp and tearDown methods are run before and after each test method.
+ */
 @interface GHTestCase : NSObject {
-	id<GHTestCaseLogDelegate> logDelegate_;
+	id<GHTestCaseLogDelegate> logDelegate_; // weak
 }
 
-@property (assign) id<GHTestCaseLogDelegate> logDelegate;
+@property (assign, nonatomic) id<GHTestCaseLogDelegate> logDelegate;
 
+/*!
+ Log a message, which notifies the id<GHTestCaseLogDelegate> logDelegate_.
+ This is not meant to be used directly, see GHTestLog(...) macro.
+ */
 - (void)_log:(NSString *)message;
 
 // GTM_BEGIN

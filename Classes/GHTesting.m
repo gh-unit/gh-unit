@@ -1,5 +1,5 @@
 //
-//  GHTestUtils.m
+//  GHTesting.m
 //  GHUnit
 //
 //  Created by Gabriel Handford on 1/30/09.
@@ -46,7 +46,7 @@
 //  the License.
 //
 
-#import "GHTestUtils.h"
+#import "GHTesting.h"
 #import "GHTest.h"
 
 #import <objc/runtime.h>
@@ -58,23 +58,6 @@ static int MethodSort(const void *a, const void *b) {
   const char *nameA = sel_getName(method_getName(*(Method*)a));
   const char *nameB = sel_getName(method_getName(*(Method*)b));
   return strcmp(nameA, nameB);
-}
-
-// GTM_END
-
-BOOL isSenTestCaseClass(Class aClass) {
-	return isTestFixtureOfClass(aClass, NSClassFromString(@"SenTestCase"));
-}
-
-BOOL isGTMTestCaseClass(Class aClass) {
-	return isTestFixtureOfClass(aClass, NSClassFromString(@"GTMTestCase"));
-}
-
-// GTM_BEGIN
-
-// Return YES if class is subclass (1 or more generations) of GHTestCase
-BOOL isTestFixture(Class aClass) {
-	return isTestFixtureOfClass(aClass, NSClassFromString(@"GHTestCase"));
 }
 
 BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
@@ -91,9 +74,45 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
 
 // GTM_END
 
-@implementation GHTestUtils
+@implementation GHTesting
 
-+ (NSArray *)loadTestCases {
+static GHTesting *gSharedInstance;
+
++ (GHTesting *)sharedInstance {
+	@synchronized(self) {		
+		if (!gSharedInstance) gSharedInstance = [[GHTesting alloc] init];		
+	}
+	return gSharedInstance;
+}
+
+- (id)init {
+	if ((self = [super init])) {
+		// Default test cases
+		testCaseClassNames_ = [[NSMutableArray arrayWithObjects:
+														@"GHTestCase",
+														@"SenTestCase",
+														@"GTMTestCase", 
+														nil] retain];
+	}
+	return self;
+}
+
+- (BOOL)isTestCaseClass:(Class)aClass {
+	for(NSString *className in testCaseClassNames_) {
+		if (isTestFixtureOfClass(aClass, NSClassFromString(className))) return YES;
+	}
+	return NO;
+}
+
+- (void)registerClass:(Class)aClass {
+	[self registerClassName:NSStringFromClass(aClass)];
+}
+
+- (void)registerClassName:(NSString *)className {
+	[testCaseClassNames_ addObject:className];
+}
+
+- (NSArray *)loadTestCases {
 	NSMutableArray *testCases = [NSMutableArray array];
 
 	// GTM_BEGIN
@@ -107,7 +126,7 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
     Class currClass = classes[i];
 		id testcase = nil;
 		
-    if (isTestFixture(currClass) || isSenTestCaseClass(currClass) || isGTMTestCaseClass(currClass)) {			
+    if ([self isTestCaseClass:currClass]) {
 			testcase = [[currClass alloc] init];
 		} else {
 			continue;
@@ -122,7 +141,7 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
 
 // GTM_BEGIN
 
-+ (NSArray *)loadTestsFromTarget:(id)target {
+- (NSArray *)loadTestsFromTarget:(id)target {
 	NSMutableArray *tests = [NSMutableArray array];
 	
 	unsigned int methodCount;
@@ -167,7 +186,7 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
 	return tests;
 }
 
-+ (BOOL)runTest:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval {
+- (BOOL)runTest:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval {
 	NSDate *startDate = [NSDate date];	
 	NSException *testException = nil;
 	// GTM_BEGIN

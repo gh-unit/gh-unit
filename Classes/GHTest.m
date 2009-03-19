@@ -47,35 +47,43 @@
 
 #import "GHTest.h"
 
-#import "GHTestUtils.h"
+#import "GHTesting.h"
 
-/*!
- GHTest represents a single test method. It is composed of a target and selector.
- A GHTestGroup is a collection of GHTests (or GHTestGroups).
- */
+NSString* NSStringFromGHTestStatus(GHTestStatus status) {
+	switch(status) {
+		case GHTestStatusNone: return NSLocalizedString(@"Waiting", @"Test status / Waiting");
+		case GHTestStatusRunning: return NSLocalizedString(@"Running", @"Test status / Running");
+		case GHTestStatusFinished: return NSLocalizedString(@"Finished", @"Test status / Finished");
+		default: return NSLocalizedString(@"Unknown", @"Test status / Unknown");
+	}
+}
+
+GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSInteger testCount) {
+	GHTestStats stats;
+	stats.runCount = runCount;
+	stats.failureCount = failureCount; 
+	stats.testCount = testCount;
+	return stats;
+}
+
 @implementation GHTest
 
 @synthesize delegate=delegate_, target=target_, selector=selector_, name=name_, interval=interval_, 
 exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_;
 
-- (id)initWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception {
+- (id)initWithTarget:(id)target selector:(SEL)selector {
 	if ((self = [super init])) {
 		target_ = [target retain];
 		selector_ = selector;
-		name_ = [NSStringFromSelector(selector_) retain];
-		interval_ = interval;
-		exception_ = [exception retain];
+		interval_ = -1;
+		name_ = [NSStringFromSelector(selector_) copy];
 		stats_ = GHTestStatsMake(0, 0, 1);
 	}
 	return self;	
 }
 
 + (id)testWithTarget:(id)target selector:(SEL)selector {
-	return [[[self alloc] initWithTarget:target selector:selector interval:-1 exception:nil] autorelease];
-}
-
-+ (id)testWithTarget:(id)target selector:(SEL)selector interval:(NSTimeInterval)interval exception:(NSException *)exception {
-	return [[[self alloc] initWithTarget:target selector:selector interval:interval exception:exception] autorelease];
+	return [[[self alloc] initWithTarget:target selector:selector] autorelease];
 }
 
 - (void)dealloc {
@@ -111,7 +119,7 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_;
 	stats_ = GHTestStatsMake(1, 0, 1);
 	[delegate_ testDidStart:self];
 
-	failed_ = ![GHTestUtils runTest:target_ selector:selector_ exception:&exception_ interval:&interval_];				
+	failed_ = ![[GHTesting sharedInstance] runTest:target_ selector:selector_ exception:&exception_ interval:&interval_];				
 	
 	status_ = GHTestStatusFinished;	
 	stats_ = GHTestStatsMake(1, failed_ ? 1 : 0, 1);

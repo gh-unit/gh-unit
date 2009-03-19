@@ -162,7 +162,7 @@
 }
 
 - (NSString *)log {
-	return [[test_ log] componentsJoinedByString:@"\n"];
+	return [[test_ log] componentsJoinedByString:@"\n"]; // TODO(gabe): This isn't very performant
 }
 
 - (NSString *)description {

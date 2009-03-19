@@ -31,7 +31,7 @@
 
 /*!
  Test suite is an alias for test group.
- A test group is a collection of GHTests (or GHTestGroups).
+ A test group is a collection of id<GHTest> (GHTest or GHTestGroup).
  
  For example, if you have 2 test cases, GHTestCase1 (with some test methods) and GHTestCase2 (with some test methods), 
  your test suite might look like:
@@ -49,7 +49,8 @@
 
 }
 
-/*! Create test suite with test cases.
+/*! 
+ Create test suite with test cases.
  @param name
  @param testCases
  @param delegate
@@ -58,11 +59,14 @@
 
 /*!
  Creates a suite of all tests.
- Will load all classes that subclass from GHTestCase or SenTestCase.
+ Will load all classes that subclass from GHTestCase, SenTestCase or GTMTestCase (or register test case class).
  */
 + (GHTestSuite *)allTests;
 
-// If flatten is YES, returns a test suite with all tests grouped here.
+/*!
+ Create test suite of all tests.
+ @param flatten If flatten is YES, returns a test suite with all tests grouped in a single suite.
+ */
 + (GHTestSuite *)allTests:(BOOL)flatten;
 
 @end

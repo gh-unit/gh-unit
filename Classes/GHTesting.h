@@ -1,5 +1,5 @@
 //
-//  GHTestUtils.h
+//  GHTesting.h
 //  GHUnit
 //
 //  Created by Gabriel Handford on 1/30/09.
@@ -46,24 +46,59 @@
 //  the License.
 //
 
-BOOL isSenTestCaseClass(Class aClass);
-BOOL isGTMTestCaseClass(Class aClass);
-
 // GTM_BEGIN
-BOOL isTestFixture(Class aClass);
 BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass);
 // GTM_END
 
-@interface GHTestUtils : NSObject { }
+/*!
+ Test utils class that loads and runs tests.
+ Much of this is borrowed from GTM UnitTesting.
+ */
+@interface GHTesting : NSObject { 
 
-+ (NSArray *)loadTestCases;
-+ (NSArray *)loadTestsFromTarget:(id)target;
+	NSMutableArray *testCaseClassNames_; // of NSString (class names)
+	
+}
+
+/*!
+ The shared testing instance.
+ */
++ (GHTesting *)sharedInstance;
+
+/*!
+ Load all test classes that we can "see".
+ @return Array of initialized (and autoreleased) test case classes in an autoreleased array.
+ */
+- (NSArray *)loadTestCases;
+
+/*!
+ Load tests from target.
+ @result Array of id<GHTest>
+ */
+- (NSArray *)loadTestsFromTarget:(id)target;
+
+/*!
+ See if class is of a registered test case class.
+ */
+- (BOOL)isTestCaseClass:(Class)aClass;
+
+/*!
+ Register test case class.
+ @param aClass
+ */
+- (void)registerClass:(Class)aClass;
+
+/*!
+ Register test case class by name.
+ @param className Class name (via NSStringFromClass(aClass)
+ */
+- (void)registerClassName:(NSString *)className;
 
 /*!
  Run test.
  Exception if set is retained and should be released by the caller.
  */
-+ (BOOL)runTest:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval;
+- (BOOL)runTest:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval;
 
 @end
 

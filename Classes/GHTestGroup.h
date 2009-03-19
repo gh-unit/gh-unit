@@ -48,22 +48,44 @@
 #import "GHTest.h"
 #import "GHTestCase.h"
 
+/*!
+ Protocol for a group of tests.
+ This group conforms to the GHTest protocol as well (see Composite pattern).
+ */
 @protocol GHTestGroup <GHTest>
 - (id<GHTestGroup>)parent;
 - (NSArray *)children;
 @end
 
+/*!
+ Default implementation of a test group.
+ A test group is a collection of id<GHTest>, that may represent a set of test case methods. 
+ 
+ For example, if you had the following GHTestCase.
+ 
+ @interface GHTestCase {}
+ - (void)testFoo;
+ - (void)testBar;
+ @end
+ 
+ The GHTestGroup would consist of and array of GHTest:
+   GHTest, target=<GHTestCase instance>, selector=<testFoo selector>
+   GHTest, target=<GHTestCase instance>, selector=<testBar selector>
+ 
+ A test group may also consist of a group of groups (since GHTestGroup conforms to GHTest),
+ and so this might represent a GHTestSuite.
+ */
 @interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup, GHTestCaseLogDelegate> {
 	
 	id<GHTestDelegate> delegate_; // weak
 	id<GHTestGroup> parent_; // weak
 	
-	NSMutableArray *children_;
+	NSMutableArray *children_; // of id<GHTest>
 		
-	NSString *name_;
-	NSTimeInterval interval_;
-	GHTestStatus status_;
-	GHTestStats stats_;
+	NSString *name_; // The name of the test group (usually the class name of the test case
+	NSTimeInterval interval_; // Total time of child tests
+	GHTestStatus status_; // Current status of the group (current status of running or completed child tests)
+	GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
 	
 	id<GHTest> currentTest_; // weak
 }
@@ -96,7 +118,7 @@
 - (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
 
 /*!
- Create test group from test case.
+ Create test group from a test case.
  A test case contains a set of test methods.
  @param testCase Should be a subclass of SenTestCase or GHTestCase
  @param delegate
@@ -105,8 +127,8 @@
 
 /*!
  Add tests from the specified test case to group.
- You may want to use initWithTestCase or addTestCase instead.
- Generally a test group represents a set of a single test case's methods.
+ You may want to use initWithTestCase or addTestCase instead, 
+ since this appends the methods from the test case into this group.
  @param testCase Should be a subclass of SenTestCase or GHTestCase
  */
 - (void)addTestsFromTestCase:(id)testCase;
@@ -125,9 +147,9 @@
 
 /*!
  Add a set of tests.
- @param tests
+ @param tests Adds a list of id<GHTest> instances.
  */
-- (void)addTests:(NSArray *)tests;
+- (void)addTests:(NSArray */*of id<GHTest>*/)tests;
 
 /*!
  Run test group.

@@ -48,7 +48,7 @@
 #import "GHTestGroup.h"
 #import "GHTestCase.h"
 
-#import "GHTestUtils.h"
+#import "GHTesting.h"
 
 @implementation GHTestGroup
 
@@ -90,7 +90,7 @@
 }
 
 - (void)addTestsFromTestCase:(id)testCase {
-	NSArray *tests = [GHTestUtils loadTestsFromTarget:testCase];
+	NSArray *tests = [[GHTesting sharedInstance] loadTestsFromTarget:testCase];
 	for(GHTest *test in tests) {
 		[test setDelegate:self];
 		[self addTest:test];
@@ -107,7 +107,7 @@
 - (void)addTests:(NSArray *)tests {
 	for(id test in tests) {
 		if (![test conformsToProtocol:@protocol(GHTest)]) 
-			[NSException raise:NSInvalidArgumentException format:@"Tests must conform to GHTest protocol"];
+			[NSException raise:NSInvalidArgumentException format:@"Tests must conform to the GHTest protocol"];
 		[self addTest:(id<GHTest>)test];
 	}
 }
@@ -132,7 +132,7 @@
 }
 
 - (NSArray *)log {
-	// Not supported for group
+	// Not supported for group (though may be an aggregate of child test logs in the future?)
 	return nil;
 }
 
@@ -157,16 +157,17 @@
 	status_ = GHTestStatusFinished;
 }
 
-#pragma mark Parent Notifications
+#pragma mark Delegates (GHTestDelegate)
 
+// Notification from GHTestGroup; For example, would be called when a test case starts
 - (void)testDidStart:(id<GHTest>)test {
 	stats_.runCount += [test stats].runCount;
 	[delegate_ testDidStart:test];
 }
 
+// Notification from GHTestGroup; For example, would be called when a test case ends
 - (void)testDidFinish:(id<GHTest>)test {
 	interval_ += [test interval];
-	//stats_.runCount += [test stats].runCount;
 	stats_.failureCount += [test stats].failureCount;
 	[delegate_ testDidFinish:test];
 }

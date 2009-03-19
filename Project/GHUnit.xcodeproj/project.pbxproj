@@ -19,8 +19,8 @@
 		002D9C130F49158F007932FE /* GHTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE10F49158F007932FE /* GHTestRunner.m */; };
 		002D9C140F49158F007932FE /* GHTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE20F49158F007932FE /* GHTestSuite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C150F49158F007932FE /* GHTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE30F49158F007932FE /* GHTestSuite.m */; };
-		002D9C160F49158F007932FE /* GHTestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE40F49158F007932FE /* GHTestUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		002D9C170F49158F007932FE /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE50F49158F007932FE /* GHTestUtils.m */; };
+		002D9C160F49158F007932FE /* GHTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE40F49158F007932FE /* GHTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002D9C170F49158F007932FE /* GHTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE50F49158F007932FE /* GHTesting.m */; };
 		002D9C180F49158F007932FE /* GHUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE60F49158F007932FE /* GHUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C190F49158F007932FE /* GHTestViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE80F49158F007932FE /* GHTestViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C1A0F49158F007932FE /* GHTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE90F49158F007932FE /* GHTestViewModel.m */; };
@@ -100,8 +100,8 @@
 		002D9BE10F49158F007932FE /* GHTestRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestRunner.m; sourceTree = "<group>"; };
 		002D9BE20F49158F007932FE /* GHTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestSuite.h; sourceTree = "<group>"; };
 		002D9BE30F49158F007932FE /* GHTestSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestSuite.m; sourceTree = "<group>"; };
-		002D9BE40F49158F007932FE /* GHTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestUtils.h; sourceTree = "<group>"; };
-		002D9BE50F49158F007932FE /* GHTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestUtils.m; sourceTree = "<group>"; };
+		002D9BE40F49158F007932FE /* GHTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTesting.h; sourceTree = "<group>"; };
+		002D9BE50F49158F007932FE /* GHTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTesting.m; sourceTree = "<group>"; };
 		002D9BE60F49158F007932FE /* GHUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnit.h; sourceTree = "<group>"; };
 		002D9BE80F49158F007932FE /* GHTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestViewModel.h; sourceTree = "<group>"; };
 		002D9BE90F49158F007932FE /* GHTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestViewModel.m; sourceTree = "<group>"; };
@@ -224,8 +224,8 @@
 				002D9BE10F49158F007932FE /* GHTestRunner.m */,
 				002D9BE20F49158F007932FE /* GHTestSuite.h */,
 				002D9BE30F49158F007932FE /* GHTestSuite.m */,
-				002D9BE40F49158F007932FE /* GHTestUtils.h */,
-				002D9BE50F49158F007932FE /* GHTestUtils.m */,
+				002D9BE40F49158F007932FE /* GHTesting.h */,
+				002D9BE50F49158F007932FE /* GHTesting.m */,
 				002D9BE60F49158F007932FE /* GHUnit.h */,
 				002D9BE70F49158F007932FE /* SharedUI */,
 				00C1A2D80F52847700FCCA14 /* RunTests.sh */,
@@ -493,7 +493,7 @@
 				002D9C100F49158F007932FE /* GHTestMacros.h in Headers */,
 				002D9C120F49158F007932FE /* GHTestRunner.h in Headers */,
 				002D9C140F49158F007932FE /* GHTestSuite.h in Headers */,
-				002D9C160F49158F007932FE /* GHTestUtils.h in Headers */,
+				002D9C160F49158F007932FE /* GHTesting.h in Headers */,
 				002D9C180F49158F007932FE /* GHUnit.h in Headers */,
 				002D9C190F49158F007932FE /* GHTestViewModel.h in Headers */,
 				002D9C1B0F49158F007932FE /* GHTestApp.h in Headers */,
@@ -633,7 +633,7 @@
 				002D9C110F49158F007932FE /* GHTestMacros.m in Sources */,
 				002D9C130F49158F007932FE /* GHTestRunner.m in Sources */,
 				002D9C150F49158F007932FE /* GHTestSuite.m in Sources */,
-				002D9C170F49158F007932FE /* GHTestUtils.m in Sources */,
+				002D9C170F49158F007932FE /* GHTesting.m in Sources */,
 				002D9C1A0F49158F007932FE /* GHTestViewModel.m in Sources */,
 				002D9C1C0F49158F007932FE /* GHTestApp.m in Sources */,
 				002D9C1F0F49158F007932FE /* GHTestAppDelegate.m in Sources */,

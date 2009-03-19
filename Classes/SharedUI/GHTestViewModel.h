@@ -31,36 +31,51 @@
 
 @class GHTestNode;
 
+/*!
+ Test view model for use in a tree view.
+ */
 @interface GHTestViewModel : NSObject {
 	
 	GHTestNode *root_;
 	
-	NSMutableDictionary *map_;
+	NSMutableDictionary *map_; // id<GHTest>#identifier -> id<GHTest>
 
 }
 
 @property (readonly, nonatomic) GHTestNode *root;
 
+/*!
+ Create view model with root test group node.
+ */
 - (id)initWithRoot:(id<GHTestGroup>)root;
 
 - (NSString *)name;
 - (NSString *)statusString;
 
+/*!
+ Get the test node from the test.
+ @param test
+ */
 - (GHTestNode *)findTestNode:(id<GHTest>)test;
+
+/*!
+ Register node, so that we can do a lookup later (see #findTestNode).
+ @param node
+ */
 - (void)registerNode:(GHTestNode *)node;
 
 @end
 
 @interface GHTestNode : NSObject {
 
-	id<GHTest> test_;
-	NSMutableArray *children_;
+	id<GHTest> test_; // The test
+	NSMutableArray *children_; // of GHTestNode
 
 }
 
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) NSArray *children;
+@property (readonly, nonatomic) NSArray *children; // of GHTestNode
 @property (readonly, nonatomic) id<GHTest> test;
 @property (readonly, nonatomic) GHTestStatus status;
 @property (readonly, nonatomic) BOOL failed;
@@ -71,7 +86,7 @@
 @property (readonly, nonatomic) BOOL isFinished;
 @property (readonly, nonatomic) BOOL isGroupTest; // YES if test has "sub tests"
 
-- (id)initWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source;
-+ (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source;
+- (id)initWithTest:(id<GHTest>)test children:(NSArray */*of GHTestNode */)children source:(GHTestViewModel *)source;
++ (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray */*of GHTestNode */)children source:(GHTestViewModel *)source;
 
 @end
