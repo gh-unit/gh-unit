@@ -108,6 +108,7 @@ Frameworks are not supported in the iPhone environment. So you'll need to copy a
 	- `Classes-IPhone/` (iPhone specific files)
 	- `Libraries/` (External libraries, [GHKit](http://github.com/gabriel/gh-kit/tree/master) and [GTM](http://code.google.com/p/google-toolbox-for-mac/); If you already have these included in your iPhone project, you shouldn't add them again.
 - Add these GHUnit files to your project, but only in the `Test` target.
+- In the `Tests` target, info dialog, under Properties set the `Main Nib File` to `GHUnitIPhone`.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target.
 
 For example `MyTest.m`:
@@ -149,7 +150,7 @@ You should see something similar to the following:
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
-An example of a iPhone test project can be found at: [MyTestable](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable). This project symlinks to the GHUnit files.
+An example of a iPhone test project can be found at: [MyTestable](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone). This project symlinks to the GHUnit files.
 
 ## Command Line
 
