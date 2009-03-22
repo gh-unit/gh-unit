@@ -18,7 +18,7 @@ Although you can register additional classes at runtime; if you have your own. F
 
 **GHUnit.framework** [GHUnit-0.3.1.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.1.zip) (2009/03/22)
 
-_For Mac OS X application testing, since 0.3.1, the GHUnitTestMain.m is _NOT_ included._
+_For Mac OS X application testing, since 0.3.1, you need to copy Classes-MacOSX/GHUnitTestMain.m into your project Test target._
 
 _For an iPhone application testing, you have to embed the source in your project. See below._
 
@@ -51,7 +51,7 @@ To add `GHUnit.framework` to your project:
 	- Add a linked library, select your project.
 	- Add a direct dependency, and select your project. (This will cause your application or framework to build before the test target.)
 
-- Create a "test main". You can use the default [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m)
+- Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into you project and include in the Test target.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target. 
 
 For example `MyTest.m`:
