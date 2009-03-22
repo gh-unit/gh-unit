@@ -9,15 +9,18 @@ For example, your test cases will be run if they subclass any of the following:
 - SenTestCase
 - GTMTestCase
 
-(Although you can register additional classes at runtime; if you have your own.)
+Although you can register additional classes at runtime; if you have your own. For example,
+
+	[[GHTesting sharedInstance] registerClassName:@"MySpecialTestCase"]
+
 
 ## Download
 
-**GHUnit.framework** [GHUnit-0.2.10.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.2.10.zip) (2009/03/03)
+**GHUnit.framework** [GHUnit-0.3.1.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.1.zip) (2009/03/22)
 
-_A GHUnitTestMain is now included for Mac OS X application testing. You may need to remove your existing test main._
+_For Mac OS X application testing, since 0.3.1, the GHUnitTestMain.m is _NOT_ included._
 
-_For an iPhone application, you have to embed the source in your project. See below._
+_For an iPhone application testing, you have to embed the source in your project. See below._
 
 ## Group
 
@@ -48,6 +51,7 @@ To add `GHUnit.framework` to your project:
 	- Add a linked library, select your project.
 	- Add a direct dependency, and select your project. (This will cause your application or framework to build before the test target.)
 
+- Create a "test main". You can use the default [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m)
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target. 
 
 For example `MyTest.m`:
@@ -161,15 +165,15 @@ To run the tests from the command line:
   - To the `Tests` target, Add | New Build Phase | New Run Script Build Phrase
   - Enter in the path to the RunTests.sh file. (The path should be relative to the xcode project file!)
 
-From the command line, run the tests from xcodebuild (with the TEST_CLI environment variable set) :
+From the command line, run the tests from xcodebuild (with the GHUNIT_CLI environment variable set) :
 
     // For mac app
-    TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
+    GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
 
     // For iPhone app
-    TEST_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator2.2 build
+    GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator2.2 build
 
-If you are wondering, the `RunTests.sh` script will only run the tests if the env variable TEST_CLI is set. 
+If you are wondering, the `RunTests.sh` script will only run the tests if the env variable GHUNIT_CLI is set. 
 This is why this phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.
 
 Example Makefiles:
