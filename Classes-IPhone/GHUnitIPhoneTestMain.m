@@ -10,9 +10,6 @@
 #import <Foundation/NSDebug.h>
 #import "GHUnit.h"
 
-// Creates an application that runs all tests from classes extending
-// SenTestCase, outputs results and test run time, and terminates right
-// afterwards.
 int main(int argc, char *argv[]) {
 	NSDebugEnabled = YES;
 	NSZombieEnabled = YES;

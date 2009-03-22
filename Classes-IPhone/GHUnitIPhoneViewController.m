@@ -74,6 +74,7 @@
 	} else if (node.isFinished) {
 		if (node.failed) {
 			cell.textColor = [UIColor redColor];
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		} else {
 			cell.textColor = [UIColor darkGrayColor];
 		}
@@ -81,8 +82,7 @@
 		cell.textColor = [UIColor lightGrayColor];
 	}
 	
-	return cell;
-	
+	return cell;	
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -90,11 +90,12 @@
 	GHTestNode *sectionNode = [[[model_ root] children] objectAtIndex:indexPath.section];
 	GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
 	
-	GHUnitIPhoneExceptionViewController *exceptionViewController = [[GHUnitIPhoneExceptionViewController alloc] init];	
-	[self.navigationController pushViewController:exceptionViewController animated:YES];
-	exceptionViewController.stackTrace = node.stackTrace;
-	[exceptionViewController release];
-	
+	if (node.failed) {
+		GHUnitIPhoneExceptionViewController *exceptionViewController = [[GHUnitIPhoneExceptionViewController alloc] init];	
+		[self.navigationController pushViewController:exceptionViewController animated:YES];
+		exceptionViewController.stackTrace = node.stackTrace;
+		[exceptionViewController release];
+	}	
 }
 
 @end

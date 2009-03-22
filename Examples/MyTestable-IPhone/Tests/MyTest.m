@@ -3,7 +3,7 @@
 //  MyTestable
 //
 //  Created by Gabriel Handford on 2/15/09.
-//  Copyright 2009 Yelp. All rights reserved.
+//  Copyright 2009. All rights reserved.
 //
 
 #import "GHUnit.h"

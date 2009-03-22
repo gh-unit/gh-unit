@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MyTestableAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
+    UIWindow *window_;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

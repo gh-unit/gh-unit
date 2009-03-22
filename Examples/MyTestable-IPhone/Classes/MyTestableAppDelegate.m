@@ -10,20 +10,17 @@
 
 @implementation MyTestableAppDelegate
 
-@synthesize window;
-
+@synthesize window=window_;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 
     // Override point for customization after application launch
-    [window makeKeyAndVisible];
+    [window_ makeKeyAndVisible];
 }
-
 
 - (void)dealloc {
-    [window release];
+    [window_ release];
     [super dealloc];
 }
-
 
 @end
