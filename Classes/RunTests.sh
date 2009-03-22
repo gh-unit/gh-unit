@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # If we aren't running from the command line, then exit
-if [ "$TEST_CLI" != "1" ]; then
+if [ "$GHUNIT_CLI" != "1" ]; then
   exit 0
 fi
 

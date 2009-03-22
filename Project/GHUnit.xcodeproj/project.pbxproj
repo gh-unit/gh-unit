@@ -58,7 +58,9 @@
 		005FDD220F33D259006B369F /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD210F33D259006B369F /* GTMSenTestCase.m */; };
 		005FDD390F33D373006B369F /* GHGTMTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */; };
 		00AF0E3A0F2C4D47009F0ABA /* SenTestingKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00970A550F28397F00189A9D /* SenTestingKit.framework */; };
-		00C1A3350F52881F00FCCA14 /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C1A2BE0F52813200FCCA14 /* GHUnitTestMain.m */; };
+		00CDDCC10F75D6970089C60E /* GHRegisterTestCaseClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */; };
+		00CDDCE00F76F7730089C60E /* GHSpecialTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDCDF0F76F7730089C60E /* GHSpecialTestCase.m */; };
+		00CDDD300F76FABD0089C60E /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C1A2BE0F52813200FCCA14 /* GHUnitTestMain.m */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -87,7 +89,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0029B6D50F2EDC60003EAFC1 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.markdown; path = ../README.markdown; sourceTree = SOURCE_ROOT; };
 		002D9BD80F49158F007932FE /* GHTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTest.h; sourceTree = "<group>"; };
 		002D9BD90F49158F007932FE /* GHTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTest.m; sourceTree = "<group>"; };
 		002D9BDA0F49158F007932FE /* GHTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestCase.h; sourceTree = "<group>"; };
@@ -178,6 +179,12 @@
 		009DD82F0F26FAE70058A2B0 /* Tests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tests_Prefix.pch; sourceTree = "<group>"; };
 		00C1A2BE0F52813200FCCA14 /* GHUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitTestMain.m; sourceTree = "<group>"; };
 		00C1A2D80F52847700FCCA14 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
+		00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHRegisterTestCaseClassTest.m; sourceTree = "<group>"; };
+		00CDDCDE0F76F7730089C60E /* GHSpecialTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHSpecialTestCase.h; sourceTree = "<group>"; };
+		00CDDCDF0F76F7730089C60E /* GHSpecialTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSpecialTestCase.m; sourceTree = "<group>"; };
+		00CDDD2C0F76F9B30089C60E /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = SOURCE_ROOT; };
+		00CDDD2D0F76F9B30089C60E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
+		00CDDD800F76FC880089C60E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -402,6 +409,9 @@
 				00970A2F0F2836CE00189A9D /* GHSenTestingTest.m */,
 				002E74860F2C2B3100427636 /* GHSlowTest.m */,
 				005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */,
+				00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */,
+				00CDDCDE0F76F7730089C60E /* GHSpecialTestCase.h */,
+				00CDDCDF0F76F7730089C60E /* GHSpecialTestCase.m */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -419,7 +429,9 @@
 		0867D691FE84028FC02AAC07 /* GHUnit */ = {
 			isa = PBXGroup;
 			children = (
-				0029B6D50F2EDC60003EAFC1 /* README.markdown */,
+				00CDDD800F76FC880089C60E /* Makefile */,
+				00CDDD2D0F76F9B30089C60E /* README.md */,
+				00CDDD2C0F76F9B30089C60E /* CHANGELOG.md */,
 				002D9BD70F49158F007932FE /* Classes */,
 				002D9BEA0F49158F007932FE /* Classes-MacOSX */,
 				002D9BF70F49158F007932FE /* Libraries */,
@@ -620,6 +632,9 @@
 				002E74870F2C2B3100427636 /* GHSlowTest.m in Sources */,
 				005FDD220F33D259006B369F /* GTMSenTestCase.m in Sources */,
 				005FDD390F33D373006B369F /* GHGTMTestCaseTest.m in Sources */,
+				00CDDCC10F75D6970089C60E /* GHRegisterTestCaseClassTest.m in Sources */,
+				00CDDCE00F76F7730089C60E /* GHSpecialTestCase.m in Sources */,
+				00CDDD300F76FABD0089C60E /* GHUnitTestMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,7 +660,6 @@
 				002D9C2E0F49158F007932FE /* GTMLogger.m in Sources */,
 				002D9C300F49158F007932FE /* GTMObjC2Runtime.m in Sources */,
 				002D9C320F49158F007932FE /* GTMStackTrace.m in Sources */,
-				00C1A3350F52881F00FCCA14 /* GHUnitTestMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

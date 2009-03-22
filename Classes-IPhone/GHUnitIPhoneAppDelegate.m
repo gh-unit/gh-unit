@@ -34,8 +34,7 @@
 	viewController_ = [[GHUnitIPhoneViewController alloc] init];
 	navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController_];
 	[window_ addSubview:navigationController_.view];
-	[window_ makeKeyAndVisible];
-	
+	[window_ makeKeyAndVisible];	
 	[self runTests];
 }
 
