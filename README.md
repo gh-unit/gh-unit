@@ -161,6 +161,7 @@ An example of a iPhone test project can be found at: [MyTestable](http://github.
 To run the tests from the command line:
 
 - Copy the [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Classes/RunTests.sh) file into your project directory.
+- Add this file to your `Tests` target.
 - In XCode:
   - To the `Tests` target, Add | New Build Phase | New Run Script Build Phrase
   - Enter in the path to the RunTests.sh file. (The path should be relative to the xcode project file!)
