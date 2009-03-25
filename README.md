@@ -104,7 +104,6 @@ You should see something similar to the following screen shots:
 Frameworks are not supported in the iPhone environment. So you'll need to copy and add the GHUnit files directly into your project.
 
 - Add a `New Target`. Select `Cocoa Touch -> Application`. Name it `Tests` (or something similar).
-- Set the Main Nib file to `GHUnitIPhone.xib`
 - Make sure all your project files are included in the `Test` target.
 - Make sure your test project is linked to CoreGraphics.framework
 - Copy (or symlink) into your project:
