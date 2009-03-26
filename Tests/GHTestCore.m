@@ -23,4 +23,8 @@
 	[NSException raise:@"SomeException" format:@"Some reason for the exception"];
 }
 
+- (void)testMacroFail {
+	GHAssertTrue(NO, @"Test fail");
+}
+
 @end

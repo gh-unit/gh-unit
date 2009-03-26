@@ -55,6 +55,14 @@
 // For example, GHTestLog(@"Some debug info, %@", obj)
 #define GHTestLog(...) [self _log:[NSString stringWithFormat:__VA_ARGS__, nil]]
 
+// Test cases should implement this protocol
+@protocol GHUnitTestCase <NSObject>
+- (void)failWithException:(NSException*)exception;
+- (void)handleException:(NSException *)exception;
+- (void)setUp;
+- (void)tearDown;
+@end
+
 /*!
  Delegate which is notified of log messages from inside GHTestCase.
  */
@@ -67,7 +75,7 @@
  Tests can subclass and write tests by adding methods with the 'test' prefix.
  The setUp and tearDown methods are run before and after each test method.
  */
-@interface GHTestCase : NSObject {
+@interface GHTestCase : NSObject <GHUnitTestCase> {
 	id<GHTestCaseLogDelegate> logDelegate_; // weak
 }
 

@@ -50,6 +50,7 @@
 //
 
 #import "GHTestCase.h"
+#import "GTMStackTrace.h"
 
 @implementation GHTestCase
 
@@ -57,13 +58,19 @@
 
 // GTM_BEGIN
 
-- (void)failWithException:(NSException*)exception { 
+- (void)failWithException:(NSException*)exception {
 	[exception raise];
 }
 
 - (void)setUp { }
 
 - (void)tearDown { }
+
+// GTM_END
+
+- (void)handleException:(NSException *)exception {
+	NSLog(@"Exception: %@\n%@", [exception reason], GTMStackTraceFromException(exception));
+}
 
 #pragma mark Logging
 
@@ -72,4 +79,3 @@
 }
 
 @end
-// GTM_END

@@ -220,6 +220,11 @@ static GHTesting *gSharedInstance;
 	
 	if (exception) *exception = testException;
 	BOOL passed = (!testException);
+	
+	if (testException && [target respondsToSelector:@selector(handleException:)]) {
+		[target handleException:testException];
+	}
+	
 	return passed;
 }
 
