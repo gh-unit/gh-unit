@@ -110,7 +110,7 @@ Frameworks and dynamic libraries are not supported in the iPhone environment, bu
 	- libGHUnitIPhone.a (static library)
 	- GHUnit header files
 	- GHUnit test main
-- Under 'Other Linked Flags' in the `Test` target, add `-ObjC`
+- Under 'Other Linker Flags' in the `Test` target, add `-ObjC`
 
 Now you can create a test (either by subclassing `SenTestCase` or `GHTestCase`) and add it to your test target.
 
@@ -160,7 +160,7 @@ An example of an iPhone project with GHUnit test setup can be found at: [MyTesta
 To run the tests from the command line:
 
 - Copy the [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Classes/RunTests.sh) file into your project directory.
-- Add this file to your `Tests` target.
+- Add this file to your project
 - In XCode:
   - To the `Tests` target, Add | New Build Phase | New Run Script Build Phrase
   - Enter in the path to the RunTests.sh file. (The path should be relative to the xcode project file!)
@@ -175,6 +175,9 @@ From the command line, run the tests from xcodebuild (with the GHUNIT_CLI enviro
 
 If you are wondering, the `RunTests.sh` script will only run the tests if the env variable GHUNIT_CLI is set. 
 This is why this phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.
+
+This may seem strange that we run via xcodebuild with a RunScript phase in order to work on the command line, but otherwise we may not have
+the environment settings or other XCode specific configuration right.
 
 Example Makefiles:
 
