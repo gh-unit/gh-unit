@@ -18,6 +18,7 @@
 	tableView_.delegate = self;
 	tableView_.dataSource = self;
 	self.view = tableView_;
+	self.title = @"Tests";
 }
 
 - (void)dealloc {
@@ -43,19 +44,26 @@
 #pragma mark Delegates / Data Source (UITableView)
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	if (!model_) return 1;
-	return [[[model_ root] children] count];
+	if (model_) {
+		NSInteger numberOfSections = [[[model_ root] children] count];
+		if (numberOfSections > 0) return numberOfSections;
+	}
+	return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if (!model_) return nil;
-	GHTestNode *sectionNode = [[[model_ root] children] objectAtIndex:section];
+	NSArray *children = [[model_ root] children];
+	if ([children count] == 0) return nil;
+	GHTestNode *sectionNode = [children objectAtIndex:section];
 	return sectionNode.name;
 }
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
 	if (!model_) return 0;
-	GHTestNode *sectionNode = [[[model_ root] children] objectAtIndex:section];
+	NSArray *children = [[model_ root] children];
+	if ([children count] == 0) return 0;
+	GHTestNode *sectionNode = [children objectAtIndex:section];
 	return [[sectionNode children] count];
 }
 

@@ -19,7 +19,5 @@
 	GHUnitIPhoneViewController *viewController_;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-
 @end
 

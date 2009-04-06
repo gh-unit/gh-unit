@@ -11,16 +11,13 @@
 
 @implementation GHUnitIPhoneAppDelegate
 
-@synthesize window=window_;
-
 - (void)runTests {	
 	[NSThread detachNewThreadSelector:@selector(_runTests) toTarget:self withObject:nil];	
 }
 
 - (void)_runTests {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	GHTestSuite *suite = [GHTestSuite allTests];
-	GHTestRunner *runner = [[[GHTestRunner runnerForSuite:suite] retain] autorelease];
+	GHTestRunner *runner = [[[GHTestRunner runnerFromEnv] retain] autorelease];
 	runner.delegate = self;
 	runner.delegateOnMainThread = YES;
 	// To allow exceptions to raise into the debugger, uncomment below
@@ -33,6 +30,8 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	viewController_ = [[GHUnitIPhoneViewController alloc] init];
 	navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController_];
+	CGSize size = [[UIScreen mainScreen] applicationFrame].size;
+	window_ = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
 	[window_ addSubview:navigationController_.view];
 	[window_ makeKeyAndVisible];	
 	[self runTests];

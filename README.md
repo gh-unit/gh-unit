@@ -16,11 +16,11 @@ Although you can register additional classes at runtime; if you have your own. F
 
 ## Download
 
-**GHUnit.framework** [GHUnit-0.3.1.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.1.zip) (2009/03/22)
+**GHUnit.framework** [GHUnit-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.2.zip) (2009/04/05)
 
 _For Mac OS X application testing, since 0.3.1, you need to copy Classes-MacOSX/GHUnitTestMain.m into your project Test target._
 
-_For an iPhone application testing, you have to embed the source in your project. See below._
+**GHUnit (iPhone Static Library)** [libGHUnitIPhone-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.2.zip) (2009/04/05)
 
 ## Group
 
@@ -33,7 +33,7 @@ The goals of GHUnit are:
 - Runs unit tests within XCode, allowing you to fully utilize the XCode Debugger.
 - A simple GUI to help you visualize your tests.
 - Show stack traces.
-- Be installable as a framework (for Cocoa apps) with a simple (or not) target setup; or easy to package into your iPhone project.
+- Be installable as a framework (for Cocoa apps) with a simpler/more flexible target setup; or easy to package into your iPhone project.
 
 `GHTestCase` is the base class for your tests.
 Tests are defined by methods that start with 'test', take no arguments and return void. 
@@ -51,7 +51,7 @@ To add `GHUnit.framework` to your project:
 	- Add a linked library, select your project.
 	- Add a direct dependency, and select your project. (This will cause your application or framework to build before the test target.)
 
-- Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into you project and include in the Test target.
+- Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target. 
 
 For example `MyTest.m`:
@@ -101,18 +101,18 @@ You should see something similar to the following screen shots:
 
 ## Adding a GHUnit Test Target (iPhone)
 
-Frameworks are not supported in the iPhone environment. So you'll need to copy and add the GHUnit files directly into your project.
+Frameworks and dynamic libraries are not supported in the iPhone environment, but you can use the libGHUnitIPhone.a static library.
 
 - Add a `New Target`. Select `Cocoa Touch -> Application`. Name it `Tests` (or something similar).
 - Make sure all your project files are included in the `Test` target.
 - Make sure your test project is linked to CoreGraphics.framework
-- Copy (or symlink) into your project:
-	- `Classes/` (Core files)
-	- `Classes-IPhone/` (iPhone specific files)
-	- `Libraries/` (External libraries, [GHKit](http://github.com/gabriel/gh-kit/tree/master) and [GTM](http://code.google.com/p/google-toolbox-for-mac/); If you already have these included in your iPhone project, you shouldn't add them again.
-- Add these GHUnit files to your project, but only in the `Test` target.
-- In the `Tests` target, info dialog, under Properties set the `Main Nib File` to `GHUnitIPhone`.
-- Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target.
+- Add the GHUnit files, from the GHUnit (iPhone Static Library) download, into your `Test` target. These files should include:
+	- libGHUnitIPhone.a (static library)
+	- GHUnit header files
+	- GHUnit test main
+- Under 'Other Linked Flags' in the `Test` target, add `-ObjC`
+
+Now you can create a test (either by subclassing `SenTestCase` or `GHTestCase`) and add it to your test target.
 
 For example `MyTest.m`:
 
@@ -153,7 +153,7 @@ You should see something similar to the following:
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
-An example of a iPhone test project can be found at: [MyTestable](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone). This project symlinks to the GHUnit files.
+An example of an iPhone project with GHUnit test setup can be found at: [MyTestable](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone). This project symlinks to the GHUnit files.
 
 ## Command Line
 
@@ -167,7 +167,7 @@ To run the tests from the command line:
 
 From the command line, run the tests from xcodebuild (with the GHUNIT_CLI environment variable set) :
 
-    // For mac app
+		// For mac app
     GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
 
     // For iPhone app
@@ -182,6 +182,15 @@ Example Makefiles:
 - [Makefile](http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile) (for an iPhone App)
 
 The script will return a non-zero exit code on test failure so your continuous integration scripts work.
+
+## Running a Test Case / Single Test
+
+The `TEST` environment variable can be used to run a single test or test case.
+
+		// Run all tests in GHSlowTest
+		make test TEST="GHSlowTest"
+		
+		make test TEST="GHSlowTest/testSlowA"
 
 ## Test Macros
  

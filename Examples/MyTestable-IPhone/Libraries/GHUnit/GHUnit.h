@@ -1,8 +1,8 @@
 //
-//  GHUnitTestMain.m
-//  GHUnit
+//  GHUnit.h
+//  GHKit
 //
-//  Created by Gabriel Handford on 2/22/09.
+//  Created by Gabriel Handford on 1/19/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,39 +27,7 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
-#import <Foundation/NSDebug.h>
-
-#import <GHUnit/GHUnit.h>
-#import <GHUnit/GHTestApp.h>
-#import <GHUnit/GHTesting.h>
-
-int main(int argc, char *argv[]) {
-	// Setup any NSDebug settings
-	NSDebugEnabled = YES;
-	NSZombieEnabled = YES;
-	NSDeallocateZombies = NO;
-	NSHangOnUncaughtException = YES;
-	setenv("NSAutoreleaseFreedObjectCheckEnabled", "1", 1);
-	
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	// If using GHLogger
-	//[GHLogger setLogLevel:kGTMLoggerLevelDebug];
-
-	// Register any special test case classes
-	//[[GHTesting sharedInstance] registerClassName:@"GHSpecialTestCase"];	
-	
-	int retVal = 0;
-	// If GHUNIT_CLI is set we are using the command line interface and run the tests
-	// Otherwise load the GUI app
-	if (getenv("GHUNIT_CLI")) {		
-		retVal = [GHTestRunner run];
-	} else {
-		GHTestApp *app = [[GHTestApp alloc] init];
-		[NSApp run];
-		[app release];		
-	}
-	[pool release];
-	return retVal;
-}
+#import "GHTestCase.h"
+#import "GHTestSuite.h"
+#import "GHTestMacros.h"
+#import "GHTestRunner.h"

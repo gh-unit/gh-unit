@@ -75,6 +75,9 @@
 }
 
 - (void)dealloc {
+	for(id<GHTest> test in children_)
+		[test setDelegate:nil];
+	
 	[name_ release];
 	[children_ release];
 	[super dealloc];
@@ -119,6 +122,7 @@
 	if ([test respondsToSelector:@selector(setLogDelegate:)])
 		[test performSelector:@selector(setLogDelegate:) withObject:self];
 
+	[test setDelegate:self];
 	[children_ addObject:test];
 }
 

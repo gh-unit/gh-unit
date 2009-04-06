@@ -47,7 +47,7 @@
 
 - (void)_runTests {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];		
-	GHTestRunner *runner = [[[GHTestRunner runnerForAllTests] retain] autorelease];
+	GHTestRunner *runner = [[[GHTestRunner runnerFromEnv] retain] autorelease];
 	runner.delegate = self;
 	runner.delegateOnMainThread = YES;
 	// To allow exceptions to raise into the debugger, uncomment below

@@ -46,7 +46,10 @@
 
 #import "GHTestRunner.h"
 #import "GHTestSuite.h"
+#import "GHTesting.h"
 #import "GHNSObject+Invocation.h"
+
+#import <stdio.h>
 
 @interface GHTestRunner (Private)
 - (void)_notifyStart;
@@ -55,16 +58,20 @@
 - (void)_updateTest:(id<GHTest>)test;
 @end
 
-#import <stdio.h>
-
 @implementation GHTestRunner
 
 @synthesize test=test_, raiseExceptions=raiseExceptions_, delegate=delegate_, delegateOnMainThread=delegateOnMainThread_;
 
-- (id)initWithTest:(id<GHTest>)test {
+- (id)init {
 	if ((self = [super init])) {
-		test_ = [test retain];
 		delegateOnMainThread_ = YES;
+	}
+	return self;
+}
+
+- (id)initWithTest:(id<GHTest>)test {
+	if ((self = [self init])) {
+		test_ = [test retain];
 	}
 	return self;
 }
@@ -78,6 +85,28 @@
 	GHTestRunner *runner = [[GHTestRunner alloc] initWithTest:suite];
 	suite.delegate = runner;
 	return [runner autorelease];
+}
+
++ (GHTestRunner *)runnerFromEnv {	
+	GHTestRunner *testRunner = nil;
+	
+	const char* cTestFilter = getenv("TEST");
+	if (cTestFilter) {
+		NSString *testFilter = [NSString stringWithUTF8String:cTestFilter];
+		GHTestSuite *suite = [GHTestSuite suiteWithTestFilter:testFilter];	
+		// Run a single or set of tests
+		testRunner = [GHTestRunner runnerForSuite:suite];
+	} else {			
+		// Default option is to run all tests
+		testRunner = [GHTestRunner runnerForAllTests];
+	}
+	return testRunner;
+}	
+
++ (int)run {
+	GHTestRunner *testRunner = [GHTestRunner runnerFromEnv];
+	[testRunner run];
+	return testRunner.stats.failureCount;
 }
 
 - (void)dealloc {
@@ -153,7 +182,6 @@
 		[(id)delegate_ gh_performSelector:@selector(testRunnerDidFinish:) onMainThread:delegateOnMainThread_ 
 												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, nil];
 }
-	
 
 @end
 

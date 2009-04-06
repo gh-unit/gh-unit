@@ -48,6 +48,7 @@
 
 #import "GHTesting.h"
 #import "GHTest.h"
+#import "GHTestCase.h"
 
 #import <objc/runtime.h>
 
@@ -112,7 +113,7 @@ static GHTesting *gSharedInstance;
 	[testCaseClassNames_ addObject:className];
 }
 
-- (NSArray *)loadTestCases {
+- (NSArray *)loadAllTestCases {
 	NSMutableArray *testCases = [NSMutableArray array];
 
 	// GTM_BEGIN
@@ -217,7 +218,6 @@ static GHTesting *gSharedInstance;
   }
 	// GTM_END	
 	if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
-	
 	if (exception) *exception = testException;
 	BOOL passed = (!testException);
 	

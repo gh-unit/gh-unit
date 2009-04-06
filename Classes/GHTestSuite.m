@@ -42,12 +42,19 @@
 	return self;
 }
 
+- (id)initWithName:(NSString *)name tests:(NSArray/* of id<GHTest>*/ *)tests delegate:(id<GHTestDelegate>)delegate {
+	if ((self = [super initWithName:name delegate:delegate])) {
+		[self addTests:tests];
+	}
+	return self;
+}
+
 + (GHTestSuite *)allTests {
 	return [self allTests:NO];
 }
 
 + (GHTestSuite *)allTests:(BOOL)flatten {
-	NSArray *testCases = [[GHTesting sharedInstance] loadTestCases];
+	NSArray *testCases = [[GHTesting sharedInstance] loadAllTestCases];
 	GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" delegate:nil];	
 	for(id testCase in testCases) {
 		if (flatten) {
@@ -56,7 +63,26 @@
 			[allTests addTestCase:testCase];
 		}
 	}
-	return [allTests autorelease];;
+	return [allTests autorelease];
+}
+
++ (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilter {
+	NSArray *tests = nil;
+	NSArray *components = [testFilter componentsSeparatedByString:@"/"];
+	if ([components count] == 2) {		
+		NSString *testCaseClassName = [components objectAtIndex:0];
+		Class testCaseClass = NSClassFromString(testCaseClassName);
+		id testCase = [[[testCaseClass alloc] init] autorelease];
+		NSString *methodName = [components objectAtIndex:1];
+		GHTest *test = [GHTest testWithTarget:testCase selector:NSSelectorFromString(methodName)];
+		tests = [NSArray arrayWithObject:test];
+	} else {
+		Class testCaseClass = NSClassFromString(testFilter);
+		id testCase = [[[testCaseClass alloc] init] autorelease];
+		tests = [[GHTesting sharedInstance] loadTestsFromTarget:testCase];
+	}
+	
+	return [[[GHTestSuite alloc] initWithName:testFilter tests:tests delegate:nil] autorelease];
 }
 
 @end
