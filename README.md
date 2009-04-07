@@ -1,5 +1,7 @@
 # GHUnit
 
+&lt;!--tableofcontents--&gt;
+
 GHUnit is a test framework for Objective-C (Mac OS X 10.5 and iPhone 2.0 and above).
 It can be used with SenTestingKit, GTM or by itself. 
 
@@ -13,7 +15,7 @@ For example, your test cases will be run if they subclass any of the following:
 
 **GHUnit.framework** [GHUnit-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.2.zip) (2009/04/05)
 
-**libGHUnitIPhone** (iPhone Static Library) [libGHUnitIPhone-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.2.zip) (2009/04/05)
+**iPhone Static Library** [libGHUnitIPhone-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.2.zip) (2009/04/05)
 
 ## Group
 
@@ -173,12 +175,14 @@ This is why this phase is ignored when running the test GUI. This is how we use 
 This may seem strange that we run via xcodebuild with a RunScript phase in order to work on the command line, but otherwise we may not have
 the environment settings or other XCode specific configuration right.
 
-Example Makefiles:
+## Makefile
+
+Example Makefile's for Mac or iPhone apps:
 
 - [Makefile](http://github.com/gabriel/gh-unit/tree/master/Project/Makefile) (for a Mac App)
 - [Makefile](http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile) (for an iPhone App)
 
-The script will return a non-zero exit code on test failure so your continuous integration scripts work.
+The script will return a non-zero exit code on test failure.
 
 ## Running a Test Case / Single Test
 
