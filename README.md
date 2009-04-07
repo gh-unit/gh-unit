@@ -161,11 +161,11 @@ To run the tests from the command line:
 
 From the command line, run the tests from xcodebuild (with the GHUNIT_CLI environment variable set) :
 
-		// For mac app
-    GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
-
-    // For iPhone app
-    GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator2.2 build
+	// For mac app
+	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
+	
+	// For iPhone app
+	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator2.2 build
 
 If you are wondering, the `RunTests.sh` script will only run the tests if the env variable GHUNIT_CLI is set. 
 This is why this phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.
@@ -186,11 +186,11 @@ The script will return a non-zero exit code on test failure.
 
 The `TEST` environment variable can be used to run a single test or test case.
 
-		// Run all tests in GHSlowTest
-		make test TEST="GHSlowTest"
+	// Run all tests in GHSlowTest
+	make test TEST="GHSlowTest"
 	
-		// Run the method testSlowA in GHSlowTest	
-		make test TEST="GHSlowTest/testSlowA"
+	// Run the method testSlowA in GHSlowTest	
+	make test TEST="GHSlowTest/testSlowA"
 
 ## Custom Test Case Classes
 
