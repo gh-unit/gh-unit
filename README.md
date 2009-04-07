@@ -9,18 +9,11 @@ For example, your test cases will be run if they subclass any of the following:
 - SenTestCase
 - GTMTestCase
 
-Although you can register additional classes at runtime; if you have your own. For example,
-
-	[[GHTesting sharedInstance] registerClassName:@"MySpecialTestCase"]
-
-
 ## Download
 
 **GHUnit.framework** [GHUnit-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.2.zip) (2009/04/05)
 
-_For Mac OS X application testing, since 0.3.1, you need to copy Classes-MacOSX/GHUnitTestMain.m into your project Test target._
-
-**GHUnit (iPhone Static Library)** [libGHUnitIPhone-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.2.zip) (2009/04/05)
+**libGHUnitIPhone** (iPhone Static Library) [libGHUnitIPhone-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.2.zip) (2009/04/05)
 
 ## Group
 
@@ -31,6 +24,7 @@ For questions and discussions see the [GHUnit Google Group](http://groups.google
 The goals of GHUnit are:
 
 - Runs unit tests within XCode, allowing you to fully utilize the XCode Debugger.
+- Ability to run from Makefile's or the command line.
 - A simple GUI to help you visualize your tests.
 - Show stack traces.
 - Be installable as a framework (for Cocoa apps) with a simpler/more flexible target setup; or easy to package into your iPhone project.
@@ -153,7 +147,7 @@ You should see something similar to the following:
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
-An example of an iPhone project with GHUnit test setup can be found at: [MyTestable](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone). This project symlinks to the GHUnit files.
+An example of an iPhone project with GHUnit test setup can be found at: [MyTestable-IPhone](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone).
 
 ## Command Line
 
@@ -192,8 +186,17 @@ The `TEST` environment variable can be used to run a single test or test case.
 
 		// Run all tests in GHSlowTest
 		make test TEST="GHSlowTest"
-		
+	
+		// Run the method testSlowA in GHSlowTest	
 		make test TEST="GHSlowTest/testSlowA"
+
+## Custom Test Case Classes
+
+You can register additional classes at runtime; if you have your own. For example:
+
+        [[GHTesting sharedInstance] registerClassName:@"MySpecialTestCase"];
+
+
 
 ## Test Macros
  
