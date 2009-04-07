@@ -1,7 +1,5 @@
 # GHUnit
 
-&lt;!--tableofcontents--&gt;
-
 GHUnit is a test framework for Objective-C (Mac OS X 10.5 and iPhone 2.0 and above).
 It can be used with SenTestingKit, GTM or by itself. 
 
