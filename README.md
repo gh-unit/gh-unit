@@ -11,13 +11,9 @@ For example, your test cases will be run if they subclass any of the following:
 
 ## Download
 
-**GHUnit.framework** [GHUnit-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.2.zip) (2009/04/05)
+[GHUnit-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.2.zip) *GHUnit.framework* (2009/04/05)
 
-**iPhone Static Library** [libGHUnitIPhone-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.2.zip) (2009/04/05)
-
-## Group
-
-For questions and discussions see the [GHUnit Google Group](http://groups.google.com/group/ghunit)
+[libGHUnitIPhone-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.2.zip) *iPhone Static Library* (2009/04/05)
 
 ## Why?
 
@@ -33,6 +29,10 @@ The goals of GHUnit are:
 Tests are defined by methods that start with 'test', take no arguments and return void. 
 Your setup and tear down methods are `- (void)setUp;` and `- (void)tearDown;`. 
 You know, pretty much like every test framework in existence.
+
+## Group
+
+For questions and discussions see the [GHUnit Google Group](http://groups.google.com/group/ghunit)
 
 ## Adding a GHUnit Test Target (Mac OS X)
 
@@ -98,9 +98,8 @@ You should see something similar to the following screen shots:
 Frameworks and dynamic libraries are not supported in the iPhone environment, but you can use the libGHUnitIPhone.a static library.
 
 - Add a `New Target`. Select `Cocoa Touch -> Application`. Name it `Tests` (or something similar).
-- Make sure all your project files are included in the `Test` target.
-- Make sure your test project is linked to CoreGraphics.framework
-- Add the GHUnit files, from the GHUnit (iPhone Static Library) download, into your `Test` target. These files should include:
+- Add `CoreGraphics.framework` to `Linked Libraries`
+- Include the GHUnit files (from the GHUnit/iPhone Static Library download above), in your `Test` target. These files should include:
 	- libGHUnitIPhone.a (static library)
 	- GHUnit header files
 	- GHUnit test main
@@ -154,10 +153,10 @@ An example of an iPhone project with GHUnit test setup can be found at: [MyTesta
 To run the tests from the command line:
 
 - Copy the [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Classes/RunTests.sh) file into your project directory.
-- Add this file to your project
 - In XCode:
   - To the `Tests` target, Add | New Build Phase | New Run Script Build Phrase
-  - Enter in the path to the RunTests.sh file. (The path should be relative to the xcode project file!)
+  - Enter in the path to the RunTests.sh file. This path should be relative to the xcode project file (.xcodeproj)!
+	- (Optional) Uncheck 'Show environment variables in build log'
 
 From the command line, run the tests from xcodebuild (with the GHUNIT_CLI environment variable set) :
 
@@ -168,7 +167,7 @@ From the command line, run the tests from xcodebuild (with the GHUNIT_CLI enviro
 	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator2.2 build
 
 If you are wondering, the `RunTests.sh` script will only run the tests if the env variable GHUNIT_CLI is set. 
-This is why this phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.
+This is why this RunScript phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.
 
 This may seem strange that we run via xcodebuild with a RunScript phase in order to work on the command line, but otherwise we may not have
 the environment settings or other XCode specific configuration right.
@@ -181,6 +180,10 @@ Example Makefile's for Mac or iPhone apps:
 - [Makefile](http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile) (for an iPhone App)
 
 The script will return a non-zero exit code on test failure.
+
+To run the tests via the Makefile:
+
+	make test
 
 ## Running a Test Case / Single Test
 
