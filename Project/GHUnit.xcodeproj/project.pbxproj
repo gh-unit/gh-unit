@@ -35,15 +35,10 @@
 		002D9C230F49158F007932FE /* GHTestWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002D9BF40F49158F007932FE /* GHTestWindow.xib */; };
 		002D9C240F49158F007932FE /* GHTestWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BF50F49158F007932FE /* GHTestWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C250F49158F007932FE /* GHTestWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BF60F49158F007932FE /* GHTestWindowController.m */; };
-		002D9C260F49158F007932FE /* GHLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BF90F49158F007932FE /* GHLogger.h */; settings = {ATTRIBUTES = (); }; };
-		002D9C270F49158F007932FE /* GHLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFA0F49158F007932FE /* GHLogger.m */; };
 		002D9C280F49158F007932FE /* GHNSInvocation+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BFB0F49158F007932FE /* GHNSInvocation+Utils.h */; };
 		002D9C290F49158F007932FE /* GHNSInvocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFC0F49158F007932FE /* GHNSInvocation+Utils.m */; };
 		002D9C2A0F49158F007932FE /* GHNSObject+Invocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BFD0F49158F007932FE /* GHNSObject+Invocation.h */; };
 		002D9C2B0F49158F007932FE /* GHNSObject+Invocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFE0F49158F007932FE /* GHNSObject+Invocation.m */; };
-		002D9C2C0F49158F007932FE /* GTMGarbageCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C010F49158F007932FE /* GTMGarbageCollection.h */; settings = {ATTRIBUTES = (); }; };
-		002D9C2D0F49158F007932FE /* GTMLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C020F49158F007932FE /* GTMLogger.h */; };
-		002D9C2E0F49158F007932FE /* GTMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9C030F49158F007932FE /* GTMLogger.m */; };
 		002D9C2F0F49158F007932FE /* GTMObjC2Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C040F49158F007932FE /* GTMObjC2Runtime.h */; };
 		002D9C300F49158F007932FE /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9C050F49158F007932FE /* GTMObjC2Runtime.m */; };
 		002D9C310F49158F007932FE /* GTMStackTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C060F49158F007932FE /* GTMStackTrace.h */; };
@@ -117,15 +112,10 @@
 		002D9BF40F49158F007932FE /* GHTestWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GHTestWindow.xib; sourceTree = "<group>"; };
 		002D9BF50F49158F007932FE /* GHTestWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestWindowController.h; sourceTree = "<group>"; };
 		002D9BF60F49158F007932FE /* GHTestWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestWindowController.m; sourceTree = "<group>"; };
-		002D9BF90F49158F007932FE /* GHLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHLogger.h; sourceTree = "<group>"; };
-		002D9BFA0F49158F007932FE /* GHLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHLogger.m; sourceTree = "<group>"; };
 		002D9BFB0F49158F007932FE /* GHNSInvocation+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHNSInvocation+Utils.h"; sourceTree = "<group>"; };
 		002D9BFC0F49158F007932FE /* GHNSInvocation+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHNSInvocation+Utils.m"; sourceTree = "<group>"; };
 		002D9BFD0F49158F007932FE /* GHNSObject+Invocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHNSObject+Invocation.h"; sourceTree = "<group>"; };
 		002D9BFE0F49158F007932FE /* GHNSObject+Invocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHNSObject+Invocation.m"; sourceTree = "<group>"; };
-		002D9C010F49158F007932FE /* GTMGarbageCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMGarbageCollection.h; sourceTree = "<group>"; };
-		002D9C020F49158F007932FE /* GTMLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMLogger.h; sourceTree = "<group>"; };
-		002D9C030F49158F007932FE /* GTMLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMLogger.m; sourceTree = "<group>"; };
 		002D9C040F49158F007932FE /* GTMObjC2Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMObjC2Runtime.h; sourceTree = "<group>"; };
 		002D9C050F49158F007932FE /* GTMObjC2Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMObjC2Runtime.m; sourceTree = "<group>"; };
 		002D9C060F49158F007932FE /* GTMStackTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMStackTrace.h; sourceTree = "<group>"; };
@@ -292,8 +282,6 @@
 		002D9BF80F49158F007932FE /* GHKit */ = {
 			isa = PBXGroup;
 			children = (
-				002D9BF90F49158F007932FE /* GHLogger.h */,
-				002D9BFA0F49158F007932FE /* GHLogger.m */,
 				002D9BFB0F49158F007932FE /* GHNSInvocation+Utils.h */,
 				002D9BFC0F49158F007932FE /* GHNSInvocation+Utils.m */,
 				002D9BFD0F49158F007932FE /* GHNSObject+Invocation.h */,
@@ -314,9 +302,6 @@
 		002D9C000F49158F007932FE /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				002D9C010F49158F007932FE /* GTMGarbageCollection.h */,
-				002D9C020F49158F007932FE /* GTMLogger.h */,
-				002D9C030F49158F007932FE /* GTMLogger.m */,
 				002D9C040F49158F007932FE /* GTMObjC2Runtime.h */,
 				002D9C050F49158F007932FE /* GTMObjC2Runtime.m */,
 				002D9C060F49158F007932FE /* GTMStackTrace.h */,
@@ -512,11 +497,8 @@
 				002D9C1E0F49158F007932FE /* GHTestAppDelegate.h in Headers */,
 				002D9C210F49158F007932FE /* GHTestViewController.h in Headers */,
 				002D9C240F49158F007932FE /* GHTestWindowController.h in Headers */,
-				002D9C260F49158F007932FE /* GHLogger.h in Headers */,
 				002D9C280F49158F007932FE /* GHNSInvocation+Utils.h in Headers */,
 				002D9C2A0F49158F007932FE /* GHNSObject+Invocation.h in Headers */,
-				002D9C2C0F49158F007932FE /* GTMGarbageCollection.h in Headers */,
-				002D9C2D0F49158F007932FE /* GTMLogger.h in Headers */,
 				002D9C2F0F49158F007932FE /* GTMObjC2Runtime.h in Headers */,
 				002D9C310F49158F007932FE /* GTMStackTrace.h in Headers */,
 				002D9C330F49158F007932FE /* GTMDefines.h in Headers */,
@@ -654,10 +636,8 @@
 				002D9C1F0F49158F007932FE /* GHTestAppDelegate.m in Sources */,
 				002D9C220F49158F007932FE /* GHTestViewController.m in Sources */,
 				002D9C250F49158F007932FE /* GHTestWindowController.m in Sources */,
-				002D9C270F49158F007932FE /* GHLogger.m in Sources */,
 				002D9C290F49158F007932FE /* GHNSInvocation+Utils.m in Sources */,
 				002D9C2B0F49158F007932FE /* GHNSObject+Invocation.m in Sources */,
-				002D9C2E0F49158F007932FE /* GTMLogger.m in Sources */,
 				002D9C300F49158F007932FE /* GTMObjC2Runtime.m in Sources */,
 				002D9C320F49158F007932FE /* GTMStackTrace.m in Sources */,
 			);

@@ -1,4 +1,10 @@
-# Release TBD (0.3.2)
+# Release 0.3.3 (TBD)
+
+## 2008-04-08
+- Removed GTMLogger and GHLogger; Not used in Release and potentially can 
+  conflict with project logging with iPhone static library
+
+# Release 0.3.2 (2009/04/05)
 
 ## 2008-04-05
 - Building as static library for iPhone

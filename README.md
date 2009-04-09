@@ -13,7 +13,7 @@ For example, your test cases will be run if they subclass any of the following:
 
 [GHUnit-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.2.zip) *GHUnit.framework* (2009/04/05)
 
-[libGHUnitIPhone-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.2.zip) *iPhone Static Library* (2009/04/05)
+[libGHUnitIPhone-0.3.3.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.3.zip) *iPhone Static Library* (2009/04/08)
 
 ## Why?
 

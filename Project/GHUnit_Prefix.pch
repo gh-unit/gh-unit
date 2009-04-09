@@ -8,7 +8,6 @@
 // GHKit Dependencies
 #import "GHNSInvocation+Utils.h"
 #import "GHNSObject+Invocation.h"
-#import "GHLogger.h"
 
 #import "GHUnit.h"
 #endif

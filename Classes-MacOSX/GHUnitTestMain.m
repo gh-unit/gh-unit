@@ -44,9 +44,6 @@ int main(int argc, char *argv[]) {
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	// If using GHLogger
-	//[GHLogger setLogLevel:kGTMLoggerLevelDebug];
-
 	// Register any special test case classes
 	//[[GHTesting sharedInstance] registerClassName:@"GHSpecialTestCase"];	
 	
