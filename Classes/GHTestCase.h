@@ -89,7 +89,7 @@
  @endcode
 
  */
-@interface GHTestCase : NSObject <GHUnitTestCase> {
+@interface GHTestCase : NSObject {
 	id<GHTestCaseLogDelegate> logDelegate_; // weak
 	
 	SEL currentSelector_;
@@ -119,5 +119,8 @@
 
 //! Run after the tests (once per test case)
 - (void)tearDownClass;
+
+//! Any special handling of exceptions after they are thrown; By default logs stack trace to standard out.
+- (void)handleException:(NSException *)exception;
 
 @end
