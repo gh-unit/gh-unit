@@ -19,9 +19,9 @@
 #import "GTMSenTestCase.h"
 #import <unistd.h>
 
-#if !GTM_IPHONE_SDK
-#import "GTMGarbageCollection.h"
-#endif  // !GTM_IPHONE_SDK
+//#if !GTM_IPHONE_SDK
+//#import "GTMGarbageCollection.h"
+//#endif  // !GTM_IPHONE_SDK
 
 #if GTM_IPHONE_SDK
 #import <stdarg.h>
@@ -335,9 +335,9 @@ static void _GTMRunLeaks(void) {
 
 static __attribute__((constructor)) void _GTMInstallLeaks(void) {
   BOOL checkLeaks = YES;
-#if !GTM_IPHONE_SDK
-  checkLeaks = GTMIsGarbageCollectionEnabled() ? NO : YES;
-#endif  // !GTM_IPHONE_SDK
+//#if !GTM_IPHONE_SDK
+//  checkLeaks = GTMIsGarbageCollectionEnabled() ? NO : YES;
+//#endif  // !GTM_IPHONE_SDK
   if (checkLeaks) {
     checkLeaks = getenv("GTM_ENABLE_LEAKS") ? YES : NO;
     if (checkLeaks) {
