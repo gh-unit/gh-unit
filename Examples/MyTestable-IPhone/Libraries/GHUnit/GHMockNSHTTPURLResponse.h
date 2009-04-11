@@ -1,8 +1,8 @@
 //
-//  GHUnit.h
+//  GHMockNSHTTPURLResponse.h
 //  GHUnit
 //
-//  Created by Gabriel Handford on 1/19/09.
+//  Created by Gabriel Handford on 4/9/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,11 +27,19 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestCase.h"
-#import "GHAsyncTestCase.h"
-#import "GHTestSuite.h"
-#import "GHTestMacros.h"
-#import "GHTestRunner.h"
+#import <Foundation/Foundation.h>
 
-#import "GHMockNSURLConnection.h"
-#import "GHMockNSHTTPURLResponse.h"
+
+// The NSHTTPURLResponse doesn't have a way to set the status code or headers, 
+// so we'll subclass and add setters for the statusCode and allHeaderFields properties.
+@interface GHMockNSHTTPURLResponse : NSHTTPURLResponse {
+	NSInteger statusCode_;
+	NSDictionary *headers_;
+}
+
+- (id)initWithStatusCode:(NSInteger)statusCode headers:(NSDictionary *)headers;
+
+- (void)setStatusCode:(int)code;
+- (void)setHeaders:(NSDictionary *)headers;
+
+@end

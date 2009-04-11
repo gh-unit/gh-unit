@@ -1,8 +1,8 @@
 //
-//  GHUnit.h
+//  GHMockNSURLConnection.h
 //  GHUnit
 //
-//  Created by Gabriel Handford on 1/19/09.
+//  Created by Gabriel Handford on 4/9/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,11 +27,34 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestCase.h"
-#import "GHAsyncTestCase.h"
-#import "GHTestSuite.h"
-#import "GHTestMacros.h"
-#import "GHTestRunner.h"
+#import <Foundation/Foundation.h>
 
-#import "GHMockNSURLConnection.h"
-#import "GHMockNSHTTPURLResponse.h"
+extern NSString *const GHMockNSURLConnectionException;
+
+@interface GHMockNSURLConnection : NSObject {
+	NSURLRequest *request_;
+	id delegate_; // weak
+	
+	BOOL cancelled_;
+}
+
+@property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
+
+- (void)receiveResponse:(NSURLResponse *)response afterDelay:(NSTimeInterval)delay;
+
+- (void)receiveHTTPResponseWithStatusCode:(int)statusCode headers:(NSDictionary *)headers afterDelay:(NSTimeInterval)delay;
+
+- (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)delay;
+
+- (void)finishAfterDelay:(NSTimeInterval)delay;
+
+/*!
+ Sends mock response, sends data, and then calls finish.
+ @param path Data to load path from. File should be available in Test target (bundle)
+ @param statusCode Status code for response
+ @param MIMEType Content type for response header
+ @param afterDelay Delay before responding
+ */
+- (void)receiveFromPath:(NSString *)path statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay;
+
+@end

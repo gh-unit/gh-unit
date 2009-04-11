@@ -59,6 +59,7 @@
 - (void)testRunnerDidFinish:(GHTestRunner *)runner;
 
 - (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message;
+- (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message;
 @end
 
 /*!

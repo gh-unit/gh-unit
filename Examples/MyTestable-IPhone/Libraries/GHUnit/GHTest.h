@@ -61,7 +61,8 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 @protocol GHTestDelegate;
 
 /*!
- Protocol for a test.
+ The base interface for a runnable test.
+ A runnable with a unique identifier, display name, stats, timer, delegate, log and error handling.
  */
 @protocol GHTest <NSObject>
 
@@ -78,34 +79,42 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 
 - (NSException *)exception;
 
-- (void)log:(NSString *)message;
 - (NSArray *)log;
 
 @end
 
 /*!
- Protocol for test delegate, that notifies when a test starts and ends.
+ Test delegate for notification when a test starts and ends.
  */
 @protocol GHTestDelegate <NSObject>
 - (void)testDidStart:(id<GHTest>)test;
 - (void)testDidFinish:(id<GHTest>)test;
+- (void)test:(id<GHTest>)test didLog:(NSString *)message;
 @end
 
 /*!
- Default test implementation.
+ Delegate which is notified of log messages from inside GHTestCase.
+ */
+@protocol GHTestCaseLogDelegate <NSObject>
+- (void)testCase:(id)testCase didLog:(NSString *)message;
+@end
+
+/*!
+ Default test implementation target with a target/selector pair.
  - Consists of a target/selector
  - Notifies a test delegate
  - Keeps track of status, running time and failures
  - Stores any test specific logging
  */
-@interface GHTest : NSObject <GHTest> {
+@interface GHTest : NSObject <GHTest, GHTestCaseLogDelegate> {
 	
 	id<GHTestDelegate> delegate_; // weak
 	
 	id target_;
 	SEL selector_;
 	
-	NSString *name_;
+	NSString *identifier_;
+	NSString *name_;	
 	GHTestStatus status_;
 	NSTimeInterval interval_;
 	BOOL failed_;
@@ -133,6 +142,7 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 
 @property (readonly, nonatomic) id target;
 @property (readonly, nonatomic) SEL selector;
+@property (readonly, nonatomic) NSString *identifier; // Unique identifier for test
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSTimeInterval interval;
 @property (readonly, nonatomic) NSException *exception;
@@ -146,7 +156,7 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 /*!
  Run the test.
  After running, the interval and exception properties may be set.
- @result Yes if passed, NO otherwise
+ @result YES if passed, NO otherwise
  */
 - (void)run;
 

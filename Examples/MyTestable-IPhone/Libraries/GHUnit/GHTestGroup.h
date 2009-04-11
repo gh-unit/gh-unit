@@ -49,7 +49,8 @@
 #import "GHTestCase.h"
 
 /*!
- Protocol for a group of tests.
+ @brief Interface for a group of tests.
+
  This group conforms to the GHTest protocol as well (see Composite pattern).
  */
 @protocol GHTestGroup <GHTest>
@@ -58,24 +59,26 @@
 @end
 
 /*!
- Default implementation of a test group.
+ @brief A collection of tests (or test groups).
+
  A test group is a collection of id<GHTest>, that may represent a set of test case methods. 
  
  For example, if you had the following GHTestCase.
- 
- @interface GHTestCase {}
+
+ @code
+ @interface FooTest : GHTestCase {}
  - (void)testFoo;
  - (void)testBar;
  @end
+ @endcode
  
- The GHTestGroup would consist of and array of GHTest:
-   GHTest, target=<GHTestCase instance>, selector=<testFoo selector>
-   GHTest, target=<GHTestCase instance>, selector=<testBar selector>
- 
+ The GHTestGroup would consist of and array of GHTest, [FooTest#testFoo and FooTest#testBar], 
+ each test being a target and selector pair.
+
  A test group may also consist of a group of groups (since GHTestGroup conforms to GHTest),
- and so this might represent a GHTestSuite.
+ and this might represent a GHTestSuite.
  */
-@interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup, GHTestCaseLogDelegate> {
+@interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup> {
 	
 	id<GHTestDelegate> delegate_; // weak
 	id<GHTestGroup> parent_; // weak
@@ -87,12 +90,14 @@
 	GHTestStatus status_; // Current status of the group (current status of running or completed child tests)
 	GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
 	
+	id testCase_; // Is set if test is created from initWithTestCase:delegate:
 	id<GHTest> currentTest_; // weak
 }
 
 @property (readonly, nonatomic) NSArray *children;
 @property (assign, nonatomic) id<GHTestDelegate> delegate;
 @property (assign, nonatomic) id<GHTestGroup> parent;
+@property (readonly, nonatomic) id testCase;
 
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *name;
@@ -102,32 +107,35 @@
 @property (readonly, nonatomic) GHTestStats stats;
 
 /*!
- Create empty test group.
- @param name
- @param delegate
+ Create an empty test group.
+ @param name The name of the test group
+ @param delegate Delegate, notifies of test start and end
+ @result New test group
  */
 - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate;
 
 /*!
- Create test group from test case.
- A test group is a collection of GHTest.
- 
- @param testCase Should be a subclass of SenTestCase or GHTestCase
- @param delegate
+ Create test group from a test case.
+
+ A test group is a collection of GHTest. 
+ @param testCase Test case, could be a subclass of SenTestCase or GHTestCase
+ @param delegate Delegate, notifies of test start and end
+ @result New test group
  */
 - (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
 
 /*!
  Create test group from a test case.
- A test case contains a set of test methods.
- @param testCase Should be a subclass of SenTestCase or GHTestCase
- @param delegate
+ @param testCase Test case, could be a subclass of SenTestCase or GHTestCase
+ @param delegate Delegate, notifies of test start and end
+ @result New test group
  */
 + (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
 
 /*!
  Add tests from the specified test case to group.
- You may want to use initWithTestCase or addTestCase instead, 
+
+ You may want to use initWithTestCase: or addTestCase: instead, 
  since this appends the methods from the test case into this group.
  @param testCase Should be a subclass of SenTestCase or GHTestCase
  */
@@ -135,13 +143,13 @@
 
 /*!
  Add a test case (test group) to this test group.
- @param testCase Should be a subclass of SenTestCase or GHTestCase
+ @param testCase Test case, could be a subclass of SenTestCase or GHTestCase
  */
 - (void)addTestCase:(id)testCase;
 
 /*!
- Add a test.
- @param test
+ Add a single test. 
+ @param test Test
  */
 - (void)addTest:(id<GHTest>)test;
 
@@ -152,7 +160,7 @@
 - (void)addTests:(NSArray */*of id<GHTest>*/)tests;
 
 /*!
- Run test group.
+ Run the test group.
  Will notify delegate as tests are run.
  */
 - (void)run;

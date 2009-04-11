@@ -5,9 +5,6 @@
 //  Created by Gabriel Handford on 1/21/09.
 //  Copyright 2009. All rights reserved.
 //
-//  Created by Gabriel Handford on 1/19/09.
-//  Copyright 2009. All rights reserved.
-//
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
 //  files (the "Software"), to deal in the Software without
@@ -50,47 +47,80 @@
 //
 
 #import "GHTestMacros.h"
+#import "GHTest.h"
 
 // Log to your test case logger.
 // For example, GHTestLog(@"Some debug info, %@", obj)
 #define GHTestLog(...) [self _log:[NSString stringWithFormat:__VA_ARGS__, nil]]
 
-// Test cases should implement this protocol (but don't have to)
-@protocol GHUnitTestCase <NSObject>
-- (void)failWithException:(NSException*)exception;
-- (void)handleException:(NSException *)exception;
-- (void)setUp;
-- (void)tearDown;
-@end
-
 /*!
- Delegate which is notified of log messages from inside GHTestCase.
- */
-@protocol GHTestCaseLogDelegate <NSObject>
-- (void)testCase:(id)testCase log:(NSString *)message;
-@end
+ @brief The base class for a test case.
 
-/*!
- Test case. 
- Tests can subclass and write tests by adding methods with the 'test' prefix.
- The setUp and tearDown methods are run before and after each test method.
+ @code
+ @interface MyTest : GHTestCase {}
+ @end
+ 
+ @implementation MyTest
+ 
+ // Run before each test method
+ - (void)setUp { }
+
+ // Run after each test method
+ - (void)tearDown { }
+
+ // Run before the tests are run for this class
+ - (void)setUpClass { }
+
+ // Run before the tests are run for this class
+ - (void)tearDownClass { }
+ 
+ // Tests are prefixed by 'test' and contain no arguments and no return value
+ - (void)testA { 
+   GHTestLog(@"Log with a test with the GHTestLog(...) for test specific logging.");
+ }
+
+ // Another test; Tests are run in lexical order
+ - (void)testB { }
+ 
+ // Override any exceptions; By default exceptions are raised, causing a test failure
+ - (void)failWithException:(NSException*)exception { }
+ 
+ @end
+ @endcode
+
  */
-@interface GHTestCase : NSObject <GHUnitTestCase> {
+@interface GHTestCase : NSObject {
 	id<GHTestCaseLogDelegate> logDelegate_; // weak
+	
+	SEL currentSelector_;
 }
 
+//! The current test selector
+@property (assign, nonatomic) SEL currentSelector; 
 @property (assign, nonatomic) id<GHTestCaseLogDelegate> logDelegate;
 
-/*!
- Log a message, which notifies the id<GHTestCaseLogDelegate> logDelegate_.
- This is not meant to be used directly, see GHTestLog(...) macro.
- */
-- (void)_log:(NSString *)message;
-
 // GTM_BEGIN
+//! Run before each test method
 - (void)setUp;
+
+//! Run after each test method
 - (void)tearDown;
+
+/*! 
+ By default exceptions are raised, causing a test failure
+ @brief Override any exceptions
+ @param exception Exception that was raised by test
+ */
 - (void)failWithException:(NSException*)exception;
 // GTM_END
+
+//! Run before the tests (once per test case)
+- (void)setUpClass;
+
+//! Run after the tests (once per test case)
+- (void)tearDownClass;
+
+//! Any special handling of exceptions after they are thrown; By default logs stack trace to standard out.
+- (void)handleException:(NSException *)exception;
 
 @end
