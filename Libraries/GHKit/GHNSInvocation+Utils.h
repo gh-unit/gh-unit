@@ -35,6 +35,7 @@
 //
 #define GHConvertVarArgs(object) \
 NSMutableArray *arguments = [NSMutableArray array]; \
+do { \
 id arg; \
 va_list args; \
 if (object) { \
@@ -43,7 +44,8 @@ va_start(args, object); \
 while ((arg = va_arg(args, id))) \
 [arguments addObject:arg]; \
 va_end(args); \
-}
+} \
+} while(0); 
 
 @interface NSInvocation (GHUtils)
 
@@ -63,6 +65,8 @@ va_end(args); \
 
 + (id)gh_invokeWithTarget:(id)target selector:(SEL)selector arguments:(NSArray *)arguments;
 
++ (id)gh_invokeWithTarget:(id)target selector:(SEL)selector afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments;
+
 /*!
  Invoke selector on target on main thread with multiple arguments.
  Use [NSNull null] for nil arguments.
@@ -74,6 +78,8 @@ va_end(args); \
 + (void)gh_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone withObjects:object, ...;
 
 + (void)gh_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments;
+
++ (void)gh_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments;
 
 /*!
  Create invocation with variable arguments.

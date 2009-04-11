@@ -57,6 +57,8 @@
  */
 - (id)gh_performSelector:(SEL)selector withObjects:object, ...;
 
+- (id)gh_performSelector:(SEL)selector afterDelay:(NSTimeInterval)delay withObjects:object, ...;
+
 /*!
  Invoke selector with arguments on main thread.
  Does not wait until selector is finished.
@@ -75,5 +77,10 @@
 
 
 - (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone withObjects:object, ...;
+
+- (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments;
+
+- (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone 
+								afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments;
 
 @end

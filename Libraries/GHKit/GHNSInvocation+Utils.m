@@ -38,14 +38,22 @@
 }
 	
 + (id)gh_invokeWithTarget:(id)target selector:(SEL)selector arguments:(NSArray *)arguments {
+	return [self gh_invokeWithTarget:target selector:selector afterDelay:-1 arguments:arguments];
+}
+
++ (id)gh_invokeWithTarget:(id)target selector:(SEL)selector afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments {
 	BOOL hasReturnValue = NO;
 	NSInvocation *invocation = [self gh_invocationWithTarget:target selector:selector hasReturnValue:&hasReturnValue arguments:arguments];
-	[invocation invoke];
+	if (delay >= 0) {
+		[invocation performSelector:@selector(invoke) withObject:nil afterDelay:0];
+	} else {
+		[invocation invoke];
 	
-	if (hasReturnValue) {
-		id retval = NULL;
-		[invocation getReturnValue:&retval];
-		return retval;
+		if (hasReturnValue) {
+			id retval = NULL;
+			[invocation getReturnValue:&retval];
+			return retval;
+		}
 	}
 	return nil;
 }
@@ -60,6 +68,25 @@
 	[invocation gh_invokeOnMainThread:waitUntilDone];	
 }
 
++ (void)gh_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments {
+	NSInvocation *invocation = [self gh_invocationWithTarget:target selector:selector hasReturnValue:nil arguments:arguments];
+	if (delay >= 0) {
+		SEL selector = selector = @selector(gh_invokeOnMainThreadAndWaitUntilDone);
+		if (!waitUntilDone) selector = @selector(gh_invokeOnMainThread);	
+		[invocation performSelector:selector withObject:nil afterDelay:delay];
+	} else {
+		[invocation gh_invokeOnMainThread:waitUntilDone];	
+	}
+}
+
+- (void)gh_invokeOnMainThread {
+	[self gh_invokeOnMainThread:NO];
+}
+
+- (void)gh_invokeOnMainThreadAndWaitUntilDone {
+	[self gh_invokeOnMainThread:YES];
+}
+
 - (void)gh_invokeOnMainThread:(BOOL)waitUntilDone {
 	// Retain args, since we are invoking on a separate thread
 	if (![self argumentsRetained]) [self retainArguments];
@@ -70,7 +97,7 @@
 	GHConvertVarArgs(object);
 	return [self gh_invocationWithTarget:target selector:selector hasReturnValue:hasReturnValue arguments:arguments];
 }
-	
+
 + (NSInvocation *)gh_invocationWithTarget:target selector:(SEL)selector hasReturnValue:(BOOL *)hasReturnValue arguments:(NSArray *)arguments {
 	
 	if (![target respondsToSelector:selector])

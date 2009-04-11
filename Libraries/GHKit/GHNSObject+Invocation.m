@@ -5,9 +5,6 @@
 //  Created by Gabriel Handford on 1/18/09.
 //  Copyright 2009. All rights reserved.
 //
-//  Created by Gabriel Handford on 1/17/09.
-//  Copyright 2009. All rights reserved.
-//
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
 //  files (the "Software"), to deal in the Software without
@@ -53,6 +50,11 @@
 	return [NSInvocation gh_invokeWithTarget:self selector:selector arguments:arguments];	
 }
 
+- (id)gh_performSelector:(SEL)selector afterDelay:(NSTimeInterval)delay withObjects:object, ... {
+	GHConvertVarArgs(object);
+	return [NSInvocation gh_invokeWithTarget:self selector:selector afterDelay:delay arguments:arguments];		
+}
+
 - (void)gh_performSelectorOnMainThread:(SEL)selector withObjects:object, ... {
 	GHConvertVarArgs(object);
 	[NSInvocation gh_invokeTargetOnMainThread:self selector:selector waitUntilDone:NO arguments:arguments];	
@@ -65,10 +67,20 @@
 
 - (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone withObjects:object, ... {
 	GHConvertVarArgs(object);
+	[self gh_performSelector:selector onMainThread:onMainThread waitUntilDone:waitUntilDone arguments:arguments];
+}	
+
+- (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments {
+	[self gh_performSelector:selector onMainThread:onMainThread waitUntilDone:waitUntilDone afterDelay:-1 arguments:arguments];
+}
+
+- (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone 
+								afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments {
+
 	if (!onMainThread) {
-		[NSInvocation gh_invokeWithTarget:self selector:selector arguments:arguments];	
+		[NSInvocation gh_invokeWithTarget:self selector:selector afterDelay:delay arguments:arguments];	
 	} else {
-		[NSInvocation gh_invokeTargetOnMainThread:self selector:selector waitUntilDone:waitUntilDone arguments:arguments];	
+		[NSInvocation gh_invokeTargetOnMainThread:self selector:selector waitUntilDone:waitUntilDone afterDelay:delay arguments:arguments];	
 	}
 }
 
