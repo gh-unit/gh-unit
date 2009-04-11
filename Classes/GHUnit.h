@@ -1,6 +1,6 @@
 //
 //  GHUnit.h
-//  GHKit
+//  GHUnit
 //
 //  Created by Gabriel Handford on 1/19/09.
 //  Copyright 2009. All rights reserved.
@@ -28,6 +28,10 @@
 //
 
 #import "GHTestCase.h"
+#import "GHAsyncTestCase.h"
 #import "GHTestSuite.h"
 #import "GHTestMacros.h"
 #import "GHTestRunner.h"
+
+#import "GHMockNSURLConnection.h"
+#import "GHMockNSHTTPURLResponse.h"
