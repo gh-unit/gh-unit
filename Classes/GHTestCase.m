@@ -5,9 +5,6 @@
 //  Created by Gabriel Handford on 1/21/09.
 //  Copyright 2009. All rights reserved.
 //
-//  Created by Gabriel Handford on 1/19/09.
-//  Copyright 2009. All rights reserved.
-//
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
 //  files (the "Software"), to deal in the Software without
@@ -54,7 +51,7 @@
 
 @implementation GHTestCase
 
-@synthesize logDelegate=logDelegate_;
+@synthesize logDelegate=logDelegate_, currentSelector=currentSelector_;
 
 // GTM_BEGIN
 
@@ -68,6 +65,10 @@
 
 // GTM_END
 
+- (void)setUpClass { }
+
+- (void)tearDownClass { }
+
 - (void)handleException:(NSException *)exception {
 	NSLog(@"Exception: %@\n%@", [exception reason], GTMStackTraceFromException(exception));
 }
@@ -75,7 +76,7 @@
 #pragma mark Logging
 
 - (void)_log:(NSString *)message {
-	[logDelegate_ testCase:self log:message];
+	[logDelegate_ testCase:self didLog:message];
 }
 
 @end

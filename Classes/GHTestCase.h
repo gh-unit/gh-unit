@@ -5,9 +5,6 @@
 //  Created by Gabriel Handford on 1/21/09.
 //  Copyright 2009. All rights reserved.
 //
-//  Created by Gabriel Handford on 1/19/09.
-//  Copyright 2009. All rights reserved.
-//
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
 //  files (the "Software"), to deal in the Software without
@@ -50,24 +47,18 @@
 //
 
 #import "GHTestMacros.h"
+#import "GHTest.h"
 
 // Log to your test case logger.
 // For example, GHTestLog(@"Some debug info, %@", obj)
 #define GHTestLog(...) [self _log:[NSString stringWithFormat:__VA_ARGS__, nil]]
 
-// Test cases should implement this protocol (but don't have to)
+// Test cases might implement this protocol (but don't have to)
 @protocol GHUnitTestCase <NSObject>
 - (void)failWithException:(NSException*)exception;
 - (void)handleException:(NSException *)exception;
 - (void)setUp;
 - (void)tearDown;
-@end
-
-/*!
- Delegate which is notified of log messages from inside GHTestCase.
- */
-@protocol GHTestCaseLogDelegate <NSObject>
-- (void)testCase:(id)testCase log:(NSString *)message;
 @end
 
 /*!
@@ -77,9 +68,12 @@
  */
 @interface GHTestCase : NSObject <GHUnitTestCase> {
 	id<GHTestCaseLogDelegate> logDelegate_; // weak
+	
+	SEL currentSelector_;
 }
 
 @property (assign, nonatomic) id<GHTestCaseLogDelegate> logDelegate;
+@property (assign, nonatomic) SEL currentSelector;
 
 /*!
  Log a message, which notifies the id<GHTestCaseLogDelegate> logDelegate_.
@@ -92,5 +86,11 @@
 - (void)tearDown;
 - (void)failWithException:(NSException*)exception;
 // GTM_END
+
+// Setup (run once per test case)
+- (void)setUpClass;
+
+// Tear down (run once per test case)
+- (void)tearDownClass;
 
 @end
