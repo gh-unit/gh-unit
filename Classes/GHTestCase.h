@@ -53,18 +53,41 @@
 // For example, GHTestLog(@"Some debug info, %@", obj)
 #define GHTestLog(...) [self _log:[NSString stringWithFormat:__VA_ARGS__, nil]]
 
-// Test cases might implement this protocol (but don't have to)
-@protocol GHUnitTestCase <NSObject>
-- (void)failWithException:(NSException*)exception;
-- (void)handleException:(NSException *)exception;
-- (void)setUp;
-- (void)tearDown;
-@end
-
 /*!
- Test case. 
- Tests can subclass and write tests by adding methods with the 'test' prefix.
- The setUp and tearDown methods are run before and after each test method.
+ @brief The base class for a test case.
+
+ @code
+ @interface MyTest : GHTestCase {}
+ @end
+ 
+ @implementation MyTest
+ 
+ // Run before each test method
+ - (void)setUp { }
+
+ // Run after each test method
+ - (void)tearDown { }
+
+ // Run before the tests are run for this class
+ - (void)setUpClass { }
+
+ // Run before the tests are run for this class
+ - (void)tearDownClass { }
+ 
+ // Tests are prefixed by 'test' and contain no arguments and no return value
+ - (void)testA { 
+   GHTestLog(@"Log with a test with the GHTestLog(...) for test specific logging.");
+ }
+
+ // Another test; Tests are run in lexical order
+ - (void)testB { }
+ 
+ // Override any exceptions; By default exceptions are raised, causing a test failure
+ - (void)failWithException:(NSException*)exception { }
+ 
+ @end
+ @endcode
+
  */
 @interface GHTestCase : NSObject <GHUnitTestCase> {
 	id<GHTestCaseLogDelegate> logDelegate_; // weak
@@ -72,25 +95,29 @@
 	SEL currentSelector_;
 }
 
+//! The current test selector
+@property (assign, nonatomic) SEL currentSelector; 
 @property (assign, nonatomic) id<GHTestCaseLogDelegate> logDelegate;
-@property (assign, nonatomic) SEL currentSelector;
-
-/*!
- Log a message, which notifies the id<GHTestCaseLogDelegate> logDelegate_.
- This is not meant to be used directly, see GHTestLog(...) macro.
- */
-- (void)_log:(NSString *)message;
 
 // GTM_BEGIN
+//! Run before each test method
 - (void)setUp;
+
+//! Run after each test method
 - (void)tearDown;
+
+/*! 
+ By default exceptions are raised, causing a test failure
+ @brief Override any exceptions
+ @param exception Exception that was raised by test
+ */
 - (void)failWithException:(NSException*)exception;
 // GTM_END
 
-// Setup (run once per test case)
+//! Run before the tests (once per test case)
 - (void)setUpClass;
 
-// Tear down (run once per test case)
+//! Run after the tests (once per test case)
 - (void)tearDownClass;
 
 @end

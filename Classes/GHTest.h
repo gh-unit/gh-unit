@@ -61,7 +61,8 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 @protocol GHTestDelegate;
 
 /*!
- Protocol for a test.
+ The base interface for a runnable test.
+ A runnable with a unique identifier, display name, stats, timer, delegate, log and error handling.
  */
 @protocol GHTest <NSObject>
 
@@ -83,7 +84,7 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 @end
 
 /*!
- Protocol for test delegate, that notifies when a test starts and ends.
+ Test delegate for notification when a test starts and ends.
  */
 @protocol GHTestDelegate <NSObject>
 - (void)testDidStart:(id<GHTest>)test;
@@ -99,7 +100,7 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 @end
 
 /*!
- Default test implementation.
+ Default test implementation target with a target/selector pair.
  - Consists of a target/selector
  - Notifies a test delegate
  - Keeps track of status, running time and failures
