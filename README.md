@@ -13,7 +13,7 @@ For example, your test cases will be run if they subclass any of the following:
 
 [GHUnit-0.3.2.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.2.zip) *GHUnit.framework* (2009/04/05)
 
-[libGHUnitIPhone-0.3.3.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.3.zip) *iPhone Static Library* (2009/04/08)
+[libGHUnitIPhone-0.3.4.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.4.zip) *iPhone Static Library* (2009/04/09)
 
 ## Why?
 
@@ -26,9 +26,9 @@ The goals of GHUnit are:
 - Be installable as a framework (for Cocoa apps) with a simpler/more flexible target setup; or easy to package into your iPhone project.
 
 `GHTestCase` is the base class for your tests.
-Tests are defined by methods that start with 'test', take no arguments and return void. 
-Your setup and tear down methods are `- (void)setUp;` and `- (void)tearDown;`. 
-You know, pretty much like every test framework in existence.
+- Tests are defined by methods that start with `test`, take no arguments and return void. For example, `- (void)testFoo { }`
+- Your setup and tear down methods are `- (void)setUp;` and `- (void)tearDown;`. 
+- Your class setup and tear down methods are `- (void)setUpClass;` and `- (void)tearDownClass;`. 
 
 ## Group
 

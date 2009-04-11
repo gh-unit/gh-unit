@@ -1,4 +1,14 @@
-# Release 0.3.3 (TBD)
+# Release 0.3.4 (TBD)
+
+## 2008-04-08
+- Added GHAsyncTestCase for asynchronous tests (seems really complex :/, might have gone mental on it)
+- Supporting streaming logging with GHTestLog(...)
+- GHUNIT_VERSION from xcconfig in Info plists and shown in test GUI
+- Mocks for NSURLConnection and NSHTTPURLResponse
+- Added setUpClass/tearDownClass for GHTestCase
+- Added currentSelector property for GHTestCase
+
+# Release 0.3.3 (2009/04/08)
 
 ## 2008-04-08
 - Removed GTMLogger and GHLogger; Not used in Release and potentially can 
