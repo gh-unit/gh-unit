@@ -200,15 +200,32 @@ static GHTesting *gSharedInstance;
     // this log the exception.  This ensures they are only logged once but the
     // outer layers get the exceptions to report counts, etc.
     @try {
+			// Private setUp internal to GHUnit (in case subclasses fail to call super)
+			if ([target respondsToSelector:@selector(_setUp)])
+				[target performSelector:@selector(_setUp)];
+
 			if ([target respondsToSelector:@selector(setUp)])
 				[target performSelector:@selector(setUp)];
       @try {	
+				if ([target respondsToSelector:@selector(setCurrentSelector:)])
+					[target setCurrentSelector:selector];
+				
+				// Runs the test
         [target performSelector:selector];
+				
       } @catch (NSException *exception) {
         testException = [exception retain];
       }
+			if ([target respondsToSelector:@selector(setCurrentSelector:)])
+				[target setCurrentSelector:NULL];
+
 			if ([target respondsToSelector:@selector(tearDown)])
 				[target performSelector:@selector(tearDown)];
+			
+			// Private tearDown internal to GHUnit (in case subclasses fail to call super)
+			if ([target respondsToSelector:@selector(_tearDown)])
+				[target performSelector:@selector(_tearDown)];
+
     } @catch (NSException *exception) {
       testException = [exception retain];
     }
