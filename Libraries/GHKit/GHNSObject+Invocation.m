@@ -30,7 +30,7 @@
 #import "GHNSObject+Invocation.h"
 
 
-@implementation NSObject (GHInvocation)
+@implementation NSObject (GHInvocation_GHUNIT)
 
 - (id)gh_performIfRespondsToSelector:(SEL)selector {
 	if ([self respondsToSelector:selector]) return [self performSelector:selector];

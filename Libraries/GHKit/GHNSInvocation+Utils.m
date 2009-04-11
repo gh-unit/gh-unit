@@ -30,7 +30,7 @@
 #import "GHNSInvocation+Utils.h"
 
 
-@implementation NSInvocation (GHUtils)
+@implementation NSInvocation (GHUtils_GHUNIT)
 
 + (id)gh_invokeWithTarget:(id)target selector:(SEL)selector withObjects:object, ... {
 	GHConvertVarArgs(object);
