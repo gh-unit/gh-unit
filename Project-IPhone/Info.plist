@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>GABE</string>
 	<key>CFBundleVersion</key>
-	<string>0.2</string>
+	<string>$(GHUNIT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 </dict>
