@@ -47,6 +47,11 @@
 #pragma mark Delegates (GHTestRunner)
 
 - (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message {
+	[viewController_ setStatusText:message];
+}
+
+- (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message {
+
 }
 
 - (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {

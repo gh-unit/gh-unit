@@ -13,11 +13,25 @@
 @implementation GHUnitIPhoneViewController
 
 - (void)loadView {
-	CGRect frame = CGRectMake(0, 20, 320, 460);
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 460)];
+	view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+	
+	CGRect frame = CGRectMake(0, 0, 320, 380);
 	tableView_ = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
 	tableView_.delegate = self;
 	tableView_.dataSource = self;
-	self.view = tableView_;
+	[view addSubview:tableView_];
+	[tableView_ release];
+	
+	statusLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(5, 380, 310, 36)];
+	statusLabel_.backgroundColor = [UIColor clearColor];
+	statusLabel_.text = @"Loading...";
+	statusLabel_.font = [UIFont systemFontOfSize:12];
+	statusLabel_.numberOfLines = 2;	
+	[view addSubview:statusLabel_];
+	[statusLabel_ release];
+	
+	self.view = view;
 	self.title = @"Tests";
 }
 
@@ -39,13 +53,33 @@
 
 - (void)updateTest:(id<GHTest>)test {
 	[tableView_ reloadData];
+	[self scrollToTest:test];
+}
+
+- (void)scrollToTest:(id<GHTest>)test {
+	NSIndexPath *path = [model_ indexPathToTest:test];
+	if (!path) return;
+	[tableView_ scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+}
+
+- (void)scrollToBottom {
+	NSInteger lastGroupIndex = [model_ numberOfGroups] - 1;
+	if (lastGroupIndex < 0) return;
+	NSInteger lastTestIndex = [model_ numberOfTestsInGroup:lastGroupIndex] - 1;
+	if (lastTestIndex < 0) return;
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastTestIndex inSection:lastGroupIndex];
+	[tableView_ scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+}
+
+- (void)setStatusText:(NSString *)message {
+	statusLabel_.text = message;
 }
 
 #pragma mark Delegates / Data Source (UITableView)
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	if (model_) {
-		NSInteger numberOfSections = [[[model_ root] children] count];
+		NSInteger numberOfSections = [model_ numberOfGroups];
 		if (numberOfSections > 0) return numberOfSections;
 	}
 	return 1;
@@ -61,10 +95,7 @@
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
 	if (!model_) return 0;
-	NSArray *children = [[model_ root] children];
-	if ([children count] == 0) return 0;
-	GHTestNode *sectionNode = [children objectAtIndex:section];
-	return [[sectionNode children] count];
+	return [model_ numberOfTestsInGroup:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

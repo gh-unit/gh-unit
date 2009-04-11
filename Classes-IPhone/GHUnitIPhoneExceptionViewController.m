@@ -26,16 +26,17 @@
 }
 
 - (void)loadView {	
-	textView_ = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
-	textView_.contentSize = CGSizeMake(1000, 10000);
-	textView_.font = [UIFont fontWithName:@"Courier New" size:14];
-	textView_.backgroundColor = [UIColor blackColor];
-	textView_.textColor = [UIColor whiteColor];
+	textView_ = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];	
+	textView_.font = [UIFont fontWithName:@"Courier New-Bold" size:12];
+	textView_.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
+	textView_.textColor = [UIColor blackColor];
 	textView_.editable = NO;
 	textView_.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	textView_.showsHorizontalScrollIndicator = YES;
+	textView_.showsVerticalScrollIndicator = YES;
 	textView_.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-	//[textView_ setNeedsLayout];
+	textView_.contentSize = CGSizeMake(10000, 10000);
+	textView_.scrollEnabled = YES;
 	self.view = textView_;
 	[textView_ release]; // Retained by self.view
 }

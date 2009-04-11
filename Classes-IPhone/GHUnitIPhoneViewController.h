@@ -14,11 +14,18 @@
 	
 	GHTestViewModel *model_;
 	
+	UILabel *statusLabel_;
 }
 
 - (void)setGroup:(id<GHTestGroup>)group;
 
 - (void)updateTest:(id<GHTest>)test;
+
+- (void)scrollToTest:(id<GHTest>)test;
+
+- (void)scrollToBottom;
+
+- (void)setStatusText:(NSString *)message;
 
 @end
 
