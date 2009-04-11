@@ -64,6 +64,37 @@
 	return [map_ objectForKey:[test identifier]];
 }
 
+- (NSInteger)numberOfGroups {
+	return [[root_ children] count];
+}
+
+- (NSInteger)numberOfTestsInGroup:(NSInteger)group {
+	NSArray *children = [root_ children];
+	if ([children count] == 0) return 0;
+	GHTestNode *groupNode = [children objectAtIndex:group];
+	return [[groupNode children] count];
+}
+
+- (NSIndexPath *)indexPathToTest:(id<GHTest>)test {
+	NSInteger section = 0;
+	for(GHTestNode *node in [root_ children]) {
+		NSInteger row = 0;		
+		if ([node.test isEqual:test]) {
+			NSUInteger pathIndexes[] = {section,row};
+			return [NSIndexPath indexPathWithIndexes:pathIndexes length:2]; // Not user row:section: for compatibility with MacOSX
+		}
+		for(GHTestNode *childNode in [node children]) {
+			if ([childNode.test isEqual:test]) {
+				NSUInteger pathIndexes[] = {section,row};
+				return [NSIndexPath indexPathWithIndexes:pathIndexes length:2];
+			}
+			row++;
+		}
+		section++;
+	}
+	return nil;
+}
+
 @end
 
 @implementation GHTestNode

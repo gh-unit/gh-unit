@@ -64,6 +64,19 @@
  */
 - (void)registerNode:(GHTestNode *)node;
 
+// Return number of test groups
+- (NSInteger)numberOfGroups;
+
+// Return number of tests in group
+- (NSInteger)numberOfTestsInGroup:(NSInteger)group;
+
+/*!
+ Search for path to test.
+ @param test
+ @result Index path
+ */
+- (NSIndexPath *)indexPathToTest:(id<GHTest>)test;
+
 @end
 
 @interface GHTestNode : NSObject {
