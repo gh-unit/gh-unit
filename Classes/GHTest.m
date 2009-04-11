@@ -69,7 +69,7 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 @implementation GHTest
 
 @synthesize delegate=delegate_, target=target_, selector=selector_, name=name_, interval=interval_, 
-exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_;
+exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_, identifier=identifier_;
 
 - (id)initWithTarget:(id)target selector:(SEL)selector {
 	if ((self = [super init])) {
@@ -78,6 +78,7 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_;
 		interval_ = -1;
 		name_ = [NSStringFromSelector(selector_) copy];
 		stats_ = GHTestStatsMake(0, 0, 1);
+		identifier_ = [[NSString stringWithFormat:@"%@/%@", NSStringFromClass([target_ class]), NSStringFromSelector(selector_)] copy];
 	}
 	return self;	
 }
@@ -91,39 +92,44 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_;
 	[target_ release];
 	[exception_ release];
 	[log_ release];
+	[identifier_ release];
 	[super dealloc];
 }
 
-- (NSString *)identifier {
-	return [NSString stringWithFormat:@"%@/%@", NSStringFromClass([target_ class]), NSStringFromSelector(selector_)];
+- (BOOL)isEqual:(id)test {
+	return ((test == self) || 
+					([test conformsToProtocol:@protocol(GHTest)] && 
+					 [self.identifier isEqual:[test identifier]]));
 }
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"%@ %@", self.identifier, [super description]];
 }
 
-- (void)setLogDelegate:(id)delegate {
+- (void)setLoggingEnabled:(BOOL)enabled {
 	if ([target_ respondsToSelector:@selector(setLogDelegate:)])
-		[target_ setLogDelegate:delegate];
-}
-
-- (void)log:(NSString *)message {	
-	@synchronized(self) {
-		if (!log_) log_ = [[NSMutableArray array] retain];
-		[log_ addObject:message];
-	}
+		[target_ performSelector:@selector(setLogDelegate:) withObject:(enabled ? self : NULL)];
 }
 
 - (void)run {	
 	status_ = GHTestStatusRunning;
 	stats_ = GHTestStatsMake(1, 0, 1);
 	[delegate_ testDidStart:self];
+	[self setLoggingEnabled:YES];
 
 	failed_ = ![[GHTesting sharedInstance] runTest:target_ selector:selector_ exception:&exception_ interval:&interval_];				
+	
+	[self setLoggingEnabled:NO];
 	
 	status_ = GHTestStatusFinished;	
 	stats_ = GHTestStatsMake(1, failed_ ? 1 : 0, 1);
 	[delegate_ testDidFinish:self];
+}
+
+- (void)testCase:(id)testCase didLog:(NSString *)message {
+	if (!log_) log_ = [[NSMutableArray array] retain];
+	[log_ addObject:message];
+	[delegate_ test:self didLog:message];
 }
 
 @end
