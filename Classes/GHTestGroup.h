@@ -75,7 +75,7 @@
  A test group may also consist of a group of groups (since GHTestGroup conforms to GHTest),
  and so this might represent a GHTestSuite.
  */
-@interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup, GHTestCaseLogDelegate> {
+@interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup> {
 	
 	id<GHTestDelegate> delegate_; // weak
 	id<GHTestGroup> parent_; // weak
@@ -87,12 +87,14 @@
 	GHTestStatus status_; // Current status of the group (current status of running or completed child tests)
 	GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
 	
+	id testCase_; // Is set if test is created from initWithTestCase:delegate:
 	id<GHTest> currentTest_; // weak
 }
 
 @property (readonly, nonatomic) NSArray *children;
 @property (assign, nonatomic) id<GHTestDelegate> delegate;
 @property (assign, nonatomic) id<GHTestGroup> parent;
+@property (readonly, nonatomic) id testCase;
 
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *name;

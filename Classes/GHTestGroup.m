@@ -52,7 +52,7 @@
 
 @implementation GHTestGroup
 
-@synthesize stats=stats_, parent=parent_, children=children_, delegate=delegate_, interval=interval_, status=status_;
+@synthesize stats=stats_, parent=parent_, children=children_, delegate=delegate_, interval=interval_, status=status_, testCase=testCase_;
 
 - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate {
 	if ((self = [super init])) {
@@ -65,6 +65,7 @@
 
 - (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
 	if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
+		testCase_ = [testCase retain];
 		[self addTestsFromTestCase:testCase];
 	}
 	return self;
@@ -80,6 +81,7 @@
 	
 	[name_ release];
 	[children_ release];
+	[testCase_ release];
 	[super dealloc];
 }
 
@@ -130,18 +132,14 @@
 	return name_;
 }
 
-// Send log messages to current test
-- (void)testCase:(id)testCase log:(NSString *)message {
-	[self log:message];
+// Forward up
+- (void)test:(id<GHTest>)test didLog:(NSString *)message {
+	[delegate_ test:test didLog:message];	
 }
 
 - (NSArray *)log {
 	// Not supported for group (though may be an aggregate of child test logs in the future?)
 	return nil;
-}
-
-- (void)log:(NSString *)message {
-	[currentTest_ log:message];
 }
 
 - (NSException *)exception {
@@ -152,11 +150,17 @@
 - (void)run {		
 	status_ = GHTestStatusRunning;
 	
+	if ([testCase_ respondsToSelector:@selector(setUpClass)]) 
+		[testCase_ performSelector:@selector(setUpClass)];
+	
 	for(id<GHTest> test in children_) {				
 		currentTest_ = test;
 		[test run];			
 		currentTest_ = nil;
 	}
+	
+	if ([testCase_ respondsToSelector:@selector(tearDownClass)]) 
+		[testCase_ performSelector:@selector(tearDownClass)];
 	
 	status_ = GHTestStatusFinished;
 }
@@ -166,7 +170,7 @@
 // Notification from GHTestGroup; For example, would be called when a test case starts
 - (void)testDidStart:(id<GHTest>)test {
 	stats_.runCount += [test stats].runCount;
-	[delegate_ testDidStart:test];
+	[delegate_ testDidStart:test];	
 }
 
 // Notification from GHTestGroup; For example, would be called when a test case ends
