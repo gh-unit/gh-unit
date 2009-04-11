@@ -124,15 +124,16 @@
 	return [test_ stats];
 }
 
+#define kGHTestRunnerInvokeWaitUntilDone YES
+
 - (void)_log:(NSString *)message {
 	fputs([[message stringByAppendingString:@"\n"] UTF8String], stderr);
   fflush(stderr);
 	
-	if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)]) 
-		[delegate_ testRunner:self didLog:message];
+	if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
+		[(id)delegate_ gh_performSelector:@selector(testRunner:didLog:) onMainThread:delegateOnMainThread_ 
+												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, message, nil];	
 }
-
-#define kGHTestRunnerInvokeWaitUntilDone YES
 
 - (void)_didStartTest:(id<GHTest>)test {
 	if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
@@ -146,6 +147,13 @@
 												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, test, nil];	
 }
 
+- (void)_test:(id<GHTest>)test didLog:(NSString *)message {
+	NSLog(@"%@; %@\n", [test identifier], message);
+
+	if ([delegate_ respondsToSelector:@selector(testRunner:test:didLog:)])
+		[delegate_ testRunner:self test:test didLog:message];
+}	
+
 #pragma mark Delegates (GHTest)
 
 - (void)testDidStart:(id<GHTest>)test {
@@ -158,6 +166,11 @@
 											 [test name], [test stats].failureCount > 0 ? @"failed" : @"passed", [test interval]];	
 	[self _log:message];
 	[self _didFinishTest:test];
+}
+
+- (void)test:(id<GHTest>)test didLog:(NSString *)message {	
+	[self gh_performSelector:@selector(_test:didLog:) onMainThread:delegateOnMainThread_ 
+						 waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:test, message, nil];
 }
 
 #pragma mark Notifications (Private)
