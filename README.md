@@ -26,6 +26,7 @@ The goals of GHUnit are:
 - Be installable as a framework (for Cocoa apps) with a simpler/more flexible target setup; or easy to package into your iPhone project.
 
 `GHTestCase` is the base class for your tests.
+
 - Tests are defined by methods that start with `test`, take no arguments and return void. For example, `- (void)testFoo { }`
 - Your setup and tear down methods are `- (void)setUp;` and `- (void)tearDown;`. 
 - Your class setup and tear down methods are `- (void)setUpClass;` and `- (void)tearDownClass;`. 
