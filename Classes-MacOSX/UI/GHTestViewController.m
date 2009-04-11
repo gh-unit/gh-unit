@@ -90,6 +90,7 @@
 	if (row < 0) return;
 	id item = [outlineView_ itemAtRow:row];
 	NSString *text = [item performSelector:selector];
+	if (text) text = [NSString stringWithFormat:@"%@\n", text]; // Newline important for when we append streaming text
 	[textView_ setString:text ? text : @""];	
 }
 
@@ -120,8 +121,24 @@
 	return nil;
 }
 
+- (id<GHTest>)selectedTest {
+	NSInteger row = [outlineView_ selectedRow];
+	if (row < 0) return nil;
+	GHTestNode *node = [outlineView_ itemAtRow:row];
+	return node.test;
+}
+
 - (void)log:(NSString *)log {
 	
+}
+
+- (void)test:(id<GHTest>)test didLog:(NSString *)message {	
+	id<GHTest> selectedTest = self.selectedTest;
+	if ([textSegmentedControl_ selectedSegment] == 1 && [selectedTest isEqual:test]) {
+		[textView_ replaceCharactersInRange:NSMakeRange([[textView_ string] length], 0) 
+														 withString:[NSString stringWithFormat:@"%@\n", message]];
+		// TODO(gabe): Scroll
+	}
 }
 
 - (GHTestNode *)findFailure {

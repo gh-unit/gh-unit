@@ -63,6 +63,10 @@
 	[windowController_.viewController log:message];
 }
 
+- (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message {
+	[windowController_.viewController test:test didLog:message];
+}
+
 - (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
 	[windowController_.viewController updateTest:test];
 }

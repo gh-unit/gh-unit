@@ -42,7 +42,8 @@
 }
 
 - (void)awakeFromNib {
-	self.window.contentView = viewController_.view;
+	self.window.contentView = viewController_.view;	
+	self.window.title = @"GHUnit";
 }
 
 - (void)dealloc {

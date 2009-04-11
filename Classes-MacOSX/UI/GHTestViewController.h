@@ -57,10 +57,12 @@
 @property (assign, nonatomic) IBOutlet NSSegmentedControl *textSegmentedControl;
 @property (assign, nonatomic) IBOutlet NSTextView *textView;
 @property (assign, nonatomic) BOOL wrapInTextView;
+@property (readonly, nonatomic) id<GHTest> selectedTest;
 
 @property (copy, nonatomic) NSString *status;
 
 - (void)log:(NSString *)log;
+- (void)test:(id<GHTest>)test didLog:(NSString *)message;
 
 - (void)updateTest:(id<GHTest>)test;
 
