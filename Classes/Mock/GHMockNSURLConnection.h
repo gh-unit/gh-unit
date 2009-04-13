@@ -40,12 +40,32 @@ extern NSString *const GHMockNSURLConnectionException;
 
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 
+/*!
+ Send generic response to delegate after delay.
+ @param delay Delay in seconds (if < 0, there is no delay)
+ */
 - (void)receiveResponse:(NSURLResponse *)response afterDelay:(NSTimeInterval)delay;
 
+/*!
+ Send HTTP response to delegate with status code, headers, after delay.
+ This is only the HTTP response (and not data or finished).
+ @param statusCode HTTP status code
+ @param headers Headers
+ @param delay Delay in seconds (if < 0, there is no delay)
+ */
 - (void)receiveHTTPResponseWithStatusCode:(int)statusCode headers:(NSDictionary *)headers afterDelay:(NSTimeInterval)delay;
 
+/*!
+ Send data to connection delegate after delay.
+ @param data Data to send
+ @param delay Delay in seconds
+ */
 - (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)delay;
 
+/*!
+ Calls connectionDidFinish: delegate after delay.
+ @param delay Delay in seconds (if < 0, there is no delay)
+ */
 - (void)finishAfterDelay:(NSTimeInterval)delay;
 
 /*!
@@ -53,7 +73,7 @@ extern NSString *const GHMockNSURLConnectionException;
  @param path Data to load path from. File should be available in Test target (bundle)
  @param statusCode Status code for response
  @param MIMEType Content type for response header
- @param afterDelay Delay before responding
+ @param afterDelay Delay before responding (if < 0, there is no delay)
  */
 - (void)receiveFromPath:(NSString *)path statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay;
 
