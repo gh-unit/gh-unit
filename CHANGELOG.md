@@ -1,3 +1,13 @@
+# Release 0.3.6 (2008-04-13)
+
+## 2008-04-13
+- Adding swizzle methods for mocking
+- Adding NSLocale mock
+- Adding NSURLConnection, NSHTTPURLResponse mocks
+- Fix bug with setUpClass/tearDownClass not working for single command line tests
+- Setting Installation Directory to @rpath (Thanks chapados), so you can embed the framework with your app
+- Sorting tests by class name (as well as method name)
+
 # Release 0.3.4 (2009-04-11)
 
 ## 2008-04-11

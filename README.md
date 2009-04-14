@@ -11,9 +11,9 @@ For example, your test cases will be run if they subclass any of the following:
 
 ## Download
 
-[GHUnit-0.3.5.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.5.zip) *GHUnit.framework* (2009/04/13)
+[GHUnit-0.3.6.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.6.zip) *GHUnit.framework* (2009/04/14)
 
-[libGHUnitIPhone-0.3.5.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.5.zip) *iPhone Static Library* (2009/04/11)
+[libGHUnitIPhone-0.3.6.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.6.zip) *iPhone Static Library* (2009/04/14)
 
 ## Why?
 
@@ -23,7 +23,7 @@ The goals of GHUnit are:
 - Ability to run from Makefile's or the command line.
 - A simple GUI to help you visualize your tests.
 - Show stack traces.
-- Be installable as a framework (for Cocoa apps) with a simpler/more flexible target setup; or easy to package into your iPhone project.
+- Be embeddable as a framework (using @rpath) for Mac OSX apps, or as a static library in your iPhone projects.
 
 `GHTestCase` is the base class for your tests.
 
@@ -37,7 +37,9 @@ For questions and discussions see the [GHUnit Google Group](http://groups.google
 
 ## Adding a GHUnit Test Target (Mac OS X)
 
-To add `GHUnit.framework` to your project:
+There are two options. You can install it globally in /Library/Frameworks or with a little extra effort embed it with your project.
+
+### Installing in /Library/Frameworks
 
 - Copy `GHUnit.framework` to `/Library/Frameworks/`
 - Add a `New Target`. Select `Cocoa -> Application`. Name it `Tests` (or something similar).
@@ -47,7 +49,22 @@ To add `GHUnit.framework` to your project:
 	- Add a direct dependency, and select your project. (This will cause your application or framework to build before the test target.)
 
 - Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
-- Now create a test (either by subclassing `SenTestCase` or `GHTestCase`). Add it to your test target. 
+- Now create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target. (See example test case below.)
+
+### Installing in your project
+
+- Add a `New Target`. Select `Cocoa -> Application`. Name it `Tests` (or something similar).
+- Copy `GHUnit.framework` to your project directory (maybe in MyProject/Frameworks/.)
+- Add the `GHUnit.framekwork` files (from MyProject/Frameworks/) to the `Tests` target. It should be visible as a `Linked Framework` in the target. 
+- Under Build Settings, add `@loader_path/../Frameworks` to `Runpath Search Paths` 
+- Add `New Build Phase` | `New Copy Files Build Phase`. 
+	- Change the Destination to `Frameworks`.
+	- Drag `GHUnit.framework` into the the build phase
+	- Make sure the phase appears before an `Run Script` phases 
+- Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
+- Now create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target. (See example test case below.)
+
+### Example test case (Mac OS X)
 
 For example `MyTest.m`:
 
@@ -104,7 +121,9 @@ Frameworks and dynamic libraries are not supported in the iPhone environment, bu
 	- GHUnit test main
 - Under 'Other Linker Flags' in the `Test` target, add `-ObjC`
 
-Now you can create a test (either by subclassing `SenTestCase` or `GHTestCase`) and add it to your test target.
+Now you can create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target.
+
+### Example test case (iPhone)
 
 For example `MyTest.m`:
 
@@ -243,17 +262,6 @@ The `description` argument appends extra information for when the assert fails; 
 	GHAssertNoThrow(expr, description, ...)
 	GHAssertNoThrowSpecific(expr, specificException, description, ...)
 	GHAssertNoThrowSpecificNamed(expr, specificException, aName, description, ...)
-
-## Embedding GHUnit in your project (Mac OS X)
-
-- Copy GHUnit.framework into your project directory somewhere.
-- Add a New Target. Select Cocoa Application. Name it 'Tests' (or something similar).
-- Add an 'Existing Framework' and select GHUnit.framework from your project directory.
-- Double check to make sure GHUnit.framework is a linked library in the test target info.
-- Make your application or framework a direct dependency in the test target info. (This will cause your application or framework to build before the test target.)
-- Add a New Build Phase | New Copy Files Build Phase to the test target.
-	- Select Absolute Path (hidden in drop-down), and for the path enter: `$(TARGET_BUILD_DIR)`
-- Create a test main. For example, create a file called TestsMain.m (or similar), that loads and runs the test application. (See above.)
 
 ## Using SenTestingKit
 

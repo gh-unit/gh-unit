@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		000203AD0F8EA50600EC31BA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 000203AC0F8EA50600EC31BA /* example.json */; };
+		0020570C0F945D2700FC1898 /* GHNSLocale+Mock.h in Headers */ = {isa = PBXBuildFile; fileRef = 002057080F945D2700FC1898 /* GHNSLocale+Mock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0020570D0F945D2700FC1898 /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002057090F945D2700FC1898 /* GHNSLocale+Mock.m */; };
+		002057120F945D7400FC1898 /* GHUnitMockTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002057110F945D7400FC1898 /* GHUnitMockTest.m */; };
+		002058510F9467F900FC1898 /* GHUNSObject+Swizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0020584F0F9467F900FC1898 /* GHUNSObject+Swizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002058520F9467F900FC1898 /* GHUNSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 002058500F9467F900FC1898 /* GHUNSObject+Swizzle.m */; };
 		002D9C0A0F49158F007932FE /* GHTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BD80F49158F007932FE /* GHTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C0B0F49158F007932FE /* GHTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BD90F49158F007932FE /* GHTest.m */; };
 		002D9C0C0F49158F007932FE /* GHTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BDA0F49158F007932FE /* GHTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,7 +45,7 @@
 		002D9C290F49158F007932FE /* GHNSInvocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFC0F49158F007932FE /* GHNSInvocation+Utils.m */; };
 		002D9C2A0F49158F007932FE /* GHNSObject+Invocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BFD0F49158F007932FE /* GHNSObject+Invocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C2B0F49158F007932FE /* GHNSObject+Invocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFE0F49158F007932FE /* GHNSObject+Invocation.m */; };
-		002D9C2F0F49158F007932FE /* GTMObjC2Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C040F49158F007932FE /* GTMObjC2Runtime.h */; };
+		002D9C2F0F49158F007932FE /* GTMObjC2Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C040F49158F007932FE /* GTMObjC2Runtime.h */; settings = {ATTRIBUTES = (); }; };
 		002D9C300F49158F007932FE /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9C050F49158F007932FE /* GTMObjC2Runtime.m */; };
 		002D9C310F49158F007932FE /* GTMStackTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C060F49158F007932FE /* GTMStackTrace.h */; };
 		002D9C320F49158F007932FE /* GTMStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9C070F49158F007932FE /* GTMStackTrace.m */; };
@@ -92,6 +97,11 @@
 
 /* Begin PBXFileReference section */
 		000203AC0F8EA50600EC31BA /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.json; sourceTree = "<group>"; };
+		002057080F945D2700FC1898 /* GHNSLocale+Mock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHNSLocale+Mock.h"; sourceTree = "<group>"; };
+		002057090F945D2700FC1898 /* GHNSLocale+Mock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHNSLocale+Mock.m"; sourceTree = "<group>"; };
+		002057110F945D7400FC1898 /* GHUnitMockTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitMockTest.m; sourceTree = "<group>"; };
+		0020584F0F9467F900FC1898 /* GHUNSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHUNSObject+Swizzle.h"; sourceTree = "<group>"; };
+		002058500F9467F900FC1898 /* GHUNSObject+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHUNSObject+Swizzle.m"; sourceTree = "<group>"; };
 		002D9BD80F49158F007932FE /* GHTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTest.h; sourceTree = "<group>"; };
 		002D9BD90F49158F007932FE /* GHTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTest.m; sourceTree = "<group>"; };
 		002D9BDA0F49158F007932FE /* GHTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestCase.h; sourceTree = "<group>"; };
@@ -308,10 +318,14 @@
 		0036768D0F8E95A80042FAF7 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				002057080F945D2700FC1898 /* GHNSLocale+Mock.h */,
+				002057090F945D2700FC1898 /* GHNSLocale+Mock.m */,
 				003676920F8E95CF0042FAF7 /* GHMockNSURLConnection.h */,
 				003676930F8E95CF0042FAF7 /* GHMockNSURLConnection.m */,
 				003676960F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.h */,
 				003676970F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.m */,
+				0020584F0F9467F900FC1898 /* GHUNSObject+Swizzle.h */,
+				002058500F9467F900FC1898 /* GHUNSObject+Swizzle.m */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -350,6 +364,7 @@
 				00CDDCDF0F76F7730089C60E /* GHSpecialTestCase.m */,
 				00772F910F8D7ABA00586577 /* GHAsyncTestCaseTest.m */,
 				003677080F8E9F760042FAF7 /* GHNSURLConnectionMockTest.m */,
+				002057110F945D7400FC1898 /* GHUnitMockTest.m */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -458,6 +473,8 @@
 				00772F8C0F8D7A6400586577 /* GHAsyncTestCase.h in Headers */,
 				003676940F8E95CF0042FAF7 /* GHMockNSURLConnection.h in Headers */,
 				003676980F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.h in Headers */,
+				0020570C0F945D2700FC1898 /* GHNSLocale+Mock.h in Headers */,
+				002058510F9467F900FC1898 /* GHUNSObject+Swizzle.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +591,7 @@
 				00CDDCE00F76F7730089C60E /* GHSpecialTestCase.m in Sources */,
 				00CDDD300F76FABD0089C60E /* GHUnitTestMain.m in Sources */,
 				003677090F8E9F760042FAF7 /* GHNSURLConnectionMockTest.m in Sources */,
+				002057120F945D7400FC1898 /* GHUnitMockTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +618,8 @@
 				00772F8D0F8D7A6400586577 /* GHAsyncTestCase.m in Sources */,
 				003676950F8E95CF0042FAF7 /* GHMockNSURLConnection.m in Sources */,
 				003676990F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.m in Sources */,
+				0020570D0F945D2700FC1898 /* GHNSLocale+Mock.m in Sources */,
+				002058520F9467F900FC1898 /* GHUNSObject+Swizzle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,7 +725,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				GTM_CONFIGURATION_GCC_PREPROCESSOR_DEFINITIONS = "_GLIBCXX_DEBUG_PEDANTIC _GLIBCXX_DEBUG _GLIBCPP_CONCEPT_CHECKS";
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = /Library/Frameworks;
+				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = GHUnit;
 				VERSION_INFO_EXPORT_DECL = GHUNIT_VERSION;
 				WRAPPER_EXTENSION = framework;
@@ -727,7 +747,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GHUnit_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = /Library/Frameworks;
+				INSTALL_PATH = "@rpath";
 				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)";
 				PRODUCT_NAME = GHUnit;
 				WRAPPER_EXTENSION = framework;
