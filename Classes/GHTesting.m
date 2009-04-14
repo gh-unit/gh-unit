@@ -52,8 +52,13 @@
 
 #import <objc/runtime.h>
 
-// GTM_BEGIN
+NSInteger ClassSort(id a, id b, void *context) {
+	const char *nameA = class_getName([a class]);
+  const char *nameB = class_getName([b class]);
+	return strcmp(nameA, nameB);
+}
 
+// GTM_BEGIN
 // Used for sorting methods below
 static int MethodSort(const void *a, const void *b) {
   const char *nameA = sel_getName(method_getName(*(Method*)a));
@@ -72,7 +77,6 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
   }
   return iscase;
 }
-
 // GTM_END
 
 @implementation GHTesting
@@ -116,11 +120,10 @@ static GHTesting *gSharedInstance;
 - (NSArray *)loadAllTestCases {
 	NSMutableArray *testCases = [NSMutableArray array];
 
-	// GTM_BEGIN
 	int count = objc_getClassList(NULL, 0);
   NSMutableData *classData = [NSMutableData dataWithLength:sizeof(Class) * count];
   Class *classes = (Class*)[classData mutableBytes];
-  //_GTMDevAssert(classes, @"Couldn't allocate class list");
+  NSAssert(classes, @"Couldn't allocate class list");
   objc_getClassList(classes, count);
 	
   for (int i = 0; i < count; ++i) {
@@ -136,8 +139,8 @@ static GHTesting *gSharedInstance;
 		[testCases addObject:testcase];
 		[testcase release];
   }
-	return testCases;
-	// GTM_END
+	
+	return [testCases sortedArrayUsingFunction:ClassSort context:NULL];
 }
 
 // GTM_BEGIN
