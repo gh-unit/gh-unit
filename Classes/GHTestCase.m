@@ -49,14 +49,6 @@
 #import "GHTestCase.h"
 #import "GTMStackTrace.h"
 
-@interface GHTestCase (Private)
-/*!
- Log a message, which notifies the id<GHTestCaseLogDelegate> logDelegate_.
- This is not meant to be used directly, see GHTestLog(...) macro.
- */
-- (void)_log:(NSString *)message;
-@end
-
 @implementation GHTestCase
 
 @synthesize logDelegate=logDelegate_, currentSelector=currentSelector_;
@@ -83,7 +75,7 @@
 
 #pragma mark Logging
 
-- (void)_log:(NSString *)message {
+- (void)log:(NSString *)message {
 	[logDelegate_ testCase:self didLog:message];
 }
 

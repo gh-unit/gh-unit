@@ -51,7 +51,7 @@
 
 // Log to your test case logger.
 // For example, GHTestLog(@"Some debug info, %@", obj)
-#define GHTestLog(...) [self _log:[NSString stringWithFormat:__VA_ARGS__, nil]]
+#define GHTestLog(...) [self log:[NSString stringWithFormat:__VA_ARGS__, nil]]
 
 /*!
  @brief The base class for a test case.
@@ -122,5 +122,12 @@
 
 //! Any special handling of exceptions after they are thrown; By default logs stack trace to standard out.
 - (void)handleException:(NSException *)exception;
+
+/*!
+ Log a message, which notifies the log delegate.
+ This is not meant to be used directly, see GHTestLog(...) macro.
+ @param message
+ */
+- (void)log:(NSString *)message;
 
 @end
