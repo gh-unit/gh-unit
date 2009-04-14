@@ -45,6 +45,7 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 
 - (void)dealloc {
 	[request_ release];
+	delegate_ = nil;
 	[super dealloc];
 }
 
@@ -60,24 +61,31 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 	[delegate_ gh_performSelector:@selector(connection:didReceiveData:) afterDelay:delay withObjects:[NSNull null], data, nil];
 }
 
-- (void)receiveFromPath:(NSString *)path statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay {
+- (NSData *)loadDataFromPath:(NSString *)path {
 	NSString *resourcePath = [[NSBundle mainBundle] pathForResource:[path stringByDeletingPathExtension] ofType:[path pathExtension]];
 	
 	NSError *error = nil;	
-	NSString *data = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:&error];	
+	NSData *data = [NSData dataWithContentsOfFile:resourcePath options:0 error:&error];
 	if (error)
-		[NSException raise:GHMockNSURLConnectionException format:@"%@", error];
-	
+		[NSException raise:GHMockNSURLConnectionException format:@"%@", error];	
+	return data;
+}
+
+- (void)receiveDataFromPath:(NSString *)path afterDelay:(NSTimeInterval)delay {
+	NSData *data = [self loadDataFromPath:path];
+	[self receiveData:data afterDelay:delay];
+}
+
+- (void)receiveFromPath:(NSString *)path statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay {
+	NSData *data = [self loadDataFromPath:path];
 	GHMockNSHTTPURLResponse *response = [[[GHMockNSHTTPURLResponse alloc] initWithURL:[request_ URL] 
 																																					 MIMEType:MIMEType
-																															expectedContentLength:[data lengthOfBytesUsingEncoding:NSUTF8StringEncoding] 
+																															expectedContentLength:[data length] 
 																																	 textEncodingName:nil] autorelease];
-	
 	[response setStatusCode:statusCode];
 	[self receiveResponse:response afterDelay:delay];
-	[self receiveData:[data dataUsingEncoding:NSUTF8StringEncoding] afterDelay:delay];
-	[self finishAfterDelay:delay];
-	
+	[self receiveData:data afterDelay:delay];
+	[self finishAfterDelay:delay];	
 }
 
 - (void)receiveHTTPResponseWithStatusCode:(int)statusCode headers:(NSDictionary *)headers afterDelay:(NSTimeInterval)delay {

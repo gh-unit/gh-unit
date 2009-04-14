@@ -31,17 +31,55 @@
 
 extern NSString *const GHMockNSURLConnectionException;
 
+/*!
+ NSURLConnection for mocking.
+ 
+ Use with GHAsyncTestCase to mock out connections.
+ 
+ @code
+ @interface GHNSURLConnectionMockTest : GHAsyncTestCase {}
+ @end
+ 
+ @implementation GHNSURLConnectionMockTest
+ 
+ - (void)testMock {
+	 [self prepare];
+	 GHMockNSURLConnection *connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:self];	
+	 [connection receiveHTTPResponseWithStatusCode:204 headers:testHeaders_ afterDelay:0.1];
+	 [connection receiveData:testData_ afterDelay:0.2];
+	 [connection finishAfterDelay:0.3];
+	 [self waitFor:kGHUnitWaitStatusSuccess timeout:1.0];
+ }
+ 
+ - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	 GHAssertEquals([(NSHTTPURLResponse *)response statusCode], 204, nil);
+	 GHAssertEqualObjects([(NSHTTPURLResponse *)response allHeaderFields], testHeaders_, nil);
+ }
+ 
+ - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	GHAssertEqualObjects(data, testData_, nil);
+ }
+ 
+ - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	 [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testMock)];
+ }
+ @end
+ */
 @interface GHMockNSURLConnection : NSObject {
 	NSURLRequest *request_;
 	id delegate_; // weak
 	
-	BOOL cancelled_;
+	BOOL cancelled_;	
 }
 
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 
+// Mocked version of NSURLConnection#initWithRequest:delegate:
+- (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate;
+
 /*!
  Send generic response to delegate after delay.
+ (For asynchronous requests)
  @param delay Delay in seconds (if < 0, there is no delay)
  */
 - (void)receiveResponse:(NSURLResponse *)response afterDelay:(NSTimeInterval)delay;
@@ -49,6 +87,7 @@ extern NSString *const GHMockNSURLConnectionException;
 /*!
  Send HTTP response to delegate with status code, headers, after delay.
  This is only the HTTP response (and not data or finished).
+ (For asynchronous requests)
  @param statusCode HTTP status code
  @param headers Headers
  @param delay Delay in seconds (if < 0, there is no delay)
@@ -63,13 +102,23 @@ extern NSString *const GHMockNSURLConnectionException;
 - (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)delay;
 
 /*!
+ Send data (from file in bundle resource) to connection delegate after delay.
+ (For asynchronous requests)
+ @param path Path to file
+ @param delay Delay in seconds
+ */
+- (void)receiveDataFromPath:(NSString *)path afterDelay:(NSTimeInterval)delay;
+
+/*!
  Calls connectionDidFinish: delegate after delay.
+ (For asynchronous requests)
  @param delay Delay in seconds (if < 0, there is no delay)
  */
 - (void)finishAfterDelay:(NSTimeInterval)delay;
 
 /*!
  Sends mock response, sends data, and then calls finish.
+ (For asynchronous requests)
  @param path Data to load path from. File should be available in Test target (bundle)
  @param statusCode Status code for response
  @param MIMEType Content type for response header
