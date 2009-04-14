@@ -71,6 +71,14 @@
 	return self;
 }
 
+- (id)initWithTestCase:(id)testCase selector:(SEL)selector delegate:(id<GHTestDelegate>)delegate {
+	if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
+		testCase_ = [testCase retain];
+		[self addTest:[GHTest testWithTarget:testCase selector:selector]];
+	}
+	return self;
+}
+
 + (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
 	return [[[GHTestGroup alloc] initWithTestCase:testCase delegate:delegate] autorelease];
 }
