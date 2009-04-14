@@ -1,8 +1,8 @@
 //
-//  GHUnit.h
+//  GHNSObject+Swizzle.h
 //  GHUnit
 //
-//  Created by Gabriel Handford on 1/19/09.
+//  Created by Gabriel Handford on 4/13/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,16 +27,10 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestCase.h"
-#import "GHAsyncTestCase.h"
-#import "GHTestSuite.h"
-#import "GHTestMacros.h"
-#import "GHTestRunner.h"
+@interface NSObject (GHUSwizzle)
 
-// Mocking
-#import "GHMockNSURLConnection.h"
-#import "GHMockNSHTTPURLResponse.h"
++ (void)ghu_swizzleMethod:(SEL)original withMethod:(SEL)alternate;
++ (void)ghu_swizzleClassMethod:(SEL)original withClassMethod:(SEL)alternate;
 
-#import "GHUNSObject+Swizzle.h"
-#import "GHNSLocale+Mock.h"
+@end
 

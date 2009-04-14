@@ -29,9 +29,10 @@
 
 #import <Foundation/Foundation.h>
 
-
-// The NSHTTPURLResponse doesn't have a way to set the status code or headers, 
-// so we'll subclass and add setters for the statusCode and allHeaderFields properties.
+/*!
+ NSHTTPURLResponse for use with mocking.
+ Allows us to manually set the status code and headers in the response.
+ */
 @interface GHMockNSHTTPURLResponse : NSHTTPURLResponse {
 	NSInteger statusCode_;
 	NSDictionary *headers_;
@@ -39,7 +40,7 @@
 
 - (id)initWithStatusCode:(NSInteger)statusCode headers:(NSDictionary *)headers;
 
-- (void)setStatusCode:(int)code;
+- (void)setStatusCode:(NSInteger)code;
 - (void)setHeaders:(NSDictionary *)headers;
 
 @end

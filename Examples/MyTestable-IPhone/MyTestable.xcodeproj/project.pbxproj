@@ -23,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		002059510F94754700FC1898 /* GHNSLocale+Mock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHNSLocale+Mock.h"; sourceTree = "<group>"; };
+		002059520F94754700FC1898 /* GHUNSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHUNSObject+Swizzle.h"; sourceTree = "<group>"; };
 		00264B180F916538007E9425 /* GHUnitIPhoneTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTestMain.m; sourceTree = "<group>"; };
 		00264B190F916538007E9425 /* GHMockNSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHMockNSURLConnection.h; sourceTree = "<group>"; };
 		00264B1A0F916538007E9425 /* GHMockNSHTTPURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHMockNSHTTPURLResponse.h; sourceTree = "<group>"; };
@@ -96,6 +98,8 @@
 		00DA15A40F897CDD001FE08E /* GHUnit */ = {
 			isa = PBXGroup;
 			children = (
+				002059510F94754700FC1898 /* GHNSLocale+Mock.h */,
+				002059520F94754700FC1898 /* GHUNSObject+Swizzle.h */,
 				00DA16080F899905001FE08E /* GHTesting.h */,
 				00DA16090F899905001FE08E /* GHTestGroup.h */,
 				00DA160A0F899905001FE08E /* GHTest.h */,

@@ -103,6 +103,13 @@ enum {
 - (void)waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout;
 
 /*!
+ Wait for timeout to occur.
+ Fails if we did _NOT_ timeout.
+ @param timeout
+ */
+- (void)waitForTimeout:(NSTimeInterval)timeout;
+
+/*!
  Notify of status for test selector.
  @param status For example, kGHUnitWaitStatusSuccess
  @param selector If not NULL, then will verify this selector is where we are waiting.

@@ -125,6 +125,14 @@
 - (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
 
 /*!
+ Create test group from a single test.
+ @param testCase
+ @param selector Test to run
+ @param delegate
+ */
+- (id)initWithTestCase:(id)testCase selector:(SEL)selector delegate:(id<GHTestDelegate>)delegate;
+
+/*!
  Create test group from a test case.
  @param testCase Test case, could be a subclass of SenTestCase or GHTestCase
  @param delegate Delegate, notifies of test start and end

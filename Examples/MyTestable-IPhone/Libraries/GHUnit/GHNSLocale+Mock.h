@@ -1,8 +1,8 @@
 //
-//  GHUnit.h
-//  GHUnit
+//  GHMockNSLocale.h
+//  GHUnitIPhone
 //
-//  Created by Gabriel Handford on 1/19/09.
+//  Created by Gabriel Handford on 4/13/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,16 +27,21 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestCase.h"
-#import "GHAsyncTestCase.h"
-#import "GHTestSuite.h"
-#import "GHTestMacros.h"
-#import "GHTestRunner.h"
+/*!
+ Category for overriding the current locale at runtime.
 
-// Mocking
-#import "GHMockNSURLConnection.h"
-#import "GHMockNSHTTPURLResponse.h"
+ @code
+ #import "GHNSLocale+Mock.h"
+ // This aliases the currentLocale method and with the specified locale identifier
+ [NSLocale gh_setLocaleIdentifier:@"en_GB"];
+  
+ [[NSLocale currentLocale] localeIdentifier] == "en_GB"
+ @endcode
+ */
+@interface NSLocale (GHMock)
 
-#import "GHUNSObject+Swizzle.h"
-#import "GHNSLocale+Mock.h"
++ (void)gh_setLocaleIdentifier:(NSString *)localeIdentifier;
 
++ (NSLocale *)gh_currentLocale;
+
+@end
