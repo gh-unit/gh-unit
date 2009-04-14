@@ -94,6 +94,7 @@
 	if (cTestFilter) {
 		NSString *testFilter = [NSString stringWithUTF8String:cTestFilter];
 		GHTestSuite *suite = [GHTestSuite suiteWithTestFilter:testFilter];	
+		if (!suite) return nil;
 		// Run a single or set of tests
 		testRunner = [GHTestRunner runnerForSuite:suite];
 	} else {			
