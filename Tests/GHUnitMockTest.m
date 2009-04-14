@@ -7,16 +7,12 @@
 //
 
 #import "GHTestCase.h"
-#import "GHUnitMock.h"
+#import "GHNSLocale+Mock.h"
 
 @interface GHUnitMockTest : GHTestCase { }
 @end
 
 @implementation GHUnitMockTest
-
-- (void)setUpClass {
-	[GHUnitMock setUp];
-}
 
 - (void)testLocaleMock {
 	[NSLocale gh_setLocaleIdentifier:@"en_GB"];
