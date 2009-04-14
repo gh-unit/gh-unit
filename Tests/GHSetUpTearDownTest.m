@@ -52,17 +52,8 @@ static NSInteger tearDownClassCount = 0;
 	
 }
 
-- (void)test3 { }
+- (void)test3 { 
 
-// For testing display
-
-//- (void)testException {
-//	GHTestLog(@"Will raise an exception");
-//	[NSException raise:@"SomeException" format:@"Some reason for the exception"];
-//}
-//
-//- (void)testMacroFail {
-//	GHAssertTrue(NO, @"Test fail");
-//}
+}
 
 @end
