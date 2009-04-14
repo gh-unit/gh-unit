@@ -67,22 +67,29 @@
 }
 
 + (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilter {
-	NSArray *tests = nil;
 	NSArray *components = [testFilter componentsSeparatedByString:@"/"];
+	GHTestSuite *suite = nil;
 	if ([components count] == 2) {		
 		NSString *testCaseClassName = [components objectAtIndex:0];
 		Class testCaseClass = NSClassFromString(testCaseClassName);
 		id testCase = [[[testCaseClass alloc] init] autorelease];
+		if (!testCase) {
+			NSLog(@"Couldn't find test: %@", testCaseClassName);
+			return nil;
+		}
 		NSString *methodName = [components objectAtIndex:1];
-		GHTest *test = [GHTest testWithTarget:testCase selector:NSSelectorFromString(methodName)];
-		tests = [NSArray arrayWithObject:test];
+		suite = [[[GHTestSuite alloc] initWithTestCase:testCase selector:NSSelectorFromString(methodName) delegate:nil] autorelease];		
 	} else {
 		Class testCaseClass = NSClassFromString(testFilter);
 		id testCase = [[[testCaseClass alloc] init] autorelease];
-		tests = [[GHTesting sharedInstance] loadTestsFromTarget:testCase];
+		if (!testCase) {
+			NSLog(@"Couldn't find test: %@", testFilter);
+			return nil;
+		}		
+		suite = [[[GHTestSuite alloc] initWithTestCase:testCase delegate:nil] autorelease];
 	}
 	
-	return [[[GHTestSuite alloc] initWithName:testFilter tests:tests delegate:nil] autorelease];
+	return suite;
 }
 
 @end
