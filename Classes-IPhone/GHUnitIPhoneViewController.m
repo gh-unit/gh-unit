@@ -56,6 +56,14 @@
 	[self scrollToTest:test];
 }
 
+- (void)setTestStats:(GHTestStats)stats {
+	if (stats.failureCount > 0) {
+		statusLabel_.textColor = [UIColor redColor];
+	} else {
+		statusLabel_.textColor = [UIColor blackColor];
+	}
+}
+
 - (void)scrollToTest:(id<GHTest>)test {
 	NSIndexPath *path = [model_ indexPathToTest:test];
 	if (!path) return;
@@ -107,6 +115,8 @@
 	if (!cell)
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];		
 	cell.text = [NSString stringWithFormat:@"%@ %@", node.name, node.statusString];
+	cell.accessoryType = UITableViewCellAccessoryNone;
+	cell.textColor = [UIColor lightGrayColor];
 	
 	if (node.isRunning) {
 		cell.textColor = [UIColor blackColor];
@@ -117,8 +127,6 @@
 		} else {
 			cell.textColor = [UIColor darkGrayColor];
 		}
-	} else {
-		cell.textColor = [UIColor lightGrayColor];
 	}
 	
 	return cell;	

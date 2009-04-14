@@ -27,5 +27,7 @@
 
 - (void)setStatusText:(NSString *)message;
 
+- (void)setTestStats:(GHTestStats)stats;
+
 @end
 

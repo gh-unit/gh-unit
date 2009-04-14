@@ -67,7 +67,8 @@
 }
 
 - (void)testRunnerDidFinish:(GHTestRunner *)runner {
-	
+	GHTestStats stats = [runner.test stats];
+	[viewController_ setTestStats:stats];
 }
 
 @end
