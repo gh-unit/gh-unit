@@ -30,6 +30,13 @@
 #import "GHAsyncTestCase.h"
 #import <objc/runtime.h>
 
+typedef enum {
+	kGHUnitAsyncErrorNone,
+	kGHUnitAsyncErrorUnprepared,
+	kGHUnitAsyncErrorTimedOut,
+	kGHUnitAsyncErrorInvalidStatus
+} GHUnitAsyncError;
+
 @implementation GHAsyncTestCase
 
 // Internal GHUnit setUp
@@ -58,10 +65,9 @@
 	notifiedStatus_ = kGHUnitWaitStatusUnknown;
 }
 
-- (void)waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout {	
-	if (!prepared_) {
-		GHFail(@"Call prepare before calling asynchronous method and waitFor:timeout:");
-		return;
+- (GHUnitAsyncError)_waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout {	
+	if (!prepared_) {		
+		return kGHUnitAsyncErrorUnprepared;
 	}
 	prepared_ = NO;
 	
@@ -85,10 +91,30 @@
 	[lock_ unlock];
 
 	if (timedOut) {
-		GHFail(@"Request timed out");
+		return kGHUnitAsyncErrorTimedOut;
 	} else if (waitForStatus_ != notifiedStatus_) {
-		GHFail(@"Request finished with the wrong status: %d != %d", waitForStatus_, notifiedStatus_);	
+		return kGHUnitAsyncErrorInvalidStatus;
 	}	
+	
+	return kGHUnitAsyncErrorNone;
+}
+
+- (void)waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout {
+	GHUnitAsyncError error = [self _waitFor:status timeout:timeout];		
+	if (error == kGHUnitAsyncErrorTimedOut) {
+		GHFail(@"Request timed out");
+	} else if (error == kGHUnitAsyncErrorInvalidStatus) {
+		GHFail(@"Request finished with the wrong status: %d != %d", status, notifiedStatus_);	
+	} else if (error == kGHUnitAsyncErrorUnprepared) {
+		GHFail(@"Call prepare before calling asynchronous method and waitFor:timeout:");
+	}
+}
+
+- (void)waitForTimeout:(NSTimeInterval)timeout {
+	GHUnitAsyncError error = [self _waitFor:-1 timeout:timeout];		
+	if (error != kGHUnitAsyncErrorTimedOut) {
+		GHFail(@"Request should have timed out");
+	}
 }
 
 - (void)notify:(NSInteger)status forSelector:(SEL)selector {
