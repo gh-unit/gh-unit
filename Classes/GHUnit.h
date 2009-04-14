@@ -33,5 +33,10 @@
 #import "GHTestMacros.h"
 #import "GHTestRunner.h"
 
+// Mocking
 #import "GHMockNSURLConnection.h"
 #import "GHMockNSHTTPURLResponse.h"
+
+#import "GHUNSObject+Swizzle.h"
+#import "GHNSLocale+Mock.h"
+
