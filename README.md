@@ -102,12 +102,11 @@ For example `MyTest.m`:
 
 Now you should be ready to Build and Run the test target.
 
-You should see something similar to the following screen shots:
+You should see something like:
 
 ![gh-unit5](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit5.jpg)
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import <GHUnit/GHUnit.h>` to it, and then you won't have to include that import for every test.
-- To embed GHUnit in your project (to use it without having to install in `/Library/Frameworks/`) see below.
 
 ## Adding a GHUnit Test Target (iPhone)
 
@@ -158,7 +157,7 @@ For example `MyTest.m`:
 
 Now you should be ready to Build and Run the `Test` target.
 
-You should see something similar to the following:
+You should see something like:
 
 ![gh-unit-iphone2](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit-iphone2.jpg)
 
