@@ -31,9 +31,10 @@
  Test status.
  */
 typedef enum {
-	GHTestStatusNone,
+	GHTestStatusNone = 0,	
 	GHTestStatusRunning,
 	GHTestStatusFinished,
+	GHTestStatusIgnored
 } GHTestStatus;
 
 /*!
@@ -48,13 +49,14 @@ NSString* NSStringFromGHTestStatus(GHTestStatus status);
 typedef struct {
 	NSInteger runCount;
 	NSInteger failureCount;
+	NSInteger ignoreCount;
 	NSInteger testCount;
 } GHTestStats;
 
 /*!
  Create GHTestStats.
  */
-GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSInteger testCount);
+GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSInteger ignoreCount, NSInteger testCount);
 
 #define NSStringFromGHTestStats(stats) [NSString stringWithFormat:@"%d/%d/%d", stats.runCount, stats.testCount, stats.failureCount]
 
@@ -81,6 +83,9 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 
 - (NSArray *)log;
 
+- (BOOL)ignore;
+- (void)setIgnore:(BOOL)ignore;
+
 @end
 
 /*!
@@ -90,6 +95,7 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 - (void)testDidStart:(id<GHTest>)test;
 - (void)testDidFinish:(id<GHTest>)test;
 - (void)test:(id<GHTest>)test didLog:(NSString *)message;
+- (void)testDidIgnore:(id<GHTest>)test;
 @end
 
 /*!
@@ -122,8 +128,9 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 	
 	GHTestStats stats_;
 		
-	NSMutableArray *log_;	
+	NSMutableArray *log_;
 	
+	BOOL ignore_;
 }
 
 /*!
@@ -152,6 +159,7 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 @property (readonly, nonatomic) NSArray *log;
 
 @property (assign, nonatomic) id<GHTestDelegate> delegate;
+@property (assign, nonatomic) BOOL ignore;
 
 /*!
  Run the test.

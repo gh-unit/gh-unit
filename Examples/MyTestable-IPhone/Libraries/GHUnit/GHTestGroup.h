@@ -54,6 +54,7 @@
  This group conforms to the GHTest protocol as well (see Composite pattern).
  */
 @protocol GHTestGroup <GHTest>
+- (NSString *)name;
 - (id<GHTestGroup>)parent;
 - (NSArray *)children;
 @end
@@ -92,6 +93,10 @@
 	
 	id testCase_; // Is set if test is created from initWithTestCase:delegate:
 	id<GHTest> currentTest_; // weak
+	
+	NSException *exception_; // If exception happens in group setUpClass/tearDownClass
+	
+	BOOL ignore_;
 }
 
 @property (readonly, nonatomic) NSArray *children;
@@ -105,6 +110,8 @@
 
 @property (readonly, nonatomic) NSTimeInterval interval;
 @property (readonly, nonatomic) GHTestStats stats;
+
+@property (assign, nonatomic) BOOL ignore;
 
 /*!
  Create an empty test group.
@@ -141,31 +148,12 @@
 + (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
 
 /*!
- Add tests from the specified test case to group.
-
- You may want to use initWithTestCase: or addTestCase: instead, 
- since this appends the methods from the test case into this group.
- @param testCase Should be a subclass of SenTestCase or GHTestCase
- */
-- (void)addTestsFromTestCase:(id)testCase;
-
-/*!
- Add a test case (test group) to this test group.
+ Add a test case (or test group) to this test group.
  @param testCase Test case, could be a subclass of SenTestCase or GHTestCase
  */
 - (void)addTestCase:(id)testCase;
 
-/*!
- Add a single test. 
- @param test Test
- */
-- (void)addTest:(id<GHTest>)test;
-
-/*!
- Add a set of tests.
- @param tests Adds a list of id<GHTest> instances.
- */
-- (void)addTests:(NSArray */*of id<GHTest>*/)tests;
+- (void)addTestGroup:(GHTestGroup *)testGroup;
 
 /*!
  Run the test group.

@@ -60,25 +60,11 @@
  */
 - (id)initWithName:(NSString *)name testCases:(NSArray *)testCases delegate:(id<GHTestDelegate>)delegate;
 
-/*! 
- Create test suite with tests.
- @param name Label to give the suite
- @param tests Array of id<GHTest> 
- @param delegate
- */
-- (id)initWithName:(NSString *)name tests:(NSArray/*of id<GHTest>*/ *)tests delegate:(id<GHTestDelegate>)delegate;
-
 /*!
  Creates a suite of all tests.
  Will load all classes that subclass from GHTestCase, SenTestCase or GTMTestCase (or register test case class).
  */
 + (GHTestSuite *)allTests;
-
-/*!
- Create test suite of all tests.
- @param flatten If flatten is YES, returns a test suite with all tests grouped in a single suite.
- */
-+ (GHTestSuite *)allTests:(BOOL)flatten;
 
 /*!
  Create suite of tests with filter.
@@ -89,8 +75,14 @@
  'GHSlowTest/testSlowA -- Only runs the test method testSlowA in GHSlowTest
  
  @param testFilter Test filter
- @result Runner
+ @result Suite
  */
 + (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilter;
+
+/*!
+ Return test suite based on environment (TEST=TestFoo/foo)
+ @result Suite
+ */
++ (GHTestSuite *)suiteFromEnv;
 
 @end
