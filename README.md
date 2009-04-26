@@ -169,7 +169,7 @@ An example of an iPhone project with GHUnit test setup can be found at: [MyTesta
 
 To run the tests from the command line:
 
-- Copy the [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Classes/RunTests.sh) file into your project directory.
+- Copy the [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Classes/RunTests.sh) file into your project directory (if you haven't already).
 - In XCode:
   - To the `Tests` target, Add | New Build Phase | New Run Script Build Phrase
   - Enter in the path to the RunTests.sh file. This path should be relative to the xcode project file (.xcodeproj)!
