@@ -50,9 +50,15 @@
 
 #import "GHTesting.h"
 
+@interface GHTestGroup (Private)
+- (void)_addTest:(id<GHTest>)test;
+- (void)_addTestsFromTestCase:(id)testCase;
+@end
+
 @implementation GHTestGroup
 
-@synthesize stats=stats_, parent=parent_, children=children_, delegate=delegate_, interval=interval_, status=status_, testCase=testCase_;
+@synthesize stats=stats_, parent=parent_, children=children_, delegate=delegate_, interval=interval_, status=status_, testCase=testCase_, 
+ignore=ignore_;
 
 - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate {
 	if ((self = [super init])) {
@@ -66,7 +72,7 @@
 - (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
 	if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
 		testCase_ = [testCase retain];
-		[self addTestsFromTestCase:testCase];
+		[self _addTestsFromTestCase:testCase];
 	}
 	return self;
 }
@@ -74,7 +80,7 @@
 - (id)initWithTestCase:(id)testCase selector:(SEL)selector delegate:(id<GHTestDelegate>)delegate {
 	if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
 		testCase_ = [testCase retain];
-		[self addTest:[GHTest testWithTarget:testCase selector:selector]];
+		[self _addTest:[GHTest testWithTarget:testCase selector:selector]];
 	}
 	return self;
 }
@@ -102,38 +108,33 @@
 	return name_;
 }
 
-- (void)addTestsFromTestCase:(id)testCase {
+- (void)_addTestsFromTestCase:(id)testCase {
 	NSArray *tests = [[GHTesting sharedInstance] loadTestsFromTarget:testCase];
 	for(GHTest *test in tests) {
-		[test setDelegate:self];
-		[self addTest:test];
+		[self _addTest:test];
 	}
 }
 
 - (void)addTestCase:(id)testCase {
 	GHTestGroup *testCaseGroup = [[GHTestGroup alloc] initWithTestCase:testCase delegate:self];
-	[self addTest:testCaseGroup];
-	[testCaseGroup setParent:self];
+	[self addTestGroup:testCaseGroup];
 	[testCaseGroup release];
 }
 
-- (void)addTests:(NSArray *)tests {
-	for(id test in tests) {
-		if (![test conformsToProtocol:@protocol(GHTest)]) 
-			[NSException raise:NSInvalidArgumentException format:@"Tests must conform to the GHTest protocol"];
-		[self addTest:(id<GHTest>)test];
-	}
+- (void)addTestGroup:(GHTestGroup *)testGroup {
+	[self _addTest:testGroup];
+	[testGroup setParent:self];		
 }
 
-- (void)addTest:(id<GHTest>)test {
+- (void)_addTest:(id<GHTest>)test {
 	stats_.testCount += [test stats].testCount;
 	
 	// TODO(gabe): Logging stuff may need some refactoring
 	if ([test respondsToSelector:@selector(setLogDelegate:)])
 		[test performSelector:@selector(setLogDelegate:) withObject:self];
 
-	[test setDelegate:self];
-	[children_ addObject:test];
+	[test setDelegate:self];	
+	[children_ addObject:test];	
 }
 
 - (NSString *)identifier {
@@ -151,11 +152,16 @@
 }
 
 - (NSException *)exception {
-	// Not supported for group
-	return nil;
+	// TODO(gabe): What to do with exception in setUpClass/tearDownClass?
+	return exception_;
 }
 
 - (void)run {		
+	if (ignore_) {
+		status_ = GHTestStatusIgnored;
+		return;
+	}
+	
 	status_ = GHTestStatusRunning;
 	
 	if ([testCase_ respondsToSelector:@selector(setUpClass)]) 
@@ -163,7 +169,7 @@
 	
 	for(id<GHTest> test in children_) {				
 		currentTest_ = test;
-		[test run];			
+		[[GHTesting sharedInstance] runTest:test selector:@selector(run) exception:&exception_ interval:nil];
 		currentTest_ = nil;
 	}
 	
@@ -184,8 +190,13 @@
 // Notification from GHTestGroup; For example, would be called when a test case ends
 - (void)testDidFinish:(id<GHTest>)test {
 	interval_ += [test interval];
-	stats_.failureCount += [test stats].failureCount;
+	stats_.failureCount += [test stats].failureCount;	
 	[delegate_ testDidFinish:test];
+}
+
+- (void)testDidIgnore:(id<GHTest>)test {
+	stats_.ignoreCount += [test stats].ignoreCount;
+	[delegate_ testDidIgnore:test];
 }
 
 @end

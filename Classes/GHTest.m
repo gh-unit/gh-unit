@@ -54,14 +54,16 @@ NSString* NSStringFromGHTestStatus(GHTestStatus status) {
 		case GHTestStatusNone: return NSLocalizedString(@"Waiting", @"Test status / Waiting");
 		case GHTestStatusRunning: return NSLocalizedString(@"Running", @"Test status / Running");
 		case GHTestStatusFinished: return NSLocalizedString(@"Finished", @"Test status / Finished");
+		case GHTestStatusIgnored: return NSLocalizedString(@"Ignored", @"Test status / Ignored");
 		default: return NSLocalizedString(@"Unknown", @"Test status / Unknown");
 	}
 }
 
-GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSInteger testCount) {
+GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSInteger ignoreCount, NSInteger testCount) {
 	GHTestStats stats;
 	stats.runCount = runCount;
 	stats.failureCount = failureCount; 
+	stats.ignoreCount = ignoreCount;
 	stats.testCount = testCount;
 	return stats;
 }
@@ -69,7 +71,7 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 @implementation GHTest
 
 @synthesize delegate=delegate_, target=target_, selector=selector_, name=name_, interval=interval_, 
-exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_, identifier=identifier_;
+exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_, identifier=identifier_, ignore=ignore_;
 
 - (id)initWithTarget:(id)target selector:(SEL)selector {
 	if ((self = [super init])) {
@@ -77,7 +79,7 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_, id
 		selector_ = selector;
 		interval_ = -1;
 		name_ = [NSStringFromSelector(selector_) copy];
-		stats_ = GHTestStatsMake(0, 0, 1);
+		stats_ = GHTestStatsMake(0, 0, 0, 1);
 		identifier_ = [[NSString stringWithFormat:@"%@/%@", NSStringFromClass([target_ class]), NSStringFromSelector(selector_)] copy];
 	}
 	return self;	
@@ -109,21 +111,28 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_, id
 - (void)setLoggingEnabled:(BOOL)enabled {
 	if ([target_ respondsToSelector:@selector(setLogDelegate:)])
 		[target_ performSelector:@selector(setLogDelegate:) withObject:(enabled ? self : NULL)];
-}
+}	
 
 - (void)run {	
-	status_ = GHTestStatusRunning;
-	stats_ = GHTestStatsMake(1, 0, 1);
-	[delegate_ testDidStart:self];
-	[self setLoggingEnabled:YES];
 
-	failed_ = ![[GHTesting sharedInstance] runTest:target_ selector:selector_ exception:&exception_ interval:&interval_];				
+	if (ignore_) {
+		status_ = GHTestStatusIgnored;
+		stats_ = GHTestStatsMake(0, 0, 1, 1);
+		[delegate_ testDidIgnore:self];
+	}	else {
+		status_ = GHTestStatusRunning;
+		stats_ = GHTestStatsMake(1, 0, 0, 1);
+		[delegate_ testDidStart:self];
+		[self setLoggingEnabled:YES];
+
+		failed_ = ![[GHTesting sharedInstance] runTest:target_ selector:selector_ exception:&exception_ interval:&interval_];
 	
-	[self setLoggingEnabled:NO];
+		[self setLoggingEnabled:NO];
 	
-	status_ = GHTestStatusFinished;	
-	stats_ = GHTestStatsMake(1, failed_ ? 1 : 0, 1);
-	[delegate_ testDidFinish:self];
+		status_ = GHTestStatusFinished;	
+		stats_ = GHTestStatsMake(1, failed_ ? 1 : 0, 0, 1);
+		[delegate_ testDidFinish:self];
+	}		
 }
 
 - (void)testCase:(id)testCase didLog:(NSString *)message {

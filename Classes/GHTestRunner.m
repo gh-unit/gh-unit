@@ -87,20 +87,8 @@
 }
 
 + (GHTestRunner *)runnerFromEnv {	
-	GHTestRunner *testRunner = nil;
-	
-	const char* cTestFilter = getenv("TEST");
-	if (cTestFilter) {
-		NSString *testFilter = [NSString stringWithUTF8String:cTestFilter];
-		GHTestSuite *suite = [GHTestSuite suiteWithTestFilter:testFilter];	
-		if (!suite) return nil;
-		// Run a single or set of tests
-		testRunner = [GHTestRunner runnerForSuite:suite];
-	} else {			
-		// Default option is to run all tests
-		testRunner = [GHTestRunner runnerForAllTests];
-	}
-	return testRunner;
+	GHTestSuite *suite = [GHTestSuite suiteFromEnv];
+	return [GHTestRunner runnerForSuite:suite];
 }	
 
 + (int)run {
@@ -171,6 +159,10 @@
 - (void)test:(id<GHTest>)test didLog:(NSString *)message {	
 	[self ghu_performSelector:@selector(_test:didLog:) onMainThread:delegateOnMainThread_ 
 						 waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:test, message, nil];
+}
+
+- (void)testDidIgnore:(id<GHTest>)test {
+	
 }
 
 #pragma mark Notifications (Private)
