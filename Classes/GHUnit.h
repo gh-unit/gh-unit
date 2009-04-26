@@ -40,3 +40,6 @@
 #import "GHUNSObject+Swizzle.h"
 #import "GHNSLocale+Mock.h"
 
+#ifdef TARGET_OS_IPHONE
+#import "GHMockCLLocationManager.h"
+#endif
