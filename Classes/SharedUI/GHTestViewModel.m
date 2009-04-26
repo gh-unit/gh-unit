@@ -189,7 +189,7 @@
 	return [[NSString stringWithFormat:@"%@ - %@\n%@", 
 					 [[test_ exception] name],
 					 [[test_ exception] reason], 
-					 GTMStackTraceFromException([test_ exception])] retain];
+					 GHU_GTMStackTraceFromException([test_ exception])] retain];
 }
 
 - (NSString *)log {
