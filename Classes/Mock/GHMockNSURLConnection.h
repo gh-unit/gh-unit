@@ -37,6 +37,7 @@ extern NSString *const GHMockNSURLConnectionException;
  Use with GHAsyncTestCase to mock out connections.
  
  @code
+ 
  @interface GHNSURLConnectionMockTest : GHAsyncTestCase {}
  @end
  
@@ -64,18 +65,31 @@ extern NSString *const GHMockNSURLConnectionException;
 	 [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testMock)];
  }
  @end
+ 
+ @endcode
  */
 @interface GHMockNSURLConnection : NSObject {
 	NSURLRequest *request_;
 	id delegate_; // weak
 	
 	BOOL cancelled_;	
+	BOOL started_;
 }
 
+@property (readonly, nonatomic, getter=isStarted) BOOL started;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 
 // Mocked version of NSURLConnection#initWithRequest:delegate:
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate;
+
+// Mocked version of NSURLConnection#initWithRequest:delegate:startImmediately:
+- (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate startImmediately:(BOOL)startImmediately;
+
+// Mocked version of NSURLConnection#scheduleInRunLoop:forMode: (NOOP)
+- (void)scheduleInRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode;
+
+// Mocked version of NSURLConnection#start (NOOP)
+- (void)start;
 
 /*!
  Send generic response to delegate after delay.

@@ -35,6 +35,8 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 
 @implementation GHMockNSURLConnection
 
+@synthesize started=started_, cancelled=cancelled_;
+
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate {
 	if ((self = [super init])) {
 		request_ = [request retain];
@@ -43,13 +45,25 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 	return self;
 }
 
+- (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate startImmediately:(BOOL)startImmediately {
+	return [self initWithRequest:request delegate:delegate];
+}
+
 - (void)dealloc {
 	[request_ release];
 	delegate_ = nil;
 	[super dealloc];
 }
 
+- (void)scheduleInRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode {
+	// Noop
+}
+
 #pragma mark -
+
+- (void)start {
+	started_ = YES;
+}
 
 - (void)cancel {
 	cancelled_ = YES;
@@ -58,7 +72,7 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 #pragma mark -
 
 - (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)delay {
-	[delegate_ gh_performSelector:@selector(connection:didReceiveData:) afterDelay:delay withObjects:[NSNull null], data, nil];
+	[delegate_ ghu_performSelector:@selector(connection:didReceiveData:) afterDelay:delay withObjects:[NSNull null], data, nil];
 }
 
 - (NSData *)loadDataFromPath:(NSString *)path {
@@ -93,11 +107,11 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 }
 
 - (void)receiveResponse:(NSURLResponse *)response afterDelay:(NSTimeInterval)delay {
-	[delegate_ gh_performSelector:@selector(connection:didReceiveResponse:) afterDelay:delay withObjects:self, response, nil];
+	[delegate_ ghu_performSelector:@selector(connection:didReceiveResponse:) afterDelay:delay withObjects:self, response, nil];
 }
 
 - (void)finishAfterDelay:(NSTimeInterval)delay {
-	[delegate_ gh_performSelector:@selector(connectionDidFinishLoading:) afterDelay:delay withObjects:self, nil];
+	[delegate_ ghu_performSelector:@selector(connectionDidFinishLoading:) afterDelay:delay withObjects:self, nil];
 }
 
 @end
