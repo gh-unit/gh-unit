@@ -1,3 +1,15 @@
+# Release 0.3.7 (TBD)
+
+## 2008-04-20
+- CLLocationManager mock
+- Fixed afterDelay not using delay value
+- Select/unselect (ignore) tests in Mac OSX view
+- Added initWithTestSuite to GHTestApp for custom suites from test main
+
+## 2008-04-16
+- Adding ability to set run loops in async test case
+- Adding more methods to NSURLConnection mock
+
 # Release 0.3.6 (2008-04-13)
 
 ## 2008-04-13
