@@ -53,7 +53,11 @@ int main(int argc, char *argv[]) {
 	if (getenv("GHUNIT_CLI")) {		
 		retVal = [GHTestRunner run];
 	} else {
+		// To run all tests (from ENV)
 		GHTestApp *app = [[GHTestApp alloc] init];
+		// To run a different test suite:
+		//GHTestSuite *suite = [GHTestSuite suiteWithTestFilter:@"GHSlowTest,GHAsyncTestCaseTest"];
+		//GHTestApp *app = [[GHTestApp alloc] initWithSuite:suite];
 		[NSApp run];
 		[app release];		
 	}

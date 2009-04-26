@@ -35,7 +35,11 @@
 @synthesize root=root_;
 
 - (id)initWithRoot:(id<GHTestGroup>)root {
-	if ((self = [super init])) {
+	if ((self = [super init])) {		
+		settingsKey_ = [[NSString stringWithFormat:@"Settings2-%@", [root name]] copy];
+		settings_ = [[[NSUserDefaults standardUserDefaults] objectForKey:settingsKey_] retain];		
+		if (!settings_) settings_ = [[NSMutableDictionary dictionary] retain];
+		
 		root_ = [[GHTestNode alloc] initWithTest:root children:[root children] source:self];
 		map_ = [[NSMutableDictionary dictionary] retain];
 	}
@@ -43,8 +47,13 @@
 }
 
 - (void)dealloc {
+	for(NSString *identifier in map_) 
+		[[map_ objectForKey:identifier] setDelegate:nil];
+	
 	[root_ release];
 	[map_ release];
+	[settingsKey_ release];
+	[settings_ release];
 	[super dealloc];
 }
 
@@ -58,6 +67,16 @@
 
 - (void)registerNode:(GHTestNode *)node {
 	[map_ setObject:node forKey:node.identifier];
+	node.delegate = self;
+	
+	// Apply settings
+	NSDictionary *nodeSettings = [settings_ objectForKey:node.identifier];
+	if (nodeSettings) {
+		if ([nodeSettings objectForKey:@"selected"])
+			node.selected = [[nodeSettings objectForKey:@"selected"] boolValue];
+	} else {
+		[settings_ setObject:[NSMutableDictionary dictionary] forKey:node.identifier];
+	}
 }
 
 - (GHTestNode *)findTestNode:(id<GHTest>)test {
@@ -95,11 +114,19 @@
 	return nil;
 }
 
+- (void)testNodeDidChange:(GHTestNode *)node {	
+	if (![node hasChildren]) {
+		NSMutableDictionary *nodeSettings = [settings_ objectForKey:node.identifier];
+		[nodeSettings setObject:[NSNumber numberWithBool:node.selected] forKey:@"selected"];
+		[[NSUserDefaults standardUserDefaults] setObject:settings_ forKey:settingsKey_];	
+	}
+}
+
 @end
 
 @implementation GHTestNode
 
-@synthesize test=test_, identifier=identifier_, name=name_, children=children_;
+@synthesize test=test_, identifier=identifier_, name=name_, children=children_, delegate=delegate_;
 
 - (id)initWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source {
 	if ((self = [super init])) {
@@ -135,6 +162,14 @@
 	return [[[GHTestNode alloc] initWithTest:test children:children source:source] autorelease];
 }
 
+- (BOOL)hasChildren {
+	return [children_ count] > 0;
+}
+
+- (void)notifyChanged {
+	[delegate_ testNodeDidChange:self];
+}
+
 - (NSString *)name {
 	return [test_ name];
 }
@@ -161,6 +196,12 @@
 	} else {
 		return [NSString stringWithFormat:@"%@ %@", status, interval];
 	}
+}
+
+- (NSString *)nameWithStatus {
+	NSString *interval = @"";
+	if (self.isFinished) interval = [NSString stringWithFormat:@" (%0.2fs)", [test_ interval]];
+	return [NSString stringWithFormat:@"%@%@", self.name, interval];
 }
 
 - (BOOL)isGroupTest {
@@ -198,6 +239,14 @@
 
 - (NSString *)description {
 	return [test_ description];
+}
+
+- (BOOL)isSelected {
+	return ![test_ ignore];
+}
+
+- (void)setSelected:(BOOL)selected {
+	[test_ setIgnore:!selected];
 }
 
 @end

@@ -43,7 +43,8 @@
 
 - (void)awakeFromNib {
 	self.window.contentView = viewController_.view;	
-	self.window.title = @"GHUnit";
+	NSString *bundleVersion = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"CFBundleVersion"];
+	self.window.title = [NSString stringWithFormat:@"GHUnit %@", bundleVersion];
 }
 
 - (void)dealloc {

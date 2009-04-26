@@ -6,8 +6,20 @@
 //  Copyright 2009. All rights reserved.
 //
 
-@interface GHTestApp : NSObject {
+#import "GHTestWindowController.h"
+
+#import "GHTestRunner.h"
+
+@interface GHTestApp : NSObject <GHTestRunnerDelegate> {
 	NSMutableArray *topLevelObjects_;
+	
+	GHTestWindowController *windowController_;
+	
+	GHTestSuite *suite_;
 }
+
+- (id)initWithSuite:(GHTestSuite *)suite;
+
+- (void)runTests;
 
 @end

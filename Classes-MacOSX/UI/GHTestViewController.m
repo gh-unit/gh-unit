@@ -174,11 +174,12 @@
 
 - (void)_updateStatus:(id<GHTest>)test {
 	if ([[test name] isEqual:@"Tests"]) {
-		[progressIndicator_ setDoubleValue:((double)[test stats].runCount / (double)[test stats].testCount) * 100.0];
+		NSInteger runTestCount = [test stats].testCount - [test stats].ignoreCount;
+		[progressIndicator_ setDoubleValue:((double)[test stats].runCount / (double)runTestCount) * 100.0];
 
 		self.status = [NSString stringWithFormat:@"%@ %d/%d (%d failures)", 
 										 [self stringFromStatus:[test status] interval:[test interval]], 
-										 [test stats].runCount, [test stats].testCount, [test stats].failureCount];
+										 [test stats].runCount, runTestCount, [test stats].failureCount];
 	}
 }
 
@@ -203,11 +204,33 @@
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
 	if (!item) return nil;
 	
-	if ([[tableColumn identifier] isEqual:@"name"]) {
+	if (tableColumn == nil) {
+		return [item nameWithStatus];
+	} else if ([[tableColumn identifier] isEqual:@"name"]) {
 		return [item name];
-	} else {
+	} else if ([[tableColumn identifier] isEqual:@"status"]) {
 		return [item statusString];
+	} else if ([[tableColumn identifier] isEqual:@"enabled"]) {
+		return [NSNumber numberWithBool:[item isSelected]];
 	}
+	return nil;
+}
+
+- (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
+	if ([[tableColumn identifier] isEqual:@"enabled"]) {
+		[item setSelected:[object boolValue]];
+		[item notifyChanged];
+	}
+}
+
+// We can return a different cell for each row, if we want
+- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+	// If we return a cell for the 'nil' tableColumn, it will be used as a "full width" cell and span all the columns
+	if (tableColumn == nil && [item hasChildren]) {
+		// We want to use the cell for the name column, but we could construct a new cell if we wanted to, or return a different cell for each row.
+		return [[outlineView tableColumnWithIdentifier:@"name"] dataCell];
+	}
+	return [tableColumn dataCell];
 }
 
 #pragma mark Delegates (NSOutlineView)
@@ -218,6 +241,16 @@
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
+	
+	NSInteger clickedCol = [outlineView clickedColumn];
+	NSInteger clickedRow = [outlineView clickedRow];
+	if (clickedRow >= 0 && clickedCol >= 0) {
+		NSCell *cell = [outlineView preparedCellAtColumn:clickedCol row:clickedRow];
+		if ([cell isKindOfClass:[NSButtonCell class]] && [cell isEnabled]) {
+			return NO;
+		}            
+	}
+
 	return (![[item test] conformsToProtocol:@protocol(GHTestGroup)]);
 }
 
@@ -237,6 +270,23 @@
 			[cell setTextColor:[NSColor blackColor]];
 		}
 	}	
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldTrackCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+	// We want to allow tracking for all the button cells, even if we don't allow selecting that particular row. 
+	if ([cell isKindOfClass:[NSButtonCell class]]) {
+		// We can also take a peek and make sure that the part of the cell clicked is an area that is normally tracked. Otherwise, clicking outside of the checkbox may make it check the checkbox
+		NSRect cellFrame = [outlineView frameOfCellAtColumn:[[outlineView tableColumns] indexOfObject:tableColumn] row:[outlineView rowForItem:item]];
+		NSUInteger hitTestResult = [cell hitTestForEvent:[NSApp currentEvent] inRect:cellFrame ofView:outlineView];
+		if (hitTestResult && NSCellHitTrackableArea != 0) {
+			return YES;
+		} else {
+			return NO;
+		}
+	} else {
+		// Only allow tracking on selected rows. This is what NSTableView does by default.
+		return [outlineView isRowSelected:[outlineView rowForItem:item]];
+	}
 }
 
 @end

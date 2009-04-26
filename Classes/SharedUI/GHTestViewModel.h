@@ -31,15 +31,22 @@
 
 @class GHTestNode;
 
+@protocol GHTestNodeDelegate <NSObject>
+- (void)testNodeDidChange:(GHTestNode *)node;
+@end
+
+
 /*!
  Test view model for use in a tree view.
  */
-@interface GHTestViewModel : NSObject {
+@interface GHTestViewModel : NSObject <GHTestNodeDelegate> {
 	
 	GHTestNode *root_;
 	
-	NSMutableDictionary *map_; // id<GHTest>#identifier -> id<GHTest>
+	NSMutableDictionary *map_; // id<GHTest>#identifier -> GHTestNode
 
+	NSString *settingsKey_;
+	NSMutableDictionary *settings_;
 }
 
 @property (readonly, nonatomic) GHTestNode *root;
@@ -79,12 +86,16 @@
 
 @end
 
+
 @interface GHTestNode : NSObject {
 
 	id<GHTest> test_; // The test
 	NSMutableArray *children_; // of GHTestNode
 
+	id<GHTestNodeDelegate> delegate_;
 }
+
+
 
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *name;
@@ -99,7 +110,16 @@
 @property (readonly, nonatomic) BOOL isFinished;
 @property (readonly, nonatomic) BOOL isGroupTest; // YES if test has "sub tests"
 
+@property (assign, nonatomic, getter=isSelected) BOOL selected;
+@property (assign, nonatomic) id<GHTestNodeDelegate> delegate;
+
 - (id)initWithTest:(id<GHTest>)test children:(NSArray */*of GHTestNode */)children source:(GHTestViewModel *)source;
 + (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray */*of GHTestNode */)children source:(GHTestViewModel *)source;
+
+- (NSString *)nameWithStatus;
+
+- (BOOL)hasChildren;
+
+- (void)notifyChanged;
 
 @end
