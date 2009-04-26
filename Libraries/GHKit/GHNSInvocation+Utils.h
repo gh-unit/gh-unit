@@ -53,7 +53,7 @@ va_end(args); \
  Invoke on main thread.
  @param waitUntilDone Whether to join on the call
  */
-- (void)gh_invokeOnMainThread:(BOOL)waitUntilDone;
+- (void)ghu_invokeOnMainThread:(BOOL)waitUntilDone;
 
 /*!
  Invoke selector on target with multiple arguments.
@@ -61,11 +61,11 @@ va_end(args); \
  @param selector Method
  @param withObjects (Variable) Arguments list
  */
-+ (id)gh_invokeWithTarget:(id)target selector:(SEL)selector withObjects:object, ...;
++ (id)ghu_invokeWithTarget:(id)target selector:(SEL)selector withObjects:object, ...;
 
-+ (id)gh_invokeWithTarget:(id)target selector:(SEL)selector arguments:(NSArray *)arguments;
++ (id)ghu_invokeWithTarget:(id)target selector:(SEL)selector arguments:(NSArray *)arguments;
 
-+ (id)gh_invokeWithTarget:(id)target selector:(SEL)selector afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments;
++ (id)ghu_invokeWithTarget:(id)target selector:(SEL)selector afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments;
 
 /*!
  Invoke selector on target on main thread with multiple arguments.
@@ -75,11 +75,11 @@ va_end(args); \
  @param waitUntilDone
  @param withObjects
  */
-+ (void)gh_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone withObjects:object, ...;
++ (void)ghu_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone withObjects:object, ...;
 
-+ (void)gh_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments;
++ (void)ghu_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments;
 
-+ (void)gh_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments;
++ (void)ghu_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments;
 
 /*!
  Create invocation with variable arguments.
@@ -89,7 +89,7 @@ va_end(args); \
  @param hasReturnValue Will be set to YES, if there is a return value
  @param withObjects (Variable) Arguments list
  */
-+ (NSInvocation *)gh_invocationWithTarget:(id)target selector:(SEL)selector hasReturnValue:(BOOL *)hasReturnValue withObjects:object, ...;
++ (NSInvocation *)ghu_invocationWithTarget:(id)target selector:(SEL)selector hasReturnValue:(BOOL *)hasReturnValue withObjects:object, ...;
 
 /*!
  Create invocation with variable arguments.
@@ -99,6 +99,6 @@ va_end(args); \
  @param hasReturnValue Will be set to YES, if there is a return value
  @param arguments Arguments array
  */
-+ (NSInvocation *)gh_invocationWithTarget:target selector:(SEL)selector hasReturnValue:(BOOL *)hasReturnValue arguments:(NSArray *)arguments;
++ (NSInvocation *)ghu_invocationWithTarget:target selector:(SEL)selector hasReturnValue:(BOOL *)hasReturnValue arguments:(NSArray *)arguments;
 
 @end

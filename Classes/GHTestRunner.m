@@ -47,7 +47,6 @@
 #import "GHTestRunner.h"
 #import "GHTestSuite.h"
 #import "GHTesting.h"
-#import "GHNSObject+Invocation.h"
 
 #import <stdio.h>
 
@@ -132,19 +131,19 @@
   fflush(stderr);
 	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
-		[(id)delegate_ gh_performSelector:@selector(testRunner:didLog:) onMainThread:delegateOnMainThread_ 
+		[(id)delegate_ ghu_performSelector:@selector(testRunner:didLog:) onMainThread:delegateOnMainThread_ 
 												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, message, nil];	
 }
 
 - (void)_didStartTest:(id<GHTest>)test {
 	if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
-		[(id)delegate_ gh_performSelector:@selector(testRunner:didStartTest:) onMainThread:delegateOnMainThread_ 
+		[(id)delegate_ ghu_performSelector:@selector(testRunner:didStartTest:) onMainThread:delegateOnMainThread_ 
 												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, test, nil];	
 }
 
 - (void)_didFinishTest:(id<GHTest>)test {
 	if ([delegate_ respondsToSelector:@selector(testRunner:didFinishTest:)])
-		[(id)delegate_ gh_performSelector:@selector(testRunner:didFinishTest:) onMainThread:delegateOnMainThread_ 
+		[(id)delegate_ ghu_performSelector:@selector(testRunner:didFinishTest:) onMainThread:delegateOnMainThread_ 
 												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, test, nil];	
 }
 
@@ -170,7 +169,7 @@
 }
 
 - (void)test:(id<GHTest>)test didLog:(NSString *)message {	
-	[self gh_performSelector:@selector(_test:didLog:) onMainThread:delegateOnMainThread_ 
+	[self ghu_performSelector:@selector(_test:didLog:) onMainThread:delegateOnMainThread_ 
 						 waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:test, message, nil];
 }
 
@@ -181,7 +180,7 @@
 	[self _log:message];
 	
 	if ([delegate_ respondsToSelector:@selector(testRunnerDidStart:)])
-		[(id)delegate_ gh_performSelector:@selector(testRunnerDidStart:) onMainThread:delegateOnMainThread_ 
+		[(id)delegate_ ghu_performSelector:@selector(testRunnerDidStart:) onMainThread:delegateOnMainThread_ 
 												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, nil];
 }
 
@@ -193,7 +192,7 @@
 	
 	
 	if ([delegate_ respondsToSelector:@selector(testRunnerDidFinish:)]) 
-		[(id)delegate_ gh_performSelector:@selector(testRunnerDidFinish:) onMainThread:delegateOnMainThread_ 
+		[(id)delegate_ ghu_performSelector:@selector(testRunnerDidFinish:) onMainThread:delegateOnMainThread_ 
 												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, nil];
 }
 

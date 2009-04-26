@@ -32,55 +32,55 @@
 
 @implementation NSObject (GHInvocation_GHUNIT)
 
-- (id)gh_performIfRespondsToSelector:(SEL)selector {
+- (id)ghu_performIfRespondsToSelector:(SEL)selector {
 	if ([self respondsToSelector:selector]) return [self performSelector:selector];
 	return nil;
 }
 
-- (id)gh_performIfRespondsToSelector:(SEL)selector withObjects:object, ... {
+- (id)ghu_performIfRespondsToSelector:(SEL)selector withObjects:object, ... {
 	if ([self respondsToSelector:selector]) {
 		GHConvertVarArgs(object);
-		return [NSInvocation gh_invokeWithTarget:self selector:selector arguments:arguments];
+		return [NSInvocation ghu_invokeWithTarget:self selector:selector arguments:arguments];
 	}
 	return nil;
 }
 
-- (id)gh_performSelector:(SEL)selector withObjects:object, ... {
+- (id)ghu_performSelector:(SEL)selector withObjects:object, ... {
 	GHConvertVarArgs(object);
-	return [NSInvocation gh_invokeWithTarget:self selector:selector arguments:arguments];	
+	return [NSInvocation ghu_invokeWithTarget:self selector:selector arguments:arguments];	
 }
 
-- (id)gh_performSelector:(SEL)selector afterDelay:(NSTimeInterval)delay withObjects:object, ... {
+- (id)ghu_performSelector:(SEL)selector afterDelay:(NSTimeInterval)delay withObjects:object, ... {
 	GHConvertVarArgs(object);
-	return [NSInvocation gh_invokeWithTarget:self selector:selector afterDelay:delay arguments:arguments];		
+	return [NSInvocation ghu_invokeWithTarget:self selector:selector afterDelay:delay arguments:arguments];		
 }
 
-- (void)gh_performSelectorOnMainThread:(SEL)selector withObjects:object, ... {
+- (void)ghu_performSelectorOnMainThread:(SEL)selector withObjects:object, ... {
 	GHConvertVarArgs(object);
-	[NSInvocation gh_invokeTargetOnMainThread:self selector:selector waitUntilDone:NO arguments:arguments];	
+	[NSInvocation ghu_invokeTargetOnMainThread:self selector:selector waitUntilDone:NO arguments:arguments];	
 }
 
-- (void)gh_performSelectorOnMainThread:(SEL)selector waitUntilDone:(BOOL)waitUntilDone withObjects:object, ... {
+- (void)ghu_performSelectorOnMainThread:(SEL)selector waitUntilDone:(BOOL)waitUntilDone withObjects:object, ... {
 	GHConvertVarArgs(object);
-	[NSInvocation gh_invokeTargetOnMainThread:self selector:selector waitUntilDone:waitUntilDone arguments:arguments];	
+	[NSInvocation ghu_invokeTargetOnMainThread:self selector:selector waitUntilDone:waitUntilDone arguments:arguments];	
 }
 
-- (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone withObjects:object, ... {
+- (void)ghu_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone withObjects:object, ... {
 	GHConvertVarArgs(object);
-	[self gh_performSelector:selector onMainThread:onMainThread waitUntilDone:waitUntilDone arguments:arguments];
+	[self ghu_performSelector:selector onMainThread:onMainThread waitUntilDone:waitUntilDone arguments:arguments];
 }	
 
-- (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments {
-	[self gh_performSelector:selector onMainThread:onMainThread waitUntilDone:waitUntilDone afterDelay:-1 arguments:arguments];
+- (void)ghu_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments {
+	[self ghu_performSelector:selector onMainThread:onMainThread waitUntilDone:waitUntilDone afterDelay:-1 arguments:arguments];
 }
 
-- (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone 
+- (void)ghu_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone 
 								afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments {
 
 	if (!onMainThread) {
-		[NSInvocation gh_invokeWithTarget:self selector:selector afterDelay:delay arguments:arguments];	
+		[NSInvocation ghu_invokeWithTarget:self selector:selector afterDelay:delay arguments:arguments];	
 	} else {
-		[NSInvocation gh_invokeTargetOnMainThread:self selector:selector waitUntilDone:waitUntilDone afterDelay:delay arguments:arguments];	
+		[NSInvocation ghu_invokeTargetOnMainThread:self selector:selector waitUntilDone:waitUntilDone afterDelay:delay arguments:arguments];	
 	}
 }
 

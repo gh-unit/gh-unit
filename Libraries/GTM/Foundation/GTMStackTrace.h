@@ -23,7 +23,7 @@
 extern "C" {
 #endif
 
-struct GTMAddressDescriptor {
+struct GHU_GTMAddressDescriptor {
   const void *address;  // address
   const char *symbol;  // nearest symbol to address
   const char *class_name;  // if it is an obj-c method, the method's class
@@ -51,14 +51,14 @@ struct GTMAddressDescriptor {
 // #6  0x000025b9 tart ()  [/Users/me/./StackLog]
 //
 
-NSString *GTMStackTrace(void);
+NSString *GHU_GTMStackTrace(void);
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 // Returns a string containing a nicely formatted stack trace from the
 // exception.  Only available on 10.5 or later, uses 
 // -[NSException callStackReturnAddresses].
 //
-NSString *GTMStackTraceFromException(NSException *e);
+NSString *GHU_GTMStackTraceFromException(NSException *e);
 #endif
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5
@@ -78,7 +78,7 @@ NSString *GTMStackTraceFromException(NSException *e);
 // Returns:
 //   The number of program counters actually added to outPcs.
 //
-NSUInteger GTMGetStackProgramCounters(void *outPcs[], NSUInteger count);
+NSUInteger GHU_GTMGetStackProgramCounters(void *outPcs[], NSUInteger count);
 #endif  // MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5
 
 // Returns an array of GTMAddressDescriptors from the current thread's stack.
@@ -97,7 +97,7 @@ NSUInteger GTMGetStackProgramCounters(void *outPcs[], NSUInteger count);
 // Returns:
 //   The number of program counters actually added to outPcs.
 //
-NSUInteger GTMGetStackAddressDescriptors(struct GTMAddressDescriptor outDescs[], 
+NSUInteger GHU_GTMGetStackAddressDescriptors(struct GHU_GTMAddressDescriptor outDescs[], 
                                          NSUInteger count);
 
 #ifdef __cplusplus

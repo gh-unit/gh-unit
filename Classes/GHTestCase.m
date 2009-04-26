@@ -70,7 +70,7 @@
 - (void)tearDownClass { }
 
 - (void)handleException:(NSException *)exception {
-	NSLog(@"Exception: %@\n%@", [exception reason], GTMStackTraceFromException(exception));
+	NSLog(@"Exception: %@\n%@", [exception reason], GHU_GTMStackTraceFromException(exception));
 }
 
 #pragma mark Logging

@@ -40,7 +40,7 @@
  @param selector
  @result nil if we don't respond to the selector, otherwise the selector result
  */
-- (id)gh_performIfRespondsToSelector:(SEL)selector;
+- (id)ghu_performIfRespondsToSelector:(SEL)selector;
 
 /*!
  Perform selector if responds with multiple arguments.
@@ -48,16 +48,16 @@
  @param withObjects nil terminated variable argument list 
  @result nil if we don't respond to the selector, otherwise the selector result
  */
-- (id)gh_performIfRespondsToSelector:(SEL)selector withObjects:object, ...;
+- (id)ghu_performIfRespondsToSelector:(SEL)selector withObjects:object, ...;
 
 /*!
  Invoke selector with arguments.
  @param selector
  @param withObjects nil terminated variable argument list 
  */
-- (id)gh_performSelector:(SEL)selector withObjects:object, ...;
+- (id)ghu_performSelector:(SEL)selector withObjects:object, ...;
 
-- (id)gh_performSelector:(SEL)selector afterDelay:(NSTimeInterval)delay withObjects:object, ...;
+- (id)ghu_performSelector:(SEL)selector afterDelay:(NSTimeInterval)delay withObjects:object, ...;
 
 /*!
  Invoke selector with arguments on main thread.
@@ -65,7 +65,7 @@
  @param selector
  @param withObjects nil terminated variable argument list 
  */
-- (void)gh_performSelectorOnMainThread:(SEL)selector withObjects:object, ...;
+- (void)ghu_performSelectorOnMainThread:(SEL)selector withObjects:object, ...;
 
 /*!
  Invoke selector with arguments on main thread.
@@ -73,14 +73,14 @@
  @param waitUntilDone Whether to join on selector and wait for it to finish.
  @param withObjects nil terminated variable argument list 
  */
-- (void)gh_performSelectorOnMainThread:(SEL)selector waitUntilDone:(BOOL)waitUntilDone withObjects:object, ...;
+- (void)ghu_performSelectorOnMainThread:(SEL)selector waitUntilDone:(BOOL)waitUntilDone withObjects:object, ...;
 
 
-- (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone withObjects:object, ...;
+- (void)ghu_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone withObjects:object, ...;
 
-- (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments;
+- (void)ghu_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments;
 
-- (void)gh_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone 
+- (void)ghu_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone 
 								afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments;
 
 @end

@@ -32,20 +32,20 @@
 
 @implementation NSInvocation (GHUtils_GHUNIT)
 
-+ (id)gh_invokeWithTarget:(id)target selector:(SEL)selector withObjects:object, ... {
++ (id)ghu_invokeWithTarget:(id)target selector:(SEL)selector withObjects:object, ... {
 	GHConvertVarArgs(object);
-	return [self gh_invokeWithTarget:target selector:selector arguments:arguments];
+	return [self ghu_invokeWithTarget:target selector:selector arguments:arguments];
 }
 	
-+ (id)gh_invokeWithTarget:(id)target selector:(SEL)selector arguments:(NSArray *)arguments {
-	return [self gh_invokeWithTarget:target selector:selector afterDelay:-1 arguments:arguments];
++ (id)ghu_invokeWithTarget:(id)target selector:(SEL)selector arguments:(NSArray *)arguments {
+	return [self ghu_invokeWithTarget:target selector:selector afterDelay:-1 arguments:arguments];
 }
 
-+ (id)gh_invokeWithTarget:(id)target selector:(SEL)selector afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments {
++ (id)ghu_invokeWithTarget:(id)target selector:(SEL)selector afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments {
 	BOOL hasReturnValue = NO;
-	NSInvocation *invocation = [self gh_invocationWithTarget:target selector:selector hasReturnValue:&hasReturnValue arguments:arguments];
+	NSInvocation *invocation = [self ghu_invocationWithTarget:target selector:selector hasReturnValue:&hasReturnValue arguments:arguments];
 	if (delay >= 0) {
-		[invocation performSelector:@selector(invoke) withObject:nil afterDelay:0];
+		[invocation performSelector:@selector(invoke) withObject:nil afterDelay:delay];
 	} else {
 		[invocation invoke];
 	
@@ -58,47 +58,47 @@
 	return nil;
 }
 
-+ (void)gh_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone withObjects:object, ... {
++ (void)ghu_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone withObjects:object, ... {
 	GHConvertVarArgs(object);
-	[self gh_invokeTargetOnMainThread:target selector:selector waitUntilDone:waitUntilDone arguments:arguments];
+	[self ghu_invokeTargetOnMainThread:target selector:selector waitUntilDone:waitUntilDone arguments:arguments];
 }
 
-+ (void)gh_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments {
-	NSInvocation *invocation = [self gh_invocationWithTarget:target selector:selector hasReturnValue:nil arguments:arguments];
-	[invocation gh_invokeOnMainThread:waitUntilDone];	
++ (void)ghu_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone arguments:(NSArray *)arguments {
+	NSInvocation *invocation = [self ghu_invocationWithTarget:target selector:selector hasReturnValue:nil arguments:arguments];
+	[invocation ghu_invokeOnMainThread:waitUntilDone];	
 }
 
-+ (void)gh_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments {
-	NSInvocation *invocation = [self gh_invocationWithTarget:target selector:selector hasReturnValue:nil arguments:arguments];
++ (void)ghu_invokeTargetOnMainThread:(id)target selector:(SEL)selector waitUntilDone:(BOOL)waitUntilDone afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments {
+	NSInvocation *invocation = [self ghu_invocationWithTarget:target selector:selector hasReturnValue:nil arguments:arguments];
 	if (delay >= 0) {
-		SEL selector = selector = @selector(gh_invokeOnMainThreadAndWaitUntilDone);
-		if (!waitUntilDone) selector = @selector(gh_invokeOnMainThread);	
+		SEL selector = selector = @selector(ghu_invokeOnMainThreadAndWaitUntilDone);
+		if (!waitUntilDone) selector = @selector(ghu_invokeOnMainThread);	
 		[invocation performSelector:selector withObject:nil afterDelay:delay];
 	} else {
-		[invocation gh_invokeOnMainThread:waitUntilDone];	
+		[invocation ghu_invokeOnMainThread:waitUntilDone];	
 	}
 }
 
-- (void)gh_invokeOnMainThread {
-	[self gh_invokeOnMainThread:NO];
+- (void)ghu_invokeOnMainThread {
+	[self ghu_invokeOnMainThread:NO];
 }
 
-- (void)gh_invokeOnMainThreadAndWaitUntilDone {
-	[self gh_invokeOnMainThread:YES];
+- (void)ghu_invokeOnMainThreadAndWaitUntilDone {
+	[self ghu_invokeOnMainThread:YES];
 }
 
-- (void)gh_invokeOnMainThread:(BOOL)waitUntilDone {
+- (void)ghu_invokeOnMainThread:(BOOL)waitUntilDone {
 	// Retain args, since we are invoking on a separate thread
 	if (![self argumentsRetained]) [self retainArguments];
 	[self performSelectorOnMainThread:@selector(invoke) withObject:nil waitUntilDone:waitUntilDone];		
 }
 
-+ (NSInvocation *)gh_invocationWithTarget:target selector:(SEL)selector hasReturnValue:(BOOL *)hasReturnValue withObjects:object, ... {
++ (NSInvocation *)ghu_invocationWithTarget:target selector:(SEL)selector hasReturnValue:(BOOL *)hasReturnValue withObjects:object, ... {
 	GHConvertVarArgs(object);
-	return [self gh_invocationWithTarget:target selector:selector hasReturnValue:hasReturnValue arguments:arguments];
+	return [self ghu_invocationWithTarget:target selector:selector hasReturnValue:hasReturnValue arguments:arguments];
 }
 
-+ (NSInvocation *)gh_invocationWithTarget:target selector:(SEL)selector hasReturnValue:(BOOL *)hasReturnValue arguments:(NSArray *)arguments {
++ (NSInvocation *)ghu_invocationWithTarget:target selector:(SEL)selector hasReturnValue:(BOOL *)hasReturnValue arguments:(NSArray *)arguments {
 	
 	if (![target respondsToSelector:selector])
 		[NSException raise:NSInvalidArgumentException format:@"Target '%@' does not response to selector '%@'", NSStringFromClass([target class]), NSStringFromSelector(selector)];
