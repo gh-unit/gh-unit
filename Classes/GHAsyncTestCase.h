@@ -68,8 +68,11 @@ enum {
 	BOOL prepared_; // Whether prepared was called before waitFor:timeout:
 	NSRecursiveLock *lock_; // Lock to synchronize on
 	SEL waitSelector_; // The selector we are waiting on
-	
+		
+	NSArray *_runLoopModes; // Run loop modes to run while waiting; Defaults to NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode
 }
+
+@property (retain) NSArray *runLoopModes;
 
 /*!
  Prepare before calling the asynchronous method. 

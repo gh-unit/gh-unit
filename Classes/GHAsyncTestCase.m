@@ -39,6 +39,13 @@ typedef enum {
 
 @implementation GHAsyncTestCase
 
+@synthesize runLoopModes=_runLoopModes;
+
+- (void)dealloc {
+	[_runLoopModes release];
+	[super dealloc];
+}
+
 // Internal GHUnit setUp
 - (void)_setUp {
 	lock_ = [[NSRecursiveLock alloc] init];
@@ -72,14 +79,24 @@ typedef enum {
 	prepared_ = NO;
 	
 	waitForStatus_ = status;
+	
+	if (!_runLoopModes)
+		_runLoopModes = [[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode, nil] retain];
 
-	NSTimeInterval checkEveryInterval = 0.1;
+	NSTimeInterval checkEveryInterval = 0.01;
 	NSDate *runUntilDate = [NSDate dateWithTimeIntervalSinceNow:timeout];
 	BOOL timedOut = NO;
+	NSInteger runIndex = 0;
 	while(notifiedStatus_ == kGHUnitWaitStatusUnknown) {
 		
 		[lock_ unlock];
-		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]];
+		
+		//BOOL hadRunLoopSources = NO;
+		NSString *mode = [_runLoopModes objectAtIndex:(runIndex++ % [_runLoopModes count])];
+		if (![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
+			// If there were no run loop sources or timers then we should sleep for the interval
+			[NSThread sleepForTimeInterval:checkEveryInterval];
+
 		[lock_ lock];
 		
 		// If current date is after the run until date
