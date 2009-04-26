@@ -34,27 +34,46 @@
 @implementation NSLocale (GHMock)
 
 static NSString *gGHUNSLocaleLocaleIdentifier = NULL;
+static NSArray *gGHUNSLocalePreferredLanguages = NULL;
 static BOOL gGHUNSLocaleMockSetup = NO;
 
-+ (void)gh_setLocaleIdentifier:(NSString *)localeIdentifier {
++ (void)_gh_setUpMock {
 	@synchronized([self class]) {
 		if (!gGHUNSLocaleMockSetup) {
 			// TODO(gabe): Check and handle swizzle errors
 			[NSLocale ghu_swizzleClassMethod:@selector(currentLocale) withClassMethod:@selector(gh_currentLocale)];
+			[NSLocale ghu_swizzleClassMethod:@selector(preferredLanguages) withClassMethod:@selector(gh_preferredLanguages)];
 			gGHUNSLocaleMockSetup = YES;
-		}
-	
-		[gGHUNSLocaleLocaleIdentifier release];
-		gGHUNSLocaleLocaleIdentifier = [localeIdentifier copy];
+		}		
 	}
 }
 
-// Swizzled method for testing
++ (void)gh_setLocaleIdentifier:(NSString *)localeIdentifier {
+	[self _gh_setUpMock];
+	[gGHUNSLocaleLocaleIdentifier release];
+	gGHUNSLocaleLocaleIdentifier = [localeIdentifier copy];
+}
+
++ (void)gh_setPreferredLanguages:(NSArray *)preferredLanguages {
+	[self _gh_setUpMock];
+	[preferredLanguages retain];
+	[gGHUNSLocalePreferredLanguages release];
+	gGHUNSLocalePreferredLanguages = preferredLanguages;	
+}
+
 + (NSLocale *)gh_currentLocale {
 	if (gGHUNSLocaleLocaleIdentifier != NULL) {
 		return [[[NSLocale alloc] initWithLocaleIdentifier:gGHUNSLocaleLocaleIdentifier] autorelease];
 	} else {
 		return [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];;
+	}
+}
+
++ (NSArray *)gh_preferredLanguages {
+	if (gGHUNSLocalePreferredLanguages != NULL) {
+		return gGHUNSLocalePreferredLanguages;
+	} else {
+		return [NSArray arrayWithObject:@"en"];
 	}
 }
 

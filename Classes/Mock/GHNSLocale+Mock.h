@@ -42,6 +42,18 @@
 
 + (void)gh_setLocaleIdentifier:(NSString *)localeIdentifier;
 
+/*!
+ Aliases to currentLocale with locale set from gh_setLocaleIdentifier.
+ If not set, defaults to NSLocale with identifier en_US.
+ */
 + (NSLocale *)gh_currentLocale;
+
++ (void)gh_setPreferredLanguages:(NSArray *)preferredLanguages;
+
+/*!
+ Aliases to preferredLanguages set from gh_setPreferredLanguages.
+ If not set, defaults to [@"en"].
+ */
++ (NSArray *)gh_preferredLanguages;
 
 @end
