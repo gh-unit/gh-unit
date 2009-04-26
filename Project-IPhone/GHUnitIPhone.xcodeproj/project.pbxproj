@@ -20,8 +20,6 @@
 		002058940F946E7800FC1898 /* GHUNSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 002058920F946E7800FC1898 /* GHUNSObject+Swizzle.m */; };
 		002058C70F9472D900FC1898 /* GHUNSObject+Swizzle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002058910F946E7800FC1898 /* GHUNSObject+Swizzle.h */; };
 		0020596C0F9501F100FC1898 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 0020596B0F9501F100FC1898 /* TODO.md */; };
-		0064CA5B0F9BB68000E5FA70 /* GHMockCLLocationManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0064CA590F9BB68000E5FA70 /* GHMockCLLocationManager.h */; };
-		0064CA5C0F9BB68000E5FA70 /* GHMockCLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0064CA5A0F9BB68000E5FA70 /* GHMockCLLocationManager.m */; };
 		0064CA6D0F9D8A0200E5FA70 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0064CA6C0F9D8A0200E5FA70 /* CoreLocation.framework */; };
 		0064CA740F9D8AC800E5FA70 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0064CA6C0F9D8A0200E5FA70 /* CoreLocation.framework */; };
 		007730280F8D8DF400586577 /* GHAsyncTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 007730230F8D8DF400586577 /* GHAsyncTestCaseTest.m */; };
@@ -83,7 +81,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				0064CA5B0F9BB68000E5FA70 /* GHMockCLLocationManager.h in CopyFiles */,
 				002058C70F9472D900FC1898 /* GHUNSObject+Swizzle.h in CopyFiles */,
 				002053EE0F93FAD100FC1898 /* GHNSLocale+Mock.h in CopyFiles */,
 				000204090F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.h in CopyFiles */,
@@ -552,7 +549,6 @@
 				0002040C0F8EA87C00EC31BA /* GHMockNSURLConnection.m in Sources */,
 				002053EF0F93FAD100FC1898 /* GHNSLocale+Mock.m in Sources */,
 				002058940F946E7800FC1898 /* GHUNSObject+Swizzle.m in Sources */,
-				0064CA5C0F9BB68000E5FA70 /* GHMockCLLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

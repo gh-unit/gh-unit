@@ -32,14 +32,3 @@
 #import "GHTestSuite.h"
 #import "GHTestMacros.h"
 #import "GHTestRunner.h"
-
-// Mocking
-#import "GHMockNSURLConnection.h"
-#import "GHMockNSHTTPURLResponse.h"
-
-#import "GHUNSObject+Swizzle.h"
-#import "GHNSLocale+Mock.h"
-
-#ifdef TARGET_OS_IPHONE
-#import "GHMockCLLocationManager.h"
-#endif
