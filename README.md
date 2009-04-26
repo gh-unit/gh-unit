@@ -11,9 +11,9 @@ For example, your test cases will be run if they subclass any of the following:
 
 ## Download
 
-[GHUnit-0.3.6.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.6.zip) *GHUnit.framework* (2009/04/14)
+[GHUnit-0.3.7.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.7.zip) *GHUnit.framework* (2009/04/26)
 
-[libGHUnitIPhone-0.3.6.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.6.zip) *iPhone Static Library* (2009/04/14)
+[libGHUnitIPhone-0.3.7.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.7.zip) *iPhone Static Library* (2009/04/26)
 
 ## Why?
 
@@ -24,6 +24,7 @@ The goals of GHUnit are:
 - A simple GUI to help you visualize your tests.
 - Show stack traces.
 - Be embeddable as a framework (using @rpath) for Mac OSX apps, or as a static library in your iPhone projects.
+- Mocks
 
 `GHTestCase` is the base class for your tests.
 
