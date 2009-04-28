@@ -105,6 +105,8 @@
 - (void)setRoot:(id<GHTestGroup>)rootTest {
 	[model_ release];
 	model_ = [[GHTestViewModel alloc] initWithRoot:rootTest];
+	[outlineView_ reloadItem:nil reloadChildren:YES];
+	[outlineView_ expandItem:nil expandChildren:YES];
 	[self _updateStatus:rootTest];
 }
 
@@ -167,15 +169,14 @@
 
 - (void)updateTest:(id<GHTest>)test {
 	GHTestNode *testNode = [model_ findTestNode:test];
-	[outlineView_ reloadItem:testNode];
-	[outlineView_ expandItem:testNode expandChildren:YES];
+	[outlineView_ reloadItem:testNode];	
 	[self _updateStatus:model_.root.test];
 }
 
 - (void)_updateStatus:(id<GHTest>)test {
 	if ([[test name] isEqual:@"Tests"]) {
 		NSInteger runTestCount = [test stats].testCount - [test stats].ignoreCount;
-		[progressIndicator_ setDoubleValue:((double)[test stats].runCount / (double)runTestCount) * 100.0];
+		[progressIndicator_ setDoubleValue:(((double)[test stats].runCount / (double)runTestCount)) * 100.0];
 
 		self.status = [NSString stringWithFormat:@"%@ %d/%d (%d failures)", 
 										 [self stringFromStatus:[test status] interval:[test interval]], 
@@ -193,7 +194,7 @@
 	}
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {	
 	return (!item) ? YES : ([[item children] count] > 0);
 }
 
@@ -241,7 +242,6 @@
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
-	
 	NSInteger clickedCol = [outlineView clickedColumn];
 	NSInteger clickedRow = [outlineView clickedRow];
 	if (clickedRow >= 0 && clickedCol >= 0) {
@@ -251,11 +251,11 @@
 		}            
 	}
 
-	return (![[item test] conformsToProtocol:@protocol(GHTestGroup)]);
+	return (![item hasChildren]);
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item {
-	return ([[item test] conformsToProtocol:@protocol(GHTestGroup)]);
+	return ([item hasChildren]);
 }
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {	

@@ -44,7 +44,7 @@
 + (id)ghu_invokeWithTarget:(id)target selector:(SEL)selector afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments {
 	BOOL hasReturnValue = NO;
 	NSInvocation *invocation = [self ghu_invocationWithTarget:target selector:selector hasReturnValue:&hasReturnValue arguments:arguments];
-	if (delay >= 0) {
+	if (delay > 0) {
 		[invocation performSelector:@selector(invoke) withObject:nil afterDelay:delay];
 	} else {
 		[invocation invoke];
@@ -90,7 +90,7 @@
 - (void)ghu_invokeOnMainThread:(BOOL)waitUntilDone {
 	// Retain args, since we are invoking on a separate thread
 	if (![self argumentsRetained]) [self retainArguments];
-	[self performSelectorOnMainThread:@selector(invoke) withObject:nil waitUntilDone:waitUntilDone];		
+	[self performSelectorOnMainThread:@selector(invoke) withObject:nil waitUntilDone:waitUntilDone];
 }
 
 + (NSInvocation *)ghu_invocationWithTarget:target selector:(SEL)selector hasReturnValue:(BOOL *)hasReturnValue withObjects:object, ... {

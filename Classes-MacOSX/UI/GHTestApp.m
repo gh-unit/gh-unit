@@ -49,18 +49,19 @@
 
 - (void)_runTests {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];		
+
 	// For backwards compatibility
 	if (!suite_)
 		suite_ = [[GHTestSuite suiteFromEnv] retain];
 	
-	NSLog(@"Running suite: %@", [suite_ children]);
-	GHTestRunner *runner = [[[GHTestRunner runnerForSuite:suite_] retain] autorelease];
+	GHTestRunner *runner = [[GHTestRunner runnerForSuite:suite_] retain];
 	runner.delegate = self;
 	runner.delegateOnMainThread = YES;
 	// To allow exceptions to raise into the debugger, uncomment below
 	//runner.raiseExceptions = YES;
 	
 	[runner run];
+	[runner release];
 	[pool release];
 }
 

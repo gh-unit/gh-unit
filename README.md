@@ -11,7 +11,7 @@ For example, your test cases will be run if they subclass any of the following:
 
 ## Download
 
-[GHUnit-0.3.7.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.7.zip) *GHUnit.framework* (2009/04/26)
+[GHUnit-0.3.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.8.zip) *GHUnit.framework* (2009/04/28)
 
 [libGHUnitIPhone-0.3.7.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.7.zip) *iPhone Static Library* (2009/04/26)
 

@@ -86,7 +86,7 @@
 
 @implementation GHAsyncConnectionTestCaseTest
 
-- (void)testURLConnection {
+- (void)_testURLConnection {
 	[self prepare];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
 	[[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES] retain];

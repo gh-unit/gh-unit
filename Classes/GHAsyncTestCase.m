@@ -43,6 +43,7 @@ typedef enum {
 
 - (void)dealloc {
 	[_runLoopModes release];
+	_runLoopModes = nil;
 	[super dealloc];
 }
 
@@ -83,20 +84,18 @@ typedef enum {
 	if (!_runLoopModes)
 		_runLoopModes = [[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode, nil] retain];
 
-	NSTimeInterval checkEveryInterval = 0.01;
+	NSTimeInterval checkEveryInterval = 0.05;
 	NSDate *runUntilDate = [NSDate dateWithTimeIntervalSinceNow:timeout];
 	BOOL timedOut = NO;
 	NSInteger runIndex = 0;
 	while(notifiedStatus_ == kGHUnitWaitStatusUnknown) {
 		
-		[lock_ unlock];
-		
-		//BOOL hadRunLoopSources = NO;
 		NSString *mode = [_runLoopModes objectAtIndex:(runIndex++ % [_runLoopModes count])];
-		if (![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
+
+		[lock_ unlock];
+		if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
 			// If there were no run loop sources or timers then we should sleep for the interval
 			[NSThread sleepForTimeInterval:checkEveryInterval];
-
 		[lock_ lock];
 		
 		// If current date is after the run until date

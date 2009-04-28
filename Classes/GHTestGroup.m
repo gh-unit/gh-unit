@@ -49,6 +49,7 @@
 #import "GHTestCase.h"
 
 #import "GHTesting.h"
+#import "GTMStackTrace.h"
 
 @interface GHTestGroup (Private)
 - (void)_addTest:(id<GHTest>)test;
@@ -170,6 +171,9 @@ ignore=ignore_;
 	for(id<GHTest> test in children_) {				
 		currentTest_ = test;
 		[[GHTesting sharedInstance] runTest:test selector:@selector(run) exception:&exception_ interval:nil];
+		if (exception_) {
+			NSLog(@"Exception: %@\n%@", [exception_ reason], GHU_GTMStackTraceFromException(exception_));
+		}
 		currentTest_ = nil;
 	}
 	
@@ -190,7 +194,11 @@ ignore=ignore_;
 // Notification from GHTestGroup; For example, would be called when a test case ends
 - (void)testDidFinish:(id<GHTest>)test {
 	interval_ += [test interval];
-	stats_.failureCount += [test stats].failureCount;	
+	if (exception_)
+		stats_.failureCount += [test stats].runCount;	
+	else
+		stats_.failureCount += [test stats].failureCount;	
+
 	[delegate_ testDidFinish:test];
 }
 

@@ -1,4 +1,9 @@
-# Release 0.3.7 (TBD)
+# Release 0.3.8 (2008-04-28)
+
+## 2008-04-28
+- Removed button enabled cell from Mac OS X view; Makes NSOutlineView really slow; Need to figure out how to do it right
+
+# Release 0.3.7 (2008-04-26)
 
 ## 2008-04-20
 - CLLocationManager mock
