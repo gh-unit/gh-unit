@@ -84,6 +84,8 @@
  */
 - (NSIndexPath *)indexPathToTest:(id<GHTest>)test;
 
+- (void)saveSettings;
+
 @end
 
 

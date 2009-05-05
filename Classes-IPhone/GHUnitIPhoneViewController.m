@@ -12,16 +12,18 @@
 
 @implementation GHUnitIPhoneViewController
 
+@synthesize tableView=tableView_;
+
 - (void)loadView {
+	GHUDebug(@"Loading view");
 	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 460)];
 	view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
 	
 	CGRect frame = CGRectMake(0, 0, 320, 380);
 	tableView_ = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
 	tableView_.delegate = self;
-	tableView_.dataSource = self;
 	[view addSubview:tableView_];
-	[tableView_ release];
+	[tableView_ release];	
 	
 	statusLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(5, 380, 310, 36)];
 	statusLabel_.backgroundColor = [UIColor clearColor];
@@ -31,29 +33,98 @@
 	[view addSubview:statusLabel_];
 	[statusLabel_ release];
 	
+	editToolbar_ = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 380, 320, 36)];
+	UIBarButtonItem *selectItem = [[UIBarButtonItem alloc] initWithTitle:@"Select All" style:UIBarButtonItemStyleBordered target:self action:@selector(_selectAll)];
+	UIBarButtonItem *deselectItem = [[UIBarButtonItem alloc] initWithTitle:@"Deselect All" style:UIBarButtonItemStyleBordered target:self action:@selector(_deselectAll)];	
+	[editToolbar_ setItems:[NSArray arrayWithObjects:selectItem, deselectItem, nil] animated:NO];
+	editToolbar_.hidden = YES;
+	[view addSubview:editToolbar_];
+	[selectItem release];
+	[deselectItem release];
+		
+	editButton_ = [[UIBarButtonItem alloc] initWithTitle:@"-" style:UIBarButtonItemStylePlain 
+																									target:self action:@selector(_edit)];
+	self.navigationItem.rightBarButtonItem = editButton_;
+	[editButton_ release];	
+
+	UIBarButtonItem *quitButton = [[UIBarButtonItem alloc] initWithTitle:@"Quit" style:UIBarButtonItemStylePlain 
+																																target:self action:@selector(_quit)];
+	self.navigationItem.leftBarButtonItem = quitButton;
+	[quitButton release];	
+	
+	
 	self.view = view;
-	self.title = @"Tests";
+	[self setEditing:NO];
 }
 
 - (void)dealloc {
-	[tableView_ release];
-	[model_ release];
+	[dataSource_ release];
+	[editToolbar_ release];
 	[super dealloc];
 }
+
+- (void)setEditing:(BOOL)editing {
+	// If we were editing, then we are toggling back, and we need to save
+	if (dataSource_.isEditing) {
+		[dataSource_.model saveSettings];
+	}
+
+	dataSource_.editing = editing;
+	
+	if (editing) {
+		self.title = @"Edit";
+		editButton_.title = @"Save";
+		statusLabel_.hidden = YES;
+		editToolbar_.hidden = NO;
+	} else {
+		self.title = @"Tests";
+		editButton_.title = @"Edit";
+		statusLabel_.hidden = NO;
+		editToolbar_.hidden = YES;		
+	}
+	[self.tableView reloadData];
+}
+
+#pragma mark Actions
+
+- (void)_edit {	
+	[self setEditing:!dataSource_.isEditing];
+}
+
+- (void)_selectAll {
+	[dataSource_ setSelectedForAllNodes:YES];
+	[self.tableView reloadData];
+}
+
+- (void)_deselectAll {
+	[dataSource_ setSelectedForAllNodes:NO];
+	[self.tableView reloadData];
+}
+
+- (void)_quit {
+	exit(0);
+}
+
+#pragma mark -
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES;
 }
 
 - (void)setGroup:(id<GHTestGroup>)group {
-	[model_ release];
-	model_ = [[GHTestViewModel alloc] initWithRoot:group];
-	[tableView_ reloadData];
+	[dataSource_ release];
+	dataSource_ = [[GHUnitIPhoneTableViewDataSource alloc] init];
+	GHTestViewModel *model = [[GHTestViewModel alloc] initWithRoot:group];
+	dataSource_.model = model;
+	[model release];
+	self.tableView.dataSource = dataSource_;
+	[self.tableView reloadData];
 }
 
 - (void)updateTest:(id<GHTest>)test {
-	[tableView_ reloadData];
-	[self scrollToTest:test];
+	[self.tableView reloadData];
+	if (!userDidDrag_ && !dataSource_.isEditing)
+		[self scrollToTest:test];
 }
 
 - (void)setTestStats:(GHTestStats)stats {
@@ -65,84 +136,58 @@
 }
 
 - (void)scrollToTest:(id<GHTest>)test {
-	NSIndexPath *path = [model_ indexPathToTest:test];
+	NSIndexPath *path = [dataSource_.model indexPathToTest:test];
 	if (!path) return;
-	[tableView_ scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+	[self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 - (void)scrollToBottom {
-	NSInteger lastGroupIndex = [model_ numberOfGroups] - 1;
+	NSInteger lastGroupIndex = [dataSource_.model numberOfGroups] - 1;
 	if (lastGroupIndex < 0) return;
-	NSInteger lastTestIndex = [model_ numberOfTestsInGroup:lastGroupIndex] - 1;
+	NSInteger lastTestIndex = [dataSource_.model numberOfTestsInGroup:lastGroupIndex] - 1;
 	if (lastTestIndex < 0) return;
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastTestIndex inSection:lastGroupIndex];
-	[tableView_ scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+	[self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 - (void)setStatusText:(NSString *)message {
 	statusLabel_.text = message;
 }
 
-#pragma mark Delegates / Data Source (UITableView)
+#pragma mark Delegates (UITableView)
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	if (model_) {
-		NSInteger numberOfSections = [model_ numberOfGroups];
-		if (numberOfSections > 0) return numberOfSections;
-	}
-	return 1;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	if (!model_) return nil;
-	NSArray *children = [[model_ root] children];
-	if ([children count] == 0) return nil;
-	GHTestNode *sectionNode = [children objectAtIndex:section];
-	return sectionNode.name;
-}
-
-- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
-	if (!model_) return 0;
-	return [model_ numberOfTestsInGroup:section];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	GHTestNode *sectionNode = [[[model_ root] children] objectAtIndex:indexPath.section];
-	GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
-	
-	static NSString *CellIdentifier = @"ReviewFeedViewItem";	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (!cell)
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];		
-	cell.text = [NSString stringWithFormat:@"%@ %@", node.name, node.statusString];
-	cell.accessoryType = UITableViewCellAccessoryNone;
-	cell.textColor = [UIColor lightGrayColor];
-	
-	if (node.isRunning) {
-		cell.textColor = [UIColor blackColor];
-	} else if (node.isFinished) {
-		if (node.failed) {
-			cell.textColor = [UIColor redColor];
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		} else {
-			cell.textColor = [UIColor darkGrayColor];
-		}
-	}
-	
-	return cell;	
-}
+- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
+	GHTestNode *node = [dataSource_ nodeForIndexPath:indexPath];
+	if (dataSource_.isEditing && node.isSelected) return UITableViewCellAccessoryCheckmark;
+	else if (node.isFinished && node.failed) return UITableViewCellAccessoryDisclosureIndicator;
+	return UITableViewCellAccessoryNone;
+}	
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-	GHTestNode *sectionNode = [[[model_ root] children] objectAtIndex:indexPath.section];
-	GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
-	
-	if (node.failed) {
-		GHUnitIPhoneExceptionViewController *exceptionViewController = [[GHUnitIPhoneExceptionViewController alloc] init];	
-		[self.navigationController pushViewController:exceptionViewController animated:YES];
-		exceptionViewController.stackTrace = node.stackTrace;
-		[exceptionViewController release];
-	}	
+	GHTestNode *node = [dataSource_ nodeForIndexPath:indexPath];
+	if (dataSource_.isEditing) {
+		node.selected = !node.isSelected;
+		[node notifyChanged];
+		[tableView deselectRowAtIndexPath:indexPath animated:NO];
+		[self.tableView reloadData];
+	} else {		
+		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+		GHTestNode *sectionNode = [[[dataSource_.model root] children] objectAtIndex:indexPath.section];
+		GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
+		
+		if (node.failed) {
+			GHUnitIPhoneExceptionViewController *exceptionViewController = [[GHUnitIPhoneExceptionViewController alloc] init];	
+			[self.navigationController pushViewController:exceptionViewController animated:YES];
+			exceptionViewController.stackTrace = node.stackTrace;
+			[exceptionViewController release];
+		}	
+	}
+}
+
+#pragma mark Delegates (UIScrollView) 
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	userDidDrag_ = YES;
 }
 
 @end

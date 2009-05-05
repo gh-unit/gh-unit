@@ -8,14 +8,29 @@
 
 #import "GHTestViewModel.h"
 
-@interface GHUnitIPhoneViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+#import "GHUnitIPhoneTableViewDataSource.h"
+
+@interface GHUnitIPhoneViewController : UIViewController <UITableViewDelegate> {
 	
 	UITableView *tableView_;
 	
-	GHTestViewModel *model_;
-	
+	//! Status label at bottom of the view
 	UILabel *statusLabel_;
+	
+	//! Data source for table view
+	GHUnitIPhoneTableViewDataSource *dataSource_;
+	
+	//! Edit/Save toggle button
+	UIBarButtonItem *editButton_;
+	
+	//! If set then we will no longer auto scroll as tests are run
+	BOOL userDidDrag_;
+	
+	//! Select/Deselect all for edit view
+	UIToolbar *editToolbar_;
 }
+
+@property (readonly, nonatomic) UITableView *tableView;
 
 - (void)setGroup:(id<GHTestGroup>)group;
 
@@ -28,6 +43,8 @@
 - (void)setStatusText:(NSString *)message;
 
 - (void)setTestStats:(GHTestStats)stats;
+
+- (void)setEditing:(BOOL)editing;
 
 @end
 

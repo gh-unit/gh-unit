@@ -36,9 +36,10 @@
 
 - (id)initWithRoot:(id<GHTestGroup>)root {
 	if ((self = [super init])) {		
-		settingsKey_ = [[NSString stringWithFormat:@"Settings2-%@", [root name]] copy];
+		settingsKey_ = [[NSString stringWithFormat:@"GHUnit-%@", [root name]] copy];
 		settings_ = [[[NSUserDefaults standardUserDefaults] objectForKey:settingsKey_] retain];		
 		if (!settings_) settings_ = [[NSMutableDictionary dictionary] retain];
+		GHUDebug(@"Settings: %@", settings_);
 		
 		root_ = [[GHTestNode alloc] initWithTest:root children:[root children] source:self];
 		map_ = [[NSMutableDictionary dictionary] retain];
@@ -47,6 +48,7 @@
 }
 
 - (void)dealloc {
+	// Clear delegates
 	for(NSString *identifier in map_) 
 		[[map_ objectForKey:identifier] setDelegate:nil];
 	
@@ -70,13 +72,8 @@
 	node.delegate = self;
 	
 	// Apply settings
-	NSDictionary *nodeSettings = [settings_ objectForKey:node.identifier];
-	if (nodeSettings) {
-		if ([nodeSettings objectForKey:@"selected"])
-			node.selected = [[nodeSettings objectForKey:@"selected"] boolValue];
-	} else {
-		[settings_ setObject:[NSMutableDictionary dictionary] forKey:node.identifier];
-	}
+	id selectedValue = [settings_ objectForKey:[NSString stringWithFormat:@"%@-%@", node.identifier, @"selected"]];
+	node.selected = (selectedValue ? [selectedValue boolValue] : YES); // Defaults to selected
 }
 
 - (GHTestNode *)findTestNode:(id<GHTest>)test {
@@ -116,10 +113,15 @@
 
 - (void)testNodeDidChange:(GHTestNode *)node {	
 	if (![node hasChildren]) {
-		NSMutableDictionary *nodeSettings = [settings_ objectForKey:node.identifier];
-		[nodeSettings setObject:[NSNumber numberWithBool:node.selected] forKey:@"selected"];
-		[[NSUserDefaults standardUserDefaults] setObject:settings_ forKey:settingsKey_];	
+		GHUDebug(@"Node changed: %d", node.selected);
+		[settings_ setObject:[NSNumber numberWithBool:node.selected] forKey:[NSString stringWithFormat:@"%@-%@", node.identifier, @"selected"]];
 	}
+}
+
+- (void)saveSettings {
+	GHUDebug(@"Saving settings: %@", settings_);
+	[[NSUserDefaults standardUserDefaults] setObject:settings_ forKey:settingsKey_];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
@@ -180,7 +182,7 @@
 
 - (NSString *)statusString {
 	// TODO(gabe): Some other special chars: ☐✖✗✘✓
-	NSString *status = @"✶";
+	NSString *status = @"";
 	NSString *interval = @"";
 	if (self.isRunning) {
 		status = @"✸";
@@ -190,7 +192,10 @@
 		if (self.failed) status = @"✘";
 		else status = @"✔";
 		interval = [NSString stringWithFormat:@"%0.2fs", [test_ interval]];
+	} else if (!self.isSelected) {
+		status = @"(off)";
 	}
+
 	if (self.isGroupTest) {
 		return [NSString stringWithFormat:@"%@ %@ %@", status, NSStringFromGHTestStats([test_ stats]), interval];
 	} else {

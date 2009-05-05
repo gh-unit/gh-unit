@@ -1,3 +1,9 @@
+# Release 0.3.9 (TBD)
+
+## 2008-05-05
+- (iPhone) Added select/deselect to iPhone test UI
+- (iPhone) Fixed auto-scroll if you manually scroll (will stop auto-scrolling)
+
 # Release 0.3.8 (2008-04-28)
 
 ## 2008-04-28

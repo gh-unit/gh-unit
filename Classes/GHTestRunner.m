@@ -179,7 +179,7 @@
 - (void)_notifyFinished {
 	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' finished.\n"
 											 "Executed %d tests, with %d failures in %0.3f seconds.\n",
-											 [test_ name], [test_ stats].testCount, [test_ stats].failureCount, [test_ interval]];
+											 [test_ name], [test_ stats].testCount - [test_ stats].ignoreCount, [test_ stats].failureCount, [test_ interval]];
 	[self _log:message];
 	
 	
