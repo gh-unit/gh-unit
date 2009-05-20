@@ -34,7 +34,7 @@
  Adds performSelector methods that take a nil-terminated variable argument list,
  for when you need to pass more arguments to performSelector.
  */
-@interface NSObject (GHInvocation_GHKIT)
+@interface NSObject (GHInvocation_GHUNIT)
 
 /*!
  Perform selector if responds.

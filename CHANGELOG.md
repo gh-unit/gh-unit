@@ -1,3 +1,6 @@
+# Release 0.3.10 (2008-05-20)
+- Fix namespace issue
+
 # Release 0.3.9 (2008-05-19)
 
 ## 2008-05-19

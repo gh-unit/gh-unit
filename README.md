@@ -15,7 +15,7 @@ For example, your test cases will be run if they subclass any of the following:
 
 Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
 
-[libGHUnitIPhone-0.3.9.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.9.zip) *iPhone Static Library* (2009/05/19)
+[libGHUnitIPhone-0.3.10.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.10.zip) *iPhone Static Library* (2009/05/20)
 
 ## Why?
 
@@ -33,7 +33,11 @@ The goals of GHUnit are:
 - Tests are defined by methods that start with `test`, take no arguments and return void. For example, `- (void)testFoo { }`
 - Your setup and tear down methods are `- (void)setUp;` and `- (void)tearDown;`. 
 - Your class setup and tear down methods are `- (void)setUpClass;` and `- (void)tearDownClass;`. 
-- By default tests are run on a separate thread. For a UI test or to run on the main thread, implement `- (BOOL)shouldRunOnMainThread { return YES; }`
+- By default tests are run on a separate thread. For a UI test or to run on the main thread, implement:
+
+	- (BOOL)shouldRunOnMainThread { 
+		return YES; 
+	}
 
 ## Group
 

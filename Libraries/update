@@ -20,5 +20,5 @@ for CLASS in $CLASSES; do
 done
 
 echo "Patching to unique namespace"
-perl -pi -e 's@_GHUNIT@_GHUNIT@g' $DEST_DIR/*
+perl -pi -e 's@_GHKIT@_GHUNIT@g' $DEST_DIR/*
 perl -pi -e 's@gh_@ghu_@g' $DEST_DIR/*

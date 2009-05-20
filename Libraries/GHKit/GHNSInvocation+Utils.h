@@ -47,7 +47,7 @@ va_end(args); \
 } \
 } while(0); 
 
-@interface NSInvocation (GHUtils_GHKIT)
+@interface NSInvocation (GHUtils_GHUNIT)
 
 /*!
  Invoke on main thread.
