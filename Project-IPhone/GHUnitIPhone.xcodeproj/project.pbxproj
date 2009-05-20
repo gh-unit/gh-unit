@@ -133,7 +133,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 002910F30FC47C3400523E9B /* GHUnitIPhone (CoreLocation) */;
+			remoteGlobalIDString = 002910F30FC47C3400523E9B;
 			remoteInfo = "GHUnitIPhone (CoreLocation)";
 		};
 		00DA14980F874334001FE08E /* PBXContainerItemProxy */ = {
