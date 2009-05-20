@@ -1,6 +1,6 @@
 # GHUnit
 
-GHUnit is a test framework for Objective-C (Mac OS X 10.5 and iPhone 2.0 and above).
+GHUnit is a test framework for Objective-C (Mac OS X 10.5 and iPhone 2.x/3.x).
 It can be used with SenTestingKit, GTM or by itself. 
 
 For example, your test cases will be run if they subclass any of the following:
@@ -15,7 +15,7 @@ For example, your test cases will be run if they subclass any of the following:
 
 Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
 
-[libGHUnitIPhone-0.3.9.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.9.zip) *iPhone Static Library* (2009/04/26)
+[libGHUnitIPhone-0.3.9.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.9.zip) *iPhone Static Library* (2009/05/19)
 
 ## Why?
 
