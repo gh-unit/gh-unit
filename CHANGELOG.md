@@ -1,3 +1,7 @@
+# Release 0.3.11 (2008-05-20)
+- Fixing version number
+- Creating separate version with CoreLocation linked
+
 # Release 0.3.10 (2008-05-20)
 - Fix namespace issue
 
