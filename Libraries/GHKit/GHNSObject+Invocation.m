@@ -29,8 +29,7 @@
 
 #import "GHNSObject+Invocation.h"
 
-
-@implementation NSObject (GHInvocation_GHUNIT)
+@implementation NSObject (GHInvocation_GHKIT)
 
 - (id)ghu_performIfRespondsToSelector:(SEL)selector {
 	if ([self respondsToSelector:selector]) return [self performSelector:selector];
@@ -82,6 +81,48 @@
 	} else {
 		[NSInvocation ghu_invokeTargetOnMainThread:self selector:selector waitUntilDone:waitUntilDone afterDelay:delay arguments:arguments];	
 	}
+}
+
+// From DDFoundation, NSObject+DDExtensions 
+// (Changed namespaced to make it easier to include in static library without conflicting)
+
+- (id)ghu_proxyOnMainThread {
+	return [self ghu_proxyOnMainThread:NO];
+}
+
+- (id)ghu_proxyOnMainThread:(BOOL)waitUntilDone {
+	GHNSInvocationProxy_GHUNIT *proxy = [GHNSInvocationProxy_GHUNIT invocation];
+	proxy.thread = [NSThread mainThread];
+	proxy.waitUntilDone = waitUntilDone;
+	return [proxy prepareWithInvocationTarget:self];
+}
+
+- (id)ghu_proxyOnThread:(NSThread *)thread {
+	return [self ghu_proxyOnThread:thread waitUntilDone:NO];
+}
+
+- (id)ghu_proxyOnThread:(NSThread *)thread waitUntilDone:(BOOL)waitUntilDone {
+	GHNSInvocationProxy_GHUNIT *proxy = [GHNSInvocationProxy_GHUNIT invocation];
+	proxy.thread = thread;
+	proxy.waitUntilDone = waitUntilDone;
+	return [proxy prepareWithInvocationTarget:self];
+}
+
+- (id)ghu_proxyAfterDelay:(NSTimeInterval)delay {
+	GHNSInvocationProxy_GHUNIT *proxy = [GHNSInvocationProxy_GHUNIT invocation];
+	proxy.delay = delay;
+	return [proxy prepareWithInvocationTarget:self];	
+}
+
+- (id)ghu_timedProxy:(NSTimeInterval *)time {
+	return [self ghu_debugProxy:time proxy:nil];
+}
+
+- (id)ghu_debugProxy:(NSTimeInterval *)time proxy:(GHNSInvocationProxy_GHUNIT **)proxy {
+	GHNSInvocationProxy_GHUNIT *lproxy = [GHNSInvocationProxy_GHUNIT invocation];
+	if (proxy) *proxy = lproxy;
+	lproxy.time = time;	
+	return [lproxy prepareWithInvocationTarget:self];		
 }
 
 @end

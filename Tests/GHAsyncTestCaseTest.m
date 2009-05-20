@@ -13,10 +13,14 @@
 
 @implementation GHAsyncTestCaseTest
 
+- (void)testOnAlternateThread {
+	GHAssertTrue(![NSThread isMainThread], @"Should not be on main thread for normal test");
+}
+
 - (void)testStatusSuccess {
 	[self prepare];
 	[self performSelector:@selector(_testStatusSuccessNotify) withObject:nil afterDelay:0.0];
-	[self waitFor:kGHUnitWaitStatusSuccess timeout:1.0];
+	[self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
 }
 
 - (void)_testStatusSuccessNotify {
@@ -26,7 +30,7 @@
 - (void)testStatusFailure {
 	[self prepare];
 	[self performSelector:@selector(_testStatusFailureNotify) withObject:nil afterDelay:0.0];
-	[self waitFor:kGHUnitWaitStatusFailure timeout:1.0];
+	[self waitForStatus:kGHUnitWaitStatusFailure timeout:1.0];
 }
 
 - (void)_testStatusFailureNotify {
@@ -36,7 +40,7 @@
 - (void)testStatusSuccessWithDelay {
 	[self prepare];
 	[self performSelector:@selector(_testStatusSuccessWithDelayNotify) withObject:nil afterDelay:0.3];
-	[self waitFor:kGHUnitWaitStatusSuccess timeout:1.0];
+	[self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
 }
 
 - (void)_testStatusSuccessWithDelayNotify {
@@ -46,7 +50,7 @@
 - (void)testBadStatus {	
 	[self prepare];
 	[self performSelector:@selector(_testBadStatusNotify) withObject:nil afterDelay:0.0];
-	GHAssertThrows([self waitFor:kGHUnitWaitStatusFailure timeout:1.0], @"Status should be mismatched");
+	GHAssertThrows([self waitForStatus:kGHUnitWaitStatusFailure timeout:1.0], @"Status should be mismatched");
 }
 
 - (void)_testBadStatusNotify {
@@ -54,14 +58,14 @@
 }
 
 - (void)testMissingPrepare {
-	GHAssertThrows([self waitFor:kGHUnitWaitStatusUnknown timeout:1.0], @"Should fail since we didn't call prepare");
+	GHAssertThrows([self waitForStatus:kGHUnitWaitStatusUnknown timeout:1.0], @"Should fail since we didn't call prepare");
 }
 
 - (void)testFinishBeforeWait {
 	[self prepare];
 	[self performSelectorInBackground:@selector(_testFinishBeforeWaitNotify) withObject:nil];
 	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]]; // 0.2 is arbitrary, we want enough time for performSelectorInBackground to be called
-	[self waitFor:kGHUnitWaitStatusSuccess timeout:1.0];
+	[self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
 }
 
 - (void)_testFinishBeforeWaitNotify {
@@ -71,7 +75,7 @@
 - (void)testWaitNoSelectorCheck {
 	[self prepare];
 	[self performSelectorInBackground:@selector(_testWaitNoSelectorCheck) withObject:nil];
-	[self waitFor:kGHUnitWaitStatusSuccess timeout:1.0];
+	[self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
 }
 
 - (void)_testWaitNoSelectorCheck {
@@ -90,7 +94,7 @@
 	[self prepare];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
 	[[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES] retain];
-	[self waitFor:kGHUnitWaitStatusSuccess timeout:30.0];
+	[self waitForStatus:kGHUnitWaitStatusSuccess timeout:30.0];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

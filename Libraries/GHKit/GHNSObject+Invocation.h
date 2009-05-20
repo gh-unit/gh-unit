@@ -28,12 +28,13 @@
 //
 
 #import "GHNSInvocation+Utils.h"
+#import "GHNSInvocationProxy.h"
 
 /*!
  Adds performSelector methods that take a nil-terminated variable argument list,
  for when you need to pass more arguments to performSelector.
  */
-@interface NSObject (GHInvocation_GHUNIT)
+@interface NSObject (GHInvocation_GHKIT)
 
 /*!
  Perform selector if responds.
@@ -82,5 +83,18 @@
 
 - (void)ghu_performSelector:(SEL)selector onMainThread:(BOOL)onMainThread waitUntilDone:(BOOL)waitUntilDone 
 								afterDelay:(NSTimeInterval)delay arguments:(NSArray *)arguments;
+
+
+// Invocation proxies
+
+- (id)ghu_proxyOnMainThread;
+- (id)ghu_proxyOnMainThread:(BOOL)waitUntilDone;
+- (id)ghu_proxyOnThread:(NSThread *)thread;
+- (id)ghu_proxyOnThread:(NSThread *)thread waitUntilDone:(BOOL)waitUntilDone;
+- (id)ghu_proxyAfterDelay:(NSTimeInterval)delay;
+
+// Debug proxies
+- (id)ghu_timedProxy:(NSTimeInterval *)time;
+- (id)ghu_debugProxy:(NSTimeInterval *)time proxy:(GHNSInvocationProxy_GHUNIT **)proxy;
 
 @end

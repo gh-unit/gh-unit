@@ -113,7 +113,7 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_, id
 		[target_ performSelector:@selector(setLogDelegate:) withObject:(enabled ? self : NULL)];
 }	
 
-- (void)run {	
+- (void)_run {
 
 	if (ignore_) {
 		status_ = GHTestStatusIgnored;
@@ -133,6 +133,17 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_, id
 		stats_ = GHTestStatsMake(1, failed_ ? 1 : 0, 0, 1);
 		[delegate_ testDidFinish:self];
 	}		
+}
+
+- (void)run {	
+	if ([target_ respondsToSelector:@selector(shouldRunOnMainThread)]) {
+		BOOL shouldRunOnMainThread = [target_ shouldRunOnMainThread];
+		if (shouldRunOnMainThread) {
+			[[self ghu_proxyOnMainThread:YES] _run];
+			return;
+		}
+	}
+	[self _run];
 }
 
 - (void)testCase:(id)testCase didLog:(NSString *)message {

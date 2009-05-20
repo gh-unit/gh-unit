@@ -19,7 +19,6 @@
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	GHTestRunner *runner = [[[GHTestRunner runnerFromEnv] retain] autorelease];
 	runner.delegate = self;
-	runner.delegateOnMainThread = YES;
 	// To allow exceptions to raise into the debugger, uncomment below
 	//runner.raiseExceptions = YES;
 	
@@ -34,8 +33,14 @@
 	window_ = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
 	GHUDebug(@"Setting window view");
 	[window_ addSubview:navigationController_.view];
-	[window_ makeKeyAndVisible];	
-	[self runTests];
+	[window_ makeKeyAndVisible];
+	
+	// Defaults
+	[[NSUserDefaults standardUserDefaults] registerDefaults:
+	 [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"GHUnit-Autorun"]];
+	
+	if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"GHUnit-Autorun"] boolValue]) 	
+		[self runTests];
 }
 
 - (void)dealloc {

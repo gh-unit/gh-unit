@@ -15,51 +15,66 @@
 @synthesize tableView=tableView_;
 
 - (void)loadView {
-	GHUDebug(@"Loading view");
-	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 460)];
-	view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
-	
-	CGRect frame = CGRectMake(0, 0, 320, 380);
-	tableView_ = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+	CGFloat contentHeight = 420;
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, contentHeight)];
+	view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+
+	// Table view
+	tableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, contentHeight - 36) style:UITableViewStylePlain];
 	tableView_.delegate = self;
+	tableView_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	[view addSubview:tableView_];
 	[tableView_ release];	
 	
-	statusLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(5, 380, 310, 36)];
-	statusLabel_.backgroundColor = [UIColor clearColor];
+	UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, contentHeight - 36, 320, 36)];
+	footerView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+	footerView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+	
+	// Status label
+	statusLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 310, 36)];
 	statusLabel_.text = @"Loading...";
+	statusLabel_.backgroundColor = [UIColor clearColor];
 	statusLabel_.font = [UIFont systemFontOfSize:12];
-	statusLabel_.numberOfLines = 2;	
-	[view addSubview:statusLabel_];
+	statusLabel_.numberOfLines = 2;
+	statusLabel_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	[footerView addSubview:statusLabel_];
 	[statusLabel_ release];
 	
-	editToolbar_ = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 380, 320, 36)];
+	toolbar_ = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
+	[toolbar_ setItems:[NSArray array] animated:YES];
+	toolbar_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	[footerView addSubview:toolbar_];
+	[toolbar_ release];
+	
+	[view addSubview:footerView];
+	[footerView release];
+	
+	// Edit toolbar
 	UIBarButtonItem *selectItem = [[UIBarButtonItem alloc] initWithTitle:@"Select All" style:UIBarButtonItemStyleBordered target:self action:@selector(_selectAll)];
 	UIBarButtonItem *deselectItem = [[UIBarButtonItem alloc] initWithTitle:@"Deselect All" style:UIBarButtonItemStyleBordered target:self action:@selector(_deselectAll)];	
-	[editToolbar_ setItems:[NSArray arrayWithObjects:selectItem, deselectItem, nil] animated:NO];
-	editToolbar_.hidden = YES;
-	[view addSubview:editToolbar_];
+	editToolbarItems_ = [[NSArray arrayWithObjects:selectItem, deselectItem, nil] retain];
+	[toolbar_ setItems:editToolbarItems_ animated:NO];
 	[selectItem release];
 	[deselectItem release];
-		
+	
+	// Navigation button items
 	editButton_ = [[UIBarButtonItem alloc] initWithTitle:@"-" style:UIBarButtonItemStylePlain 
 																									target:self action:@selector(_edit)];
 	self.navigationItem.rightBarButtonItem = editButton_;
 	[editButton_ release];	
 
-	UIBarButtonItem *quitButton = [[UIBarButtonItem alloc] initWithTitle:@"Quit" style:UIBarButtonItemStylePlain 
-																																target:self action:@selector(_quit)];
+	UIBarButtonItem *quitButton = [[UIBarButtonItem alloc] initWithTitle:@"Exit" style:UIBarButtonItemStyleDone
+																																target:self action:@selector(_exit)];
 	self.navigationItem.leftBarButtonItem = quitButton;
 	[quitButton release];	
-	
 	
 	self.view = view;
 	[self setEditing:NO];
 }
 
 - (void)dealloc {
-	[dataSource_ release];
-	[editToolbar_ release];
+	[dataSource_ release];	
+	[editToolbarItems_ release];
 	[super dealloc];
 }
 
@@ -74,13 +89,13 @@
 	if (editing) {
 		self.title = @"Edit";
 		editButton_.title = @"Save";
-		statusLabel_.hidden = YES;
-		editToolbar_.hidden = NO;
+		statusLabel_.hidden = YES;		
+		toolbar_.hidden = NO;		
 	} else {
 		self.title = @"Tests";
 		editButton_.title = @"Edit";
-		statusLabel_.hidden = NO;
-		editToolbar_.hidden = YES;		
+		statusLabel_.hidden = NO;		
+		toolbar_.hidden = YES;
 	}
 	[self.tableView reloadData];
 }
@@ -101,8 +116,14 @@
 	[self.tableView reloadData];
 }
 
-- (void)_quit {
+- (void)_exit {
 	exit(0);
+}
+
+- (void)_toggleAutorun {
+	BOOL autorun = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GHUnit-Autorun"] boolValue];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!autorun] forKey:@"GHUnit-Autorun"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark -

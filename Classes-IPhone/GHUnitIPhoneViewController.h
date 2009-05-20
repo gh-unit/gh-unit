@@ -26,8 +26,9 @@
 	//! If set then we will no longer auto scroll as tests are run
 	BOOL userDidDrag_;
 	
-	//! Select/Deselect all for edit view
-	UIToolbar *editToolbar_;
+	//! Toolbar
+	UIToolbar *toolbar_;
+	NSArray *editToolbarItems_;
 }
 
 @property (readonly, nonatomic) UITableView *tableView;

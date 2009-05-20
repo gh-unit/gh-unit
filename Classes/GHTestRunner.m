@@ -59,14 +59,7 @@
 
 @implementation GHTestRunner
 
-@synthesize test=test_, raiseExceptions=raiseExceptions_, delegate=delegate_, delegateOnMainThread=delegateOnMainThread_;
-
-- (id)init {
-	if ((self = [super init])) {
-		delegateOnMainThread_ = YES;
-	}
-	return self;
-}
+@synthesize test=test_, raiseExceptions=raiseExceptions_, delegate=delegate_;
 
 - (id)initWithTest:(id<GHTest>)test {
 	if ((self = [self init])) {
@@ -104,7 +97,7 @@
 
 - (void)run {
 	[self _notifyStart];	
-	[test_ run]; 
+	[test_ run];
 	[self _notifyFinished];
 }
 
@@ -119,46 +112,39 @@
   fflush(stderr);
 	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
-		[(id)delegate_ ghu_performSelector:@selector(testRunner:didLog:) onMainThread:delegateOnMainThread_ 
-												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, message, nil];	
-}
-
-- (void)_didStartTest:(id<GHTest>)test {
-	if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
-		[(id)delegate_ ghu_performSelector:@selector(testRunner:didStartTest:) onMainThread:delegateOnMainThread_ 
-												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, test, nil];	
+		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
+		 testRunner:self didLog:message];
 }
 
 - (void)_didFinishTest:(id<GHTest>)test {
+	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didFinishTest:)])
-		[(id)delegate_ ghu_performSelector:@selector(testRunner:didFinishTest:) onMainThread:delegateOnMainThread_ 
-												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, test, nil];	
+		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
+		 testRunner:self didFinishTest:test];
 }
-
-- (void)_test:(id<GHTest>)test didLog:(NSString *)message {
-	NSLog(@"%@; %@\n", [test identifier], message);
-
-	if ([delegate_ respondsToSelector:@selector(testRunner:test:didLog:)])
-		[delegate_ testRunner:self test:test didLog:message];
-}	
 
 #pragma mark Delegates (GHTest)
 
 - (void)testDidStart:(id<GHTest>)test {
-	[self _didStartTest:test];
+	if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
+		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
+		 testRunner:self didStartTest:test];	
 }
 
-- (void)testDidFinish:(id<GHTest>)test {
-	
+- (void)testDidFinish:(id<GHTest>)test {	
 	NSString *message = [NSString stringWithFormat:@"Test '%@' %@ (%0.3f seconds).",
 											 [test name], [test stats].failureCount > 0 ? @"failed" : @"passed", [test interval]];	
 	[self _log:message];
-	[self _didFinishTest:test];
+	
+	if ([delegate_ respondsToSelector:@selector(testRunner:didFinishTest:)])
+		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
+		 testRunner:self didFinishTest:test];
 }
 
-- (void)test:(id<GHTest>)test didLog:(NSString *)message {	
-	[self ghu_performSelector:@selector(_test:didLog:) onMainThread:delegateOnMainThread_ 
-						 waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:test, message, nil];
+- (void)test:(id<GHTest>)test didLog:(NSString *)message {
+	if ([delegate_ respondsToSelector:@selector(testRunner:test:didLog:)])
+		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
+		 testRunner:self test:test didLog:message];
 }
 
 - (void)testDidIgnore:(id<GHTest>)test {
@@ -172,8 +158,8 @@
 	[self _log:message];
 	
 	if ([delegate_ respondsToSelector:@selector(testRunnerDidStart:)])
-		[(id)delegate_ ghu_performSelector:@selector(testRunnerDidStart:) onMainThread:delegateOnMainThread_ 
-												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, nil];
+		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
+		 testRunnerDidStart:self];
 }
 
 - (void)_notifyFinished {
@@ -183,9 +169,9 @@
 	[self _log:message];
 	
 	
-	if ([delegate_ respondsToSelector:@selector(testRunnerDidFinish:)]) 
-		[(id)delegate_ ghu_performSelector:@selector(testRunnerDidFinish:) onMainThread:delegateOnMainThread_ 
-												waitUntilDone:kGHTestRunnerInvokeWaitUntilDone withObjects:self, nil];
+	if ([delegate_ respondsToSelector:@selector(testRunnerDidFinish:)])
+		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
+		 testRunnerDidFinish:self];
 }
 
 @end

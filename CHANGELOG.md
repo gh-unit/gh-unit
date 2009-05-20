@@ -1,4 +1,9 @@
-# Release 0.3.9 (TBD)
+# Release 0.3.9 (2008-05-19)
+
+## 2008-05-19
+- 3.0 compatibility fixes
+- Added GHUITestCase
+- Added shouldRunOnMainThread to test case, and if present and YES will run the tests on the main thread
 
 ## 2008-05-05
 - (iPhone) Added select/deselect to iPhone test UI

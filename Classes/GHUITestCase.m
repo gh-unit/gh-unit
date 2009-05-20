@@ -1,8 +1,8 @@
 //
-//  GHUnit.h
-//  GHUnit
+//  GHUITestCase.m
+//  GHUnitIPhone
 //
-//  Created by Gabriel Handford on 1/19/09.
+//  Created by Gabriel Handford on 5/19/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,15 +27,13 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestCase.h"
 #import "GHUITestCase.h"
-#import "GHAsyncTestCase.h"
-#import "GHTestSuite.h"
-#import "GHTestMacros.h"
-#import "GHTestRunner.h"
 
-#ifdef DEBUG
-#define GHUDebug(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
-#else
-#define GHUDebug(fmt, ...) do {} while(0)
-#endif
+
+@implementation GHUITestCase
+
+- (BOOL)shouldRunOnMainThread {
+	return YES;
+}
+
+@end

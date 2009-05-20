@@ -69,6 +69,10 @@
 
 - (void)tearDownClass { }
 
+- (BOOL)shouldRunOnMainThread { 
+	return NO;
+}
+
 - (void)handleException:(NSException *)exception {
 	NSLog(@"Exception: %@\n%@", [exception reason], GHU_GTMStackTraceFromException(exception));
 }

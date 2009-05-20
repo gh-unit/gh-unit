@@ -63,6 +63,7 @@
 			id testCase = [[[testCaseClass alloc] init] autorelease];
 			if (!testCase) {
 				NSLog(@"Couldn't find test: %@", testCaseClassName);
+				continue;
 			}
 			NSString *methodName = [components objectAtIndex:1];
 			GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:NSSelectorFromString(methodName) delegate:nil];
@@ -72,6 +73,7 @@
 			id testCase = [[[testCaseClass alloc] init] autorelease];
 			if (!testCase) {
 				NSLog(@"Couldn't find test: %@", testFilter);
+				continue;
 			}		
 			[testSuite addTestCase:testCase];
 		}

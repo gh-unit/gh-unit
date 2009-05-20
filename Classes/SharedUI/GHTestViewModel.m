@@ -193,7 +193,7 @@
 		else status = @"✔";
 		interval = [NSString stringWithFormat:@"%0.2fs", [test_ interval]];
 	} else if (!self.isSelected) {
-		status = @"(off)";
+		status = @"-";
 	}
 
 	if (self.isGroupTest) {

@@ -13,7 +13,9 @@ For example, your test cases will be run if they subclass any of the following:
 
 [GHUnit-0.3.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.8.zip) *GHUnit.framework* (2009/04/28)
 
-[libGHUnitIPhone-0.3.7.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.7.zip) *iPhone Static Library* (2009/04/26)
+Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
+
+[libGHUnitIPhone-0.3.9.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.9.zip) *iPhone Static Library* (2009/04/26)
 
 ## Why?
 
@@ -61,7 +63,7 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 - Add `New Build Phase` | `New Copy Files Build Phase`. 
 	- Change the Destination to `Frameworks`.
 	- Drag `GHUnit.framework` into the the build phase
-	- Make sure the phase appears before an `Run Script` phases 
+	- Make sure the copy phase appears before any `Run Script` phases 
 - Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target. (See example test case below.)
 

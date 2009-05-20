@@ -82,7 +82,7 @@ typedef enum {
 	waitForStatus_ = status;
 	
 	if (!_runLoopModes)
-		_runLoopModes = [[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode, nil] retain];
+		_runLoopModes = [[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSRunLoopCommonModes, nil] retain];
 
 	NSTimeInterval checkEveryInterval = 0.05;
 	NSDate *runUntilDate = [NSDate dateWithTimeIntervalSinceNow:timeout];
@@ -93,9 +93,11 @@ typedef enum {
 		NSString *mode = [_runLoopModes objectAtIndex:(runIndex++ % [_runLoopModes count])];
 
 		[lock_ unlock];
+		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
 			// If there were no run loop sources or timers then we should sleep for the interval
 			[NSThread sleepForTimeInterval:checkEveryInterval];
+		[pool release];
 		[lock_ lock];
 		
 		// If current date is after the run until date
@@ -116,13 +118,17 @@ typedef enum {
 }
 
 - (void)waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout {
+	[NSException raise:NSDestinationInvalidException format:@"Deprecated; Use waitForStatus:timeout:"];
+}
+
+- (void)waitForStatus:(NSInteger)status timeout:(NSTimeInterval)timeout {
 	GHUnitAsyncError error = [self _waitFor:status timeout:timeout];		
 	if (error == kGHUnitAsyncErrorTimedOut) {
 		GHFail(@"Request timed out");
 	} else if (error == kGHUnitAsyncErrorInvalidStatus) {
 		GHFail(@"Request finished with the wrong status: %d != %d", status, notifiedStatus_);	
 	} else if (error == kGHUnitAsyncErrorUnprepared) {
-		GHFail(@"Call prepare before calling asynchronous method and waitFor:timeout:");
+		GHFail(@"Call prepare before calling asynchronous method and waitForStatus:timeout:");
 	}
 }
 
@@ -131,6 +137,10 @@ typedef enum {
 	if (error != kGHUnitAsyncErrorTimedOut) {
 		GHFail(@"Request should have timed out");
 	}
+}
+
+- (void)notify:(NSInteger)status {
+	[self notify:status forSelector:NULL];
 }
 
 - (void)notify:(NSInteger)status forSelector:(SEL)selector {
