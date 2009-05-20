@@ -33,6 +33,7 @@ The goals of GHUnit are:
 - Tests are defined by methods that start with `test`, take no arguments and return void. For example, `- (void)testFoo { }`
 - Your setup and tear down methods are `- (void)setUp;` and `- (void)tearDown;`. 
 - Your class setup and tear down methods are `- (void)setUpClass;` and `- (void)tearDownClass;`. 
+- By default tests are run on a separate thread. For a UI test or to run on the main thread, implement `- (BOOL)shouldRunOnMainThread { return YES; }`
 
 ## Group
 
