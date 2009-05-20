@@ -74,18 +74,13 @@
 	id<GHTestRunnerDelegate> delegate_; // weak
 	
 	// If YES, will allow exceptions to be raised (so you can trigger the debugger)
-	BOOL raiseExceptions_;
-	
-	// If yes, delegate calls will occur on the main thread
-	// Defaults to YES.
-	BOOL delegateOnMainThread_;
+	BOOL raiseExceptions_;	
 
 }
 
 @property (retain) id<GHTest> test;
 @property (assign) id<GHTestRunnerDelegate> delegate;
 @property (assign) BOOL raiseExceptions;
-@property (assign) BOOL delegateOnMainThread;
 @property (readonly) GHTestStats stats;
 
 /*!
