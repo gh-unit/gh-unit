@@ -15,9 +15,10 @@ For example, your test cases will be run if they subclass any of the following:
 
 Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
 
-[libGHUnitIPhone-0.3.11.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.11.zip) *iPhone Static Library* (2009/05/20)
+[libGHUnitIPhone-0.3.12.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.12.zip) *iPhone Static Library (Device+Simulator)* (2009/05/25)
 
-[libGHUnitIPhoneCL-0.3.11.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL-0.3.11.zip) *iPhone Static Library with CoreLocation support* (2009/05/20)
+[libGHUnitIPhoneCL-0.3.12.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL-0.3.12.zip) *iPhone Static Library with CoreLocation support (Device+Simulator)* (2009/05/25)
+
 
 ## Why?
 
