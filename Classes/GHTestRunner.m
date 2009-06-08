@@ -79,6 +79,10 @@
 	return [runner autorelease];
 }
 
++ (GHTestRunner *)runnerForTestClassName:(NSString *)testClassName methodName:(NSString *)methodName {
+	return [self runnerForSuite:[GHTestSuite suiteWithTestCaseClass:NSClassFromString(testClassName) method:NSSelectorFromString(methodName)]];
+}
+
 + (GHTestRunner *)runnerFromEnv {	
 	GHTestSuite *suite = [GHTestSuite suiteFromEnv];
 	return [GHTestRunner runnerForSuite:suite];
@@ -95,10 +99,11 @@
 	[super dealloc];
 }
 
-- (void)run {
+- (int)run {
 	[self _notifyStart];	
 	[test_ run];
 	[self _notifyFinished];
+	return self.stats.failureCount;
 }
 
 - (GHTestStats)stats {

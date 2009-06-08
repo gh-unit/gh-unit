@@ -1,3 +1,6 @@
+# Release 0.3.14 (2008-06-08)
+- Creating separate iPhone 3.0 builds
+
 # Release 0.3.12 (2008-05-25)
 - Creating iPhone static library with device and simulator platforms
 

@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.03">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">9G55</string>
+		<string key="IBDocument.SystemVersion">9J61</string>
 		<string key="IBDocument.InterfaceBuilderVersion">677</string>
-		<string key="IBDocument.AppKitVersion">949.43</string>
+		<string key="IBDocument.AppKitVersion">949.46</string>
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="20"/>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -71,14 +71,14 @@
 												<object class="_NSCornerView" key="NSCornerView" id="44228172">
 													<reference key="NSNextResponder" ref="103332718"/>
 													<int key="NSvFlags">-2147483392</int>
-													<string key="NSFrame">{{256, 0}, {16, 17}}</string>
+													<string key="NSFrame">{{-26, 0}, {16, 17}}</string>
 													<reference key="NSSuperview" ref="103332718"/>
 												</object>
 												<object class="NSMutableArray" key="NSTableColumns">
 													<bool key="EncodedWithXMLCoder">YES</bool>
 													<object class="NSTableColumn" id="622500844">
 														<string key="NSIdentifier">name</string>
-														<double key="NSWidth">1.200000e+02</double>
+														<double key="NSWidth">1.640000e+02</double>
 														<double key="NSMinWidth">1.200000e+02</double>
 														<double key="NSMaxWidth">1.000000e+03</double>
 														<object class="NSTableHeaderCell" key="NSHeaderCell">

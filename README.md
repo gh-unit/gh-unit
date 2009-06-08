@@ -11,13 +11,23 @@ For example, your test cases will be run if they subclass any of the following:
 
 ## Download
 
+### Mac OS X
+
 [GHUnit-0.3.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.8.zip) *GHUnit.framework* (2009/04/28)
 
 Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
 
-[libGHUnitIPhone-0.3.12.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone-0.3.12.zip) *iPhone Static Library (Device+Simulator)* (2009/05/25)
+### iPhone OS 2.1 or above
 
-[libGHUnitIPhoneCL-0.3.12.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL-0.3.12.zip) *iPhone Static Library with CoreLocation support (Device+Simulator)* (2009/05/25)
+[libGHUnitIPhone2_1-0.3.14.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone2_1-0.3.14.zip) *iPhone Static Library for OS 2.1 or above (Device+Simulator)* (2009/06/08)
+
+[libGHUnitIPhoneCL2_1-0.3.14.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL2_1-0.3.14.zip) *iPhone Static Library for OS 2.1 or above with CoreLocation support (Device+Simulator)* (2009/06/08)
+
+### iPhone OS 3.0 or above
+
+[libGHUnitIPhone3_0-0.3.14.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.3.14.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/06/08)
+
+[libGHUnitIPhoneCL3_0-0.3.14.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL3_0-0.3.14.zip) *iPhone Static Library for OS 3.0 or above with CoreLocation support (Device+Simulator)* (2009/06/08)
 
 
 ## Why?

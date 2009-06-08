@@ -45,6 +45,7 @@
 }
 
 - (void)dealloc {
+	splitView_.delegate = nil;
 	[model_ release];	
 	[super dealloc];
 }
@@ -53,6 +54,7 @@
 	[textView_ setTextColor:[NSColor whiteColor]];
 	[textView_ setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
 	[textView_ setString:@""];
+	splitView_.delegate = self;
 	self.wrapInTextView = NO;
 	
 	[textSegmentedControl_ setTarget:self];
@@ -287,6 +289,21 @@
 		// Only allow tracking on selected rows. This is what NSTableView does by default.
 		return [outlineView isRowSelected:[outlineView rowForItem:item]];
 	}
+}
+
+#pragma mark Delegates (NSSplitView)
+
+- (BOOL)splitView:(NSSplitView *)sender canCollapseSubview:(NSView *)subview {
+	if (subview == detailsView_) return YES;
+	return NO;
+}
+
+- (CGFloat)splitView:(NSSplitView *)sender constrainMinCoordinate:(CGFloat)proposedMin ofSubviewAt:(NSInteger)offset {
+	return 160;
+}
+
+- (CGFloat)splitView:(NSSplitView *)sender constrainMaxCoordinate:(CGFloat)proposedMax ofSubviewAt:(NSInteger)offset {
+	return proposedMax - 200;
 }
 
 @end

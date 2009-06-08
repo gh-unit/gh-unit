@@ -1,7 +1,7 @@
 
 TEST_TARGET=Tests
-SDK=iphonesimulator2.2
-COMMAND=xcodebuild
+SDK=iphonesimulator3.0
+COMMAND=/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/xcodebuild
 
 default:
 	# Set default make action here

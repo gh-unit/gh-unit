@@ -56,7 +56,7 @@
 	
 	GHTestRunner *runner = [[GHTestRunner runnerForSuite:suite_] retain];
 	runner.delegate = self;
-	runner.delegateOnMainThread = YES;
+	
 	// To allow exceptions to raise into the debugger, uncomment below
 	//runner.raiseExceptions = YES;
 	

@@ -104,6 +104,14 @@
 + (GHTestRunner *)runnerForSuite:(GHTestSuite *)suite;
 
 /*!
+ Create runner for class and method.
+ @param testClassName
+ @param methodName
+ @result Runner
+ */
++ (GHTestRunner *)runnerForTestClassName:(NSString *)testClassName methodName:(NSString *)methodName;
+
+/*!
  Get the runner from the environment.
  If the TEST env is set, then we will only run that test case or test method.
  */
@@ -112,14 +120,15 @@
 /*!
  Run the test runner. Usually called from the test main.
  Reads the TEST environment variable and filters on that; or all tests are run.
- @result Return value, 0 is success, otherwise the failure count
+ @result 0 is success, otherwise the failure count
  */
 + (int)run;
 
 /*!
  Start the test runner.
+ @result 0 is success, otherwise the failure count
  */
-- (void)run;
+- (int)run;
 
 @end
 

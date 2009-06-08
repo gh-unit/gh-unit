@@ -30,6 +30,12 @@
 #import "GHTestGroup.h"
 
 /*!
+ If set, will run it as a "test filter" like the env variable TEST.
+ */
+extern NSString *GHUnitTest;
+
+
+/*!
  Test suite is an alias for test group.
  
  A test case is an instance of a test case class with test methods.
@@ -78,6 +84,13 @@
  @result Suite
  */
 + (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilter;
+
+/*!
+ Suite for a single test/method.
+ @param testCaseClass
+ @param method
+ */
++ (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method;
 
 /*!
  Return test suite based on environment (TEST=TestFoo/foo)
