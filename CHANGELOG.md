@@ -1,3 +1,6 @@
+# Release 0.3.17 (2008-06-09)
+- Updating RunTests.sh
+
 # Release 0.3.16 (2008-06-09)
 - Rebuilding from 3.0 GM
 - Setting debug variables in main directly instead of from setenv (which doesn't seem to work)

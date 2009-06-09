@@ -19,15 +19,15 @@ Note: If you are updating your framework, you should also update your `GHUnitTes
 
 ### iPhone OS 2.1 or above
 
-[libGHUnitIPhone2_1-0.3.16.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone2_1-0.3.16.zip) *iPhone Static Library for OS 2.1 or above (Device+Simulator)* (2009/06/09)
+[libGHUnitIPhone2_1-0.3.17.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone2_1-0.3.17.zip) *iPhone Static Library for OS 2.1 or above (Device+Simulator)* (2009/06/09)
 
-[libGHUnitIPhoneCL2_1-0.3.16.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL2_1-0.3.16.zip) *iPhone Static Library for OS 2.1 or above with CoreLocation support (Device+Simulator)* (2009/06/09)
+[libGHUnitIPhoneCL2_1-0.3.17.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL2_1-0.3.17.zip) *iPhone Static Library for OS 2.1 or above with CoreLocation support (Device+Simulator)* (2009/06/09)
 
 ### iPhone OS 3.0 or above
 
-[libGHUnitIPhone3_0-0.3.16.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.3.16.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/06/09)
+[libGHUnitIPhone3_0-0.3.17.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.3.17.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/06/09)
 
-[libGHUnitIPhoneCL3_0-0.3.16.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL3_0-0.3.16.zip) *iPhone Static Library for OS 3.0 or above with CoreLocation support (Device+Simulator)* (2009/06/09)
+[libGHUnitIPhoneCL3_0-0.3.17.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL3_0-0.3.17.zip) *iPhone Static Library for OS 3.0 or above with CoreLocation support (Device+Simulator)* (2009/06/09)
 
 
 ## Why?

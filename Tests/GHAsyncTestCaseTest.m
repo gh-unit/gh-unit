@@ -13,10 +13,6 @@
 
 @implementation GHAsyncTestCaseTest
 
-- (void)testOnAlternateThread {
-	GHAssertTrue(![NSThread isMainThread], @"Should not be on main thread for normal test");
-}
-
 - (void)testStatusSuccess {
 	[self prepare];
 	[self performSelector:@selector(_testStatusSuccessNotify) withObject:nil afterDelay:0.0];
