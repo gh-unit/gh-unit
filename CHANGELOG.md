@@ -1,3 +1,7 @@
+# Release 0.3.15 (2008-06-08)
+- Rebuilding from 3.0 GM
+- Setting debug variables in main directly instead of from setenv (which doesn't seem to work)
+
 # Release 0.3.14 (2008-06-08)
 - Creating separate iPhone 3.0 builds
 
