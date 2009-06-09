@@ -14,9 +14,9 @@ lipo -create "${BUILD_DIR}/${BUILD_STYLE}-iphoneos/libGHUnitIPhoneDevice${FLAVOR
 # Copy to direcory for zipping 
 mkdir ${ZIP_DIR}
 cp ${OUTPUT_DIR}/${OUTPUT_FILE} ${ZIP_DIR}
-cp ${BUILD_DIR}/${BUILD_STYLE}-iphoneos/*.h ${ZIP_DIR}
-cp ${BUILD_DIR}/${BUILD_STYLE}-iphoneos/*.m ${ZIP_DIR}
-cp ${BUILD_DIR}/${BUILD_STYLE}-iphoneos/*.sh ${ZIP_DIR}
+cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/*.h ${ZIP_DIR}
+cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/*.m ${ZIP_DIR}
+cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/*.sh ${ZIP_DIR}
 
 cd ${ZIP_DIR}
 zip -m libGHUnitIPhone${FLAVOR}-${GHUNIT_VERSION}.zip *
