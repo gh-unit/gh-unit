@@ -10,9 +10,25 @@
 
 #import "GHUnitIPhoneExceptionViewController.h"
 
+NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
+
 @implementation GHUnitIPhoneViewController
 
 @synthesize tableView=tableView_;
+
+- (id)init {
+	if ((self = [super init])) {
+		// Load default settings
+		[self loadDefaults];
+	}
+	return self;
+}
+
+- (void)loadDefaults {
+	// Defaults
+	[[NSUserDefaults standardUserDefaults] registerDefaults:
+	 [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:GHUnitAutoRunKey]];
+}
 
 - (void)loadView {
 	CGFloat contentHeight = 420;
@@ -32,7 +48,7 @@
 	
 	// Status label
 	statusLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 310, 36)];
-	statusLabel_.text = @"Loading...";
+	statusLabel_.text = @"Select 'Run' to start tests";
 	statusLabel_.backgroundColor = [UIColor clearColor];
 	statusLabel_.font = [UIFont systemFontOfSize:12];
 	statusLabel_.numberOfLines = 2;
@@ -50,12 +66,15 @@
 	[footerView release];
 	
 	// Edit toolbar
-	UIBarButtonItem *selectItem = [[UIBarButtonItem alloc] initWithTitle:@"Select All" style:UIBarButtonItemStyleBordered target:self action:@selector(_selectAll)];
-	UIBarButtonItem *deselectItem = [[UIBarButtonItem alloc] initWithTitle:@"Deselect All" style:UIBarButtonItemStyleBordered target:self action:@selector(_deselectAll)];	
-	editToolbarItems_ = [[NSArray arrayWithObjects:selectItem, deselectItem, nil] retain];
+	UIBarButtonItem *selectItem = [[UIBarButtonItem alloc] initWithTitle:@"Enable All" style:UIBarButtonItemStyleBordered target:self action:@selector(_selectAll)];
+	UIBarButtonItem *deselectItem = [[UIBarButtonItem alloc] initWithTitle:@"Disable All" style:UIBarButtonItemStyleBordered target:self action:@selector(_deselectAll)];
+	UIBarButtonItem *autoRunItem = [[UIBarButtonItem alloc] initWithTitle:@"AutoRun ()" style:UIBarButtonItemStyleBordered target:self action:@selector(_toggleAutorun)];
+	editToolbarItems_ = [[NSArray arrayWithObjects:selectItem, deselectItem, autoRunItem, nil] retain];
 	[toolbar_ setItems:editToolbarItems_ animated:NO];
+	autoRunItem.title = [NSString stringWithFormat:@"AutoRun (%@)", (self.isAutoRun ? @"ON" : @"OFF")];
 	[selectItem release];
 	[deselectItem release];
+	[autoRunItem release];
 	
 	// Navigation button items
 	editButton_ = [[UIBarButtonItem alloc] initWithTitle:@"-" style:UIBarButtonItemStylePlain 
@@ -63,20 +82,54 @@
 	self.navigationItem.rightBarButtonItem = editButton_;
 	[editButton_ release];	
 
-	UIBarButtonItem *quitButton = [[UIBarButtonItem alloc] initWithTitle:@"Exit" style:UIBarButtonItemStyleDone
-																																target:self action:@selector(_exit)];
-	self.navigationItem.leftBarButtonItem = quitButton;
-	[quitButton release];	
+	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStyleDone
+																																target:self action:@selector(runTests)];
+	self.navigationItem.leftBarButtonItem = leftButton;
+	[leftButton release];	
 	
 	self.view = view;
 	[self setEditing:NO];
+		
+	if (self.isAutoRun) [self runTests];
+	else [self loadTests];
 }
 
 - (void)dealloc {
+	runner_.delegate = nil;
+	[runner_ release];
 	[dataSource_ release];	
 	[editToolbarItems_ release];
 	[super dealloc];
 }
+
+#pragma mark Running
+
+- (void)runTests {	
+	userDidDrag_ = NO; // Reset drag status
+	[self loadTests]; // Reload tests before each run
+	[NSThread detachNewThreadSelector:@selector(_runTests) toTarget:self withObject:nil];	
+}
+
+- (void)loadTests {
+	[runner_ release];
+	runner_ = [[GHTestRunner runnerFromEnv] retain];
+	runner_.delegate = self;
+	// To allow exceptions to raise into the debugger, uncomment below
+	//runner_.raiseExceptions = YES;
+	[self setGroup:(id<GHTestGroup>)runner_.test];
+}
+
+- (void)_runTests {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
+	[runner_ run];
+	[pool release];
+}
+
+- (void)_exit {
+	exit(0);
+}
+
+#pragma mark Properties
 
 - (void)setEditing:(BOOL)editing {
 	// If we were editing, then we are toggling back, and we need to save
@@ -87,7 +140,7 @@
 	dataSource_.editing = editing;
 	
 	if (editing) {
-		self.title = @"Edit";
+		self.title = @"Enable/Disable";
 		editButton_.title = @"Save";
 		statusLabel_.hidden = YES;		
 		toolbar_.hidden = NO;		
@@ -98,6 +151,16 @@
 		toolbar_.hidden = YES;
 	}
 	[self.tableView reloadData];
+}
+
+- (BOOL)isAutoRun {
+	return [[[NSUserDefaults standardUserDefaults] objectForKey:GHUnitAutoRunKey] boolValue];
+}
+
+- (void)setAutoRun:(BOOL)autoRun {
+	[[editToolbarItems_ objectAtIndex:2] setTitle:[NSString stringWithFormat:@"AutoRun (%@)", (autoRun ? @"ON" : @"OFF")]];	
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:autoRun] forKey:GHUnitAutoRunKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark Actions
@@ -116,14 +179,13 @@
 	[self.tableView reloadData];
 }
 
-- (void)_exit {
-	exit(0);
+- (void)_enable:(id)sender {
+	if ([sender selectedSegmentIndex] == 0) [self _selectAll];
+	else [self _deselectAll];
 }
 
 - (void)_toggleAutorun {
-	BOOL autorun = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GHUnit-Autorun"] boolValue];
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!autorun] forKey:@"GHUnit-Autorun"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+	self.autoRun = !self.isAutoRun;
 }
 
 #pragma mark -
@@ -210,5 +272,33 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 	userDidDrag_ = YES;
 }
+
+#pragma mark Delegates (GHTestRunner)
+
+- (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message {
+	[self setStatusText:message];
+}
+
+- (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message {
+	
+}
+
+- (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
+	[self updateTest:test];
+}
+
+- (void)testRunner:(GHTestRunner *)runner didFinishTest:(id<GHTest>)test {
+	[self updateTest:test];
+}
+
+- (void)testRunnerDidStart:(GHTestRunner *)runner { 
+	//[self setGroup:(id<GHTestGroup>)runner.test];
+}
+
+- (void)testRunnerDidFinish:(GHTestRunner *)runner {
+	GHTestStats stats = [runner.test stats];
+	[self setTestStats:stats];
+}
+
 
 @end

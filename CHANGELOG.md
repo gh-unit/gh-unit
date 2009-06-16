@@ -1,3 +1,7 @@
+# Release 0.3.18 (2008-06-15)
+- Adding Run button; By default tests do not automatically run on start
+- Added AutoRun setting
+
 # Release 0.3.17 (2008-06-09)
 - Updating RunTests.sh
 

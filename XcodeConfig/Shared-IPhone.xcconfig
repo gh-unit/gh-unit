@@ -1,5 +1,8 @@
 #include "Shared.xcconfig"
 
+// TODO(gabe): Fix deprecated
+GCC_TREAT_WARNINGS_AS_ERRORS=NO
+
 // Static libs can be included in bundles so make them position independent
 GCC_DYNAMIC_NO_PIC = NO
 

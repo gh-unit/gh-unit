@@ -42,6 +42,12 @@ static NSInteger tearDownClassCount = 0;
 	// Also assert that we had 3 regular set up and tear downs
 	if (setUpCount != 3) GHFail(@"Should have had 3 tear downs");
 	if (tearDownCount != 3) GHFail(@"Should have had 3 tear downs");
+	
+	// Cleanup
+	setUpCount = 0;
+	setUpClassCount = 0;
+	tearDownCount = 0;
+	tearDownClassCount = 0;
 }
 
 - (void)test1 { 

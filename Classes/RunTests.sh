@@ -13,6 +13,7 @@ export MallocScribble=YES
 export MallocPreScribble=YES
 export MallocGuardEdges=YES
 export MallocStackLogging=YES
+export MallocStackLoggingNoCompact=YES
 export NSAutoreleaseFreedObjectCheckEnabled=YES
   
 export CFZombieLevel=3

@@ -19,15 +19,15 @@ Note: If you are updating your framework, you should also update your `GHUnitTes
 
 ### iPhone OS 2.1 or above
 
-[libGHUnitIPhone2_1-0.3.17.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone2_1-0.3.17.zip) *iPhone Static Library for OS 2.1 or above (Device+Simulator)* (2009/06/09)
+[libGHUnitIPhone2_1-0.3.18.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone2_1-0.3.18.zip) *iPhone Static Library for OS 2.1 or above (Device+Simulator)* (2009/06/15)
 
-[libGHUnitIPhoneCL2_1-0.3.17.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL2_1-0.3.17.zip) *iPhone Static Library for OS 2.1 or above with CoreLocation support (Device+Simulator)* (2009/06/09)
+[libGHUnitIPhoneCL2_1-0.3.18.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL2_1-0.3.18.zip) *iPhone Static Library for OS 2.1 or above with CoreLocation support (Device+Simulator)* (2009/06/15)
 
 ### iPhone OS 3.0 or above
 
-[libGHUnitIPhone3_0-0.3.17.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.3.17.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/06/09)
+[libGHUnitIPhone3_0-0.3.18.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.3.18.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/06/15)
 
-[libGHUnitIPhoneCL3_0-0.3.17.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL3_0-0.3.17.zip) *iPhone Static Library for OS 3.0 or above with CoreLocation support (Device+Simulator)* (2009/06/09)
+[libGHUnitIPhoneCL3_0-0.3.18.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL3_0-0.3.18.zip) *iPhone Static Library for OS 3.0 or above with CoreLocation support (Device+Simulator)* (2009/06/15)
 
 
 ## Why?
@@ -137,7 +137,7 @@ Frameworks and dynamic libraries are not supported in the iPhone environment, bu
 	- libGHUnitIPhone.a (static library)
 	- GHUnit header files
 	- GHUnit test main
-- Under 'Other Linker Flags' in the `Test` target, add `-ObjC`
+- Under 'Other Linker Flags' in the `Test` target, add `-ObjC` and `-all_load`  (`-all_load` is necessary for running on 3.0 device)
 
 Now you can create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target.
 

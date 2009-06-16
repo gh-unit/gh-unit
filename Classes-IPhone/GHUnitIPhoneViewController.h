@@ -10,7 +10,12 @@
 
 #import "GHUnitIPhoneTableViewDataSource.h"
 
-@interface GHUnitIPhoneViewController : UIViewController <UITableViewDelegate> {
+extern NSString *const GHUnitAutoRunKey;
+
+@interface GHUnitIPhoneViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate> {
+	
+	//! Test runner
+	GHTestRunner *runner_;
 	
 	UITableView *tableView_;
 	
@@ -32,20 +37,23 @@
 }
 
 @property (readonly, nonatomic) UITableView *tableView;
+@property (assign, nonatomic, getter=isAutoRun) BOOL autoRun;
 
 - (void)setGroup:(id<GHTestGroup>)group;
-
 - (void)updateTest:(id<GHTest>)test;
 
 - (void)scrollToTest:(id<GHTest>)test;
-
 - (void)scrollToBottom;
 
 - (void)setStatusText:(NSString *)message;
-
 - (void)setTestStats:(GHTestStats)stats;
 
 - (void)setEditing:(BOOL)editing;
+
+- (void)loadTests;
+- (void)runTests;
+
+- (void)loadDefaults;
 
 @end
 

@@ -10,9 +10,9 @@
 
 #import "GHUnit.h"
 
-@class GHUnitIPhoneViewController;
+#import "GHUnitIPhoneViewController.h"
 
-@interface GHUnitIPhoneAppDelegate : NSObject <UIApplicationDelegate, GHTestRunnerDelegate> {
+@interface GHUnitIPhoneAppDelegate : NSObject <UIApplicationDelegate> {
 	UIWindow *window_;
 	
 	UINavigationController *navigationController_;
