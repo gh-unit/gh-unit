@@ -132,7 +132,11 @@ You should see something like:
 Frameworks and dynamic libraries are not supported in the iPhone environment, but you can use the libGHUnitIPhone.a static library.
 
 - Add a `New Target`. Select `Cocoa Touch -> Application`. Name it `Tests` (or something similar).
-- Add `CoreGraphics.framework` to `Linked Libraries`
+- Add some frameworks to `Linked Libraries`
+  - `CoreGraphics.framework`
+  - `Foundation.framework`
+  - `UIKit.framework`
+  - `CoreLocation.framework` (optional)
 - Include the GHUnit files (from the GHUnit/iPhone Static Library download above), in your `Test` target. These files should include:
 	- libGHUnitIPhone.a (static library)
 	- GHUnit header files
