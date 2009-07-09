@@ -12,9 +12,13 @@
 
 NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 
+@interface GHUnitIPhoneViewController ()
+@property (assign, nonatomic, getter=isRunning) BOOL running;
+@end
+
 @implementation GHUnitIPhoneViewController
 
-@synthesize tableView=tableView_;
+@synthesize tableView=tableView_, running=running_;
 
 - (id)init {
 	if ((self = [super init])) {
@@ -82,14 +86,16 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	self.navigationItem.rightBarButtonItem = editButton_;
 	[editButton_ release];	
 
-	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStyleDone
-																																target:self action:@selector(runTests)];
-	self.navigationItem.leftBarButtonItem = leftButton;
-	[leftButton release];	
+	runButton_ = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStyleDone
+																							 target:self action:@selector(_toggleTestsRunning)];
+	self.navigationItem.leftBarButtonItem = runButton_;
+	[runButton_ release];	
 	
 	self.view = view;
 	[self setEditing:NO];
-		
+	
+	[self addObserver:self forKeyPath:@"running" options:0 context:nil];
+	
 	if (self.isAutoRun) [self runTests];
 	else [self loadTests];
 }
@@ -104,9 +110,22 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 
 #pragma mark Running
 
-- (void)runTests {	
+- (void)didChangeValueForKey:(NSString *)key {
+	if ([key isEqual:@"running"]) 
+		runButton_.title = (running_ ? @"Cancel" : @"Run");
+}
+
+- (void)_toggleTestsRunning {
+	if (self.running) [self cancel];
+	else [self runTests];
+}
+
+- (void)runTests {
+	if (self.running) return;
+	
 	userDidDrag_ = NO; // Reset drag status
 	[self loadTests]; // Reload tests before each run
+	self.running = YES;
 	[NSThread detachNewThreadSelector:@selector(_runTests) toTarget:self withObject:nil];	
 }
 
@@ -119,10 +138,25 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	[self setGroup:(id<GHTestGroup>)runner_.test];
 }
 
+- (void)reset {
+	statusLabel_.text = @"Select 'Run' to start tests";
+	statusLabel_.textColor = [UIColor blackColor];
+	[runner_.test reset];
+}
+
+- (void)cancel {
+	[runner_ cancel];
+}
+
 - (void)_runTests {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
 	[runner_ run];
 	[pool release];
+	[self performSelectorOnMainThread:@selector(_afterRunTests) withObject:nil waitUntilDone:YES];
+}
+
+- (void)_afterRunTests {
+	self.running = NO;
 }
 
 - (void)_exit {
@@ -135,6 +169,8 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	// If we were editing, then we are toggling back, and we need to save
 	if (dataSource_.isEditing) {
 		[dataSource_.model saveSettings];
+		[self cancel];
+		[self reset];
 	}
 
 	dataSource_.editing = editing;
@@ -242,7 +278,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 - (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
 	GHTestNode *node = [dataSource_ nodeForIndexPath:indexPath];
 	if (dataSource_.isEditing && node.isSelected) return UITableViewCellAccessoryCheckmark;
-	else if (node.isFinished && node.failed) return UITableViewCellAccessoryDisclosureIndicator;
+	else if (node.isEnded && node.failed) return UITableViewCellAccessoryDisclosureIndicator;
 	return UITableViewCellAccessoryNone;
 }	
 
@@ -287,7 +323,11 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	[self updateTest:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didFinishTest:(id<GHTest>)test {
+- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test {
+	[self updateTest:test];
+}
+
+- (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test {
 	[self updateTest:test];
 }
 
@@ -295,7 +335,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	//[self setGroup:(id<GHTestGroup>)runner.test];
 }
 
-- (void)testRunnerDidFinish:(GHTestRunner *)runner {
+- (void)testRunnerDidEnd:(GHTestRunner *)runner {
 	GHTestStats stats = [runner.test stats];
 	[self setTestStats:stats];
 }

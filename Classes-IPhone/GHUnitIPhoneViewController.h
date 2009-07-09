@@ -27,6 +27,7 @@ extern NSString *const GHUnitAutoRunKey;
 	
 	//! Edit/Save toggle button
 	UIBarButtonItem *editButton_;
+	UIBarButtonItem *runButton_;
 	
 	//! If set then we will no longer auto scroll as tests are run
 	BOOL userDidDrag_;
@@ -34,10 +35,13 @@ extern NSString *const GHUnitAutoRunKey;
 	//! Toolbar
 	UIToolbar *toolbar_;
 	NSArray *editToolbarItems_;
+	
+	BOOL running_;
 }
 
 @property (readonly, nonatomic) UITableView *tableView;
 @property (assign, nonatomic, getter=isAutoRun) BOOL autoRun;
+@property (readonly, assign, nonatomic, getter=isRunning) BOOL running;
 
 - (void)setGroup:(id<GHTestGroup>)group;
 - (void)updateTest:(id<GHTest>)test;
@@ -52,6 +56,9 @@ extern NSString *const GHUnitAutoRunKey;
 
 - (void)loadTests;
 - (void)runTests;
+
+- (void)reset;
+- (void)cancel;
 
 - (void)loadDefaults;
 

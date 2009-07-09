@@ -76,8 +76,10 @@
 			if (node.failed) {
 				cell.textColor = [UIColor redColor];
 			} else {
-				cell.textColor = [UIColor darkGrayColor];
+				cell.textColor = [UIColor blackColor];
 			}
+		} else if (node.isSelected) {
+			if (node.isSelected) cell.textColor = [UIColor darkGrayColor];
 		}
 	}
 	

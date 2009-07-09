@@ -546,6 +546,13 @@
 			remoteGlobalIDString = 00A511EC0FCB4187000F355B;
 			remoteInfo = CombineLibs;
 		};
+		00AA13A610055FE400667B93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 002910F30FC47C3400523E9B;
+			remoteInfo = "GHUnitIPhone (Simulator-CoreLocation)";
+		};
 		00DA14980F874334001FE08E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -1308,6 +1315,7 @@
 			);
 			dependencies = (
 				00A952830FDA2AFA006A80A6 /* PBXTargetDependency */,
+				00AA13A710055FE400667B93 /* PBXTargetDependency */,
 			);
 			name = "Tests (CoreLocation)";
 			productName = GHUnitIPhone;
@@ -1944,6 +1952,11 @@
 			target = 00A511EC0FCB4187000F355B /* CombineLibs */;
 			targetProxy = 00A954F20FDDAA71006A80A6 /* PBXContainerItemProxy */;
 		};
+		00AA13A710055FE400667B93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 002910F30FC47C3400523E9B /* GHUnitIPhone (Simulator-CoreLocation) */;
+			targetProxy = 00AA13A610055FE400667B93 /* PBXContainerItemProxy */;
+		};
 		00DA14990F874334001FE08E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 00DA11820F871977001FE08E /* GHUnitIPhone (Simulator) */;
@@ -1992,6 +2005,7 @@
 		};
 		002911420FC47D3200523E9B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 006307B30F8E792F00C9602A /* Shared-IPhone.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
