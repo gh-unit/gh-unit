@@ -141,7 +141,7 @@ Frameworks and dynamic libraries are not supported in the iPhone environment, bu
 	- libGHUnitIPhone.a (static library)
 	- GHUnit header files
 	- GHUnit test main
-- Under 'Other Linker Flags' in the `Test` target, add `-ObjC` and `-all_load`  (`-all_load` is necessary for running on 3.0 device)
+- Under 'Other Linker Flags' in the `Test` target, add `-ObjC` and `-all_load`  (`-all_load` may be necessary for running on 3.0 device)
 
 Now you can create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target.
 
