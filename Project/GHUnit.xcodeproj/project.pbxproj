@@ -38,9 +38,9 @@
 		002D9C230F49158F007932FE /* GHTestWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 002D9BF40F49158F007932FE /* GHTestWindow.xib */; };
 		002D9C240F49158F007932FE /* GHTestWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BF50F49158F007932FE /* GHTestWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C250F49158F007932FE /* GHTestWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BF60F49158F007932FE /* GHTestWindowController.m */; };
-		002D9C280F49158F007932FE /* GHNSInvocation+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BFB0F49158F007932FE /* GHNSInvocation+Utils.h */; settings = {ATTRIBUTES = (); }; };
+		002D9C280F49158F007932FE /* GHNSInvocation+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BFB0F49158F007932FE /* GHNSInvocation+Utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C290F49158F007932FE /* GHNSInvocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFC0F49158F007932FE /* GHNSInvocation+Utils.m */; };
-		002D9C2A0F49158F007932FE /* GHNSObject+Invocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BFD0F49158F007932FE /* GHNSObject+Invocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002D9C2A0F49158F007932FE /* GHNSObject+Invocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BFD0F49158F007932FE /* GHNSObject+Invocation.h */; settings = {ATTRIBUTES = (); }; };
 		002D9C2B0F49158F007932FE /* GHNSObject+Invocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFE0F49158F007932FE /* GHNSObject+Invocation.m */; };
 		002D9C2F0F49158F007932FE /* GTMObjC2Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C040F49158F007932FE /* GTMObjC2Runtime.h */; settings = {ATTRIBUTES = (); }; };
 		002D9C300F49158F007932FE /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9C050F49158F007932FE /* GTMObjC2Runtime.m */; };
@@ -56,11 +56,21 @@
 		003676950F8E95CF0042FAF7 /* GHMockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 003676930F8E95CF0042FAF7 /* GHMockNSURLConnection.m */; };
 		003676980F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 003676960F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		003676990F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 003676970F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.m */; };
+		0052DE940FFEDC3800EDB178 /* BWSplitView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052DE8A0FFEDC3800EDB178 /* BWSplitView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0052DE950FFEDC3800EDB178 /* BWSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052DE8B0FFEDC3800EDB178 /* BWSplitView.m */; };
+		0052DEBA0FFEDC8300EDB178 /* NSColor+BWAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052DEA80FFEDC8300EDB178 /* NSColor+BWAdditions.h */; };
+		0052DEBB0FFEDC8300EDB178 /* NSColor+BWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052DEA90FFEDC8300EDB178 /* NSColor+BWAdditions.m */; };
+		0052DEBD0FFEDC8300EDB178 /* NSEvent+BWAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052DEAB0FFEDC8300EDB178 /* NSEvent+BWAdditions.h */; };
+		0052DEBE0FFEDC8300EDB178 /* NSEvent+BWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052DEAC0FFEDC8300EDB178 /* NSEvent+BWAdditions.m */; };
+		0052DEFF0FFEDEBD00EDB178 /* GradientSplitViewDimpleBitmap.tif in Resources */ = {isa = PBXBuildFile; fileRef = 0052DEFD0FFEDEBD00EDB178 /* GradientSplitViewDimpleBitmap.tif */; };
+		0052DF000FFEDEBD00EDB178 /* GradientSplitViewDimpleVector.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0052DEFE0FFEDEBD00EDB178 /* GradientSplitViewDimpleVector.pdf */; };
 		005FDD220F33D259006B369F /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD210F33D259006B369F /* GTMSenTestCase.m */; };
 		005FDD390F33D373006B369F /* GHGTMTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */; };
 		00772F8C0F8D7A6400586577 /* GHAsyncTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 00772F8A0F8D7A6400586577 /* GHAsyncTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00772F8D0F8D7A6400586577 /* GHAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00772F8B0F8D7A6400586577 /* GHAsyncTestCase.m */; };
-		00A9540A0FDC7539006A80A6 /* GHNSInvocationProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 00A954080FDC7539006A80A6 /* GHNSInvocationProxy.h */; };
+		00907AD410017EA800267075 /* GHUITestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 00907AD210017EA800267075 /* GHUITestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00907AD510017EA800267075 /* GHUITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00907AD310017EA800267075 /* GHUITestCase.m */; };
+		00A9540A0FDC7539006A80A6 /* GHNSInvocationProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 00A954080FDC7539006A80A6 /* GHNSInvocationProxy.h */; settings = {ATTRIBUTES = (); }; };
 		00A9540B0FDC7539006A80A6 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A954090FDC7539006A80A6 /* GHNSInvocationProxy.m */; };
 		00AF0E3A0F2C4D47009F0ABA /* SenTestingKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00970A550F28397F00189A9D /* SenTestingKit.framework */; };
 		00CDDCC10F75D6970089C60E /* GHRegisterTestCaseClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */; };
@@ -145,6 +155,14 @@
 		003676930F8E95CF0042FAF7 /* GHMockNSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockNSURLConnection.m; sourceTree = "<group>"; };
 		003676960F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHMockNSHTTPURLResponse.h; sourceTree = "<group>"; };
 		003676970F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockNSHTTPURLResponse.m; sourceTree = "<group>"; };
+		0052DE8A0FFEDC3800EDB178 /* BWSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSplitView.h; sourceTree = "<group>"; };
+		0052DE8B0FFEDC3800EDB178 /* BWSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSplitView.m; sourceTree = "<group>"; };
+		0052DEA80FFEDC8300EDB178 /* NSColor+BWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+BWAdditions.h"; sourceTree = "<group>"; };
+		0052DEA90FFEDC8300EDB178 /* NSColor+BWAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+BWAdditions.m"; sourceTree = "<group>"; };
+		0052DEAB0FFEDC8300EDB178 /* NSEvent+BWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSEvent+BWAdditions.h"; sourceTree = "<group>"; };
+		0052DEAC0FFEDC8300EDB178 /* NSEvent+BWAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSEvent+BWAdditions.m"; sourceTree = "<group>"; };
+		0052DEFD0FFEDEBD00EDB178 /* GradientSplitViewDimpleBitmap.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = GradientSplitViewDimpleBitmap.tif; sourceTree = "<group>"; };
+		0052DEFE0FFEDEBD00EDB178 /* GradientSplitViewDimpleVector.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GradientSplitViewDimpleVector.pdf; sourceTree = "<group>"; };
 		005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHGTMTestCaseTest.m; sourceTree = "<group>"; };
 		005FDD200F33D259006B369F /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMSenTestCase.h; sourceTree = "<group>"; };
 		005FDD210F33D259006B369F /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSenTestCase.m; sourceTree = "<group>"; };
@@ -154,6 +172,8 @@
 		00772F8A0F8D7A6400586577 /* GHAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAsyncTestCase.h; sourceTree = "<group>"; };
 		00772F8B0F8D7A6400586577 /* GHAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCase.m; sourceTree = "<group>"; };
 		00772F910F8D7ABA00586577 /* GHAsyncTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCaseTest.m; sourceTree = "<group>"; };
+		00907AD210017EA800267075 /* GHUITestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUITestCase.h; sourceTree = "<group>"; };
+		00907AD310017EA800267075 /* GHUITestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUITestCase.m; sourceTree = "<group>"; };
 		00970A2F0F2836CE00189A9D /* GHSenTestingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSenTestingTest.m; sourceTree = "<group>"; };
 		00970A550F28397F00189A9D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		009DD7A60F26EC6C0058A2B0 /* GHSetUpTearDownTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSetUpTearDownTest.m; sourceTree = "<group>"; };
@@ -229,6 +249,8 @@
 				002D9BE30F49158F007932FE /* GHTestSuite.m */,
 				002D9BE40F49158F007932FE /* GHTesting.h */,
 				002D9BE50F49158F007932FE /* GHTesting.m */,
+				00907AD210017EA800267075 /* GHUITestCase.h */,
+				00907AD310017EA800267075 /* GHUITestCase.m */,
 				002D9BE60F49158F007932FE /* GHUnit.h */,
 				002D9BE70F49158F007932FE /* SharedUI */,
 				00C1A2D80F52847700FCCA14 /* RunTests.sh */,
@@ -331,6 +353,30 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		0052DE880FFEDC3800EDB178 /* Libraries-MaxOSX */ = {
+			isa = PBXGroup;
+			children = (
+				0052DE890FFEDC3800EDB178 /* BWToolkitFramework */,
+			);
+			name = "Libraries-MaxOSX";
+			path = "../Libraries-MaxOSX";
+			sourceTree = SOURCE_ROOT;
+		};
+		0052DE890FFEDC3800EDB178 /* BWToolkitFramework */ = {
+			isa = PBXGroup;
+			children = (
+				0052DEFD0FFEDEBD00EDB178 /* GradientSplitViewDimpleBitmap.tif */,
+				0052DEFE0FFEDEBD00EDB178 /* GradientSplitViewDimpleVector.pdf */,
+				0052DEA80FFEDC8300EDB178 /* NSColor+BWAdditions.h */,
+				0052DEA90FFEDC8300EDB178 /* NSColor+BWAdditions.m */,
+				0052DEAB0FFEDC8300EDB178 /* NSEvent+BWAdditions.h */,
+				0052DEAC0FFEDC8300EDB178 /* NSEvent+BWAdditions.m */,
+				0052DE8A0FFEDC3800EDB178 /* BWSplitView.h */,
+				0052DE8B0FFEDC3800EDB178 /* BWSplitView.m */,
+			);
+			path = BWToolkitFramework;
+			sourceTree = "<group>";
+		};
 		005FDD1F0F33D259006B369F /* GTM */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +435,7 @@
 				002D9BD70F49158F007932FE /* Classes */,
 				002D9BEA0F49158F007932FE /* Classes-MacOSX */,
 				002D9BF70F49158F007932FE /* Libraries */,
+				0052DE880FFEDC3800EDB178 /* Libraries-MaxOSX */,
 				009DD7A40F26EC6C0058A2B0 /* Tests */,
 				0062B73B0F2C1F9200B0562A /* XcodeConfig */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -476,6 +523,10 @@
 				0020570C0F945D2700FC1898 /* GHNSLocale+Mock.h in Headers */,
 				002058510F9467F900FC1898 /* GHUNSObject+Swizzle.h in Headers */,
 				00A9540A0FDC7539006A80A6 /* GHNSInvocationProxy.h in Headers */,
+				0052DE940FFEDC3800EDB178 /* BWSplitView.h in Headers */,
+				0052DEBA0FFEDC8300EDB178 /* NSColor+BWAdditions.h in Headers */,
+				0052DEBD0FFEDC8300EDB178 /* NSEvent+BWAdditions.h in Headers */,
+				00907AD410017EA800267075 /* GHUITestCase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +608,8 @@
 				002D9C1D0F49158F007932FE /* GHTestApp.xib in Resources */,
 				002D9C200F49158F007932FE /* GHTestView.xib in Resources */,
 				002D9C230F49158F007932FE /* GHTestWindow.xib in Resources */,
+				0052DEFF0FFEDEBD00EDB178 /* GradientSplitViewDimpleBitmap.tif in Resources */,
+				0052DF000FFEDEBD00EDB178 /* GradientSplitViewDimpleVector.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +675,10 @@
 				0020570D0F945D2700FC1898 /* GHNSLocale+Mock.m in Sources */,
 				002058520F9467F900FC1898 /* GHUNSObject+Swizzle.m in Sources */,
 				00A9540B0FDC7539006A80A6 /* GHNSInvocationProxy.m in Sources */,
+				0052DE950FFEDC3800EDB178 /* BWSplitView.m in Sources */,
+				0052DEBB0FFEDC8300EDB178 /* NSColor+BWAdditions.m in Sources */,
+				0052DEBE0FFEDC8300EDB178 /* NSEvent+BWAdditions.m in Sources */,
+				00907AD510017EA800267075 /* GHUITestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +752,7 @@
 				GCC_PREFIX_HEADER = Tests_Prefix.pch;
 				INFOPLIST_FILE = "Tests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -716,6 +774,10 @@
 				CURRENT_PROJECT_VERSION = "$(GHUNIT_VERSION)";
 				DYLIB_COMPATIBILITY_VERSION = 0;
 				DYLIB_CURRENT_VERSION = "$(GHUNIT_VERSION)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Libraries-MacOSX\"",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -742,7 +804,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 0;
 				DYLIB_CURRENT_VERSION = "$(GHUNIT_VERSION)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Libraries-MacOSX\"",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
@@ -751,6 +816,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = GHUnit;
 				WRAPPER_EXTENSION = framework;
 			};

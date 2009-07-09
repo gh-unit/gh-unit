@@ -1,3 +1,14 @@
+# Release 0.3.19 (2008-06-15)
+- Fixed bug in Edit->Save crash (iPhone)
+- Tweaking test text color (iPhone)
+- Re-run crash
+- Added reset to GHTest protocol
+- Added testDidUpdate: to GHTestDelegate protocol
+- On Edit->Save, triggers reset
+- Added cancel to GHTest protocol
+- Added cancelling, cancelled enums to test status
+- Changed testDidFinish to testDidEnd (since test may be cancelled)
+
 # Release 0.3.18 (2008-06-15)
 - Adding Run button; By default tests do not automatically run on start
 - Added AutoRun setting

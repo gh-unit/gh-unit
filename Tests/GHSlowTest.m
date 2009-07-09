@@ -24,7 +24,7 @@
 - (void)testLog {
 	for(NSInteger i = 0; i < 30; i++) {
 		GHTestLog(@"Line: %d", i);
-		[NSThread sleepForTimeInterval:0.03];
+		[NSThread sleepForTimeInterval:0.3];
 	}
 }
 
