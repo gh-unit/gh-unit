@@ -157,6 +157,21 @@ ignore=ignore_;
 	return exception_;
 }
 
+- (void)reset {
+	status_ = GHTestStatusNone;
+	stats_.runCount = 0;
+	stats_.failureCount = 0;
+	stats_.ignoreCount = 0;
+	[exception_ release];
+	exception_ = nil;
+	for(id<GHTest> test in children_)
+		[test reset];
+}
+
+- (void)cancel {
+	status_ = GHTestStatusCancelling;
+}
+
 - (void)run {		
 	if (ignore_) {
 		status_ = GHTestStatusIgnored;
@@ -165,22 +180,38 @@ ignore=ignore_;
 	
 	status_ = GHTestStatusRunning;
 	
-	if ([testCase_ respondsToSelector:@selector(setUpClass)]) 
-		[testCase_ performSelector:@selector(setUpClass)];
+	if ([testCase_ respondsToSelector:@selector(setUpClass)]) {
+		@try {
+			[testCase_ setUpClass];
+		} @catch(NSException *exception) {			
+			exception_ = [exception retain];
+		}
+	}
 	
-	for(id<GHTest> test in children_) {				
+	for(id<GHTest> test in children_) {
 		currentTest_ = test;
-		[[GHTesting sharedInstance] runTest:test selector:@selector(run) exception:&exception_ interval:nil];
+		[[GHTesting sharedInstance] runTest:test selector:@selector(run) exception:&exception_ interval:nil];		
 		if (exception_) {
 			NSLog(@"Exception: %@\n%@", [exception_ reason], GHU_GTMStackTraceFromException(exception_));
 		}
 		currentTest_ = nil;
+		if (status_ == GHTestStatusCancelling) break;
 	}
 	
-	if ([testCase_ respondsToSelector:@selector(tearDownClass)]) 
-		[testCase_ performSelector:@selector(tearDownClass)];
+	if ([testCase_ respondsToSelector:@selector(tearDownClass)]) {		
+		@try {
+			[testCase_ tearDownClass];
+		} @catch(NSException *exception) {			
+			exception_ = [exception retain];
+		}
+	}
 	
-	status_ = GHTestStatusFinished;
+	if (status_ == GHTestStatusCancelling) {
+		[self reset];
+		status_ = GHTestStatusCancelled;
+	} else {
+		status_ = GHTestStatusFinished;
+	}
 }
 
 #pragma mark Delegates (GHTestDelegate)
@@ -191,15 +222,19 @@ ignore=ignore_;
 	[delegate_ testDidStart:test];	
 }
 
+- (void)testDidUpdate:(id<GHTest>)test {
+	[delegate_ testDidUpdate:test];	
+}
+
 // Notification from GHTestGroup; For example, would be called when a test case ends
-- (void)testDidFinish:(id<GHTest>)test {
+- (void)testDidEnd:(id<GHTest>)test {
 	interval_ += [test interval];
 	if (exception_)
 		stats_.failureCount += [test stats].runCount;	
 	else
 		stats_.failureCount += [test stats].failureCount;	
 
-	[delegate_ testDidFinish:test];
+	[delegate_ testDidEnd:test];
 }
 
 - (void)testDidIgnore:(id<GHTest>)test {

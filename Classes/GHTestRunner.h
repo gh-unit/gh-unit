@@ -54,12 +54,14 @@
 @protocol GHTestRunnerDelegate <NSObject>
 @optional
 - (void)testRunnerDidStart:(GHTestRunner *)runner;
-- (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test;
-- (void)testRunner:(GHTestRunner *)runner didFinishTest:(id<GHTest>)test;
-- (void)testRunnerDidFinish:(GHTestRunner *)runner;
+- (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test; // Test started
+- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test; // Test changed
+- (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test; // Test finished
+- (void)testRunnerDidCancel:(GHTestRunner *)runner;
+- (void)testRunnerDidEnd:(GHTestRunner *)runner;
 
-- (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message;
-- (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message;
+- (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message; // Runner logged message
+- (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message; // Test logged message
 @end
 
 /*!
@@ -75,13 +77,16 @@
 	
 	// If YES, will allow exceptions to be raised (so you can trigger the debugger)
 	BOOL raiseExceptions_;	
-
+	
+	BOOL running_;
+	BOOL cancelled_;
 }
 
 @property (retain) id<GHTest> test;
 @property (assign) id<GHTestRunnerDelegate> delegate;
 @property (assign) BOOL raiseExceptions;
 @property (readonly) GHTestStats stats;
+@property (readonly, getter=isRunning) BOOL running;
 
 /*!
  Create runner for test.
@@ -129,6 +134,9 @@
  @result 0 is success, otherwise the failure count
  */
 - (int)run;
+
+
+- (void)cancel;
 
 @end
 

@@ -52,6 +52,7 @@
 
 @interface GHTestRunner (Private)
 - (void)_notifyStart;
+- (void)_notifyCancelled;
 - (void)_notifyFinished;
 - (void)_log:(NSString *)message;
 - (void)_updateTest:(id<GHTest>)test;
@@ -59,7 +60,7 @@
 
 @implementation GHTestRunner
 
-@synthesize test=test_, raiseExceptions=raiseExceptions_, delegate=delegate_;
+@synthesize test=test_, raiseExceptions=raiseExceptions_, delegate=delegate_, running=running_;
 
 - (id)initWithTest:(id<GHTest>)test {
 	if ((self = [self init])) {
@@ -100,10 +101,24 @@
 }
 
 - (int)run {
-	[self _notifyStart];	
+	cancelled_ = NO;
+	running_ = YES;
+	[self _notifyStart];
 	[test_ run];
-	[self _notifyFinished];
+	if (cancelled_) {
+		[self _notifyCancelled];
+	} else {
+		[self _notifyFinished];
+	}
+	running_ = NO;
 	return self.stats.failureCount;
+}
+
+- (void)cancel {
+	cancelled_ = YES;
+	[test_ cancel];
+	if ([delegate_ respondsToSelector:@selector(testRunnerDidCancel:)])
+		[delegate_ testRunnerDidCancel:self];
 }
 
 - (GHTestStats)stats {
@@ -121,11 +136,11 @@
 		 testRunner:self didLog:message];
 }
 
-- (void)_didFinishTest:(id<GHTest>)test {
+- (void)_didEndTest:(id<GHTest>)test {
 	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didFinishTest:)])
 		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
-		 testRunner:self didFinishTest:test];
+		 testRunner:self didEndTest:test];
 }
 
 #pragma mark Delegates (GHTest)
@@ -136,14 +151,20 @@
 		 testRunner:self didStartTest:test];	
 }
 
-- (void)testDidFinish:(id<GHTest>)test {	
+- (void)testDidUpdate:(id<GHTest>)test {	
+	if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:)])
+		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
+		 testRunner:self didUpdateTest:test];	
+}
+
+- (void)testDidEnd:(id<GHTest>)test {	
 	NSString *message = [NSString stringWithFormat:@"Test '%@' %@ (%0.3f seconds).",
 											 [test name], [test stats].failureCount > 0 ? @"failed" : @"passed", [test interval]];	
 	[self _log:message];
 	
-	if ([delegate_ respondsToSelector:@selector(testRunner:didFinishTest:)])
+	if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
 		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
-		 testRunner:self didFinishTest:test];
+		 testRunner:self didEndTest:test];
 }
 
 - (void)test:(id<GHTest>)test didLog:(NSString *)message {
@@ -167,6 +188,15 @@
 		 testRunnerDidStart:self];
 }
 
+- (void)_notifyCancelled {
+	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' cancelled.\n", [test_ name]];
+	[self _log:message];
+	
+	if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
+		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
+		 testRunnerDidEnd:self];
+}
+
 - (void)_notifyFinished {
 	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' finished.\n"
 											 "Executed %d tests, with %d failures in %0.3f seconds.\n",
@@ -174,9 +204,9 @@
 	[self _log:message];
 	
 	
-	if ([delegate_ respondsToSelector:@selector(testRunnerDidFinish:)])
+	if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
 		[[(NSObject *)delegate_ ghu_proxyOnMainThread:kGHTestRunnerInvokeWaitUntilDone] 
-		 testRunnerDidFinish:self];
+		 testRunnerDidEnd:self];
 }
 
 @end

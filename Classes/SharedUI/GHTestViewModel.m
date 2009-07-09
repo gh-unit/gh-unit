@@ -37,7 +37,7 @@
 - (id)initWithRoot:(id<GHTestGroup>)root {
 	if ((self = [super init])) {		
 		settingsKey_ = [[NSString stringWithFormat:@"GHUnit-%@", [root name]] copy];
-		settings_ = [[[NSUserDefaults standardUserDefaults] objectForKey:settingsKey_] retain];		
+		settings_ = [[[NSUserDefaults standardUserDefaults] objectForKey:settingsKey_] mutableCopy];		
 		if (!settings_) settings_ = [[NSMutableDictionary dictionary] retain];
 		GHUDebug(@"Settings: %@", settings_);
 		
@@ -193,7 +193,7 @@
 		else status = @"✔";
 		interval = [NSString stringWithFormat:@"%0.2fs", [test_ interval]];
 	} else if (!self.isSelected) {
-		status = @"-";
+		status = @"";
 	}
 
 	if (self.isGroupTest) {
@@ -223,6 +223,10 @@
 
 - (BOOL)isFinished {
 	return ([test_ status] == GHTestStatusFinished);
+}
+
+- (BOOL)isEnded {
+	return GHTestStatusEnded([test_ status]);
 }
 
 - (GHTestStatus)status {

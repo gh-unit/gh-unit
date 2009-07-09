@@ -33,6 +33,8 @@
 typedef enum {
 	GHTestStatusNone = 0,	
 	GHTestStatusRunning,
+	GHTestStatusCancelling,
+	GHTestStatusCancelled,
 	GHTestStatusFinished,
 	GHTestStatusIgnored
 } GHTestStatus;
@@ -41,7 +43,9 @@ typedef enum {
  Generate string from GHTestStatus
  @param status
  */
-NSString* NSStringFromGHTestStatus(GHTestStatus status);
+extern NSString* NSStringFromGHTestStatus(GHTestStatus status);
+
+extern BOOL GHTestStatusEnded(GHTestStatus status);
 
 /*!
  Test stats.
@@ -83,6 +87,9 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 
 - (NSArray *)log;
 
+- (void)reset;
+- (void)cancel;
+
 - (BOOL)ignore;
 - (void)setIgnore:(BOOL)ignore;
 
@@ -93,7 +100,8 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
  */
 @protocol GHTestDelegate <NSObject>
 - (void)testDidStart:(id<GHTest>)test;
-- (void)testDidFinish:(id<GHTest>)test;
+- (void)testDidUpdate:(id<GHTest>)test;
+- (void)testDidEnd:(id<GHTest>)test;
 - (void)test:(id<GHTest>)test didLog:(NSString *)message;
 - (void)testDidIgnore:(id<GHTest>)test;
 @end

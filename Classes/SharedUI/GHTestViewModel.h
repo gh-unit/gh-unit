@@ -110,6 +110,7 @@
 @property (readonly, nonatomic) NSString *log;
 @property (readonly, nonatomic) BOOL isRunning;
 @property (readonly, nonatomic) BOOL isFinished;
+@property (readonly, nonatomic) BOOL isEnded;
 @property (readonly, nonatomic) BOOL isGroupTest; // YES if test has "sub tests"
 
 @property (assign, nonatomic, getter=isSelected) BOOL selected;

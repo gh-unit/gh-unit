@@ -54,6 +54,8 @@ NSString* NSStringFromGHTestStatus(GHTestStatus status) {
 		case GHTestStatusNone: return NSLocalizedString(@"Waiting", @"Test status / Waiting");
 		case GHTestStatusRunning: return NSLocalizedString(@"Running", @"Test status / Running");
 		case GHTestStatusFinished: return NSLocalizedString(@"Finished", @"Test status / Finished");
+		case GHTestStatusCancelling: return NSLocalizedString(@"Cancelling", @"Test status / Cancelling");
+		case GHTestStatusCancelled: return NSLocalizedString(@"Cancelled", @"Test status / Cancelled");
 		case GHTestStatusIgnored: return NSLocalizedString(@"Ignored", @"Test status / Ignored");
 		default: return NSLocalizedString(@"Unknown", @"Test status / Unknown");
 	}
@@ -68,6 +70,10 @@ GHTestStats GHTestStatsMake(NSInteger runCount, NSInteger failureCount, NSIntege
 	return stats;
 }
 
+extern BOOL GHTestStatusEnded(GHTestStatus status) {
+	return (status == GHTestStatusCancelled || status == GHTestStatusFinished || status == GHTestStatusIgnored);
+}
+
 @implementation GHTest
 
 @synthesize delegate=delegate_, target=target_, selector=selector_, name=name_, interval=interval_, 
@@ -79,6 +85,7 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_, id
 		selector_ = selector;
 		interval_ = -1;
 		name_ = [NSStringFromSelector(selector_) copy];
+		status_ = GHTestStatusNone;
 		stats_ = GHTestStatsMake(0, 0, 0, 1);
 		identifier_ = [[NSString stringWithFormat:@"%@/%@", NSStringFromClass([target_ class]), NSStringFromSelector(selector_)] copy];
 	}
@@ -113,6 +120,18 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_, id
 		[target_ performSelector:@selector(setLogDelegate:) withObject:(enabled ? self : NULL)];
 }	
 
+- (void)reset {
+	status_ = GHTestStatusNone;	
+	stats_ = GHTestStatsMake(0, 0, 0, 1);
+	[delegate_ testDidUpdate:self];
+}
+
+- (void)cancel {
+	status_ = GHTestStatusCancelling;
+	// TODO(gabe): Call cancel on target if available?
+	[delegate_ testDidUpdate:self];
+}
+
 - (void)_run {
 
 	if (ignore_) {
@@ -129,9 +148,13 @@ exception=exception_, status=status_, failed=failed_, stats=stats_, log=log_, id
 	
 		[self setLoggingEnabled:NO];
 	
-		status_ = GHTestStatusFinished;	
-		stats_ = GHTestStatsMake(1, failed_ ? 1 : 0, 0, 1);
-		[delegate_ testDidFinish:self];
+		if (status_== GHTestStatusCancelling) {
+			status_ = GHTestStatusCancelled;
+		} else {
+			status_ = GHTestStatusFinished;	
+			stats_ = GHTestStatsMake(1, failed_ ? 1 : 0, 0, 1);
+		}
+		[delegate_ testDidEnd:self];
 	}		
 }
 
