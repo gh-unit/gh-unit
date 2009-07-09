@@ -30,8 +30,14 @@
 #import "GHTestViewModel.h"
 #import "GHTestGroup.h"
 
-@interface GHTestViewController : NSViewController {
-	NSSplitView *splitView_;
+#import "BWSplitView.h"
+
+@interface GHTestViewController : NSViewController <GHTestRunnerDelegate> {
+
+	NSButton *runButton_;
+	NSButton *collapseButton_;
+	
+	BWSplitView *splitView_;
 	NSView *statusView_;
 	NSView *detailsView_;
 	
@@ -44,11 +50,18 @@
 	
 	BOOL wrapInTextView_;
 	
+	GHTestRunner *runner_;
+	BOOL running_;
+	
+	GHTestSuite *suite_;
+	
 	GHTestViewModel *model_;
 }
 
 // Assign since they are retained as subviews
-@property (assign, nonatomic) IBOutlet NSSplitView *splitView;
+@property (assign, nonatomic) IBOutlet NSButton *runButton;
+@property (assign, nonatomic) IBOutlet NSButton *collapseButton;
+@property (assign, nonatomic) IBOutlet BWSplitView *splitView;
 @property (assign, nonatomic) IBOutlet NSView *statusView;
 @property (assign, nonatomic) IBOutlet NSView *detailsView;
 @property (assign, nonatomic) IBOutlet NSTextField *statusLabel;
@@ -60,6 +73,8 @@
 @property (readonly, nonatomic) id<GHTest> selectedTest;
 
 @property (copy, nonatomic) NSString *status;
+
+@property (retain, nonatomic) GHTestSuite *suite;
 
 - (void)log:(NSString *)log;
 - (void)test:(id<GHTest>)test didLog:(NSString *)message;
@@ -74,5 +89,10 @@
 - (GHTestNode *)findFailureFromNode:(GHTestNode *)node;
 
 - (IBAction)copy:(id)sender;
+
+- (IBAction)runTests:(id)sender;
+
+- (void)runTests;
+- (void)loadTests;
 
 @end

@@ -58,6 +58,8 @@ int main(int argc, char *argv[]) {
 		// To run a different test suite:
 		//GHTestSuite *suite = [GHTestSuite suiteWithTestFilter:@"GHSlowTest,GHAsyncTestCaseTest"];
 		//GHTestApp *app = [[GHTestApp alloc] initWithSuite:suite];
+		// Or set global:
+		//GHUnitTest = @"GHSlowTest";
 		[NSApp run];
 		[app release];		
 	}

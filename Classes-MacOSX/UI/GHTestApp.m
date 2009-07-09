@@ -31,8 +31,8 @@
 - (void)awakeFromNib { 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillTerminate:) 
 																							 name:NSApplicationWillTerminateNotification object:nil];
-	// For backwards compatibility
-	[self runTests];
+	windowController_.viewController.suite = suite_;
+	[windowController_ showWindow:nil];
 }
 
 - (void)dealloc {
@@ -43,61 +43,14 @@
 }
 
 - (void)runTests {
-	[windowController_ showWindow:nil];
-	[NSThread detachNewThreadSelector:@selector(_runTests) toTarget:self withObject:nil];	
+	[windowController_.viewController runTests];
 }
 
-- (void)_runTests {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];		
-
-	// For backwards compatibility
-	if (!suite_)
-		suite_ = [[GHTestSuite suiteFromEnv] retain];
-	
-	GHTestRunner *runner = [[GHTestRunner runnerForSuite:suite_] retain];
-	runner.delegate = self;
-	
-	// To allow exceptions to raise into the debugger, uncomment below
-	//runner.raiseExceptions = YES;
-	
-	[runner run];
-	[runner release];
-	[pool release];
-}
 
 #pragma mark Notifications (NSApplication)
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
 	[[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-#pragma mark Delegates (GHTestRunner)
-
-- (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message {
-	[windowController_.viewController log:message];
-}
-
-- (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message {
-	[windowController_.viewController test:test didLog:message];
-}
-
-- (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
-	[windowController_.viewController updateTest:test];
-}
-
-- (void)testRunner:(GHTestRunner *)runner didFinishTest:(id<GHTest>)test {
-	[windowController_.viewController updateTest:test];
-}
-
-- (void)testRunnerDidStart:(GHTestRunner *)runner { 
-	[windowController_.viewController setRoot:(id<GHTestGroup>)runner.test];
-	[windowController_.viewController updateTest:runner.test];
-}
-
-- (void)testRunnerDidFinish:(GHTestRunner *)runner {
-	[windowController_.viewController updateTest:runner.test];
-	[windowController_.viewController selectFirstFailure];
-	//[[NSApplication sharedApplication] terminate:nil];
 }
 
 @end

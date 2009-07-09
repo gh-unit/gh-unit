@@ -29,15 +29,22 @@
 
 #import "GHTestViewController.h"
 
+@interface GHTestViewController ()
+@property (assign, nonatomic, getter=isRunning) BOOL running;
+@end
+
 @interface GHTestViewController (Private)
 - (void)_updateStatus:(id<GHTest>)test;
 @end
 
 @implementation GHTestViewController
 
+@synthesize runButton=runButton_, collapseButton=collapseButton_;
 @synthesize splitView=splitView_, statusView=statusView_, detailsView=detailsView_;
 @synthesize statusLabel=statusLabel_, progressIndicator=progressIndicator_, outlineView=outlineView_;
 @synthesize textSegmentedControl=textSegmentedControl_, textView=textView_, wrapInTextView=wrapInTextView_;
+
+@synthesize suite=suite_, running=running_;
 
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { }
@@ -45,8 +52,9 @@
 }
 
 - (void)dealloc {
-	splitView_.delegate = nil;
 	[model_ release];	
+	[runner_ release];
+	[suite_ release];
 	[super dealloc];
 }
 
@@ -54,12 +62,16 @@
 	[textView_ setTextColor:[NSColor whiteColor]];
 	[textView_ setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
 	[textView_ setString:@""];
-	splitView_.delegate = self;
 	self.wrapInTextView = NO;
 	
 	[textSegmentedControl_ setTarget:self];
 	[textSegmentedControl_ setAction:@selector(_textSegmentChanged:)];
 	self.status = @"Loading tests...";
+
+	//[splitView_ setToggleCollapseButton:collapseButton_];
+	[collapseButton_ setTarget:self];
+	[collapseButton_ setAction:@selector(_toggleCollapse:)];
+	[self loadTests];
 }
 
 - (void)setWrapInTextView:(BOOL)wrapInTextView {
@@ -88,6 +100,54 @@
 	[textView_ copy:sender];
 }
 
+- (void)loadTests {
+	[runner_ release];
+	
+	GHTestSuite *suite = suite_;
+	if (!suite) suite = [GHTestSuite suiteFromEnv];	
+	runner_ = [[GHTestRunner runnerForSuite:suite] retain];
+	runner_.delegate = self;
+	[self setRoot:(id<GHTestGroup>)runner_.test];	
+}
+
+#pragma mark Running
+
+- (IBAction)runTests:(id)sender {
+	[self runTests];
+}
+
+- (void)runTests {
+	if (self.isRunning) return;
+
+	[self loadTests];
+	self.running = YES;
+	[NSThread detachNewThreadSelector:@selector(_runTests) toTarget:self withObject:nil];	
+}
+
+- (void)_runTests {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];		
+	[runner_ run];
+	[pool release];
+	[self performSelectorOnMainThread:@selector(_afterRunTests) withObject:nil waitUntilDone:YES];
+}
+
+- (void)_afterRunTests {
+	self.running = NO;
+}
+
+#pragma mark -
+
+- (void)_toggleCollapse:(id)sender {
+	CGFloat windowWidth = self.view.window.frame.size.width;
+	CGFloat minWindowWidth = (splitView_.collapsibleSubviewCollapsed ? 600 : 0);
+	if (windowWidth < minWindowWidth) {
+		NSRect frame = self.view.window.frame;
+		frame.size.width = 400;
+		[self.view.window setFrame:frame display:YES animate:YES];
+	}
+	[splitView_ toggleCollapse:sender];
+}
+
 - (void)_setText:(NSInteger)row selector:(SEL)selector {
 	if (row < 0) return;
 	id item = [outlineView_ itemAtRow:row];
@@ -97,19 +157,29 @@
 }
 
 - (void)_textSegmentChanged:(id)sender {
-	if ([sender selectedSegment] == 0) {
-		[self _setText:[outlineView_ selectedRow] selector:@selector(stackTrace)];
-	} else {
-		[self _setText:[outlineView_ selectedRow] selector:@selector(log)];
+	switch([sender selectedSegment]) {
+		case 0:
+			[self _setText:[outlineView_ selectedRow] selector:@selector(stackTrace)];
+			break;
+		case 1:			
+			[self _setText:[outlineView_ selectedRow] selector:@selector(log)];
+			break;
+		case 2:
+			// TODO
+			break;
 	}
 }
 
 - (void)setRoot:(id<GHTestGroup>)rootTest {
 	[model_ release];
-	model_ = [[GHTestViewModel alloc] initWithRoot:rootTest];
-	[outlineView_ reloadItem:nil reloadChildren:YES];
-	[outlineView_ expandItem:nil expandChildren:YES];
-	[self _updateStatus:rootTest];
+	model_ = nil;
+	if (rootTest) {
+		model_ = [[GHTestViewModel alloc] initWithRoot:rootTest];
+		[outlineView_ reloadData];
+		[outlineView_ reloadItem:nil reloadChildren:YES];
+		[outlineView_ expandItem:nil expandChildren:YES];
+		[self _updateStatus:rootTest];
+	}
 }
 
 - (void)setStatus:(NSString *)status {
@@ -291,19 +361,32 @@
 	}
 }
 
-#pragma mark Delegates (NSSplitView)
+#pragma mark Delegates (GHTestRunner)
 
-- (BOOL)splitView:(NSSplitView *)sender canCollapseSubview:(NSView *)subview {
-	if (subview == detailsView_) return YES;
-	return NO;
+- (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message {
+	[self log:message];
 }
 
-- (CGFloat)splitView:(NSSplitView *)sender constrainMinCoordinate:(CGFloat)proposedMin ofSubviewAt:(NSInteger)offset {
-	return 160;
+- (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message {
+	[self test:test didLog:message];
 }
 
-- (CGFloat)splitView:(NSSplitView *)sender constrainMaxCoordinate:(CGFloat)proposedMax ofSubviewAt:(NSInteger)offset {
-	return proposedMax - 200;
+- (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
+	[self updateTest:test];
 }
+
+- (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test {
+	[self updateTest:test];
+}
+
+- (void)testRunnerDidStart:(GHTestRunner *)runner { 	
+	[self updateTest:runner.test];
+}
+
+- (void)testRunnerDidEnd:(GHTestRunner *)runner {
+	[self updateTest:runner.test];
+	[self selectFirstFailure];
+}
+
 
 @end
