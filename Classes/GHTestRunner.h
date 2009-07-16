@@ -80,6 +80,7 @@
 	
 	BOOL running_;
 	BOOL cancelled_;
+
 }
 
 @property (retain) id<GHTest> test;
@@ -99,7 +100,7 @@
  @see GHTesting#loadAllTestCases.
  @result Runner
  */
-+ (GHTestRunner *)runnerForAllTests;
++ (GHTestRunner *)runnerForAllTests:(NSOperationQueue *)operationQueue;
 
 /*!
  Create runner for test suite.
@@ -114,27 +115,28 @@
  @param methodName
  @result Runner
  */
-+ (GHTestRunner *)runnerForTestClassName:(NSString *)testClassName methodName:(NSString *)methodName;
++ (GHTestRunner *)runnerForTestClassName:(NSString *)testClassName methodName:(NSString *)methodName operationQueue:(NSOperationQueue *)operationQueue;
 
 /*!
  Get the runner from the environment.
  If the TEST env is set, then we will only run that test case or test method.
  */
-+ (GHTestRunner *)runnerFromEnv;
++ (GHTestRunner *)runnerFromEnv:(NSOperationQueue *)operationQueue;
 
 /*!
  Run the test runner. Usually called from the test main.
  Reads the TEST environment variable and filters on that; or all tests are run.
+ @param operationQueue Operation queue to run test cases on
  @result 0 is success, otherwise the failure count
  */
 + (int)run;
++ (int)run:(NSOperationQueue *)operationQueue;
 
 /*!
  Start the test runner.
  @result 0 is success, otherwise the failure count
  */
 - (int)run;
-
 
 - (void)cancel;
 

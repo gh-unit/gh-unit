@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="3"/>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -333,7 +333,7 @@
 							<object class="NSSegmentedControl" id="7855149">
 								<reference key="NSNextResponder" ref="186507322"/>
 								<int key="NSvFlags">269</int>
-								<string key="NSFrame">{{84, 442}, {188, 25}}</string>
+								<string key="NSFrame">{{115, 442}, {127, 25}}</string>
 								<reference key="NSSuperview" ref="186507322"/>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSegmentedCell" key="NSCell" id="603260049">
@@ -352,11 +352,6 @@
 											<double key="NSSegmentItemWidth">6.000000e+01</double>
 											<string key="NSSegmentItemLabel">Log</string>
 											<bool key="NSSegmentItemSelected">YES</bool>
-											<int key="NSSegmentItemImageScaling">0</int>
-										</object>
-										<object class="NSSegmentItem">
-											<double key="NSSegmentItemWidth">6.000000e+01</double>
-											<string key="NSSegmentItemLabel">Output</string>
 											<int key="NSSegmentItemImageScaling">0</int>
 										</object>
 									</object>

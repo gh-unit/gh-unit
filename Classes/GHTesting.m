@@ -190,7 +190,7 @@ static GHTesting *gSharedInstance;
 	return tests;
 }
 
-- (BOOL)runTest:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval {
++ (BOOL)runTest:(id)target selector:(SEL)selector withObject:(id)obj exception:(NSException **)exception interval:(NSTimeInterval *)interval {
 	NSDate *startDate = [NSDate date];	
 	NSException *testException = nil;
 	// GTM_BEGIN
@@ -214,7 +214,7 @@ static GHTesting *gSharedInstance;
 					[target setCurrentSelector:selector];
 				
 				// Runs the test
-        [target performSelector:selector];
+        [target performSelector:selector withObject:obj];
 				
       } @catch (NSException *exception) {
         testException = [exception retain];

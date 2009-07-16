@@ -35,25 +35,25 @@ NSString *GHUnitTest = NULL;
 
 @implementation GHTestSuite
 
-- (id)initWithName:(NSString *)name testCases:(NSArray *)testCases delegate:(id<GHTestDelegate>)delegate {
+- (id)initWithName:(NSString *)name testCases:(NSArray *)testCases operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate {
 	if ((self = [super initWithName:name delegate:delegate])) {
 		for(id testCase in testCases) {
-			[self addTestCase:testCase];
+			[self addTestCase:testCase operationQueue:operationQueue];
 		}
 	}
 	return self;
 }
 
-+ (GHTestSuite *)allTests {
++ (GHTestSuite *)allTests:(NSOperationQueue *)operationQueue {
 	NSArray *testCases = [[GHTesting sharedInstance] loadAllTestCases];
 	GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" delegate:nil];	
 	for(id testCase in testCases) {
-		[allTests addTestCase:testCase];
+		[allTests addTestCase:testCase operationQueue:operationQueue];
 	}
 	return [allTests autorelease];
 }
 
-+ (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method {	
++ (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method operationQueue:(NSOperationQueue *)operationQueue {	
 	NSString *name = [NSString stringWithFormat:@"%@/%@", NSStringFromClass(testCaseClass), NSStringFromSelector(method)];
 	GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:name delegate:nil];
 	id testCase = [[[testCaseClass alloc] init] autorelease];
@@ -61,12 +61,12 @@ NSString *GHUnitTest = NULL;
 		NSLog(@"Couldn't instantiate test: %@", NSStringFromClass(testCaseClass));
 		return nil;
 	}
-	GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:method delegate:nil];
+	GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:method operationQueue:operationQueue delegate:nil];
 	[testSuite addTestGroup:group];
 	return [testSuite autorelease];	
 }
 
-+ (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilterString {
++ (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilterString operationQueue:(NSOperationQueue *)operationQueue {
 	NSArray *testFilters = [testFilterString componentsSeparatedByString:@","];
 	GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:testFilterString delegate:nil];
 
@@ -81,7 +81,8 @@ NSString *GHUnitTest = NULL;
 				continue;
 			}
 			NSString *methodName = [components objectAtIndex:1];
-			GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:NSSelectorFromString(methodName) delegate:nil];
+			GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:NSSelectorFromString(methodName) 
+																									operationQueue:operationQueue delegate:nil];
 			[testSuite addTestGroup:group];
 			[group release];
 		} else {
@@ -91,21 +92,21 @@ NSString *GHUnitTest = NULL;
 				NSLog(@"Couldn't find test: %@", testFilter);
 				continue;
 			}		
-			[testSuite addTestCase:testCase];
+			[testSuite addTestCase:testCase operationQueue:operationQueue];
 		}
 	}
 	
 	return [testSuite autorelease];
 }
 
-+ (GHTestSuite *)suiteFromEnv {
++ (GHTestSuite *)suiteFromEnv:(NSOperationQueue *)operationQueue {
 	const char* cTestFilter = getenv("TEST");
 	if (cTestFilter) {
 		NSString *testFilter = [NSString stringWithUTF8String:cTestFilter];
-		return [GHTestSuite suiteWithTestFilter:testFilter];
+		return [GHTestSuite suiteWithTestFilter:testFilter operationQueue:operationQueue];
 	} else {	
-		if (GHUnitTest != NULL) return [GHTestSuite suiteWithTestFilter:GHUnitTest];
-		return [GHTestSuite allTests];
+		if (GHUnitTest != NULL) return [GHTestSuite suiteWithTestFilter:GHUnitTest operationQueue:operationQueue];
+		return [GHTestSuite allTests:operationQueue];
 	}
 }
 

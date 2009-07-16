@@ -28,7 +28,6 @@
 //
 
 #import "GHTestCase.h"
-#import "GHUITestCase.h"
 #import "GHAsyncTestCase.h"
 #import "GHTestSuite.h"
 #import "GHTestMacros.h"

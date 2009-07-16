@@ -51,7 +51,7 @@
 
 @implementation GHTestCase
 
-@synthesize logDelegate=logDelegate_, currentSelector=currentSelector_;
+@synthesize logWriter=logWriter_, currentSelector=currentSelector_;
 
 // GTM_BEGIN
 
@@ -80,7 +80,7 @@
 #pragma mark Logging
 
 - (void)log:(NSString *)message {
-	[logDelegate_ testCase:self didLog:message];
+	[logWriter_ log:message testCase:self];
 }
 
 @end

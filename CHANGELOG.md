@@ -1,3 +1,7 @@
+# Release 0.4.1
+- Using NSOperationQueue to manage tests
+- Changed how test groups run
+
 # Release 0.3.19 (2008-06-15)
 - Fixed bug in Edit->Save crash (iPhone)
 - Tweaking test text color (iPhone)

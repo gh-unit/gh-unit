@@ -83,10 +83,7 @@
 		0002040B0F8EA87C00EC31BA /* GHMockNSURLConnection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 000204070F8EA87C00EC31BA /* GHMockNSURLConnection.h */; };
 		0002040C0F8EA87C00EC31BA /* GHMockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 000204080F8EA87C00EC31BA /* GHMockNSURLConnection.m */; };
 		0002042B0F8EA93400EC31BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		00178E190FC3935600CA6A07 /* GHUITestCase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00178E170FC3935600CA6A07 /* GHUITestCase.h */; };
-		00178E1A0FC3935600CA6A07 /* GHUITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E180FC3935600CA6A07 /* GHUITestCase.m */; };
 		00178E300FC3981900CA6A07 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E2E0FC3981900CA6A07 /* GHNSInvocationProxy.m */; };
-		00178E9E0FC39AB800CA6A07 /* GHUITestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E9D0FC39AB800CA6A07 /* GHUITestCaseTest.m */; };
 		002053EE0F93FAD100FC1898 /* GHNSLocale+Mock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002053EC0F93FAD100FC1898 /* GHNSLocale+Mock.h */; };
 		002053EF0F93FAD100FC1898 /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002053ED0F93FAD100FC1898 /* GHNSLocale+Mock.m */; };
 		0020546A0F93FE6F00FC1898 /* GHNSLocaleMockTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002054690F93FE6F00FC1898 /* GHNSLocaleMockTest.m */; };
@@ -114,12 +111,10 @@
 		002911080FC47C3400523E9B /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002053ED0F93FAD100FC1898 /* GHNSLocale+Mock.m */; };
 		002911090FC47C3400523E9B /* GHUNSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 002058920F946E7800FC1898 /* GHUNSObject+Swizzle.m */; };
 		0029110A0FC47C3400523E9B /* GHUnitIPhoneTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */; };
-		0029110B0FC47C3400523E9B /* GHUITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E180FC3935600CA6A07 /* GHUITestCase.m */; };
 		0029110C0FC47C3400523E9B /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E2E0FC3981900CA6A07 /* GHNSInvocationProxy.m */; };
 		0029110E0FC47C3400523E9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		0029110F0FC47C3400523E9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		002911100FC47C3400523E9B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0064CA6C0F9D8A0200E5FA70 /* CoreLocation.framework */; };
-		002911120FC47C3400523E9B /* GHUITestCase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00178E170FC3935600CA6A07 /* GHUITestCase.h */; };
 		002911130FC47C3400523E9B /* GHUNSObject+Swizzle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002058910F946E7800FC1898 /* GHUNSObject+Swizzle.h */; };
 		002911140FC47C3400523E9B /* GHNSLocale+Mock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002053EC0F93FAD100FC1898 /* GHNSLocale+Mock.h */; };
 		002911150FC47C3400523E9B /* GHMockNSHTTPURLResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 000204050F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.h */; };
@@ -146,7 +141,6 @@
 		002911360FC47D3200523E9B /* GHSpecialTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 007730270F8D8DF400586577 /* GHSpecialTestCase.m */; };
 		002911370FC47D3200523E9B /* GHMockNSURLConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 000203F10F8EA85400EC31BA /* GHMockNSURLConnectionTest.m */; };
 		002911380FC47D3200523E9B /* GHNSLocaleMockTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002054690F93FE6F00FC1898 /* GHNSLocaleMockTest.m */; };
-		002911390FC47D3200523E9B /* GHUITestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E9D0FC39AB800CA6A07 /* GHUITestCaseTest.m */; };
 		0029113B0FC47D3200523E9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		0029113C0FC47D3200523E9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		0029113E0FC47D3200523E9B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -183,12 +177,10 @@
 		00A5117B0FCB3F95000F355B /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002053ED0F93FAD100FC1898 /* GHNSLocale+Mock.m */; };
 		00A5117C0FCB3F95000F355B /* GHUNSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 002058920F946E7800FC1898 /* GHUNSObject+Swizzle.m */; };
 		00A5117D0FCB3F95000F355B /* GHUnitIPhoneTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */; };
-		00A5117E0FCB3F95000F355B /* GHUITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E180FC3935600CA6A07 /* GHUITestCase.m */; };
 		00A5117F0FCB3F95000F355B /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E2E0FC3981900CA6A07 /* GHNSInvocationProxy.m */; };
 		00A511810FCB3F95000F355B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		00A511820FCB3F95000F355B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		00A511840FCB3F95000F355B /* RunTests.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DA16AB0F89C52E001FE08E /* RunTests.sh */; };
-		00A511850FCB3F95000F355B /* GHUITestCase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00178E170FC3935600CA6A07 /* GHUITestCase.h */; };
 		00A511860FCB3F95000F355B /* GHUNSObject+Swizzle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002058910F946E7800FC1898 /* GHUNSObject+Swizzle.h */; };
 		00A511870FCB3F95000F355B /* GHNSLocale+Mock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002053EC0F93FAD100FC1898 /* GHNSLocale+Mock.h */; };
 		00A511880FCB3F95000F355B /* GHMockNSHTTPURLResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 000204050F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.h */; };
@@ -224,7 +216,6 @@
 		00A511C30FCB40C1000F355B /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002053ED0F93FAD100FC1898 /* GHNSLocale+Mock.m */; };
 		00A511C40FCB40C1000F355B /* GHUNSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 002058920F946E7800FC1898 /* GHUNSObject+Swizzle.m */; };
 		00A511C50FCB40C1000F355B /* GHUnitIPhoneTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */; };
-		00A511C60FCB40C1000F355B /* GHUITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E180FC3935600CA6A07 /* GHUITestCase.m */; };
 		00A511C70FCB40C1000F355B /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E2E0FC3981900CA6A07 /* GHNSInvocationProxy.m */; };
 		00A511C80FCB40C1000F355B /* GHMockCLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 002911550FC47E0500523E9B /* GHMockCLLocationManager.m */; };
 		00A511CA0FCB40C1000F355B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -232,7 +223,6 @@
 		00A511CC0FCB40C1000F355B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0064CA6C0F9D8A0200E5FA70 /* CoreLocation.framework */; };
 		00A511CE0FCB40C1000F355B /* RunTests.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DA16AB0F89C52E001FE08E /* RunTests.sh */; };
 		00A511CF0FCB40C1000F355B /* GHMockCLLocationManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002911540FC47E0500523E9B /* GHMockCLLocationManager.h */; };
-		00A511D00FCB40C1000F355B /* GHUITestCase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00178E170FC3935600CA6A07 /* GHUITestCase.h */; };
 		00A511D10FCB40C1000F355B /* GHUNSObject+Swizzle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002058910F946E7800FC1898 /* GHUNSObject+Swizzle.h */; };
 		00A511D20FCB40C1000F355B /* GHNSLocale+Mock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002053EC0F93FAD100FC1898 /* GHNSLocale+Mock.h */; };
 		00A511D30FCB40C1000F355B /* GHMockNSHTTPURLResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 000204050F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.h */; };
@@ -268,7 +258,6 @@
 		00A9525F0FDA28F4006A80A6 /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002053ED0F93FAD100FC1898 /* GHNSLocale+Mock.m */; };
 		00A952600FDA28F4006A80A6 /* GHUNSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 002058920F946E7800FC1898 /* GHUNSObject+Swizzle.m */; };
 		00A952610FDA28F4006A80A6 /* GHUnitIPhoneTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */; };
-		00A952620FDA28F4006A80A6 /* GHUITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E180FC3935600CA6A07 /* GHUITestCase.m */; };
 		00A952630FDA28F4006A80A6 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E2E0FC3981900CA6A07 /* GHNSInvocationProxy.m */; };
 		00A952640FDA28F4006A80A6 /* GHMockCLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 002911550FC47E0500523E9B /* GHMockCLLocationManager.m */; };
 		00A952660FDA28F4006A80A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -276,7 +265,6 @@
 		00A952680FDA28F4006A80A6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0064CA6C0F9D8A0200E5FA70 /* CoreLocation.framework */; };
 		00A9526A0FDA28F4006A80A6 /* RunTests.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DA16AB0F89C52E001FE08E /* RunTests.sh */; };
 		00A9526B0FDA28F4006A80A6 /* GHMockCLLocationManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002911540FC47E0500523E9B /* GHMockCLLocationManager.h */; };
-		00A9526C0FDA28F4006A80A6 /* GHUITestCase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00178E170FC3935600CA6A07 /* GHUITestCase.h */; };
 		00A9526D0FDA28F4006A80A6 /* GHUNSObject+Swizzle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002058910F946E7800FC1898 /* GHUNSObject+Swizzle.h */; };
 		00A9526E0FDA28F4006A80A6 /* GHNSLocale+Mock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002053EC0F93FAD100FC1898 /* GHNSLocale+Mock.h */; };
 		00A9526F0FDA28F4006A80A6 /* GHMockNSHTTPURLResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 000204050F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.h */; };
@@ -313,7 +301,6 @@
 		00A952A20FDA2B4C006A80A6 /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002053ED0F93FAD100FC1898 /* GHNSLocale+Mock.m */; };
 		00A952A30FDA2B4C006A80A6 /* GHUNSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 002058920F946E7800FC1898 /* GHUNSObject+Swizzle.m */; };
 		00A952A40FDA2B4C006A80A6 /* GHUnitIPhoneTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */; };
-		00A952A50FDA2B4C006A80A6 /* GHUITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E180FC3935600CA6A07 /* GHUITestCase.m */; };
 		00A952A60FDA2B4C006A80A6 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E2E0FC3981900CA6A07 /* GHNSInvocationProxy.m */; };
 		00A952A70FDA2B4C006A80A6 /* GHMockCLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 002911550FC47E0500523E9B /* GHMockCLLocationManager.m */; };
 		00A952A90FDA2B4C006A80A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -321,7 +308,6 @@
 		00A952AB0FDA2B4C006A80A6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0064CA6C0F9D8A0200E5FA70 /* CoreLocation.framework */; };
 		00A952AD0FDA2B4C006A80A6 /* RunTests.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DA16AB0F89C52E001FE08E /* RunTests.sh */; };
 		00A952AE0FDA2B4C006A80A6 /* GHMockCLLocationManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002911540FC47E0500523E9B /* GHMockCLLocationManager.h */; };
-		00A952AF0FDA2B4C006A80A6 /* GHUITestCase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00178E170FC3935600CA6A07 /* GHUITestCase.h */; };
 		00A952B00FDA2B4C006A80A6 /* GHUNSObject+Swizzle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002058910F946E7800FC1898 /* GHUNSObject+Swizzle.h */; };
 		00A952B10FDA2B4C006A80A6 /* GHNSLocale+Mock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002053EC0F93FAD100FC1898 /* GHNSLocale+Mock.h */; };
 		00A952B20FDA2B4C006A80A6 /* GHMockNSHTTPURLResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 000204050F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.h */; };
@@ -357,12 +343,10 @@
 		00A952D90FDA2B99006A80A6 /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002053ED0F93FAD100FC1898 /* GHNSLocale+Mock.m */; };
 		00A952DA0FDA2B99006A80A6 /* GHUNSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 002058920F946E7800FC1898 /* GHUNSObject+Swizzle.m */; };
 		00A952DB0FDA2B99006A80A6 /* GHUnitIPhoneTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */; };
-		00A952DC0FDA2B99006A80A6 /* GHUITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E180FC3935600CA6A07 /* GHUITestCase.m */; };
 		00A952DD0FDA2B99006A80A6 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E2E0FC3981900CA6A07 /* GHNSInvocationProxy.m */; };
 		00A952DF0FDA2B99006A80A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		00A952E00FDA2B99006A80A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		00A952E20FDA2B99006A80A6 /* RunTests.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DA16AB0F89C52E001FE08E /* RunTests.sh */; };
-		00A952E30FDA2B99006A80A6 /* GHUITestCase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00178E170FC3935600CA6A07 /* GHUITestCase.h */; };
 		00A952E40FDA2B99006A80A6 /* GHUNSObject+Swizzle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002058910F946E7800FC1898 /* GHUNSObject+Swizzle.h */; };
 		00A952E50FDA2B99006A80A6 /* GHNSLocale+Mock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002053EC0F93FAD100FC1898 /* GHNSLocale+Mock.h */; };
 		00A952E60FDA2B99006A80A6 /* GHMockNSHTTPURLResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 000204050F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.h */; };
@@ -398,12 +382,10 @@
 		00A9530B0FDA2BB8006A80A6 /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002053ED0F93FAD100FC1898 /* GHNSLocale+Mock.m */; };
 		00A9530C0FDA2BB8006A80A6 /* GHUNSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 002058920F946E7800FC1898 /* GHUNSObject+Swizzle.m */; };
 		00A9530D0FDA2BB8006A80A6 /* GHUnitIPhoneTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */; };
-		00A9530E0FDA2BB8006A80A6 /* GHUITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E180FC3935600CA6A07 /* GHUITestCase.m */; };
 		00A9530F0FDA2BB8006A80A6 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E2E0FC3981900CA6A07 /* GHNSInvocationProxy.m */; };
 		00A953110FDA2BB8006A80A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		00A953120FDA2BB8006A80A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		00A953140FDA2BB8006A80A6 /* RunTests.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DA16AB0F89C52E001FE08E /* RunTests.sh */; };
-		00A953150FDA2BB8006A80A6 /* GHUITestCase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00178E170FC3935600CA6A07 /* GHUITestCase.h */; };
 		00A953160FDA2BB8006A80A6 /* GHUNSObject+Swizzle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002058910F946E7800FC1898 /* GHUNSObject+Swizzle.h */; };
 		00A953170FDA2BB8006A80A6 /* GHNSLocale+Mock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002053EC0F93FAD100FC1898 /* GHNSLocale+Mock.h */; };
 		00A953180FDA2BB8006A80A6 /* GHMockNSHTTPURLResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 000204050F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.h */; };
@@ -571,7 +553,6 @@
 			files = (
 				00A511320FCB3D9D000F355B /* RunTests.sh in CopyFiles */,
 				002911560FC47E0500523E9B /* GHMockCLLocationManager.h in CopyFiles */,
-				002911120FC47C3400523E9B /* GHUITestCase.h in CopyFiles */,
 				002911130FC47C3400523E9B /* GHUNSObject+Swizzle.h in CopyFiles */,
 				002911140FC47C3400523E9B /* GHNSLocale+Mock.h in CopyFiles */,
 				002911150FC47C3400523E9B /* GHMockNSHTTPURLResponse.h in CopyFiles */,
@@ -596,7 +577,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				00A511840FCB3F95000F355B /* RunTests.sh in CopyFiles */,
-				00A511850FCB3F95000F355B /* GHUITestCase.h in CopyFiles */,
 				00A511860FCB3F95000F355B /* GHUNSObject+Swizzle.h in CopyFiles */,
 				00A511870FCB3F95000F355B /* GHNSLocale+Mock.h in CopyFiles */,
 				00A511880FCB3F95000F355B /* GHMockNSHTTPURLResponse.h in CopyFiles */,
@@ -622,7 +602,6 @@
 			files = (
 				00A511CE0FCB40C1000F355B /* RunTests.sh in CopyFiles */,
 				00A511CF0FCB40C1000F355B /* GHMockCLLocationManager.h in CopyFiles */,
-				00A511D00FCB40C1000F355B /* GHUITestCase.h in CopyFiles */,
 				00A511D10FCB40C1000F355B /* GHUNSObject+Swizzle.h in CopyFiles */,
 				00A511D20FCB40C1000F355B /* GHNSLocale+Mock.h in CopyFiles */,
 				00A511D30FCB40C1000F355B /* GHMockNSHTTPURLResponse.h in CopyFiles */,
@@ -648,7 +627,6 @@
 			files = (
 				00A9526A0FDA28F4006A80A6 /* RunTests.sh in CopyFiles */,
 				00A9526B0FDA28F4006A80A6 /* GHMockCLLocationManager.h in CopyFiles */,
-				00A9526C0FDA28F4006A80A6 /* GHUITestCase.h in CopyFiles */,
 				00A9526D0FDA28F4006A80A6 /* GHUNSObject+Swizzle.h in CopyFiles */,
 				00A9526E0FDA28F4006A80A6 /* GHNSLocale+Mock.h in CopyFiles */,
 				00A9526F0FDA28F4006A80A6 /* GHMockNSHTTPURLResponse.h in CopyFiles */,
@@ -674,7 +652,6 @@
 			files = (
 				00A952AD0FDA2B4C006A80A6 /* RunTests.sh in CopyFiles */,
 				00A952AE0FDA2B4C006A80A6 /* GHMockCLLocationManager.h in CopyFiles */,
-				00A952AF0FDA2B4C006A80A6 /* GHUITestCase.h in CopyFiles */,
 				00A952B00FDA2B4C006A80A6 /* GHUNSObject+Swizzle.h in CopyFiles */,
 				00A952B10FDA2B4C006A80A6 /* GHNSLocale+Mock.h in CopyFiles */,
 				00A952B20FDA2B4C006A80A6 /* GHMockNSHTTPURLResponse.h in CopyFiles */,
@@ -699,7 +676,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				00A952E20FDA2B99006A80A6 /* RunTests.sh in CopyFiles */,
-				00A952E30FDA2B99006A80A6 /* GHUITestCase.h in CopyFiles */,
 				00A952E40FDA2B99006A80A6 /* GHUNSObject+Swizzle.h in CopyFiles */,
 				00A952E50FDA2B99006A80A6 /* GHNSLocale+Mock.h in CopyFiles */,
 				00A952E60FDA2B99006A80A6 /* GHMockNSHTTPURLResponse.h in CopyFiles */,
@@ -724,7 +700,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				00A953140FDA2BB8006A80A6 /* RunTests.sh in CopyFiles */,
-				00A953150FDA2BB8006A80A6 /* GHUITestCase.h in CopyFiles */,
 				00A953160FDA2BB8006A80A6 /* GHUNSObject+Swizzle.h in CopyFiles */,
 				00A953170FDA2BB8006A80A6 /* GHNSLocale+Mock.h in CopyFiles */,
 				00A953180FDA2BB8006A80A6 /* GHMockNSHTTPURLResponse.h in CopyFiles */,
@@ -749,7 +724,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				00A511370FCB3DA2000F355B /* RunTests.sh in CopyFiles */,
-				00178E190FC3935600CA6A07 /* GHUITestCase.h in CopyFiles */,
 				002058C70F9472D900FC1898 /* GHUNSObject+Swizzle.h in CopyFiles */,
 				002053EE0F93FAD100FC1898 /* GHNSLocale+Mock.h in CopyFiles */,
 				000204090F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.h in CopyFiles */,
@@ -782,11 +756,8 @@
 		00080FBB0F4FC7CB0034DF4C /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSenTestCase.m; sourceTree = "<group>"; };
 		00080FE30F4FC9260034DF4C /* GHUnitIPhoneExceptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneExceptionViewController.h; sourceTree = "<group>"; };
 		00080FE40F4FC9260034DF4C /* GHUnitIPhoneExceptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneExceptionViewController.m; sourceTree = "<group>"; };
-		00178E170FC3935600CA6A07 /* GHUITestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUITestCase.h; sourceTree = "<group>"; };
-		00178E180FC3935600CA6A07 /* GHUITestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUITestCase.m; sourceTree = "<group>"; };
 		00178E2D0FC3981900CA6A07 /* GHNSInvocationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHNSInvocationProxy.h; sourceTree = "<group>"; };
 		00178E2E0FC3981900CA6A07 /* GHNSInvocationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSInvocationProxy.m; sourceTree = "<group>"; };
-		00178E9D0FC39AB800CA6A07 /* GHUITestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUITestCaseTest.m; sourceTree = "<group>"; };
 		002053EC0F93FAD100FC1898 /* GHNSLocale+Mock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHNSLocale+Mock.h"; sourceTree = "<group>"; };
 		002053ED0F93FAD100FC1898 /* GHNSLocale+Mock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHNSLocale+Mock.m"; sourceTree = "<group>"; };
 		002054690F93FE6F00FC1898 /* GHNSLocaleMockTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSLocaleMockTest.m; sourceTree = "<group>"; };
@@ -1027,8 +998,6 @@
 				002D9C4F0F4915C2007932FE /* GHTest.m */,
 				002D9C500F4915C2007932FE /* GHTestCase.h */,
 				002D9C510F4915C2007932FE /* GHTestCase.m */,
-				00178E170FC3935600CA6A07 /* GHUITestCase.h */,
-				00178E180FC3935600CA6A07 /* GHUITestCase.m */,
 				0077302C0F8D8E0900586577 /* GHAsyncTestCase.h */,
 				0077302D0F8D8E0900586577 /* GHAsyncTestCase.m */,
 				002D9C520F4915C2007932FE /* GHTestGroup.h */,
@@ -1142,7 +1111,6 @@
 				00AF12E90F2D880E009F0ABA /* GHSlowTest.m */,
 				000203F10F8EA85400EC31BA /* GHMockNSURLConnectionTest.m */,
 				002054690F93FE6F00FC1898 /* GHNSLocaleMockTest.m */,
-				00178E9D0FC39AB800CA6A07 /* GHUITestCaseTest.m */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -1628,7 +1596,6 @@
 				002911080FC47C3400523E9B /* GHNSLocale+Mock.m in Sources */,
 				002911090FC47C3400523E9B /* GHUNSObject+Swizzle.m in Sources */,
 				0029110A0FC47C3400523E9B /* GHUnitIPhoneTableViewDataSource.m in Sources */,
-				0029110B0FC47C3400523E9B /* GHUITestCase.m in Sources */,
 				0029110C0FC47C3400523E9B /* GHNSInvocationProxy.m in Sources */,
 				002911570FC47E0500523E9B /* GHMockCLLocationManager.m in Sources */,
 			);
@@ -1648,7 +1615,6 @@
 				002911360FC47D3200523E9B /* GHSpecialTestCase.m in Sources */,
 				002911370FC47D3200523E9B /* GHMockNSURLConnectionTest.m in Sources */,
 				002911380FC47D3200523E9B /* GHNSLocaleMockTest.m in Sources */,
-				002911390FC47D3200523E9B /* GHUITestCaseTest.m in Sources */,
 				002911510FC47D9900523E9B /* GHMockCLLocationManagerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1678,7 +1644,6 @@
 				00A5117B0FCB3F95000F355B /* GHNSLocale+Mock.m in Sources */,
 				00A5117C0FCB3F95000F355B /* GHUNSObject+Swizzle.m in Sources */,
 				00A5117D0FCB3F95000F355B /* GHUnitIPhoneTableViewDataSource.m in Sources */,
-				00A5117E0FCB3F95000F355B /* GHUITestCase.m in Sources */,
 				00A5117F0FCB3F95000F355B /* GHNSInvocationProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1708,7 +1673,6 @@
 				00A511C30FCB40C1000F355B /* GHNSLocale+Mock.m in Sources */,
 				00A511C40FCB40C1000F355B /* GHUNSObject+Swizzle.m in Sources */,
 				00A511C50FCB40C1000F355B /* GHUnitIPhoneTableViewDataSource.m in Sources */,
-				00A511C60FCB40C1000F355B /* GHUITestCase.m in Sources */,
 				00A511C70FCB40C1000F355B /* GHNSInvocationProxy.m in Sources */,
 				00A511C80FCB40C1000F355B /* GHMockCLLocationManager.m in Sources */,
 			);
@@ -1739,7 +1703,6 @@
 				00A9525F0FDA28F4006A80A6 /* GHNSLocale+Mock.m in Sources */,
 				00A952600FDA28F4006A80A6 /* GHUNSObject+Swizzle.m in Sources */,
 				00A952610FDA28F4006A80A6 /* GHUnitIPhoneTableViewDataSource.m in Sources */,
-				00A952620FDA28F4006A80A6 /* GHUITestCase.m in Sources */,
 				00A952630FDA28F4006A80A6 /* GHNSInvocationProxy.m in Sources */,
 				00A952640FDA28F4006A80A6 /* GHMockCLLocationManager.m in Sources */,
 			);
@@ -1770,7 +1733,6 @@
 				00A952A20FDA2B4C006A80A6 /* GHNSLocale+Mock.m in Sources */,
 				00A952A30FDA2B4C006A80A6 /* GHUNSObject+Swizzle.m in Sources */,
 				00A952A40FDA2B4C006A80A6 /* GHUnitIPhoneTableViewDataSource.m in Sources */,
-				00A952A50FDA2B4C006A80A6 /* GHUITestCase.m in Sources */,
 				00A952A60FDA2B4C006A80A6 /* GHNSInvocationProxy.m in Sources */,
 				00A952A70FDA2B4C006A80A6 /* GHMockCLLocationManager.m in Sources */,
 			);
@@ -1801,7 +1763,6 @@
 				00A952D90FDA2B99006A80A6 /* GHNSLocale+Mock.m in Sources */,
 				00A952DA0FDA2B99006A80A6 /* GHUNSObject+Swizzle.m in Sources */,
 				00A952DB0FDA2B99006A80A6 /* GHUnitIPhoneTableViewDataSource.m in Sources */,
-				00A952DC0FDA2B99006A80A6 /* GHUITestCase.m in Sources */,
 				00A952DD0FDA2B99006A80A6 /* GHNSInvocationProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1831,7 +1792,6 @@
 				00A9530B0FDA2BB8006A80A6 /* GHNSLocale+Mock.m in Sources */,
 				00A9530C0FDA2BB8006A80A6 /* GHUNSObject+Swizzle.m in Sources */,
 				00A9530D0FDA2BB8006A80A6 /* GHUnitIPhoneTableViewDataSource.m in Sources */,
-				00A9530E0FDA2BB8006A80A6 /* GHUITestCase.m in Sources */,
 				00A9530F0FDA2BB8006A80A6 /* GHNSInvocationProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1861,7 +1821,6 @@
 				002053EF0F93FAD100FC1898 /* GHNSLocale+Mock.m in Sources */,
 				002058940F946E7800FC1898 /* GHUNSObject+Swizzle.m in Sources */,
 				003280F90FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m in Sources */,
-				00178E1A0FC3935600CA6A07 /* GHUITestCase.m in Sources */,
 				00178E300FC3981900CA6A07 /* GHNSInvocationProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1880,7 +1839,6 @@
 				0077302B0F8D8DF400586577 /* GHSpecialTestCase.m in Sources */,
 				000203F20F8EA85400EC31BA /* GHMockNSURLConnectionTest.m in Sources */,
 				0020546A0F93FE6F00FC1898 /* GHNSLocaleMockTest.m in Sources */,
-				00178E9E0FC39AB800CA6A07 /* GHUITestCaseTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

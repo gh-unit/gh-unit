@@ -24,20 +24,8 @@
 - (void)testLog {
 	for(NSInteger i = 0; i < 30; i++) {
 		GHTestLog(@"Line: %d", i);
-		[NSThread sleepForTimeInterval:0.3];
+		[NSThread sleepForTimeInterval:0.04];
 	}
 }
-
-// For testing display
-
-//- (void)testException {
-//	GHTestLog(@"Will raise an exception");
-//	[NSException raise:@"SomeException" format:@"Some reason for the exception"];
-//}
-//
-//- (void)testMacroFail {
-//	GHAssertTrue(NO, @"Test fail");
-//}
-
 
 @end

@@ -68,8 +68,7 @@
 		005FDD390F33D373006B369F /* GHGTMTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */; };
 		00772F8C0F8D7A6400586577 /* GHAsyncTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 00772F8A0F8D7A6400586577 /* GHAsyncTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00772F8D0F8D7A6400586577 /* GHAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00772F8B0F8D7A6400586577 /* GHAsyncTestCase.m */; };
-		00907AD410017EA800267075 /* GHUITestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 00907AD210017EA800267075 /* GHUITestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		00907AD510017EA800267075 /* GHUITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00907AD310017EA800267075 /* GHUITestCase.m */; };
+		0091B12B100EEE9B000B8C77 /* GHTestFail.m in Sources */ = {isa = PBXBuildFile; fileRef = 0091B12A100EEE9B000B8C77 /* GHTestFail.m */; };
 		00A9540A0FDC7539006A80A6 /* GHNSInvocationProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 00A954080FDC7539006A80A6 /* GHNSInvocationProxy.h */; settings = {ATTRIBUTES = (); }; };
 		00A9540B0FDC7539006A80A6 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A954090FDC7539006A80A6 /* GHNSInvocationProxy.m */; };
 		00AF0E3A0F2C4D47009F0ABA /* SenTestingKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00970A550F28397F00189A9D /* SenTestingKit.framework */; };
@@ -172,8 +171,7 @@
 		00772F8A0F8D7A6400586577 /* GHAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAsyncTestCase.h; sourceTree = "<group>"; };
 		00772F8B0F8D7A6400586577 /* GHAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCase.m; sourceTree = "<group>"; };
 		00772F910F8D7ABA00586577 /* GHAsyncTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCaseTest.m; sourceTree = "<group>"; };
-		00907AD210017EA800267075 /* GHUITestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUITestCase.h; sourceTree = "<group>"; };
-		00907AD310017EA800267075 /* GHUITestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUITestCase.m; sourceTree = "<group>"; };
+		0091B12A100EEE9B000B8C77 /* GHTestFail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestFail.m; sourceTree = "<group>"; };
 		00970A2F0F2836CE00189A9D /* GHSenTestingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSenTestingTest.m; sourceTree = "<group>"; };
 		00970A550F28397F00189A9D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		009DD7A60F26EC6C0058A2B0 /* GHSetUpTearDownTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSetUpTearDownTest.m; sourceTree = "<group>"; };
@@ -249,8 +247,6 @@
 				002D9BE30F49158F007932FE /* GHTestSuite.m */,
 				002D9BE40F49158F007932FE /* GHTesting.h */,
 				002D9BE50F49158F007932FE /* GHTesting.m */,
-				00907AD210017EA800267075 /* GHUITestCase.h */,
-				00907AD310017EA800267075 /* GHUITestCase.m */,
 				002D9BE60F49158F007932FE /* GHUnit.h */,
 				002D9BE70F49158F007932FE /* SharedUI */,
 				00C1A2D80F52847700FCCA14 /* RunTests.sh */,
@@ -412,6 +408,7 @@
 				00772F910F8D7ABA00586577 /* GHAsyncTestCaseTest.m */,
 				00DCB7DA0FA4F1300022DA5A /* GHMockNSURLConnectionTest.m */,
 				00DCB7DB0FA4F1300022DA5A /* GHNSLocaleMockTest.m */,
+				0091B12A100EEE9B000B8C77 /* GHTestFail.m */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -526,7 +523,6 @@
 				0052DE940FFEDC3800EDB178 /* BWSplitView.h in Headers */,
 				0052DEBA0FFEDC8300EDB178 /* NSColor+BWAdditions.h in Headers */,
 				0052DEBD0FFEDC8300EDB178 /* NSEvent+BWAdditions.h in Headers */,
-				00907AD410017EA800267075 /* GHUITestCase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +643,7 @@
 				00DCB7DC0FA4F1300022DA5A /* GHMockNSURLConnectionTest.m in Sources */,
 				00DCB7DD0FA4F1300022DA5A /* GHNSLocaleMockTest.m in Sources */,
 				00DCBB060FA523EC0022DA5A /* GHAsyncTestCaseTest.m in Sources */,
+				0091B12B100EEE9B000B8C77 /* GHTestFail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,7 +675,6 @@
 				0052DE950FFEDC3800EDB178 /* BWSplitView.m in Sources */,
 				0052DEBB0FFEDC8300EDB178 /* NSColor+BWAdditions.m in Sources */,
 				0052DEBE0FFEDC8300EDB178 /* NSEvent+BWAdditions.m in Sources */,
-				00907AD510017EA800267075 /* GHUITestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

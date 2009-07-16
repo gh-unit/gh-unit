@@ -79,9 +79,9 @@
  A test group may also consist of a group of groups (since GHTestGroup conforms to GHTest),
  and this might represent a GHTestSuite.
  */
-@interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup> {
+@interface GHTestGroup : NSOperation <GHTestDelegate, GHTestGroup> {
 	
-	id<GHTestDelegate> delegate_; // weak
+	NSObject<GHTestDelegate> *delegate_; // weak
 	id<GHTestGroup> parent_; // weak
 	
 	NSMutableArray *children_; // of id<GHTest>
@@ -91,16 +91,17 @@
 	GHTestStatus status_; // Current status of the group (current status of running or completed child tests)
 	GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
 	
-	id testCase_; // Is set if test is created from initWithTestCase:delegate:
-	id<GHTest> currentTest_; // weak
+	// Set if test is created from initWithTestCase:delegate:
+	// Allows use to perform setUpClass and tearDownClass (once per test case run)
+	id testCase_; 
 	
 	NSException *exception_; // If exception happens in group setUpClass/tearDownClass
 	
-	BOOL ignore_;
+	NSOperationQueue *operationQueue_; // weak; If specified will run on queue
 }
 
-@property (readonly, nonatomic) NSArray *children;
-@property (assign, nonatomic) id<GHTestDelegate> delegate;
+@property (readonly, nonatomic) NSArray */*of id<GHTest>*/children;
+@property (assign, nonatomic) NSObject<GHTestDelegate> *delegate;
 @property (assign, nonatomic) id<GHTestGroup> parent;
 @property (readonly, nonatomic) id testCase;
 
@@ -110,8 +111,9 @@
 
 @property (readonly, nonatomic) NSTimeInterval interval;
 @property (readonly, nonatomic) GHTestStats stats;
+@property (readonly, nonatomic) NSException *exception;
 
-@property (assign, nonatomic) BOOL ignore;
+@property (assign, nonatomic) NSOperationQueue *operationQueue;
 
 /*!
  Create an empty test group.
@@ -126,39 +128,39 @@
 
  A test group is a collection of GHTest. 
  @param testCase Test case, could be a subclass of SenTestCase or GHTestCase
+ @param operationQueue Operation queue to run on
  @param delegate Delegate, notifies of test start and end
  @result New test group
  */
-- (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
+- (id)initWithTestCase:(id)testCase operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate;
 
 /*!
  Create test group from a single test.
  @param testCase
  @param selector Test to run
+ @param operationQueue Operation queue to run on
  @param delegate
  */
-- (id)initWithTestCase:(id)testCase selector:(SEL)selector delegate:(id<GHTestDelegate>)delegate;
+- (id)initWithTestCase:(id)testCase selector:(SEL)selector operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate;
 
 /*!
  Create test group from a test case.
  @param testCase Test case, could be a subclass of SenTestCase or GHTestCase
+ @param operationQueue Operation queue to run on
  @param delegate Delegate, notifies of test start and end
  @result New test group
  */
-+ (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
++ (GHTestGroup *)testGroupFromTestCase:(id)testCase operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate;
 
 /*!
  Add a test case (or test group) to this test group.
  @param testCase Test case, could be a subclass of SenTestCase or GHTestCase
+ @param operationQueue Operation queue
  */
-- (void)addTestCase:(id)testCase;
+- (void)addTestCase:(id)testCase operationQueue:(NSOperationQueue *)operationQueue;
 
 - (void)addTestGroup:(GHTestGroup *)testGroup;
 
-/*!
- Run the test group.
- Will notify delegate as tests are run.
- */
-- (void)run;
+- (BOOL)shouldRunOnMainThread;
 
 @end

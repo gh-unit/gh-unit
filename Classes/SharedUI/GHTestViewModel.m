@@ -188,16 +188,21 @@
 		status = @"✸";
 		if (self.isGroupTest)
 			interval = [NSString stringWithFormat:@"%0.2fs", [test_ interval]];
-	} else if (self.isFinished) {
-		if (self.failed) status = @"✘";
-		else status = @"✔";
-		interval = [NSString stringWithFormat:@"%0.2fs", [test_ interval]];
+	} else if (self.isEnded) {
+		if ([test_ status] == GHTestStatusErrored) status = @"✘";
+		else if ([test_ status] == GHTestStatusSucceeded) status = @"✔";
+		else status = @"-";
+		if ([test_ interval] >= 0)
+			interval = [NSString stringWithFormat:@"%0.2fs", [test_ interval]];
 	} else if (!self.isSelected) {
 		status = @"";
 	}
 
 	if (self.isGroupTest) {
-		return [NSString stringWithFormat:@"%@ %@ %@", status, NSStringFromGHTestStats([test_ stats]), interval];
+		NSString *statsString = [NSString stringWithFormat:@"%d/%d (%d failed)", 
+														 ([test_ stats].succeedCount+[test_ stats].failureCount), 
+														 [test_ stats].testCount, [test_ stats].failureCount];
+		return [NSString stringWithFormat:@"%@ %@ %@", status, statsString, interval];
 	} else {
 		return [NSString stringWithFormat:@"%@ %@", status, interval];
 	}
@@ -205,7 +210,7 @@
 
 - (NSString *)nameWithStatus {
 	NSString *interval = @"";
-	if (self.isFinished) interval = [NSString stringWithFormat:@" (%0.2fs)", [test_ interval]];
+	if (self.isEnded) interval = [NSString stringWithFormat:@" (%0.2fs)", [test_ interval]];
 	return [NSString stringWithFormat:@"%@%@", self.name, interval];
 }
 
@@ -214,15 +219,11 @@
 }
 
 - (BOOL)failed {
-	return ([test_ stats].failureCount > 0);
+	return [test_ status] == GHTestStatusErrored;
 }
 	
 - (BOOL)isRunning {
-	return ([test_ status] == GHTestStatusRunning);
-}
-
-- (BOOL)isFinished {
-	return ([test_ status] == GHTestStatusFinished);
+	return GHTestStatusIsRunning([test_ status]);
 }
 
 - (BOOL)isEnded {
@@ -251,11 +252,14 @@
 }
 
 - (BOOL)isSelected {
-	return ![test_ ignore];
+	return [test_ status] != GHTestStatusDisabled;
 }
 
 - (void)setSelected:(BOOL)selected {
-	[test_ setIgnore:!selected];
+	// TODO(gabe): Can only disable if has no status
+	if ([test_ status] == GHTestStatusNone) {
+		if (!selected) [test_ disable];
+	}
 }
 
 @end

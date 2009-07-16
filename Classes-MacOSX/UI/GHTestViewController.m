@@ -55,6 +55,7 @@
 	[model_ release];	
 	[runner_ release];
 	[suite_ release];
+	// TODO(gabe): Safely dealloc operation queue
 	[super dealloc];
 }
 
@@ -100,14 +101,23 @@
 	[textView_ copy:sender];
 }
 
-- (void)loadTests {
+- (void)loadTests  {
 	[runner_ release];
 	
+	[operationQueue_ cancelAllOperations];
+	[operationQueue_ waitUntilAllOperationsAreFinished];
+	[operationQueue_ release];
+	operationQueue_ = [[NSOperationQueue alloc] init];
+	operationQueue_.maxConcurrentOperationCount = 1;
+	
 	GHTestSuite *suite = suite_;
-	if (!suite) suite = [GHTestSuite suiteFromEnv];	
+	if (!suite) {
+		suite = [GHTestSuite suiteFromEnv:operationQueue_];	
+	}
 	runner_ = [[GHTestRunner runnerForSuite:suite] retain];
 	runner_.delegate = self;
 	[self setRoot:(id<GHTestGroup>)runner_.test];	
+	[self setStatus:@"Select 'Run' to start tests"];
 }
 
 #pragma mark Running
@@ -121,18 +131,7 @@
 
 	[self loadTests];
 	self.running = YES;
-	[NSThread detachNewThreadSelector:@selector(_runTests) toTarget:self withObject:nil];	
-}
-
-- (void)_runTests {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];		
 	[runner_ run];
-	[pool release];
-	[self performSelectorOnMainThread:@selector(_afterRunTests) withObject:nil waitUntilDone:YES];
-}
-
-- (void)_afterRunTests {
-	self.running = NO;
 }
 
 #pragma mark -
@@ -186,8 +185,8 @@
 	[statusLabel_ setStringValue:[NSString stringWithFormat:@"Status: %@", status]];
 }
 
-- (NSString *)stringFromStatus:(GHTestStatus)status interval:(NSTimeInterval)interval {	
-	return [NSString stringWithFormat:@"%@ (%0.3fs)", NSStringFromGHTestStatus(status), interval];
+- (NSString *)statusStringWithInterval:(NSTimeInterval)interval {	
+	return [NSString stringWithFormat:@"%@ %0.3fs", (running_ ? @"Running" : @"Took"), interval];
 }
 
 - (NSString *)status {
@@ -247,12 +246,13 @@
 
 - (void)_updateStatus:(id<GHTest>)test {
 	if ([[test name] isEqual:@"Tests"]) {
-		NSInteger runTestCount = [test stats].testCount - [test stats].ignoreCount;
-		[progressIndicator_ setDoubleValue:(((double)[test stats].runCount / (double)runTestCount)) * 100.0];
+		NSInteger runCount = [test stats].succeedCount + [test stats].failureCount;
+		NSInteger totalRunCount = [test stats].testCount - ([test stats].disabledCount + [test stats].cancelCount);
+		[progressIndicator_ setDoubleValue:((double)runCount/(double)totalRunCount) * 100.0];
 
 		self.status = [NSString stringWithFormat:@"%@ %d/%d (%d failures)", 
-										 [self stringFromStatus:[test status] interval:[test interval]], 
-										 [test stats].runCount, runTestCount, [test stats].failureCount];
+									 [self statusStringWithInterval:[test interval]], 
+									 [test stats].succeedCount, totalRunCount, [test stats].failureCount];
 	}
 }
 
@@ -334,9 +334,9 @@
 	if ([[tableColumn identifier] isEqual:@"status"]) {
 		[cell setTextColor:[NSColor lightGrayColor]];	
 		
-		if ([item failed]) {
+		if ([item status] == GHTestStatusErrored) {
 			[cell setTextColor:[NSColor redColor]];
-		} else if ([item status] == GHTestStatusFinished) {
+		} else if ([item status] == GHTestStatusSucceeded) {
 			[cell setTextColor:[NSColor greenColor]];
 		} else if ([item status] == GHTestStatusRunning) {
 			[cell setTextColor:[NSColor blackColor]];
@@ -386,6 +386,7 @@
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
 	[self updateTest:runner.test];
 	[self selectFirstFailure];
+	self.running = NO;
 }
 
 
