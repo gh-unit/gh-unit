@@ -103,16 +103,18 @@
 
 - (void)loadTests  {
 	[runner_ release];
-	
+
+	// TODO(gabe): Shouldn't be able to load tests while operation queue is running; Maybe assert that and just release
 	[operationQueue_ cancelAllOperations];
 	[operationQueue_ waitUntilAllOperationsAreFinished];
 	[operationQueue_ release];
+
 	operationQueue_ = [[NSOperationQueue alloc] init];
-	operationQueue_.maxConcurrentOperationCount = 1;
+	operationQueue_.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
 	
 	GHTestSuite *suite = suite_;
 	if (!suite) {
-		suite = [GHTestSuite suiteFromEnv:operationQueue_];	
+		suite = [GHTestSuite suiteFromEnv:operationQueue_];
 	}
 	runner_ = [[GHTestRunner runnerForSuite:suite] retain];
 	runner_.delegate = self;
@@ -131,7 +133,7 @@
 
 	[self loadTests];
 	self.running = YES;
-	[runner_ run];
+	[runner_ runInBackground];
 }
 
 #pragma mark -

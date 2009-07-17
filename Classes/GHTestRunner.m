@@ -60,6 +60,8 @@
 
 @implementation GHTestRunner
 
+#define kGHTestRunnerDelegateProxyWait YES
+
 @synthesize test=test_, raiseExceptions=raiseExceptions_, delegate=delegate_, running=running_;
 
 - (id)initWithTest:(id<GHTest>)test {
@@ -91,26 +93,27 @@
 																									 operationQueue:operationQueue]];
 }
 
-+ (GHTestRunner *)runnerFromEnv:(NSOperationQueue *)operationQueue {	
++ (GHTestRunner *)runnerFromEnv:(NSOperationQueue *)operationQueue {
 	GHTestSuite *suite = [GHTestSuite suiteFromEnv:operationQueue];
 	return [GHTestRunner runnerForSuite:suite];
 }	
 
-+ (int)run {
-	return [self run:nil];
-}
-
-+ (int)run:(NSOperationQueue *)operationQueue {
++ (void)run:(NSOperationQueue *)operationQueue {
 	GHTestRunner *testRunner = [GHTestRunner runnerFromEnv:operationQueue];
 	[testRunner run];
-	return testRunner.stats.failureCount;
+}
+
++ (int)run {
+	GHTestRunner *testRunner = [GHTestRunner runnerFromEnv:nil];
+	[testRunner run];
+	return testRunner.stats.failureCount;	
 }
 
 - (int)run {
 	cancelled_ = NO;
 	running_ = YES;
 	[self _notifyStart];
-	[test_ run];	
+	[test_ run];
 	return self.stats.failureCount;
 }
 
@@ -118,46 +121,53 @@
 	cancelled_ = YES;
 	[test_ cancel];
 	if ([delegate_ respondsToSelector:@selector(testRunnerDidCancel:)])
-		[delegate_ testRunnerDidCancel:self];
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidCancel:self];
+}
+
+- (void)runInBackground {
+	[NSThread detachNewThreadSelector:@selector(_runInBackground) toTarget:self withObject:nil];
+}
+
+- (void)_runInBackground {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	[self run];
+	[pool release];
 }
 
 - (GHTestStats)stats {
 	return [test_ stats];
 }
 
-#define kGHTestRunnerInvokeWaitUntilDone YES
-
 - (void)_log:(NSString *)message {
 	fputs([[message stringByAppendingString:@"\n"] UTF8String], stderr);
   fflush(stderr);
 	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
-		[delegate_ testRunner:self didLog:message];
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didLog:message];
 }
 
 #pragma mark Delegates (GHTest)
 
-- (void)testDidStart:(id<GHTest>)test {
+- (void)testDidStart:(id<GHTest>)test source:(id<GHTest>)source {
 	if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
-		[delegate_ testRunner:self didStartTest:test];	
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didStartTest:source];	
 }
 
-- (void)testDidUpdate:(id<GHTest>)test {	
+- (void)testDidUpdate:(id<GHTest>)test source:(id<GHTest>)source {	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:)])
-		[delegate_ testRunner:self didUpdateTest:test];	
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didUpdateTest:source];	
 }
 
-- (void)testDidEnd:(id<GHTest>)test {	
+- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source {	
 	NSString *message = [NSString stringWithFormat:@"Test '%@' %@ (%0.3f seconds).",
-											 [test name], [test stats].failureCount > 0 ? @"failed" : @"passed", [test interval]];	
+											 [source name], [source stats].failureCount > 0 ? @"failed" : @"passed", [source interval]];	
 	[self _log:message];
 	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
-		[delegate_ testRunner:self didEndTest:test];
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didEndTest:source];
 	
-	NSLog(@"Test did end: %@ (%@)", test, test_);
 	// If the test associated with this runner ended then notify
-	if ([test_ isEqual:test]) {
+	if (test_ == source) {
 		if (cancelled_) {
 			[self _notifyCancelled];
 		} else {
@@ -167,14 +177,10 @@
 	}
 }
 
-- (void)test:(id<GHTest>)test didLog:(NSString *)message {
-	[self _log:[NSString stringWithFormat:@"%@: %@", test, message]];
+- (void)test:(id<GHTest>)test didLog:(NSString *)message source:(id<GHTest>)source {
+	[self _log:[NSString stringWithFormat:@"%@: %@", source, message]];
 	if ([delegate_ respondsToSelector:@selector(testRunner:test:didLog:)])
-		[delegate_ testRunner:self test:test didLog:message];
-}
-
-- (void)testDidIgnore:(id<GHTest>)test {
-	
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self test:source didLog:message];
 }
 
 #pragma mark Notifications (Private)
@@ -184,7 +190,7 @@
 	[self _log:message];
 	
 	if ([delegate_ respondsToSelector:@selector(testRunnerDidStart:)])
-		[delegate_ testRunnerDidStart:self];
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidStart:self];
 }
 
 - (void)_notifyCancelled {
@@ -192,7 +198,7 @@
 	[self _log:message];
 	
 	if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
-		[delegate_ testRunnerDidEnd:self];
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self];
 }
 
 - (void)_notifyFinished {
@@ -207,7 +213,7 @@
 	
 	
 	if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
-		[delegate_ testRunnerDidEnd:self];
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self];
 }
 
 @end

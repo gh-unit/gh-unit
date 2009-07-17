@@ -36,7 +36,7 @@ NSString *GHUnitTest = NULL;
 @implementation GHTestSuite
 
 - (id)initWithName:(NSString *)name testCases:(NSArray *)testCases operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate {
-	if ((self = [super initWithName:name delegate:delegate])) {
+	if ((self = [super initWithName:name operationQueue:nil delegate:delegate])) {
 		for(id testCase in testCases) {
 			[self addTestCase:testCase operationQueue:operationQueue];
 		}
@@ -46,7 +46,7 @@ NSString *GHUnitTest = NULL;
 
 + (GHTestSuite *)allTests:(NSOperationQueue *)operationQueue {
 	NSArray *testCases = [[GHTesting sharedInstance] loadAllTestCases];
-	GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" delegate:nil];	
+	GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" operationQueue:operationQueue delegate:nil];	
 	for(id testCase in testCases) {
 		[allTests addTestCase:testCase operationQueue:operationQueue];
 	}
@@ -55,7 +55,7 @@ NSString *GHUnitTest = NULL;
 
 + (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method operationQueue:(NSOperationQueue *)operationQueue {	
 	NSString *name = [NSString stringWithFormat:@"%@/%@", NSStringFromClass(testCaseClass), NSStringFromSelector(method)];
-	GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:name delegate:nil];
+	GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:name operationQueue:operationQueue delegate:nil];
 	id testCase = [[[testCaseClass alloc] init] autorelease];
 	if (!testCase) {
 		NSLog(@"Couldn't instantiate test: %@", NSStringFromClass(testCaseClass));
@@ -68,7 +68,7 @@ NSString *GHUnitTest = NULL;
 
 + (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilterString operationQueue:(NSOperationQueue *)operationQueue {
 	NSArray *testFilters = [testFilterString componentsSeparatedByString:@","];
-	GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:testFilterString delegate:nil];
+	GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:testFilterString operationQueue:operationQueue delegate:nil];
 
 	for(NSString *testFilter in testFilters) {
 		NSArray *components = [testFilter componentsSeparatedByString:@"/"];

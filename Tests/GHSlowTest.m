@@ -17,8 +17,7 @@
 #define kSlowTestTimeInterval 0.1
 
 - (void)testSlow {
-	[NSThread sleepForTimeInterval:kSlowTestTimeInterval];
-	// TODO(gabe): Check interval > kSlowTestTimeInterval
+	[NSThread sleepForTimeInterval:5];
 }
 
 - (void)testLog {

@@ -63,9 +63,11 @@ typedef struct {
 /*!
  Create GHTestStats.
  */
-GHTestStats GHTestStatsMake(NSInteger succeedCount, NSInteger failureCount, NSInteger disabledCount, NSInteger cancelCount, NSInteger testCount);
+extern GHTestStats GHTestStatsMake(NSInteger succeedCount, NSInteger failureCount, NSInteger disabledCount, NSInteger cancelCount, NSInteger testCount);
 
-NSString *NSStringFromGHTestStats(GHTestStats stats);
+const GHTestStats GHTestStatsEmpty;
+
+extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 
 @protocol GHTestDelegate;
 
@@ -87,6 +89,7 @@ NSString *NSStringFromGHTestStats(GHTestStats stats);
 - (void)setDelegate:(id<GHTestDelegate>)delegate;
 
 - (NSException *)exception;
+- (void)setException:(NSException *)exception;
 
 - (NSArray *)log;
 
@@ -101,10 +104,10 @@ NSString *NSStringFromGHTestStats(GHTestStats stats);
  Test delegate for notification when a test starts and ends.
  */
 @protocol GHTestDelegate <NSObject>
-- (void)testDidStart:(id<GHTest>)test;
-- (void)testDidUpdate:(id<GHTest>)test;
-- (void)testDidEnd:(id<GHTest>)test;
-- (void)test:(id<GHTest>)test didLog:(NSString *)message;
+- (void)testDidStart:(id<GHTest>)test source:(id<GHTest>)source;
+- (void)testDidUpdate:(id<GHTest>)test source:(id<GHTest>)source;
+- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source;
+- (void)test:(id<GHTest>)test didLog:(NSString *)message source:(id<GHTest>)source;
 @end
 
 /*!
@@ -142,7 +145,7 @@ NSString *NSStringFromGHTestStats(GHTestStats stats);
 @property (readonly, nonatomic) NSString *identifier; // Unique identifier for test
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSTimeInterval interval;
-@property (readonly, nonatomic) NSException *exception;
+@property (retain, nonatomic) NSException *exception;
 @property (readonly, nonatomic) GHTestStatus status;
 @property (readonly, nonatomic) NSArray *log;
 

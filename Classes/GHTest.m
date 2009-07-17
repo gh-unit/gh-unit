@@ -73,6 +73,8 @@ GHTestStats GHTestStatsMake(NSInteger succeedCount, NSInteger failureCount, NSIn
 	return stats;
 }
 
+const GHTestStats GHTestStatsEmpty = {0, 0, 0, 0, 0};
+
 NSString *NSStringFromGHTestStats(GHTestStats stats) {
 	return [NSString stringWithFormat:@"%d/%d/%d/%d/%d", stats.succeedCount, stats.failureCount, 
 					stats.disabledCount, stats.cancelCount, stats.testCount]; 
@@ -148,22 +150,30 @@ exception=exception_, status=status_, log=log_, identifier=identifier_;
 
 - (void)reset {
 	status_ = GHTestStatusNone;
-	[delegate_ testDidUpdate:self];
+	[delegate_ testDidUpdate:self source:self];
 }
 
 - (void)cancel {
 	if (status_ == GHTestStatusRunning) {
 		status_ = GHTestStatusCancelling;
-		// TODO(gabe): Call cancel on target if available?
-		[delegate_ testDidUpdate:self];
+		// TODO(gabe): Call cancel on target if available?		
 	} else {
 		status_ = GHTestStatusCancelled;
 	}
+	[delegate_ testDidUpdate:self source:self];
 }
 
 - (void)disable {
 	status_ = GHTestStatusDisabled;
-	[delegate_ testDidUpdate:self];
+	[delegate_ testDidUpdate:self source:self];
+}
+
+- (void)setException:(NSException *)exception {
+	[exception retain];
+	[exception_ release];
+	exception_ = exception;
+	status_ = GHTestStatusErrored;
+	[delegate_ testDidUpdate:self source:self];
 }
 
 - (void)run {
@@ -171,7 +181,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_;
 	
 	status_ = GHTestStatusRunning;
 	
-	[delegate_ testDidStart:self];
+	[delegate_ testDidStart:self source:self];
 	
 	[self setLogWriter:self];
 
@@ -188,13 +198,13 @@ exception=exception_, status=status_, log=log_, identifier=identifier_;
 	} else if (status_ == GHTestStatusRunning) {
 		status_ = GHTestStatusSucceeded;
 	}
-	[delegate_ testDidEnd:self];
+	[delegate_ testDidEnd:self source:self];
 }
 
 - (void)log:(NSString *)message testCase:(id)testCase {
 	if (!log_) log_ = [[NSMutableArray array] retain];
 	[log_ addObject:message];
-	[delegate_ test:self didLog:message];
+	[delegate_ test:self didLog:message source:self];
 }
 
 @end

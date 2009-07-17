@@ -79,3 +79,18 @@ static NSInteger tearDownClassCount = 0;
 
 @end
 
+@interface GHTearDownClassFailureTest : GHTestCase { }
+@end
+
+@implementation GHTearDownClassFailureTest
+
+- (void)tearDownClass {
+	GHFail(@"Test fail");
+}
+
+
+- (void)test1 { }
+- (void)test2 { }
+
+@end
+

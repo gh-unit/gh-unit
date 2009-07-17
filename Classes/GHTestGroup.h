@@ -121,7 +121,7 @@
  @param delegate Delegate, notifies of test start and end
  @result New test group
  */
-- (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate;
+- (id)initWithName:(NSString *)name operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate;
 
 /*!
  Create test group from a test case.
