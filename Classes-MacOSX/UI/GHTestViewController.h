@@ -56,8 +56,6 @@
 	GHTestSuite *suite_;
 	
 	GHTestViewModel *model_;
-	
-	NSOperationQueue *operationQueue_;
 }
 
 // Assign since they are retained as subviews

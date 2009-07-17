@@ -59,36 +59,35 @@
 @implementation GHTestGroup
 
 @synthesize stats=stats_, parent=parent_, children=children_, delegate=delegate_, interval=interval_, status=status_, testCase=testCase_, 
-operationQueue=operationQueue_, exception=exception_;
+exception=exception_;
 
-- (id)initWithName:(NSString *)name operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate {
+- (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate {
 	if ((self = [super init])) {
 		name_ = [name retain];				
-		operationQueue_ = operationQueue;
 		children_ = [[NSMutableArray array] retain];
 		delegate_ = delegate;
 	} 
 	return self;
 }
 
-- (id)initWithTestCase:(id)testCase operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate {
-	if ([self initWithName:NSStringFromClass([testCase class]) operationQueue:operationQueue delegate:delegate]) {
+- (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
+	if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
 		testCase_ = [testCase retain];
 		[self _addTestsFromTestCase:testCase];
 	}
 	return self;
 }
 
-- (id)initWithTestCase:(id)testCase selector:(SEL)selector operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate {
-	if ([self initWithName:NSStringFromClass([testCase class]) operationQueue:operationQueue delegate:delegate]) {
+- (id)initWithTestCase:(id)testCase selector:(SEL)selector delegate:(id<GHTestDelegate>)delegate {
+	if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
 		testCase_ = [testCase retain];
 		[self _addTest:[GHTest testWithTarget:testCase selector:selector]];
 	}
 	return self;
 }
 
-+ (GHTestGroup *)testGroupFromTestCase:(id)testCase operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate {
-	return [[[GHTestGroup alloc] initWithTestCase:testCase operationQueue:operationQueue delegate:delegate] autorelease];
++ (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
+	return [[[GHTestGroup alloc] initWithTestCase:testCase delegate:delegate] autorelease];
 }
 
 - (void)dealloc {
@@ -97,7 +96,6 @@ operationQueue=operationQueue_, exception=exception_;
 	[name_ release];
 	[children_ release];
 	[testCase_ release];
-	operationQueue_ = nil;
 	delegate_ = nil;
 	[super dealloc];
 }
@@ -118,8 +116,8 @@ operationQueue=operationQueue_, exception=exception_;
 	}
 }
 
-- (void)addTestCase:(id)testCase operationQueue:(NSOperationQueue *)operationQueue {
-	GHTestGroup *testCaseGroup = [[GHTestGroup alloc] initWithTestCase:testCase operationQueue:operationQueue delegate:self];
+- (void)addTestCase:(id)testCase {
+	GHTestGroup *testCaseGroup = [[GHTestGroup alloc] initWithTestCase:testCase delegate:self];
 	[self addTestGroup:testCaseGroup];
 	[testCaseGroup release];
 }
@@ -182,7 +180,7 @@ operationQueue=operationQueue_, exception=exception_;
 	[delegate_ testDidUpdate:self source:self];
 }
 
-- (void)_run {		
+- (void)_run:(NSOperationQueue *)operationQueue {
 	status_ = GHTestStatusRunning;
 	[delegate_ testDidStart:self source:self];
 	
@@ -211,9 +209,14 @@ operationQueue=operationQueue_, exception=exception_;
 			stats_.failureCount++;
 			[test setException:exception_];
 		} else {
-			[test run];
+			if (operationQueue) {
+				[operationQueue addOperation:[[[GHTestOperation alloc] initWithTest:test] autorelease]];
+			} else {
+				[test run];
+			}
 		}
 	}
+	[operationQueue waitUntilAllOperationsAreFinished];
 
 	// Tear down class (if we have a test case)
 	if (status_ == GHTestStatusRunning) {
@@ -245,14 +248,8 @@ operationQueue=operationQueue_, exception=exception_;
 	[delegate_ testDidEnd:self source:self];
 }
 
-- (void)main {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	if ([self shouldRunOnMainThread]) {
-		[self performSelectorOnMainThread:@selector(_run) withObject:nil waitUntilDone:NO];
-	} else {
-		[self _run];
-	}
-	[pool release];
+- (void)runInOperationQueue:(NSOperationQueue *)operationQueue {
+	[self _run:operationQueue];
 }
 
 - (BOOL)shouldRunOnMainThread {
@@ -262,11 +259,11 @@ operationQueue=operationQueue_, exception=exception_;
 }
 
 - (void)run {	
-	if (operationQueue_) {
-		[operationQueue_ addOperation:self];		
+	if ([self shouldRunOnMainThread]) {
+		[self performSelectorOnMainThread:@selector(_run:) withObject:nil waitUntilDone:NO];
 	} else {
-		[self _run];
-	}
+		[self _run:nil];
+	}	
 }
 
 #pragma mark Delegates (GHTestDelegate)

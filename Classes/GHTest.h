@@ -117,6 +117,11 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 - (void)log:(NSString *)message testCase:(id)testCase;
 @end
 
+@interface GHTestOperation : NSOperation { 
+	id<GHTest> test_;
+}
+@end
+
 /*!
  Default test implementation with a target/selector pair.
  - Consists of a target/selector

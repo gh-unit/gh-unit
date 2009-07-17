@@ -54,26 +54,22 @@ extern NSString *GHUnitTest;
 		- (void)testB2; (GHTest with target GHTestCase2 + testB2)  
  
  */
-@interface GHTestSuite : GHTestGroup {
-
-}
+@interface GHTestSuite : GHTestGroup { }
 
 /*! 
  Create test suite with test cases.
  @param name Label to give the suite
  @param testCases Array of init'ed test case classes
- @param operationQueue Operation queue to run test cases on
  @param delegate
  */
-- (id)initWithName:(NSString *)name testCases:(NSArray *)testCases operationQueue:(NSOperationQueue *)operationQueue delegate:(id<GHTestDelegate>)delegate;
+- (id)initWithName:(NSString *)name testCases:(NSArray *)testCases delegate:(id<GHTestDelegate>)delegate;
 
 /*!
  Creates a suite of all tests.
  Will load all classes that subclass from GHTestCase, SenTestCase or GTMTestCase (or register test case class).
- @param operationQueue Operation queue to run test cases on
  @result Suite
  */
-+ (GHTestSuite *)allTests:(NSOperationQueue *)operationQueue;
++ (GHTestSuite *)allTests;
 
 /*!
  Create suite of tests with filter.
@@ -84,25 +80,22 @@ extern NSString *GHUnitTest;
  'GHSlowTest/testSlowA -- Only runs the test method testSlowA in GHSlowTest
  
  @param testFilter Test filter
- @param operationQueue Operation queue to run test cases on
  @result Suite
  */
-+ (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilter operationQueue:(NSOperationQueue *)operationQueue;
++ (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilter;
 
 /*!
  Suite for a single test/method.
  @param testCaseClass
  @param method
- @param operationQueue Operation queue to run test cases on
  @result Suite
  */
-+ (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method operationQueue:(NSOperationQueue *)operationQueue;
++ (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method;
 
 /*!
  Return test suite based on environment (TEST=TestFoo/foo)
- @param operationQueue Operation queue to run test cases on
  @result Suite
  */
-+ (GHTestSuite *)suiteFromEnv:(NSOperationQueue *)operationQueue;
++ (GHTestSuite *)suiteFromEnv;
 
 @end

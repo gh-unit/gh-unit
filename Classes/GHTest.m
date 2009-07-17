@@ -208,3 +208,25 @@ exception=exception_, status=status_, log=log_, identifier=identifier_;
 }
 
 @end
+
+@implementation GHTestOperation
+
+- (id)initWithTest:(id<GHTest>)test {
+	if ((self = [super init])) {
+		test_ = [test retain];
+	}
+	return self;
+}
+
+- (void)dealloc {
+	[test_ release];
+	[super dealloc];
+}
+
+- (void)main {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	[test_ run];
+	[pool release];
+}
+
+@end

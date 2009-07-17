@@ -62,7 +62,7 @@
 
 #define kGHTestRunnerDelegateProxyWait YES
 
-@synthesize test=test_, raiseExceptions=raiseExceptions_, delegate=delegate_, running=running_;
+@synthesize test=test_, raiseExceptions=raiseExceptions_, delegate=delegate_, running=running_, operationQueue=operationQueue_;
 
 - (id)initWithTest:(id<GHTest>)test {
 	if ((self = [self init])) {
@@ -73,11 +73,12 @@
 
 - (void)dealloc {
 	[test_ release];
+	[operationQueue_ release];
 	[super dealloc];
 }
 
-+ (GHTestRunner *)runnerForAllTests:(NSOperationQueue *)operationQueue {
-	GHTestSuite *suite = [GHTestSuite allTests:operationQueue];
++ (GHTestRunner *)runnerForAllTests{
+	GHTestSuite *suite = [GHTestSuite allTests];
 	return [self runnerForSuite:suite];
 }
 
@@ -87,24 +88,18 @@
 	return [runner autorelease];
 }
 
-+ (GHTestRunner *)runnerForTestClassName:(NSString *)testClassName methodName:(NSString *)methodName operationQueue:(NSOperationQueue *)operationQueue {
++ (GHTestRunner *)runnerForTestClassName:(NSString *)testClassName methodName:(NSString *)methodName {
 	return [self runnerForSuite:[GHTestSuite suiteWithTestCaseClass:NSClassFromString(testClassName) 
-																													 method:NSSelectorFromString(methodName) 
-																									 operationQueue:operationQueue]];
+																													 method:NSSelectorFromString(methodName)]];
 }
 
-+ (GHTestRunner *)runnerFromEnv:(NSOperationQueue *)operationQueue {
-	GHTestSuite *suite = [GHTestSuite suiteFromEnv:operationQueue];
++ (GHTestRunner *)runnerFromEnv {
+	GHTestSuite *suite = [GHTestSuite suiteFromEnv];
 	return [GHTestRunner runnerForSuite:suite];
 }	
 
-+ (void)run:(NSOperationQueue *)operationQueue {
-	GHTestRunner *testRunner = [GHTestRunner runnerFromEnv:operationQueue];
-	[testRunner run];
-}
-
 + (int)run {
-	GHTestRunner *testRunner = [GHTestRunner runnerFromEnv:nil];
+	GHTestRunner *testRunner = [GHTestRunner runnerFromEnv];
 	[testRunner run];
 	return testRunner.stats.failureCount;	
 }
@@ -113,7 +108,11 @@
 	cancelled_ = NO;
 	running_ = YES;
 	[self _notifyStart];
-	[test_ run];
+	if ([test_ respondsToSelector:@selector(runInOperationQueue:)]) {
+		[test_ performSelector:@selector(runInOperationQueue:) withObject:operationQueue_];
+	} else {
+		[test_ run];
+	}
 	return self.stats.failureCount;
 }
 
@@ -162,10 +161,7 @@
 	NSString *message = [NSString stringWithFormat:@"Test '%@' %@ (%0.3f seconds).",
 											 [source name], [source stats].failureCount > 0 ? @"failed" : @"passed", [source interval]];	
 	[self _log:message];
-	
-	if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didEndTest:source];
-	
+		
 	// If the test associated with this runner ended then notify
 	if (test_ == source) {
 		if (cancelled_) {
@@ -175,6 +171,10 @@
 		}
 		running_ = NO;		
 	}
+	
+	if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didEndTest:source];
+
 }
 
 - (void)test:(id<GHTest>)test didLog:(NSString *)message source:(id<GHTest>)source {
