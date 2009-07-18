@@ -72,6 +72,8 @@
 		00A9540A0FDC7539006A80A6 /* GHNSInvocationProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 00A954080FDC7539006A80A6 /* GHNSInvocationProxy.h */; settings = {ATTRIBUTES = (); }; };
 		00A9540B0FDC7539006A80A6 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A954090FDC7539006A80A6 /* GHNSInvocationProxy.m */; };
 		00AF0E3A0F2C4D47009F0ABA /* SenTestingKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00970A550F28397F00189A9D /* SenTestingKit.framework */; };
+		00CDDBC41011576E00F5C4D5 /* GHTestOutlineViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 00CDDBC21011576E00F5C4D5 /* GHTestOutlineViewModel.h */; };
+		00CDDBC51011576E00F5C4D5 /* GHTestOutlineViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDBC31011576E00F5C4D5 /* GHTestOutlineViewModel.m */; };
 		00CDDCC10F75D6970089C60E /* GHRegisterTestCaseClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */; };
 		00CDDCE00F76F7730089C60E /* GHSpecialTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDCDF0F76F7730089C60E /* GHSpecialTestCase.m */; };
 		00CDDD300F76FABD0089C60E /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C1A2BE0F52813200FCCA14 /* GHUnitTestMain.m */; };
@@ -180,6 +182,8 @@
 		00A954090FDC7539006A80A6 /* GHNSInvocationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSInvocationProxy.m; sourceTree = "<group>"; };
 		00C1A2BE0F52813200FCCA14 /* GHUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitTestMain.m; sourceTree = "<group>"; };
 		00C1A2D80F52847700FCCA14 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
+		00CDDBC21011576E00F5C4D5 /* GHTestOutlineViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestOutlineViewModel.h; sourceTree = "<group>"; };
+		00CDDBC31011576E00F5C4D5 /* GHTestOutlineViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestOutlineViewModel.m; sourceTree = "<group>"; };
 		00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHRegisterTestCaseClassTest.m; sourceTree = "<group>"; };
 		00CDDCDE0F76F7730089C60E /* GHSpecialTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHSpecialTestCase.h; sourceTree = "<group>"; };
 		00CDDCDF0F76F7730089C60E /* GHSpecialTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSpecialTestCase.m; sourceTree = "<group>"; };
@@ -283,6 +287,8 @@
 				002D9BF10F49158F007932FE /* GHTestView.xib */,
 				002D9BF20F49158F007932FE /* GHTestViewController.h */,
 				002D9BF30F49158F007932FE /* GHTestViewController.m */,
+				00CDDBC21011576E00F5C4D5 /* GHTestOutlineViewModel.h */,
+				00CDDBC31011576E00F5C4D5 /* GHTestOutlineViewModel.m */,
 				002D9BF40F49158F007932FE /* GHTestWindow.xib */,
 				002D9BF50F49158F007932FE /* GHTestWindowController.h */,
 				002D9BF60F49158F007932FE /* GHTestWindowController.m */,
@@ -523,6 +529,7 @@
 				0052DE940FFEDC3800EDB178 /* BWSplitView.h in Headers */,
 				0052DEBA0FFEDC8300EDB178 /* NSColor+BWAdditions.h in Headers */,
 				0052DEBD0FFEDC8300EDB178 /* NSEvent+BWAdditions.h in Headers */,
+				00CDDBC41011576E00F5C4D5 /* GHTestOutlineViewModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +682,7 @@
 				0052DE950FFEDC3800EDB178 /* BWSplitView.m in Sources */,
 				0052DEBB0FFEDC8300EDB178 /* NSColor+BWAdditions.m in Sources */,
 				0052DEBE0FFEDC8300EDB178 /* NSEvent+BWAdditions.m in Sources */,
+				00CDDBC51011576E00F5C4D5 /* GHTestOutlineViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

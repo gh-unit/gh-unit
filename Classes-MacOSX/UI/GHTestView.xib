@@ -298,7 +298,7 @@
 							</object>
 							<object class="NSButton" id="385792346">
 								<reference key="NSNextResponder" ref="806420868"/>
-								<int key="NSvFlags">-2147483359</int>
+								<int key="NSvFlags">289</int>
 								<string key="NSFrame">{{249, 59}, {32, 25}}</string>
 								<reference key="NSSuperview" ref="806420868"/>
 								<bool key="NSEnabled">YES</bool>
@@ -312,7 +312,7 @@
 									<int key="NSButtonFlags2">163</int>
 									<object class="NSCustomResource" key="NSNormalImage">
 										<string key="NSClassName">NSImage</string>
-										<string key="NSResourceName">NSGoRightTemplate</string>
+										<string key="NSResourceName">NSActionTemplate</string>
 									</object>
 									<string key="NSAlternateContents"/>
 									<string key="NSKeyEquivalent"/>
@@ -661,7 +661,7 @@
 					<object class="NSMutableArray" key="dict.values">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<integer value="260"/>
-						<integer value="200"/>
+						<reference ref="8"/>
 					</object>
 				</object>
 				<object class="NSMutableDictionary" key="BWSVMaxValues">
@@ -699,7 +699,7 @@
 						<reference ref="8"/>
 					</object>
 				</object>
-				<int key="BWSVCollapsiblePopupSelection">0</int>
+				<int key="BWSVCollapsiblePopupSelection">2</int>
 				<bool key="BWSVDividerCanCollapse">NO</bool>
 			</object>
 		</object>
@@ -721,22 +721,6 @@
 						<reference key="destination" ref="186507322"/>
 					</object>
 					<int key="connectionID">28</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">dataSource</string>
-						<reference key="source" ref="41764915"/>
-						<reference key="destination" ref="1001"/>
-					</object>
-					<int key="connectionID">29</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="41764915"/>
-						<reference key="destination" ref="1001"/>
-					</object>
-					<int key="connectionID">30</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -833,6 +817,22 @@
 						<reference key="destination" ref="7855149"/>
 					</object>
 					<int key="connectionID">97</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: status</string>
+						<reference key="source" ref="377112997"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="377112997"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">value: status</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">status</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">101</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1129,7 +1129,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{52, 219}, {650, 486}}</string>
+					<string>{{70, 223}, {650, 486}}</string>
 					<string>com.brandonwalkin.BWToolkit</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1159,7 +1159,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">97</int>
+			<int key="maxID">101</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

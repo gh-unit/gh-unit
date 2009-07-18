@@ -29,10 +29,11 @@
 
 #import "GHTestViewModel.h"
 #import "GHTestGroup.h"
+#import "GHTestOutlineViewModel.h"
 
 #import "BWSplitView.h"
 
-@interface GHTestViewController : NSViewController <GHTestRunnerDelegate> {
+@interface GHTestViewController : NSViewController <GHTestRunnerDelegate, GHTestOutlineViewModelDelegate> {
 
 	NSButton *runButton_;
 	NSButton *collapseButton_;
@@ -50,12 +51,12 @@
 	
 	BOOL wrapInTextView_;
 	
-	GHTestRunner *runner_;
 	BOOL running_;
+	NSString *status_;
 	
 	GHTestSuite *suite_;
 	
-	GHTestViewModel *model_;
+	GHTestOutlineViewModel *model_;
 }
 
 // Assign since they are retained as subviews
@@ -76,23 +77,16 @@
 
 @property (retain, nonatomic) GHTestSuite *suite;
 
-- (void)log:(NSString *)log;
-- (void)test:(id<GHTest>)test didLog:(NSString *)message;
-
-- (void)updateTest:(id<GHTest>)test;
-
-- (void)setRoot:(id<GHTestGroup>)root;
+- (void)loadTestSuite;
 
 - (void)selectFirstFailure;
-
-- (GHTestNode *)findFailure;
-- (GHTestNode *)findFailureFromNode:(GHTestNode *)node;
 
 - (IBAction)copy:(id)sender;
 
 - (IBAction)runTests:(id)sender;
 
+- (id<GHTest>)selectedTest;
+
 - (void)runTests;
-- (void)loadTests;
 
 @end

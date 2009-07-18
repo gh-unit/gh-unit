@@ -34,7 +34,7 @@
 @end
 
 @interface GHTestViewController (Private)
-- (void)_updateStatus:(id<GHTest>)test;
+- (void)_updateTest:(id<GHTest>)test;
 @end
 
 @implementation GHTestViewController
@@ -44,22 +44,29 @@
 @synthesize statusLabel=statusLabel_, progressIndicator=progressIndicator_, outlineView=outlineView_;
 @synthesize textSegmentedControl=textSegmentedControl_, textView=textView_, wrapInTextView=wrapInTextView_;
 
-@synthesize suite=suite_, running=running_;
+@synthesize suite=suite_, running=running_, status=status_;
 
 - (id)init {
-	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { }
+	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { 
+		suite_ = [[GHTestSuite suiteFromEnv] retain];
+	}
 	return self;
 }
 
 - (void)dealloc {
-	[model_ release];	
-	[runner_ release];
+	model_.delegate = nil;
+	[model_ release];
 	[suite_ release];
-	// TODO(gabe): Safely dealloc operation queue
+	[status_ release];
 	[super dealloc];
 }
 
 - (void)awakeFromNib {
+	model_ = [[GHTestOutlineViewModel alloc] init];
+	model_.delegate = self;
+	outlineView_.delegate = model_;
+	outlineView_.dataSource = model_;
+	
 	[textView_ setTextColor:[NSColor whiteColor]];
 	[textView_ setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
 	[textView_ setString:@""];
@@ -67,13 +74,41 @@
 	
 	[textSegmentedControl_ setTarget:self];
 	[textSegmentedControl_ setAction:@selector(_textSegmentChanged:)];
-	self.status = @"Loading tests...";
 
-	//[splitView_ setToggleCollapseButton:collapseButton_];
 	[collapseButton_ setTarget:self];
 	[collapseButton_ setAction:@selector(_toggleCollapse:)];
-	[self loadTests];
+	
+	[self loadTestSuite];
 }
+
+#pragma mark Running
+
+- (IBAction)runTests:(id)sender {
+	[self runTests];
+}
+
+- (void)runTests {
+	if (self.isRunning) return;
+
+	NSAssert(suite_, @"Must set test suite");
+	[self loadTestSuite];
+	self.status = @"Starting tests...";
+	self.running = YES;
+	[model_ run];
+}
+
+- (void)loadTestSuite {
+	self.status = @"Loading tests...";
+	GHTestRunner *runner = [model_ loadTestSuite:suite_];	
+	runner.delegate = self;
+	
+	[outlineView_ reloadData];
+	[outlineView_ reloadItem:nil reloadChildren:YES];
+	[outlineView_ expandItem:nil expandChildren:YES];
+	self.status = @"Select 'Run' to start tests";
+}
+
+#pragma mark -
 
 - (void)setWrapInTextView:(BOOL)wrapInTextView {
 	wrapInTextView_ = wrapInTextView;
@@ -101,49 +136,25 @@
 	[textView_ copy:sender];
 }
 
-- (void)loadTests  {
-	[runner_ release];
-	
-	GHTestSuite *suite = suite_;
-	if (!suite) {
-		suite = [GHTestSuite suiteFromEnv];
-	}
-	runner_ = [[GHTestRunner runnerForSuite:suite] retain];
-	runner_.delegate = self;
-	
-	NSOperationQueue *operationQueue = [[[NSOperationQueue alloc] init] autorelease];
-	operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
-	runner_.operationQueue = operationQueue;
-	
-	[self setRoot:(id<GHTestGroup>)runner_.test];	
-	[self setStatus:@"Select 'Run' to start tests"];
-}
-
-#pragma mark Running
-
-- (IBAction)runTests:(id)sender {
-	[self runTests];
-}
-
-- (void)runTests {
-	if (self.isRunning) return;
-
-	[self loadTests];
-	self.running = YES;
-	[runner_ runInBackground];
-}
-
-#pragma mark -
-
 - (void)_toggleCollapse:(id)sender {
-	CGFloat windowWidth = self.view.window.frame.size.width;
-	CGFloat minWindowWidth = (splitView_.collapsibleSubviewCollapsed ? 600 : 0);
-	if (windowWidth < minWindowWidth) {
+	BOOL collapsed = [splitView_ isSubviewCollapsed:detailsView_] || detailsView_.frame.size.width == 0;
+	
+	if (!collapsed) {
+		CGFloat splitWidth = [splitView_ bounds].size.width / 2;
 		NSRect frame = self.view.window.frame;
-		frame.size.width = 400;
+		frame.size.width = splitWidth;
 		[self.view.window setFrame:frame display:YES animate:YES];
+		[splitView_ setPosition:splitWidth ofDividerAtIndex:0];
+	} else {
+		CGFloat windowWidth = self.view.window.frame.size.width;
+		CGFloat minWindowWidth = 600;
+		if (windowWidth < minWindowWidth) {
+			NSRect frame = self.view.window.frame;
+			frame.size.width = minWindowWidth;
+			[self.view.window setFrame:frame display:YES animate:YES];
+		}
+		[splitView_ setPosition:round([splitView_ bounds].size.width/2.0) ofDividerAtIndex:0];
 	}
-	[splitView_ toggleCollapse:sender];
 }
 
 - (void)_setText:(NSInteger)row selector:(SEL)selector {
@@ -168,31 +179,6 @@
 	}
 }
 
-- (void)setRoot:(id<GHTestGroup>)rootTest {
-	[model_ release];
-	model_ = nil;
-	if (rootTest) {
-		model_ = [[GHTestViewModel alloc] initWithRoot:rootTest];
-		[outlineView_ reloadData];
-		[outlineView_ reloadItem:nil reloadChildren:YES];
-		[outlineView_ expandItem:nil expandChildren:YES];
-		[self _updateStatus:rootTest];
-	}
-}
-
-- (void)setStatus:(NSString *)status {
-	[statusLabel_ setStringValue:[NSString stringWithFormat:@"Status: %@", status]];
-}
-
-- (NSString *)statusStringWithInterval:(NSTimeInterval)interval {	
-	return [NSString stringWithFormat:@"%@ %0.3fs", (running_ ? @"Running" : @"Took"), interval];
-}
-
-- (NSString *)status {
-	[NSException raise:NSGenericException format:@"Operation not supported"];
-	return nil;
-}
-
 - (id<GHTest>)selectedTest {
 	NSInteger row = [outlineView_ selectedRow];
 	if (row < 0) return nil;
@@ -200,35 +186,8 @@
 	return node.test;
 }
 
-- (void)log:(NSString *)log {
-	
-}
-
-- (void)test:(id<GHTest>)test didLog:(NSString *)message {	
-	id<GHTest> selectedTest = self.selectedTest;
-	if ([textSegmentedControl_ selectedSegment] == 1 && [selectedTest isEqual:test]) {
-		[textView_ replaceCharactersInRange:NSMakeRange([[textView_ string] length], 0) 
-														 withString:[NSString stringWithFormat:@"%@\n", message]];
-		// TODO(gabe): Scroll
-	}
-}
-
-- (GHTestNode *)findFailure {
-	GHTestNode *node = [model_ root];
-	return [self findFailureFromNode:node];
-}
-
-- (GHTestNode *)findFailureFromNode:(GHTestNode *)node {
-	if (node.failed && [node.test exception]) return node;
-	for(GHTestNode *childNode in node.children) {
-		GHTestNode *foundNode = [self findFailureFromNode:childNode];
-		if (foundNode) return foundNode;
-	}
-	return nil;
-}
-
 - (void)selectFirstFailure {
-	GHTestNode *failedNode = [self findFailure];
+	GHTestNode *failedNode = [model_ findFailure];
 	NSInteger row = [outlineView_ rowForItem:failedNode];
 	if (row >= 0) {
 		[outlineView_ selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
@@ -237,153 +196,55 @@
 	}
 }
 
-- (void)updateTest:(id<GHTest>)test {
+- (void)_updateTest:(id<GHTest>)test {
 	GHTestNode *testNode = [model_ findTestNode:test];
 	[outlineView_ reloadItem:testNode];	
-	[self _updateStatus:model_.root.test];
+
+	NSInteger runCount = [suite_ stats].succeedCount + [suite_ stats].failureCount;
+	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ stats].disabledCount + [suite_ stats].cancelCount);
+	[progressIndicator_ setDoubleValue:((double)runCount/(double)totalRunCount) * 100.0];
+
+	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs", (running_ ? @"Running" : @"Took"), [suite_ interval]];
+	self.status = [NSString stringWithFormat:@"Status: %@ %d/%d (%d failures)", statusInterval,
+								 [suite_ stats].succeedCount, totalRunCount, [suite_ stats].failureCount];
 }
 
-- (void)_updateStatus:(id<GHTest>)test {
-	if ([[test name] isEqual:@"Tests"]) {
-		NSInteger runCount = [test stats].succeedCount + [test stats].failureCount;
-		NSInteger totalRunCount = [test stats].testCount - ([test stats].disabledCount + [test stats].cancelCount);
-		[progressIndicator_ setDoubleValue:((double)runCount/(double)totalRunCount) * 100.0];
+#pragma mark Delegates (GHTestOutlineViewModel)
 
-		self.status = [NSString stringWithFormat:@"%@ %d/%d (%d failures)", 
-									 [self statusStringWithInterval:[test interval]], 
-									 [test stats].succeedCount, totalRunCount, [test stats].failureCount];
-	}
-}
-
-#pragma mark DataSource (NSOutlineView)
-
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-	if (!item) {
-		return [model_ root];
-	} else {
-		return [[item children] objectAtIndex:index];
-	}
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {	
-	return (!item) ? YES : ([[item children] count] > 0);
-}
-
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-	return (!item) ? (model_ ? 1 : 0) : [[item children] count];
-}
-
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
-	if (!item) return nil;
-	
-	if (tableColumn == nil) {
-		return [item nameWithStatus];
-	} else if ([[tableColumn identifier] isEqual:@"name"]) {
-		return [item name];
-	} else if ([[tableColumn identifier] isEqual:@"status"]) {
-		return [item statusString];
-	} else if ([[tableColumn identifier] isEqual:@"enabled"]) {
-		return [NSNumber numberWithBool:[item isSelected]];
-	}
-	return nil;
-}
-
-- (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
-	if ([[tableColumn identifier] isEqual:@"enabled"]) {
-		[item setSelected:[object boolValue]];
-		[item notifyChanged];
-	}
-}
-
-// We can return a different cell for each row, if we want
-- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-	// If we return a cell for the 'nil' tableColumn, it will be used as a "full width" cell and span all the columns
-	if (tableColumn == nil && [item hasChildren]) {
-		// We want to use the cell for the name column, but we could construct a new cell if we wanted to, or return a different cell for each row.
-		return [[outlineView tableColumnWithIdentifier:@"name"] dataCell];
-	}
-	return [tableColumn dataCell];
-}
-
-#pragma mark Delegates (NSOutlineView)
-
-- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+- (void)testOutlineViewModelDidChangeSelection:(GHTestOutlineViewModel *)testOutlineViewModel {
 	[textView_ setString:@""];
 	[self _textSegmentChanged:textSegmentedControl_];
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
-	NSInteger clickedCol = [outlineView clickedColumn];
-	NSInteger clickedRow = [outlineView clickedRow];
-	if (clickedRow >= 0 && clickedCol >= 0) {
-		NSCell *cell = [outlineView preparedCellAtColumn:clickedCol row:clickedRow];
-		if ([cell isKindOfClass:[NSButtonCell class]] && [cell isEnabled]) {
-			return NO;
-		}            
-	}
-
-	return (![item hasChildren]);
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item {
-	return ([item hasChildren]);
-}
-
-- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {	
-	if ([[tableColumn identifier] isEqual:@"status"]) {
-		[cell setTextColor:[NSColor lightGrayColor]];	
-		
-		if ([item status] == GHTestStatusErrored) {
-			[cell setTextColor:[NSColor redColor]];
-		} else if ([item status] == GHTestStatusSucceeded) {
-			[cell setTextColor:[NSColor greenColor]];
-		} else if ([item status] == GHTestStatusRunning) {
-			[cell setTextColor:[NSColor blackColor]];
-		}
-	}	
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldTrackCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-	// We want to allow tracking for all the button cells, even if we don't allow selecting that particular row. 
-	if ([cell isKindOfClass:[NSButtonCell class]]) {
-		// We can also take a peek and make sure that the part of the cell clicked is an area that is normally tracked. Otherwise, clicking outside of the checkbox may make it check the checkbox
-		NSRect cellFrame = [outlineView frameOfCellAtColumn:[[outlineView tableColumns] indexOfObject:tableColumn] row:[outlineView rowForItem:item]];
-		NSUInteger hitTestResult = [cell hitTestForEvent:[NSApp currentEvent] inRect:cellFrame ofView:outlineView];
-		if (hitTestResult && NSCellHitTrackableArea != 0) {
-			return YES;
-		} else {
-			return NO;
-		}
-	} else {
-		// Only allow tracking on selected rows. This is what NSTableView does by default.
-		return [outlineView isRowSelected:[outlineView rowForItem:item]];
-	}
 }
 
 #pragma mark Delegates (GHTestRunner)
 
 - (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message {
-	[self log:message];
+	
 }
 
 - (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message {
-	[self test:test didLog:message];
+	id<GHTest> selectedTest = self.selectedTest;
+	if ([textSegmentedControl_ selectedSegment] == 1 && [selectedTest isEqual:test]) {
+		[textView_ replaceCharactersInRange:NSMakeRange([[textView_ string] length], 0) 
+														 withString:[NSString stringWithFormat:@"%@\n", message]];
+		// TODO(gabe): Scroll
+	}	
 }
 
 - (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
-	[self updateTest:test];
+	[self _updateTest:test];
 }
 
 - (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test {
-	[self updateTest:test];
+	[self _updateTest:test];
 }
 
 - (void)testRunnerDidStart:(GHTestRunner *)runner { 	
-	[self updateTest:runner.test];
+	[self _updateTest:runner.test];
 }
 
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
-	[self updateTest:runner.test];
+	[self _updateTest:runner.test];
 	[self selectFirstFailure];
 	self.running = NO;
 }
