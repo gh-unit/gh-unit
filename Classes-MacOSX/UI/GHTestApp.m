@@ -50,6 +50,7 @@
 #pragma mark Notifications (NSApplication)
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
+	[windowController_.viewController saveDefaults];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 

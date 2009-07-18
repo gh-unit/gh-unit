@@ -30,18 +30,22 @@
 #import "GHTestViewModel.h"
 #import "GTMStackTrace.h"
 
+@interface GHTestViewModel (Private)
+- (void)_loadTestNodes;
+@end
+
 @implementation GHTestViewModel
 
 @synthesize root=root_;
 
-- (id)initWithRoot:(id<GHTestGroup>)root {
+- (id)initWithSuite:(GHTestSuite *)suite {
 	if ((self = [super init])) {		
-		settingsKey_ = [[NSString stringWithFormat:@"GHUnit-%@", [root name]] copy];
+		suite_ = [suite retain];
+		settingsKey_ = [[NSString stringWithFormat:@"GHUnit-%@", [suite name]] copy];
 		settings_ = [[[NSUserDefaults standardUserDefaults] objectForKey:settingsKey_] mutableCopy];		
 		if (!settings_) settings_ = [[NSMutableDictionary dictionary] retain];
 		GHUDebug(@"Settings: %@", settings_);
-		
-		root_ = [[GHTestNode alloc] initWithTest:root children:[root children] source:self];
+		root_ = [[GHTestNode alloc] initWithTest:suite_ children:[suite_ children] source:self];
 		map_ = [[NSMutableDictionary dictionary] retain];
 	}
 	return self;
@@ -56,6 +60,8 @@
 	[map_ release];
 	[settingsKey_ release];
 	[settings_ release];
+	[suite_ release];
+	[runner_ release];
 	[super dealloc];
 }
 
@@ -78,6 +84,19 @@
 
 - (GHTestNode *)findTestNode:(id<GHTest>)test {
 	return [map_ objectForKey:[test identifier]];
+}
+
+- (GHTestNode *)findFailure {
+	return [self findFailureFromNode:root_];
+}
+
+- (GHTestNode *)findFailureFromNode:(GHTestNode *)node {
+	if (node.failed && [node.test exception]) return node;
+	for(GHTestNode *childNode in node.children) {
+		GHTestNode *foundNode = [self findFailureFromNode:childNode];
+		if (foundNode) return foundNode;
+	}
+	return nil;
 }
 
 - (NSInteger)numberOfGroups {
@@ -122,6 +141,25 @@
 	GHUDebug(@"Saving settings: %@", settings_);
 	[[NSUserDefaults standardUserDefaults] setObject:settings_ forKey:settingsKey_];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)cancel {
+	runner_.delegate = nil;
+	[runner_ cancel];
+	[runner_ release];
+}
+
+- (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel {
+	[self cancel];
+	runner_ = [[GHTestRunner runnerForSuite:suite_] retain];		
+	runner_.delegate = delegate;
+	if (inParallel) {
+		NSOperationQueue *operationQueue = [[[NSOperationQueue alloc] init] autorelease];
+		operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
+		runner_.operationQueue = operationQueue;
+	}
+	
+	[runner_ runInBackground];
 }
 
 @end

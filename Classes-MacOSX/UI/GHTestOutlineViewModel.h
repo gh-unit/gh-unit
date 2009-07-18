@@ -3,10 +3,9 @@
 //  GHUnit
 //
 //  Created by Gabriel Handford on 7/17/09.
-//  Copyright 2009 Yelp. All rights reserved.
+//  Copyright 2009. All rights reserved.
 //
 
-#import "GHTestOutlineViewModel.h"
 #import "GHTestViewModel.h"
 
 @class GHTestOutlineViewModel;
@@ -16,22 +15,10 @@
 @end
 
 
-@interface GHTestOutlineViewModel : NSObject {
-	GHTestViewModel *model_;
-	
-	GHTestRunner *runner_;
-	
+@interface GHTestOutlineViewModel : GHTestViewModel {
 	id<GHTestOutlineViewModelDelegate> delegate_; // weak
 }
 
 @property (assign, nonatomic) id<GHTestOutlineViewModelDelegate> delegate;
-
-- (GHTestNode *)findFailure;
-- (GHTestNode *)findFailureFromNode:(GHTestNode *)node;
-- (GHTestNode *)findTestNode:(id<GHTest>)test;
-
-- (GHTestRunner *)loadTestSuite:(GHTestSuite *)suite;
-
-- (void)run;
 
 @end

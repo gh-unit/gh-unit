@@ -39,16 +39,12 @@
 
 @implementation GHTestViewController
 
-@synthesize runButton=runButton_, collapseButton=collapseButton_;
-@synthesize splitView=splitView_, statusView=statusView_, detailsView=detailsView_;
-@synthesize statusLabel=statusLabel_, progressIndicator=progressIndicator_, outlineView=outlineView_;
-@synthesize textSegmentedControl=textSegmentedControl_, textView=textView_, wrapInTextView=wrapInTextView_;
-
-@synthesize suite=suite_, running=running_, status=status_;
+@synthesize suite=suite_, running=running_, status=status_, statusProgress=statusProgress_, wrapInTextView=wrapInTextView_;
 
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { 
 		suite_ = [[GHTestSuite suiteFromEnv] retain];
+		collapsed_ = YES;		
 	}
 	return self;
 }
@@ -62,22 +58,18 @@
 }
 
 - (void)awakeFromNib {
-	model_ = [[GHTestOutlineViewModel alloc] init];
+	[model_ release];
+	model_ = [[GHTestOutlineViewModel alloc] initWithSuite:suite_];
 	model_.delegate = self;
-	outlineView_.delegate = model_;
-	outlineView_.dataSource = model_;
+	_outlineView.delegate = model_;
+	_outlineView.dataSource = model_;		
 	
-	[textView_ setTextColor:[NSColor whiteColor]];
-	[textView_ setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
-	[textView_ setString:@""];
+	[_textView setTextColor:[NSColor whiteColor]];
+	[_textView setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
+	[_textView setString:@""];
 	self.wrapInTextView = NO;
 	
-	[textSegmentedControl_ setTarget:self];
-	[textSegmentedControl_ setAction:@selector(_textSegmentChanged:)];
-
-	[collapseButton_ setTarget:self];
-	[collapseButton_ setAction:@selector(_toggleCollapse:)];
-	
+	[self loadDefaults];
 	[self loadTestSuite];
 }
 
@@ -89,22 +81,20 @@
 
 - (void)runTests {
 	if (self.isRunning) return;
-
 	NSAssert(suite_, @"Must set test suite");
 	[self loadTestSuite];
 	self.status = @"Starting tests...";
 	self.running = YES;
-	[model_ run];
+	BOOL inParallel = [[NSUserDefaults standardUserDefaults] boolForKey:@"RunInParallel"];
+	[model_ run:self inParallel:inParallel];
 }
 
 - (void)loadTestSuite {
 	self.status = @"Loading tests...";
-	GHTestRunner *runner = [model_ loadTestSuite:suite_];	
-	runner.delegate = self;
-	
-	[outlineView_ reloadData];
-	[outlineView_ reloadItem:nil reloadChildren:YES];
-	[outlineView_ expandItem:nil expandChildren:YES];
+	[suite_ reset];
+	[_outlineView reloadData];
+	[_outlineView reloadItem:nil reloadChildren:YES];
+	[_outlineView expandItem:nil expandChildren:YES];
 	self.status = @"Select 'Run' to start tests";
 }
 
@@ -114,37 +104,31 @@
 	wrapInTextView_ = wrapInTextView;
 	if (wrapInTextView_) {
 		// No horizontal scroll, word wrapping
-		[[textView_ enclosingScrollView] setHasHorizontalScroller:NO];		
-		[textView_ setHorizontallyResizable:NO];
-		NSSize size = [[textView_ enclosingScrollView] frame].size;
-		[[textView_ textContainer] setContainerSize:NSMakeSize(size.width, FLT_MAX)];	
-		[[textView_ textContainer] setWidthTracksTextView:YES];
-		NSRect frame = [textView_ frame];
+		[[_textView enclosingScrollView] setHasHorizontalScroller:NO];		
+		[_textView setHorizontallyResizable:NO];
+		NSSize size = [[_textView enclosingScrollView] frame].size;
+		[[_textView textContainer] setContainerSize:NSMakeSize(size.width, FLT_MAX)];	
+		[[_textView textContainer] setWidthTracksTextView:YES];
+		NSRect frame = [_textView frame];
 		frame.size.width = size.width;
-		[textView_ setFrame:frame];
+		[_textView setFrame:frame];
 	} else {
 		// So we have horizontal scroll
-		[[textView_ enclosingScrollView] setHasHorizontalScroller:YES];		
-		[textView_ setHorizontallyResizable:YES];
-		[[textView_ textContainer] setContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)];	
-		[[textView_ textContainer] setWidthTracksTextView:NO];		
+		[[_textView enclosingScrollView] setHasHorizontalScroller:YES];		
+		[_textView setHorizontallyResizable:YES];
+		[[_textView textContainer] setContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)];	
+		[[_textView textContainer] setWidthTracksTextView:NO];		
 	}
-	[textView_ setNeedsDisplay:YES];
+	[_textView setNeedsDisplay:YES];
 }
 
 - (IBAction)copy:(id)sender {
-	[textView_ copy:sender];
+	[_textView copy:sender];
 }
 
-- (void)_toggleCollapse:(id)sender {
-	BOOL collapsed = [splitView_ isSubviewCollapsed:detailsView_] || detailsView_.frame.size.width == 0;
-	
-	if (!collapsed) {
-		CGFloat splitWidth = [splitView_ bounds].size.width / 2;
-		NSRect frame = self.view.window.frame;
-		frame.size.width = splitWidth;
-		[self.view.window setFrame:frame display:YES animate:YES];
-		[splitView_ setPosition:splitWidth ofDividerAtIndex:0];
+- (IBAction)toggleDetails:(id)sender {	
+	if (!collapsed_) {
+		[_detailsView removeFromSuperview];
 	} else {
 		CGFloat windowWidth = self.view.window.frame.size.width;
 		CGFloat minWindowWidth = 600;
@@ -153,25 +137,43 @@
 			frame.size.width = minWindowWidth;
 			[self.view.window setFrame:frame display:YES animate:YES];
 		}
-		[splitView_ setPosition:round([splitView_ bounds].size.width/2.0) ofDividerAtIndex:0];
+		[_splitView addSubview:_detailsView];
 	}
+	collapsed_ = !collapsed_;
+}
+
+- (void)loadDefaults {
+	// By default we are collapsed so expand if set
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"]) {
+		[self toggleDetails:nil];
+	
+		CGFloat width = [[NSUserDefaults standardUserDefaults] doubleForKey:@"SplitWidth"];
+		if (width > 200)
+			[_splitView setPosition:width ofDividerAtIndex:0];
+	}
+}
+
+- (void)saveDefaults {
+	[[NSUserDefaults standardUserDefaults] setDouble:_statusView.frame.size.width forKey:@"SplitWidth"];
+	[[NSUserDefaults standardUserDefaults] setBool:collapsed_ forKey:@"ViewCollapsed"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)_setText:(NSInteger)row selector:(SEL)selector {
 	if (row < 0) return;
-	id item = [outlineView_ itemAtRow:row];
+	id item = [_outlineView itemAtRow:row];
 	NSString *text = [item performSelector:selector];
 	if (text) text = [NSString stringWithFormat:@"%@\n", text]; // Newline important for when we append streaming text
-	[textView_ setString:text ? text : @""];	
+	[_textView setString:text ? text : @""];	
 }
 
-- (void)_textSegmentChanged:(id)sender {
+- (IBAction)updateTextSegment:(id)sender {
 	switch([sender selectedSegment]) {
 		case 0:
-			[self _setText:[outlineView_ selectedRow] selector:@selector(stackTrace)];
+			[self _setText:[_outlineView selectedRow] selector:@selector(stackTrace)];
 			break;
 		case 1:			
-			[self _setText:[outlineView_ selectedRow] selector:@selector(log)];
+			[self _setText:[_outlineView selectedRow] selector:@selector(log)];
 			break;
 		case 2:
 			// TODO
@@ -180,29 +182,29 @@
 }
 
 - (id<GHTest>)selectedTest {
-	NSInteger row = [outlineView_ selectedRow];
+	NSInteger row = [_outlineView selectedRow];
 	if (row < 0) return nil;
-	GHTestNode *node = [outlineView_ itemAtRow:row];
+	GHTestNode *node = [_outlineView itemAtRow:row];
 	return node.test;
 }
 
 - (void)selectFirstFailure {
 	GHTestNode *failedNode = [model_ findFailure];
-	NSInteger row = [outlineView_ rowForItem:failedNode];
+	NSInteger row = [_outlineView rowForItem:failedNode];
 	if (row >= 0) {
-		[outlineView_ selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-		[textSegmentedControl_ setSelectedSegment:0];
-		[self _textSegmentChanged:textSegmentedControl_];
+		[_outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+		[_textSegmentedControl setSelectedSegment:0];
+		[self updateTextSegment:_textSegmentedControl];
 	}
 }
 
 - (void)_updateTest:(id<GHTest>)test {
 	GHTestNode *testNode = [model_ findTestNode:test];
-	[outlineView_ reloadItem:testNode];	
+	[_outlineView reloadItem:testNode];	
 
 	NSInteger runCount = [suite_ stats].succeedCount + [suite_ stats].failureCount;
 	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ stats].disabledCount + [suite_ stats].cancelCount);
-	[progressIndicator_ setDoubleValue:((double)runCount/(double)totalRunCount) * 100.0];
+	self.statusProgress = ((double)runCount/(double)totalRunCount) * 100.0;
 
 	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs", (running_ ? @"Running" : @"Took"), [suite_ interval]];
 	self.status = [NSString stringWithFormat:@"Status: %@ %d/%d (%d failures)", statusInterval,
@@ -212,8 +214,8 @@
 #pragma mark Delegates (GHTestOutlineViewModel)
 
 - (void)testOutlineViewModelDidChangeSelection:(GHTestOutlineViewModel *)testOutlineViewModel {
-	[textView_ setString:@""];
-	[self _textSegmentChanged:textSegmentedControl_];
+	[_textView setString:@""];
+	[self updateTextSegment:_textSegmentedControl];
 }
 
 #pragma mark Delegates (GHTestRunner)
@@ -224,8 +226,8 @@
 
 - (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message {
 	id<GHTest> selectedTest = self.selectedTest;
-	if ([textSegmentedControl_ selectedSegment] == 1 && [selectedTest isEqual:test]) {
-		[textView_ replaceCharactersInRange:NSMakeRange([[textView_ string] length], 0) 
+	if ([_textSegmentedControl selectedSegment] == 1 && [selectedTest isEqual:test]) {
+		[_textView replaceCharactersInRange:NSMakeRange([[_textView string] length], 0) 
 														 withString:[NSString stringWithFormat:@"%@\n", message]];
 		// TODO(gabe): Scroll
 	}	

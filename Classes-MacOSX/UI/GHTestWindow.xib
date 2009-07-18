@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="8"/>
 			<integer value="4"/>
+			<integer value="8"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -39,19 +39,21 @@
 			<object class="NSWindowTemplate" id="37712463">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{196, 24}, {650, 486}}</string>
+				<string key="NSWindowRect">{{196, 110}, {300, 400}}</string>
 				<int key="NSWTFlags">603979776</int>
 				<string key="NSWindowTitle">GHUnit</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
+				<string key="NSWindowContentMinSize">{300, 400}</string>
 				<object class="NSView" key="NSWindowView" id="304247640">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">274</int>
-					<string key="NSFrameSize">{650, 486}</string>
+					<string key="NSFrameSize">{300, 400}</string>
 					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
+				<string key="NSMinSize">{300, 422}</string>
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSFrameAutosaveName">GHUnitWindow</string>
 			</object>
@@ -2151,6 +2153,8 @@
 					<string>4.IBEditorWindowLastContentRect</string>
 					<string>4.IBWindowTemplateEditedContentRect</string>
 					<string>4.NSWindowTemplate.visibleAtLaunch</string>
+					<string>4.windowTemplate.hasMinSize</string>
+					<string>4.windowTemplate.minSize</string>
 					<string>40.IBPluginDependency</string>
 					<string>40.ImportedFromIB2</string>
 					<string>41.IBPluginDependency</string>
@@ -2381,9 +2385,11 @@
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{121, 169}, {650, 486}}</string>
-					<string>{{121, 169}, {650, 486}}</string>
+					<string>{{210, 275}, {300, 400}}</string>
+					<string>{{210, 275}, {300, 400}}</string>
 					<boolean value="NO"/>
+					<boolean value="YES"/>
+					<string>{300, 400}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2475,7 +2481,7 @@
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{98, 596}, {404, 20}}</string>
+					<string>{{98, 761}, {404, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{74, 862}</string>
@@ -2561,9 +2567,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>copy:</string>
 							<string>runTests:</string>
+							<string>toggleDetails:</string>
+							<string>updateTextSegment:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -2572,26 +2582,18 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>collapseButton</string>
-							<string>detailsView</string>
-							<string>outlineView</string>
-							<string>progressIndicator</string>
-							<string>runButton</string>
-							<string>splitView</string>
-							<string>statusLabel</string>
-							<string>statusView</string>
-							<string>textSegmentedControl</string>
-							<string>textView</string>
+							<string>_detailsView</string>
+							<string>_outlineView</string>
+							<string>_splitView</string>
+							<string>_statusView</string>
+							<string>_textSegmentedControl</string>
+							<string>_textView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSButton</string>
 							<string>NSView</string>
 							<string>NSOutlineView</string>
-							<string>NSProgressIndicator</string>
-							<string>NSButton</string>
 							<string>BWSplitView</string>
-							<string>NSTextField</string>
 							<string>NSView</string>
 							<string>NSSegmentedControl</string>
 							<string>NSTextView</string>

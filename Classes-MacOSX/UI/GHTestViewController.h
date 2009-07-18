@@ -35,45 +35,30 @@
 
 @interface GHTestViewController : NSViewController <GHTestRunnerDelegate, GHTestOutlineViewModelDelegate> {
 
-	NSButton *runButton_;
-	NSButton *collapseButton_;
+	IBOutlet BWSplitView *_splitView;
+	IBOutlet NSView *_statusView;
+	IBOutlet NSView *_detailsView;	
+	IBOutlet NSOutlineView *_outlineView;	
+	IBOutlet NSTextView *_textView;
+	IBOutlet NSSegmentedControl *_textSegmentedControl;
 	
-	BWSplitView *splitView_;
-	NSView *statusView_;
-	NSView *detailsView_;
-	
-	NSTextField *statusLabel_;
-	NSProgressIndicator *progressIndicator_;
-	NSOutlineView *outlineView_;
-	
-	NSSegmentedControl *textSegmentedControl_;
-	NSTextView *textView_;
-	
-	BOOL wrapInTextView_;
-	
-	BOOL running_;
+	BOOL wrapInTextView_;		
 	NSString *status_;
+	double statusProgress_;
+	BOOL runInParallel_;
+	BOOL running_;
+	BOOL collapsed_;	
 	
 	GHTestSuite *suite_;
 	
 	GHTestOutlineViewModel *model_;
 }
 
-// Assign since they are retained as subviews
-@property (assign, nonatomic) IBOutlet NSButton *runButton;
-@property (assign, nonatomic) IBOutlet NSButton *collapseButton;
-@property (assign, nonatomic) IBOutlet BWSplitView *splitView;
-@property (assign, nonatomic) IBOutlet NSView *statusView;
-@property (assign, nonatomic) IBOutlet NSView *detailsView;
-@property (assign, nonatomic) IBOutlet NSTextField *statusLabel;
-@property (assign, nonatomic) IBOutlet NSProgressIndicator *progressIndicator;
-@property (assign, nonatomic) IBOutlet NSOutlineView *outlineView;
-@property (assign, nonatomic) IBOutlet NSSegmentedControl *textSegmentedControl;
-@property (assign, nonatomic) IBOutlet NSTextView *textView;
 @property (assign, nonatomic) BOOL wrapInTextView;
 @property (readonly, nonatomic) id<GHTest> selectedTest;
 
-@property (copy, nonatomic) NSString *status;
+@property (retain, nonatomic) NSString *status;
+@property (assign, nonatomic) double statusProgress;
 
 @property (retain, nonatomic) GHTestSuite *suite;
 
@@ -82,11 +67,15 @@
 - (void)selectFirstFailure;
 
 - (IBAction)copy:(id)sender;
-
 - (IBAction)runTests:(id)sender;
+- (IBAction)toggleDetails:(id)sender;
+- (IBAction)updateTextSegment:(id)sender;
 
 - (id<GHTest>)selectedTest;
 
 - (void)runTests;
+
+- (void)loadDefaults;
+- (void)saveDefaults;
 
 @end

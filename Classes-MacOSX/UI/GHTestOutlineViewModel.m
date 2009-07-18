@@ -3,69 +3,20 @@
 //  GHUnit
 //
 //  Created by Gabriel Handford on 7/17/09.
-//  Copyright 2009 Yelp. All rights reserved.
+//  Copyright 2009. All rights reserved.
 //
 
 #import "GHTestOutlineViewModel.h"
 
-@interface GHTestOutlineViewModel ()
-@property (retain, nonatomic) GHTestViewModel *model;
-@end
-
 @implementation GHTestOutlineViewModel
 
-@synthesize model=model_, delegate=delegate_;
-
-- (void)dealloc {
-	[model_ release];	
-	[runner_ release];
-	[super dealloc];
-}
-
-- (GHTestRunner *)loadTestSuite:(GHTestSuite *)suite {	
-	self.model = nil;
-	runner_.delegate = nil;
-	[runner_ cancel];
-	[runner_ release];
-	
-	if (suite) {
-		self.model = [[[GHTestViewModel alloc] initWithRoot:suite] autorelease];	
-		runner_ = [[GHTestRunner runnerForSuite:suite] retain];
-		
-		NSOperationQueue *operationQueue = [[[NSOperationQueue alloc] init] autorelease];
-		operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
-		runner_.operationQueue = operationQueue;
-	}
-	return runner_;
-}
-
-- (void)run {
-	[runner_ runInBackground];
-}
-
-- (GHTestNode *)findFailure {
-	GHTestNode *node = [model_ root];
-	return [self findFailureFromNode:node];
-}
-
-- (GHTestNode *)findFailureFromNode:(GHTestNode *)node {
-	if (node.failed && [node.test exception]) return node;
-	for(GHTestNode *childNode in node.children) {
-		GHTestNode *foundNode = [self findFailureFromNode:childNode];
-		if (foundNode) return foundNode;
-	}
-	return nil;
-}
-
-- (GHTestNode *)findTestNode:(id<GHTest>)test {
-	return [model_ findTestNode:test];
-}
+@synthesize delegate=delegate_;
 
 #pragma mark DataSource (NSOutlineView)
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
 	if (!item) {
-		return [model_ root];
+		return [self root];
 	} else {
 		return [[item children] objectAtIndex:index];
 	}
@@ -76,7 +27,7 @@
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-	return (!item) ? (model_ ? 1 : 0) : [[item children] count];
+	return (!item) ? (self ? 1 : 0) : [[item children] count];
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {

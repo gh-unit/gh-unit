@@ -41,7 +41,10 @@
  */
 @interface GHTestViewModel : NSObject <GHTestNodeDelegate> {
 	
+	GHTestSuite *suite_;
 	GHTestNode *root_;
+	
+	GHTestRunner *runner_;
 	
 	NSMutableDictionary *map_; // id<GHTest>#identifier -> GHTestNode
 
@@ -54,7 +57,7 @@
 /*!
  Create view model with root test group node.
  */
-- (id)initWithRoot:(id<GHTestGroup>)root;
+- (id)initWithSuite:(GHTestSuite *)suite;
 
 - (NSString *)name;
 - (NSString *)statusString;
@@ -64,6 +67,9 @@
  @param test
  */
 - (GHTestNode *)findTestNode:(id<GHTest>)test;
+
+- (GHTestNode *)findFailure;
+- (GHTestNode *)findFailureFromNode:(GHTestNode *)node;
 
 /*!
  Register node, so that we can do a lookup later (see #findTestNode).
@@ -85,6 +91,8 @@
 - (NSIndexPath *)indexPathToTest:(id<GHTest>)test;
 
 - (void)saveSettings;
+
+- (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel;
 
 @end
 
