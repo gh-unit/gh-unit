@@ -94,6 +94,10 @@
 
 - (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel;
 
+- (void)cancel;
+
+- (BOOL)isRunning;
+
 @end
 
 

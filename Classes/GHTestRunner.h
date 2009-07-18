@@ -79,7 +79,7 @@
 	BOOL raiseExceptions_;	
 	
 	BOOL running_;
-	BOOL cancelled_;
+	BOOL cancelling_;
 	
 	NSOperationQueue *operationQueue_; //! If running a suite in operation queue
 }

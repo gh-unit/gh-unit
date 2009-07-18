@@ -29,22 +29,18 @@
 
 #import "GHTestViewController.h"
 
-@interface GHTestViewController ()
-@property (assign, nonatomic, getter=isRunning) BOOL running;
-@end
-
 @interface GHTestViewController (Private)
 - (void)_updateTest:(id<GHTest>)test;
 @end
 
 @implementation GHTestViewController
 
-@synthesize suite=suite_, running=running_, status=status_, statusProgress=statusProgress_, wrapInTextView=wrapInTextView_;
+@synthesize suite=suite_, status=status_, statusProgress=statusProgress_, 
+wrapInTextView=wrapInTextView_, runLabel=runLabel_;
 
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { 
 		suite_ = [[GHTestSuite suiteFromEnv] retain];
-		collapsed_ = YES;		
 	}
 	return self;
 }
@@ -68,6 +64,7 @@
 	[_textView setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
 	[_textView setString:@""];
 	self.wrapInTextView = NO;
+	self.runLabel = @"Run";
 	
 	[self loadDefaults];
 	[self loadTestSuite];
@@ -80,13 +77,17 @@
 }
 
 - (void)runTests {
-	if (self.isRunning) return;
-	NSAssert(suite_, @"Must set test suite");
-	[self loadTestSuite];
-	self.status = @"Starting tests...";
-	self.running = YES;
-	BOOL inParallel = [[NSUserDefaults standardUserDefaults] boolForKey:@"RunInParallel"];
-	[model_ run:self inParallel:inParallel];
+	if (model_.isRunning) {
+		self.status = @"Cancelling...";
+		[model_ cancel];
+	} else {
+		NSAssert(suite_, @"Must set test suite");
+		[self loadTestSuite];
+		self.status = @"Starting tests...";
+		self.runLabel = @"Cancel";
+		BOOL inParallel = [[NSUserDefaults standardUserDefaults] boolForKey:@"RunInParallel"];
+		[model_ run:self inParallel:inParallel];
+	}
 }
 
 - (void)loadTestSuite {
@@ -127,7 +128,7 @@
 }
 
 - (IBAction)toggleDetails:(id)sender {	
-	if (!collapsed_) {
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"]) {
 		[_detailsView removeFromSuperview];
 	} else {
 		CGFloat windowWidth = self.view.window.frame.size.width;
@@ -139,23 +140,20 @@
 		}
 		[_splitView addSubview:_detailsView];
 	}
-	collapsed_ = !collapsed_;
 }
 
 - (void)loadDefaults {
-	// By default we are collapsed so expand if set
 	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"]) {
 		[self toggleDetails:nil];
-	
+		
 		CGFloat width = [[NSUserDefaults standardUserDefaults] doubleForKey:@"SplitWidth"];
-		if (width > 200)
+		if (width > 0)
 			[_splitView setPosition:width ofDividerAtIndex:0];
 	}
 }
 
 - (void)saveDefaults {
 	[[NSUserDefaults standardUserDefaults] setDouble:_statusView.frame.size.width forKey:@"SplitWidth"];
-	[[NSUserDefaults standardUserDefaults] setBool:collapsed_ forKey:@"ViewCollapsed"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -198,6 +196,13 @@
 	}
 }
 
+- (void)_setStatus:(NSString *)prefix {
+	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ stats].disabledCount + [suite_ stats].cancelCount);
+	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs", (model_.isRunning ? @"Running" : @"Took"), [suite_ interval]];
+	self.status = [NSString stringWithFormat:@"%@%@ %d/%d (%d failures)", prefix, statusInterval,
+								 [suite_ stats].succeedCount, totalRunCount, [suite_ stats].failureCount];	
+}
+
 - (void)_updateTest:(id<GHTest>)test {
 	GHTestNode *testNode = [model_ findTestNode:test];
 	[_outlineView reloadItem:testNode];	
@@ -205,10 +210,7 @@
 	NSInteger runCount = [suite_ stats].succeedCount + [suite_ stats].failureCount;
 	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ stats].disabledCount + [suite_ stats].cancelCount);
 	self.statusProgress = ((double)runCount/(double)totalRunCount) * 100.0;
-
-	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs", (running_ ? @"Running" : @"Took"), [suite_ interval]];
-	self.status = [NSString stringWithFormat:@"Status: %@ %d/%d (%d failures)", statusInterval,
-								 [suite_ stats].succeedCount, totalRunCount, [suite_ stats].failureCount];
+	[self _setStatus:@"Status: "];
 }
 
 #pragma mark Delegates (GHTestOutlineViewModel)
@@ -248,8 +250,13 @@
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
 	[self _updateTest:runner.test];
 	[self selectFirstFailure];
-	self.running = NO;
+	self.runLabel = @"Run";
 }
 
+- (void)testRunnerDidCancel:(GHTestRunner *)runner {
+	self.runLabel = @"Run";
+	[self _setStatus:@"Cancelled... "];
+	self.statusProgress = 0;
+}
 
 @end

@@ -10,16 +10,15 @@
 
 @implementation GHUnitIPhoneTableViewDataSource
 
-@synthesize model=model_, editing=editing_;
+@synthesize editing=editing_;
 
 - (GHTestNode *)nodeForIndexPath:(NSIndexPath *)indexPath {
-	if (!model_) return nil;
-	GHTestNode *sectionNode = [[[model_ root] children] objectAtIndex:indexPath.section];
+	GHTestNode *sectionNode = [[[self root] children] objectAtIndex:indexPath.section];
 	return [[sectionNode children] objectAtIndex:indexPath.row];
 }
 
 - (void)setSelectedForAllNodes:(BOOL)selected {
-	for(GHTestNode *sectionNode in [[model_ root] children]) {
+	for(GHTestNode *sectionNode in [[self root] children]) {
 		for(GHTestNode *node in [sectionNode children]) {
 			node.selected = selected;
 			[node notifyChanged];
@@ -30,28 +29,24 @@
 #pragma mark Data Source (UITableView)
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	if (model_) {
-		NSInteger numberOfSections = [model_ numberOfGroups];
-		if (numberOfSections > 0) return numberOfSections;
-	}
+	NSInteger numberOfSections = [self numberOfGroups];
+	if (numberOfSections > 0) return numberOfSections;
 	return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
-	if (!model_) return 0;
-	return [model_ numberOfTestsInGroup:section];
+	return [self numberOfTestsInGroup:section];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	if (!model_) return nil;
-	NSArray *children = [[model_ root] children];
+	NSArray *children = [[self root] children];
 	if ([children count] == 0) return nil;
 	GHTestNode *sectionNode = [children objectAtIndex:section];
 	return sectionNode.name;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	GHTestNode *sectionNode = [[[model_ root] children] objectAtIndex:indexPath.section];
+	GHTestNode *sectionNode = [[[self root] children] objectAtIndex:indexPath.section];
 	GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
 	
 	static NSString *CellIdentifier = @"ReviewFeedViewItem";	
@@ -70,14 +65,12 @@
 	if (editing_) {
 		if (node.isSelected) cell.textColor = [UIColor blackColor];
 	} else {
-		if (node.isRunning) {
+		if ([node status] == GHTestStatusRunning) {
 			cell.textColor = [UIColor blackColor];
-		} else if (node.isFinished) {
-			if (node.failed) {
-				cell.textColor = [UIColor redColor];
-			} else {
-				cell.textColor = [UIColor blackColor];
-			}
+		} else if ([node status] == GHTestStatusErrored) {
+			cell.textColor = [UIColor redColor];
+		} else if ([node status] == GHTestStatusSucceeded) {
+			cell.textColor = [UIColor blackColor];
 		} else if (node.isSelected) {
 			if (node.isSelected) cell.textColor = [UIColor darkGrayColor];
 		}

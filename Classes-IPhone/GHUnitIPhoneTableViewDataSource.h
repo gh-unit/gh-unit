@@ -8,15 +8,12 @@
 
 #import "GHTestViewModel.h"
 
-@interface GHUnitIPhoneTableViewDataSource : NSObject <UITableViewDataSource> {
-	
-	GHTestViewModel *model_;
+@interface GHUnitIPhoneTableViewDataSource : GHTestViewModel <UITableViewDataSource> {
 	
 	BOOL editing_;
 
 }
 
-@property (retain, nonatomic) GHTestViewModel *model;
 @property (assign, nonatomic, getter=isEditing) BOOL editing;
 
 - (GHTestNode *)nodeForIndexPath:(NSIndexPath *)indexPath;

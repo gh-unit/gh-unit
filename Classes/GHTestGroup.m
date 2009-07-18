@@ -128,9 +128,8 @@ exception=exception_;
 }
 
 - (void)_addTest:(id<GHTest>)test {
-	stats_.testCount += [test stats].testCount;
-		
 	[test setDelegate:self];	
+	stats_.testCount += [test stats].testCount;
 	[children_ addObject:test];	
 }
 
@@ -150,11 +149,12 @@ exception=exception_;
 
 - (void)reset {
 	status_ = GHTestStatusNone;
-	stats_ = GHTestStatsMake(0, 0, 0, 0, 0);
+	stats_ = GHTestStatsMake(0, 0, 0, 0, stats_.testCount);
 	[exception_ release];
 	exception_ = nil;
-	for(id<GHTest> test in children_)
-		[test reset];
+	for(id<GHTest> test in children_) {
+		[test reset];		
+	}
 	[delegate_ testDidUpdate:self source:self];
 }
 

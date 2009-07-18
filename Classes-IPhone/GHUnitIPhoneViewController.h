@@ -14,9 +14,6 @@ extern NSString *const GHUnitAutoRunKey;
 
 @interface GHUnitIPhoneViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate> {
 	
-	//! Test runner
-	GHTestRunner *runner_;
-	
 	UITableView *tableView_;
 	
 	//! Status label at bottom of the view
@@ -24,6 +21,7 @@ extern NSString *const GHUnitAutoRunKey;
 	
 	//! Data source for table view
 	GHUnitIPhoneTableViewDataSource *dataSource_;
+	GHTestSuite *suite_;
 	
 	//! Edit/Save toggle button
 	UIBarButtonItem *editButton_;
@@ -35,15 +33,11 @@ extern NSString *const GHUnitAutoRunKey;
 	//! Toolbar
 	UIToolbar *toolbar_;
 	NSArray *editToolbarItems_;
-	
-	BOOL running_;
 }
 
 @property (readonly, nonatomic) UITableView *tableView;
 @property (assign, nonatomic, getter=isAutoRun) BOOL autoRun;
-@property (readonly, assign, nonatomic, getter=isRunning) BOOL running;
 
-- (void)setGroup:(id<GHTestGroup>)group;
 - (void)updateTest:(id<GHTest>)test;
 
 - (void)scrollToTest:(id<GHTest>)test;
@@ -54,7 +48,6 @@ extern NSString *const GHUnitAutoRunKey;
 
 - (void)setEditing:(BOOL)editing;
 
-- (void)loadTests;
 - (void)runTests;
 
 - (void)reset;

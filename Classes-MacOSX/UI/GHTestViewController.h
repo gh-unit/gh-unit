@@ -45,9 +45,8 @@
 	BOOL wrapInTextView_;		
 	NSString *status_;
 	double statusProgress_;
-	BOOL runInParallel_;
-	BOOL running_;
-	BOOL collapsed_;	
+	BOOL runInParallel_;	
+	NSString *runLabel_;
 	
 	GHTestSuite *suite_;
 	
@@ -59,6 +58,7 @@
 
 @property (retain, nonatomic) NSString *status;
 @property (assign, nonatomic) double statusProgress;
+@property (retain, nonatomic) NSString *runLabel;
 
 @property (retain, nonatomic) GHTestSuite *suite;
 

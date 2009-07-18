@@ -143,14 +143,15 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)cancel {
-	runner_.delegate = nil;
+- (void)cancel {	
 	[runner_ cancel];
-	[runner_ release];
 }
 
 - (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel {
-	[self cancel];
+	[runner_ cancel];
+	runner_.delegate = nil;
+	[runner_ release];
+
 	runner_ = [[GHTestRunner runnerForSuite:suite_] retain];		
 	runner_.delegate = delegate;
 	if (inParallel) {
@@ -160,6 +161,10 @@
 	}
 	
 	[runner_ runInBackground];
+}
+
+- (BOOL)isRunning {
+	return runner_.isRunning;
 }
 
 @end

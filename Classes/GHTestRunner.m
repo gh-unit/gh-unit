@@ -105,7 +105,7 @@
 }
 
 - (int)run {
-	cancelled_ = NO;
+	if (cancelling_ || running_) return -1;
 	running_ = YES;
 	[self _notifyStart];
 	if ([test_ respondsToSelector:@selector(runInOperationQueue:)]) {
@@ -117,10 +117,9 @@
 }
 
 - (void)cancel {
-	cancelled_ = YES;
+	if (cancelling_) return;
+	cancelling_ = YES;
 	[test_ cancel];
-	if ([delegate_ respondsToSelector:@selector(testRunnerDidCancel:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidCancel:self];
 }
 
 - (void)runInBackground {
@@ -158,23 +157,22 @@
 }
 
 - (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source {	
+	if (!running_) return;
 	NSString *message = [NSString stringWithFormat:@"Test '%@' %@ (%0.3f seconds).",
 											 [source name], [source stats].failureCount > 0 ? @"failed" : @"passed", [source interval]];	
 	[self _log:message];
-		
-	// If the test associated with this runner ended then notify
-	if (test_ == source) {
-		if (cancelled_) {
-			[self _notifyCancelled];
-		} else {
-			[self _notifyFinished];
-		}
-		running_ = NO;		
-	}
 	
+
 	if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
 		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didEndTest:source];
-
+	
+	
+	if (cancelling_) {
+		[self _notifyCancelled];
+	} else if (test_ == source) {
+		// If the test associated with this runner ended then notify
+		[self _notifyFinished];
+	} 
 }
 
 - (void)test:(id<GHTest>)test didLog:(NSString *)message source:(id<GHTest>)source {
@@ -197,8 +195,11 @@
 	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' cancelled.\n", [test_ name]];
 	[self _log:message];
 	
-	if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self];
+	cancelling_ = NO;
+	running_ = NO;
+	
+	if ([delegate_ respondsToSelector:@selector(testRunnerDidCancel:)])
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidCancel:self];
 }
 
 - (void)_notifyFinished {
@@ -211,9 +212,11 @@
 											 [test_ interval]];
 	[self _log:message];
 	
-	
+	cancelling_ = NO;
+	running_ = NO;
+
 	if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self];
+		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self];	
 }
 
 @end
