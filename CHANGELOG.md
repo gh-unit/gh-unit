@@ -3,6 +3,7 @@
 - Updated how test groups run
 - Handling failure in setUpClass/tearDownClass
 - Updated how shouldRunOnMainThread works
+- Added Edit UI for Mac OSX tests
 - Bug fixes and other refactoring
 
 # Release 0.3.19 (2008-06-15)
