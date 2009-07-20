@@ -204,7 +204,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 
 - (void)updateTest:(id<GHTest>)test {
 	[self.tableView reloadData];
-	if (!userDidDrag_ && !dataSource_.isEditing)
+	if (!userDidDrag_ && !dataSource_.isEditing && ![test isDisabled] && [test status] == GHTestStatusRunning)
 		[self scrollToTest:test];
 }
 
