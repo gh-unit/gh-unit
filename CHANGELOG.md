@@ -1,3 +1,7 @@
+# Release 0.4.4 (2008-07-20)
+- Ignore disable/cancelled tests in scroll (iPhone)
+- Only start group test (notify) if we have tests to run
+
 # Release 0.4.3 (2008-07-20)
 - When running test on main thread should wait until finished
 - Auto scrolls to middle instead of bottom (iPhone)
