@@ -140,4 +140,11 @@ extern NSString *const GHMockNSURLConnectionException;
  */
 - (void)receiveFromPath:(NSString *)path statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay;
 
+/*!
+ Calls connection:didFailWithError: on delegate after specified delay.
+ @param error The error to pass to the delegate.
+ @param delay Delay before responding (if < 0, there is no delay)
+ */
+- (void)failWithError:(NSError *)error afterDelay:(NSTimeInterval)delay;
+
 @end

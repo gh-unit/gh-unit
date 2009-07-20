@@ -114,4 +114,8 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 	[delegate_ ghu_performSelector:@selector(connectionDidFinishLoading:) afterDelay:delay withObjects:self, nil];
 }
 
+- (void)failWithError:(NSError *)error afterDelay:(NSTimeInterval)delay {
+	[delegate_ ghu_performSelector:@selector(connection:didFailWithError:) afterDelay:delay withObjects:self, error, nil];
+}
+
 @end

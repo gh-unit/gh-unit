@@ -51,6 +51,29 @@
 
 @end
 
+@interface GHMockNSURLConnectionErrorTest : GHAsyncTestCase { 
+	NSError *error_;
+}
+@end
+
+@implementation GHMockNSURLConnectionErrorTest
+
+- (void)testError {
+	[self prepare];
+	GHMockNSURLConnection *connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:self];
+	error_ = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorNotConnectedToInternet userInfo:nil];
+	[connection failWithError:error_ afterDelay:0.2];
+	[self waitForStatus:kGHUnitWaitStatusFailure timeout:1.0];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	GHAssertEqualObjects(error, error_, nil);
+	[self notify:kGHUnitWaitStatusFailure forSelector:@selector(testError)];
+}
+
+@end
+
+
 @interface GHMockNSURLConnectionPathTest : GHAsyncTestCase {  }
 @end
 
