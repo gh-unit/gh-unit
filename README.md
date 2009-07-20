@@ -34,7 +34,9 @@ The goals of GHUnit are:
 - A simple GUI to help you visualize your tests.
 - Show stack traces.
 - Be embeddable as a framework (using @rpath) for Mac OSX apps, or as a static library in your iPhone projects.
-- Mocks
+
+Future plans include:
+- Mocks (maybe integrate OCMock?)
 
 `GHTestCase` is the base class for your tests.
 
