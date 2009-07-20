@@ -219,7 +219,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 - (void)scrollToTest:(id<GHTest>)test {
 	NSIndexPath *path = [dataSource_ indexPathToTest:test];
 	if (!path) return;
-	[self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+	[self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 - (void)scrollToBottom {

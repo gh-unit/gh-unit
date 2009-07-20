@@ -294,7 +294,7 @@ status=status_, testCase=testCase_, exception=exception_;
 
 - (void)run {	
 	if ([self shouldRunOnMainThread]) {
-		[self performSelectorOnMainThread:@selector(_run:) withObject:nil waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(_run:) withObject:nil waitUntilDone:YES];
 	} else {
 		[self _run:nil];
 	}	
