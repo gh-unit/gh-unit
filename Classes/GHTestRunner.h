@@ -139,7 +139,7 @@
  Start the test runner.
  @result 0 is success, otherwise the failure count
  */
-- (int)run;
+- (int)runTests;
 
 - (void)cancel;
 

@@ -101,11 +101,11 @@ operationQueue=operationQueue_;
 
 + (int)run {
 	GHTestRunner *testRunner = [GHTestRunner runnerFromEnv];
-	[testRunner run];
+	[testRunner runTests];
 	return testRunner.stats.failureCount;	
 }
 
-- (int)run {
+- (int)runTests {
 	if (cancelling_ || running_) return -1;
 	running_ = YES;
 	[self _notifyStart];
@@ -130,7 +130,7 @@ operationQueue=operationQueue_;
 
 - (void)_runInBackground {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	[self run];
+	[self runTests];
 	[pool release];
 }
 

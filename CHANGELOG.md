@@ -1,3 +1,6 @@
+# Release 0.4.2
+- Fixing run warning
+
 # Release 0.4.1
 - Option to use NSOperationQueue to manage tests runs
 - Updated how test groups run
