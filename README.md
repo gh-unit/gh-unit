@@ -130,8 +130,8 @@ Now you should be ready to Build and Run the test target.
 
 You should see something like:
 
-![GHUnit-0.4.1-expanded](https://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.1-expanded.jpg)
-![GHUnit-0.4.1](https://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.1.jpg)
+![GHUnit-0.4.1-expanded](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.1-expanded.jpg)
+![GHUnit-0.4.1](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.1.jpg)
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import <GHUnit/GHUnit.h>` to it, and then you won't have to include that import for every test.
 
@@ -198,7 +198,7 @@ Now you should be ready to Build and Run the `Test` target.
 
 You should see something like:
 
-![gh-unit-iphone2](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit-iphone2.jpg)
+![GHUnit-0.4.1-iphone](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.1-iphone.jpg)
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
