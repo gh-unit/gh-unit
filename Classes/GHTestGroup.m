@@ -237,13 +237,12 @@ status=status_, testCase=testCase_, exception=exception_;
 }
 
 - (void)_run:(NSOperationQueue *)operationQueue {
-	if (status_ == GHTestStatusCancelled || [children_ count] == 0) {
+	if (status_ == GHTestStatusCancelled || (([children_ count] - [self disabledCount]) <= 0)) {
 		return;
 	}
 
 	didSetUpClass_ = NO;
-	status_ = GHTestStatusRunning;
-	
+	status_ = GHTestStatusRunning;	
 	[delegate_ testDidStart:self source:self];
 	
 	// Run the tests
