@@ -11,6 +11,8 @@
 @interface GHTestOnMainThread : GHTestCase { }
 @end
 
+static BOOL gGHTestOnMainThreadRunning = NO;
+
 @implementation GHTestOnMainThread
 
 - (BOOL)shouldRunOnMainThread {
@@ -40,6 +42,27 @@
 
 - (void)testSucceedAfterFail {
 	GHAssertTrue([NSThread isMainThread], nil);
+}
+
+- (void)testNotConcurrent {
+	GHAssertFalse(gGHTestOnMainThreadRunning, nil);
+	[NSThread sleepForTimeInterval:1];
+	GHAssertFalse(gGHTestOnMainThreadRunning, nil);
+}
+
+
+@end
+
+
+@interface GHTestOnMainThreadNotConcurrent : GHTestCase { }
+@end
+
+@implementation GHTestOnMainThreadNotConcurrent
+
+- (void)testNotConcurrent {
+	gGHTestOnMainThreadRunning = YES;
+	[NSThread sleepForTimeInterval:1];
+	gGHTestOnMainThreadRunning = NO;
 }
 
 @end
