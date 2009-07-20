@@ -1,7 +1,11 @@
-# Release 0.4.2
+# Release 0.4.3 (2008-07-20)
+- When running test on main thread should wait until finished
+- Auto scrolls to middle instead of bottom (iPhone)
+
+# Release 0.4.2 (2008-07-19)
 - Fixing run warning
 
-# Release 0.4.1
+# Release 0.4.1 (2008-07-18)
 - Option to use NSOperationQueue to manage tests runs
 - Updated how test groups run
 - Handling failure in setUpClass/tearDownClass
