@@ -8,6 +8,8 @@
 
 #import "GHMockCLLocationManager.h"
 
+#import "GHNSObject+Invocation.h"
+
 @implementation GHMockCLLocationManager
 
 @synthesize delegate=_delegate;
