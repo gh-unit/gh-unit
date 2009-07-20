@@ -36,7 +36,7 @@
 @implementation GHTestViewController
 
 @synthesize suite=suite_, status=status_, statusProgress=statusProgress_, 
-wrapInTextView=wrapInTextView_, runLabel=runLabel_;
+wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { 
@@ -46,19 +46,19 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_;
 }
 
 - (void)dealloc {
-	model_.delegate = nil;
-	[model_ release];
+	dataSource_.delegate = nil;
+	[dataSource_ release];
 	[suite_ release];
 	[status_ release];
 	[super dealloc];
 }
 
 - (void)awakeFromNib {
-	[model_ release];
-	model_ = [[GHTestOutlineViewModel alloc] initWithSuite:suite_];
-	model_.delegate = self;
-	_outlineView.delegate = model_;
-	_outlineView.dataSource = model_;		
+	[dataSource_ release];
+	dataSource_ = [[GHTestOutlineViewModel alloc] initWithSuite:suite_];
+	dataSource_.delegate = self;
+	_outlineView.delegate = dataSource_;
+	_outlineView.dataSource = dataSource_;		
 	
 	[_textView setTextColor:[NSColor whiteColor]];
 	[_textView setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
@@ -77,16 +77,16 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_;
 }
 
 - (void)runTests {
-	if (model_.isRunning) {
+	if (dataSource_.isRunning) {
 		self.status = @"Cancelling...";
-		[model_ cancel];
+		[dataSource_ cancel];
 	} else {
 		NSAssert(suite_, @"Must set test suite");
 		[self loadTestSuite];
 		self.status = @"Starting tests...";
 		self.runLabel = @"Cancel";
 		BOOL inParallel = [[NSUserDefaults standardUserDefaults] boolForKey:@"RunInParallel"];
-		[model_ run:self inParallel:inParallel];
+		[dataSource_ run:self inParallel:inParallel];
 	}
 }
 
@@ -153,6 +153,7 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_;
 }
 
 - (void)saveDefaults {
+	[dataSource_ saveDefaults];
 	[[NSUserDefaults standardUserDefaults] setDouble:_statusView.frame.size.width forKey:@"SplitWidth"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -163,6 +164,11 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_;
 	NSString *text = [item performSelector:selector];
 	if (text) text = [NSString stringWithFormat:@"%@\n", text]; // Newline important for when we append streaming text
 	[_textView setString:text ? text : @""];	
+}
+
+- (IBAction)edit:(id)sender {
+	dataSource_.editing = ([sender state] == NSOnState);
+	[_outlineView reloadData];
 }
 
 - (IBAction)updateTextSegment:(id)sender {
@@ -187,7 +193,7 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_;
 }
 
 - (void)selectFirstFailure {
-	GHTestNode *failedNode = [model_ findFailure];
+	GHTestNode *failedNode = [dataSource_ findFailure];
 	NSInteger row = [_outlineView rowForItem:failedNode];
 	if (row >= 0) {
 		[_outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
@@ -196,21 +202,14 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_;
 	}
 }
 
-- (void)_setStatus:(NSString *)prefix {
-	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ stats].disabledCount + [suite_ stats].cancelCount);
-	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs", (model_.isRunning ? @"Running" : @"Took"), [suite_ interval]];
-	self.status = [NSString stringWithFormat:@"%@%@ %d/%d (%d failures)", prefix, statusInterval,
-								 [suite_ stats].succeedCount, totalRunCount, [suite_ stats].failureCount];	
-}
-
 - (void)_updateTest:(id<GHTest>)test {
-	GHTestNode *testNode = [model_ findTestNode:test];
+	GHTestNode *testNode = [dataSource_ findTestNode:test];
 	[_outlineView reloadItem:testNode];	
 
 	NSInteger runCount = [suite_ stats].succeedCount + [suite_ stats].failureCount;
-	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ stats].disabledCount + [suite_ stats].cancelCount);
+	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ disabledCount] + [suite_ stats].cancelCount);
 	self.statusProgress = ((double)runCount/(double)totalRunCount) * 100.0;
-	[self _setStatus:@"Status: "];
+	self.status = [dataSource_ statusString:@"Status: "];
 }
 
 #pragma mark Delegates (GHTestOutlineViewModel)
@@ -255,7 +254,7 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_;
 
 - (void)testRunnerDidCancel:(GHTestRunner *)runner {
 	self.runLabel = @"Run";
-	[self _setStatus:@"Cancelled... "];
+	self.status = [dataSource_ statusString:@"Cancelled... "];
 	self.statusProgress = 0;
 }
 

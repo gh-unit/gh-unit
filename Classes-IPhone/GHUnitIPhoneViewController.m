@@ -142,7 +142,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 - (void)setEditing:(BOOL)editing {
 	// If we were editing, then we are toggling back, and we need to save
 	if (dataSource_.isEditing) {
-		[dataSource_ saveSettings];
+		[dataSource_ saveDefaults];
 	}
 
 	dataSource_.editing = editing;

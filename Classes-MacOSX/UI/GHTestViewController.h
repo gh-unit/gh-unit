@@ -50,11 +50,12 @@
 	
 	GHTestSuite *suite_;
 	
-	GHTestOutlineViewModel *model_;
+	GHTestOutlineViewModel *dataSource_;
 }
 
 @property (assign, nonatomic) BOOL wrapInTextView;
 @property (readonly, nonatomic) id<GHTest> selectedTest;
+@property (readonly, nonatomic) GHTestOutlineViewModel *dataSource;
 
 @property (retain, nonatomic) NSString *status;
 @property (assign, nonatomic) double statusProgress;
@@ -67,6 +68,7 @@
 - (void)selectFirstFailure;
 
 - (IBAction)copy:(id)sender;
+- (IBAction)edit:(id)sender;
 - (IBAction)runTests:(id)sender;
 - (IBAction)toggleDetails:(id)sender;
 - (IBAction)updateTextSegment:(id)sender;

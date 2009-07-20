@@ -91,6 +91,8 @@
 	GHTestStatus status_; // Current status of the group (current status of running or completed child tests)
 	GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
 	
+	BOOL didSetUpClass_;
+	
 	// Set if test is created from initWithTestCase:delegate:
 	// Allows use to perform setUpClass and tearDownClass (once per test case run)
 	id testCase_; 

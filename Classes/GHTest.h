@@ -37,7 +37,6 @@ typedef enum {
 	GHTestStatusCancelled, // Test was cancelled
 	GHTestStatusSucceeded, // Test finished and succeeded
 	GHTestStatusErrored, // Test finished and errored
-	GHTestStatusDisabled // The test was disabled
 } GHTestStatus;
 
 /*!
@@ -55,7 +54,6 @@ extern BOOL GHTestStatusEnded(GHTestStatus status);
 typedef struct {
 	NSInteger succeedCount; // Number of succeeded tests
 	NSInteger failureCount; // Number of failed tests
-	NSInteger disabledCount; // Number of disabled tests
 	NSInteger cancelCount; // Number of aborted tests
 	NSInteger testCount; // Total number of tests 
 } GHTestStats;
@@ -63,7 +61,7 @@ typedef struct {
 /*!
  Create GHTestStats.
  */
-extern GHTestStats GHTestStatsMake(NSInteger succeedCount, NSInteger failureCount, NSInteger disabledCount, NSInteger cancelCount, NSInteger testCount);
+extern GHTestStats GHTestStatsMake(NSInteger succeedCount, NSInteger failureCount, NSInteger cancelCount, NSInteger testCount);
 
 const GHTestStats GHTestStatsEmpty;
 
@@ -95,8 +93,10 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 
 - (void)reset;
 - (void)cancel;
-- (void)disable;
 
+- (void)setDisabled:(BOOL)disabled;
+- (BOOL)isDisabled;
+- (NSInteger)disabledCount;
 
 @end
 
@@ -140,6 +140,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 	NSString *name_;	
 	GHTestStatus status_;
 	NSTimeInterval interval_;
+	BOOL disabled_;
 	NSException *exception_; // If failed
 		
 	NSMutableArray *log_;
@@ -152,6 +153,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 @property (readonly, nonatomic) NSTimeInterval interval;
 @property (retain, nonatomic) NSException *exception;
 @property (readonly, nonatomic) GHTestStatus status;
+@property (assign, nonatomic, getter=isDisabled) BOOL disabled;
 @property (readonly, nonatomic) NSArray *log;
 
 @property (assign, nonatomic) NSObject<GHTestDelegate> *delegate;

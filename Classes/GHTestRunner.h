@@ -89,6 +89,7 @@
 @property (assign) BOOL raiseExceptions;
 @property (readonly) GHTestStats stats;
 @property (readonly, getter=isRunning) BOOL running;
+@property (readonly, getter=isCancelling) BOOL cancelling;
 @property (retain, nonatomic) NSOperationQueue *operationQueue;
 
 /*!

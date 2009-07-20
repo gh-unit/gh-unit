@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		000203AD0F8EA50600EC31BA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 000203AC0F8EA50600EC31BA /* example.json */; };
+		0016AEC91012A11B009F4F8F /* GHTestOnMainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016AEC81012A11B009F4F8F /* GHTestOnMainThread.m */; };
 		0020570C0F945D2700FC1898 /* GHNSLocale+Mock.h in Headers */ = {isa = PBXBuildFile; fileRef = 002057080F945D2700FC1898 /* GHNSLocale+Mock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0020570D0F945D2700FC1898 /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002057090F945D2700FC1898 /* GHNSLocale+Mock.m */; };
 		002058510F9467F900FC1898 /* GHUNSObject+Swizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0020584F0F9467F900FC1898 /* GHUNSObject+Swizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -109,6 +110,7 @@
 
 /* Begin PBXFileReference section */
 		000203AC0F8EA50600EC31BA /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.json; sourceTree = "<group>"; };
+		0016AEC81012A11B009F4F8F /* GHTestOnMainThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestOnMainThread.m; sourceTree = "<group>"; };
 		002057080F945D2700FC1898 /* GHNSLocale+Mock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHNSLocale+Mock.h"; sourceTree = "<group>"; };
 		002057090F945D2700FC1898 /* GHNSLocale+Mock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHNSLocale+Mock.m"; sourceTree = "<group>"; };
 		0020584F0F9467F900FC1898 /* GHUNSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHUNSObject+Swizzle.h"; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				00DCB7DA0FA4F1300022DA5A /* GHMockNSURLConnectionTest.m */,
 				00DCB7DB0FA4F1300022DA5A /* GHNSLocaleMockTest.m */,
 				0091B12A100EEE9B000B8C77 /* GHTestFail.m */,
+				0016AEC81012A11B009F4F8F /* GHTestOnMainThread.m */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -651,6 +654,7 @@
 				00DCB7DD0FA4F1300022DA5A /* GHNSLocaleMockTest.m in Sources */,
 				00DCBB060FA523EC0022DA5A /* GHAsyncTestCaseTest.m in Sources */,
 				0091B12B100EEE9B000B8C77 /* GHTestFail.m in Sources */,
+				0016AEC91012A11B009F4F8F /* GHTestOnMainThread.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

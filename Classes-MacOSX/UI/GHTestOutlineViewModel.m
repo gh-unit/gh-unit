@@ -35,30 +35,64 @@
 	
 	if (tableColumn == nil) {
 		return [item nameWithStatus];
-	} else if ([[tableColumn identifier] isEqual:@"name"]) {
-		return [item name];
-	} else if ([[tableColumn identifier] isEqual:@"status"]) {
+	} else if ([[tableColumn identifier] isEqual:@"status"] && ![item hasChildren]) {
 		return [item statusString];
-	} else if ([[tableColumn identifier] isEqual:@"enabled"]) {
-		return [NSNumber numberWithBool:[item isSelected]];
 	}
 	return nil;
 }
 
-- (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
-	if ([[tableColumn identifier] isEqual:@"enabled"]) {
-		[item setSelected:[object boolValue]];
-		[item notifyChanged];
+- (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {	
+	if (self.isEditing) {
+		if ([[tableColumn identifier] isEqual:@"name"]) {
+			[item setSelected:[object boolValue]];		
+			[outlineView reloadData];
+		}	
 	}
+}
+
+- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+	if ([[tableColumn identifier] isEqual:@"name"]) {
+		if (self.isEditing) {
+			[cell setTitle:[item name]];	
+			[cell setState:[item isSelected] ? NSOnState : NSOffState];
+		} else {
+			[cell setStringValue:[item name]];
+		}
+	}
+	
+	if ([[tableColumn identifier] isEqual:@"status"]) {
+		[cell setTextColor:[NSColor lightGrayColor]];	
+		
+		if ([item status] == GHTestStatusErrored) {
+			[cell setTextColor:[NSColor redColor]];
+		} else if ([item status] == GHTestStatusSucceeded) {
+			[cell setTextColor:[NSColor greenColor]];
+		} else if ([item status] == GHTestStatusRunning) {
+			[cell setTextColor:[NSColor blackColor]];
+		}
+	}		
 }
 
 // We can return a different cell for each row, if we want
 - (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
 	// If we return a cell for the 'nil' tableColumn, it will be used as a "full width" cell and span all the columns
-	if (tableColumn == nil && [item hasChildren]) {
-		// We want to use the cell for the name column, but we could construct a new cell if we wanted to, or return a different cell for each row.
-		return [[outlineView tableColumnWithIdentifier:@"name"] dataCell];
-	}
+//	if (tableColumn == nil && [item hasChildren]) {
+//		// We want to use the cell for the name column, but we could construct a new cell if we wanted to, or return a different cell for each row.
+//		return [[outlineView tableColumnWithIdentifier:@"name"] dataCell];
+//	}
+	
+	if ([[tableColumn identifier] isEqual:@"name"] && self.isEditing) {		
+		// TODO(gabe): Doesn't work if you try to re-use cells so making a new one; 
+		// Need help with this; This might explode if you have a lot of tests
+		NSButtonCell *cell = [[[NSButtonCell alloc] init] autorelease];
+		[cell setControlSize:NSSmallControlSize];
+		[cell setFont:[NSFont fontWithName:@"Lucida Grande" size:11]];
+		[cell setButtonType:NSSwitchButton];		
+		[cell setTitle:[item name]];
+		[cell setEditable:YES];
+		return cell;
+	}	
+	
 	return [tableColumn dataCell];
 }
 
@@ -83,20 +117,6 @@
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item {
 	return ([item hasChildren]);
-}
-
-- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {	
-	if ([[tableColumn identifier] isEqual:@"status"]) {
-		[cell setTextColor:[NSColor lightGrayColor]];	
-		
-		if ([item status] == GHTestStatusErrored) {
-			[cell setTextColor:[NSColor redColor]];
-		} else if ([item status] == GHTestStatusSucceeded) {
-			[cell setTextColor:[NSColor greenColor]];
-		} else if ([item status] == GHTestStatusRunning) {
-			[cell setTextColor:[NSColor blackColor]];
-		}
-	}	
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldTrackCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {

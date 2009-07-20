@@ -17,6 +17,8 @@
 
 @interface GHTestOutlineViewModel : GHTestViewModel {
 	id<GHTestOutlineViewModelDelegate> delegate_; // weak
+	
+	NSButtonCell *editCell_;
 }
 
 @property (assign, nonatomic) id<GHTestOutlineViewModelDelegate> delegate;

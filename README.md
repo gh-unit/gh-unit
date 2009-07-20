@@ -13,22 +13,17 @@ For example, your test cases will be run if they subclass any of the following:
 
 ### Mac OS X
 
-[GHUnit-0.3.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.3.8.zip) *GHUnit.framework* (2009/04/28)
+[GHUnit-0.4.1.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.1.zip) *GHUnit.framework* (2009/07/18)
 
 Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
 
 ### iPhone OS 2.1 or above
 
-[libGHUnitIPhone2_1-0.3.19.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone2_1-0.3.19.zip) *iPhone Static Library for OS 2.1 or above (Device+Simulator)* (2009/07/08)
-
-[libGHUnitIPhoneCL2_1-0.3.19.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL2_1-0.3.19.zip) *iPhone Static Library for OS 2.1 or above with CoreLocation support (Device+Simulator)* (2009/07/08)
+[libGHUnitIPhone2_1-0.4.1.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone2_1-0.4.1.zip) *iPhone Static Library for OS 2.1 or above (Device+Simulator)* (2009/07/18)
 
 ### iPhone OS 3.0 or above
 
-[libGHUnitIPhone3_0-0.3.19.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.3.19.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/07/08)
-
-[libGHUnitIPhoneCL3_0-0.3.19.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhoneCL3_0-0.3.19.zip) *iPhone Static Library for OS 3.0 or above with CoreLocation support (Device+Simulator)* (2009/07/08)
-
+[libGHUnitIPhone3_0-0.4.1.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.1.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/07/18)
 
 ## Why?
 
@@ -93,6 +88,18 @@ For example `MyTest.m`:
 	@end
 
 	@implementation MyTest
+	
+	- (BOOL)shouldRunOnMainThread {
+		// By default NO, but if you have a UI test or test dependent on running on the main thread return YES
+	}
+	
+	- (void)setUpClass {
+		// Run at start of all tests in the class
+	}
+
+	- (void)tearDownClass {
+		// Run at end of all tests in the class
+	}
 
 	- (void)setUp {
 		// Run before each test method
@@ -123,7 +130,8 @@ Now you should be ready to Build and Run the test target.
 
 You should see something like:
 
-![gh-unit5](http://rel.me.s3.amazonaws.com/gh-unit/images/gh-unit5.jpg)
+![GHUnit-0.4.1-expanded](https://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.1-expanded.jpg)
+![GHUnit-0.4.1](https://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.1.jpg)
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import <GHUnit/GHUnit.h>` to it, and then you won't have to include that import for every test.
 
@@ -152,13 +160,25 @@ For example `MyTest.m`:
 
 	@implementation MyTest
 
+	- (BOOL)shouldRunOnMainThread {
+		// By default NO, but if you have a UI test or test dependent on running on the main thread return YES
+	}
+	
+	- (void)setUpClass {
+		// Run at start of all tests in the class
+	}
+
+	- (void)tearDownClass {
+		// Run at end of all tests in the class
+	}
+	
 	- (void)setUp {
 		// Run before each test method
 	}
 
 	- (void)tearDown {
 		// Run after each test method
-	}
+	}	
 
 	- (void)testFoo {
 		// Assert a is not NULL, with no custom error description

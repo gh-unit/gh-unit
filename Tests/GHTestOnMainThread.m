@@ -1,0 +1,46 @@
+//
+//  GHTestOnMainThread.m
+//  GHUnit
+//
+//  Created by Gabriel Handford on 7/18/09.
+//  Copyright 2009. All rights reserved.
+//
+
+#import "GHTestCase.h"
+
+@interface GHTestOnMainThread : GHTestCase { }
+@end
+
+@implementation GHTestOnMainThread
+
+- (BOOL)shouldRunOnMainThread {
+	return YES;
+}
+
+- (void)setUp {
+	GHAssertTrue([NSThread isMainThread], nil);
+}
+
+- (void)tearDown {
+	GHAssertTrue([NSThread isMainThread], nil);
+}
+
+- (void)setUpClass {
+	GHAssertTrue([NSThread isMainThread], nil);
+}
+
+- (void)tearDownClass {
+	GHAssertTrue([NSThread isMainThread], nil);
+}
+
+- (void)testFail {
+	GHAssertTrue([NSThread isMainThread], nil);
+	GHFail(@"Test failure");
+}
+
+- (void)testSucceedAfterFail {
+	GHAssertTrue([NSThread isMainThread], nil);
+}
+
+@end
+

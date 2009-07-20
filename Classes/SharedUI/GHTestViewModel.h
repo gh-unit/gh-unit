@@ -48,11 +48,13 @@
 	
 	NSMutableDictionary *map_; // id<GHTest>#identifier -> GHTestNode
 
+	BOOL editing_;
 	NSString *settingsKey_;
 	NSMutableDictionary *settings_;
 }
 
 @property (readonly, nonatomic) GHTestNode *root;
+@property (assign, nonatomic, getter=isEditing) BOOL editing;
 
 /*!
  Create view model with root test group node.
@@ -60,7 +62,7 @@
 - (id)initWithSuite:(GHTestSuite *)suite;
 
 - (NSString *)name;
-- (NSString *)statusString;
+- (NSString *)statusString:(NSString *)prefix;
 
 /*!
  Get the test node from the test.
@@ -90,7 +92,8 @@
  */
 - (NSIndexPath *)indexPathToTest:(id<GHTest>)test;
 
-- (void)saveSettings;
+- (void)loadDefaults;
+- (void)saveDefaults;
 
 - (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel;
 
@@ -103,8 +106,8 @@
 
 @interface GHTestNode : NSObject {
 
-	id<GHTest> test_; // The test
-	NSMutableArray *children_; // of GHTestNode
+	id<GHTest> test_;
+	NSMutableArray */* of GHTestNode*/children_;
 
 	id<GHTestNodeDelegate> delegate_;
 }
@@ -113,7 +116,7 @@
 
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) NSArray *children; // of GHTestNode
+@property (readonly, nonatomic) NSArray */* of GHTestNode*/children;
 @property (readonly, nonatomic) id<GHTest> test;
 @property (readonly, nonatomic) GHTestStatus status;
 @property (readonly, nonatomic) NSString *statusString;

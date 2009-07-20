@@ -57,27 +57,25 @@ NSString* NSStringFromGHTestStatus(GHTestStatus status) {
 		case GHTestStatusSucceeded: return NSLocalizedString(@"Succeeded", nil); 
 		case GHTestStatusErrored: return NSLocalizedString(@"Errored", nil);
 		case GHTestStatusCancelled: return NSLocalizedString(@"Cancelled", nil);
-		case GHTestStatusDisabled: return NSLocalizedString(@"Disabled", nil);
 			
 		default: return NSLocalizedString(@"Unknown", nil);
 	}
 }
 
-GHTestStats GHTestStatsMake(NSInteger succeedCount, NSInteger failureCount, NSInteger disabledCount, NSInteger cancelCount, NSInteger testCount) {
+GHTestStats GHTestStatsMake(NSInteger succeedCount, NSInteger failureCount, NSInteger cancelCount, NSInteger testCount) {
 	GHTestStats stats;
 	stats.succeedCount = succeedCount;
 	stats.failureCount = failureCount; 
-	stats.disabledCount = disabledCount;
 	stats.cancelCount = cancelCount;	
 	stats.testCount = testCount;
 	return stats;
 }
 
-const GHTestStats GHTestStatsEmpty = {0, 0, 0, 0, 0};
+const GHTestStats GHTestStatsEmpty = {0, 0, 0, 0};
 
 NSString *NSStringFromGHTestStats(GHTestStats stats) {
-	return [NSString stringWithFormat:@"%d/%d/%d/%d/%d", stats.succeedCount, stats.failureCount, 
-					stats.disabledCount, stats.cancelCount, stats.testCount]; 
+	return [NSString stringWithFormat:@"%d/%d/%d/%d", stats.succeedCount, stats.failureCount, 
+					stats.cancelCount, stats.testCount]; 
 }
 
 
@@ -88,14 +86,13 @@ BOOL GHTestStatusIsRunning(GHTestStatus status) {
 BOOL GHTestStatusEnded(GHTestStatus status) {
 	return (status == GHTestStatusSucceeded 
 					|| status == GHTestStatusErrored
-					|| status == GHTestStatusCancelled
-					|| status == GHTestStatusDisabled);
+					|| status == GHTestStatusCancelled);
 }
 
 @implementation GHTest
 
 @synthesize delegate=delegate_, target=target_, selector=selector_, name=name_, interval=interval_, 
-exception=exception_, status=status_, log=log_, identifier=identifier_;
+exception=exception_, status=status_, log=log_, identifier=identifier_, disabled=disabled_;
 
 - (id)initWithTarget:(id)target selector:(SEL)selector {
 	if ((self = [super init])) {
@@ -139,17 +136,19 @@ exception=exception_, status=status_, log=log_, identifier=identifier_;
 
 - (GHTestStats)stats {
 	switch(status_) {
-		case GHTestStatusSucceeded: return GHTestStatsMake(1, 0, 0, 0, 1);
-		case GHTestStatusErrored: return GHTestStatsMake(0, 1, 0, 0, 1);
-		case GHTestStatusDisabled: return GHTestStatsMake(0, 0, 1, 0, 1);
-		case GHTestStatusCancelled: return GHTestStatsMake(0, 0, 0, 1, 1);
+		case GHTestStatusSucceeded: return GHTestStatsMake(1, 0, 0, 1);
+		case GHTestStatusErrored: return GHTestStatsMake(0, 1, 0, 1);
+		case GHTestStatusCancelled: return GHTestStatsMake(0, 0, 1, 1);
 		default:
-			return GHTestStatsMake(0, 0, 0, 0, 1);
+			return GHTestStatsMake(0, 0, 0, 1);
 	}
 }
 
 - (void)reset {
 	status_ = GHTestStatusNone;
+	interval_ = 0;
+	[exception_ release];
+	exception_ = nil;	
 	[delegate_ testDidUpdate:self source:self];
 }
 
@@ -163,9 +162,14 @@ exception=exception_, status=status_, log=log_, identifier=identifier_;
 	[delegate_ testDidUpdate:self source:self];
 }
 
-- (void)disable {
-	status_ = GHTestStatusDisabled;
+- (void)setDisabled:(BOOL)disabled {
+	[self reset];
+	disabled_ = disabled;
 	[delegate_ testDidUpdate:self source:self];
+}
+
+- (NSInteger)disabledCount {
+	return (disabled_ ? 1 : 0);
 }
 
 - (void)setException:(NSException *)exception {
@@ -177,7 +181,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_;
 }
 
 - (void)run {
-	if (status_ == GHTestStatusDisabled) return;
+	if (status_ == GHTestStatusCancelled || disabled_) return;
 	
 	status_ = GHTestStatusRunning;
 	
@@ -223,9 +227,15 @@ exception=exception_, status=status_, log=log_, identifier=identifier_;
 	[super dealloc];
 }
 
+- (void)cancel {
+	[super cancel];
+	[test_ cancel];
+}
+
 - (void)main {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	[test_ run];
+	if (!self.isCancelled) 
+		[test_ run];
 	[pool release];
 }
 

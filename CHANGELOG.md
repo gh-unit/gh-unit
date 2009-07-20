@@ -1,8 +1,9 @@
 # Release 0.4.1
-- Using NSOperationQueue to manage tests runs
+- Option to use NSOperationQueue to manage tests runs
 - Updated how test groups run
 - Handling failure in setUpClass/tearDownClass
 - Updated how shouldRunOnMainThread works
+- Bug fixes and other refactoring
 
 # Release 0.3.19 (2008-06-15)
 - Fixed bug in Edit->Save crash (iPhone)

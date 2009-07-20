@@ -3,7 +3,7 @@
 //  GHUnitIPhone
 //
 //  Created by Gabriel Handford on 5/5/09.
-//  Copyright 2009 Yelp. All rights reserved.
+//  Copyright 2009. All rights reserved.
 //
 
 #import "GHUnitIPhoneTableViewDataSource.h"
@@ -21,7 +21,6 @@
 	for(GHTestNode *sectionNode in [[self root] children]) {
 		for(GHTestNode *node in [sectionNode children]) {
 			node.selected = selected;
-			[node notifyChanged];
 		}
 	}
 }

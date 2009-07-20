@@ -36,15 +36,12 @@
 
 @implementation GHTestViewModel
 
-@synthesize root=root_;
+@synthesize root=root_, editing=editing_;
 
 - (id)initWithSuite:(GHTestSuite *)suite {
 	if ((self = [super init])) {		
 		suite_ = [suite retain];
-		settingsKey_ = [[NSString stringWithFormat:@"GHUnit-%@", [suite name]] copy];
-		settings_ = [[[NSUserDefaults standardUserDefaults] objectForKey:settingsKey_] mutableCopy];		
-		if (!settings_) settings_ = [[NSMutableDictionary dictionary] retain];
-		GHUDebug(@"Settings: %@", settings_);
+		[self loadDefaults];
 		root_ = [[GHTestNode alloc] initWithTest:suite_ children:[suite_ children] source:self];
 		map_ = [[NSMutableDictionary dictionary] retain];
 	}
@@ -69,8 +66,11 @@
 	return [root_ name];
 }
 
-- (NSString *)statusString {
-	return [root_ statusString];
+- (NSString *)statusString:(NSString *)prefix {
+	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ disabledCount] + [suite_ stats].cancelCount);
+	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs", (self.isRunning ? @"Running" : @"Took"), [suite_ interval]];
+	return [NSString stringWithFormat:@"%@%@ %d/%d (%d failures)", prefix, statusInterval,
+					[suite_ stats].succeedCount, totalRunCount, [suite_ stats].failureCount];	
 }
 
 - (void)registerNode:(GHTestNode *)node {
@@ -78,8 +78,8 @@
 	node.delegate = self;
 	
 	// Apply settings
-	id selectedValue = [settings_ objectForKey:[NSString stringWithFormat:@"%@-%@", node.identifier, @"selected"]];
-	node.selected = (selectedValue ? [selectedValue boolValue] : YES); // Defaults to selected
+	BOOL disabled = [[settings_ objectForKey:[NSString stringWithFormat:@"%@-disabled", node.identifier]] boolValue];
+	if (disabled) node.selected = NO;
 }
 
 - (GHTestNode *)findTestNode:(id<GHTest>)test {
@@ -132,12 +132,21 @@
 
 - (void)testNodeDidChange:(GHTestNode *)node {	
 	if (![node hasChildren]) {
-		GHUDebug(@"Node changed: %d", node.selected);
-		[settings_ setObject:[NSNumber numberWithBool:node.selected] forKey:[NSString stringWithFormat:@"%@-%@", node.identifier, @"selected"]];
+		GHUDebug(@"Node %@ changed: %d", node.identifier, node.selected);
+		NSString *key = [NSString stringWithFormat:@"%@-disabled", node.identifier];
+		if (node.selected) [settings_ removeObjectForKey:key];
+		else [settings_ setObject:[NSNumber numberWithBool:YES] forKey:key];
 	}
 }
 
-- (void)saveSettings {
+- (void)loadDefaults {
+	settingsKey_ = [[NSString stringWithFormat:@"GHUnit4-%@", [suite_ name]] copy];
+	settings_ = [[[NSUserDefaults standardUserDefaults] objectForKey:settingsKey_] mutableCopy];		
+	if (!settings_) settings_ = [[NSMutableDictionary dictionary] retain];
+	GHUDebug(@"Settings: %@", settings_);	
+}
+
+- (void)saveDefaults {
 	GHUDebug(@"Saving settings: %@", settings_);
 	[[NSUserDefaults standardUserDefaults] setObject:settings_ forKey:settingsKey_];
 	[[NSUserDefaults standardUserDefaults] synchronize];
@@ -148,12 +157,10 @@
 }
 
 - (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel {
-	[runner_ cancel];
-	runner_.delegate = nil;
-	[runner_ release];
-
-	runner_ = [[GHTestRunner runnerForSuite:suite_] retain];		
-	runner_.delegate = delegate;
+	if (!runner_) {
+		runner_ = [[GHTestRunner runnerForSuite:suite_] retain];		
+		runner_.delegate = delegate;
+	}
 	if (inParallel) {
 		NSOperationQueue *operationQueue = [[[NSOperationQueue alloc] init] autorelease];
 		operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
@@ -232,11 +239,18 @@
 		if (self.isGroupTest)
 			interval = [NSString stringWithFormat:@"%0.2fs", [test_ interval]];
 	} else if (self.isEnded) {
-		if ([test_ status] == GHTestStatusErrored) status = @"✘";
-		else if ([test_ status] == GHTestStatusSucceeded) status = @"✔";
-		else status = @"-";
 		if ([test_ interval] >= 0)
 			interval = [NSString stringWithFormat:@"%0.2fs", [test_ interval]];
+
+		if ([test_ status] == GHTestStatusErrored) status = @"✘";
+		else if ([test_ status] == GHTestStatusSucceeded) status = @"✔";
+		else if ([test_ status] == GHTestStatusCancelled) {
+			status = @"-";
+			interval = @"";
+		} else if ([test_ isDisabled]) {
+			status = @"⊝";
+			interval = @"";
+		}
 	} else if (!self.isSelected) {
 		status = @"";
 	}
@@ -295,14 +309,15 @@
 }
 
 - (BOOL)isSelected {
-	return [test_ status] != GHTestStatusDisabled;
+	return ![test_ isDisabled];
 }
 
 - (void)setSelected:(BOOL)selected {
-	// TODO(gabe): Can only disable if has no status
-	if ([test_ status] == GHTestStatusNone) {
-		if (!selected) [test_ disable];
-	}
+	[test_ setDisabled:!selected];
+	GHUDebug(@"Disable? %d %@", !selected, [test_ identifier]);
+	for(GHTestNode *node in children_) 
+		[node setSelected:selected];
+	[self notifyChanged];
 }
 
 @end
