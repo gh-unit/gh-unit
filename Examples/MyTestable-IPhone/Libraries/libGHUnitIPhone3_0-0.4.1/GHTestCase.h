@@ -56,9 +56,6 @@
 /*!
  The base class for a test case. 
  
- Tests run in a separate thread, so if you are running a UI test, you may want to
- use the GHUITestCase.
-
  @code
  @interface MyTest : GHTestCase {}
  @end
@@ -93,14 +90,14 @@
 
  */
 @interface GHTestCase : NSObject {
-	id<GHTestCaseLogDelegate> logDelegate_; // weak
+	id<GHTestCaseLogWriter> logWriter_; // weak
 	
 	SEL currentSelector_;
 }
 
 //! The current test selector
 @property (assign, nonatomic) SEL currentSelector; 
-@property (assign, nonatomic) id<GHTestCaseLogDelegate> logDelegate;
+@property (assign, nonatomic) id<GHTestCaseLogWriter> logWriter;
 
 // GTM_BEGIN
 //! Run before each test method
@@ -124,8 +121,9 @@
 - (void)tearDownClass;
 
 /*!
- Whether to run the tests on a separate thread.
- Defaults to NO. Test is run on a separate thread.
+ Whether to run the tests on a separate thread. Override this method in your
+ test case to override the default.
+ Default is NO, tests are run on a separate thread by default.
  @result If YES runs on the main thread
  */
 - (BOOL)shouldRunOnMainThread;

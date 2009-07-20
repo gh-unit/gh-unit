@@ -7,16 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "GHUnit.h"
 
+extern BOOL NSDebugEnabled;
+extern BOOL NSZombieEnabled;
+extern BOOL NSDeallocateZombies;
+extern BOOL NSHangOnUncaughtException;
+
 int main(int argc, char *argv[]) {
-	setenv("NSDebugEnabled", "1", 1);
-	setenv("NSAutoreleaseFreedObjectCheckEnabled", "1", 1);
-	setenv("NSZombieEnabled", "1", 1);
-	setenv("NSDeallocateZombies", "0", 1);
-	//setenv("MallocStackLogging", "1", 1);
-	//setenv("MallocStackLoggingNoCompact", "1", 1);
-	setenv("NSHangOnUncaughtException", "1", 1);
+	
+	NSDebugEnabled = YES;
+	NSZombieEnabled = YES;
+	NSDeallocateZombies = NO;
+	NSHangOnUncaughtException = YES;
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	

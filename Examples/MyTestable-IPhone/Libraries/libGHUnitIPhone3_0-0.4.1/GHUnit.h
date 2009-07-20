@@ -1,8 +1,8 @@
 //
-//  GHMockNSLocale.h
-//  GHUnitIPhone
+//  GHUnit.h
+//  GHUnit
 //
-//  Created by Gabriel Handford on 4/13/09.
+//  Created by Gabriel Handford on 1/19/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,33 +27,14 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-/*!
- Category for overriding the current locale at runtime.
+#import "GHTestCase.h"
+#import "GHAsyncTestCase.h"
+#import "GHTestSuite.h"
+#import "GHTestMacros.h"
+#import "GHTestRunner.h"
 
- @code
- #import "GHNSLocale+Mock.h"
- // This aliases the currentLocale method and with the specified locale identifier
- [NSLocale gh_setLocaleIdentifier:@"en_GB"];
-  
- [[NSLocale currentLocale] localeIdentifier] == "en_GB"
- @endcode
- */
-@interface NSLocale (GHMock)
-
-+ (void)gh_setLocaleIdentifier:(NSString *)localeIdentifier;
-
-/*!
- Aliases to currentLocale with locale set from gh_setLocaleIdentifier.
- If not set, defaults to NSLocale with identifier en_US.
- */
-+ (NSLocale *)gh_currentLocale;
-
-+ (void)gh_setPreferredLanguages:(NSArray *)preferredLanguages;
-
-/*!
- Aliases to preferredLanguages set from gh_setPreferredLanguages.
- If not set, defaults to [@"en"].
- */
-+ (NSArray *)gh_preferredLanguages;
-
-@end
+#ifdef DEBUG
+#define GHUDebug(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
+#else
+#define GHUDebug(fmt, ...) do {} while(0)
+#endif

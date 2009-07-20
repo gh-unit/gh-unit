@@ -10,8 +10,6 @@
 
 @implementation GHUnitIPhoneTableViewDataSource
 
-@synthesize editing=editing_;
-
 - (GHTestNode *)nodeForIndexPath:(NSIndexPath *)indexPath {
 	GHTestNode *sectionNode = [[[self root] children] objectAtIndex:indexPath.section];
 	return [[sectionNode children] objectAtIndex:indexPath.row];

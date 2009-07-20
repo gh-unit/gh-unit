@@ -54,9 +54,7 @@ extern NSString *GHUnitTest;
 		- (void)testB2; (GHTest with target GHTestCase2 + testB2)  
  
  */
-@interface GHTestSuite : GHTestGroup {
-
-}
+@interface GHTestSuite : GHTestGroup { }
 
 /*! 
  Create test suite with test cases.
@@ -69,6 +67,7 @@ extern NSString *GHUnitTest;
 /*!
  Creates a suite of all tests.
  Will load all classes that subclass from GHTestCase, SenTestCase or GTMTestCase (or register test case class).
+ @result Suite
  */
 + (GHTestSuite *)allTests;
 
@@ -89,6 +88,7 @@ extern NSString *GHUnitTest;
  Suite for a single test/method.
  @param testCaseClass
  @param method
+ @result Suite
  */
 + (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method;
 

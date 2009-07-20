@@ -237,7 +237,7 @@ status=status_, testCase=testCase_, exception=exception_;
 }
 
 - (void)_run:(NSOperationQueue *)operationQueue {
-	if (status_ == GHTestStatusCancelled) {
+	if (status_ == GHTestStatusCancelled || [children_ count] == 0) {
 		return;
 	}
 
