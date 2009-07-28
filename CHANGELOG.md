@@ -1,3 +1,6 @@
+# Release 0.4.5 (2008-07-21)
+- Including GHUnitIPhoneAppDelegate so you can subclass and interact with UIApplication delegate in tests
+
 # Release 0.4.4 (2008-07-20)
 - Ignore disable/cancelled tests in scroll (iPhone)
 - Only start group test (notify) if we have tests to run

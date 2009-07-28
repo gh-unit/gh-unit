@@ -8,15 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "GHUnit.h"
-
-#import "GHUnitIPhoneViewController.h"
-
 @interface GHUnitIPhoneAppDelegate : NSObject <UIApplicationDelegate> {
 	UIWindow *window_;
 	
-	UINavigationController *navigationController_;
-	GHUnitIPhoneViewController *viewController_;
+	UINavigationController *navigationController_;	
 }
 
 @end

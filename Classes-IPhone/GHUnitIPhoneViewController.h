@@ -38,13 +38,13 @@ extern NSString *const GHUnitAutoRunKey;
 @property (readonly, nonatomic) UITableView *tableView;
 @property (assign, nonatomic, getter=isAutoRun) BOOL autoRun;
 
-- (void)updateTest:(id<GHTest>)test;
+- (void)reloadTest:(id<GHTest>)test;
 
 - (void)scrollToTest:(id<GHTest>)test;
 - (void)scrollToBottom;
 
 - (void)setStatusText:(NSString *)message;
-- (void)setTestStats:(GHTestStats)stats;
+//- (void)setTestStats:(GHTestStats)stats;
 
 - (void)setEditing:(BOOL)editing;
 

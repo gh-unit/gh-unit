@@ -12,9 +12,9 @@
 @implementation GHUnitIPhoneAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-	viewController_ = [[GHUnitIPhoneViewController alloc] init];	
-	
-	navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController_];
+	GHUnitIPhoneViewController *viewController = [[GHUnitIPhoneViewController alloc] init];		
+	navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController];
+	[viewController release];
 	CGSize size = [[UIScreen mainScreen] applicationFrame].size;
 	window_ = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
 	GHUDebug(@"Setting window view");
@@ -24,7 +24,6 @@
 
 - (void)dealloc {
 	[navigationController_ release];
-	[viewController_ release];
 	[window_ release];
 	[super dealloc];
 }

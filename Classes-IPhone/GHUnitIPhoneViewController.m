@@ -202,7 +202,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	return YES;
 }
 
-- (void)updateTest:(id<GHTest>)test {
+- (void)reloadTest:(id<GHTest>)test {
 	[self.tableView reloadData];
 	if (!userDidDrag_ && !dataSource_.isEditing && ![test isDisabled] && [test status] == GHTestStatusRunning)
 		[self scrollToTest:test];
@@ -282,15 +282,15 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 }
 
 - (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
-	[self updateTest:test];
+	[self reloadTest:test];
 }
 
 - (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test {
-	[self updateTest:test];
+	[self reloadTest:test];
 }
 
 - (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test {
-	[self updateTest:test];
+	[self reloadTest:test];
 }
 
 - (void)testRunnerDidStart:(GHTestRunner *)runner { }
