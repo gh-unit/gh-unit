@@ -5,3 +5,4 @@ Examples/MyTestable-IPhone/build/*
 *.mode1v3
 *.pbxuser
 Documentation
+Project/tests.log
