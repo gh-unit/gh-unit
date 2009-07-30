@@ -52,11 +52,25 @@
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
 	if ([[tableColumn identifier] isEqual:@"name"]) {
+		
+		NSColor *textColor = [NSColor blackColor];
+		if ([item isDisabled]) {
+			textColor = [NSColor grayColor];
+		}		
+		
 		if (self.isEditing) {
-			[cell setTitle:[item name]];	
 			[cell setState:[item isSelected] ? NSOnState : NSOffState];
-		} else {
-			[cell setStringValue:[item name]];
+			NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+																	textColor, NSForegroundColorAttributeName,
+																	[cell font],  NSFontAttributeName,
+																	nil];
+			
+			NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[item name] attributes:attributes];
+			[cell setAttributedTitle:attributedString];
+			[attributedString release];			
+		} else {			
+			[cell setTitle:[item name]];	
+			[cell setTextColor:textColor];
 		}
 	}
 	

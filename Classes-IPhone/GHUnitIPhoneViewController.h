@@ -44,7 +44,6 @@ extern NSString *const GHUnitAutoRunKey;
 - (void)scrollToBottom;
 
 - (void)setStatusText:(NSString *)message;
-//- (void)setTestStats:(GHTestStats)stats;
 
 - (void)setEditing:(BOOL)editing;
 

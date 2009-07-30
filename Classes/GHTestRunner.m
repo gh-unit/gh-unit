@@ -138,9 +138,21 @@ operationQueue=operationQueue_;
 	return [test_ stats];
 }
 
+- (void)redirectStdErrToFile:(NSString *)path {
+	[self log:[NSString stringWithFormat:@"Test output: '%@'\n", path]];
+	fflush(stderr);
+	freopen([path UTF8String], "w+", stderr);
+}
+				
+- (void)log:(NSString *)message {
+	NSLog([message stringByAppendingString:@"\n"]);
+	//fputs([message UTF8String], stdout);
+	//fflush(stderr);
+}
+
 - (void)_log:(NSString *)message {
 	NSLog([message stringByAppendingString:@"\n"]);
-  fflush(stderr);
+  //fflush(stderr);
 	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
 		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didLog:message];
@@ -149,8 +161,8 @@ operationQueue=operationQueue_;
 #pragma mark Delegates (GHTest)
 
 - (void)testDidStart:(id<GHTest>)test source:(id<GHTest>)source {
-	NSString *message = [NSString stringWithFormat:@"Test '%@' started.", [source identifier]];	
-	[self _log:message];
+	NSString *message = [NSString stringWithFormat:@"%@...", [source identifier]];	
+	[self log:message];
 	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
 		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didStartTest:source];	

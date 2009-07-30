@@ -47,6 +47,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	tableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, contentHeight - 36) style:UITableViewStylePlain];
 	tableView_.delegate = self;
 	tableView_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	tableView_.sectionIndexMinimumDisplayRowCount = 5;
 	[view addSubview:tableView_];
 	[tableView_ release];	
 	
@@ -204,16 +205,9 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 
 - (void)reloadTest:(id<GHTest>)test {
 	[self.tableView reloadData];
-	if (!userDidDrag_ && !dataSource_.isEditing && ![test isDisabled] && [test status] == GHTestStatusRunning)
+	if (!userDidDrag_ && !dataSource_.isEditing && ![test isDisabled] 
+			&& [test status] == GHTestStatusRunning && ![test conformsToProtocol:@protocol(GHTestGroup)]) 
 		[self scrollToTest:test];
-}
-
-- (void)setTestStats:(GHTestStats)stats {
-	if (stats.failureCount > 0) {
-		statusLabel_.textColor = [UIColor redColor];
-	} else {
-		statusLabel_.textColor = [UIColor blackColor];
-	}
 }
 
 - (void)scrollToTest:(id<GHTest>)test {
@@ -282,6 +276,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 }
 
 - (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
+	[self setStatusText:[NSString stringWithFormat:@"Test '%@' started.", [test identifier]]];
 	[self reloadTest:test];
 }
 
@@ -289,7 +284,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	[self reloadTest:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test {
+- (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test {	
 	[self reloadTest:test];
 }
 
@@ -302,7 +297,15 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
 	GHTestStats stats = [runner.test stats];
-	[self setTestStats:stats];
+
+	if (stats.failureCount > 0) {
+		statusLabel_.textColor = [UIColor redColor];
+	} else {
+		statusLabel_.textColor = [UIColor blackColor];
+	}
+	
+	[self setStatusText:[dataSource_ statusString:@"Tests finished. "]];
+	
 	runButton_.title = @"Run";
 }
 
