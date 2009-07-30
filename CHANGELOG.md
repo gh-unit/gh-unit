@@ -1,3 +1,9 @@
+# Release 0.4.6
+- Redirecting test output to file
+- Test output does OK/FAIL
+- Disabled tests appear gray (MacOSX)
+- UI fixes
+
 # Release 0.4.5 (2008-07-21)
 - Including GHUnitIPhoneAppDelegate so you can subclass and interact with UIApplication delegate in tests
 

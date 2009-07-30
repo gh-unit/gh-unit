@@ -53,6 +53,10 @@
 		0002040A0F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 000204060F8EA87C00EC31BA /* GHMockNSHTTPURLResponse.m */; };
 		0002040C0F8EA87C00EC31BA /* GHMockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 000204080F8EA87C00EC31BA /* GHMockNSURLConnection.m */; };
 		0002042B0F8EA93400EC31BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		0009C8781016B6E40019EF46 /* GHUnitIPhoneAppDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002D9C620F4915C2007932FE /* GHUnitIPhoneAppDelegate.h */; };
+		0009C8791016B6EE0019EF46 /* GHUnitIPhoneAppDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002D9C620F4915C2007932FE /* GHUnitIPhoneAppDelegate.h */; };
+		0009C87A1016B6F50019EF46 /* GHUnitIPhoneAppDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002D9C620F4915C2007932FE /* GHUnitIPhoneAppDelegate.h */; };
+		0009C87B1016B6FC0019EF46 /* GHUnitIPhoneAppDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002D9C620F4915C2007932FE /* GHUnitIPhoneAppDelegate.h */; };
 		0016AF0F1012A4A8009F4F8F /* GHTestOnMainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016AF0C1012A4A8009F4F8F /* GHTestOnMainThread.m */; };
 		0016AF101012A4A8009F4F8F /* GHTestFail.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016AF0E1012A4A8009F4F8F /* GHTestFail.m */; };
 		00178E300FC3981900CA6A07 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00178E2E0FC3981900CA6A07 /* GHNSInvocationProxy.m */; };
@@ -213,6 +217,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		00A22E2010217BF700337F7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00A952C40FDA2B99006A80A6 /* GHUnitIPhone (Simulator-3.0) */;
+			remoteInfo = "GHUnitIPhone (Simulator-3.0)";
+		};
 		00A511F10FCB41C9000F355B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -271,6 +282,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				0009C87A1016B6F50019EF46 /* GHUnitIPhoneAppDelegate.h in CopyFiles */,
 				00A511840FCB3F95000F355B /* RunTests.sh in CopyFiles */,
 				00A511860FCB3F95000F355B /* GHUNSObject+Swizzle.h in CopyFiles */,
 				00A5118A0FCB3F95000F355B /* GHAsyncTestCase.h in CopyFiles */,
@@ -292,6 +304,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				0009C8791016B6EE0019EF46 /* GHUnitIPhoneAppDelegate.h in CopyFiles */,
 				00A952E20FDA2B99006A80A6 /* RunTests.sh in CopyFiles */,
 				00A952E40FDA2B99006A80A6 /* GHUNSObject+Swizzle.h in CopyFiles */,
 				00A952E80FDA2B99006A80A6 /* GHAsyncTestCase.h in CopyFiles */,
@@ -313,6 +326,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				0009C87B1016B6FC0019EF46 /* GHUnitIPhoneAppDelegate.h in CopyFiles */,
 				00A953140FDA2BB8006A80A6 /* RunTests.sh in CopyFiles */,
 				00A953160FDA2BB8006A80A6 /* GHUNSObject+Swizzle.h in CopyFiles */,
 				00A9531A0FDA2BB8006A80A6 /* GHAsyncTestCase.h in CopyFiles */,
@@ -334,6 +348,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				0009C8781016B6E40019EF46 /* GHUnitIPhoneAppDelegate.h in CopyFiles */,
 				00A511370FCB3DA2000F355B /* RunTests.sh in CopyFiles */,
 				002058C70F9472D900FC1898 /* GHUNSObject+Swizzle.h in CopyFiles */,
 				007730300F8D8E1E00586577 /* GHAsyncTestCase.h in CopyFiles */,
@@ -859,6 +874,7 @@
 			);
 			dependencies = (
 				00DA14990F874334001FE08E /* PBXTargetDependency */,
+				00A22E2110217BF700337F7B /* PBXTargetDependency */,
 			);
 			name = Tests;
 			productName = GHUnitIPhone;
@@ -1083,6 +1099,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		00A22E2110217BF700337F7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00A952C40FDA2B99006A80A6 /* GHUnitIPhone (Simulator-3.0) */;
+			targetProxy = 00A22E2010217BF700337F7B /* PBXContainerItemProxy */;
+		};
 		00A511F20FCB41C9000F355B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 00A511660FCB3F95000F355B /* GHUnitIPhone (Device) */;
