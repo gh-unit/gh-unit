@@ -61,6 +61,7 @@
 @implementation GHTestRunner
 
 #define kGHTestRunnerDelegateProxyWait YES
+#define kGHTestRunnerEnvLogPath "GHUNIT_LOG"
 
 @synthesize test=test_, raiseExceptions=raiseExceptions_, delegate=delegate_, running=running_, cancelling=cancelling_, 
 operationQueue=operationQueue_;
@@ -69,23 +70,6 @@ operationQueue=operationQueue_;
 	if ((self = [self init])) {
 		test_ = [test retain];
 	}
-	
-	NSString *defaultDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
-	if (!defaultDirectory || [defaultDirectory isEqualToString:@"/"]) {
-		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-		if ([paths count] > 0) {
-			defaultDirectory = [paths objectAtIndex:0];
-		}
-	}
-	
-	NSString *defaultPath = @"tests.log";	
-	if (defaultDirectory) defaultPath = [defaultDirectory stringByAppendingPathComponent:@"tests.log"];
-	
-	if (!getenv("NOLOG")) {
-		NSString *logPath = (getenv("LOG") ? [NSString stringWithUTF8String:getenv("LOG")] : defaultPath);
-		[self redirectStdErrToFile:logPath];
-	}
-
 	return self;
 }
 
@@ -154,21 +138,15 @@ operationQueue=operationQueue_;
 - (GHTestStats)stats {
 	return [test_ stats];
 }
-
-- (void)redirectStdErrToFile:(NSString *)path {
-	[self log:[NSString stringWithFormat:@"\nRedirecting test output:\n\t%@\n\n", path]];
-	fflush(stderr);
-	freopen([path UTF8String], "w+", stderr);
-}
-				
+		
 - (void)log:(NSString *)message {
-	fputs([message UTF8String], stdout);
-	fflush(stdout);
+	fputs([message UTF8String], stderr);
+	fflush(stderr);
 }
 
 - (void)_log:(NSString *)message {
-	NSLog([message stringByAppendingString:@"\n"]);
-  fflush(stderr);
+	fputs([[message stringByAppendingString:@"\n"] UTF8String], stdout);
+  fflush(stdout);
 	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
 		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didLog:message];
@@ -259,5 +237,3 @@ operationQueue=operationQueue_;
 }
 
 @end
-
-

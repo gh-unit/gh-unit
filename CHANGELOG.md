@@ -1,3 +1,6 @@
+# Release 0.4.7
+- Removing redirect, was a bad idea; Test output goes to stderr, you can redirect stdout yourself
+
 # Release 0.4.6
 - Redirecting test output to file
 - Test output does OK/FAIL
