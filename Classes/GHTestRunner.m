@@ -69,6 +69,23 @@ operationQueue=operationQueue_;
 	if ((self = [self init])) {
 		test_ = [test retain];
 	}
+	
+	NSString *defaultDirectory = [[NSFileManager defaultManager] currentDirectoryPath];
+	if (!defaultDirectory || [defaultDirectory isEqualToString:@"/"]) {
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		if ([paths count] > 0) {
+			defaultDirectory = [paths objectAtIndex:0];
+		}
+	}
+	
+	NSString *defaultPath = @"tests.log";	
+	if (defaultDirectory) defaultPath = [defaultDirectory stringByAppendingPathComponent:@"tests.log"];
+	
+	if (!getenv("NOLOG")) {
+		NSString *logPath = (getenv("LOG") ? [NSString stringWithUTF8String:getenv("LOG")] : defaultPath);
+		[self redirectStdErrToFile:logPath];
+	}
+
 	return self;
 }
 
@@ -139,20 +156,19 @@ operationQueue=operationQueue_;
 }
 
 - (void)redirectStdErrToFile:(NSString *)path {
-	[self log:[NSString stringWithFormat:@"Test output: '%@'\n", path]];
+	[self log:[NSString stringWithFormat:@"\nRedirecting test output:\n\t%@\n\n", path]];
 	fflush(stderr);
 	freopen([path UTF8String], "w+", stderr);
 }
 				
 - (void)log:(NSString *)message {
-	NSLog([message stringByAppendingString:@"\n"]);
-	//fputs([message UTF8String], stdout);
-	//fflush(stderr);
+	fputs([message UTF8String], stdout);
+	fflush(stdout);
 }
 
 - (void)_log:(NSString *)message {
 	NSLog([message stringByAppendingString:@"\n"]);
-  //fflush(stderr);
+  fflush(stderr);
 	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
 		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didLog:message];
@@ -161,8 +177,9 @@ operationQueue=operationQueue_;
 #pragma mark Delegates (GHTest)
 
 - (void)testDidStart:(id<GHTest>)test source:(id<GHTest>)source {
-	NSString *message = [NSString stringWithFormat:@"%@...", [source identifier]];	
-	[self log:message];
+	if (![source conformsToProtocol:@protocol(GHTestGroup)]) {
+		[self log:[NSString stringWithFormat:@"%@ ", [source identifier]]];
+	}
 	
 	if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
 		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didStartTest:source];	
@@ -176,22 +193,17 @@ operationQueue=operationQueue_;
 - (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source {	
 	
 	if ([source status] != GHTestStatusCancelled) {
-		NSString *stats = nil;
-		if ([source stats].failureCount > 0) {
-			stats = [NSString stringWithFormat:@"failed (%d failures)", [source stats].failureCount];
-		} else {
-			stats = [NSString stringWithFormat:@"passed (%d tests)", [source stats].succeedCount];
+		if (![source conformsToProtocol:@protocol(GHTestGroup)]) {			
+			NSString *message = [NSString stringWithFormat:@"%@ (%0.3fs)\n", 
+													 ([source stats].failureCount > 0 ? @"FAIL" : @"OK"), [source interval]];	
+			[self log:message];
 		}
-		
-		NSString *message = [NSString stringWithFormat:@"Test '%@' %@ (%0.3f seconds).",
-												 [source identifier], stats, [source interval]];	
-		[self _log:message];
 		
 		if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
 			[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didEndTest:source];
 
 	} else {
-		[self _log:[NSString stringWithFormat:@"Test '%@' cancelled.", [source identifier]]];
+		[self log:[NSString stringWithFormat:@"Cancelled\n", [source identifier]]];
 	}
 		
 	if (cancelling_) {
@@ -211,8 +223,8 @@ operationQueue=operationQueue_;
 #pragma mark Notifications (Private)
 
 - (void)_notifyStart {	
-	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' started.", [test_ name]];
-	[self _log:message];
+	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' started.\n", [test_ name]];
+	[self log:message];
 	
 	if ([delegate_ respondsToSelector:@selector(testRunnerDidStart:)])
 		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidStart:self];
@@ -220,7 +232,7 @@ operationQueue=operationQueue_;
 
 - (void)_notifyCancelled {
 	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' cancelled.\n", [test_ name]];
-	[self _log:message];
+	[self log:message];
 	
 	cancelling_ = NO;
 	running_ = NO;
@@ -237,7 +249,7 @@ operationQueue=operationQueue_;
 											 [test_ stats].testCount,
 											 [test_ stats].failureCount, 
 											 [test_ interval]];
-	[self _log:message];
+	[self log:message];
 	
 	cancelling_ = NO;
 	running_ = NO;

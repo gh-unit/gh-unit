@@ -143,6 +143,17 @@
 
 - (void)cancel;
 
+/*!
+ Write message to console.
+ */
+- (void)log:(NSString *)message;
+
+/*!
+ Redirect stderr to file.
+ @param path
+ */
+- (void)redirectStdErrToFile:(NSString *)path;
+
 @end
 
 
