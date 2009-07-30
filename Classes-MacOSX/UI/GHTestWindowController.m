@@ -35,16 +35,16 @@
 @synthesize viewController=viewController_;
 
 - (id)init {
-	if ((self = [super initWithWindowNibName:@"GHTestWindow"])) {
-		
-	}
-	return self;
+	return [super initWithWindowNibName:@"GHTestWindow"];
 }
 
-- (void)awakeFromNib {
+- (void)awakeFromNib {	
+	viewController_ = [[GHTestViewController alloc] init];
+	[viewController_ loadTestSuite];
+	[viewController_ loadDefaults];	
 	self.window.contentView = viewController_.view;	
 	NSString *bundleVersion = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"CFBundleVersion"];
-	self.window.title = [NSString stringWithFormat:@"GHUnit %@", bundleVersion];
+	self.window.title = [NSString stringWithFormat:@"GHUnit %@", bundleVersion];	
 }
 
 - (void)dealloc {

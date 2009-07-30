@@ -41,6 +41,9 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { 
 		suite_ = [[GHTestSuite suiteFromEnv] retain];
+		dataSource_ = [[GHTestOutlineViewModel alloc] initWithSuite:suite_];
+		dataSource_.delegate = self;
+		self.view; // Force nib awaken
 	}
 	return self;
 }
@@ -54,9 +57,6 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 }
 
 - (void)awakeFromNib {
-	[dataSource_ release];
-	dataSource_ = [[GHTestOutlineViewModel alloc] initWithSuite:suite_];
-	dataSource_.delegate = self;
 	_outlineView.delegate = dataSource_;
 	_outlineView.dataSource = dataSource_;		
 	
@@ -65,9 +65,6 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 	[_textView setString:@""];
 	self.wrapInTextView = NO;
 	self.runLabel = @"Run";
-	
-	[self loadDefaults];
-	[self loadTestSuite];
 }
 
 #pragma mark Running
@@ -144,17 +141,12 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 
 - (void)loadDefaults {
 	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"]) {
-		[self toggleDetails:nil];
-		
-		CGFloat width = [[NSUserDefaults standardUserDefaults] doubleForKey:@"SplitWidth"];
-		if (width > 0)
-			[_splitView setPosition:width ofDividerAtIndex:0];
+		[self toggleDetails:nil];				
 	}
 }
 
 - (void)saveDefaults {
 	[dataSource_ saveDefaults];
-	[[NSUserDefaults standardUserDefaults] setDouble:_statusView.frame.size.width forKey:@"SplitWidth"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -208,7 +200,8 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 
 	NSInteger runCount = [suite_ stats].succeedCount + [suite_ stats].failureCount;
 	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ disabledCount] + [suite_ stats].cancelCount);
-	self.statusProgress = ((double)runCount/(double)totalRunCount) * 100.0;
+	if (dataSource_.isRunning)
+		self.statusProgress = ((double)runCount/(double)totalRunCount) * 100.0;
 	self.status = [dataSource_ statusString:@"Status: "];
 }
 
@@ -238,6 +231,10 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 	[self _updateTest:test];
 }
 
+- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test {
+	[self _updateTest:test];
+}
+
 - (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test {
 	[self _updateTest:test];
 }
@@ -247,6 +244,7 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 }
 
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
+	GHUDebug(@"Test runner end: %@", [runner.test identifier]);
 	[self _updateTest:runner.test];
 	[self selectFirstFailure];
 	self.runLabel = @"Run";
