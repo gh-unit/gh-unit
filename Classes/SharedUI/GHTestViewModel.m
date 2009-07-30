@@ -40,10 +40,10 @@
 
 - (id)initWithSuite:(GHTestSuite *)suite {
 	if ((self = [super init])) {		
-		suite_ = [suite retain];
-		[self loadDefaults];
+		suite_ = [suite retain];		
+		[self loadDefaults]; // Needs to load before test nodes get built
 		root_ = [[GHTestNode alloc] initWithTest:suite_ children:[suite_ children] source:self];
-		map_ = [[NSMutableDictionary dictionary] retain];
+		map_ = [[NSMutableDictionary dictionary] retain];		
 	}
 	return self;
 }
@@ -283,6 +283,10 @@
 	return GHTestStatusIsRunning([test_ status]);
 }
 
+- (BOOL)isDisabled {
+	return [test_ isDisabled];
+}
+
 - (BOOL)isEnded {
 	return GHTestStatusEnded([test_ status]);
 }
@@ -314,7 +318,6 @@
 
 - (void)setSelected:(BOOL)selected {
 	[test_ setDisabled:!selected];
-	GHUDebug(@"Disable? %d %@", !selected, [test_ identifier]);
 	for(GHTestNode *node in children_) 
 		[node setSelected:selected];
 	[self notifyChanged];

@@ -123,6 +123,7 @@
 @property (readonly, nonatomic) NSString *stackTrace;
 @property (readonly, nonatomic) NSString *log;
 @property (readonly, nonatomic) BOOL isRunning;
+@property (readonly, nonatomic) BOOL isDisabled;
 @property (readonly, nonatomic) BOOL isEnded;
 @property (readonly, nonatomic) BOOL isGroupTest; // YES if test has "sub tests"
 
