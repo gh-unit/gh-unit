@@ -210,6 +210,12 @@ status=status_, testCase=testCase_, exception=exception_;
 		// If we fail in the setUpClass, then we will cancel all the child tests (below)
 		exception_ = [exception retain];
 		status_ = GHTestStatusErrored;
+		for(id<GHTest> test in children_) {
+			if (![test isDisabled]) {
+				stats_.failureCount++;
+				[test setException:exception_];
+			}
+		}
 	}
 }
 
@@ -260,7 +266,10 @@ status=status_, testCase=testCase_, exception=exception_;
 			if (operationQueue) {
 				[operationQueue addOperation:[[[GHTestOperation alloc] initWithTest:test] autorelease]];
 			} else {
-				if (![test isDisabled]) [self _checkSetUpClass];
+				if (![test isDisabled]) {
+					[self _checkSetUpClass];
+				}
+				if (status_ == GHTestStatusErrored) break;
 				[test run];
 			}
 		}
@@ -317,9 +326,9 @@ status=status_, testCase=testCase_, exception=exception_;
 			interval_ += [test interval];	
 		stats_.failureCount += [test stats].failureCount;
 		stats_.succeedCount += [test stats].succeedCount;
-		stats_.cancelCount += [test stats].cancelCount;
-		[delegate_ testDidEnd:self source:source];
+		stats_.cancelCount += [test stats].cancelCount;		
 	}
+	[delegate_ testDidEnd:self source:source];
 	[delegate_ testDidUpdate:self source:self];	
 }
 
