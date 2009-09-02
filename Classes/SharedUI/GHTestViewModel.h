@@ -110,6 +110,9 @@
 	NSMutableArray */* of GHTestNode*/children_;
 
 	id<GHTestNodeDelegate> delegate_;
+	
+    NSString *identifier_;
+    NSString *name_;
 }
 
 
