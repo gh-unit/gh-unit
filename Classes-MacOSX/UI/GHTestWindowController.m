@@ -47,6 +47,10 @@
 	self.window.title = [NSString stringWithFormat:@"GHUnit %@", bundleVersion];	
 }
 
+- (IBAction)runTests:(id)sender {
+    [viewController_ runTests];
+}
+
 - (void)dealloc {
 	[viewController_ release];
 	[super dealloc];
