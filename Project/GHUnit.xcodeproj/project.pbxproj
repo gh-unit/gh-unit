@@ -570,6 +570,7 @@
 				8DC2EF520486A6940098B216 /* Resources */,
 				8DC2EF540486A6940098B216 /* Sources */,
 				8DC2EF560486A6940098B216 /* Frameworks */,
+				D0A618B8104E425E00184D93 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -637,6 +638,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = ../Classes/RunTests.sh;
+		};
+		D0A618B8104E425E00184D93 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/env ruby";
+			shellScript = "puts \"OMG\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
