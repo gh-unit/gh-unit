@@ -51,6 +51,10 @@
     [viewController_ runTests];
 }
 
+- (IBAction)edit:(id)sender {
+    [viewController_ edit:sender];
+}
+
 - (void)dealloc {
 	[viewController_ release];
 	[super dealloc];
