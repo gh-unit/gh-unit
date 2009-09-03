@@ -79,7 +79,7 @@
 	
 	// Apply settings
 	BOOL disabled = [[settings_ objectForKey:[NSString stringWithFormat:@"%@-disabled", node.identifier]] boolValue];
-	if (disabled) node.selected = NO;
+	if (disabled) [node setSelected:NO];
 }
 
 - (GHTestNode *)findTestNode:(id<GHTest>)test {
@@ -132,9 +132,9 @@
 
 - (void)testNodeDidChange:(GHTestNode *)node {	
 	if (![node hasChildren]) {
-		GHUDebug(@"Node %@ changed: %d", node.identifier, node.selected);
+		GHUDebug(@"Node %@ changed: %d", node.identifier, node.isSelected);
 		NSString *key = [NSString stringWithFormat:@"%@-disabled", node.identifier];
-		if (node.selected) [settings_ removeObjectForKey:key];
+		if (node.isSelected) [settings_ removeObjectForKey:key];
 		else [settings_ setObject:[NSNumber numberWithBool:YES] forKey:key];
 	}
 }
@@ -178,7 +178,7 @@
 
 @implementation GHTestNode
 
-@synthesize test=test_, identifier=identifier_, name=name_, children=children_, delegate=delegate_;
+@synthesize test=test_, children=children_, delegate=delegate_;
 
 - (id)initWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source {
 	if ((self = [super init])) {
