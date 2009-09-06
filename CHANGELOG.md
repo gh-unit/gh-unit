@@ -1,3 +1,7 @@
+# Release 0.4.8
+- Fix bug with turning Parallel off not working
+- Building 32/64 bit universal
+
 # Release 0.4.7
 - Removing redirect, was a bad idea; Test output goes to stderr, you can redirect stdout yourself
 

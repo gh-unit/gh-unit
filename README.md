@@ -13,7 +13,7 @@ For example, your test cases will be run if they subclass any of the following:
 
 ### Mac OS X
 
-[GHUnit-0.4.7.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.7.zip) *GHUnit.framework* (2009/07/30)
+[GHUnit-0.4.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.8.zip) *GHUnit.framework* (2009/09/05)
 
 Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
 

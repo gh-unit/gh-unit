@@ -170,7 +170,6 @@
 		005FDD190F33D0F8006B369F /* GHGTMTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHGTMTestCaseTest.m; sourceTree = "<group>"; };
 		005FDD200F33D259006B369F /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMSenTestCase.h; sourceTree = "<group>"; };
 		005FDD210F33D259006B369F /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSenTestCase.m; sourceTree = "<group>"; };
-		005FDD230F33D275006B369F /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		006307900F8E760800C9602A /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		006307910F8E761C00C9602A /* Shared-IPhone.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Shared-IPhone.xcconfig"; sourceTree = "<group>"; };
 		00772F8A0F8D7A6400586577 /* GHAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAsyncTestCase.h; sourceTree = "<group>"; };
@@ -386,7 +385,6 @@
 		005FDD1F0F33D259006B369F /* GTM */ = {
 			isa = PBXGroup;
 			children = (
-				005FDD230F33D275006B369F /* GTMDefines.h */,
 				005FDD200F33D259006B369F /* GTMSenTestCase.h */,
 				005FDD210F33D259006B369F /* GTMSenTestCase.m */,
 			);
@@ -796,6 +794,7 @@
 			baseConfigurationReference = 006307900F8E760800C9602A /* Shared.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "$(GHUNIT_VERSION)";
 				DYLIB_COMPATIBILITY_VERSION = 0;
