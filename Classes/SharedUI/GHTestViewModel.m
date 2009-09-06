@@ -165,6 +165,8 @@
 		NSOperationQueue *operationQueue = [[[NSOperationQueue alloc] init] autorelease];
 		operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
 		runner_.operationQueue = operationQueue;
+	} else {
+		runner_.operationQueue = nil;
 	}
 	
 	[runner_ runInBackground];
