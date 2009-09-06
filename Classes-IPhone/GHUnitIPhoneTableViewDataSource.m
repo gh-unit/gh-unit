@@ -18,7 +18,7 @@
 - (void)setSelectedForAllNodes:(BOOL)selected {
 	for(GHTestNode *sectionNode in [[self root] children]) {
 		for(GHTestNode *node in [sectionNode children]) {
-			node.selected = selected;
+			[node setSelected:selected];
 		}
 	}
 }
@@ -52,24 +52,24 @@
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];		
 	
 	if (editing_) {
-		cell.text = node.name;
+		cell.textLabel.text = node.name;
 	} else {
-		cell.text = [NSString stringWithFormat:@"%@ %@", node.name, node.statusString];
+		cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", node.name, node.statusString];
 	}
 
-	cell.textColor = [UIColor lightGrayColor];
+	cell.textLabel.textColor = [UIColor lightGrayColor];
 	
 	if (editing_) {
-		if (node.isSelected) cell.textColor = [UIColor blackColor];
+		if (node.isSelected) cell.textLabel.textColor = [UIColor blackColor];
 	} else {
 		if ([node status] == GHTestStatusRunning) {
-			cell.textColor = [UIColor blackColor];
+			cell.textLabel.textColor = [UIColor blackColor];
 		} else if ([node status] == GHTestStatusErrored) {
-			cell.textColor = [UIColor redColor];
+			cell.textLabel.textColor = [UIColor redColor];
 		} else if ([node status] == GHTestStatusSucceeded) {
-			cell.textColor = [UIColor blackColor];
+			cell.textLabel.textColor = [UIColor blackColor];
 		} else if (node.isSelected) {
-			if (node.isSelected) cell.textColor = [UIColor darkGrayColor];
+			if (node.isSelected) cell.textLabel.textColor = [UIColor darkGrayColor];
 		}
 	}
 	
