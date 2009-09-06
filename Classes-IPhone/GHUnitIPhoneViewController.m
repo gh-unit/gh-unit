@@ -241,7 +241,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	GHTestNode *node = [dataSource_ nodeForIndexPath:indexPath];
 	if (dataSource_.isEditing) {
-		node.selected = !node.isSelected;
+		[node setSelected:![node isSelected]];
 		[node notifyChanged];
 		[tableView deselectRowAtIndexPath:indexPath animated:NO];
 		[self.tableView reloadData];
