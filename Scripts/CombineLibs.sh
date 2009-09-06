@@ -6,7 +6,9 @@ OUTPUT_DIR=${BUILD_DIR}/Combined${BUILD_STYLE}${FLAVOR}
 OUTPUT_FILE=libGHUnitIPhone${FLAVOR}.a
 ZIP_DIR=${BUILD_DIR}/Zip
 
-mkdir ${OUTPUT_DIR}
+if [ ! -d ${OUTPUT_DIR} ]; then
+	mkdir ${OUTPUT_DIR}
+fi
 
 # Combine lib files
 lipo -create "${BUILD_DIR}/${BUILD_STYLE}-iphoneos/libGHUnitIPhoneDevice${FLAVOR}.a" "${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/libGHUnitIPhoneSimulator${FLAVOR}.a" -output ${OUTPUT_DIR}/${OUTPUT_FILE}
