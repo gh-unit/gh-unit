@@ -93,7 +93,7 @@ Then go in the "Arguments" tab. You can add the following environment variables:
 	NSAutoreleaseHighWaterMark               0        non-negative integer
 	NSAutoreleaseHighWaterResolution         0        non-negative integer
 	
-For more info on these varaiables see NSDebug.h; http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html
+For more info on these varaiables see [NSDebug.h](http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html)
 
 For malloc debugging:
 
@@ -107,7 +107,7 @@ For malloc debugging:
 	MallocCheckHeapStart
 	MallocCheckHeapEach
 	
-For more info on these variables see: http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html
+For more info on these variables see [MallocDebug](http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html)
 
 ### Example test case (Mac OS X)
 
