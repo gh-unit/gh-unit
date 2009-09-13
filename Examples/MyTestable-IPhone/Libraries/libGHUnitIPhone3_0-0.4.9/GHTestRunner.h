@@ -139,9 +139,14 @@
  Start the test runner.
  @result 0 is success, otherwise the failure count
  */
-- (int)run;
+- (int)runTests;
 
 - (void)cancel;
+
+/*!
+ Write message to console.
+ */
+- (void)log:(NSString *)message;
 
 @end
 
