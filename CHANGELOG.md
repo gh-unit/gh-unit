@@ -1,3 +1,6 @@
+# Release 0.4.9
+- Fix compile warning
+
 # Release 0.4.8
 - Fix bug with turning Parallel off not working
 - Building 32/64 bit universal

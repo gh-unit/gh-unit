@@ -13,13 +13,13 @@ For example, your test cases will be run if they subclass any of the following:
 
 ### Mac OS X
 
-[GHUnit-0.4.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.8.zip) *GHUnit.framework* (2009/09/05)
+[GHUnit-0.4.9.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.9.zip) *GHUnit.framework* (2009/09/12)
 
 Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
 
 ### iPhone OS 3.0 or above
 
-[libGHUnitIPhone3_0-0.4.8.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.8.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/09/05)
+[libGHUnitIPhone3_0-0.4.9.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.9.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/09/12)
 
 ## Why?
 
@@ -75,6 +75,40 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 	- Make sure the copy phase appears before any `Run Script` phases 
 - Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target. (See example test case below.)
+
+### Test Environment Variables for Debugging (Optional)
+
+Go into the "Get Info" contextual menu of your (test) executable (inside the "Executables" group in the left panel of XCode). 
+Then go in the "Arguments" tab. You can add the following environment variables:
+	 
+<table>
+<tr><td></td><td>Default</td><td>Set to</td></tr>
+<tr><td>NSDebugEnabled</td><td>NO</td><td>YES</td></tr>
+<tr><td>NSZombieEnabled</td><td>NO</td><td>YES</td></tr>
+<tr><td>NSDeallocateZombies</td><td>NO</td><td>YES</td></tr>
+<tr><td>NSHangOnUncaughtException</td><td>NO</td><td>YES</td></tr>
+	 
+<tr><td>NSEnableAutoreleasePool</td><td>YES</td><td>NO</td></tr>
+<tr><td>NSAutoreleaseFreedObjectCheckEnabled</td><td>NO</td><td>YES</td></tr>
+<tr><td>NSAutoreleaseHighWaterMark</td><td>0</td>non-negative integer</td></tr>
+<tr><td>NSAutoreleaseHighWaterResolution</td><td>0</td>non-negative integer</td></tr>
+</table>
+	
+For more info on these varaiables see NSDebug.h; http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html
+
+For malloc debugging:
+
+	MallocStackLogging
+	MallocStackLoggingNoCompact
+	MallocScribble
+	MallocPreScribble
+	MallocGuardEdges
+	MallocDoNotProtectPrelude
+	MallocDoNotProtectPostlude
+	MallocCheckHeapStart
+	MallocCheckHeapEach
+	
+For more info on these variables see: http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html
 
 ### Example test case (Mac OS X)
 

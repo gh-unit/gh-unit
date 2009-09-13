@@ -1,6 +1,6 @@
-GHUNIT_VERSION = 0.4.8
+GHUNIT_VERSION = 0.4.9
 
-GHUNIT_GENERAL_OTHER_CFLAGS = -Wdiv-by-zero -Wbad-function-cast  -Wnested-externs -Wold-style-definition
+GHUNIT_GENERAL_OTHER_CFLAGS = -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition
 
 OTHER_CFLAGS = $(inherited) $(GHUNIT_GENERAL_OTHER_CFLAGS)
 
