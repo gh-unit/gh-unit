@@ -82,7 +82,7 @@ Go into the "Get Info" contextual menu of your (test) executable (inside the "Ex
 Then go in the "Arguments" tab. You can add the following environment variables:
 	 
 
-  Environment Variable:                 Default:  Set to:
+	Environment Variable:                 Default:  Set to:
 	NSDebugEnabled                           NO       YES
 	NSZombieEnabled	                         NO       YES
 	NSDeallocateZombies                      NO       YES
