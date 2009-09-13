@@ -81,18 +81,17 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 Go into the "Get Info" contextual menu of your (test) executable (inside the "Executables" group in the left panel of XCode). 
 Then go in the "Arguments" tab. You can add the following environment variables:
 	 
-<table>
-<tr><td></td><td>Default</td><td>Set to</td></tr>
-<tr><td>NSDebugEnabled</td><td>NO</td><td>YES</td></tr>
-<tr><td>NSZombieEnabled</td><td>NO</td><td>YES</td></tr>
-<tr><td>NSDeallocateZombies</td><td>NO</td><td>YES</td></tr>
-<tr><td>NSHangOnUncaughtException</td><td>NO</td><td>YES</td></tr>
-	 
-<tr><td>NSEnableAutoreleasePool</td><td>YES</td><td>NO</td></tr>
-<tr><td>NSAutoreleaseFreedObjectCheckEnabled</td><td>NO</td><td>YES</td></tr>
-<tr><td>NSAutoreleaseHighWaterMark</td><td>0</td>non-negative integer</td></tr>
-<tr><td>NSAutoreleaseHighWaterResolution</td><td>0</td>non-negative integer</td></tr>
-</table>
+
+  Environment Variable:                 Default:  Set to:
+	NSDebugEnabled                           NO       YES
+	NSZombieEnabled	                         NO       YES
+	NSDeallocateZombies                      NO       YES
+	NSHangOnUncaughtException                NO       YES
+
+	NSEnableAutoreleasePool                  YES      NO
+	NSAutoreleaseFreedObjectCheckEnabled     NO       YES
+	NSAutoreleaseHighWaterMark               0        non-negative integer
+	NSAutoreleaseHighWaterResolution         0        non-negative integer
 	
 For more info on these varaiables see NSDebug.h; http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html
 
