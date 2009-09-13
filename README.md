@@ -76,39 +76,6 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 - Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target. (See example test case below.)
 
-### Test Environment Variables for Debugging (Optional)
-
-Go into the "Get Info" contextual menu of your (test) executable (inside the "Executables" group in the left panel of XCode). 
-Then go in the "Arguments" tab. You can add the following environment variables:
-	 
-
-	Environment Variable:                 Default:  Set to:
-	NSDebugEnabled                           NO       YES
-	NSZombieEnabled	                         NO       YES
-	NSDeallocateZombies                      NO       YES
-	NSHangOnUncaughtException                NO       YES
-
-	NSEnableAutoreleasePool                  YES      NO
-	NSAutoreleaseFreedObjectCheckEnabled     NO       YES
-	NSAutoreleaseHighWaterMark               0        non-negative integer
-	NSAutoreleaseHighWaterResolution         0        non-negative integer
-	
-For more info on these varaiables see [NSDebug.h](http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html)
-
-For malloc debugging:
-
-	MallocStackLogging
-	MallocStackLoggingNoCompact
-	MallocScribble
-	MallocPreScribble
-	MallocGuardEdges
-	MallocDoNotProtectPrelude
-	MallocDoNotProtectPostlude
-	MallocCheckHeapStart
-	MallocCheckHeapEach
-	
-For more info on these variables see [MallocDebug](http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html)
-
 ### Example test case (Mac OS X)
 
 For example `MyTest.m`:
@@ -238,6 +205,39 @@ You should see something like:
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
 An example of an iPhone project with GHUnit test setup can be found at: [MyTestable-IPhone](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone).
+
+## Test Environment Variables for Debugging (Optional)
+
+Go into the "Get Info" contextual menu of your (test) executable (inside the "Executables" group in the left panel of XCode). 
+Then go in the "Arguments" tab. You can add the following environment variables:
+	 
+
+	Environment Variable:                 Default:  Set to:
+	NSDebugEnabled                           NO       YES
+	NSZombieEnabled	                         NO       YES
+	NSDeallocateZombies                      NO       YES
+	NSHangOnUncaughtException                NO       YES
+
+	NSEnableAutoreleasePool                  YES      NO
+	NSAutoreleaseFreedObjectCheckEnabled     NO       YES
+	NSAutoreleaseHighWaterMark               0        non-negative integer
+	NSAutoreleaseHighWaterResolution         0        non-negative integer
+	
+For more info on these varaiables see [NSDebug.h](http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html)
+
+For malloc debugging:
+
+	MallocStackLogging
+	MallocStackLoggingNoCompact
+	MallocScribble
+	MallocPreScribble
+	MallocGuardEdges
+	MallocDoNotProtectPrelude
+	MallocDoNotProtectPostlude
+	MallocCheckHeapStart
+	MallocCheckHeapEach
+	
+For more info on these variables see [MallocDebug](http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html)
 
 ## Command Line
 
