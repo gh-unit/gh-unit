@@ -12,15 +12,20 @@
 
 NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 
+
+@interface GHUnitIPhoneViewController ()
+@property (retain, nonatomic) NSString *prefix;
+@end
+
+
 @implementation GHUnitIPhoneViewController
 
-@synthesize tableView=tableView_;
+@synthesize tableView=tableView_, suite=suite_;
+@synthesize prefix=prefix_; // Private properties
 
 - (id)init {
 	if ((self = [super init])) {
-		// Load default settings
 		[self loadDefaults];
-		suite_ = [[GHTestSuite suiteFromEnv] retain];
 	}
 	return self;
 }
@@ -29,6 +34,9 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	[dataSource_ release];	
 	[suite_ release];
 	[editToolbarItems_ release];
+	searchBar_.delegate = nil;
+	[searchBar_ release];
+	[prefix_ release];
 	[super dealloc];
 }
 
@@ -36,22 +44,31 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	// Defaults
 	[[NSUserDefaults standardUserDefaults] registerDefaults:
 	 [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:GHUnitAutoRunKey]];
+
+	self.prefix = [[NSUserDefaults standardUserDefaults] objectForKey:@"GHUnit4-Prefix"];	
 }
 
 - (void)loadView {
-	CGFloat contentHeight = 420;
-	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, contentHeight)];
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 416)];
 	view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
+	// Search bar
+	searchBar_ = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+	searchBar_.delegate = self;
+	searchBar_.showsCancelButton = NO;	
+	searchBar_.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	searchBar_.text = self.prefix;
+	[view addSubview:searchBar_];
+	
 	// Table view
-	tableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, contentHeight - 36) style:UITableViewStylePlain];
+	tableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 336) style:UITableViewStylePlain];
 	tableView_.delegate = self;
 	tableView_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	tableView_.sectionIndexMinimumDisplayRowCount = 5;
 	[view addSubview:tableView_];
 	[tableView_ release];	
 	
-	UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, contentHeight - 36, 320, 36)];
+	UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 380, 320, 36)];
 	footerView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
 	footerView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
 	
@@ -99,11 +116,25 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	self.view = view;
 	[self setEditing:NO];
 	
+	[self reload];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	if (self.isAutoRun) [self runTests];
+}
+
+- (void)reload {
+	if (self.prefix) {		
+		self.suite = [GHTestSuite suiteWithPrefix:self.prefix options:NSCaseInsensitiveSearch];
+		[[NSUserDefaults standardUserDefaults] setObject:self.prefix forKey:@"GHUnit4-Prefix"];
+	} else {
+		self.suite = [GHTestSuite suiteFromEnv];
+	}
+	
+	[dataSource_ release];
 	dataSource_ = [[GHUnitIPhoneTableViewDataSource alloc] initWithSuite:suite_];
 	self.tableView.dataSource = dataSource_;
 	[self.tableView reloadData];	
-	
-	if (self.isAutoRun) [self runTests];
 }
 
 #pragma mark Running
@@ -152,7 +183,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 		self.title = @"Enable/Disable";
 		editButton_.title = @"Save";
 		statusLabel_.hidden = YES;		
-		toolbar_.hidden = NO;		
+		toolbar_.hidden = NO;				
 	} else {
 		self.title = @"Tests";
 		editButton_.title = @"Edit";
@@ -309,5 +340,29 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	runButton_.title = @"Run";
 }
 
+#pragma mark Delegates (UISearchBar)
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+	[searchBar_ setShowsCancelButton:YES animated:YES];	
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+	// Workaround for clearing search
+	if ([searchBar.text isEqualToString:@""]) {
+		[self searchBarSearchButtonClicked:searchBar];
+		return;
+	}
+	searchBar.text = self.prefix;
+	[searchBar resignFirstResponder];
+	[searchBar setShowsCancelButton:NO animated:YES];	
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+	[searchBar resignFirstResponder];
+	[searchBar setShowsCancelButton:NO animated:YES];	
+	
+	self.prefix = searchBar.text;
+	[self reload];
+}
 
 @end
