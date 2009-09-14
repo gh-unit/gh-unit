@@ -20,17 +20,6 @@
 			name = "CombineLibs (3.0)";
 			productName = BuildAll;
 		};
-		00A954E90FDDAA66006A80A6 /* CombineLibsRunAll */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 00A954F80FDDAA7A006A80A6 /* Build configuration list for PBXAggregateTarget "CombineLibsRunAll" */;
-			buildPhases = (
-			);
-			dependencies = (
-				00A954F10FDDAA71006A80A6 /* PBXTargetDependency */,
-			);
-			name = CombineLibsRunAll;
-			productName = CombineLibsRunAll;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -151,13 +140,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 00A952C40FDA2B99006A80A6;
 			remoteInfo = "GHUnitIPhone (Simulator-3.0)";
-		};
-		00A954F00FDDAA71006A80A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 00A953BF0FDA36FA006A80A6;
-			remoteInfo = "CombineLibs (3.0)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -670,7 +652,6 @@
 				00A952F60FDA2BB8006A80A6 /* GHUnitIPhone (Device-3.0) */,
 				1D6058900D05DD3D006BFB54 /* Tests */,
 				00A953BF0FDA36FA006A80A6 /* CombineLibs (3.0) */,
-				00A954E90FDDAA66006A80A6 /* CombineLibsRunAll */,
 			);
 		};
 /* End PBXProject section */
@@ -815,11 +796,6 @@
 			target = 00A952C40FDA2B99006A80A6 /* GHUnitIPhone (Simulator-3.0) */;
 			targetProxy = 00A953CA0FDA370F006A80A6 /* PBXContainerItemProxy */;
 		};
-		00A954F10FDDAA71006A80A6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 00A953BF0FDA36FA006A80A6 /* CombineLibs (3.0) */;
-			targetProxy = 00A954F00FDDAA71006A80A6 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -916,27 +892,6 @@
 			};
 			name = Release;
 		};
-		00A954EA0FDDAA66006A80A6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = CombineLibsRunAll;
-			};
-			name = Debug;
-		};
-		00A954EB0FDDAA66006A80A6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = CombineLibsRunAll;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 006307B30F8E792F00C9602A /* Shared-IPhone.xcconfig */;
@@ -1028,15 +983,6 @@
 			buildConfigurations = (
 				00A953C60FDA36FA006A80A6 /* Debug */,
 				00A953C70FDA36FA006A80A6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		00A954F80FDDAA7A006A80A6 /* Build configuration list for PBXAggregateTarget "CombineLibsRunAll" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				00A954EA0FDDAA66006A80A6 /* Debug */,
-				00A954EB0FDDAA66006A80A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
