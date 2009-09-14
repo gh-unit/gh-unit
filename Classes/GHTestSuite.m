@@ -66,6 +66,21 @@ NSString *GHUnitTest = NULL;
 	return [testSuite autorelease];	
 }
 
++ (GHTestSuite *)suiteWithPrefix:(NSString *)prefix options:(NSStringCompareOptions)options {
+	if (!prefix || [prefix isEqualToString:@""]) return [self allTests];
+	
+	NSArray *testCases = [[GHTesting sharedInstance] loadAllTestCases];
+	NSString *name = [NSString stringWithFormat:@"Tests (%@)", prefix];
+	GHTestSuite *testSuite = [[self alloc] initWithName:name testCases:nil delegate:nil];	
+	for(id testCase in testCases) {
+		NSString *className = NSStringFromClass([testCase class]);		
+		if ([className compare:prefix options:options range:NSMakeRange(0, [prefix length])] == NSOrderedSame)
+			[testSuite addTestCase:testCase];
+	}
+	return [testSuite autorelease];
+	
+}
+
 + (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilterString {
 	NSArray *testFilters = [testFilterString componentsSeparatedByString:@","];
 	GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:testFilterString testCases:nil delegate:nil];
