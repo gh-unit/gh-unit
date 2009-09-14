@@ -19,7 +19,7 @@ Note: If you are updating your framework, you should also update your `GHUnitTes
 
 ### iPhone OS 3.0 or above
 
-[libGHUnitIPhone3_0-0.4.9.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.9.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/09/12)
+[libGHUnitIPhone3_0-0.4.10.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.10.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/09/12)
 
 ## Why?
 

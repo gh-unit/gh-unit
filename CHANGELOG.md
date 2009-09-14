@@ -1,3 +1,7 @@
+# Release 0.4.10
+- Added Search Bar
+- Added GHTestSuite#suiteWithPrefix:options
+
 # Release 0.4.9
 - Fix compile warning
 
