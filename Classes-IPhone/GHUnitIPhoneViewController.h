@@ -12,7 +12,9 @@
 
 extern NSString *const GHUnitAutoRunKey;
 
-@interface GHUnitIPhoneViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate> {
+@interface GHUnitIPhoneViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate, UISearchBarDelegate> {
+	
+	UISearchBar	*searchBar_;
 	
 	UITableView *tableView_;
 	
@@ -33,10 +35,15 @@ extern NSString *const GHUnitAutoRunKey;
 	//! Toolbar
 	UIToolbar *toolbar_;
 	NSArray *editToolbarItems_;
+	
+	// Search
+	NSString *prefix_;
 }
 
 @property (readonly, nonatomic) UITableView *tableView;
 @property (assign, nonatomic, getter=isAutoRun) BOOL autoRun;
+
+@property (retain, nonatomic) GHTestSuite *suite;
 
 - (void)reloadTest:(id<GHTest>)test;
 
@@ -51,6 +58,8 @@ extern NSString *const GHUnitAutoRunKey;
 
 - (void)reset;
 - (void)cancel;
+
+- (void)reload;
 
 - (void)loadDefaults;
 
