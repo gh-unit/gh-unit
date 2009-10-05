@@ -15,7 +15,13 @@
 @implementation GHTestMacrosTest
 
 - (void)testEquals {
-	GHAssertEqualsWithAccuracy(15, 15.000001, 0.001, nil);
+	GHAssertEqualsWithAccuracy(15.0, 15.000001, 0.001, nil);
+}
+
+- (void)testEqualsAccuracyMessage {
+	GHAssertThrows({
+		GHAssertEqualsWithAccuracy(15.0, 16.0, 0.001, nil);
+	}, nil);
 }
 
 - (void)testNSLog {
