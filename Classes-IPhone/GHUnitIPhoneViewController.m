@@ -262,13 +262,6 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 
 #pragma mark Delegates (UITableView)
 
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
-	GHTestNode *node = [dataSource_ nodeForIndexPath:indexPath];
-	if (dataSource_.isEditing && node.isSelected) return UITableViewCellAccessoryCheckmark;
-	else if (node.isEnded && node.failed) return UITableViewCellAccessoryDisclosureIndicator;
-	return UITableViewCellAccessoryNone;
-}	
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	GHTestNode *node = [dataSource_ nodeForIndexPath:indexPath];
 	if (dataSource_.isEditing) {

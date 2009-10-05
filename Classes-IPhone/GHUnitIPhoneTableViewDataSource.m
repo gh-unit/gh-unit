@@ -73,6 +73,11 @@
 		}
 	}
 	
+	UITableViewCellAccessoryType accessoryType = UITableViewCellAccessoryNone;
+	if (self.isEditing && node.isSelected) accessoryType = UITableViewCellAccessoryCheckmark;
+	else if (node.isEnded && node.failed) accessoryType = UITableViewCellAccessoryDisclosureIndicator;	
+	cell.accessoryType = accessoryType;	
+	
 	return cell;	
 }
 
