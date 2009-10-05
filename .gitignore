@@ -1,8 +1,11 @@
-Project/build/*
-Project-IPhone/build/*
-build/*
-Examples/MyTestable-IPhone/build/*
+build
 *.mode1v3
+*.mode2v3
 *.pbxuser
+*.perspectivev3
+.DS_Store
 Documentation
-Project/tests.log
+*.tm_build_errors
+*.swp
+*~.nib
+.gitattributes
