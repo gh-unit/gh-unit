@@ -1,7 +1,7 @@
 //
-//  GHTestMacros.m
+//  NSException+GHTestFailureExceptions.m
 //
-//  Created by Gabriel Handford on 1/17/09.
+//  Created by Johannes Rudolph on 23.09.09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -45,52 +45,57 @@
 //  the License.
 //
 
-// GTM_BEGIN
+// GTM_BEGIN - Contains modifications by JR
+
+
+#import "NSException+GHTestFailureExceptions.h"
+
+#import "NSValue+GHValueFormatter.h"
 
 NSString *const GHTestFilenameKey = @"GHTestFilenameKey";
 NSString *const GHTestLineNumberKey = @"GHTestLineNumberKey";
 NSString *const GHTestFailureException = @"GHTestFailureException";
 
-@interface NSException (GHTestMacros_GTMSenTestPrivateAdditions)
+@interface NSException (GHTestFailureExceptionsPrivateAdditions)
 + (NSException *)failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                         reason:(NSString *)reason;
 @end
 
-@implementation NSException (GHTestMacros_GTMSenTestPrivateAdditions)
+@implementation NSException  (GHTestFailureExceptionsPrivateAdditions)
 + (NSException *)failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                         reason:(NSString *)reason {
-  NSDictionary *userInfo =
+	NSDictionary *userInfo =
 	[NSDictionary dictionaryWithObjectsAndKeys:
 	 [NSNumber numberWithInteger:lineNumber], GHTestLineNumberKey,
 	 filename, GHTestFilenameKey,
 	 nil];
 	
-  return [self exceptionWithName:GHTestFailureException
-                          reason:reason
-                        userInfo:userInfo];
+	return [self exceptionWithName:GHTestFailureException
+							reason:reason
+						  userInfo:userInfo];
 }
 @end
 
-@implementation NSException (GHTestMacros_GTMSenTestAdditions)
+@implementation NSException (GHTestFailureExceptions)
 
 + (NSException *)failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                withDescription:(NSString *)formatString, ... {
 	
-  NSString *testDescription = @"";
-  if (formatString) {
-    va_list vl;
-    va_start(vl, formatString);
-    testDescription =
+	NSString *testDescription = @"";
+	if (formatString) {
+		va_list vl;
+		va_start(vl, formatString);
+		testDescription =
 		[[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
-    va_end(vl);
-  }
+		va_end(vl);
+	}
 	
-  NSString *reason = testDescription;
+	NSString *reason = testDescription;
 	
-  return [self failureInFile:filename atLine:lineNumber reason:reason];
+	return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
 + (NSException *)failureInCondition:(NSString *)condition
@@ -99,19 +104,19 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
                              atLine:(int)lineNumber
                     withDescription:(NSString *)formatString, ... {
 	
-  NSString *testDescription = @"";
-  if (formatString) {
-    va_list vl;
-    va_start(vl, formatString);
-    testDescription =
+	NSString *testDescription = @"";
+	if (formatString) {
+		va_list vl;
+		va_start(vl, formatString);
+		testDescription =
 		[[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
-    va_end(vl);
-  }
+		va_end(vl);
+	}
 	
-  NSString *reason = [NSString stringWithFormat:@"'%@' should be %s. %@",
-                      condition, isTrue ? "TRUE" : "FALSE", testDescription];
+	NSString *reason = [NSString stringWithFormat:@"'%@' should be %s. %@",
+						condition, isTrue ? "TRUE" : "FALSE", testDescription];
 	
-  return [self failureInFile:filename atLine:lineNumber reason:reason];
+	return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
 + (NSException *)failureInEqualityBetweenObject:(id)left
@@ -120,20 +125,20 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
                                          atLine:(int)lineNumber
                                 withDescription:(NSString *)formatString, ... {
 	
-  NSString *testDescription = @"";
-  if (formatString) {
-    va_list vl;
-    va_start(vl, formatString);
-    testDescription =
+	NSString *testDescription = @"";
+	if (formatString) {
+		va_list vl;
+		va_start(vl, formatString);
+		testDescription =
 		[[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
-    va_end(vl);
-  }
+		va_end(vl);
+	}
 	
-  NSString *reason =
+	NSString *reason =
 	[NSString stringWithFormat:@"'%@' should be equal to '%@'. %@",
 	 [left description], [right description], testDescription];
 	
-  return [self failureInFile:filename atLine:lineNumber reason:reason];
+	return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
 + (NSException *)failureInEqualityBetweenValue:(NSValue *)left
@@ -143,27 +148,27 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
                                         atLine:(int)lineNumber
                                withDescription:(NSString *)formatString, ... {
 	
-  NSString *testDescription = @"";
-  if (formatString) {
-    va_list vl;
-    va_start(vl, formatString);
-    testDescription =
+	NSString *testDescription = @"";
+	if (formatString) {
+		va_list vl;
+		va_start(vl, formatString);
+		testDescription =
 		[[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
-    va_end(vl);
-  }
+		va_end(vl);
+	}
 	
-  NSString *reason;
-  if (accuracy) {
-    reason =
+	NSString *reason;
+	if (!accuracy) {
+		reason =
 		[NSString stringWithFormat:@"'%@' should be equal to '%@'. %@",
-		 left, right, testDescription];
-  } else {
-    reason =
+		 [left contentDescription], [right contentDescription], testDescription];
+	} else {
+		reason =
 		[NSString stringWithFormat:@"'%@' should be equal to '%@' +/-'%@'. %@",
-		 left, right, accuracy, testDescription];
-  }
+		 [left contentDescription], [right contentDescription], [accuracy contentDescription], testDescription];
+	}
 	
-  return [self failureInFile:filename atLine:lineNumber reason:reason];
+	return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
 + (NSException *)failureInRaise:(NSString *)expression
@@ -171,19 +176,19 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
                          atLine:(int)lineNumber
                 withDescription:(NSString *)formatString, ... {
 	
-  NSString *testDescription = @"";
-  if (formatString) {
-    va_list vl;
-    va_start(vl, formatString);
-    testDescription =
+	NSString *testDescription = @"";
+	if (formatString) {
+		va_list vl;
+		va_start(vl, formatString);
+		testDescription =
 		[[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
-    va_end(vl);
-  }
+		va_end(vl);
+	}
 	
-  NSString *reason = [NSString stringWithFormat:@"'%@' should raise. %@",
-                      expression, testDescription];
+	NSString *reason = [NSString stringWithFormat:@"'%@' should raise. %@",
+						expression, testDescription];
 	
-  return [self failureInFile:filename atLine:lineNumber reason:reason];
+	return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
 + (NSException *)failureInRaise:(NSString *)expression
@@ -192,40 +197,40 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
                          atLine:(int)lineNumber
                 withDescription:(NSString *)formatString, ... {
 	
-  NSString *testDescription = @"";
-  if (formatString) {
-    va_list vl;
-    va_start(vl, formatString);
-    testDescription =
+	NSString *testDescription = @"";
+	if (formatString) {
+		va_list vl;
+		va_start(vl, formatString);
+		testDescription =
 		[[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
-    va_end(vl);
-  }
+		va_end(vl);
+	}
 	
-  NSString *reason;
-  if ([[exception name] isEqualToString:GHTestFailureException]) {
-    // it's our exception, assume it has the right description on it.
-    reason = [exception reason];
-  } else {
-    // not one of our exception, use the exceptions reason and our description
-    reason = [NSString stringWithFormat:@"'%@' raised '%@'. %@",
-              expression, [exception reason], testDescription];
-  }
+	NSString *reason;
+	if ([[exception name] isEqualToString:GHTestFailureException]) {
+		// it's our exception, assume it has the right description on it.
+		reason = [exception reason];
+	} else {
+		// not one of our exception, use the exceptions reason and our description
+		reason = [NSString stringWithFormat:@"'%@' raised '%@'. %@",
+				  expression, [exception reason], testDescription];
+	}
 	
-  return [self failureInFile:filename atLine:lineNumber reason:reason];
+	return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
 
 @end
 
 NSString *GHComposeString(NSString *formatString, ...) {
-  NSString *reason = @"";
-  if (formatString) {
-    va_list vl;
-    va_start(vl, formatString);
-    reason =
+	NSString *reason = @"";
+	if (formatString) {
+		va_list vl;
+		va_start(vl, formatString);
+		reason =
 		[[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
-    va_end(vl);
-  }
-  return reason;
+		va_end(vl);
+	}
+	return reason;
 }
 
 // GTM_END

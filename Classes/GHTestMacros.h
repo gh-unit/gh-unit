@@ -77,6 +77,9 @@
 //  the License.
 //
 
+#import "NSException+GHTestFailureExceptions.h"
+#import "NSValue+GHValueFormatter.h"
+
 // GTM_BEGIN
 
 extern NSString *const GHTestFilenameKey;
