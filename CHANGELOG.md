@@ -1,3 +1,6 @@
+# Release 0.4.12
+- Fixing compile warning in main (iPhone)
+
 # Release 0.4.11
 - Added value formatter (from http://github.com/JohannesRudolph); For better Assert error messages.
 - Fixed deprecation warning (iPhone)
