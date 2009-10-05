@@ -49,8 +49,13 @@
 #import "GHTesting.h"
 #import "GHTest.h"
 #import "GHTestCase.h"
+#import "GTMStackTrace.h"
 
 #import <objc/runtime.h>
+
+NSString *GHUStackTraceFromException(NSException *e) {
+	return GHU_GTMStackTraceFromException(e);
+}
 
 NSInteger ClassSort(id a, id b, void *context) {
 	const char *nameA = class_getName([a class]);
