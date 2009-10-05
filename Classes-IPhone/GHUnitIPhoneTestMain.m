@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "GHUnit.h"
+#import "GHTesting.h"
 
 // Default exception handler
 void exceptionHandler(NSException *exception) {	
