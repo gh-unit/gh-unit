@@ -13,13 +13,13 @@ For example, your test cases will be run if they subclass any of the following:
 
 ### Mac OS X
 
-[GHUnit-0.4.9.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.9.zip) *GHUnit.framework* (2009/09/12)
+[GHUnit-0.4.11.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.11.zip) *GHUnit.framework* (2009/10/04)
 
 Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
 
 ### iPhone OS 3.0 or above
 
-[libGHUnitIPhone3_0-0.4.10.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.10.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/09/12)
+[libGHUnitIPhone3_0-0.4.11.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.11.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/10/04)
 
 ## Why?
 

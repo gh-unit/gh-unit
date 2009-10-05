@@ -1,3 +1,8 @@
+# Release 0.4.11
+- Added value formatter (from http://github.com/JohannesRudolph); For better Assert error messages.
+- Fixed deprecation warning (iPhone)
+- Added default exception handler to give stack trace if triggered outside of GHUnit run
+
 # Release 0.4.10
 - Added Search Bar
 - Added GHTestSuite#suiteWithPrefix:options
