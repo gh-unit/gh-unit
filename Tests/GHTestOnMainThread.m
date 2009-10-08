@@ -35,7 +35,7 @@ static BOOL gGHTestOnMainThreadRunning = NO;
 	GHAssertTrue([NSThread isMainThread], nil);
 }
 
-- (void)testFail {
+- (void)testFail_EXPECTED {
 	GHAssertTrue([NSThread isMainThread], nil);
 	GHFail(@"Test failure");
 }

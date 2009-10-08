@@ -74,8 +74,8 @@ static NSInteger tearDownClassCount = 0;
 }
 
 
-- (void)test1 { }
-- (void)test2 { }
+- (void)test1_EXPECTED { }
+- (void)test2_EXPECTED { }
 
 @end
 
@@ -89,8 +89,8 @@ static NSInteger tearDownClassCount = 0;
 }
 
 
-- (void)test1 { }
-- (void)test2 { }
+- (void)test1_EXPECTED { }
+- (void)test2_EXPECTED { }
 
 @end
 
