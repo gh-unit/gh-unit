@@ -73,9 +73,9 @@
 		00A9540A0FDC7539006A80A6 /* GHNSInvocationProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 00A954080FDC7539006A80A6 /* GHNSInvocationProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00A9540B0FDC7539006A80A6 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A954090FDC7539006A80A6 /* GHNSInvocationProxy.m */; };
 		00AF0E3A0F2C4D47009F0ABA /* SenTestingKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00970A550F28397F00189A9D /* SenTestingKit.framework */; };
-		00B7BC5E10796C490005897B /* NSException+GHTestFailureExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 00B7BC5A10796C490005897B /* NSException+GHTestFailureExceptions.h */; };
+		00B7BC5E10796C490005897B /* NSException+GHTestFailureExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 00B7BC5A10796C490005897B /* NSException+GHTestFailureExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00B7BC5F10796C490005897B /* NSException+GHTestFailureExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B7BC5B10796C490005897B /* NSException+GHTestFailureExceptions.m */; };
-		00B7BC6010796C490005897B /* NSValue+GHValueFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 00B7BC5C10796C490005897B /* NSValue+GHValueFormatter.h */; };
+		00B7BC6010796C490005897B /* NSValue+GHValueFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 00B7BC5C10796C490005897B /* NSValue+GHValueFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00B7BC6110796C490005897B /* NSValue+GHValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B7BC5D10796C490005897B /* NSValue+GHValueFormatter.m */; };
 		00CDDBC41011576E00F5C4D5 /* GHTestOutlineViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 00CDDBC21011576E00F5C4D5 /* GHTestOutlineViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00CDDBC51011576E00F5C4D5 /* GHTestOutlineViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDBC31011576E00F5C4D5 /* GHTestOutlineViewModel.m */; };
@@ -744,6 +744,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -775,6 +776,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -838,6 +840,7 @@
 			baseConfigurationReference = 006307900F8E760800C9602A /* Shared.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 0;
 				DYLIB_CURRENT_VERSION = "$(GHUNIT_VERSION)";
