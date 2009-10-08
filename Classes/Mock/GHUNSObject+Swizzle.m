@@ -55,7 +55,7 @@ BOOL GHU_PerformSwizzle(Class klass, SEL origSel, SEL altSel, BOOL forInstance) 
 	// Look for the methods in the implementation of the immediate class
 	Class iterKlass = (forInstance ? klass : klass->isa);
 	Method origMethod = NULL, altMethod = NULL;
-	NSUInteger methodCount = 0;
+	unsigned int methodCount = 0;
 	Method *mlist = class_copyMethodList(iterKlass, &methodCount);
 	if ( mlist != NULL ) {
 		int i;
