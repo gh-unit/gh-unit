@@ -161,6 +161,7 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 - (IBAction)edit:(id)sender {
 	dataSource_.editing = ([sender state] == NSOnState);
 	[_outlineView reloadData];
+	[dataSource_ saveDefaults];
 }
 
 - (IBAction)updateTextSegment:(id)sender {
