@@ -55,7 +55,7 @@
 
 // GTM_BEGIN
 
-- (void)failWithException:(NSException*)exception {
+- (void)failWithException:(NSException *)exception {
 	[exception raise];
 }
 
