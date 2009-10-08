@@ -64,8 +64,7 @@
 // SENTE_BEGIN
 
 @implementation NSValue (GHValueFormatter)
-- (NSString *) contentDescription
-{
+- (NSString *)ghu_contentDescription {
 	const char *objCType = [self objCType];
 	if (objCType != NULL) {
 		if (strlen (objCType) == 1) {

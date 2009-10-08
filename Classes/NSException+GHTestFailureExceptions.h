@@ -49,31 +49,31 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSException (GHTestFailureExceptions)
-+ (NSException *)failureInFile:(NSString *)filename 
+@interface NSException (GHUTestFailureExceptions)
++ (NSException *)ghu_failureInFile:(NSString *)filename 
                         atLine:(int)lineNumber 
                withDescription:(NSString *)formatString, ...;
-+ (NSException *)failureInCondition:(NSString *)condition 
++ (NSException *)ghu_failureInCondition:(NSString *)condition 
                              isTrue:(BOOL)isTrue 
                              inFile:(NSString *)filename 
                              atLine:(int)lineNumber 
                     withDescription:(NSString *)formatString, ...;
-+ (NSException *)failureInEqualityBetweenObject:(id)left
++ (NSException *)ghu_failureInEqualityBetweenObject:(id)left
                                       andObject:(id)right
                                          inFile:(NSString *)filename
                                          atLine:(int)lineNumber
                                 withDescription:(NSString *)formatString, ...;
-+ (NSException *)failureInEqualityBetweenValue:(NSValue *)left 
++ (NSException *)ghu_failureInEqualityBetweenValue:(NSValue *)left 
                                       andValue:(NSValue *)right 
                                   withAccuracy:(NSValue *)accuracy 
                                         inFile:(NSString *)filename 
                                         atLine:(int) ineNumber
                                withDescription:(NSString *)formatString, ...;
-+ (NSException *)failureInRaise:(NSString *)expression 
++ (NSException *)ghu_failureInRaise:(NSString *)expression 
                          inFile:(NSString *)filename 
                          atLine:(int)lineNumber
                 withDescription:(NSString *)formatString, ...;
-+ (NSException *)failureInRaise:(NSString *)expression 
++ (NSException *)ghu_failureInRaise:(NSString *)expression 
                       exception:(NSException *)exception 
                          inFile:(NSString *)filename 
                          atLine:(int)lineNumber 

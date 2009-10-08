@@ -62,6 +62,6 @@
 
 // SENTE_BEGIN
 @interface NSValue (GHValueFormatter)
-- (NSString *)contentDescription;
+- (NSString *)ghu_contentDescription;
 @end
 // SENTE_END
