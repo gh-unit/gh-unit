@@ -217,6 +217,10 @@ static GHTesting *gSharedInstance;
       @try {	
 				if ([target respondsToSelector:@selector(setCurrentSelector:)])
 					[target setCurrentSelector:selector];
+
+				// If this isn't set SenTest macros don't raise
+				if ([target respondsToSelector:@selector(raiseAfterFailure)])
+					[target raiseAfterFailure];
 				
 				// Runs the test
         [target performSelector:selector withObject:obj];

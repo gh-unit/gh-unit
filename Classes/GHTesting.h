@@ -104,3 +104,6 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass);
 
 @end
 
+@protocol GHSenTestCase 
+- (void)raiseAfterFailure;
+@end
