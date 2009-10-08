@@ -51,10 +51,13 @@
 }
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+	
+	GHTest *test = (GHTest *)item;
+	
 	if ([[tableColumn identifier] isEqual:@"name"]) {
 		
 		NSColor *textColor = [NSColor blackColor];
-		if ([item isDisabled]) {
+		if ([test isDisabled]) {
 			textColor = [NSColor grayColor];
 		}		
 		
@@ -77,11 +80,11 @@
 	if ([[tableColumn identifier] isEqual:@"status"]) {
 		[cell setTextColor:[NSColor lightGrayColor]];	
 		
-		if ([item status] == GHTestStatusErrored) {
+		if ([test status] == GHTestStatusErrored) {
 			[cell setTextColor:[NSColor redColor]];
-		} else if ([item status] == GHTestStatusSucceeded) {
+		} else if ([test status] == GHTestStatusSucceeded) {
 			[cell setTextColor:[NSColor greenColor]];
-		} else if ([item status] == GHTestStatusRunning) {
+		} else if ([test status] == GHTestStatusRunning) {
 			[cell setTextColor:[NSColor blackColor]];
 		}
 	}		
