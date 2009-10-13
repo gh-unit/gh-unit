@@ -1060,6 +1060,7 @@
 			baseConfigurationReference = 006307B30F8E792F00C9602A /* Shared-IPhone.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "${GHUNIT_VERSION}";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1076,6 +1077,7 @@
 			baseConfigurationReference = 006307B30F8E792F00C9602A /* Shared-IPhone.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = "${GHUNIT_VERSION}";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
