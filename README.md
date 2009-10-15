@@ -215,7 +215,7 @@ Then go in the "Arguments" tab. You can add the following environment variables:
 	Environment Variable:                 Default:  Set to:
 	NSDebugEnabled                           NO       YES
 	NSZombieEnabled	                         NO       YES
-	NSDeallocateZombies                      NO       YES
+	NSDeallocateZombies                      NO       YES (or NO)
 	NSHangOnUncaughtException                NO       YES
 
 	NSEnableAutoreleasePool                  YES      NO
