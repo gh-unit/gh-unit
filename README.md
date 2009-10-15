@@ -206,7 +206,7 @@ You should see something like:
 
 An example of an iPhone project with GHUnit test setup can be found at: [MyTestable-IPhone](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone).
 
-## Test Environment Variables for Debugging (Recommended)
+## Test Environment Variables (Recommended)
 
 Go into the "Get Info" contextual menu of your (test) executable (inside the "Executables" group in the left panel of XCode). 
 Then go in the "Arguments" tab. You can add the following environment variables:
@@ -246,9 +246,13 @@ If you see a message like:
 
 	2009-10-15 13:02:24.746 Tests[38615:40b] *** -[Foo class]: message sent to deallocated instance 0x1c8e680
 
-Re-run (in gdb) with MallocStackLogging=YES and MallocStackLoggingNoCompact=YES, then if you run under gdb:
+Re-run (in gdb) with `MallocStackLogging=YES` and `MallocStackLoggingNoCompact=YES`, then if you run under gdb:
 
 	(gdb) shell malloc_history 38615 0x1c8e680
+
+	ALLOC 0x1a9ad10-0x1a9ad6f [size=96]: thread_a024a500 |start | main | UIApplicationMain | GSEventRun | GSEventRunModal | CFRunLoopRunInMode | CFRunLoopRunSpecific | __NSThreadPerformPerform | -[GHTestGroup _run:] | -[GHTest run] | +[GHTesting runTest:selector:withObject:exception:interval:] | -[Foo foo] | +[NSObject alloc] | +[NSObject allocWithZone:] | _internal_class_createInstance | _internal_class_createInstanceFromZone | calloc | malloc_zone_calloc 
+
+Somewhere between runTest and NSObject alloc there may be an object that wasn't retained.
 
 For more info on these variables see [MallocDebug](http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html)
 
