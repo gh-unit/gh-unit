@@ -244,11 +244,11 @@ For malloc debugging:
 
 If you see a message like:
 
-	2003-03-18 13:01:38.644 autoreleasebug[3939] *** *** Selector 'release' sent to dealloced instance 0xa4e10 of class NSConcreteData.
+	2009-10-15 13:02:24.746 Tests[38615:40b] *** -[Foo class]: message sent to deallocated instance 0x1c8e680
 
 Re-run (in gdb) with MallocStackLogging=YES and MallocStackLoggingNoCompact=YES, then if you run under gdb:
 
-	(gdb) shell malloc_history 3939 0xa4e10
+	(gdb) shell malloc_history 38615 0x1c8e680
 
 For more info on these variables see [MallocDebug](http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html)
 
