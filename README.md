@@ -206,7 +206,7 @@ You should see something like:
 
 An example of an iPhone project with GHUnit test setup can be found at: [MyTestable-IPhone](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone).
 
-## Test Environment Variables for Debugging (Optional)
+## Test Environment Variables for Debugging (Recommended)
 
 Go into the "Get Info" contextual menu of your (test) executable (inside the "Executables" group in the left panel of XCode). 
 Then go in the "Arguments" tab. You can add the following environment variables:
@@ -215,14 +215,19 @@ Then go in the "Arguments" tab. You can add the following environment variables:
 	Environment Variable:                 Default:  Set to:
 	NSDebugEnabled                           NO       YES
 	NSZombieEnabled	                         NO       YES
-	NSDeallocateZombies                      NO       YES (or NO)
+	NSDeallocateZombies                      NO       NO (or YES)
 	NSHangOnUncaughtException                NO       YES
-
-	NSEnableAutoreleasePool                  YES      NO
 	NSAutoreleaseFreedObjectCheckEnabled     NO       YES
+
+If Using NSDeallocateZombies=NO, then all objects will leak so be sure to turn it off when debugging memory leaks.
+
+Other environment variables:
+
+	Environment Variable:                 Default:  Set to:
+	NSEnableAutoreleasePool                  YES      NO	
 	NSAutoreleaseHighWaterMark               0        non-negative integer
 	NSAutoreleaseHighWaterResolution         0        non-negative integer
-	
+
 For more info on these varaiables see [NSDebug.h](http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html)
 
 For malloc debugging:
@@ -236,7 +241,15 @@ For malloc debugging:
 	MallocDoNotProtectPostlude
 	MallocCheckHeapStart
 	MallocCheckHeapEach
-	
+
+If you see a message like:
+
+	2003-03-18 13:01:38.644 autoreleasebug[3939] *** *** Selector 'release' sent to dealloced instance 0xa4e10 of class NSConcreteData.
+
+Re-run (in gdb) with MallocStackLogging=YES and MallocStackLoggingNoCompact=YES, then if you run under gdb:
+
+	(gdb) shell malloc_history 3939 0xa4e10
+
 For more info on these variables see [MallocDebug](http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html)
 
 ## Command Line
