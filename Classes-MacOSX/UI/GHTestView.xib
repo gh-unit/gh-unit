@@ -3,7 +3,7 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
 		<string key="IBDocument.SystemVersion">10B504</string>
-		<string key="IBDocument.InterfaceBuilderVersion">732</string>
+		<string key="IBDocument.InterfaceBuilderVersion">740</string>
 		<string key="IBDocument.AppKitVersion">1038.2</string>
 		<string key="IBDocument.HIToolboxVersion">437.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
@@ -15,13 +15,13 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>732</string>
+				<string>740</string>
 				<string>1.2.2</string>
 			</object>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="79"/>
+			<integer value="3"/>
 			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -67,7 +67,7 @@
 									<object class="NSTextView" id="598450598">
 										<reference key="NSNextResponder" ref="686041010"/>
 										<int key="NSvFlags">2322</int>
-										<string key="NSFrameSize">{315, 217}</string>
+										<string key="NSFrameSize">{315, 167}</string>
 										<reference key="NSSuperview" ref="686041010"/>
 										<object class="NSTextContainer" key="NSTextContainer" id="881939648">
 											<object class="NSLayoutManager" key="NSLayoutManager">
@@ -273,7 +273,7 @@
 										<nil key="NSDelegate"/>
 									</object>
 								</object>
-								<string key="NSFrame">{{1, 1}, {315, 404}}</string>
+								<string key="NSFrame">{{1, 1}, {315, 389}}</string>
 								<reference key="NSSuperview" ref="833335608"/>
 								<reference key="NSNextKeyView" ref="598450598"/>
 								<reference key="NSDocView" ref="598450598"/>
@@ -305,7 +305,7 @@
 								<double key="NSPercent">0.95481932163238525</double>
 							</object>
 						</object>
-						<string key="NSFrame">{{20, 57}, {317, 406}}</string>
+						<string key="NSFrame">{{20, 50}, {317, 391}}</string>
 						<reference key="NSSuperview" ref="186507322"/>
 						<reference key="NSNextKeyView" ref="686041010"/>
 						<int key="NSsFlags">562</int>
@@ -315,8 +315,8 @@
 					</object>
 					<object class="NSButton" id="285932273">
 						<reference key="NSNextResponder" ref="186507322"/>
-						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{276, 26}, {63, 18}}</string>
+						<int key="NSvFlags">265</int>
+						<string key="NSFrame">{{276, 447}, {63, 18}}</string>
 						<reference key="NSSuperview" ref="186507322"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="912678485">
@@ -644,7 +644,7 @@
 									<string key="NSContents"/>
 									<reference key="NSSupport" ref="882540864"/>
 									<reference key="NSControlView" ref="385792346"/>
-									<int key="NSButtonFlags">-926662401</int>
+									<int key="NSButtonFlags">-926138113</int>
 									<int key="NSButtonFlags2">163</int>
 									<object class="NSCustomResource" key="NSNormalImage">
 										<string key="NSClassName">NSImage</string>
@@ -1132,8 +1132,8 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="833335608"/>
-							<reference ref="7855149"/>
 							<reference ref="285932273"/>
+							<reference ref="7855149"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Test Details</string>
@@ -1646,6 +1646,13 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">Foundation.framework/Headers/NSConnection.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Foundation.framework/Headers/NSError.h</string>
 					</object>
 				</object>
@@ -1681,6 +1688,20 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">Foundation.framework/Headers/NSMetadata.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">Foundation.framework/Headers/NSNetServices.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Foundation.framework/Headers/NSObject.h</string>
 					</object>
 				</object>
@@ -1689,6 +1710,13 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Foundation.framework/Headers/NSObjectScripting.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">Foundation.framework/Headers/NSPort.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1737,6 +1765,20 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">Foundation.framework/Headers/NSSpellServer.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">Foundation.framework/Headers/NSStream.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Foundation.framework/Headers/NSThread.h</string>
 					</object>
 				</object>
@@ -1759,6 +1801,13 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Foundation.framework/Headers/NSURLDownload.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">Foundation.framework/Headers/NSXMLParser.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

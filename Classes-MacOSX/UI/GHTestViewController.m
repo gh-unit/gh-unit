@@ -124,6 +124,10 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 	[_textView copy:sender];
 }
 
+- (BOOL)isShowingDetails {
+  return ![[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"];
+}
+
 - (IBAction)toggleDetails:(id)sender {	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"]) {
 		[_detailsView removeFromSuperview];

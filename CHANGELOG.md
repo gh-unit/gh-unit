@@ -1,3 +1,7 @@
+# Release 0.4.14
+- Fix window resizing when showing details
+- Adding test for 0 found test cases
+
 # Release 0.4.13
 - Fixing framework build: Header error and 32/64 bit universal (MacOSX)
 - Fixing SenTest macros not failing correctly

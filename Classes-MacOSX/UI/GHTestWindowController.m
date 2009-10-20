@@ -48,11 +48,11 @@
 }
 
 - (IBAction)runTests:(id)sender {
-    [viewController_ runTests];
+  [viewController_ runTests];
 }
 
 - (IBAction)edit:(id)sender {
-    [viewController_ edit:sender];
+  [viewController_ edit:sender];
 }
 
 - (void)dealloc {
@@ -62,6 +62,11 @@
 
 - (void)windowWillClose:(NSNotification *)notification {
 	[[NSApplication sharedApplication] terminate:self];
+}
+
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
+  if ([viewController_ isShowingDetails] && frameSize.width < 600) return sender.frame.size;
+  return frameSize;
 }
 
 @end
