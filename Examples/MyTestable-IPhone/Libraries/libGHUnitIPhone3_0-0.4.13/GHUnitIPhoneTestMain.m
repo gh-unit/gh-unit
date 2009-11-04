@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "GHUnit.h"
+#import "GHTesting.h"
+
+// Default exception handler
+void exceptionHandler(NSException *exception) {	
+	NSLog(@"%@\n%@", [exception reason], GHUStackTraceFromException(exception));
+}
 
 int main(int argc, char *argv[]) {
 	
@@ -29,7 +35,11 @@ int main(int argc, char *argv[]) {
 	 NSAutoreleaseHighWaterResolution       0       non-negative integer
 	
 	 For info on these varaiables see NSDebug.h; http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html
+	 
+	 For malloc debugging see: http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html
 	 */
+	
+	NSSetUncaughtExceptionHandler(&exceptionHandler);
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
