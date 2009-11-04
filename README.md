@@ -66,10 +66,10 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 ### Installing in your project
 
 - Add a `New Target`. Select `Cocoa -> Application`. Name it `Tests` (or something similar).
-- Copy `GHUnit.framework` to your project directory (maybe in MyProject/Frameworks/.)
-- Add the `GHUnit.framekwork` files (from MyProject/Frameworks/) to the `Tests` target. It should be visible as a `Linked Framework` in the target. 
-- Under Build Settings, add `@loader_path/../Frameworks` to `Runpath Search Paths` 
-- Add `New Build Phase` | `New Copy Files Build Phase`. 
+- In the Finder, copy `GHUnit.framework` to your project directory (maybe in MyProject/Frameworks/.)
+- In the `Tests` target, add the `GHUnit.framekwork` files (from MyProject/Frameworks/). It should now be visible as a `Linked Framework` in the target. 
+- In the `Tests` target, under Build Settings, add `@loader_path/../Frameworks` to `Runpath Search Paths` (Under All Configurations)
+- In the `Tests` target, add `New Build Phase` | `New Copy Files Build Phase`. 
 	- Change the Destination to `Frameworks`.
 	- Drag `GHUnit.framework` into the the build phase
 	- Make sure the copy phase appears before any `Run Script` phases 
@@ -262,8 +262,8 @@ To run the tests from the command line:
 
 - Copy the [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Classes/RunTests.sh) file into your project directory (if you haven't already).
 - In XCode:
-  - To the `Tests` target, Add | New Build Phase | New Run Script Build Phrase
-  - Enter in the path to the RunTests.sh file. This path should be relative to the xcode project file (.xcodeproj)!
+  - To the `Tests` target, Add `New Build Phase` | `New Run Script Build Phase`
+  - Enter `sh RunTests.sh` as the script. The path to `RunTests.sh` should be relative to the xcode project file (.xcodeproj)!
 	- (Optional) Uncheck 'Show environment variables in build log'
 
 From the command line, run the tests from xcodebuild (with the GHUNIT_CLI environment variable set) :
@@ -281,6 +281,8 @@ This may seem strange that we run via xcodebuild with a RunScript phase in order
 the environment settings or other XCode specific configuration right.
 
 ## Makefile
+
+Follow the directions above for adding command line support.
 
 Example Makefile's for Mac or iPhone apps:
 
