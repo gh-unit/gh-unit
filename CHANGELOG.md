@@ -1,3 +1,10 @@
+# Release 0.4.15
+- Text filter (MacOSX)
+- Text filter now searches test case and test names (prefix)
+- Failed filter (MacOSX/iPhone)
+- Copy text in text view (MacOSX)
+- Remember test state
+
 # Release 0.4.14
 - Fix window resizing when showing details
 - Adding test for 0 found test cases
