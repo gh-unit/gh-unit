@@ -52,12 +52,12 @@
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
 	
-	GHTest *test = (GHTest *)item;
+	GHTestNode *test = (GHTestNode *)item;
 	
 	if ([[tableColumn identifier] isEqual:@"name"]) {
 		
 		NSColor *textColor = [NSColor blackColor];
-		if ([test isDisabled]) {
+		if ([test isHidden] || [test isDisabled]) {
 			textColor = [NSColor grayColor];
 		}		
 		

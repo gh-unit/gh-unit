@@ -37,7 +37,7 @@
 }
 	
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	GHAssertEquals([(NSHTTPURLResponse *)response statusCode], 204, nil);
+	GHAssertEquals([(NSHTTPURLResponse *)response statusCode], (NSInteger)204, nil);
 	GHAssertEqualObjects([(NSHTTPURLResponse *)response allHeaderFields], testHeaders_, nil);
 }
 
@@ -87,7 +87,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	GHAssertEquals([(NSHTTPURLResponse *)response statusCode], 200, nil);
+	GHAssertEquals([(NSHTTPURLResponse *)response statusCode], (NSInteger)200, nil);
 
 	NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
 	GHTestLog(@"headers=%@", headers);

@@ -85,24 +85,12 @@
 		00DCB7DC0FA4F1300022DA5A /* GHMockNSURLConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DCB7DA0FA4F1300022DA5A /* GHMockNSURLConnectionTest.m */; };
 		00DCB7DD0FA4F1300022DA5A /* GHNSLocaleMockTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DCB7DB0FA4F1300022DA5A /* GHNSLocaleMockTest.m */; };
 		00DCBB060FA523EC0022DA5A /* GHAsyncTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00772F910F8D7ABA00586577 /* GHAsyncTestCaseTest.m */; };
-		00F09A88108D50B4000E5AB5 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* GHUnit.framework */; };
-		00F09A8D108D50DF000E5AB5 /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C1A2BE0F52813200FCCA14 /* GHUnitTestMain.m */; };
-		00F09A8F108D50F2000E5AB5 /* GHTestEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F09A8E108D50F2000E5AB5 /* GHTestEmpty.m */; };
-		00F09ADD108D527A000E5AB5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F09ADC108D527A000E5AB5 /* Cocoa.framework */; };
-		00F09ADF108D527A000E5AB5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F09ADE108D527A000E5AB5 /* Foundation.framework */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		002E73C50F2C21AE00427636 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = GHUnit;
-		};
-		00F09A86108D50B1000E5AB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
@@ -202,7 +190,6 @@
 		00B7BC5C10796C490005897B /* NSValue+GHValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+GHValueFormatter.h"; sourceTree = "<group>"; };
 		00B7BC5D10796C490005897B /* NSValue+GHValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+GHValueFormatter.m"; sourceTree = "<group>"; };
 		00C1A2BE0F52813200FCCA14 /* GHUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitTestMain.m; sourceTree = "<group>"; };
-		00C1A2D80F52847700FCCA14 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
 		00CDDBC21011576E00F5C4D5 /* GHTestOutlineViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestOutlineViewModel.h; sourceTree = "<group>"; };
 		00CDDBC31011576E00F5C4D5 /* GHTestOutlineViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestOutlineViewModel.m; sourceTree = "<group>"; };
 		00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHRegisterTestCaseClassTest.m; sourceTree = "<group>"; };
@@ -213,7 +200,6 @@
 		00CDDD800F76FC880089C60E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		00DCB7DA0FA4F1300022DA5A /* GHMockNSURLConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockNSURLConnectionTest.m; sourceTree = "<group>"; };
 		00DCB7DB0FA4F1300022DA5A /* GHNSLocaleMockTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSLocaleMockTest.m; sourceTree = "<group>"; };
-		00F09A80108D50AD000E5AB5 /* Tests_Empty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests_Empty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00F09A82108D50AD000E5AB5 /* Tests_Empty-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests_Empty-Info.plist"; sourceTree = "<group>"; };
 		00F09A8E108D50F2000E5AB5 /* GHTestEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestEmpty.m; sourceTree = "<group>"; };
 		00F09ADC108D527A000E5AB5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -235,16 +221,6 @@
 			files = (
 				002E73C70F2C21B200427636 /* GHUnit.framework in Frameworks */,
 				002E73D50F2C21DE00427636 /* SenTestingKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00F09A7E108D50AD000E5AB5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00F09A88108D50B4000E5AB5 /* GHUnit.framework in Frameworks */,
-				00F09ADD108D527A000E5AB5 /* Cocoa.framework in Frameworks */,
-				00F09ADF108D527A000E5AB5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +268,6 @@
 				00B7BC5C10796C490005897B /* NSValue+GHValueFormatter.h */,
 				00B7BC5D10796C490005897B /* NSValue+GHValueFormatter.m */,
 				002D9BE70F49158F007932FE /* SharedUI */,
-				00C1A2D80F52847700FCCA14 /* RunTests.sh */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -466,7 +441,6 @@
 			children = (
 				8DC2EF5B0486A6940098B216 /* GHUnit.framework */,
 				002E73B60F2C213700427636 /* Tests.app */,
-				00F09A80108D50AD000E5AB5 /* Tests_Empty.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -603,24 +577,6 @@
 			productReference = 002E73B60F2C213700427636 /* Tests.app */;
 			productType = "com.apple.product-type.application";
 		};
-		00F09A7F108D50AD000E5AB5 /* Tests_Empty */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 00F09A85108D50AE000E5AB5 /* Build configuration list for PBXNativeTarget "Tests_Empty" */;
-			buildPhases = (
-				00F09A7C108D50AD000E5AB5 /* Resources */,
-				00F09A7D108D50AD000E5AB5 /* Sources */,
-				00F09A7E108D50AD000E5AB5 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				00F09A87108D50B1000E5AB5 /* PBXTargetDependency */,
-			);
-			name = Tests_Empty;
-			productName = Tests_Empty;
-			productReference = 00F09A80108D50AD000E5AB5 /* Tests_Empty.app */;
-			productType = "com.apple.product-type.application";
-		};
 		8DC2EF4F0486A6940098B216 /* GHUnit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "GHUnit" */;
@@ -656,7 +612,6 @@
 			targets = (
 				8DC2EF4F0486A6940098B216 /* GHUnit */,
 				002E73B50F2C213700427636 /* Tests */,
-				00F09A7F108D50AD000E5AB5 /* Tests_Empty */,
 			);
 		};
 /* End PBXProject section */
@@ -667,13 +622,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				000203AD0F8EA50600EC31BA /* example.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00F09A7C108D50AD000E5AB5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,7 +652,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = ../Classes/RunTests.sh;
+			shellScript = ../Scripts/RunTests.sh;
+			showEnvVarsInLog = 0;
 		};
 		D0A618B8104E425E00184D93 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -740,15 +689,6 @@
 				0091B12B100EEE9B000B8C77 /* GHTestFail.m in Sources */,
 				0016AEC91012A11B009F4F8F /* GHTestOnMainThread.m in Sources */,
 				00A22E7E102214FA00337F7B /* GHTestMacrosTest.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00F09A7D108D50AD000E5AB5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00F09A8D108D50DF000E5AB5 /* GHUnitTestMain.m in Sources */,
-				00F09A8F108D50F2000E5AB5 /* GHTestEmpty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,11 +732,6 @@
 			isa = PBXTargetDependency;
 			target = 8DC2EF4F0486A6940098B216 /* GHUnit */;
 			targetProxy = 002E73C50F2C21AE00427636 /* PBXContainerItemProxy */;
-		};
-		00F09A87108D50B1000E5AB5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* GHUnit */;
-			targetProxy = 00F09A86108D50B1000E5AB5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -871,49 +806,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Tests;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		00F09A83108D50AE000E5AB5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Tests_Prefix.pch;
-				INFOPLIST_FILE = "Tests-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = Tests_Empty;
-				SDKROOT = macosx10.5;
-			};
-			name = Debug;
-		};
-		00F09A84108D50AE000E5AB5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Tests_Prefix.pch;
-				INFOPLIST_FILE = "Tests-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = Tests_Empty;
-				SDKROOT = macosx10.5;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1011,15 +903,6 @@
 			buildConfigurations = (
 				002E73B90F2C213800427636 /* Debug */,
 				002E73BA0F2C213800427636 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		00F09A85108D50AE000E5AB5 /* Build configuration list for PBXNativeTarget "Tests_Empty" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				00F09A83108D50AE000E5AB5 /* Debug */,
-				00F09A84108D50AE000E5AB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

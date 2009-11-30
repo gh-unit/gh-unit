@@ -10,46 +10,38 @@
 
 #import "GHUnitIPhoneExceptionViewController.h"
 
-NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
+NSString *const GHUnitPrefixKey = @"Prefix";
+NSString *const GHUnitFilterKey = @"Filter";
 
-
-@interface GHUnitIPhoneViewController ()
-@property (retain, nonatomic) NSString *prefix;
+@interface GHUnitIPhoneViewController (Private)
+- (NSString *)_prefix;
+- (void)_setPrefix:(NSString *)prefix;
+- (void)_setFilterIndex:(NSInteger)index;
+- (NSInteger)_filterIndex;
 @end
-
 
 @implementation GHUnitIPhoneViewController
 
 @synthesize tableView=tableView_, suite=suite_;
-@synthesize prefix=prefix_; // Private properties
-
-- (id)init {
-	if ((self = [super init])) {
-		[self loadDefaults];
-	}
-	return self;
-}
 
 - (void)dealloc {
 	[dataSource_ release];	
 	[suite_ release];
-	[editToolbarItems_ release];
 	searchBar_.delegate = nil;
 	[searchBar_ release];
-	[prefix_ release];
 	[super dealloc];
 }
 
-- (void)loadDefaults {
-	// Defaults
-	[[NSUserDefaults standardUserDefaults] registerDefaults:
-	 [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:GHUnitAutoRunKey]];
+- (void)loadDefaults { }
 
-	self.prefix = [[NSUserDefaults standardUserDefaults] objectForKey:@"GHUnit4-Prefix"];	
+- (void)saveDefaults {
+  [dataSource_ saveDefaults];
 }
 
 - (void)loadView {
-	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 416)];
+  self.title = @"Tests";
+
+	UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 416)] autorelease];
 	view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
 	// Search bar
@@ -57,18 +49,20 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	searchBar_.delegate = self;
 	searchBar_.showsCancelButton = NO;	
 	searchBar_.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	searchBar_.text = self.prefix;
+  NSString *prefix = [self _prefix];
+  if (prefix)
+    searchBar_.text = prefix;
 	[view addSubview:searchBar_];
 	
 	// Table view
-	tableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 336) style:UITableViewStylePlain];
+	tableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 300) style:UITableViewStylePlain];
 	tableView_.delegate = self;
 	tableView_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	tableView_.sectionIndexMinimumDisplayRowCount = 5;
 	[view addSubview:tableView_];
 	[tableView_ release];	
 	
-	UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 380, 320, 36)];
+	UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 344, 320, 36)];
 	footerView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
 	footerView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
 	
@@ -82,58 +76,39 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	[footerView addSubview:statusLabel_];
 	[statusLabel_ release];
 	
-	toolbar_ = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
-	[toolbar_ setItems:[NSArray array] animated:YES];
-	toolbar_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-	[footerView addSubview:toolbar_];
-	[toolbar_ release];
-	
-	[view addSubview:footerView];
+  [view addSubview:footerView];
 	[footerView release];
-	
-	// Edit toolbar
-	UIBarButtonItem *selectItem = [[UIBarButtonItem alloc] initWithTitle:@"Enable All" style:UIBarButtonItemStyleBordered target:self action:@selector(_selectAll)];
-	UIBarButtonItem *deselectItem = [[UIBarButtonItem alloc] initWithTitle:@"Disable All" style:UIBarButtonItemStyleBordered target:self action:@selector(_deselectAll)];
-	UIBarButtonItem *autoRunItem = [[UIBarButtonItem alloc] initWithTitle:@"AutoRun ()" style:UIBarButtonItemStyleBordered target:self action:@selector(_toggleAutorun)];
-	editToolbarItems_ = [[NSArray arrayWithObjects:selectItem, deselectItem, autoRunItem, nil] retain];
-	[toolbar_ setItems:editToolbarItems_ animated:NO];
-	autoRunItem.title = [NSString stringWithFormat:@"AutoRun (%@)", (self.isAutoRun ? @"ON" : @"OFF")];
-	[selectItem release];
-	[deselectItem release];
-	[autoRunItem release];
-	
-	// Navigation button items
-	editButton_ = [[UIBarButtonItem alloc] initWithTitle:@"-" style:UIBarButtonItemStylePlain 
-																									target:self action:@selector(_edit)];
-	self.navigationItem.rightBarButtonItem = editButton_;
-	[editButton_ release];	
-
+  	
+  runToolbar_ = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 380, 320, 36)];
+  filterControl_ = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"All", @"Failed", nil]];
+  filterControl_.segmentedControlStyle = UISegmentedControlStyleBar;
+  filterControl_.frame = CGRectMake(20, 6, 280, 24);
+  filterControl_.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+  filterControl_.selectedSegmentIndex = [self _filterIndex];
+  [filterControl_ addTarget:self action:@selector(_filterChanged:) forControlEvents:UIControlEventValueChanged];
+  runToolbar_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+  [runToolbar_ addSubview:filterControl_];
+  [filterControl_ release];
+	[view addSubview:runToolbar_];
+	[runToolbar_ release];
+  
 	runButton_ = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStyleDone
 																							 target:self action:@selector(_toggleTestsRunning)];
-	self.navigationItem.leftBarButtonItem = runButton_;
+	self.navigationItem.rightBarButtonItem = runButton_;
 	[runButton_ release];	
 	
 	self.view = view;
-	[self setEditing:NO];
-	
 	[self reload];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	if (self.isAutoRun) [self runTests];
-}
-
 - (void)reload {
-	if (self.prefix) {		
-		self.suite = [GHTestSuite suiteWithPrefix:self.prefix options:NSCaseInsensitiveSearch];
-		[[NSUserDefaults standardUserDefaults] setObject:self.prefix forKey:@"GHUnit4-Prefix"];
-	} else {
-		self.suite = [GHTestSuite suiteFromEnv];
-	}
-	
-	[dataSource_ release];
-	dataSource_ = [[GHUnitIPhoneTableViewDataSource alloc] initWithSuite:suite_];
-	self.tableView.dataSource = dataSource_;
+  if (!dataSource_) {
+    dataSource_ = [[GHUnitIPhoneTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[GHTestSuite suiteFromEnv]];  
+    [dataSource_ loadDefaults];
+    self.tableView.dataSource = dataSource_;
+  }  
+  [dataSource_.root setTextFilter:[self _prefix]];	
+  [dataSource_.root setFilter:[self _filterIndex]];
 	[self.tableView reloadData];	
 }
 
@@ -149,15 +124,9 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	
 	runButton_.title = @"Cancel";
 	userDidDrag_ = NO; // Reset drag status
-	[self reset];
+	statusLabel_.textColor = [UIColor blackColor];
 	statusLabel_.text = @"Starting tests...";
 	[dataSource_ run:self inParallel:NO];
-}
-
-- (void)reset {
-	statusLabel_.text = @"Select 'Run' to start tests";
-	statusLabel_.textColor = [UIColor blackColor];
-	[suite_ reset];
 }
 
 - (void)cancel {
@@ -171,67 +140,33 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 
 #pragma mark Properties
 
-- (void)setEditing:(BOOL)editing {
-	// If we were editing, then we are toggling back, and we need to save
-	if (dataSource_.isEditing) {
-		[dataSource_ saveDefaults];
-	}
-
-	dataSource_.editing = editing;
-	
-	if (editing) {
-		self.title = @"Enable/Disable";
-		editButton_.title = @"Save";
-		statusLabel_.hidden = YES;		
-		toolbar_.hidden = NO;				
-	} else {
-		self.title = @"Tests";
-		editButton_.title = @"Edit";
-		statusLabel_.hidden = NO;		
-		toolbar_.hidden = YES;
-	}
-	[self.tableView reloadData];
+- (NSString *)_prefix {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:GHUnitPrefixKey];
 }
 
-- (BOOL)isAutoRun {
-	return [[[NSUserDefaults standardUserDefaults] objectForKey:GHUnitAutoRunKey] boolValue];
+- (void)_setPrefix:(NSString *)prefix {
+  [[NSUserDefaults standardUserDefaults] setObject:prefix forKey:GHUnitPrefixKey];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)setAutoRun:(BOOL)autoRun {
-	[[editToolbarItems_ objectAtIndex:2] setTitle:[NSString stringWithFormat:@"AutoRun (%@)", (autoRun ? @"ON" : @"OFF")]];	
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:autoRun] forKey:GHUnitAutoRunKey];
+- (void)_setFilterIndex:(NSInteger)index {
+  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:index] forKey:GHUnitFilterKey];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-#pragma mark Actions
-
-- (void)_edit {	
-	[self setEditing:!dataSource_.isEditing];
-}
-
-- (void)_selectAll {
-	[dataSource_ setSelectedForAllNodes:YES];
-	[self.tableView reloadData];
-}
-
-- (void)_deselectAll {
-	[dataSource_ setSelectedForAllNodes:NO];
-	[self.tableView reloadData];
-}
-
-- (void)_enable:(id)sender {
-	if ([sender selectedSegmentIndex] == 0) [self _selectAll];
-	else [self _deselectAll];
-}
-
-- (void)_toggleAutorun {
-	self.autoRun = !self.isAutoRun;
+- (NSInteger)_filterIndex {
+  return [[[NSUserDefaults standardUserDefaults] objectForKey:GHUnitFilterKey] integerValue];
 }
 
 #pragma mark -
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES;
+}
+
+- (void)_filterChanged:(id)sender {
+  [self _setFilterIndex:filterControl_.selectedSegmentIndex];
+  [self reload];
 }
 
 - (void)reloadTest:(id<GHTest>)test {
@@ -274,10 +209,11 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 		GHTestNode *sectionNode = [[[dataSource_ root] children] objectAtIndex:indexPath.section];
 		GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
 		
-		if (node.failed) {
+    NSString *stackTrace = [node stackTrace];
+		if (node.failed && stackTrace) {
 			GHUnitIPhoneExceptionViewController *exceptionViewController = [[GHUnitIPhoneExceptionViewController alloc] init];	
 			[self.navigationController pushViewController:exceptionViewController animated:YES];
-			exceptionViewController.stackTrace = node.stackTrace;
+			exceptionViewController.stackTrace = stackTrace;
 			[exceptionViewController release];
 		}	
 	}
@@ -290,6 +226,22 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 }
 
 #pragma mark Delegates (GHTestRunner)
+
+- (void)_setRunning:(BOOL)running runner:(GHTestRunner *)runner {
+  if (running) {
+    filterControl_.enabled = NO;
+  } else {
+    filterControl_.enabled = YES;
+    GHTestStats stats = [runner.test stats];
+    if (stats.failureCount > 0) {
+      statusLabel_.textColor = [UIColor redColor];
+    } else {
+      statusLabel_.textColor = [UIColor blackColor];
+    }
+
+    runButton_.title = @"Run";
+  }
+}
 
 - (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message {
 	[self setStatusText:message];
@@ -312,25 +264,21 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	[self reloadTest:test];
 }
 
-- (void)testRunnerDidStart:(GHTestRunner *)runner { }
+- (void)testRunnerDidStart:(GHTestRunner *)runner { 
+  [self _setRunning:YES runner:runner];
+}
 
 - (void)testRunnerDidCancel:(GHTestRunner *)runner { 
-	runButton_.title = @"Run";
-	statusLabel_.text = @"Cancelled...";
+	[self _setRunning:NO runner:runner];
+  [self setStatusText:@"Cancelled..."];
 }
 
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
-	GHTestStats stats = [runner.test stats];
-
-	if (stats.failureCount > 0) {
-		statusLabel_.textColor = [UIColor redColor];
-	} else {
-		statusLabel_.textColor = [UIColor blackColor];
-	}
-	
-	[self setStatusText:[dataSource_ statusString:@"Tests finished. "]];
-	
-	runButton_.title = @"Run";
+	[self _setRunning:NO runner:runner];
+  [self setStatusText:[dataSource_ statusString:@"Tests finished. "]];
+  
+  // Save defaults after test run
+  [self saveDefaults];
 }
 
 #pragma mark Delegates (UISearchBar)
@@ -339,13 +287,18 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	[searchBar_ setShowsCancelButton:YES animated:YES];	
 }
 
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+  return ![dataSource_ isRunning];
+}
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
 	// Workaround for clearing search
 	if ([searchBar.text isEqualToString:@""]) {
 		[self searchBarSearchButtonClicked:searchBar];
 		return;
 	}
-	searchBar.text = self.prefix;
+  NSString *prefix = [self _prefix];
+	searchBar.text = (prefix ? prefix : @"");
 	[searchBar resignFirstResponder];
 	[searchBar setShowsCancelButton:NO animated:YES];	
 }
@@ -354,7 +307,7 @@ NSString *const GHUnitAutoRunKey = @"GHUnit-Autorun";
 	[searchBar resignFirstResponder];
 	[searchBar setShowsCancelButton:NO animated:YES];	
 	
-	self.prefix = searchBar.text;
+  [self _setPrefix:searchBar.text];
 	[self reload];
 }
 

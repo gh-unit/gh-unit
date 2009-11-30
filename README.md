@@ -13,13 +13,13 @@ For example, your test cases will be run if they subclass any of the following:
 
 ### Mac OS X
 
-[GHUnit-0.4.14.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.14.zip) *GHUnit.framework* (2009/10/19)
+[GHUnit-0.4.15.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.15.zip) *GHUnit.framework* (2009/10/29)
 
 Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
 
 ### iPhone OS 3.0 or above
 
-[libGHUnitIPhone3_0-0.4.13.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.13.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/10/08)
+[libGHUnitIPhone3_0-0.4.15.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.15.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/10/29)
 
 ## Why?
 
@@ -221,13 +221,6 @@ Then go in the "Arguments" tab. You can add the following environment variables:
 
 If Using NSDeallocateZombies=NO, then all objects will leak so be sure to turn it off when debugging memory leaks.
 
-Other environment variables:
-
-	Environment Variable:                 Default:  Set to:
-	NSEnableAutoreleasePool                  YES      NO	
-	NSAutoreleaseHighWaterMark               0        non-negative integer
-	NSAutoreleaseHighWaterResolution         0        non-negative integer
-
 For more info on these varaiables see [NSDebug.h](http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html)
 
 For malloc debugging:
@@ -260,7 +253,7 @@ For more info on these variables see [MallocDebug](http://developer.apple.com/ma
 
 To run the tests from the command line:
 
-- Copy the [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Classes/RunTests.sh) file into your project directory (if you haven't already).
+- Copy the [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Scripts/RunTests.sh) file into your project directory (if you haven't already).
 - In XCode:
   - To the `Tests` target, Add `New Build Phase` | `New Run Script Build Phase`
   - Enter `sh RunTests.sh` as the script. The path to `RunTests.sh` should be relative to the xcode project file (.xcodeproj)!
@@ -272,7 +265,7 @@ From the command line, run the tests from xcodebuild (with the GHUNIT_CLI enviro
 	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
 	
 	// For iPhone app
-	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator2.2 build
+	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator3.0 build
 
 If you are wondering, the `RunTests.sh` script will only run the tests if the env variable GHUNIT_CLI is set. 
 This is why this RunScript phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.

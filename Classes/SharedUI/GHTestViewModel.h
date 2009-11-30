@@ -35,12 +35,17 @@
 - (void)testNodeDidChange:(GHTestNode *)node;
 @end
 
+typedef enum {
+  GHTestNodeFilterNone = 0,
+  GHTestNodeFilterFailed = 1
+} GHTestNodeFilter;
 
 /*!
  Test view model for use in a tree view.
  */
 @interface GHTestViewModel : NSObject <GHTestNodeDelegate> {
 	
+  NSString *identifier_;
 	GHTestSuite *suite_;
 	GHTestNode *root_;
 	
@@ -49,8 +54,8 @@
 	NSMutableDictionary *map_; // id<GHTest>#identifier -> GHTestNode
 
 	BOOL editing_;
-	NSString *settingsKey_;
-	NSMutableDictionary *settings_;
+
+	NSMutableDictionary *defaults_;
 }
 
 @property (readonly, nonatomic) GHTestNode *root;
@@ -58,8 +63,10 @@
 
 /*!
  Create view model with root test group node.
+ @param identifier Unique identifier for test model (used to load defaults)
+ @param suite
  */
-- (id)initWithSuite:(GHTestSuite *)suite;
+- (id)initWithIdentifier:(NSString *)identifier suite:(GHTestSuite *)suite;
 
 - (NSString *)name;
 - (NSString *)statusString:(NSString *)prefix;
@@ -107,19 +114,22 @@
 @interface GHTestNode : NSObject {
 
 	id<GHTest> test_;
-	NSMutableArray */* of GHTestNode*/children_;
+	NSMutableArray */*of GHTestNode*/children_;
+  NSMutableArray */* of GHTestNode*/filteredChildren_;
 
 	id<GHTestNodeDelegate> delegate_;
-
+  GHTestNodeFilter filter_;
+  NSString *textFilter_;
 }
-
 
 @property (readonly, nonatomic) NSArray */* of GHTestNode*/children;
 @property (readonly, nonatomic) id<GHTest> test;
 @property (assign, nonatomic) id<GHTestNodeDelegate> delegate;
+@property (assign, nonatomic) GHTestNodeFilter filter;
+@property (retain, nonatomic) NSString *textFilter;
 
-- (id)initWithTest:(id<GHTest>)test children:(NSArray */*of GHTestNode */)children source:(GHTestViewModel *)source;
-+ (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray */*of GHTestNode */)children source:(GHTestViewModel *)source;
+- (id)initWithTest:(id<GHTest>)test children:(NSArray */*of id<GHTest>*/)children source:(GHTestViewModel *)source;
++ (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray */*of id<GHTest>*/)children source:(GHTestViewModel *)source;
 
 - (NSString *)identifier;
 - (NSString *)name;
@@ -131,6 +141,7 @@
 - (NSString *)log;
 - (BOOL)isRunning;
 - (BOOL)isDisabled;
+- (BOOL)isHidden;
 - (BOOL)isEnded;
 - (BOOL)isGroupTest; // YES if test has "sub tests"
 

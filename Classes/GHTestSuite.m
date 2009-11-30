@@ -55,7 +55,7 @@ NSString *GHUnitTest = NULL;
 
 + (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method {	
 	NSString *name = [NSString stringWithFormat:@"%@/%@", NSStringFromClass(testCaseClass), NSStringFromSelector(method)];
-	GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:name testCases:nil delegate:nil];
+	GHTestSuite *testSuite = [[[GHTestSuite alloc] initWithName:name testCases:nil delegate:nil] autorelease];
 	id testCase = [[[testCaseClass alloc] init] autorelease];
 	if (!testCase) {
 		NSLog(@"Couldn't instantiate test: %@", NSStringFromClass(testCaseClass));
@@ -63,7 +63,8 @@ NSString *GHUnitTest = NULL;
 	}
 	GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:method delegate:nil];
 	[testSuite addTestGroup:group];
-	return [testSuite autorelease];	
+  [group release];
+	return testSuite;
 }
 
 + (GHTestSuite *)suiteWithPrefix:(NSString *)prefix options:(NSStringCompareOptions)options {

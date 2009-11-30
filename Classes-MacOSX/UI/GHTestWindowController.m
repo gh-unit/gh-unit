@@ -51,8 +51,8 @@
   [viewController_ runTests];
 }
 
-- (IBAction)edit:(id)sender {
-  [viewController_ edit:sender];
+- (IBAction)copy:(id)sender {
+  [viewController_ copy:sender];
 }
 
 - (void)dealloc {

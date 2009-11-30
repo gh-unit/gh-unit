@@ -31,18 +31,27 @@
 
 @interface GHTestViewController (Private)
 - (void)_updateTest:(id<GHTest>)test;
+- (NSString *)_prefix;
+- (void)_setPrefix:(NSString *)prefix;
 @end
 
 @implementation GHTestViewController
 
 @synthesize suite=suite_, status=status_, statusProgress=statusProgress_, 
-wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
+wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_,
+running=running_;
 
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { 
 		suite_ = [[GHTestSuite suiteFromEnv] retain];
-		dataSource_ = [[GHTestOutlineViewModel alloc] initWithSuite:suite_];
+    
+    NSString *identifier = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"] retain];
+    if (!identifier) identifier = @"Tests";
+    GHUDebug(@"Using identifier: %@", identifier);
+    
+		dataSource_ = [[GHTestOutlineViewModel alloc] initWithIdentifier:identifier suite:suite_];
 		dataSource_.delegate = self;
+    [dataSource_ loadDefaults];
 		self.view; // Force nib awaken
 	}
 	return self;
@@ -63,8 +72,24 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 	[_textView setTextColor:[NSColor whiteColor]];
 	[_textView setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
 	[_textView setString:@""];
+  
+  NSString *prefix = [self _prefix];
+  if (prefix) {
+    [_searchField setStringValue:prefix];
+    [self updateSearchFilter:nil];
+  }
+  
 	self.wrapInTextView = NO;
 	self.runLabel = @"Run";
+}
+
+- (NSString *)_prefix {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:@"Prefix"];
+}
+
+- (void)_setPrefix:(NSString *)prefix {
+  [[NSUserDefaults standardUserDefaults] setObject:prefix forKey:@"Prefix"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark Running
@@ -89,11 +114,14 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 
 - (void)loadTestSuite {
 	self.status = @"Loading tests...";
-	[suite_ reset];
-	[_outlineView reloadData];
+  [self reload];
+	self.status = @"Select 'Run' to start tests";
+}
+
+- (void)reload {
+  [_outlineView reloadData];
 	[_outlineView reloadItem:nil reloadChildren:YES];
 	[_outlineView expandItem:nil expandChildren:YES];
-	self.status = @"Select 'Run' to start tests";
 }
 
 #pragma mark -
@@ -118,6 +146,38 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 		[[_textView textContainer] setWidthTracksTextView:NO];		
 	}
 	[_textView setNeedsDisplay:YES];
+}
+
+- (IBAction)updateMode:(id)sender {
+  switch(_segmentedControl.selectedSegment) {
+    case 0: {
+      dataSource_.editing = NO;
+      [dataSource_.root setTextFilter:[self _prefix]];
+      [dataSource_.root setFilter:GHTestNodeFilterNone]; 
+      break;
+    }
+    case 1: {
+      dataSource_.editing = NO;
+      [dataSource_.root setTextFilter:[self _prefix]];
+      [dataSource_.root setFilter:GHTestNodeFilterFailed]; 
+      break;
+    }
+    case 2: {      
+      dataSource_.editing = YES;      
+      [dataSource_.root setTextFilter:nil];
+      [dataSource_.root setFilter:GHTestNodeFilterNone];
+      break;
+    }
+  }
+  [dataSource_ saveDefaults];
+  [self reload];
+}
+
+- (IBAction)updateSearchFilter:(id)sender {
+  NSString *prefix = [_searchField stringValue];
+  [dataSource_.root setTextFilter:prefix];
+  [self _setPrefix:prefix];
+  [self reload];
 }
 
 - (IBAction)copy:(id)sender {
@@ -160,12 +220,6 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 	NSString *text = [item performSelector:selector];
 	if (text) text = [NSString stringWithFormat:@"%@\n", text]; // Newline important for when we append streaming text
 	[_textView setString:text ? text : @""];	
-}
-
-- (IBAction)edit:(id)sender {
-	dataSource_.editing = ([sender state] == NSOnState);
-	[_outlineView reloadData];
-	[dataSource_ saveDefaults];
 }
 
 - (IBAction)updateTextSegment:(id)sender {
@@ -245,7 +299,8 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 }
 
 - (void)testRunnerDidStart:(GHTestRunner *)runner { 	
-	[self _updateTest:runner.test];
+  self.running = YES;
+	[self _updateTest:runner.test];  
 }
 
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
@@ -253,12 +308,15 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 	[self _updateTest:runner.test];
 	[self selectFirstFailure];
 	self.runLabel = @"Run";
+  [dataSource_ saveDefaults];
+  self.running = NO;
 }
 
 - (void)testRunnerDidCancel:(GHTestRunner *)runner {
 	self.runLabel = @"Run";
 	self.status = [dataSource_ statusString:@"Cancelled... "];
 	self.statusProgress = 0;
+  self.running = NO;
 }
 
 @end
