@@ -73,29 +73,25 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  The base interface for a runnable test.
  A runnable with a unique identifier, display name, stats, timer, delegate, log and error handling.
  */
-@protocol GHTest <NSObject>
+@protocol GHTest <NSObject, NSCoding>
 
 - (void)run;
 
-- (NSString *)identifier;
-- (NSString *)name;
-
-- (NSTimeInterval)interval;
-- (GHTestStatus)status;
-- (GHTestStats)stats;
-
-- (void)setDelegate:(id<GHTestDelegate>)delegate;
-
-- (NSException *)exception;
-- (void)setException:(NSException *)exception;
+@property (readonly, nonatomic) NSString *identifier;  // Unique identifier for test
+@property (readonly, nonatomic) NSString *name;
+@property (assign, nonatomic) NSTimeInterval interval;
+@property (assign, nonatomic) GHTestStatus status;
+@property (readonly, nonatomic) GHTestStats stats;
+@property (retain, nonatomic) NSException *exception;
+@property (assign, nonatomic, getter=isDisabled) BOOL disabled;
+@property (assign, nonatomic, getter=isHidden) BOOL hidden;
+@property (assign, nonatomic) id<GHTestDelegate> delegate; // weak
 
 - (NSArray *)log;
 
 - (void)reset;
 - (void)cancel;
 
-- (void)setDisabled:(BOOL)disabled;
-- (BOOL)isDisabled;
 - (NSInteger)disabledCount;
 
 @end
@@ -124,7 +120,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 
 /*!
  Default test implementation with a target/selector pair.
- - Consists of a target/selector
+ - Tests a target and selector
  - Notifies a test delegate
  - Keeps track of status, running time and failures
  - Stores any test specific logging
@@ -141,6 +137,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 	GHTestStatus status_;
 	NSTimeInterval interval_;
 	BOOL disabled_;
+  BOOL hidden_;
 	NSException *exception_; // If failed
 		
 	NSMutableArray *log_;
@@ -148,15 +145,14 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 
 @property (readonly, nonatomic) id target;
 @property (readonly, nonatomic) SEL selector;
-@property (readonly, nonatomic) NSString *identifier; // Unique identifier for test
-@property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) NSTimeInterval interval;
-@property (retain, nonatomic) NSException *exception;
-@property (readonly, nonatomic) GHTestStatus status;
-@property (assign, nonatomic, getter=isDisabled) BOOL disabled;
 @property (readonly, nonatomic) NSArray *log;
 
-@property (assign, nonatomic) NSObject<GHTestDelegate> *delegate;
+/*!
+ Creat test with identifier, name.
+ @param identifier Unique identifier
+ @param name Name
+ */
+- (id)initWithIdentifier:(NSString *)identifier name:(NSString *)name;
 
 /*!
  Create test with target/selector.

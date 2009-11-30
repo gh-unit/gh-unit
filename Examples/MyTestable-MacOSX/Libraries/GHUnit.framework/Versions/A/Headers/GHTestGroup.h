@@ -84,7 +84,7 @@
 	NSObject<GHTestDelegate> *delegate_; // weak
 	id<GHTestGroup> parent_; // weak
 	
-	NSMutableArray *children_; // of id<GHTest>
+	NSMutableArray */*of id<GHTest>*/children_;
 		
 	NSString *name_; // The name of the test group (usually the class name of the test case
 	NSTimeInterval interval_; // Total time of child tests
@@ -101,17 +101,8 @@
 }
 
 @property (readonly, nonatomic) NSArray */*of id<GHTest>*/children;
-@property (assign, nonatomic) NSObject<GHTestDelegate> *delegate;
 @property (assign, nonatomic) id<GHTestGroup> parent;
 @property (readonly, nonatomic) id testCase;
-
-@property (readonly, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) GHTestStatus status;
-
-@property (readonly, nonatomic) NSTimeInterval interval;
-@property (readonly, nonatomic) GHTestStats stats;
-@property (readonly, nonatomic) NSException *exception;
 
 /*!
  Create an empty test group.
@@ -155,7 +146,15 @@
 
 - (void)addTestGroup:(GHTestGroup *)testGroup;
 
+- (void)addTest:(id<GHTest>)test;
+
 - (BOOL)shouldRunOnMainThread;
+
+/*!
+ Get list of failed tests.
+ @result Failed tests
+ */
+- (NSArray */*of id<GHTest>*/)failedTests;
 
 /*!
  Run in operation queue.

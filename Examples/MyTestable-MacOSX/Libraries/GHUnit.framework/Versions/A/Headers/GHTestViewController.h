@@ -41,6 +41,8 @@
 	IBOutlet NSOutlineView *_outlineView;	
 	IBOutlet NSTextView *_textView;
 	IBOutlet NSSegmentedControl *_textSegmentedControl;
+  IBOutlet NSSegmentedControl *_segmentedControl;
+  IBOutlet NSSearchField *_searchField;
 	
 	BOOL wrapInTextView_;		
 	NSString *status_;
@@ -51,6 +53,7 @@
 	GHTestSuite *suite_;
 	
 	GHTestOutlineViewModel *dataSource_;
+  BOOL running_;
 }
 
 @property (assign, nonatomic) BOOL wrapInTextView;
@@ -62,20 +65,24 @@
 @property (retain, nonatomic) NSString *runLabel;
 
 @property (retain, nonatomic) GHTestSuite *suite;
+@property (assign, nonatomic, getter=isRunning) BOOL running;
 
 - (void)loadTestSuite;
 
 - (void)selectFirstFailure;
 
 - (IBAction)copy:(id)sender;
-- (IBAction)edit:(id)sender;
 - (IBAction)runTests:(id)sender;
 - (IBAction)toggleDetails:(id)sender;
 - (IBAction)updateTextSegment:(id)sender;
+- (IBAction)updateMode:(id)sender;
+- (IBAction)updateSearchFilter:(id)sender;
 
 - (id<GHTest>)selectedTest;
 
 - (void)runTests;
+
+- (void)reload;
 
 - (void)loadDefaults;
 - (void)saveDefaults;
