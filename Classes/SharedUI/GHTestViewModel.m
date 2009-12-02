@@ -142,7 +142,9 @@
   if (testDefault) {    
     test.status = testDefault.status;
     test.interval = testDefault.interval;
+    #if !TARGET_OS_IPHONE // Don't use hidden state for iPhone
     test.hidden = testDefault.hidden;
+    #endif
   }
   for(GHTestNode *childNode in [node children])
     [self _updateTestNodeWithDefaults:childNode];
@@ -272,9 +274,6 @@
         [filtered addObject:childNode];
     }
   }
-  
-  GHUDebug(@"textFiltered: %@, count: %d", textFilter_, [textFiltered count]);
-  GHUDebug(@"filtered: %d, count: %d", filter_, [filtered count]);
   
   [filteredChildren_ release];
   filteredChildren_ = [[NSMutableArray array] retain];

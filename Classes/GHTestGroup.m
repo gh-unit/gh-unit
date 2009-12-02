@@ -212,7 +212,7 @@ status=status_, testCase=testCase_, exception=exception_;
 
 - (void)setHidden:(BOOL)hidden {
 	for(id<GHTest> test in children_)
-    test.hidden = YES;
+    test.hidden = hidden;
 	[delegate_ testDidUpdate:self source:self];
 }
 

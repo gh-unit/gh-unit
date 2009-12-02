@@ -1,3 +1,6 @@
+# Release 0.4.16
+- Fixing hidden tests bug
+
 # Release 0.4.15
 - Text filter (MacOSX)
 - Text filter now searches test case and test names (prefix)
