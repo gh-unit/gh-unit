@@ -200,7 +200,7 @@ status=status_, testCase=testCase_, exception=exception_;
 
 - (void)setDisabled:(BOOL)disabled {
 	for(id<GHTest> test in children_)
-    test.disabled = YES;
+    test.disabled = disabled;
 	[delegate_ testDidUpdate:self source:self];
 }
 
