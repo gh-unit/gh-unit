@@ -143,7 +143,8 @@
     test.status = testDefault.status;
     test.interval = testDefault.interval;
     #if !TARGET_OS_IPHONE // Don't use hidden state for iPhone
-    test.hidden = testDefault.hidden;
+    if ([test isKindOfClass:[GHTest class]]) 
+      test.hidden = testDefault.hidden;
     #endif
   }
   for(GHTestNode *childNode in [node children])
@@ -279,33 +280,38 @@
   filteredChildren_ = [[NSMutableArray array] retain];
   for(GHTestNode *childNode in children_) {
     if ((!textFilter_ || [textFiltered containsObject:childNode]) && 
-        (filter_ == GHTestNodeFilterNone || [filtered containsObject:childNode])) {
+        (filter_ == GHTestNodeFilterNone || [filtered containsObject:childNode]) || [childNode hasChildren]) {
       [filteredChildren_ addObject:childNode];
-      if (![childNode hasChildren])
+      if (![childNode hasChildren]) {
         childNode.test.disabled = NO;
+      }
     } else {
-      if (![childNode hasChildren])
+      if (![childNode hasChildren]) {
         childNode.test.disabled = YES;
+      }
     }
   }
 }
 
 - (void)setTextFilter:(NSString *)textFilter {
+  [self setFilter:filter_ textFilter:textFilter];
+}
+
+- (void)setFilter:(GHTestNodeFilter)filter {
+  [self setFilter:filter textFilter:textFilter_];
+}
+
+- (void)setFilter:(GHTestNodeFilter)filter textFilter:(NSString *)textFilter {
   if ([self isRunning]) [NSException raise:NSObjectNotAvailableException format:@"Can't filter while running"];
+  filter_ = filter;
   
   textFilter = [textFilter stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
   if ([textFilter isEqualToString:@""]) textFilter = nil;
   
   [textFilter retain];
   [textFilter_ release];
-  textFilter_ = textFilter;  
-  [self _applyFilters];  
-}
-
-- (void)setFilter:(GHTestNodeFilter)filter {
-  if ([self isRunning]) [NSException raise:NSObjectNotAvailableException format:@"Can't filter while running"];
-  filter_ = filter;
-  [self _applyFilters];
+  textFilter_ = textFilter;    
+  [self _applyFilters];    
 }
 
 - (NSString *)name {

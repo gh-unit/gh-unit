@@ -153,4 +153,6 @@ typedef enum {
 
 - (void)notifyChanged;
 
+- (void)setFilter:(GHTestNodeFilter)filter textFilter:(NSString *)textFilter;
+
 @end
