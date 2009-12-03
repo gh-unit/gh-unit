@@ -1,3 +1,7 @@
+# Release 0.4.17
+- Fixing disabled on new test bug
+- Fixing bugs with All/Failed/Edit views not showing tests properly (MacOSX)
+
 # Release 0.4.16
 - Fixing hidden tests bug
 
