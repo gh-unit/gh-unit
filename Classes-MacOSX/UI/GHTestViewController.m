@@ -149,22 +149,20 @@ running=running_;
 }
 
 - (IBAction)updateMode:(id)sender {
+  GHUDebug(@"Update mode: %d", _segmentedControl.selectedSegment);
   switch(_segmentedControl.selectedSegment) {
     case 0: {
       dataSource_.editing = NO;
-      [dataSource_.root setTextFilter:[self _prefix]];
       [dataSource_.root setFilter:GHTestNodeFilterNone]; 
       break;
     }
     case 1: {
       dataSource_.editing = NO;
-      [dataSource_.root setTextFilter:[self _prefix]];
       [dataSource_.root setFilter:GHTestNodeFilterFailed]; 
       break;
     }
     case 2: {      
       dataSource_.editing = YES;      
-      [dataSource_.root setTextFilter:nil];
       [dataSource_.root setFilter:GHTestNodeFilterNone];
       break;
     }
