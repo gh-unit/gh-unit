@@ -348,6 +348,19 @@ The `description` argument appends extra information for when the assert fails; 
 	GHAssertNoThrowSpecific(expr, specificException, description, ...)
 	GHAssertNoThrowSpecificNamed(expr, specificException, aName, description, ...)
 
+## Using an Alternate iPhone Application Delegate
+
+If you want to use a custom application delegate in your test environment, you should subclass GHUnitIPhoneAppDelegate:
+
+		@interface MyTestApplicationDelegate : GHUnitIPhoneAppDelegate { }
+		@end
+
+Then in GHUnitIPhoneTestMain.m:
+
+  retVal = UIApplicationMain(argc, argv, nil, @"MyTestApplicationDelegate");
+
+I am looking into removing this dependency but this will work in the meantime.
+
 ## Using SenTestingKit
 
 You can also use GHUnit with SenTestCase, for example:
