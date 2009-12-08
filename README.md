@@ -357,7 +357,7 @@ If you want to use a custom application delegate in your test environment, you s
 
 Then in GHUnitIPhoneTestMain.m:
 
-  retVal = UIApplicationMain(argc, argv, nil, @"MyTestApplicationDelegate");
+		retVal = UIApplicationMain(argc, argv, nil, @"MyTestApplicationDelegate");
 
 I am looking into removing this dependency but this will work in the meantime.
 
