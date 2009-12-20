@@ -144,7 +144,7 @@
     test.interval = testDefault.interval;
     #if !TARGET_OS_IPHONE // Don't use hidden state for iPhone
     if ([test isKindOfClass:[GHTest class]]) 
-      test.hidden = testDefault.hidden;
+      [test setHidden:testDefault.hidden];
     #endif
   }
   for(GHTestNode *childNode in [node children])
@@ -283,11 +283,11 @@
         (filter_ == GHTestNodeFilterNone || [filtered containsObject:childNode]) || [childNode hasChildren]) {
       [filteredChildren_ addObject:childNode];
       if (![childNode hasChildren]) {
-        childNode.test.disabled = NO;
+        [childNode.test setDisabled:NO];
       }
     } else {
       if (![childNode hasChildren]) {
-        childNode.test.disabled = YES;
+        [childNode.test setDisabled:YES];
       }
     }
   }

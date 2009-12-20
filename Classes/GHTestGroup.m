@@ -164,7 +164,7 @@ status=status_, testCase=testCase_, exception=exception_;
 }
 
 - (void)_failedTests:(NSMutableArray *)tests testGroup:(id<GHTestGroup>)testGroup {  
-  for(id<GHTest> test in testGroup.children) {
+  for(id<GHTest> test in [testGroup children]) {
     if ([test conformsToProtocol:@protocol(GHTestGroup)]) 
       [self _failedTests:tests testGroup:(id<GHTestGroup>)test];
     else if (test.status == GHTestStatusErrored) [tests addObject:test];
@@ -200,7 +200,7 @@ status=status_, testCase=testCase_, exception=exception_;
 
 - (void)setDisabled:(BOOL)disabled {
 	for(id<GHTest> test in children_)
-    test.disabled = disabled;
+    [test setDisabled:disabled];
 	[delegate_ testDidUpdate:self source:self];
 }
 
@@ -212,7 +212,7 @@ status=status_, testCase=testCase_, exception=exception_;
 
 - (void)setHidden:(BOOL)hidden {
 	for(id<GHTest> test in children_)
-    test.hidden = hidden;
+    [test setHidden:hidden];
 	[delegate_ testDidUpdate:self source:self];
 }
 
