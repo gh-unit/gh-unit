@@ -39,13 +39,25 @@ typedef enum {
 	GHTestStatusErrored, // Test finished and errored
 } GHTestStatus;
 
+enum {
+  GHTestOptionReraiseExceptions = 1 << 0, // If YES, will allow exceptions to be raised (so you can trigger the debugger)
+};
+typedef NSInteger GHTestOptions;
+
 /*!
  Generate string from GHTestStatus
  @param status
  */
 extern NSString* NSStringFromGHTestStatus(GHTestStatus status);
 
+/*!
+ Check if test is running (or trying to cancel).
+ */
 extern BOOL GHTestStatusIsRunning(GHTestStatus status);
+
+/*!
+ Check if test has succeeded, errored or cancelled.
+ */
 extern BOOL GHTestStatusEnded(GHTestStatus status);
 
 /*!
@@ -75,7 +87,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  */
 @protocol GHTest <NSObject, NSCoding>
 
-- (void)run;
+- (void)run:(GHTestOptions)options;
 
 @property (readonly, nonatomic) NSString *identifier;  // Unique identifier for test
 @property (readonly, nonatomic) NSString *name;
@@ -115,7 +127,11 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 
 @interface GHTestOperation : NSOperation { 
 	id<GHTest> test_;
+  GHTestOptions options_;
 }
+
+- (id)initWithTest:(id<GHTest>)test options:(GHTestOptions)options;
+
 @end
 
 /*!

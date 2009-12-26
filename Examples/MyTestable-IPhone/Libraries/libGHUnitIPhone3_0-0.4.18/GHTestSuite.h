@@ -54,7 +54,7 @@ extern NSString *GHUnitTest;
 		- (void)testB2; (GHTest with target GHTestCase2 + testB2)  
  
  */
-@interface GHTestSuite : GHTestGroup { }
+@interface GHTestSuite : GHTestGroup {}
 
 /*! 
  Create test suite with test cases.

@@ -49,6 +49,9 @@
 	double statusProgress_;
 	BOOL runInParallel_;	
 	NSString *runLabel_;
+  
+  NSString *exceptionFilename_;
+  NSInteger exceptionLineNumber_;
 	
 	GHTestSuite *suite_;
 	
@@ -67,6 +70,10 @@
 @property (retain, nonatomic) GHTestSuite *suite;
 @property (assign, nonatomic, getter=isRunning) BOOL running;
 
+@property (retain, nonatomic) NSString *exceptionFilename;
+@property (assign, nonatomic) NSInteger exceptionLineNumber;
+
+
 - (void)loadTestSuite;
 
 - (void)selectFirstFailure;
@@ -77,6 +84,7 @@
 - (IBAction)updateTextSegment:(id)sender;
 - (IBAction)updateMode:(id)sender;
 - (IBAction)updateSearchFilter:(id)sender;
+- (IBAction)openExceptionFilename:(id)sender;
 
 - (id<GHTest>)selectedTest;
 
@@ -88,5 +96,7 @@
 - (void)saveDefaults;
 
 - (BOOL)isShowingDetails;
+
+- (void)selectRow:(NSInteger)row;
 
 @end
