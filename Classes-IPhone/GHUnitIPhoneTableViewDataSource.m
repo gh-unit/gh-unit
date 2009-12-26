@@ -58,6 +58,7 @@
 	}
 
 	cell.textLabel.textColor = [UIColor lightGrayColor];
+  cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
 	
 	if (editing_) {
 		if (node.isSelected) cell.textLabel.textColor = [UIColor blackColor];

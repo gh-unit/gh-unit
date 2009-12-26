@@ -92,6 +92,8 @@
 	GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
 	
 	BOOL didSetUpClass_;
+  
+  GHTestOptions options_;
 	
 	// Set if test is created from initWithTestCase:delegate:
 	// Allows use to perform setUpClass and tearDownClass (once per test case run)
@@ -103,6 +105,7 @@
 @property (readonly, nonatomic) NSArray */*of id<GHTest>*/children;
 @property (assign, nonatomic) id<GHTestGroup> parent;
 @property (readonly, nonatomic) id testCase;
+@property (assign, nonatomic) GHTestOptions options;
 
 /*!
  Create an empty test group.
@@ -160,7 +163,8 @@
  Run in operation queue.
  Tests from the group are added and will block until they have completed.
  @param operationQueue If nil, then runs as is
+ @param options Options
  */
-- (void)runInOperationQueue:(NSOperationQueue *)operationQueue;
+- (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options;
 
 @end

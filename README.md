@@ -1,7 +1,7 @@
 # GHUnit
 
 GHUnit is a test framework for Objective-C (Mac OS X 10.5 and iPhone 2.x/3.x).
-It can be used with SenTestingKit, GTM or by itself. 
+It can be used with SenTestingKit, GTM or all by itself. 
 
 For example, your test cases will be run if they subclass any of the following:
 
@@ -13,25 +13,28 @@ For example, your test cases will be run if they subclass any of the following:
 
 ### Mac OS X
 
-[GHUnit-0.4.17.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.17.zip) *GHUnit.framework* (2009/12/03)
+[GHUnit-0.4.18.zip](http://rel.me.s3.amazonaws.com/gh-unit/GHUnit-0.4.18.zip) *GHUnit.framework* (2009/12/25)
 
 Note: If you are updating your framework, you should also update your `GHUnitTestMain.m`; It is not required though new features may not be included otherwise).
 
 ### iPhone OS 3.0 or above
 
-[libGHUnitIPhone3_0-0.4.17.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.17.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/12/03)
+[libGHUnitIPhone3_0-0.4.18.zip](http://rel.me.s3.amazonaws.com/gh-unit/libGHUnitIPhone3_0-0.4.18.zip) *iPhone Static Library for OS 3.0 or above (Device+Simulator)* (2009/12/25)
 
 ## Why?
 
 The goals of GHUnit are:
 
-- Runs unit tests within XCode, allowing you to fully utilize the XCode Debugger.
+- Runs unit tests, allowing you to breakpoint and interact with the XCode Debugger.
 - Ability to run from Makefile's or the command line.
-- A simple GUI to help you visualize your tests.
-- Show stack traces.
+- Run tests in parallel.
+- Allow testing of UI components.
+- View test metrics and search/filter, and view logging by test case.
+- Show stack traces and useful debugging information.
 - Be embeddable as a framework (using @rpath) for Mac OSX apps, or as a static library in your iPhone projects.
 
 Future plans include:
+
 - Mocks (maybe integrate OCMock?)
 
 `GHTestCase` is the base class for your tests.
@@ -62,6 +65,7 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 
 - Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target. (See example test case below.)
+- (Optional) Install Makefile (see instructions below)
 
 ### Installing in your project
 
@@ -75,6 +79,7 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 	- Make sure the copy phase appears before any `Run Script` phases 
 - Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target. (See example test case below.)
+- (Optional) Install Makefile (see instructions below)
 
 ### Example test case (Mac OS X)
 
@@ -128,8 +133,7 @@ Now you should be ready to Build and Run the test target.
 
 You should see something like:
 
-![GHUnit-0.4.1-expanded](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.1-expanded.jpg)
-![GHUnit-0.4.1](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.1.jpg)
+![GHUnit-0.4.18](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.18.png)
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import <GHUnit/GHUnit.h>` to it, and then you won't have to include that import for every test.
 
@@ -148,6 +152,7 @@ Frameworks and dynamic libraries are not supported in the iPhone environment, bu
 	- GHUnit header files
 	- GHUnit test main
 - Under 'Other Linker Flags' in the `Test` target, add `-ObjC` and `-all_load`  (`-all_load` may be necessary for running on 3.0 device)
+- (Optional) Install Makefile (see instructions below)
 
 Now you can create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target.
 
@@ -200,15 +205,24 @@ Now you should be ready to Build and Run the `Test` target.
 
 You should see something like:
 
-![GHUnit-0.4.1-iphone](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.1-iphone.jpg)
+![GHUnit-IPhone-0.4.18](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png)
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import "GHUnit.h"` to it, and then you won't have to include that import for every test.
 
 An example of an iPhone project with GHUnit test setup can be found at: [MyTestable-IPhone](http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone).
 
+## GHUnit Environment Variables
+
+Go into the "Get Info" contextual menu of your (Tests) executable (inside the "Executables" group in the left panel of XCode). 
+Then go in the "Arguments" tab. You can add the following environment variables:
+
+  GHUNIT_CLI - Default NO; Runs tests on the command line (see Debugger Console, Cmd-Shift-R)
+  GHUNIT_RERAISE - Default NO; If an exception is encountered it re-raises it allowing you to crash into the debugger
+  GHUNIT_AUTORUN - Default NO; If YES, tests will start automatically
+
 ## Test Environment Variables (Recommended)
 
-Go into the "Get Info" contextual menu of your (test) executable (inside the "Executables" group in the left panel of XCode). 
+Go into the "Get Info" contextual menu of your (Tests) executable (inside the "Executables" group in the left panel of XCode). 
 Then go in the "Arguments" tab. You can add the following environment variables:
 	 
 

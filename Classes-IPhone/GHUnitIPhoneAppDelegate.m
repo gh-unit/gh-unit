@@ -21,6 +21,8 @@
 	GHUDebug(@"Setting window view");
 	[window_ addSubview:navigationController_.view];
 	[window_ makeKeyAndVisible];
+  
+  if (getenv("GHUNIT_AUTORUN")) [viewController runTests];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

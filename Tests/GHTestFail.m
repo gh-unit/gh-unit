@@ -1,5 +1,5 @@
 //
-//  GHTestSingleFail.m
+//  GHTestFail.m
 //  GHUnit
 //
 //  Created by Gabriel Handford on 7/15/09.

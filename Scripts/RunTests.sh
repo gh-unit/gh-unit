@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # If we aren't running from the command line, then exit
-if [ "$GHUNIT_CLI" != "1" ]; then
+if [ "$GHUNIT_CLI" = "" ]; then
   exit 0
 fi
 
@@ -14,10 +14,12 @@ export MallocPreScribble=YES
 export MallocGuardEdges=YES
 export MallocStackLogging=YES
 export MallocStackLoggingNoCompact=YES
-export NSAutoreleaseFreedObjectCheckEnabled=YES
-  
-export CFZombieLevel=3
+
+export NSDebugEnabled=YES
 export NSZombieEnabled=YES
+export NSDeallocateZombies=NO
+export NSHangOnUncaughtException=YES
+export NSAutoreleaseFreedObjectCheckEnabled=YES
 
 "$TARGET_BUILD_DIR/$EXECUTABLE_PATH" -RegisterForSystemEvents
 RETVAL=$?

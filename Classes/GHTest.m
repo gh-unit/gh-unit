@@ -192,7 +192,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 	[delegate_ testDidUpdate:self source:self];
 }
 
-- (void)run {
+- (void)run:(GHTestOptions)options {
 	if (status_ == GHTestStatusCancelled || disabled_ || hidden_) return;
 	
 	status_ = GHTestStatusRunning;
@@ -201,7 +201,8 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 	
 	[self setLogWriter:self];
 
-	[GHTesting runTest:target_ selector:selector_ withObject:nil exception:&exception_ interval:&interval_];
+  BOOL reraiseExceptions = (options & GHTestOptionReraiseExceptions == GHTestOptionReraiseExceptions);
+	[GHTesting runTestWithTarget:target_ selector:selector_ exception:&exception_ interval:&interval_ reraiseExceptions:reraiseExceptions];
 	
 	[self setLogWriter:nil];
 
@@ -244,9 +245,10 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 
 @implementation GHTestOperation
 
-- (id)initWithTest:(id<GHTest>)test {
+- (id)initWithTest:(id<GHTest>)test options:(GHTestOptions)options {
 	if ((self = [super init])) {
 		test_ = [test retain];
+    options_ = options;
 	}
 	return self;
 }
@@ -264,7 +266,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 - (void)main {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	if (!self.isCancelled) 
-		[test_ run];
+		[test_ run:options_];
 	[pool release];
 }
 

@@ -126,7 +126,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 	userDidDrag_ = NO; // Reset drag status
 	statusLabel_.textColor = [UIColor blackColor];
 	statusLabel_.text = @"Starting tests...";
-	[dataSource_ run:self inParallel:NO];
+	[dataSource_ run:self inParallel:NO options:0];
 }
 
 - (void)cancel {
@@ -217,6 +217,10 @@ NSString *const GHUnitFilterKey = @"Filter";
 			[exceptionViewController release];
 		}	
 	}
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 36.0;
 }
 
 #pragma mark Delegates (UIScrollView) 

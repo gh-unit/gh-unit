@@ -102,7 +102,7 @@ typedef enum {
 - (void)loadDefaults;
 - (void)saveDefaults;
 
-- (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel;
+- (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel options:(GHTestOptions)options;
 
 - (void)cancel;
 
@@ -138,6 +138,8 @@ typedef enum {
 - (GHTestStatus)status;
 - (NSString *)statusString;
 - (NSString *)stackTrace;
+- (NSString *)exceptionFilename;
+- (NSInteger)exceptionLineNumber;
 - (NSString *)log;
 - (BOOL)isRunning;
 - (BOOL)isDisabled;

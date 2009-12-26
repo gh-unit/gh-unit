@@ -59,7 +59,7 @@
 @implementation GHTestGroup
 
 @synthesize stats=stats_, parent=parent_, children=children_, delegate=delegate_, interval=interval_, 
-status=status_, testCase=testCase_, exception=exception_;
+status=status_, testCase=testCase_, exception=exception_, options=options_;
 
 - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate {
 	if ((self = [super init])) {
@@ -295,13 +295,13 @@ status=status_, testCase=testCase_, exception=exception_;
 			[test setException:exception_];
 		} else {				
 			if (operationQueue) {
-				[operationQueue addOperation:[[[GHTestOperation alloc] initWithTest:test] autorelease]];
+				[operationQueue addOperation:[[[GHTestOperation alloc] initWithTest:test options:options_] autorelease]];
 			} else {
 				if (![test isDisabled]) {
 					[self _checkSetUpClass];
 				}
 				if (status_ == GHTestStatusErrored) break;
-				[test run];
+				[test run:options_];
 			}
 		}
 	}
@@ -321,7 +321,13 @@ status=status_, testCase=testCase_, exception=exception_;
 	[delegate_ testDidEnd:self source:self];
 }
 
-- (void)runInOperationQueue:(NSOperationQueue *)operationQueue {
+- (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options {
+  options_ = options;
+  
+  NSAssert(!((options_ & GHTestOptionReraiseExceptions == GHTestOptionReraiseExceptions) && operationQueue),
+           @"Can't run in parallel (through operation queue) and also have re-raise exceptions option set");
+  
+  [self _reset];
 	[self _run:operationQueue];
 }
 
@@ -331,7 +337,8 @@ status=status_, testCase=testCase_, exception=exception_;
 	return NO;
 }
 
-- (void)run {  
+- (void)run:(GHTestOptions)options {  
+  options_ = options;
   [self _reset];
 	if ([self shouldRunOnMainThread]) {
 		[self performSelectorOnMainThread:@selector(_run:) withObject:nil waitUntilDone:YES];

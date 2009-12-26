@@ -48,6 +48,7 @@
 
 #import "GHTestCase.h"
 #import "GTMStackTrace.h"
+#import "GHTesting.h"
 
 @implementation GHTestCase
 
@@ -74,7 +75,7 @@
 }
 
 - (void)handleException:(NSException *)exception {
-	NSLog(@"Exception: %@\n%@", [exception reason], GHU_GTMStackTraceFromException(exception));
+  NSLog(@"%@", [GHTesting descriptionForException:exception]);
 }
 
 #pragma mark Logging

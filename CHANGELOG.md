@@ -1,3 +1,12 @@
+# Release 0.4.18
+- Fixing test stats on parallel running
+- Adding reraiseException options (MacOSX)
+- Adding env var support for reraise and autorun (see README)
+- Smaller font size for test view (iPhone)
+- Show filename/line number in trace on failure
+- Show link to exception filename on failure (MacOSX)
+- Fix bug where test trace/log doesn't update if selected before running
+
 # Release 0.4.17
 - Fixing disabled on new test bug
 - Fixing bugs with All/Failed/Edit views not showing tests properly (MacOSX)

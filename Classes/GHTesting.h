@@ -97,10 +97,27 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass);
 - (void)registerClassName:(NSString *)className;
 
 /*!
- Run test.
- Exception if set is retained and should be released by the caller.
+ Format test exception.
+ @param exception
+ @result Description
  */
-+ (BOOL)runTest:(id)target selector:(SEL)selector withObject:(id)obj exception:(NSException **)exception interval:(NSTimeInterval *)interval;
++ (NSString *)descriptionForException:(NSException *)exception;
+
+/*!
+ Run test.
+ @param target
+ @param selector
+ @param exception Exception, if set, is retained and should be released by the caller.
+ @param interval Time to run the test
+ @param reraiseExceptions If YES, will re-raise exceptions
+ */
++ (BOOL)runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception 
+       interval:(NSTimeInterval *)interval reraiseExceptions:(BOOL)reraiseExceptions;
+
+/*!
+ Same as normal runTest without catching exceptions.
+ */
++ (BOOL)runTestOrRaiseWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval;
 
 @end
 

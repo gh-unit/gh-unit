@@ -29,6 +29,7 @@
 
 #import "GHTestViewModel.h"
 #import "GTMStackTrace.h"
+#import "GHTesting.h"
 
 @interface GHTestViewModel (Private)
 - (void)_loadTestNodes;
@@ -178,23 +179,17 @@
 	[runner_ cancel];
 }
 
-- (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel {  
+- (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel options:(GHTestOptions)options {  
   // Reset (non-disabled) tests so we don't clear non-filtered tests status; in case we re-filter and they become visible
   for(id<GHTest> test in [suite_ children])
     if (!test.disabled) [test reset];
   
 	if (!runner_) {
 		runner_ = [[GHTestRunner runnerForSuite:suite_] retain];		
-		runner_.delegate = delegate;
+		runner_.delegate = delegate;    
 	}
-	if (inParallel) {
-		NSOperationQueue *operationQueue = [[[NSOperationQueue alloc] init] autorelease];
-		operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
-		runner_.operationQueue = operationQueue;
-	} else {
-		runner_.operationQueue = nil;
-	}
-	
+  runner_.options = options;
+  [runner_ setInParallel:inParallel];
 	[runner_ runInBackground];
 }
 
@@ -302,7 +297,6 @@
 }
 
 - (void)setFilter:(GHTestNodeFilter)filter textFilter:(NSString *)textFilter {
-  if ([self isRunning]) [NSException raise:NSObjectNotAvailableException format:@"Can't filter while running"];
   filter_ = filter;
   
   textFilter = [textFilter stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -394,10 +388,15 @@
 - (NSString *)stackTrace {
 	if (![test_ exception]) return nil;
 
-	return [NSString stringWithFormat:@"%@ - %@\n%@", 
-          [[test_ exception] name],
-          [[test_ exception] reason], 
-          GHU_GTMStackTraceFromException([test_ exception])];
+	return [GHTesting descriptionForException:[test_ exception]];
+}
+
+- (NSString *)exceptionFilename {
+  return [[[[[test_ exception] userInfo] objectForKey:GHTestFilenameKey] stringByStandardizingPath] stringByAbbreviatingWithTildeInPath];
+}
+
+- (NSInteger)exceptionLineNumber {
+  return [[[[test_ exception] userInfo] objectForKey:GHTestLineNumberKey] integerValue];
 }
 
 - (NSString *)log {

@@ -122,6 +122,20 @@ static GHTesting *gSharedInstance;
 	[testCaseClassNames_ addObject:className];
 }
 
++ (NSString *)descriptionForException:(NSException *)exception {
+  NSNumber *lineNumber = [[exception userInfo] objectForKey:GHTestLineNumberKey];
+  NSString *lineDescription = (lineNumber ? [lineNumber description] : @"Unknown");
+  NSString *filename = [[[[exception userInfo] objectForKey:GHTestFilenameKey] stringByStandardizingPath] stringByAbbreviatingWithTildeInPath];
+  NSString *filenameDescription = (filename ? filename : @"Unknown");
+  
+  return [NSString stringWithFormat:@"\n\tName: %@\n\tFile: %@\n\tLine: %@\n\tReason: %@\n\n%@", 
+          [exception name],
+          filenameDescription, 
+          lineDescription, 
+          [exception reason], 
+          GHU_GTMStackTraceFromException(exception)];
+}  
+
 - (NSArray *)loadAllTestCases {
 	NSMutableArray *testCases = [NSMutableArray array];
 
@@ -195,10 +209,15 @@ static GHTesting *gSharedInstance;
 	return tests;
 }
 
-+ (BOOL)runTest:(id)target selector:(SEL)selector withObject:(id)obj exception:(NSException **)exception interval:(NSTimeInterval *)interval {
++ (BOOL)runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval
+ reraiseExceptions:(BOOL)reraiseExceptions {
+
+  // If re-raising, run runTestOrRaise
+  if (reraiseExceptions) return [self runTestOrRaiseWithTarget:target selector:selector exception:exception interval:interval];
+  
 	NSDate *startDate = [NSDate date];	
 	NSException *testException = nil;
-	// GTM_BEGIN
+
   @try {
     // Wrap things in autorelease pools because they may
     // have an STMacro in their dealloc which may get called
@@ -223,10 +242,10 @@ static GHTesting *gSharedInstance;
 					[target raiseAfterFailure];
 				
 				// Runs the test
-        [target performSelector:selector withObject:obj];
+        [target performSelector:selector];
 				
       } @catch (NSException *exception) {
-        testException = [exception retain];
+        if (!testException) testException = [exception retain];
       }
 			if ([target respondsToSelector:@selector(setCurrentSelector:)])
 				[target setCurrentSelector:NULL];
@@ -239,13 +258,59 @@ static GHTesting *gSharedInstance;
 				[target performSelector:@selector(_tearDown)];
 
     } @catch (NSException *exception) {
-      testException = [exception retain];
+      if (!testException) testException = [exception retain];
     }
     [pool release];
   } @catch (NSException *exception) {
-    testException = [exception retain];
-  }
-	// GTM_END	
+    if (!testException) testException = [exception retain]; 
+  }  
+
+	if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
+	if (exception) *exception = testException;
+	BOOL passed = (!testException);
+	
+	if (testException && [target respondsToSelector:@selector(handleException:)]) {
+		[target handleException:testException];
+	}
+	
+	return passed;
+}
+
++ (BOOL)runTestOrRaiseWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval {
+  
+	NSDate *startDate = [NSDate date];	
+	NSException *testException = nil;
+  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+  if ([target respondsToSelector:@selector(_setUp)])
+    [target performSelector:@selector(_setUp)];
+      
+  if ([target respondsToSelector:@selector(setUp)])
+    [target performSelector:@selector(setUp)];
+
+  if ([target respondsToSelector:@selector(setCurrentSelector:)])
+    [target setCurrentSelector:selector];
+        
+  // If this isn't set SenTest macros don't raise
+  if ([target respondsToSelector:@selector(raiseAfterFailure)])
+    [target raiseAfterFailure];
+				
+  // Runs the test
+  [target performSelector:selector];
+				
+  if ([target respondsToSelector:@selector(setCurrentSelector:)])
+    [target setCurrentSelector:NULL];
+      
+  if ([target respondsToSelector:@selector(tearDown)])
+    [target performSelector:@selector(tearDown)];
+			
+  // Private tearDown internal to GHUnit (in case subclasses fail to call super)
+  if ([target respondsToSelector:@selector(_tearDown)])
+    [target performSelector:@selector(_tearDown)];
+      
+  
+  [pool release];
+  
 	if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
 	if (exception) *exception = testException;
 	BOOL passed = (!testException);
