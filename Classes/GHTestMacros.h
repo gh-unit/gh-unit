@@ -86,6 +86,9 @@ extern NSString *const GHTestFilenameKey;
 extern NSString *const GHTestLineNumberKey;
 extern NSString *const GHTestFailureException;
 
+#if defined(__cplusplus) 
+extern "C" 
+#endif 
 NSString *GHComposeString(NSString *, ...);
 
 // Generates a failure when a1 != noErr
