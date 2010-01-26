@@ -192,8 +192,39 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 	[delegate_ testDidUpdate:self source:self];
 }
 
+- (void)setUpClass {
+	// Set up class
+	@try {		
+		if ([target_ respondsToSelector:@selector(setUpClass)]) {
+			[target_ setUpClass];
+    }
+	} @catch(NSException *exception) {
+		// If we fail in the setUpClass, then we will cancel all the child tests (below)
+		exception_ = [exception retain];
+		status_ = GHTestStatusErrored;
+	}
+}
+
+- (void)tearDownClass {
+	// Tear down class
+  @try {
+    if ([target_ respondsToSelector:@selector(tearDownClass)])		
+      [target_ tearDownClass];
+  } @catch(NSException *exception) {					
+    exception_ = [exception retain];
+    status_ = GHTestStatusErrored;
+  }
+}
+
 - (void)run:(GHTestOptions)options {
 	if (status_ == GHTestStatusCancelled || disabled_ || hidden_) return;
+  
+  NSInteger f = options & GHTestOptionForceSetUpTearDownClass;
+  f;
+  if ((options & GHTestOptionForceSetUpTearDownClass) == GHTestOptionForceSetUpTearDownClass) {
+    [self setUpClass];
+    if (status_ == GHTestStatusErrored) return; 
+  }
 	
 	status_ = GHTestStatusRunning;
 	
@@ -215,6 +246,10 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 	} else if (status_ == GHTestStatusRunning) {
 		status_ = GHTestStatusSucceeded;
 	}
+  
+  if ((options & GHTestOptionForceSetUpTearDownClass) == GHTestOptionForceSetUpTearDownClass)
+    [self tearDownClass];
+  
 	[delegate_ testDidEnd:self source:self];
 }
 
@@ -239,6 +274,13 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
   test.status = [coder decodeIntegerForKey:@"status"];
   test.interval = [coder decodeDoubleForKey:@"interval"];
   return test;
+}
+
+#pragma mark NSCopying
+
+- (id)copyWithZone:(NSZone *)zone {
+  if (!target_) [NSException raise:NSObjectNotAvailableException format:@"NSCopying unsupported for tests without target/selector pair"];
+  return [[GHTest allocWithZone:zone] initWithTarget:target_ selector:selector_];
 }
 
 @end

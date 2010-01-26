@@ -102,6 +102,9 @@ typedef enum {
 - (void)loadDefaults;
 - (void)saveDefaults;
 
+/*!
+ Run with current test suite.
+ */
 - (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel options:(GHTestOptions)options;
 
 - (void)cancel;

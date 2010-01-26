@@ -51,7 +51,7 @@
 #import "GHTesting.h"
 #import "GTMStackTrace.h"
 
-@interface GHTestGroup (Private)
+@interface GHTestGroup ()
 - (void)_addTestsFromTestCase:(id)testCase;
 - (void)_reset;
 @end
@@ -96,7 +96,6 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 	[name_ release];
 	[children_ release];
 	[testCase_ release];
-	delegate_ = nil;
 	[super dealloc];
 }
 
@@ -111,9 +110,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 
 - (void)_addTestsFromTestCase:(id)testCase {
 	NSArray *tests = [[GHTesting sharedInstance] loadTestsFromTarget:testCase];
-	for(GHTest *test in tests) {
-		[self addTest:test];
-	}
+  [self addTests:tests];
 }
 
 - (void)addTestCase:(id)testCase {
@@ -125,6 +122,11 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 - (void)addTestGroup:(GHTestGroup *)testGroup {
 	[self addTest:testGroup];
 	[testGroup setParent:self];		
+}
+
+- (void)addTests:(NSArray *)tests {
+  for(GHTest *test in tests)
+		[self addTest:test];
 }
 
 - (void)addTest:(id<GHTest>)test {
@@ -230,7 +232,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 	return disabledCount;
 }
 
-- (void)_checkSetUpClass {
+- (void)setUpClass {
 	if (didSetUpClass_) return;
 	didSetUpClass_ = YES;
 	// Set up class (if we have a test case)
@@ -250,34 +252,34 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 	}
 }
 
-- (void)_tearDownClass {
-	// Tear down class (if we have a test case)
-	if (status_ == GHTestStatusRunning) {
-		@try {
-			if ([testCase_ respondsToSelector:@selector(tearDownClass)])		
-				[testCase_ tearDownClass];
-		} @catch(NSException *exception) {					
-			exception_ = [exception retain];
-			status_ = GHTestStatusErrored;
-			// We need to reverse any successes in the test run above
-			// and set the error on all the child tests
-			for(id<GHTest> test in children_) {				
-				if ([test status] == GHTestStatusSucceeded) {
-					stats_.succeedCount--;
-					stats_.failureCount++;
-				}
-				if (![test isDisabled])
-					[test setException:exception_];
-			}
-		}
-	}
+- (void)tearDownClass {
+	// Tear down class (if we were created from a testCase)
+	if (status_ != GHTestStatusRunning) return;
+  @try {
+    if ([testCase_ respondsToSelector:@selector(tearDownClass)])		
+      [testCase_ tearDownClass];
+  } @catch(NSException *exception) {					
+    exception_ = [exception retain];
+    status_ = GHTestStatusErrored;
+    // We need to reverse any successes in the test run above
+    // and set the error on all the child tests
+    // TODO(gabe): Don't I need to ignore disabled tests in this loop?
+    for(id<GHTest> test in children_) {				
+      if ([test status] == GHTestStatusSucceeded) {
+        stats_.succeedCount--;
+        stats_.failureCount++;
+      }
+      if (![test isDisabled])
+        [test setException:exception_];
+    }
+  }
 }
 
 - (void)_run:(NSOperationQueue *)operationQueue {
 	if (status_ == GHTestStatusCancelled || (([children_ count] - [self disabledCount]) <= 0)) {
 		return;
 	}
-
+  
 	didSetUpClass_ = NO;
 	status_ = GHTestStatusRunning;	
 	[delegate_ testDidStart:self source:self];
@@ -297,9 +299,9 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 			if (operationQueue) {
 				[operationQueue addOperation:[[[GHTestOperation alloc] initWithTest:test options:options_] autorelease]];
 			} else {
-				if (![test isDisabled]) {
-					[self _checkSetUpClass];
-				}
+				if (![test isDisabled])
+					[self setUpClass];
+
 				if (status_ == GHTestStatusErrored) break;
 				[test run:options_];
 			}
@@ -307,9 +309,9 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 	}
 	[operationQueue waitUntilAllOperationsAreFinished];
 	
-	// Tear down class only if we set up class
+	// Tear down class only if we called setUpClass
 	if (didSetUpClass_) 
-		[self _tearDownClass];
+		[self tearDownClass];
 	
 	if (status_ == GHTestStatusCancelling) {
 		status_ = GHTestStatusCancelled;
@@ -320,7 +322,6 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 	}	
 	[delegate_ testDidEnd:self source:self];
 }
-
 - (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options {
   options_ = options;
   
@@ -384,6 +385,18 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   test.status = [coder decodeIntegerForKey:@"status"];
   test.interval = [coder decodeDoubleForKey:@"interval"];
   return test;
+}
+
+#pragma mark NSCopying
+
+- (id)copyWithZone:(NSZone *)zone {
+  NSMutableArray *tests = [NSMutableArray arrayWithCapacity:[children_ count]];
+  for(id<GHTest> test in children_) {
+    [tests addObject:[test copyWithZone:zone]];
+  }
+  GHTestGroup *testGroup = [[GHTestGroup alloc] initWithName:name_ delegate:nil];
+  [testGroup addTests:tests];
+  return testGroup;
 }
 
 @end

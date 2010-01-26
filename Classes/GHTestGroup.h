@@ -149,6 +149,8 @@
 
 - (void)addTestGroup:(GHTestGroup *)testGroup;
 
+- (void)addTests:(NSArray */*of id<GHTest>*/)tests;
+
 - (void)addTest:(id<GHTest>)test;
 
 - (BOOL)shouldRunOnMainThread;

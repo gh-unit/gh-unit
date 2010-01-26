@@ -24,7 +24,9 @@
 
 - (void)tearDownClass {
 	[testHeaders_ release];
+  testHeaders_ = nil;
 	[testData_ release];
+  testData_ = nil;
 }
 
 - (void)testMock {

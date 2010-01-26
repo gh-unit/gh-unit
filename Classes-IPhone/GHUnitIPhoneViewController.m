@@ -8,8 +8,6 @@
 
 #import "GHUnitIPhoneViewController.h"
 
-#import "GHUnitIPhoneExceptionViewController.h"
-
 NSString *const GHUnitPrefixKey = @"Prefix";
 NSString *const GHUnitFilterKey = @"Filter";
 
@@ -57,6 +55,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 	// Table view
 	tableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 300) style:UITableViewStylePlain];
 	tableView_.delegate = self;
+  tableView_.dataSource = self.dataSource;
 	tableView_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	tableView_.sectionIndexMinimumDisplayRowCount = 5;
 	[view addSubview:tableView_];
@@ -101,32 +100,36 @@ NSString *const GHUnitFilterKey = @"Filter";
 	[self reload];
 }
 
-- (void)reload {
+- (GHUnitIPhoneTableViewDataSource *)dataSource {
   if (!dataSource_) {
     dataSource_ = [[GHUnitIPhoneTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[GHTestSuite suiteFromEnv]];  
-    [dataSource_ loadDefaults];
-    self.tableView.dataSource = dataSource_;
-  }  
-  [dataSource_.root setTextFilter:[self _prefix]];	
-  [dataSource_.root setFilter:[self _filterIndex]];
+    [dataSource_ loadDefaults];    
+  }
+  return dataSource_;
+}
+
+- (void)reload {
+  [self.dataSource.root setTextFilter:[self _prefix]];	
+  [self.dataSource.root setFilter:[self _filterIndex]];
 	[self.tableView reloadData];	
 }
 
 #pragma mark Running
 
 - (void)_toggleTestsRunning {
-	if (dataSource_.isRunning) [self cancel];
+	if (self.dataSource.isRunning) [self cancel];
 	else [self runTests];
 }
 
 - (void)runTests {
-	if (dataSource_.isRunning) return;
+	if (self.dataSource.isRunning) return;
 	
+  self.view;
 	runButton_.title = @"Cancel";
 	userDidDrag_ = NO; // Reset drag status
 	statusLabel_.textColor = [UIColor blackColor];
 	statusLabel_.text = @"Starting tests...";
-	[dataSource_ run:self inParallel:NO options:0];
+	[self.dataSource run:self inParallel:NO options:0];
 }
 
 - (void)cancel {
@@ -207,15 +210,12 @@ NSString *const GHUnitFilterKey = @"Filter";
 	} else {		
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 		GHTestNode *sectionNode = [[[dataSource_ root] children] objectAtIndex:indexPath.section];
-		GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
+		GHTestNode *testNode = [[sectionNode children] objectAtIndex:indexPath.row];
 		
-    NSString *stackTrace = [node stackTrace];
-		if (node.failed && stackTrace) {
-			GHUnitIPhoneExceptionViewController *exceptionViewController = [[GHUnitIPhoneExceptionViewController alloc] init];	
-			[self.navigationController pushViewController:exceptionViewController animated:YES];
-			exceptionViewController.stackTrace = stackTrace;
-			[exceptionViewController release];
-		}	
+    GHUnitIPhoneTestViewController *testViewController = [[GHUnitIPhoneTestViewController alloc] init];	
+    [testViewController setTest:testNode.test];
+    [self.navigationController pushViewController:testViewController animated:YES];
+    [testViewController release];
 	}
 }
 

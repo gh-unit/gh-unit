@@ -40,7 +40,8 @@ typedef enum {
 } GHTestStatus;
 
 enum {
-  GHTestOptionReraiseExceptions = 1 << 0, // If YES, will allow exceptions to be raised (so you can trigger the debugger)
+  GHTestOptionReraiseExceptions = 1 << 0, // Allows exceptions to be raised (so you can trigger the debugger)
+  GHTestOptionForceSetUpTearDownClass = 1 << 1, // Runs setUpClass/tearDownClass for this (each) test; Used when re-running a single test in a group
 };
 typedef NSInteger GHTestOptions;
 
@@ -85,7 +86,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  The base interface for a runnable test.
  A runnable with a unique identifier, display name, stats, timer, delegate, log and error handling.
  */
-@protocol GHTest <NSObject, NSCoding>
+@protocol GHTest <NSObject, NSCoding, NSCopying>
 
 - (void)run:(GHTestOptions)options;
 
@@ -157,6 +158,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 	NSException *exception_; // If failed
 		
 	NSMutableArray *log_;
+
 }
 
 @property (readonly, nonatomic) id target;

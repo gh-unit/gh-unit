@@ -29,10 +29,13 @@
 
 #import "GHTestViewController.h"
 
-@interface GHTestViewController (Private)
+#import "GHTesting.h"
+
+@interface GHTestViewController ()
 - (void)_updateTest:(id<GHTest>)test;
 - (NSString *)_prefix;
 - (void)_setPrefix:(NSString *)prefix;
+- (void)_updateDetailForTest:(id<GHTest>)test prefix:(NSString *)prefix;
 @end
 
 @implementation GHTestViewController
@@ -195,6 +198,15 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
   }
 }
 
+- (IBAction)rerunTest:(id)sender {
+  id<GHTest> test = [[self selectedTest] copyWithZone:NULL];
+  GHUDebug(@"Re-running: %@", test);
+  [self _updateDetailForTest:nil prefix:@"Re-running test."];
+  [test run:GHTestOptionForceSetUpTearDownClass];  
+  [self _updateDetailForTest:test prefix:@"Re-ran test. (This feature is experimental.)"];  
+  [test release];
+} 
+
 - (BOOL)isShowingDetails {
   return ![[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"];
 }
@@ -226,36 +238,43 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSString *)_textForRow:(NSInteger)row selector:(SEL)selector {
-	if (row < 0) return @"";
-	id item = [_outlineView itemAtRow:row];
-	NSString *text = [item performSelector:selector];
-	if (text) text = [NSString stringWithFormat:@"%@\n", text]; // Newline important for when we append streaming text
-	return (text ? text : @"");
+- (NSString *)_formatText:(NSString *)text {
+	if (text) return [NSString stringWithFormat:@"%@\n", text]; // Newline important for when we append streaming text
+  return @"";
 }
 
-- (NSString *)stackTraceForSelectedRow {
-  return [self _textForRow:[_outlineView selectedRow] selector:@selector(stackTrace)];
+- (NSString *)stackTraceForSelectedRow:(id<GHTest>)test {
+  if (![test exception]) return @"";
+  NSString *text = [GHTesting descriptionForException:[test exception]];
+  return [self _formatText:text];
 }
 
-- (NSString *)logForSelectedRow {
-  return [self _textForRow:[_outlineView selectedRow] selector:@selector(log)];
+- (NSString *)logForSelectedRow:(id<GHTest>)test {
+  NSString *text = [[test log] componentsJoinedByString:@"\n"]; // TODO(gabe): This isn't very performant
+  return [self _formatText:text];
 }
 
-- (NSString *)textForSegment:(NSInteger)segment {
+- (NSString *)textForSegment:(NSInteger)segment test:(id<GHTest>)test {
+  if (!test) return @"";
   switch(segment) {
-		case 0: return [self stackTraceForSelectedRow];
-		case 1: return [self logForSelectedRow];
+		case 0: return [self stackTraceForSelectedRow:test];
+		case 1: return [self logForSelectedRow:test];
 	}
   return nil;
 }
 
-- (void)updateTextForSegment:(NSInteger)segment {
-  [_textView setString:[self textForSegment:segment]];
+- (void)_updateDetailForTest:(id<GHTest>)test prefix:(NSString *)prefix {
+  NSMutableString *text = [NSMutableString string];
+  if (prefix) [text appendFormat:@"\n\t%@\n\n", prefix];
+  NSString *testDetail = [self textForSegment:[_textSegmentedControl selectedSegment] test:test];
+  if (testDetail) [text appendString:testDetail];
+  [_textView setString:text];
+  self.exceptionFilename = [GHTesting exceptionFilenameForTest:test];  
+  self.exceptionLineNumber = [GHTesting exceptionLineNumberForTest:test];
 }
 
 - (IBAction)updateTextSegment:(id)sender {
-  [self updateTextForSegment:[sender selectedSegment]];
+  [self _updateDetailForTest:[self selectedTest] prefix:nil];
 }
 
 - (GHTestNode *)selectedNode {
@@ -342,6 +361,7 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
 	GHUDebug(@"Test runner end: %@", [runner.test identifier]);
 	[self _updateTest:runner.test];
+	self.status = [dataSource_ statusString:@"Status: "];
 	//[self selectFirstFailure];
 	self.runLabel = @"Run";
   [dataSource_ saveDefaults];

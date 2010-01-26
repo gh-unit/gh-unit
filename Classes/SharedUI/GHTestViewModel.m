@@ -31,10 +31,6 @@
 #import "GTMStackTrace.h"
 #import "GHTesting.h"
 
-@interface GHTestViewModel (Private)
-- (void)_loadTestNodes;
-@end
-
 @implementation GHTestViewModel
 
 @synthesize root=root_, editing=editing_;
@@ -59,7 +55,10 @@
 	[map_ release];
 	[defaults_ release];
 	[suite_ release];
-	[runner_ release];
+  [runner_ cancel];
+  runner_.delegate = nil;
+  [runner_ release];
+  
 	[super dealloc];
 }
 
@@ -69,7 +68,7 @@
 
 - (NSString *)statusString:(NSString *)prefix {
 	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ disabledCount] + [suite_ stats].cancelCount);
-	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs", (self.isRunning ? @"Running" : @"Took"), [suite_ interval]];
+	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs (%0.3fs in test time)", (self.isRunning ? @"Running" : @"Took"), runner_.interval, [suite_ interval]];
 	return [NSString stringWithFormat:@"%@%@ %d/%d (%d failures)", prefix, statusInterval,
 					[suite_ stats].succeedCount, totalRunCount, [suite_ stats].failureCount];	
 }
@@ -184,10 +183,10 @@
   for(id<GHTest> test in [suite_ children])
     if (!test.disabled) [test reset];
   
-	if (!runner_) {
-		runner_ = [[GHTestRunner runnerForSuite:suite_] retain];		
-		runner_.delegate = delegate;    
-	}
+  if (!runner_) {
+    runner_ = [[GHTestRunner runnerForSuite:suite_] retain];
+  }
+  runner_.delegate = delegate;
   runner_.options = options;
   [runner_ setInParallel:inParallel];
 	[runner_ runInBackground];
@@ -392,11 +391,11 @@
 }
 
 - (NSString *)exceptionFilename {
-  return [[[[[test_ exception] userInfo] objectForKey:GHTestFilenameKey] stringByStandardizingPath] stringByAbbreviatingWithTildeInPath];
+  return [GHTesting exceptionFilenameForTest:test_];
 }
 
 - (NSInteger)exceptionLineNumber {
-  return [[[[test_ exception] userInfo] objectForKey:GHTestLineNumberKey] integerValue];
+  return [GHTesting exceptionLineNumberForTest:test_];
 }
 
 - (NSString *)log {

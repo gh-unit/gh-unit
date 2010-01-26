@@ -45,6 +45,11 @@
 //  the License.
 //
 
+extern NSString *const GHTestFilenameKey;
+extern NSString *const GHTestLineNumberKey;
+extern NSString *const GHTestFailureException;
+
+
 // GTM_BEGIN
 
 #import <Foundation/Foundation.h>

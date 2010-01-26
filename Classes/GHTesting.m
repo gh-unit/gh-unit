@@ -136,6 +136,15 @@ static GHTesting *gSharedInstance;
           GHU_GTMStackTraceFromException(exception)];
 }  
 
++ (NSString *)exceptionFilenameForTest:(id<GHTest>)test {
+  return [[[[[test exception] userInfo] objectForKey:GHTestFilenameKey] stringByStandardizingPath] stringByAbbreviatingWithTildeInPath];
+}
+
++ (NSInteger)exceptionLineNumberForTest:(id<GHTest>)test {
+  return [[[[test exception] userInfo] objectForKey:GHTestLineNumberKey] integerValue];
+}
+
+
 - (NSArray *)loadAllTestCases {
 	NSMutableArray *testCases = [NSMutableArray array];
 

@@ -1,3 +1,8 @@
+# Release 0.4.19
+- Fix autorun env on iPhone
+- Added re-run test (experimental!)
+- Test log viewer (iPhone)
+
 # Release 0.4.18
 - Fixing test stats on parallel running
 - Adding reraiseException options (MacOSX)

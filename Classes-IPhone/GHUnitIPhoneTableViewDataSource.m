@@ -76,7 +76,7 @@
 	
 	UITableViewCellAccessoryType accessoryType = UITableViewCellAccessoryNone;
 	if (self.isEditing && node.isSelected) accessoryType = UITableViewCellAccessoryCheckmark;
-	else if (node.isEnded && node.failed && node.test.exception) accessoryType = UITableViewCellAccessoryDisclosureIndicator;	
+	else if (node.isEnded) accessoryType = UITableViewCellAccessoryDisclosureIndicator;	
 	cell.accessoryType = accessoryType;	
 	
 	return cell;	

@@ -50,24 +50,24 @@
 
 #import <stdio.h>
 
-@interface GHTestRunner (Private)
+@interface GHTestRunner ()
 - (void)_notifyStart;
 - (void)_notifyCancelled;
 - (void)_notifyFinished;
 - (void)_log:(NSString *)message;
-- (void)_updateTest:(id<GHTest>)test;
 @end
 
 @implementation GHTestRunner
 
 #define kGHTestRunnerDelegateProxyWait YES
 
-@synthesize test=test_, options=options_, delegate=delegate_, running=running_, cancelling=cancelling_, 
+@synthesize test=test_, options=options_, delegate=delegate_, running=running_, cancelling=cancelling_,
 operationQueue=operationQueue_;
 
 - (id)initWithTest:(id<GHTest>)test {
 	if ((self = [self init])) {
 		test_ = [test retain];
+    test_.delegate = self;
 	}
 	return self;
 }
@@ -85,7 +85,6 @@ operationQueue=operationQueue_;
 
 + (GHTestRunner *)runnerForSuite:(GHTestSuite *)suite {	
 	GHTestRunner *runner = [[GHTestRunner alloc] initWithTest:suite];
-	suite.delegate = runner;
 	return [runner autorelease];
 }
 
@@ -122,16 +121,22 @@ operationQueue=operationQueue_;
 }
 
 - (int)runTests {
-	if (cancelling_ || running_) return -1;
+  if (cancelling_ || running_) return -1;
   
 	running_ = YES;
+  startInterval_ = [NSDate timeIntervalSinceReferenceDate];
 	[self _notifyStart];
+  
 	if (operationQueue_ && [test_ respondsToSelector:@selector(runInOperationQueue:options:)]) {
 		[(id)test_ runInOperationQueue:operationQueue_ options:options_];
 	} else {
-		[test_ run:options_];
+    [test_ run:options_];
 	}
 	return self.stats.failureCount;
+}
+
+- (NSTimeInterval)interval {
+  return ([NSDate timeIntervalSinceReferenceDate] - startInterval_);
 }
 
 - (void)cancel {

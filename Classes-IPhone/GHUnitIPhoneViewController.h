@@ -9,6 +9,7 @@
 #import "GHTestViewModel.h"
 
 #import "GHUnitIPhoneTableViewDataSource.h"
+#import "GHUnitIPhoneTestViewController.h"
 
 @interface GHUnitIPhoneViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate, UISearchBarDelegate> {
 	
@@ -54,6 +55,8 @@
 
 - (void)loadDefaults;
 - (void)saveDefaults;
+
+- (GHUnitIPhoneTableViewDataSource *)dataSource;
 
 @end
 
