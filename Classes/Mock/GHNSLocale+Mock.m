@@ -65,7 +65,7 @@ static BOOL gGHUNSLocaleMockSetup = NO;
 	if (gGHUNSLocaleLocaleIdentifier != NULL) {
 		return [[[NSLocale alloc] initWithLocaleIdentifier:gGHUNSLocaleLocaleIdentifier] autorelease];
 	} else {
-		return [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];;
+		return [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
 	}
 }
 
