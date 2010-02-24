@@ -24,6 +24,15 @@ export NSAutoreleaseFreedObjectCheckEnabled=YES
 "$TARGET_BUILD_DIR/$EXECUTABLE_PATH" -RegisterForSystemEvents
 RETVAL=$?
 
+if [ -n "$WRITE_JUNIT_XML" ]; then
+  MY_TMPDIR=`/usr/bin/getconf DARWIN_USER_TEMP_DIR`
+  RESULTS_DIR="${MY_TMPDIR}test-results"
+
+  if [ -d "$RESULTS_DIR" ]; then
+	`$CP -r "$RESULTS_DIR" "$BUILD_DIR" && rm -r "$RESULTS_DIR"`
+  fi
+fi
+
 exit $RETVAL
 	
 

@@ -683,6 +683,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = ../Scripts/RunTests.sh;
+			showEnvVarsInLog = 0;
 		};
 		D0A618B8104E425E00184D93 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

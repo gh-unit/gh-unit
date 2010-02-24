@@ -259,7 +259,19 @@ operationQueue=operationQueue_;
     }
     [self log:@"\n"];
   }
-	
+  
+  if ([test_ isKindOfClass:[GHTestSuite class]]) {
+    GHTestSuite *testSuite = (GHTestSuite *)test_;
+
+    // Log JUnit XML if environment variable is set
+    if (getenv("WRITE_JUNIT_XML")) {
+      NSError *error = nil;
+      [testSuite writeJUnitXML:&error];
+      if (!error) [self log:@"Wrote JUnit XML successfully.\n"];
+      else [self log:[NSString stringWithFormat:@"Error writing JUnit XML: %@\n", [error description]]];
+    }
+  }
+
 	cancelling_ = NO;
 	running_ = NO;
 

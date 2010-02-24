@@ -187,3 +187,13 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 + (id)testWithTarget:(id)target selector:(SEL)selector;
 
 @end
+
+@interface GHTest (JUnitXML)
+
+/*!
+ Return test results in JUnit XML format for external parsing use
+ (such as a Continuous Integration system like Hudson)
+ */
+- (NSString *)JUnitXML;
+
+@end

@@ -400,3 +400,32 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 @end
+
+@implementation GHTestGroup (JUnitXML)
+
+- (BOOL)writeJUnitXMLAtPath:(NSString *)path error:(NSError **)error {
+  if (self.stats.testCount > 0) {
+    
+    NSString *XMLPath = [path stringByAppendingPathComponent:
+                         [NSString stringWithFormat:@"%@.xml", self.name]];
+    
+    // Attempt to write the XML and return the success status
+    return [[self JUnitXML] writeToFile:XMLPath atomically:NO encoding:NSUTF8StringEncoding error:error];
+  }
+  return YES;
+}
+
+- (NSString *)JUnitXML {
+  NSMutableString *JUnitXML = [NSMutableString stringWithFormat:
+                               @"<testsuite name=\"%@\" tests=\"%d\" failures=\"%d\" time=\"%0.4f\">",
+                               self.name, self.stats.testCount, self.stats.failureCount, self.interval];
+  
+  for (id child in self.children) {
+    if ([child respondsToSelector:@selector(JUnitXML)])
+      [JUnitXML appendString:[child JUnitXML]];
+  }
+  [JUnitXML appendString:@"</testsuite>"];
+  return JUnitXML;
+}
+
+@end

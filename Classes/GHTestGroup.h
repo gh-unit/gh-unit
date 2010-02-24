@@ -170,3 +170,11 @@
 - (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options;
 
 @end
+
+@interface GHTestGroup (JUnitXML)
+
+- (NSString *)JUnitXML;
+
+- (BOOL)writeJUnitXMLAtPath:(NSString *)documentsPath error:(NSError **)error;
+
+@end

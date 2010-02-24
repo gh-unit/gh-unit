@@ -106,3 +106,9 @@ extern NSString *GHUnitTest;
 + (GHTestSuite *)suiteFromEnv;
 
 @end
+
+@interface GHTestSuite (JUnitXML)
+
+- (BOOL)writeJUnitXML:(NSError **)error;
+
+@end
