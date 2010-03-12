@@ -31,7 +31,7 @@ Here's how to set up Hudson with GHUnit.
 
     `make clean && WRITE_JUNIT_XML=YES make test`
 
-   Under `Post-build Actions`, check `Publish JUnit test result report` and enter
+6. Under `Post-build Actions`, check `Publish JUnit test result report` and enter
    the following in `Test report XMLs`:
    
     `build/test-results/*.xml`
@@ -39,3 +39,10 @@ Here's how to set up Hudson with GHUnit.
 That's all it takes. Check in a change that breaks one of your tests. Hudson
 should detect the change, run a build and test, and then report the failure.
 Fix the test, check in again, and you should see a successful build report.
+
+## Troubleshooting
+
+If your XCode build fails with a set of font-related errors, you may be running
+Hudson headless (e.g., via an SSH session). Launch Hudson via Terminal.app on 
+the build machine (or otherwise attach a DISPLAY to the session) in order to 
+address this.  
