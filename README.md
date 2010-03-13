@@ -408,6 +408,10 @@ You can also use GHUnit with SenTestCase, for example:
 
 	@end
 
+## Hudson
+
+For integrating with Hudson (and generating JUnit XML) see HUDSON-HOWTO; Thank mikelaurence and precipice for their work on this!
+
 ## Notes
 
 GHUnit was inspired by and uses parts of GTM (google-toolbox-for-mac) code, most from [UnitTesting](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/).
