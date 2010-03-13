@@ -216,9 +216,9 @@ An example of an iPhone project with GHUnit test setup can be found at: [MyTesta
 Go into the "Get Info" contextual menu of your (Tests) executable (inside the "Executables" group in the left panel of XCode). 
 Then go in the "Arguments" tab. You can add the following environment variables:
 
-  GHUNIT_CLI - Default NO; Runs tests on the command line (see Debugger Console, Cmd-Shift-R)
-  GHUNIT_RERAISE - Default NO; If an exception is encountered it re-raises it allowing you to crash into the debugger
-  GHUNIT_AUTORUN - Default NO; If YES, tests will start automatically
+	GHUNIT_CLI - Default NO; Runs tests on the command line (see Debugger Console, Cmd-Shift-R)
+	GHUNIT_RERAISE - Default NO; If an exception is encountered it re-raises it allowing you to crash into the debugger
+	GHUNIT_AUTORUN - Default NO; If YES, tests will start automatically
 
 ## Test Environment Variables (Recommended)
 
