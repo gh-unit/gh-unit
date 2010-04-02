@@ -38,7 +38,7 @@ static NSArray *gGHUNSLocalePreferredLanguages = NULL;
 static BOOL gGHUNSLocaleMockSetup = NO;
 
 + (void)_gh_setUpMock {
-	@synchronized([self class]) {
+	@synchronized([NSLocale class]) {
 		if (!gGHUNSLocaleMockSetup) {
 			// TODO(gabe): Check and handle swizzle errors
 			[NSLocale ghu_swizzleClassMethod:@selector(currentLocale) withClassMethod:@selector(gh_currentLocale)];
