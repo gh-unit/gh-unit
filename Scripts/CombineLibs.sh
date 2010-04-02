@@ -18,7 +18,7 @@ mkdir ${ZIP_DIR}
 cp ${OUTPUT_DIR}/${OUTPUT_FILE} ${ZIP_DIR}
 cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/*.h ${ZIP_DIR}
 cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/*.m ${ZIP_DIR}
-cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/*.sh ${ZIP_DIR}
+#cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/*.sh ${ZIP_DIR}
 cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/Makefile ${ZIP_DIR}
 
 cd ${ZIP_DIR}

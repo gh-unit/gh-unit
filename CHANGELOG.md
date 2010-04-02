@@ -1,3 +1,6 @@
+# Release 0.4.20
+- Fix armv6/armv7 device build setting
+
 # Release 0.4.19
 - Fix autorun env on iPhone
 - Added re-run test (experimental!)
