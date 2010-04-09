@@ -61,7 +61,7 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 - In the `Target 'Tests' Info` window, `General` tab:
 	- Add a linked library, under `Mac OS X 10.X SDK` section, select `GHUnit.framework`
 	- If your main target is a library: Add a linked library, and select your main target.
-	- If your main target is an application, you will need to include these source files to the `Test` project.
+	- If your main target is an application, you will need to include these source files in the `Test` project manually. 
 	- Add a direct dependency, and select your project. (This will cause your application or framework to build before the test target.)
 - Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target. (See example test case below.)
