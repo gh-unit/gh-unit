@@ -1,0 +1,10 @@
+
+#include "iPhoneSimulator-Debug.xcconfig"
+
+OTHER_LDFLAGS = -all_load -ObjC
+INFOPLIST_FILE = Info.plist
+PRODUCT_NAME = Tests
+GCC_PREFIX_HEADER = Tests_Prefix.pch
+GCC_PRECOMPILE_PREFIX_HEADER = YES
+
+

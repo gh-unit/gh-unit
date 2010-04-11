@@ -29,6 +29,7 @@
 		0009C87B1016B6FC0019EF46 /* GHUnitIPhoneAppDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 002D9C620F4915C2007932FE /* GHUnitIPhoneAppDelegate.h */; };
 		0016AF0F1012A4A8009F4F8F /* GHTestOnMainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016AF0C1012A4A8009F4F8F /* GHTestOnMainThread.m */; };
 		0016AF101012A4A8009F4F8F /* GHTestFail.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016AF0E1012A4A8009F4F8F /* GHTestFail.m */; };
+		001ED8BE117292330046CD38 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001ED8BD117292330046CD38 /* UIKit.framework */; };
 		0020546A0F93FE6F00FC1898 /* GHNSLocaleMockTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002054690F93FE6F00FC1898 /* GHNSLocaleMockTest.m */; };
 		0020596C0F9501F100FC1898 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 0020596B0F9501F100FC1898 /* TODO.md */; };
 		0022F2EA105C840500EF9FC5 /* libGHUnitIPhoneSimulator3_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A952F50FDA2B99006A80A6 /* libGHUnitIPhoneSimulator3_0.a */; };
@@ -116,6 +117,8 @@
 		00DA14AC0F8743DD001FE08E /* GHSetUpTearDownTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00080FA50F4FC75E0034DF4C /* GHSetUpTearDownTest.m */; };
 		00DA14AD0F8743DE001FE08E /* GHSlowTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AF12E90F2D880E009F0ABA /* GHSlowTest.m */; };
 		00DA14AE0F8743DF001FE08E /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00080FBB0F4FC7CB0034DF4C /* GTMSenTestCase.m */; };
+		00E58D431172937E0037E3C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E58D421172937E0037E3C8 /* Foundation.framework */; };
+		00E58D4B1172938B0037E3C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E58D4A1172938B0037E3C8 /* CoreGraphics.framework */; };
 		00F09A67108D5040000E5AB5 /* GHTestEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F09A65108D5040000E5AB5 /* GHTestEmpty.m */; };
 /* End PBXBuildFile section */
 
@@ -215,6 +218,8 @@
 		001ED7AB11728BA30046CD38 /* iPhoneSimulator-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "iPhoneSimulator-Debug.xcconfig"; sourceTree = "<group>"; };
 		001ED7AC11728C4C0046CD38 /* iPhoneDevice.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iPhoneDevice.xcconfig; sourceTree = "<group>"; };
 		001ED7AD11728CDE0046CD38 /* iPhoneDevice-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "iPhoneDevice-Debug.xcconfig"; sourceTree = "<group>"; };
+		001ED7CE11728F780046CD38 /* iPhoneTests.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iPhoneTests.xcconfig; sourceTree = "<group>"; };
+		001ED8BD117292330046CD38 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		002053EC0F93FAD100FC1898 /* GHNSLocale+Mock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHNSLocale+Mock.h"; sourceTree = "<group>"; };
 		002053ED0F93FAD100FC1898 /* GHNSLocale+Mock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHNSLocale+Mock.m"; sourceTree = "<group>"; };
 		002054690F93FE6F00FC1898 /* GHNSLocaleMockTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSLocaleMockTest.m; sourceTree = "<group>"; };
@@ -279,7 +284,8 @@
 		00CDDD780F76FC660089C60E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		00DA12F10F8722DD001FE08E /* GHUnitIPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhone_Prefix.pch; sourceTree = "<group>"; };
 		00DCB8790FA4F9E10022DA5A /* GHMockCLLocationManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockCLLocationManagerTest.m; sourceTree = "<group>"; };
-		00F09A21108D4E2B000E5AB5 /* Tests_Empty-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests_Empty-Info.plist"; sourceTree = "<group>"; };
+		00E58D421172937E0037E3C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		00E58D4A1172938B0037E3C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		00F09A65108D5040000E5AB5 /* GHTestEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestEmpty.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32CA4F630368D1EE00C91783 /* Tests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tests_Prefix.pch; sourceTree = "<group>"; };
@@ -306,6 +312,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0022F2EA105C840500EF9FC5 /* libGHUnitIPhoneSimulator3_0.a in Frameworks */,
+				001ED8BE117292330046CD38 /* UIKit.framework in Frameworks */,
+				00E58D431172937E0037E3C8 /* Foundation.framework in Frameworks */,
+				00E58D4B1172938B0037E3C8 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +371,7 @@
 				001ED7AB11728BA30046CD38 /* iPhoneSimulator-Debug.xcconfig */,
 				001ED7AC11728C4C0046CD38 /* iPhoneDevice.xcconfig */,
 				001ED7AD11728CDE0046CD38 /* iPhoneDevice-Debug.xcconfig */,
+				001ED7CE11728F780046CD38 /* iPhoneTests.xcconfig */,
 			);
 			name = XcodeConfig;
 			path = ../XcodeConfig;
@@ -554,7 +564,6 @@
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* Info.plist */,
-				00F09A21108D4E2B000E5AB5 /* Tests_Empty-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -562,6 +571,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00E58D4A1172938B0037E3C8 /* CoreGraphics.framework */,
+				00E58D421172937E0037E3C8 /* Foundation.framework */,
+				001ED8BD117292330046CD38 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -851,39 +863,15 @@
 		};
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 006307B30F8E792F00C9602A /* Shared-iPhone.xcconfig */;
+			baseConfigurationReference = 001ED7CE11728F780046CD38 /* iPhoneTests.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Tests_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
-				PRODUCT_NAME = Tests;
-				SDKROOT = iphonesimulator3.0;
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 006307B30F8E792F00C9602A /* Shared-iPhone.xcconfig */;
+			baseConfigurationReference = 001ED7CE11728F780046CD38 /* iPhoneTests.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Tests_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
-				PRODUCT_NAME = Tests;
-				SDKROOT = iphonesimulator3.0;
 			};
 			name = Release;
 		};
@@ -897,7 +885,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
 		};
@@ -910,7 +898,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};

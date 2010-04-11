@@ -3,7 +3,4 @@
 
 SDKROOT = iphoneos3.0
 PRODUCT_NAME = GHUnitIPhoneDevice3_0
-
-
-// Release
 ARCHS = $(ARCHS_UNIVERSAL_IPHONE_OS)
