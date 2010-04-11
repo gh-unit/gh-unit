@@ -1,8 +1,4 @@
 #include "Shared.xcconfig"
 
-// Static libs can be included in bundles so make them position independent
-GCC_DYNAMIC_NO_PIC = NO
-
-//  Static libs should not have their internal globals or external symbols
-//  stripped.
-STRIP_STYLE = debugging
+GCC_PREFIX_HEADER = GHUnitIPhone_Prefix.pch
+ZERO_LINK = NO
