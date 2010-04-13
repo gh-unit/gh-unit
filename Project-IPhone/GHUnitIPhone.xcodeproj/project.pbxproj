@@ -869,6 +869,7 @@
 		};
 		00A953C60FDA36FA006A80A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 002A15890F8E74550082A4BB /* Shared.xcconfig */;
 			buildSettings = {
 				PRODUCT_NAME = CombineLibs;
 			};
@@ -876,6 +877,7 @@
 		};
 		00A953C70FDA36FA006A80A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 002A15890F8E74550082A4BB /* Shared.xcconfig */;
 			buildSettings = {
 				PRODUCT_NAME = CombineLibs;
 			};

@@ -1,3 +1,7 @@
+# Release 0.4.21
+- Moved build settings into xcconfig (iPhone)
+- Flexible layouts; Works in iPad as universal app
+
 # Release 0.4.20
 - Fix armv6/armv7 device build setting
 
