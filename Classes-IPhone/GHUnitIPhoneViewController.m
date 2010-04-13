@@ -11,7 +11,7 @@
 NSString *const GHUnitPrefixKey = @"Prefix";
 NSString *const GHUnitFilterKey = @"Filter";
 
-@interface GHUnitIPhoneViewController (Private)
+@interface GHUnitIPhoneViewController ()
 - (NSString *)_prefix;
 - (void)_setPrefix:(NSString *)prefix;
 - (void)_setFilterIndex:(NSInteger)index;
@@ -20,13 +20,18 @@ NSString *const GHUnitFilterKey = @"Filter";
 
 @implementation GHUnitIPhoneViewController
 
-@synthesize tableView=tableView_, suite=suite_;
+@synthesize suite=suite_;
+
+- (id)init {
+  if ((self = [super init])) {
+    self.title = @"Tests";
+  }
+  return self;
+}
 
 - (void)dealloc {
 	[dataSource_ release];	
 	[suite_ release];
-	searchBar_.delegate = nil;
-	[searchBar_ release];
 	[super dealloc];
 }
 
@@ -37,66 +42,25 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)loadView {
-  self.title = @"Tests";
-
-	UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 416)] autorelease];
-	view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-
-	// Search bar
-	searchBar_ = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-	searchBar_.delegate = self;
-	searchBar_.showsCancelButton = NO;	
-	searchBar_.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-  NSString *prefix = [self _prefix];
-  if (prefix)
-    searchBar_.text = prefix;
-	[view addSubview:searchBar_];
-	
-	// Table view
-	tableView_ = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 300) style:UITableViewStylePlain];
-	tableView_.delegate = self;
-  tableView_.dataSource = self.dataSource;
-	tableView_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-	tableView_.sectionIndexMinimumDisplayRowCount = 5;
-	[view addSubview:tableView_];
-	[tableView_ release];	
-	
-	UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 344, 320, 36)];
-	footerView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
-	footerView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
-	
-	// Status label
-	statusLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 310, 36)];
-	statusLabel_.text = @"Select 'Run' to start tests";
-	statusLabel_.backgroundColor = [UIColor clearColor];
-	statusLabel_.font = [UIFont systemFontOfSize:12];
-	statusLabel_.numberOfLines = 2;
-	statusLabel_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-	[footerView addSubview:statusLabel_];
-	[statusLabel_ release];
-	
-  [view addSubview:footerView];
-	[footerView release];
-  	
-  runToolbar_ = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 380, 320, 36)];
-  filterControl_ = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"All", @"Failed", nil]];
-  filterControl_.segmentedControlStyle = UISegmentedControlStyleBar;
-  filterControl_.frame = CGRectMake(20, 6, 280, 24);
-  filterControl_.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-  filterControl_.selectedSegmentIndex = [self _filterIndex];
-  [filterControl_ addTarget:self action:@selector(_filterChanged:) forControlEvents:UIControlEventValueChanged];
-  runToolbar_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-  [runToolbar_ addSubview:filterControl_];
-  [filterControl_ release];
-	[view addSubview:runToolbar_];
-	[runToolbar_ release];
-  
-	runButton_ = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStyleDone
-																							 target:self action:@selector(_toggleTestsRunning)];
+  [super loadView];
+    
+  if (!runButton_)
+    runButton_ = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStyleDone
+                                                 target:self action:@selector(_toggleTestsRunning)];
 	self.navigationItem.rightBarButtonItem = runButton_;
 	[runButton_ release];	
 	
-	self.view = view;
+  if (!view_) 
+    view_ = [[GHUnitIPhoneView alloc] initWithFrame:CGRectMake(0, 0, 320, 344)];
+  view_.searchBar.delegate = self;
+  NSString *prefix = [self _prefix];
+  if (prefix) view_.searchBar.text = prefix;  
+  view_.filterControl.selectedSegmentIndex = [self _filterIndex];
+  [view_.filterControl addTarget:self action:@selector(_filterChanged:) forControlEvents:UIControlEventValueChanged];
+  view_.tableView.delegate = self;
+  view_.tableView.dataSource = self.dataSource;
+  self.view = view_;
+  [view_ release];
 	[self reload];
 }
 
@@ -111,7 +75,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 - (void)reload {
   [self.dataSource.root setTextFilter:[self _prefix]];	
   [self.dataSource.root setFilter:[self _filterIndex]];
-	[self.tableView reloadData];	
+	[view_.tableView reloadData];	
 }
 
 #pragma mark Running
@@ -127,13 +91,13 @@ NSString *const GHUnitFilterKey = @"Filter";
   self.view;
 	runButton_.title = @"Cancel";
 	userDidDrag_ = NO; // Reset drag status
-	statusLabel_.textColor = [UIColor blackColor];
-	statusLabel_.text = @"Starting tests...";
+	view_.statusLabel.textColor = [UIColor blackColor];
+	view_.statusLabel.text = @"Starting tests...";
 	[self.dataSource run:self inParallel:NO options:0];
 }
 
 - (void)cancel {
-	statusLabel_.text = @"Cancelling...";
+	view_.statusLabel.text = @"Cancelling...";
 	[dataSource_ cancel];
 }
 
@@ -168,12 +132,12 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)_filterChanged:(id)sender {
-  [self _setFilterIndex:filterControl_.selectedSegmentIndex];
+  [self _setFilterIndex:view_.filterControl.selectedSegmentIndex];
   [self reload];
 }
 
 - (void)reloadTest:(id<GHTest>)test {
-	[self.tableView reloadData];
+	[view_.tableView reloadData];
 	if (!userDidDrag_ && !dataSource_.isEditing && ![test isDisabled] 
 			&& [test status] == GHTestStatusRunning && ![test conformsToProtocol:@protocol(GHTestGroup)]) 
 		[self scrollToTest:test];
@@ -182,7 +146,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 - (void)scrollToTest:(id<GHTest>)test {
 	NSIndexPath *path = [dataSource_ indexPathToTest:test];
 	if (!path) return;
-	[self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+	[view_.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 }
 
 - (void)scrollToBottom {
@@ -191,11 +155,11 @@ NSString *const GHUnitFilterKey = @"Filter";
 	NSInteger lastTestIndex = [dataSource_ numberOfTestsInGroup:lastGroupIndex] - 1;
 	if (lastTestIndex < 0) return;
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastTestIndex inSection:lastGroupIndex];
-	[self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+	[view_.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 - (void)setStatusText:(NSString *)message {
-	statusLabel_.text = message;
+	view_.statusLabel.text = message;
 }
 
 #pragma mark Delegates (UITableView)
@@ -206,7 +170,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 		[node setSelected:![node isSelected]];
 		[node notifyChanged];
 		[tableView deselectRowAtIndexPath:indexPath animated:NO];
-		[self.tableView reloadData];
+		[view_.tableView reloadData];
 	} else {		
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 		GHTestNode *sectionNode = [[[dataSource_ root] children] objectAtIndex:indexPath.section];
@@ -233,14 +197,14 @@ NSString *const GHUnitFilterKey = @"Filter";
 
 - (void)_setRunning:(BOOL)running runner:(GHTestRunner *)runner {
   if (running) {
-    filterControl_.enabled = NO;
+    view_.filterControl.enabled = NO;
   } else {
-    filterControl_.enabled = YES;
+    view_.filterControl.enabled = YES;
     GHTestStats stats = [runner.test stats];
     if (stats.failureCount > 0) {
-      statusLabel_.textColor = [UIColor redColor];
+      view_.statusLabel.textColor = [UIColor redColor];
     } else {
-      statusLabel_.textColor = [UIColor blackColor];
+      view_.statusLabel.textColor = [UIColor blackColor];
     }
 
     runButton_.title = @"Run";
@@ -288,7 +252,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 #pragma mark Delegates (UISearchBar)
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-	[searchBar_ setShowsCancelButton:YES animated:YES];	
+	[searchBar setShowsCancelButton:YES animated:YES];	
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
