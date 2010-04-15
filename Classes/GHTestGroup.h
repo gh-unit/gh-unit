@@ -80,26 +80,26 @@
  and this might represent a GHTestSuite.
  */
 @interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup> {
-	
-	NSObject<GHTestDelegate> *delegate_; // weak
-	id<GHTestGroup> parent_; // weak
-	
-	NSMutableArray */*of id<GHTest>*/children_;
-		
-	NSString *name_; // The name of the test group (usually the class name of the test case
-	NSTimeInterval interval_; // Total time of child tests
-	GHTestStatus status_; // Current status of the group (current status of running or completed child tests)
-	GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
-	
-	BOOL didSetUpClass_;
+  
+  NSObject<GHTestDelegate> *delegate_; // weak
+  id<GHTestGroup> parent_; // weak
+  
+  NSMutableArray */*of id<GHTest>*/children_;
+    
+  NSString *name_; // The name of the test group (usually the class name of the test case
+  NSTimeInterval interval_; // Total time of child tests
+  GHTestStatus status_; // Current status of the group (current status of running or completed child tests)
+  GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
+  
+  BOOL didSetUpClass_;
   
   GHTestOptions options_;
-	
-	// Set if test is created from initWithTestCase:delegate:
-	// Allows use to perform setUpClass and tearDownClass (once per test case run)
-	id testCase_; 
-	
-	NSException *exception_; // If exception happens in group setUpClass/tearDownClass
+  
+  // Set if test is created from initWithTestCase:delegate:
+  // Allows use to perform setUpClass and tearDownClass (once per test case run)
+  id testCase_; 
+  
+  NSException *exception_; // If exception happens in group setUpClass/tearDownClass
 }
 
 @property (readonly, nonatomic) NSArray */*of id<GHTest>*/children;

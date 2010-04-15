@@ -65,92 +65,92 @@
 
 @implementation NSValue (GHValueFormatter)
 - (NSString *)ghu_contentDescription {
-	const char *objCType = [self objCType];
-	if (objCType != NULL) {
-		if (strlen (objCType) == 1) {
-			switch (objCType[0]) {
-				case 'c': {
-					char scalarValue = 0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%c", scalarValue];
-				}
-				case 'C': {
-					unsigned char scalarValue = 0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%c", scalarValue];
-				}
-				case 's': {
-					short scalarValue = 0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%hi", scalarValue];
-				}
-				case 'S': {
-					unsigned short scalarValue = 0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%hu", scalarValue];
-				}
-				case 'l': {
-					long scalarValue = 0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%li", scalarValue];
-				}
-				case 'L': {
-					unsigned long scalarValue = 0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%lu", scalarValue];
-				}
-				case 'q': {
-					long long scalarValue = 0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%lli", scalarValue];
-				}
-				case 'Q': {
-					unsigned long long scalarValue = 0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%llu", scalarValue];
-				}
-				case 'i': {
-					int scalarValue = 0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%i", scalarValue];
-				}
-				case 'I': {
-					unsigned int long scalarValue = 0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%u", scalarValue];
-				}
-				case 'f': {
-					float scalarValue = 0.0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%f", scalarValue];
-				}
-				case 'd': {
-					double scalarValue = 0.0;
-					[self getValue:(void *)&scalarValue];
-					return [NSString stringWithFormat:@"%.12g", scalarValue];
-				}
-				default: {
-					return [self description];
-				}
-			}
-		}
-		else if (strncmp (objCType, "^", 1) == 0) {
-			return [NSString stringWithFormat:@"%p", [self pointerValue]];
-		} 
-		//else if (strcmp (objCType, "{_NSPoint=ff}") == 0) {
-//			return [NSString stringWithFormat:@"%@", NSStringFromPoint ([self pointValue])];	
-//		} 
-//		else if (strcmp (objCType, "{_NSSize=ff}") == 0) {
-//			return [NSString stringWithFormat:@"%@", NSStringFromSize ([self sizeValue])];	
-//		} 
-//		else if (strcmp (objCType, "{_NSRange=II}") == 0) {
-//			return [NSString stringWithFormat:@"%@", NSStringFromRange ([self rangeValue])];		
-//		} 
-//		else if (strcmp (objCType, "{_NSRect={_NSPoint=ff}{_NSSize=ff}}") == 0) {
-//			return [NSString stringWithFormat:@"%@", NSStringFromRect ([self rectValue])];			
-//		}
-	}
-	return [self description];
+  const char *objCType = [self objCType];
+  if (objCType != NULL) {
+    if (strlen (objCType) == 1) {
+      switch (objCType[0]) {
+        case 'c': {
+          char scalarValue = 0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%c", scalarValue];
+        }
+        case 'C': {
+          unsigned char scalarValue = 0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%c", scalarValue];
+        }
+        case 's': {
+          short scalarValue = 0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%hi", scalarValue];
+        }
+        case 'S': {
+          unsigned short scalarValue = 0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%hu", scalarValue];
+        }
+        case 'l': {
+          long scalarValue = 0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%li", scalarValue];
+        }
+        case 'L': {
+          unsigned long scalarValue = 0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%lu", scalarValue];
+        }
+        case 'q': {
+          long long scalarValue = 0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%lli", scalarValue];
+        }
+        case 'Q': {
+          unsigned long long scalarValue = 0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%llu", scalarValue];
+        }
+        case 'i': {
+          int scalarValue = 0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%i", scalarValue];
+        }
+        case 'I': {
+          unsigned int long scalarValue = 0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%u", scalarValue];
+        }
+        case 'f': {
+          float scalarValue = 0.0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%f", scalarValue];
+        }
+        case 'd': {
+          double scalarValue = 0.0;
+          [self getValue:(void *)&scalarValue];
+          return [NSString stringWithFormat:@"%.12g", scalarValue];
+        }
+        default: {
+          return [self description];
+        }
+      }
+    }
+    else if (strncmp (objCType, "^", 1) == 0) {
+      return [NSString stringWithFormat:@"%p", [self pointerValue]];
+    } 
+    //else if (strcmp (objCType, "{_NSPoint=ff}") == 0) {
+//      return [NSString stringWithFormat:@"%@", NSStringFromPoint ([self pointValue])];  
+//    } 
+//    else if (strcmp (objCType, "{_NSSize=ff}") == 0) {
+//      return [NSString stringWithFormat:@"%@", NSStringFromSize ([self sizeValue])];  
+//    } 
+//    else if (strcmp (objCType, "{_NSRange=II}") == 0) {
+//      return [NSString stringWithFormat:@"%@", NSStringFromRange ([self rangeValue])];    
+//    } 
+//    else if (strcmp (objCType, "{_NSRect={_NSPoint=ff}{_NSSize=ff}}") == 0) {
+//      return [NSString stringWithFormat:@"%@", NSStringFromRect ([self rectValue])];      
+//    }
+  }
+  return [self description];
 }
 @end
 

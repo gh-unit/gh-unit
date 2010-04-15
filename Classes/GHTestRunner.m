@@ -65,55 +65,55 @@
 operationQueue=operationQueue_;
 
 - (id)initWithTest:(id<GHTest>)test {
-	if ((self = [self init])) {
-		test_ = [test retain];
+  if ((self = [self init])) {
+    test_ = [test retain];
     test_.delegate = self;
-	}
-	return self;
+  }
+  return self;
 }
 
 - (void)dealloc {
-	[test_ release];
-	[operationQueue_ release];
-	[super dealloc];
+  [test_ release];
+  [operationQueue_ release];
+  [super dealloc];
 }
 
 + (GHTestRunner *)runnerForAllTests {
-	GHTestSuite *suite = [GHTestSuite allTests];
-	return [self runnerForSuite:suite];
+  GHTestSuite *suite = [GHTestSuite allTests];
+  return [self runnerForSuite:suite];
 }
 
-+ (GHTestRunner *)runnerForSuite:(GHTestSuite *)suite {	
-	GHTestRunner *runner = [[GHTestRunner alloc] initWithTest:suite];
-	return [runner autorelease];
++ (GHTestRunner *)runnerForSuite:(GHTestSuite *)suite { 
+  GHTestRunner *runner = [[GHTestRunner alloc] initWithTest:suite];
+  return [runner autorelease];
 }
 
 + (GHTestRunner *)runnerForTestClassName:(NSString *)testClassName methodName:(NSString *)methodName {
-	return [self runnerForSuite:[GHTestSuite suiteWithTestCaseClass:NSClassFromString(testClassName) 
-																													 method:NSSelectorFromString(methodName)]];
+  return [self runnerForSuite:[GHTestSuite suiteWithTestCaseClass:NSClassFromString(testClassName) 
+                                                           method:NSSelectorFromString(methodName)]];
 }
 
 + (GHTestRunner *)runnerFromEnv {
-	GHTestSuite *suite = [GHTestSuite suiteFromEnv];
+  GHTestSuite *suite = [GHTestSuite suiteFromEnv];
   GHTestRunner *runner = [GHTestRunner runnerForSuite:suite];
   if (getenv("GHUNIT_RERAISE")) runner.options = GHTestOptionReraiseExceptions;
-	return runner;
-}	
+  return runner;
+} 
 
 + (int)run {
-	GHTestRunner *testRunner = [GHTestRunner runnerFromEnv];
-	[testRunner runTests];
-	return testRunner.stats.failureCount;	
+  GHTestRunner *testRunner = [GHTestRunner runnerFromEnv];
+  [testRunner runTests];
+  return testRunner.stats.failureCount; 
 }
 
 - (void)setInParallel:(BOOL)inParallel {
   if (inParallel) {
-		NSOperationQueue *operationQueue = [[[NSOperationQueue alloc] init] autorelease];
-		operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
-		self.operationQueue = operationQueue;
-	} else {
-		self.operationQueue = nil;
-	}
+    NSOperationQueue *operationQueue = [[[NSOperationQueue alloc] init] autorelease];
+    operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
+    self.operationQueue = operationQueue;
+  } else {
+    self.operationQueue = nil;
+  }
 }  
 
 - (BOOL)isInParallel {
@@ -123,16 +123,16 @@ operationQueue=operationQueue_;
 - (int)runTests {
   if (cancelling_ || running_) return -1;
   
-	running_ = YES;
+  running_ = YES;
   startInterval_ = [NSDate timeIntervalSinceReferenceDate];
-	[self _notifyStart];
+  [self _notifyStart];
   
-	if (operationQueue_ && [test_ respondsToSelector:@selector(runInOperationQueue:options:)]) {
-		[(id)test_ runInOperationQueue:operationQueue_ options:options_];
-	} else {
+  if (operationQueue_ && [test_ respondsToSelector:@selector(runInOperationQueue:options:)]) {
+    [(id)test_ runInOperationQueue:operationQueue_ options:options_];
+  } else {
     [test_ run:options_];
-	}
-	return self.stats.failureCount;
+  }
+  return self.stats.failureCount;
 }
 
 - (NSTimeInterval)interval {
@@ -140,116 +140,116 @@ operationQueue=operationQueue_;
 }
 
 - (void)cancel {
-	if (cancelling_) return;
-	cancelling_ = YES;
-	[operationQueue_ cancelAllOperations];
-	[test_ cancel];
+  if (cancelling_) return;
+  cancelling_ = YES;
+  [operationQueue_ cancelAllOperations];
+  [test_ cancel];
 }
 
 - (void)runInBackground {
-	[NSThread detachNewThreadSelector:@selector(_runInBackground) toTarget:self withObject:nil];
+  [NSThread detachNewThreadSelector:@selector(_runInBackground) toTarget:self withObject:nil];
 }
 
 - (void)_runInBackground {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	[self runTests];
-	[pool release];
+  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  [self runTests];
+  [pool release];
 }
 
 - (GHTestStats)stats {
-	return [test_ stats];
+  return [test_ stats];
 }
-		
+    
 - (void)log:(NSString *)message {
-	fputs([message UTF8String], stderr);
-	fflush(stderr);
+  fputs([message UTF8String], stderr);
+  fflush(stderr);
 }
 
 - (void)_log:(NSString *)message {
-	fputs([[message stringByAppendingString:@"\n"] UTF8String], stdout);
+  fputs([[message stringByAppendingString:@"\n"] UTF8String], stdout);
   fflush(stdout);
-	
-	if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didLog:message];
+  
+  if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
+    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didLog:message];
 }
 
 #pragma mark Delegates (GHTest)
 
 - (void)testDidStart:(id<GHTest>)test source:(id<GHTest>)source {
-	if (![source conformsToProtocol:@protocol(GHTestGroup)]) {
-		[self log:[NSString stringWithFormat:@"%@ ", [source identifier]]];
-	}
-	
-	if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didStartTest:source];	
+  if (![source conformsToProtocol:@protocol(GHTestGroup)]) {
+    [self log:[NSString stringWithFormat:@"%@ ", [source identifier]]];
+  }
+  
+  if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
+    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didStartTest:source]; 
 }
 
-- (void)testDidUpdate:(id<GHTest>)test source:(id<GHTest>)source {	
-	if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didUpdateTest:source];	
+- (void)testDidUpdate:(id<GHTest>)test source:(id<GHTest>)source {  
+  if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:)])
+    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didUpdateTest:source];  
 }
 
-- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source {	
-	
-	if ([source status] != GHTestStatusCancelled) {
-		if (![source conformsToProtocol:@protocol(GHTestGroup)]) {			
-			NSString *message = [NSString stringWithFormat:@"%@ (%0.3fs)\n", 
-													 ([source stats].failureCount > 0 ? @"FAIL" : @"OK"), [source interval]];	
-			[self log:message];
-		}
-		
-		if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
-			[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didEndTest:source];
+- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source { 
+  
+  if ([source status] != GHTestStatusCancelled) {
+    if (![source conformsToProtocol:@protocol(GHTestGroup)]) {      
+      NSString *message = [NSString stringWithFormat:@"%@ (%0.3fs)\n", 
+                           ([source stats].failureCount > 0 ? @"FAIL" : @"OK"), [source interval]]; 
+      [self log:message];
+    }
+    
+    if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
+      [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didEndTest:source];
 
-	} else {
-		[self log:[NSString stringWithFormat:@"Cancelled\n", [source identifier]]];
-	}
-		
-	if (cancelling_) {
-		[self _notifyCancelled];
-	} else if (test_ == source && [source status] != GHTestStatusCancelled) {
-		// If the test associated with this runner ended then notify
-		[self _notifyFinished];
-	} 
+  } else {
+    [self log:[NSString stringWithFormat:@"Cancelled\n", [source identifier]]];
+  }
+    
+  if (cancelling_) {
+    [self _notifyCancelled];
+  } else if (test_ == source && [source status] != GHTestStatusCancelled) {
+    // If the test associated with this runner ended then notify
+    [self _notifyFinished];
+  } 
 }
 
 - (void)test:(id<GHTest>)test didLog:(NSString *)message source:(id<GHTest>)source {
-	[self _log:[NSString stringWithFormat:@"%@: %@", source, message]];
-	if ([delegate_ respondsToSelector:@selector(testRunner:test:didLog:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self test:source didLog:message];
+  [self _log:[NSString stringWithFormat:@"%@: %@", source, message]];
+  if ([delegate_ respondsToSelector:@selector(testRunner:test:didLog:)])
+    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self test:source didLog:message];
 }
 
 #pragma mark Notifications (Private)
 
-- (void)_notifyStart {	
-	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' started.\n", [test_ name]];
-	[self log:message];
-	
-	if ([delegate_ respondsToSelector:@selector(testRunnerDidStart:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidStart:self];
+- (void)_notifyStart {  
+  NSString *message = [NSString stringWithFormat:@"Test Suite '%@' started.\n", [test_ name]];
+  [self log:message];
+  
+  if ([delegate_ respondsToSelector:@selector(testRunnerDidStart:)])
+    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidStart:self];
 }
 
 - (void)_notifyCancelled {
-	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' cancelled.\n", [test_ name]];
-	[self log:message];
-	
-	cancelling_ = NO;
-	running_ = NO;
-	
-	if ([delegate_ respondsToSelector:@selector(testRunnerDidCancel:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidCancel:self];
+  NSString *message = [NSString stringWithFormat:@"Test Suite '%@' cancelled.\n", [test_ name]];
+  [self log:message];
+  
+  cancelling_ = NO;
+  running_ = NO;
+  
+  if ([delegate_ respondsToSelector:@selector(testRunnerDidCancel:)])
+    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidCancel:self];
 }
 
 - (void)_notifyFinished {
-	NSString *message = [NSString stringWithFormat:@"Test Suite '%@' finished.\n"
-											 "Executed %d of %d tests, with %d failures in %0.3f seconds (%d disabled).\n",
-											 [test_ name], 
-											 ([test_ stats].succeedCount + [test_ stats].failureCount), 
-											 [test_ stats].testCount,
-											 [test_ stats].failureCount, 
-											 [test_ interval],
+  NSString *message = [NSString stringWithFormat:@"Test Suite '%@' finished.\n"
+                       "Executed %d of %d tests, with %d failures in %0.3f seconds (%d disabled).\n",
+                       [test_ name], 
+                       ([test_ stats].succeedCount + [test_ stats].failureCount), 
+                       [test_ stats].testCount,
+                       [test_ stats].failureCount, 
+                       [test_ interval],
                        [test_ disabledCount]];
-	[self log:message];
+  [self log:message];
   
   if ([test_ isKindOfClass:[GHTestGroup class]]) {
     GHTestGroup *testGroup = (GHTestGroup *)test_;
@@ -272,11 +272,11 @@ operationQueue=operationQueue_;
     }
   }
 
-	cancelling_ = NO;
-	running_ = NO;
+  cancelling_ = NO;
+  running_ = NO;
 
-	if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
-		[[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self];	
+  if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
+    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self]; 
 }
 
 @end

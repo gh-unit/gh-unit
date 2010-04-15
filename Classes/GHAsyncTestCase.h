@@ -31,10 +31,10 @@
 
 // Some default statuses to use; Or define and use your own
 enum {
-	kGHUnitWaitStatusUnknown = 0,
-	kGHUnitWaitStatusSuccess,
-	kGHUnitWaitStatusFailure,
-	kGHUnitWaitStatusCancelled
+  kGHUnitWaitStatusUnknown = 0,
+  kGHUnitWaitStatusSuccess,
+  kGHUnitWaitStatusFailure,
+  kGHUnitWaitStatusCancelled
 };
 
 /*!
@@ -45,12 +45,12 @@ enum {
  
  @code
  - (void)testSuccess {
-	 [self prepare];
-	 
-	 // Do asynchronous task here
-	 [self performSelector:@selector(_succeed) withObject:nil afterDelay:0.1];
-	 
-	 [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+   [self prepare];
+   
+   // Do asynchronous task here
+   [self performSelector:@selector(_succeed) withObject:nil afterDelay:0.1];
+   
+   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
  }
  
  - (void)_succeed {
@@ -62,14 +62,14 @@ enum {
  */
 @interface GHAsyncTestCase : GHTestCase {
 
-	NSInteger waitForStatus_;
-	NSInteger notifiedStatus_;
-	
-	BOOL prepared_; // Whether prepared was called before waitForStatus:timeout:
-	NSRecursiveLock *lock_; // Lock to synchronize on
-	SEL waitSelector_; // The selector we are waiting on
-		
-	NSArray *_runLoopModes; // Run loop modes to run while waiting; Defaults to NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode
+  NSInteger waitForStatus_;
+  NSInteger notifiedStatus_;
+  
+  BOOL prepared_; // Whether prepared was called before waitForStatus:timeout:
+  NSRecursiveLock *lock_; // Lock to synchronize on
+  SEL waitSelector_; // The selector we are waiting on
+    
+  NSArray *_runLoopModes; // Run loop modes to run while waiting; Defaults to NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode
 }
 
 @property (retain, nonatomic) NSArray *runLoopModes;
@@ -93,11 +93,11 @@ enum {
  For example, 
  
  @code
-	- (void)testFoo {
-		[self prepare];
-		// Do asynchronous task here
-		[self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
-	}
+  - (void)testFoo {
+    [self prepare];
+    // Do asynchronous task here
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+  }
  @endcode
  
  @param status kGHUnitWaitStatusSuccess, kGHUnitWaitStatusFailure or custom status 
@@ -119,7 +119,7 @@ enum {
  Notify waiting of status for test selector.
  @param status Status, for example, kGHUnitWaitStatusSuccess
  @param selector If not NULL, then will verify this selector is where we are waiting.
-					This prevents stray asynchronous callbacks to fail a later test
+          This prevents stray asynchronous callbacks to fail a later test
  */
 - (void)notify:(NSInteger)status forSelector:(SEL)selector;
 

@@ -33,15 +33,15 @@
 @implementation GHUnitIPhoneAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-  GHUnitIPhoneViewController *viewController = [[GHUnitIPhoneViewController alloc] init];		
+  GHUnitIPhoneViewController *viewController = [[GHUnitIPhoneViewController alloc] init];   
   [viewController loadDefaults];
-	navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController];
+  navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController];
   [viewController release];
-	CGSize size = [[UIScreen mainScreen] bounds].size;
-	window_ = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-	GHUDebug(@"Setting window view");
-	[window_ addSubview:navigationController_.view];
-	[window_ makeKeyAndVisible];
+  CGSize size = [[UIScreen mainScreen] bounds].size;
+  window_ = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+  GHUDebug(@"Setting window view");
+  [window_ addSubview:navigationController_.view];
+  [window_ makeKeyAndVisible];
   
   if (getenv("GHUNIT_AUTORUN")) [viewController runTests];
 }
@@ -52,9 +52,9 @@
 }
 
 - (void)dealloc {
-	[navigationController_ release];
-	[window_ release];
-	[super dealloc];
+  [navigationController_ release];
+  [window_ release];
+  [super dealloc];
 }
 
 @end

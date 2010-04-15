@@ -14,7 +14,7 @@
 @implementation GHTestFail
 
 - (void)testFail_EXPECTED {
-	GHFail(@"Test failure");
+  GHFail(@"Test failure");
 }
 
 - (void)testSucceedAfterFail {
@@ -28,27 +28,27 @@
 @implementation GHTestException : GHTestCase { }
 
 - (void)testException_EXPECTED {
-	GHTestLog(@"Will raise an exception");
-	[NSException raise:@"SomeException" format:@"Some reason for the exception"];
+  GHTestLog(@"Will raise an exception");
+  [NSException raise:@"SomeException" format:@"Some reason for the exception"];
 }
 
 @end
 
 @interface GHTestFailWithException : GHTestCase {
-	BOOL _failWithException;
+  BOOL _failWithException;
 }
 @end
 
 @implementation GHTestFailWithException
 
 - (void)failWithException:(NSException *)exception {
-	_failWithException = YES;
-	GHTestLog(@"Failed with exception: %@", exception);
+  _failWithException = YES;
+  GHTestLog(@"Failed with exception: %@", exception);
 }
 
 - (void)testFailWithException {
-	GHFail(@"Fail");
-	NSAssert(_failWithException, @"failWithException: was overriden");
+  GHFail(@"Fail");
+  NSAssert(_failWithException, @"failWithException: was overriden");
 }
 
 @end

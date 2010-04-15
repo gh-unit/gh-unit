@@ -70,19 +70,19 @@
  main thread by default (see #delegateOnMainThread).
  */
 @interface GHTestRunner : NSObject <GHTestDelegate> { 
-	
-	id<GHTest> test_; // The test to run; Could be a GHTestGroup (suite), GHTestGroup (test case), or GHTest (target/selector)
-	
-	NSObject<GHTestRunnerDelegate> *delegate_; // weak
-		
-	GHTestOptions options_;	
-	
-	BOOL running_;
-	BOOL cancelling_;
+  
+  id<GHTest> test_; // The test to run; Could be a GHTestGroup (suite), GHTestGroup (test case), or GHTest (target/selector)
+  
+  NSObject<GHTestRunnerDelegate> *delegate_; // weak
+    
+  GHTestOptions options_; 
+  
+  BOOL running_;
+  BOOL cancelling_;
   
   NSTimeInterval startInterval_;
   
-	NSOperationQueue *operationQueue_; //! If running a suite in operation queue
+  NSOperationQueue *operationQueue_; //! If running a suite in operation queue
 }
 
 @property (retain) id<GHTest> test;

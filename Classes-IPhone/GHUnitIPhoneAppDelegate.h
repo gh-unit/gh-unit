@@ -30,9 +30,9 @@
 #import <UIKit/UIKit.h>
 
 @interface GHUnitIPhoneAppDelegate : NSObject <UIApplicationDelegate> {
-	UIWindow *window_;
-	
-	UINavigationController *navigationController_;	
+  UIWindow *window_;
+  
+  UINavigationController *navigationController_;  
 }
 
 @end

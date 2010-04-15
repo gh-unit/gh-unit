@@ -18,44 +18,44 @@ static NSInteger setUpClassCount = 0;
 static NSInteger tearDownCount = 0;
 static NSInteger tearDownClassCount = 0;
 
-- (void)setUp {	
-	setUpCount++;
+- (void)setUp { 
+  setUpCount++;
 }
 
 - (void)tearDown {
-	tearDownCount++;
+  tearDownCount++;
 }
 
 - (void)setUpClass {
-	if (tearDownClassCount != 0) GHFail(@"tearDownClass called before setUpClass");
-	
-	setUpClassCount++;
-	if (setUpClassCount != 1) GHFail(@"setUpClass called more than once");
+  if (tearDownClassCount != 0) GHFail(@"tearDownClass called before setUpClass");
+  
+  setUpClassCount++;
+  if (setUpClassCount != 1) GHFail(@"setUpClass called more than once");
 }
 
-- (void)tearDownClass {	
-	if (setUpClassCount == 0) GHFail(@"setUpClass was never called");
-	
-	tearDownClassCount++;
-	if (tearDownClassCount != 1) GHFail(@"tearDownClassCount called more than once");	
-	
-	// Also assert that we had 3 regular set up and tear downs
-	if (setUpCount != 3) GHFail(@"Should have had 3 tear downs");
-	if (tearDownCount != 3) GHFail(@"Should have had 3 tear downs");
-	
-	// Cleanup
-	setUpCount = 0;
-	setUpClassCount = 0;
-	tearDownCount = 0;
-	tearDownClassCount = 0;
+- (void)tearDownClass { 
+  if (setUpClassCount == 0) GHFail(@"setUpClass was never called");
+  
+  tearDownClassCount++;
+  if (tearDownClassCount != 1) GHFail(@"tearDownClassCount called more than once"); 
+  
+  // Also assert that we had 3 regular set up and tear downs
+  if (setUpCount != 3) GHFail(@"Should have had 3 tear downs");
+  if (tearDownCount != 3) GHFail(@"Should have had 3 tear downs");
+  
+  // Cleanup
+  setUpCount = 0;
+  setUpClassCount = 0;
+  tearDownCount = 0;
+  tearDownClassCount = 0;
 }
 
 - (void)test1 {
-	if (setUpClassCount == 0) GHFail(@"setUpClass never called");
+  if (setUpClassCount == 0) GHFail(@"setUpClass never called");
 }
 
 - (void)test2 {
-	
+  
 }
 
 - (void)test3 { 
@@ -70,7 +70,7 @@ static NSInteger tearDownClassCount = 0;
 @implementation GHSetUpClassFailureTest
 
 - (void)setUpClass {
-	GHFail(@"Test fail");
+  GHFail(@"Test fail");
 }
 
 
@@ -85,7 +85,7 @@ static NSInteger tearDownClassCount = 0;
 @implementation GHTearDownClassFailureTest
 
 - (void)tearDownClass {
-	GHFail(@"Test fail");
+  GHFail(@"Test fail");
 }
 
 

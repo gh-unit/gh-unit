@@ -62,107 +62,107 @@
 status=status_, testCase=testCase_, exception=exception_, options=options_;
 
 - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate {
-	if ((self = [super init])) {
-		name_ = [name retain];				
-		children_ = [[NSMutableArray array] retain];
-		delegate_ = delegate;
-	} 
-	return self;
+  if ((self = [super init])) {
+    name_ = [name retain];        
+    children_ = [[NSMutableArray array] retain];
+    delegate_ = delegate;
+  } 
+  return self;
 }
 
 - (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
-	if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
-		testCase_ = [testCase retain];
-		[self _addTestsFromTestCase:testCase];
-	}
-	return self;
+  if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
+    testCase_ = [testCase retain];
+    [self _addTestsFromTestCase:testCase];
+  }
+  return self;
 }
 
 - (id)initWithTestCase:(id)testCase selector:(SEL)selector delegate:(id<GHTestDelegate>)delegate {
-	if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
-		testCase_ = [testCase retain];
-		[self addTest:[GHTest testWithTarget:testCase selector:selector]];
-	}
-	return self;
+  if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
+    testCase_ = [testCase retain];
+    [self addTest:[GHTest testWithTarget:testCase selector:selector]];
+  }
+  return self;
 }
 
 + (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
-	return [[[GHTestGroup alloc] initWithTestCase:testCase delegate:delegate] autorelease];
+  return [[[GHTestGroup alloc] initWithTestCase:testCase delegate:delegate] autorelease];
 }
 
 - (void)dealloc {
-	for(id<GHTest> test in children_)
-		[test setDelegate:nil];
-	[name_ release];
-	[children_ release];
-	[testCase_ release];
-	[super dealloc];
+  for(id<GHTest> test in children_)
+    [test setDelegate:nil];
+  [name_ release];
+  [children_ release];
+  [testCase_ release];
+  [super dealloc];
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"%@, %d %0.3f %d/%d (%d failures)", 
-								 name_, status_, interval_, stats_.succeedCount, stats_.testCount, stats_.failureCount];
+  return [NSString stringWithFormat:@"%@, %d %0.3f %d/%d (%d failures)", 
+                 name_, status_, interval_, stats_.succeedCount, stats_.testCount, stats_.failureCount];
 }
-	
+  
 - (NSString *)name {
-	return name_;
+  return name_;
 }
 
 - (void)_addTestsFromTestCase:(id)testCase {
-	NSArray *tests = [[GHTesting sharedInstance] loadTestsFromTarget:testCase];
+  NSArray *tests = [[GHTesting sharedInstance] loadTestsFromTarget:testCase];
   [self addTests:tests];
 }
 
 - (void)addTestCase:(id)testCase {
-	GHTestGroup *testCaseGroup = [[GHTestGroup alloc] initWithTestCase:testCase delegate:self];
-	[self addTestGroup:testCaseGroup];
-	[testCaseGroup release];
+  GHTestGroup *testCaseGroup = [[GHTestGroup alloc] initWithTestCase:testCase delegate:self];
+  [self addTestGroup:testCaseGroup];
+  [testCaseGroup release];
 }
 
 - (void)addTestGroup:(GHTestGroup *)testGroup {
-	[self addTest:testGroup];
-	[testGroup setParent:self];		
+  [self addTest:testGroup];
+  [testGroup setParent:self];   
 }
 
 - (void)addTests:(NSArray *)tests {
   for(GHTest *test in tests)
-		[self addTest:test];
+    [self addTest:test];
 }
 
 - (void)addTest:(id<GHTest>)test {
-	[test setDelegate:self];	
-	stats_.testCount += [test stats].testCount;
-	[children_ addObject:test];	
+  [test setDelegate:self];  
+  stats_.testCount += [test stats].testCount;
+  [children_ addObject:test]; 
 }
 
 - (NSString *)identifier {
-	return name_;
+  return name_;
 }
 
 // Forward up
 - (void)test:(id<GHTest>)test didLog:(NSString *)message source:(id<GHTest>)source {
-	[delegate_ test:self didLog:message source:source];	
+  [delegate_ test:self didLog:message source:source]; 
 }
 
 - (NSArray *)log {
-	// Not supported for group (though may be an aggregate of child test logs in the future?)
-	return nil;
+  // Not supported for group (though may be an aggregate of child test logs in the future?)
+  return nil;
 }
 
 - (void)reset {
   [self _reset];
   for(id<GHTest> test in children_) {
-    [test reset];		
+    [test reset];   
   }
   [delegate_ testDidUpdate:self source:self];
 }
 
 - (void)_reset {
-	status_ = GHTestStatusNone;
-	stats_ = GHTestStatsMake(0, 0, 0, stats_.testCount);
-	interval_ = 0;
-	[exception_ release];
-	exception_ = nil;	
+  status_ = GHTestStatusNone;
+  stats_ = GHTestStatsMake(0, 0, 0, stats_.testCount);
+  interval_ = 0;
+  [exception_ release];
+  exception_ = nil; 
 }
 
 - (void)_failedTests:(NSMutableArray *)tests testGroup:(id<GHTestGroup>)testGroup {  
@@ -180,91 +180,91 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 - (void)setException:(NSException *)exception {
-	[exception retain];
-	[exception_ release];
-	exception_ = exception;
-	status_ = GHTestStatusErrored;
-	[delegate_ testDidUpdate:self source:self];
+  [exception retain];
+  [exception_ release];
+  exception_ = exception;
+  status_ = GHTestStatusErrored;
+  [delegate_ testDidUpdate:self source:self];
 }
 
 - (void)cancel {
-	if (status_ == GHTestStatusRunning) {
-		status_ = GHTestStatusCancelling;
-	} else {
-		for(id<GHTest> test in children_) {
-			stats_.cancelCount++;
-			[test cancel];
-		}
-		status_ = GHTestStatusCancelled;
-	}
-	[delegate_ testDidUpdate:self source:self];
+  if (status_ == GHTestStatusRunning) {
+    status_ = GHTestStatusCancelling;
+  } else {
+    for(id<GHTest> test in children_) {
+      stats_.cancelCount++;
+      [test cancel];
+    }
+    status_ = GHTestStatusCancelled;
+  }
+  [delegate_ testDidUpdate:self source:self];
 }
 
 - (void)setDisabled:(BOOL)disabled {
-	for(id<GHTest> test in children_)
+  for(id<GHTest> test in children_)
     [test setDisabled:disabled];
-	[delegate_ testDidUpdate:self source:self];
+  [delegate_ testDidUpdate:self source:self];
 }
 
 - (BOOL)isDisabled {
-	for(id<GHTest> test in children_)
-		if (![test isDisabled]) return NO;
-	return YES;
+  for(id<GHTest> test in children_)
+    if (![test isDisabled]) return NO;
+  return YES;
 }
 
 - (void)setHidden:(BOOL)hidden {
-	for(id<GHTest> test in children_)
+  for(id<GHTest> test in children_)
     [test setHidden:hidden];
-	[delegate_ testDidUpdate:self source:self];
+  [delegate_ testDidUpdate:self source:self];
 }
 
 - (BOOL)isHidden {
-	for(id<GHTest> test in children_)
-		if (![test isHidden]) return NO;
-	return YES;
+  for(id<GHTest> test in children_)
+    if (![test isHidden]) return NO;
+  return YES;
 }
 
 - (NSInteger)disabledCount {
-	NSInteger disabledCount = 0;
-	for(id<GHTest> test in children_) {
-		disabledCount += [test disabledCount];
-	}
-	return disabledCount;
+  NSInteger disabledCount = 0;
+  for(id<GHTest> test in children_) {
+    disabledCount += [test disabledCount];
+  }
+  return disabledCount;
 }
 
 - (void)setUpClass {
-	if (didSetUpClass_) return;
-	didSetUpClass_ = YES;
-	// Set up class (if we have a test case)
-	@try {		
-		if ([testCase_ respondsToSelector:@selector(setUpClass)])			
-			[testCase_ setUpClass];
-	} @catch(NSException *exception) {
-		// If we fail in the setUpClass, then we will cancel all the child tests (below)
-		exception_ = [exception retain];
-		status_ = GHTestStatusErrored;
-		for(id<GHTest> test in children_) {
-			if (![test isDisabled]) {
-				stats_.failureCount++;
-				[test setException:exception_];
-			}
-		}
-	}
+  if (didSetUpClass_) return;
+  didSetUpClass_ = YES;
+  // Set up class (if we have a test case)
+  @try {    
+    if ([testCase_ respondsToSelector:@selector(setUpClass)])     
+      [testCase_ setUpClass];
+  } @catch(NSException *exception) {
+    // If we fail in the setUpClass, then we will cancel all the child tests (below)
+    exception_ = [exception retain];
+    status_ = GHTestStatusErrored;
+    for(id<GHTest> test in children_) {
+      if (![test isDisabled]) {
+        stats_.failureCount++;
+        [test setException:exception_];
+      }
+    }
+  }
 }
 
 - (void)tearDownClass {
-	// Tear down class (if we were created from a testCase)
-	if (status_ != GHTestStatusRunning) return;
+  // Tear down class (if we were created from a testCase)
+  if (status_ != GHTestStatusRunning) return;
   @try {
-    if ([testCase_ respondsToSelector:@selector(tearDownClass)])		
+    if ([testCase_ respondsToSelector:@selector(tearDownClass)])    
       [testCase_ tearDownClass];
-  } @catch(NSException *exception) {					
+  } @catch(NSException *exception) {          
     exception_ = [exception retain];
     status_ = GHTestStatusErrored;
     // We need to reverse any successes in the test run above
     // and set the error on all the child tests
     // TODO(gabe): Don't I need to ignore disabled tests in this loop?
-    for(id<GHTest> test in children_) {				
+    for(id<GHTest> test in children_) {       
       if ([test status] == GHTestStatusSucceeded) {
         stats_.succeedCount--;
         stats_.failureCount++;
@@ -276,51 +276,51 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 - (void)_run:(NSOperationQueue *)operationQueue {
-	if (status_ == GHTestStatusCancelled || (([children_ count] - [self disabledCount]) <= 0)) {
-		return;
-	}
+  if (status_ == GHTestStatusCancelled || (([children_ count] - [self disabledCount]) <= 0)) {
+    return;
+  }
   
-	didSetUpClass_ = NO;
-	status_ = GHTestStatusRunning;	
-	[delegate_ testDidStart:self source:self];
-	
-	// Run the tests
-	for(id<GHTest> test in children_) {
-		// If we are cancelling mark all child tests cancelled (and update stats)
-		// If we errored (above), then set the error on the test (and update stats)
-		// Otherwise run it
-		if (status_ == GHTestStatusCancelling) {
-			stats_.cancelCount++;
-			[test cancel];
-		} else if (status_ == GHTestStatusErrored) {
-			stats_.failureCount++;
-			[test setException:exception_];
-		} else {				
-			if (operationQueue) {
-				[operationQueue addOperation:[[[GHTestOperation alloc] initWithTest:test options:options_] autorelease]];
-			} else {
-				if (![test isDisabled])
-					[self setUpClass];
+  didSetUpClass_ = NO;
+  status_ = GHTestStatusRunning;  
+  [delegate_ testDidStart:self source:self];
+  
+  // Run the tests
+  for(id<GHTest> test in children_) {
+    // If we are cancelling mark all child tests cancelled (and update stats)
+    // If we errored (above), then set the error on the test (and update stats)
+    // Otherwise run it
+    if (status_ == GHTestStatusCancelling) {
+      stats_.cancelCount++;
+      [test cancel];
+    } else if (status_ == GHTestStatusErrored) {
+      stats_.failureCount++;
+      [test setException:exception_];
+    } else {        
+      if (operationQueue) {
+        [operationQueue addOperation:[[[GHTestOperation alloc] initWithTest:test options:options_] autorelease]];
+      } else {
+        if (![test isDisabled])
+          [self setUpClass];
 
-				if (status_ == GHTestStatusErrored) break;
-				[test run:options_];
-			}
-		}
-	}
-	[operationQueue waitUntilAllOperationsAreFinished];
-	
-	// Tear down class only if we called setUpClass
-	if (didSetUpClass_) 
-		[self tearDownClass];
-	
-	if (status_ == GHTestStatusCancelling) {
-		status_ = GHTestStatusCancelled;
-	} else if (exception_ || stats_.failureCount > 0) {
-		status_ = GHTestStatusErrored;
-	} else {
-		status_ = GHTestStatusSucceeded;
-	}	
-	[delegate_ testDidEnd:self source:self];
+        if (status_ == GHTestStatusErrored) break;
+        [test run:options_];
+      }
+    }
+  }
+  [operationQueue waitUntilAllOperationsAreFinished];
+  
+  // Tear down class only if we called setUpClass
+  if (didSetUpClass_) 
+    [self tearDownClass];
+  
+  if (status_ == GHTestStatusCancelling) {
+    status_ = GHTestStatusCancelled;
+  } else if (exception_ || stats_.failureCount > 0) {
+    status_ = GHTestStatusErrored;
+  } else {
+    status_ = GHTestStatusSucceeded;
+  } 
+  [delegate_ testDidEnd:self source:self];
 }
 - (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options {
   options_ = options;
@@ -329,47 +329,47 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
            @"Can't run in parallel (through operation queue) and also have re-raise exceptions option set");
   
   [self _reset];
-	[self _run:operationQueue];
+  [self _run:operationQueue];
 }
 
 - (BOOL)shouldRunOnMainThread {
-	if ([testCase_ respondsToSelector:@selector(shouldRunOnMainThread)]) 
-		return [testCase_ shouldRunOnMainThread];
-	return NO;
+  if ([testCase_ respondsToSelector:@selector(shouldRunOnMainThread)]) 
+    return [testCase_ shouldRunOnMainThread];
+  return NO;
 }
 
 - (void)run:(GHTestOptions)options {  
   options_ = options;
   [self _reset];
-	if ([self shouldRunOnMainThread]) {
-		[self performSelectorOnMainThread:@selector(_run:) withObject:nil waitUntilDone:YES];
-	} else {
-		[self _run:nil];
-	}	
+  if ([self shouldRunOnMainThread]) {
+    [self performSelectorOnMainThread:@selector(_run:) withObject:nil waitUntilDone:YES];
+  } else {
+    [self _run:nil];
+  } 
 }
 
 #pragma mark Delegates (GHTestDelegate)
 
 - (void)testDidStart:(id<GHTest>)test source:(id<GHTest>)source {
-	[delegate_ testDidStart:self source:source];
-	[delegate_ testDidUpdate:self source:self];	
+  [delegate_ testDidStart:self source:source];
+  [delegate_ testDidUpdate:self source:self]; 
 }
 
 - (void)testDidUpdate:(id<GHTest>)test source:(id<GHTest>)source {
-	[delegate_ testDidUpdate:self source:source];	
-	[delegate_ testDidUpdate:self source:self];	
+  [delegate_ testDidUpdate:self source:source]; 
+  [delegate_ testDidUpdate:self source:self]; 
 }
 
-- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source {	
-	if (source == test) {
-		if ([test interval] >= 0)
-			interval_ += [test interval];	
-		stats_.failureCount += [test stats].failureCount;
-		stats_.succeedCount += [test stats].succeedCount;
-		stats_.cancelCount += [test stats].cancelCount;		
-	}
-	[delegate_ testDidEnd:self source:source];
-	[delegate_ testDidUpdate:self source:self];	
+- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source { 
+  if (source == test) {
+    if ([test interval] >= 0)
+      interval_ += [test interval]; 
+    stats_.failureCount += [test stats].failureCount;
+    stats_.succeedCount += [test stats].succeedCount;
+    stats_.cancelCount += [test stats].cancelCount;   
+  }
+  [delegate_ testDidEnd:self source:source];
+  [delegate_ testDidUpdate:self source:self]; 
 }
 
 #pragma mark NSCoding

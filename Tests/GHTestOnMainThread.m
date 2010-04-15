@@ -16,38 +16,38 @@ static BOOL gGHTestOnMainThreadRunning = NO;
 @implementation GHTestOnMainThread
 
 - (BOOL)shouldRunOnMainThread {
-	return YES;
+  return YES;
 }
 
 - (void)setUp {
-	GHAssertTrue([NSThread isMainThread], nil);
+  GHAssertTrue([NSThread isMainThread], nil);
 }
 
 - (void)tearDown {
-	GHAssertTrue([NSThread isMainThread], nil);
+  GHAssertTrue([NSThread isMainThread], nil);
 }
 
 - (void)setUpClass {
-	GHAssertTrue([NSThread isMainThread], nil);
+  GHAssertTrue([NSThread isMainThread], nil);
 }
 
 - (void)tearDownClass {
-	GHAssertTrue([NSThread isMainThread], nil);
+  GHAssertTrue([NSThread isMainThread], nil);
 }
 
 - (void)testFail_EXPECTED {
-	GHAssertTrue([NSThread isMainThread], nil);
-	GHFail(@"Test failure");
+  GHAssertTrue([NSThread isMainThread], nil);
+  GHFail(@"Test failure");
 }
 
 - (void)testSucceedAfterFail {
-	GHAssertTrue([NSThread isMainThread], nil);
+  GHAssertTrue([NSThread isMainThread], nil);
 }
 
 - (void)testNotConcurrent {
-	GHAssertFalse(gGHTestOnMainThreadRunning, nil);
-	[NSThread sleepForTimeInterval:1];
-	GHAssertFalse(gGHTestOnMainThreadRunning, nil);
+  GHAssertFalse(gGHTestOnMainThreadRunning, nil);
+  [NSThread sleepForTimeInterval:1];
+  GHAssertFalse(gGHTestOnMainThreadRunning, nil);
 }
 
 
@@ -60,9 +60,9 @@ static BOOL gGHTestOnMainThreadRunning = NO;
 @implementation GHTestOnMainThreadNotConcurrent
 
 - (void)testNotConcurrent {
-	gGHTestOnMainThreadRunning = YES;
-	[NSThread sleepForTimeInterval:1];
-	gGHTestOnMainThreadRunning = NO;
+  gGHTestOnMainThreadRunning = YES;
+  [NSThread sleepForTimeInterval:1];
+  gGHTestOnMainThreadRunning = NO;
 }
 
 @end

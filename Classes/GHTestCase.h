@@ -90,9 +90,9 @@
 
  */
 @interface GHTestCase : NSObject {
-	id<GHTestCaseLogWriter> logWriter_; // weak
-	
-	SEL currentSelector_;
+  id<GHTestCaseLogWriter> logWriter_; // weak
+  
+  SEL currentSelector_;
 }
 
 //! The current test selector

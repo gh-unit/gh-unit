@@ -36,93 +36,93 @@ NSString *GHUnitTest = NULL;
 @implementation GHTestSuite
 
 - (id)initWithName:(NSString *)name testCases:(NSArray *)testCases delegate:(id<GHTestDelegate>)delegate {
-	if ((self = [super initWithName:name delegate:delegate])) {
-		for(id testCase in testCases) {
-			[self addTestCase:testCase];
-		}
-	}
-	return self;
+  if ((self = [super initWithName:name delegate:delegate])) {
+    for(id testCase in testCases) {
+      [self addTestCase:testCase];
+    }
+  }
+  return self;
 }
 
 + (GHTestSuite *)allTests {
-	NSArray *testCases = [[GHTesting sharedInstance] loadAllTestCases];
-	GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" testCases:nil delegate:nil];	
-	for(id testCase in testCases) {
-		[allTests addTestCase:testCase];
-	}
-	return [allTests autorelease];
+  NSArray *testCases = [[GHTesting sharedInstance] loadAllTestCases];
+  GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" testCases:nil delegate:nil];  
+  for(id testCase in testCases) {
+    [allTests addTestCase:testCase];
+  }
+  return [allTests autorelease];
 }
 
-+ (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method {	
-	NSString *name = [NSString stringWithFormat:@"%@/%@", NSStringFromClass(testCaseClass), NSStringFromSelector(method)];
-	GHTestSuite *testSuite = [[[GHTestSuite alloc] initWithName:name testCases:nil delegate:nil] autorelease];
-	id testCase = [[[testCaseClass alloc] init] autorelease];
-	if (!testCase) {
-		NSLog(@"Couldn't instantiate test: %@", NSStringFromClass(testCaseClass));
-		return nil;
-	}
-	GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:method delegate:nil];
-	[testSuite addTestGroup:group];
++ (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method { 
+  NSString *name = [NSString stringWithFormat:@"%@/%@", NSStringFromClass(testCaseClass), NSStringFromSelector(method)];
+  GHTestSuite *testSuite = [[[GHTestSuite alloc] initWithName:name testCases:nil delegate:nil] autorelease];
+  id testCase = [[[testCaseClass alloc] init] autorelease];
+  if (!testCase) {
+    NSLog(@"Couldn't instantiate test: %@", NSStringFromClass(testCaseClass));
+    return nil;
+  }
+  GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:method delegate:nil];
+  [testSuite addTestGroup:group];
   [group release];
-	return testSuite;
+  return testSuite;
 }
 
 + (GHTestSuite *)suiteWithPrefix:(NSString *)prefix options:(NSStringCompareOptions)options {
-	if (!prefix || [prefix isEqualToString:@""]) return [self allTests];
-	
-	NSArray *testCases = [[GHTesting sharedInstance] loadAllTestCases];
-	NSString *name = [NSString stringWithFormat:@"Tests (%@)", prefix];
-	GHTestSuite *testSuite = [[self alloc] initWithName:name testCases:nil delegate:nil];	
-	for(id testCase in testCases) {
-		NSString *className = NSStringFromClass([testCase class]);		
-		if ([className compare:prefix options:options range:NSMakeRange(0, [prefix length])] == NSOrderedSame)
-			[testSuite addTestCase:testCase];
-	}
-	return [testSuite autorelease];
-	
+  if (!prefix || [prefix isEqualToString:@""]) return [self allTests];
+  
+  NSArray *testCases = [[GHTesting sharedInstance] loadAllTestCases];
+  NSString *name = [NSString stringWithFormat:@"Tests (%@)", prefix];
+  GHTestSuite *testSuite = [[self alloc] initWithName:name testCases:nil delegate:nil]; 
+  for(id testCase in testCases) {
+    NSString *className = NSStringFromClass([testCase class]);    
+    if ([className compare:prefix options:options range:NSMakeRange(0, [prefix length])] == NSOrderedSame)
+      [testSuite addTestCase:testCase];
+  }
+  return [testSuite autorelease];
+  
 }
 
 + (GHTestSuite *)suiteWithTestFilter:(NSString *)testFilterString {
-	NSArray *testFilters = [testFilterString componentsSeparatedByString:@","];
-	GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:testFilterString testCases:nil delegate:nil];
+  NSArray *testFilters = [testFilterString componentsSeparatedByString:@","];
+  GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:testFilterString testCases:nil delegate:nil];
 
-	for(NSString *testFilter in testFilters) {
-		NSArray *components = [testFilter componentsSeparatedByString:@"/"];
-		if ([components count] == 2) {		
-			NSString *testCaseClassName = [components objectAtIndex:0];
-			Class testCaseClass = NSClassFromString(testCaseClassName);
-			id testCase = [[[testCaseClass alloc] init] autorelease];
-			if (!testCase) {
-				NSLog(@"Couldn't find test: %@", testCaseClassName);
-				continue;
-			}
-			NSString *methodName = [components objectAtIndex:1];
-			GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:NSSelectorFromString(methodName) delegate:nil];
-			[testSuite addTestGroup:group];
-			[group release];
-		} else {
-			Class testCaseClass = NSClassFromString(testFilter);
-			id testCase = [[[testCaseClass alloc] init] autorelease];
-			if (!testCase) {
-				NSLog(@"Couldn't find test: %@", testFilter);
-				continue;
-			}		
-			[testSuite addTestCase:testCase];
-		}
-	}
-	
-	return [testSuite autorelease];
+  for(NSString *testFilter in testFilters) {
+    NSArray *components = [testFilter componentsSeparatedByString:@"/"];
+    if ([components count] == 2) {    
+      NSString *testCaseClassName = [components objectAtIndex:0];
+      Class testCaseClass = NSClassFromString(testCaseClassName);
+      id testCase = [[[testCaseClass alloc] init] autorelease];
+      if (!testCase) {
+        NSLog(@"Couldn't find test: %@", testCaseClassName);
+        continue;
+      }
+      NSString *methodName = [components objectAtIndex:1];
+      GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:NSSelectorFromString(methodName) delegate:nil];
+      [testSuite addTestGroup:group];
+      [group release];
+    } else {
+      Class testCaseClass = NSClassFromString(testFilter);
+      id testCase = [[[testCaseClass alloc] init] autorelease];
+      if (!testCase) {
+        NSLog(@"Couldn't find test: %@", testFilter);
+        continue;
+      }   
+      [testSuite addTestCase:testCase];
+    }
+  }
+  
+  return [testSuite autorelease];
 }
 
 + (GHTestSuite *)suiteFromEnv {
-	const char* cTestFilter = getenv("TEST");
-	if (cTestFilter) {
-		NSString *testFilter = [NSString stringWithUTF8String:cTestFilter];
-		return [GHTestSuite suiteWithTestFilter:testFilter];
-	} else {	
-		if (GHUnitTest != NULL) return [GHTestSuite suiteWithTestFilter:GHUnitTest];
-		return [GHTestSuite allTests];
-	}
+  const char* cTestFilter = getenv("TEST");
+  if (cTestFilter) {
+    NSString *testFilter = [NSString stringWithUTF8String:cTestFilter];
+    return [GHTestSuite suiteWithTestFilter:testFilter];
+  } else {  
+    if (GHUnitTest != NULL) return [GHTestSuite suiteWithTestFilter:GHUnitTest];
+    return [GHTestSuite allTests];
+  }
 }
 
 @end

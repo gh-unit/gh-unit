@@ -48,7 +48,7 @@
     tableView_ = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView_.sectionIndexMinimumDisplayRowCount = 5;
     [self addSubview:tableView_];
-    [tableView_ release];	
+    [tableView_ release]; 
     
     footerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
     footerView_.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];

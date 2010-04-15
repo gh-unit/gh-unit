@@ -57,7 +57,7 @@
 // GTM_BEGIN
 
 - (void)failWithException:(NSException *)exception {
-	[exception raise];
+  [exception raise];
 }
 
 - (void)setUp { }
@@ -71,7 +71,7 @@
 - (void)tearDownClass { }
 
 - (BOOL)shouldRunOnMainThread { 
-	return NO;
+  return NO;
 }
 
 - (void)handleException:(NSException *)exception {
@@ -81,7 +81,7 @@
 #pragma mark Logging
 
 - (void)log:(NSString *)message {
-	[logWriter_ log:message testCase:self];
+  [logWriter_ log:message testCase:self];
 }
 
 @end

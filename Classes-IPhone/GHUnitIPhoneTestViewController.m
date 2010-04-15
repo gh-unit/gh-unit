@@ -43,28 +43,28 @@
 }
 
 - (void)dealloc {
-	[testNode_ release];
-	[super dealloc];
+  [testNode_ release];
+  [super dealloc];
 }
 
-- (void)loadView {	
-	textView_ = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];	
-	textView_.font = [UIFont fontWithName:@"Courier New-Bold" size:12];
-	textView_.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
-	textView_.textColor = [UIColor blackColor];
-	textView_.editable = NO;
-	textView_.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	textView_.showsHorizontalScrollIndicator = YES;
-	textView_.showsVerticalScrollIndicator = YES;
-	textView_.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-	textView_.contentSize = CGSizeMake(10000, 10000);
-	textView_.scrollEnabled = YES;
-	self.view = textView_;
-	[textView_ release]; // Retained by self.view
+- (void)loadView {  
+  textView_ = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];  
+  textView_.font = [UIFont fontWithName:@"Courier New-Bold" size:12];
+  textView_.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
+  textView_.textColor = [UIColor blackColor];
+  textView_.editable = NO;
+  textView_.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+  textView_.showsHorizontalScrollIndicator = YES;
+  textView_.showsVerticalScrollIndicator = YES;
+  textView_.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+  textView_.contentSize = CGSizeMake(10000, 10000);
+  textView_.scrollEnabled = YES;
+  self.view = textView_;
+  [textView_ release]; // Retained by self.view
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return YES;
+  return YES;
 }
 
 - (void)_runTest {
@@ -83,7 +83,7 @@
   if (log) [text appendFormat:@"\nLog:\n%@\n", log];
   NSString *stackTrace = [testNode_ stackTrace];
   if (stackTrace) [text appendFormat:@"\n%@\n", stackTrace];
-	textView_.text = text;    
+  textView_.text = text;    
   return text;
 }
 
@@ -91,8 +91,8 @@
   self.view;
   self.title = [test name];
 
-	[testNode_ release];
-	testNode_ = [[GHTestNode nodeWithTest:test children:nil source:nil] retain];
+  [testNode_ release];
+  testNode_ = [[GHTestNode nodeWithTest:test children:nil source:nil] retain];
   NSString *text = [self updateTestView];
   NSLog(@"%@", text);
 }

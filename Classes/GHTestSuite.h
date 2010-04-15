@@ -46,12 +46,12 @@ extern NSString *GHUnitTest;
  your test suite might look like:
  
 "Tests" (GHTestSuite)
-	GHTestGroup (collection of tests from GHTestCase1)
-		- (void)testA1 (GHTest with target GHTestCase1 + testA1)
-		- (void)testA2 (GHTest with target GHTestCase1 + testA2)
-	GHTestGroup (collection of tests from GHTestCase2)
-		- (void)testB1; (GHTest with target GHTestCase2 + testB1)
-		- (void)testB2; (GHTest with target GHTestCase2 + testB2)  
+  GHTestGroup (collection of tests from GHTestCase1)
+    - (void)testA1 (GHTest with target GHTestCase1 + testA1)
+    - (void)testA2 (GHTest with target GHTestCase1 + testA2)
+  GHTestGroup (collection of tests from GHTestCase2)
+    - (void)testB1; (GHTest with target GHTestCase2 + testB1)
+    - (void)testB2; (GHTest with target GHTestCase2 + testB2)  
  
  */
 @interface GHTestSuite : GHTestGroup { }

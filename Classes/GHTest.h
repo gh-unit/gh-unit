@@ -31,12 +31,12 @@
  Test status.
  */
 typedef enum {
-	GHTestStatusNone = 0,
-	GHTestStatusRunning, // Test is running
-	GHTestStatusCancelling, // Test is being cancelled
-	GHTestStatusCancelled, // Test was cancelled
-	GHTestStatusSucceeded, // Test finished and succeeded
-	GHTestStatusErrored, // Test finished and errored
+  GHTestStatusNone = 0,
+  GHTestStatusRunning, // Test is running
+  GHTestStatusCancelling, // Test is being cancelled
+  GHTestStatusCancelled, // Test was cancelled
+  GHTestStatusSucceeded, // Test finished and succeeded
+  GHTestStatusErrored, // Test finished and errored
 } GHTestStatus;
 
 enum {
@@ -65,10 +65,10 @@ extern BOOL GHTestStatusEnded(GHTestStatus status);
  Test stats.
  */
 typedef struct {
-	NSInteger succeedCount; // Number of succeeded tests
-	NSInteger failureCount; // Number of failed tests
-	NSInteger cancelCount; // Number of aborted tests
-	NSInteger testCount; // Total number of tests 
+  NSInteger succeedCount; // Number of succeeded tests
+  NSInteger failureCount; // Number of failed tests
+  NSInteger cancelCount; // Number of aborted tests
+  NSInteger testCount; // Total number of tests 
 } GHTestStats;
 
 /*!
@@ -127,7 +127,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 @end
 
 @interface GHTestOperation : NSOperation { 
-	id<GHTest> test_;
+  id<GHTest> test_;
   GHTestOptions options_;
 }
 
@@ -143,21 +143,21 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  - Stores any test specific logging
  */
 @interface GHTest : NSObject <GHTest, GHTestCaseLogWriter> {
-	
-	NSObject<GHTestDelegate> *delegate_; // weak
-	
-	id target_;
-	SEL selector_;
-	
-	NSString *identifier_;
-	NSString *name_;	
-	GHTestStatus status_;
-	NSTimeInterval interval_;
-	BOOL disabled_;
+  
+  NSObject<GHTestDelegate> *delegate_; // weak
+  
+  id target_;
+  SEL selector_;
+  
+  NSString *identifier_;
+  NSString *name_;  
+  GHTestStatus status_;
+  NSTimeInterval interval_;
+  BOOL disabled_;
   BOOL hidden_;
-	NSException *exception_; // If failed
-		
-	NSMutableArray *log_;
+  NSException *exception_; // If failed
+    
+  NSMutableArray *log_;
 
 }
 

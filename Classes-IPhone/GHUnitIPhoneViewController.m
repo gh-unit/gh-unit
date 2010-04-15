@@ -51,9 +51,9 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)dealloc {
-	[dataSource_ release];	
-	[suite_ release];
-	[super dealloc];
+  [dataSource_ release];  
+  [suite_ release];
+  [super dealloc];
 }
 
 - (void)loadDefaults { }
@@ -68,9 +68,9 @@ NSString *const GHUnitFilterKey = @"Filter";
   if (!runButton_)
     runButton_ = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStyleDone
                                                  target:self action:@selector(_toggleTestsRunning)];
-	self.navigationItem.rightBarButtonItem = runButton_;
-	[runButton_ release];	
-	
+  self.navigationItem.rightBarButtonItem = runButton_;
+  [runButton_ release]; 
+  
   if (!view_) 
     view_ = [[GHUnitIPhoneView alloc] initWithFrame:CGRectMake(0, 0, 320, 344)];
   view_.searchBar.delegate = self;
@@ -82,7 +82,7 @@ NSString *const GHUnitFilterKey = @"Filter";
   view_.tableView.dataSource = self.dataSource;
   self.view = view_;
   [view_ release];
-	[self reload];
+  [self reload];
 }
 
 - (GHUnitIPhoneTableViewDataSource *)dataSource {
@@ -94,36 +94,36 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)reload {
-  [self.dataSource.root setTextFilter:[self _prefix]];	
+  [self.dataSource.root setTextFilter:[self _prefix]];  
   [self.dataSource.root setFilter:[self _filterIndex]];
-	[view_.tableView reloadData];	
+  [view_.tableView reloadData]; 
 }
 
 #pragma mark Running
 
 - (void)_toggleTestsRunning {
-	if (self.dataSource.isRunning) [self cancel];
-	else [self runTests];
+  if (self.dataSource.isRunning) [self cancel];
+  else [self runTests];
 }
 
 - (void)runTests {
-	if (self.dataSource.isRunning) return;
-	
+  if (self.dataSource.isRunning) return;
+  
   self.view;
-	runButton_.title = @"Cancel";
-	userDidDrag_ = NO; // Reset drag status
-	view_.statusLabel.textColor = [UIColor blackColor];
-	view_.statusLabel.text = @"Starting tests...";
-	[self.dataSource run:self inParallel:NO options:0];
+  runButton_.title = @"Cancel";
+  userDidDrag_ = NO; // Reset drag status
+  view_.statusLabel.textColor = [UIColor blackColor];
+  view_.statusLabel.text = @"Starting tests...";
+  [self.dataSource run:self inParallel:NO options:0];
 }
 
 - (void)cancel {
-	view_.statusLabel.text = @"Cancelling...";
-	[dataSource_ cancel];
+  view_.statusLabel.text = @"Cancelling...";
+  [dataSource_ cancel];
 }
 
 - (void)_exit {
-	exit(0);
+  exit(0);
 }
 
 #pragma mark Properties
@@ -139,7 +139,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 
 - (void)_setFilterIndex:(NSInteger)index {
   [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:index] forKey:GHUnitFilterKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSInteger)_filterIndex {
@@ -149,7 +149,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 #pragma mark -
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return YES;
+  return YES;
 }
 
 - (void)_filterChanged:(id)sender {
@@ -158,50 +158,50 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)reloadTest:(id<GHTest>)test {
-	[view_.tableView reloadData];
-	if (!userDidDrag_ && !dataSource_.isEditing && ![test isDisabled] 
-			&& [test status] == GHTestStatusRunning && ![test conformsToProtocol:@protocol(GHTestGroup)]) 
-		[self scrollToTest:test];
+  [view_.tableView reloadData];
+  if (!userDidDrag_ && !dataSource_.isEditing && ![test isDisabled] 
+      && [test status] == GHTestStatusRunning && ![test conformsToProtocol:@protocol(GHTestGroup)]) 
+    [self scrollToTest:test];
 }
 
 - (void)scrollToTest:(id<GHTest>)test {
-	NSIndexPath *path = [dataSource_ indexPathToTest:test];
-	if (!path) return;
-	[view_.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+  NSIndexPath *path = [dataSource_ indexPathToTest:test];
+  if (!path) return;
+  [view_.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 }
 
 - (void)scrollToBottom {
-	NSInteger lastGroupIndex = [dataSource_ numberOfGroups] - 1;
-	if (lastGroupIndex < 0) return;
-	NSInteger lastTestIndex = [dataSource_ numberOfTestsInGroup:lastGroupIndex] - 1;
-	if (lastTestIndex < 0) return;
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastTestIndex inSection:lastGroupIndex];
-	[view_.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+  NSInteger lastGroupIndex = [dataSource_ numberOfGroups] - 1;
+  if (lastGroupIndex < 0) return;
+  NSInteger lastTestIndex = [dataSource_ numberOfTestsInGroup:lastGroupIndex] - 1;
+  if (lastTestIndex < 0) return;
+  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastTestIndex inSection:lastGroupIndex];
+  [view_.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 - (void)setStatusText:(NSString *)message {
-	view_.statusLabel.text = message;
+  view_.statusLabel.text = message;
 }
 
 #pragma mark Delegates (UITableView)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	GHTestNode *node = [dataSource_ nodeForIndexPath:indexPath];
-	if (dataSource_.isEditing) {
-		[node setSelected:![node isSelected]];
-		[node notifyChanged];
-		[tableView deselectRowAtIndexPath:indexPath animated:NO];
-		[view_.tableView reloadData];
-	} else {		
-		[tableView deselectRowAtIndexPath:indexPath animated:YES];
-		GHTestNode *sectionNode = [[[dataSource_ root] children] objectAtIndex:indexPath.section];
-		GHTestNode *testNode = [[sectionNode children] objectAtIndex:indexPath.row];
-		
-    GHUnitIPhoneTestViewController *testViewController = [[GHUnitIPhoneTestViewController alloc] init];	
+  GHTestNode *node = [dataSource_ nodeForIndexPath:indexPath];
+  if (dataSource_.isEditing) {
+    [node setSelected:![node isSelected]];
+    [node notifyChanged];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [view_.tableView reloadData];
+  } else {    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    GHTestNode *sectionNode = [[[dataSource_ root] children] objectAtIndex:indexPath.section];
+    GHTestNode *testNode = [[sectionNode children] objectAtIndex:indexPath.row];
+    
+    GHUnitIPhoneTestViewController *testViewController = [[GHUnitIPhoneTestViewController alloc] init]; 
     [testViewController setTest:testNode.test];
     [self.navigationController pushViewController:testViewController animated:YES];
     [testViewController release];
-	}
+  }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -211,7 +211,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 #pragma mark Delegates (UIScrollView) 
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-	userDidDrag_ = YES;
+  userDidDrag_ = YES;
 }
 
 #pragma mark Delegates (GHTestRunner)
@@ -233,24 +233,24 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message {
-	[self setStatusText:message];
+  [self setStatusText:message];
 }
 
 - (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message {
-	
+  
 }
 
 - (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
-	[self setStatusText:[NSString stringWithFormat:@"Test '%@' started.", [test identifier]]];
-	[self reloadTest:test];
+  [self setStatusText:[NSString stringWithFormat:@"Test '%@' started.", [test identifier]]];
+  [self reloadTest:test];
 }
 
 - (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test {
-	[self reloadTest:test];
+  [self reloadTest:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test {	
-	[self reloadTest:test];
+- (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test { 
+  [self reloadTest:test];
 }
 
 - (void)testRunnerDidStart:(GHTestRunner *)runner { 
@@ -258,12 +258,12 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)testRunnerDidCancel:(GHTestRunner *)runner { 
-	[self _setRunning:NO runner:runner];
+  [self _setRunning:NO runner:runner];
   [self setStatusText:@"Cancelled..."];
 }
 
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
-	[self _setRunning:NO runner:runner];
+  [self _setRunning:NO runner:runner];
   [self setStatusText:[dataSource_ statusString:@"Tests finished. "]];
   
   // Save defaults after test run
@@ -273,7 +273,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 #pragma mark Delegates (UISearchBar)
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-	[searchBar setShowsCancelButton:YES animated:YES];	
+  [searchBar setShowsCancelButton:YES animated:YES];  
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
@@ -281,23 +281,23 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-	// Workaround for clearing search
-	if ([searchBar.text isEqualToString:@""]) {
-		[self searchBarSearchButtonClicked:searchBar];
-		return;
-	}
+  // Workaround for clearing search
+  if ([searchBar.text isEqualToString:@""]) {
+    [self searchBarSearchButtonClicked:searchBar];
+    return;
+  }
   NSString *prefix = [self _prefix];
-	searchBar.text = (prefix ? prefix : @"");
-	[searchBar resignFirstResponder];
-	[searchBar setShowsCancelButton:NO animated:YES];	
+  searchBar.text = (prefix ? prefix : @"");
+  [searchBar resignFirstResponder];
+  [searchBar setShowsCancelButton:NO animated:YES]; 
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-	[searchBar resignFirstResponder];
-	[searchBar setShowsCancelButton:NO animated:YES];	
-	
+  [searchBar resignFirstResponder];
+  [searchBar setShowsCancelButton:NO animated:YES]; 
+  
   [self _setPrefix:searchBar.text];
-	[self reload];
+  [self reload];
 }
 
 @end

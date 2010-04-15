@@ -54,13 +54,13 @@
 #import <objc/runtime.h>
 
 NSString *GHUStackTraceFromException(NSException *e) {
-	return GHU_GTMStackTraceFromException(e);
+  return GHU_GTMStackTraceFromException(e);
 }
 
 NSInteger ClassSort(id a, id b, void *context) {
-	const char *nameA = class_getName([a class]);
+  const char *nameA = class_getName([a class]);
   const char *nameB = class_getName([b class]);
-	return strcmp(nameA, nameB);
+  return strcmp(nameA, nameB);
 }
 
 // GTM_BEGIN
@@ -72,7 +72,7 @@ static int MethodSort(const void *a, const void *b) {
 }
 
 BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
-	if (testCaseClass == NULL) return NO;
+  if (testCaseClass == NULL) return NO;
   BOOL iscase = NO;
   Class superclass;
   for (superclass = aClass; 
@@ -89,37 +89,37 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
 static GHTesting *gSharedInstance;
 
 + (GHTesting *)sharedInstance {
-	@synchronized(self) {		
-		if (!gSharedInstance) gSharedInstance = [[GHTesting alloc] init];		
-	}
-	return gSharedInstance;
+  @synchronized(self) {   
+    if (!gSharedInstance) gSharedInstance = [[GHTesting alloc] init];   
+  }
+  return gSharedInstance;
 }
 
 - (id)init {
-	if ((self = [super init])) {
-		// Default test cases
-		testCaseClassNames_ = [[NSMutableArray arrayWithObjects:
-														@"GHTestCase",
-														@"SenTestCase",
-														@"GTMTestCase", 
-														nil] retain];
-	}
-	return self;
+  if ((self = [super init])) {
+    // Default test cases
+    testCaseClassNames_ = [[NSMutableArray arrayWithObjects:
+                            @"GHTestCase",
+                            @"SenTestCase",
+                            @"GTMTestCase", 
+                            nil] retain];
+  }
+  return self;
 }
 
 - (BOOL)isTestCaseClass:(Class)aClass {
-	for(NSString *className in testCaseClassNames_) {
-		if (isTestFixtureOfClass(aClass, NSClassFromString(className))) return YES;
-	}
-	return NO;
+  for(NSString *className in testCaseClassNames_) {
+    if (isTestFixtureOfClass(aClass, NSClassFromString(className))) return YES;
+  }
+  return NO;
 }
 
 - (void)registerClass:(Class)aClass {
-	[self registerClassName:NSStringFromClass(aClass)];
+  [self registerClassName:NSStringFromClass(aClass)];
 }
 
 - (void)registerClassName:(NSString *)className {
-	[testCaseClassNames_ addObject:className];
+  [testCaseClassNames_ addObject:className];
 }
 
 + (NSString *)descriptionForException:(NSException *)exception {
@@ -146,76 +146,76 @@ static GHTesting *gSharedInstance;
 
 
 - (NSArray *)loadAllTestCases {
-	NSMutableArray *testCases = [NSMutableArray array];
+  NSMutableArray *testCases = [NSMutableArray array];
 
-	int count = objc_getClassList(NULL, 0);
+  int count = objc_getClassList(NULL, 0);
   NSMutableData *classData = [NSMutableData dataWithLength:sizeof(Class) * count];
   Class *classes = (Class*)[classData mutableBytes];
   NSAssert(classes, @"Couldn't allocate class list");
   objc_getClassList(classes, count);
-	
+  
   for (int i = 0; i < count; ++i) {
     Class currClass = classes[i];
-		id testcase = nil;
-		
+    id testcase = nil;
+    
     if ([self isTestCaseClass:currClass]) {
-			testcase = [[currClass alloc] init];
-		} else {
-			continue;
-		}
-		
-		[testCases addObject:testcase];
-		[testcase release];
+      testcase = [[currClass alloc] init];
+    } else {
+      continue;
+    }
+    
+    [testCases addObject:testcase];
+    [testcase release];
   }
-	
-	return [testCases sortedArrayUsingFunction:ClassSort context:NULL];
+  
+  return [testCases sortedArrayUsingFunction:ClassSort context:NULL];
 }
 
 // GTM_BEGIN
 
 - (NSArray *)loadTestsFromTarget:(id)target {
-	NSMutableArray *tests = [NSMutableArray array];
-	
-	unsigned int methodCount;
-	Method *methods = class_copyMethodList([target class], &methodCount);
-	if (!methods) {
-		return nil;
-	}
-	// This handles disposing of methods for us even if an
-	// exception should fly. 
-	[NSData dataWithBytesNoCopy:methods
-											 length:sizeof(Method) * methodCount];
-	// Sort our methods so they are called in Alphabetical order just
-	// because we can.
-	qsort(methods, methodCount, sizeof(Method), MethodSort);
-	for (size_t j = 0; j < methodCount; ++j) {
-		Method currMethod = methods[j];
-		SEL sel = method_getName(currMethod);
-		char *returnType = NULL;
-		const char *name = sel_getName(sel);
-		// If it starts with test, takes 2 args (target and sel) and returns
-		// void run it.
-		if (strstr(name, "test") == name) {
-			returnType = method_copyReturnType(currMethod);
-			if (returnType) {
-				// This handles disposing of returnType for us even if an
-				// exception should fly. Length +1 for the terminator, not that
-				// the length really matters here, as we never reference inside
-				// the data block.
-				[NSData dataWithBytesNoCopy:returnType
-														 length:strlen(returnType) + 1];
-			}
-		}
-		if (returnType  // True if name starts with "test"
-				&& strcmp(returnType, @encode(void)) == 0
-				&& method_getNumberOfArguments(currMethod) == 2) {
-			
-			GHTest *test = [GHTest testWithTarget:target selector:sel];
-			[tests addObject:test];
-		}
-	}
-	
-	return tests;
+  NSMutableArray *tests = [NSMutableArray array];
+  
+  unsigned int methodCount;
+  Method *methods = class_copyMethodList([target class], &methodCount);
+  if (!methods) {
+    return nil;
+  }
+  // This handles disposing of methods for us even if an
+  // exception should fly. 
+  [NSData dataWithBytesNoCopy:methods
+                       length:sizeof(Method) * methodCount];
+  // Sort our methods so they are called in Alphabetical order just
+  // because we can.
+  qsort(methods, methodCount, sizeof(Method), MethodSort);
+  for (size_t j = 0; j < methodCount; ++j) {
+    Method currMethod = methods[j];
+    SEL sel = method_getName(currMethod);
+    char *returnType = NULL;
+    const char *name = sel_getName(sel);
+    // If it starts with test, takes 2 args (target and sel) and returns
+    // void run it.
+    if (strstr(name, "test") == name) {
+      returnType = method_copyReturnType(currMethod);
+      if (returnType) {
+        // This handles disposing of returnType for us even if an
+        // exception should fly. Length +1 for the terminator, not that
+        // the length really matters here, as we never reference inside
+        // the data block.
+        [NSData dataWithBytesNoCopy:returnType
+                             length:strlen(returnType) + 1];
+      }
+    }
+    if (returnType  // True if name starts with "test"
+        && strcmp(returnType, @encode(void)) == 0
+        && method_getNumberOfArguments(currMethod) == 2) {
+      
+      GHTest *test = [GHTest testWithTarget:target selector:sel];
+      [tests addObject:test];
+    }
+  }
+  
+  return tests;
 }
 
 + (BOOL)runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval
@@ -224,8 +224,8 @@ static GHTesting *gSharedInstance;
   // If re-raising, run runTestOrRaise
   if (reraiseExceptions) return [self runTestOrRaiseWithTarget:target selector:selector exception:exception interval:interval];
   
-	NSDate *startDate = [NSDate date];	
-	NSException *testException = nil;
+  NSDate *startDate = [NSDate date];  
+  NSException *testException = nil;
 
   @try {
     // Wrap things in autorelease pools because they may
@@ -236,35 +236,35 @@ static GHTesting *gSharedInstance;
     // this log the exception.  This ensures they are only logged once but the
     // outer layers get the exceptions to report counts, etc.
     @try {
-			// Private setUp internal to GHUnit (in case subclasses fail to call super)
-			if ([target respondsToSelector:@selector(_setUp)])
-				[target performSelector:@selector(_setUp)];
+      // Private setUp internal to GHUnit (in case subclasses fail to call super)
+      if ([target respondsToSelector:@selector(_setUp)])
+        [target performSelector:@selector(_setUp)];
 
-			if ([target respondsToSelector:@selector(setUp)])
-				[target performSelector:@selector(setUp)];
-      @try {	
-				if ([target respondsToSelector:@selector(setCurrentSelector:)])
-					[target setCurrentSelector:selector];
+      if ([target respondsToSelector:@selector(setUp)])
+        [target performSelector:@selector(setUp)];
+      @try {  
+        if ([target respondsToSelector:@selector(setCurrentSelector:)])
+          [target setCurrentSelector:selector];
 
-				// If this isn't set SenTest macros don't raise
-				if ([target respondsToSelector:@selector(raiseAfterFailure)])
-					[target raiseAfterFailure];
-				
-				// Runs the test
+        // If this isn't set SenTest macros don't raise
+        if ([target respondsToSelector:@selector(raiseAfterFailure)])
+          [target raiseAfterFailure];
+        
+        // Runs the test
         [target performSelector:selector];
-				
+        
       } @catch (NSException *exception) {
         if (!testException) testException = [exception retain];
       }
-			if ([target respondsToSelector:@selector(setCurrentSelector:)])
-				[target setCurrentSelector:NULL];
+      if ([target respondsToSelector:@selector(setCurrentSelector:)])
+        [target setCurrentSelector:NULL];
 
-			if ([target respondsToSelector:@selector(tearDown)])
-				[target performSelector:@selector(tearDown)];
-			
-			// Private tearDown internal to GHUnit (in case subclasses fail to call super)
-			if ([target respondsToSelector:@selector(_tearDown)])
-				[target performSelector:@selector(_tearDown)];
+      if ([target respondsToSelector:@selector(tearDown)])
+        [target performSelector:@selector(tearDown)];
+      
+      // Private tearDown internal to GHUnit (in case subclasses fail to call super)
+      if ([target respondsToSelector:@selector(_tearDown)])
+        [target performSelector:@selector(_tearDown)];
 
     } @catch (NSException *exception) {
       if (!testException) testException = [exception retain];
@@ -274,21 +274,21 @@ static GHTesting *gSharedInstance;
     if (!testException) testException = [exception retain]; 
   }  
 
-	if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
-	if (exception) *exception = testException;
-	BOOL passed = (!testException);
-	
-	if (testException && [target respondsToSelector:@selector(handleException:)]) {
-		[target handleException:testException];
-	}
-	
-	return passed;
+  if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
+  if (exception) *exception = testException;
+  BOOL passed = (!testException);
+  
+  if (testException && [target respondsToSelector:@selector(handleException:)]) {
+    [target handleException:testException];
+  }
+  
+  return passed;
 }
 
 + (BOOL)runTestOrRaiseWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval {
   
-	NSDate *startDate = [NSDate date];	
-	NSException *testException = nil;
+  NSDate *startDate = [NSDate date];  
+  NSException *testException = nil;
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
   if ([target respondsToSelector:@selector(_setUp)])
@@ -303,16 +303,16 @@ static GHTesting *gSharedInstance;
   // If this isn't set SenTest macros don't raise
   if ([target respondsToSelector:@selector(raiseAfterFailure)])
     [target raiseAfterFailure];
-				
+        
   // Runs the test
   [target performSelector:selector];
-				
+        
   if ([target respondsToSelector:@selector(setCurrentSelector:)])
     [target setCurrentSelector:NULL];
       
   if ([target respondsToSelector:@selector(tearDown)])
     [target performSelector:@selector(tearDown)];
-			
+      
   // Private tearDown internal to GHUnit (in case subclasses fail to call super)
   if ([target respondsToSelector:@selector(_tearDown)])
     [target performSelector:@selector(_tearDown)];
@@ -320,15 +320,15 @@ static GHTesting *gSharedInstance;
   
   [pool release];
   
-	if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
-	if (exception) *exception = testException;
-	BOOL passed = (!testException);
-	
-	if (testException && [target respondsToSelector:@selector(handleException:)]) {
-		[target handleException:testException];
-	}
-	
-	return passed;
+  if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
+  if (exception) *exception = testException;
+  BOOL passed = (!testException);
+  
+  if (testException && [target respondsToSelector:@selector(handleException:)]) {
+    [target handleException:testException];
+  }
+  
+  return passed;
 }
 
 // GTM_END
