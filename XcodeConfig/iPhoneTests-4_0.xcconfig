@@ -1,5 +1,5 @@
 
-#include "iPhoneSimulator-Debug.xcconfig"
+#include "iPhoneSimulator-Debug-4_0.xcconfig"
 
 OTHER_LDFLAGS = -all_load -ObjC
 INFOPLIST_FILE = Info.plist
@@ -8,9 +8,9 @@ GCC_PREFIX_HEADER = Tests_Prefix.pch
 GCC_PRECOMPILE_PREFIX_HEADER = YES
 
 ARCHS = $(ARCHS_UNIVERSAL_IPHONE_OS)
-SDKROOT = iphonesimulator3.0
+SDKROOT = iphonesimulator4.0
 TARGETED_DEVICE_FAMILY = 1,2
-IPHONEOS_DEPLOYMENT_TARGET = 3.0
+IPHONEOS_DEPLOYMENT_TARGET = 4.0
 
 
 

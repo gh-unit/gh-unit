@@ -3,6 +3,9 @@
 default:
 	xcodebuild -target "CombineLibs (3.0)" -configuration Release build
 
+4_0:
+	xcodebuild -target "CombineLibs (4.0)" -configuration Release build
+
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:
 	-rm -rf build/*
