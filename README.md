@@ -251,7 +251,7 @@ If you see a message like:
 
 	2009-10-15 13:02:24.746 Tests[38615:40b] *** -[Foo class]: message sent to deallocated instance 0x1c8e680
 
-Re-run (in gdb) with `MallocStackLogging=YES` and `MallocStackLoggingNoCompact=YES`, then if you run under gdb:
+Re-run (in gdb) with `MallocStackLogging=YES` (or `MallocStackLoggingNoCompact=YES`), then if you run under gdb:
 
 	(gdb) shell malloc_history 38615 0x1c8e680
 
@@ -259,7 +259,11 @@ Re-run (in gdb) with `MallocStackLogging=YES` and `MallocStackLoggingNoCompact=Y
 
 Somewhere between runTest and NSObject alloc there may be an object that wasn't retained.
 
+Also using `MallocScribble=YES` causes the malloc library to overwrite freed memory with a well-known value (0x55), and occasionally checks freed malloc blocks to make sure the memory has not been over-written overwritten written since it was cleared.
+
 For more info on these variables see [MallocDebug](http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html)
+
+For more info on malloc_history see [malloc_history](http://developer.apple.com/mac/library/documentation/Darwin/Reference/ManPages/man1/malloc_history.1.html)
 
 ## Command Line
 
@@ -409,6 +413,10 @@ You can also use GHUnit with SenTestCase, for example:
 ## Hudson
 
 For integrating with Hudson (and generating JUnit XML) see HUDSON-HOWTO; Thank mikelaurence and precipice for their work on this!
+
+## Building
+
+There should be working Makefile's in Project and Project-IPhone directories.
 
 ## Notes
 
