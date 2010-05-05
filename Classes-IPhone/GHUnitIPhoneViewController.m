@@ -53,6 +53,10 @@ NSString *const GHUnitFilterKey = @"Filter";
 - (void)dealloc {
   [dataSource_ release];  
   [suite_ release];
+  [runButton_ release];
+  view_.tableView.delegate = nil;
+  view_.searchBar.delegate = nil;
+  [view_ release];
   [super dealloc];
 }
 
@@ -64,15 +68,18 @@ NSString *const GHUnitFilterKey = @"Filter";
 
 - (void)loadView {
   [super loadView];
-    
-  if (!runButton_)
-    runButton_ = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStyleDone
-                                                 target:self action:@selector(_toggleTestsRunning)];
-  self.navigationItem.rightBarButtonItem = runButton_;
-  [runButton_ release]; 
+
+  [runButton_ release];
+  runButton_ = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStyleDone
+                                               target:self action:@selector(_toggleTestsRunning)];
+  self.navigationItem.rightBarButtonItem = runButton_;  
+
+  // Clear view
+  view_.tableView.delegate = nil;
+  view_.searchBar.delegate = nil;
+  [view_ release];
   
-  if (!view_) 
-    view_ = [[GHUnitIPhoneView alloc] initWithFrame:CGRectMake(0, 0, 320, 344)];
+  view_ = [[GHUnitIPhoneView alloc] initWithFrame:CGRectMake(0, 0, 320, 344)];
   view_.searchBar.delegate = self;
   NSString *prefix = [self _prefix];
   if (prefix) view_.searchBar.text = prefix;  
@@ -80,8 +87,7 @@ NSString *const GHUnitFilterKey = @"Filter";
   [view_.filterControl addTarget:self action:@selector(_filterChanged:) forControlEvents:UIControlEventValueChanged];
   view_.tableView.delegate = self;
   view_.tableView.dataSource = self.dataSource;
-  self.view = view_;
-  [view_ release];
+  self.view = view_;  
   [self reload];
 }
 
