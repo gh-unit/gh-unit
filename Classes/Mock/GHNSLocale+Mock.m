@@ -1,6 +1,6 @@
 //
-//  GHMockNSLocale.m
-//  GHUnitIPhone
+//  GHNSLocale+Mock.h
+//  GHUnit
 //
 //  Created by Gabriel Handford on 4/13/09.
 //  Copyright 2009. All rights reserved.

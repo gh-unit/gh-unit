@@ -243,21 +243,21 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0002877311814A5300D74BBD /* GHUnitIPhone (Device-4.0) */;
+			remoteGlobalIDString = 0002877311814A5300D74BBD;
 			remoteInfo = "GHUnitIPhone (Device-4.0)";
 		};
 		000287AF11814A8400D74BBD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0002874211814A1F00D74BBD /* GHUnitIPhone (Simulator-4.0) */;
+			remoteGlobalIDString = 0002874211814A1F00D74BBD;
 			remoteInfo = "GHUnitIPhone (Simulator-4.0)";
 		};
 		0002880311814C3600D74BBD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0002874211814A1F00D74BBD /* GHUnitIPhone (Simulator-4.0) */;
+			remoteGlobalIDString = 0002874211814A1F00D74BBD;
 			remoteInfo = "GHUnitIPhone (Simulator-4.0)";
 		};
 		00A22E2010217BF700337F7B /* PBXContainerItemProxy */ = {
