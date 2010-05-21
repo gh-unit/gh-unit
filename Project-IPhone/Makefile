@@ -9,6 +9,7 @@ default:
 	xcodebuild -target "GHUnitIPhone (Simulator-4.0)" -configuration Release build
 	xcodebuild -target "GHUnitIPhone (Device-4.0)" -configuration Release build
 	BUILD_DIR="build" BUILD_STYLE="Release" FLAVOR="4_0" GHUNIT_VERSION=$(version) sh ../Scripts/CombineLibs.sh
+	FLAVOR="4_0" sh ../Scripts/iPhoneFramework.sh
 
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:

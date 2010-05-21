@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		006D780C120A93230053B72E /* Use "make 4_0" for iOS 4 builds */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 006D7811120A93330053B72E /* Build configuration list for PBXAggregateTarget "Use "make 4_0" for iOS 4 builds" */;
+			buildPhases = (
+				006D780B120A93230053B72E /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Use \"make 4_0\" for iOS 4 builds";
+			productName = "Use make 4_0 for iOS 4 builds";
+		};
 		00A953BF0FDA36FA006A80A6 /* CombineLibs (3.0) */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 00A953C50FDA36FA006A80A6 /* Build configuration list for PBXAggregateTarget "CombineLibs (3.0)" */;
@@ -471,6 +482,7 @@
 		003280F60FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneTableViewDataSource.h; sourceTree = "<group>"; };
 		003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTableViewDataSource.m; sourceTree = "<group>"; };
 		006307B30F8E792F00C9602A /* Shared-iPhone.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Shared-iPhone.xcconfig"; sourceTree = "<group>"; };
+		006D7815120A93880053B72E /* iPhoneFramework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = iPhoneFramework.sh; sourceTree = "<group>"; };
 		007730230F8D8DF400586577 /* GHAsyncTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCaseTest.m; sourceTree = "<group>"; };
 		007730240F8D8DF400586577 /* GHRegisterTestCaseClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHRegisterTestCaseClassTest.m; sourceTree = "<group>"; };
 		007730260F8D8DF400586577 /* GHSpecialTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHSpecialTestCase.h; sourceTree = "<group>"; };
@@ -496,6 +508,7 @@
 		1D6058910D05DD3D006BFB54 /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32CA4F630368D1EE00C91783 /* Tests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tests_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9A2E33A11A6132C00F7FA51 /* Framework.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Framework.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -740,6 +753,7 @@
 		00A9533E0FDA2DD4006A80A6 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				006D7815120A93880053B72E /* iPhoneFramework.sh */,
 				00A9533F0FDA2DD4006A80A6 /* CombineLibs.sh */,
 			);
 			name = Scripts;
@@ -827,6 +841,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* Info.plist */,
+				D9A2E33A11A6132C00F7FA51 /* Framework.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -998,7 +1013,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "GHUnitIPhone" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1010,6 +1032,7 @@
 				0002874211814A1F00D74BBD /* GHUnitIPhone (Simulator-4.0) */,
 				0002877311814A5300D74BBD /* GHUnitIPhone (Device-4.0) */,
 				000287DE11814C2800D74BBD /* Tests (4.0) */,
+				006D780C120A93230053B72E /* Use "make 4_0" for iOS 4 builds */,
 			);
 		};
 /* End PBXProject section */
@@ -1048,6 +1071,19 @@
 			shellScript = ../Scripts/RunTests.sh;
 			showEnvVarsInLog = 0;
 		};
+		006D780B120A93230053B72E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here\nexit 0";
+		};
 		00A953C40FDA36FA006A80A6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1059,7 +1095,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export FLAVOR=3_0\nsh ../Scripts/CombineLibs.sh";
+			shellScript = "export FLAVOR=3_0\nsh ../Scripts/CombineLibs.sh\nsh ../Scripts/iPhoneFramework.sh";
 		};
 		00C1A2F40F5286B100FCCA14 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1306,7 +1342,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00028740118149E700D74BBD /* iPhoneDevice-Debug-4_0.xcconfig */;
 			buildSettings = {
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
 		};
@@ -1314,7 +1350,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0002873E118149CE00D74BBD /* iPhoneDevice-Release-4_0.xcconfig */;
 			buildSettings = {
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
 		};
@@ -1322,7 +1358,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0002880E11814C8300D74BBD /* iPhoneTests-4_0.xcconfig */;
 			buildSettings = {
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
 		};
@@ -1330,7 +1366,28 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 001ED7CE11728F780046CD38 /* iPhoneTests.xcconfig */;
 			buildSettings = {
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
+			};
+			name = Release;
+		};
+		006D780D120A93230053B72E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Use make 4_0 for iOS 4 builds";
+			};
+			name = Debug;
+		};
+		006D780E120A93230053B72E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Use make 4_0 for iOS 4 builds";
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -1338,6 +1395,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 001ED7AB11728BA30046CD38 /* iPhoneSimulator-Debug.xcconfig */;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
 			};
 			name = Debug;
 		};
@@ -1345,6 +1403,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 001ED7AA11728A930046CD38 /* iPhoneSimulator-Release.xcconfig */;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
 			};
 			name = Release;
 		};
@@ -1352,6 +1411,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 001ED7AD11728CDE0046CD38 /* iPhoneDevice-Debug.xcconfig */;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
 			};
 			name = Debug;
 		};
@@ -1359,6 +1419,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 001ED7AC11728C4C0046CD38 /* iPhoneDevice-Release.xcconfig */;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
 			};
 			name = Release;
 		};
@@ -1445,6 +1506,15 @@
 			buildConfigurations = (
 				000287FE11814C2800D74BBD /* Debug */,
 				000287FF11814C2800D74BBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		006D7811120A93330053B72E /* Build configuration list for PBXAggregateTarget "Use "make 4_0" for iOS 4 builds" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				006D780D120A93230053B72E /* Debug */,
+				006D780E120A93230053B72E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
