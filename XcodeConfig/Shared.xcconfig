@@ -1,4 +1,4 @@
-GHUNIT_VERSION = 0.4.21
+GHUNIT_VERSION = 0.4.22
 
 GHUNIT_GENERAL_OTHER_CFLAGS = -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition
 
@@ -13,3 +13,5 @@ GCC_DYNAMIC_NO_PIC = NO
 
 // Static libs should not have their internal globals or external symbols stripped.
 STRIP_STYLE = debugging
+
+PRODUCT_NAME = GHUnit

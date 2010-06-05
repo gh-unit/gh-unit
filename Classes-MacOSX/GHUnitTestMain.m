@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
   int retVal = 0;
   // If GHUNIT_CLI is set we are using the command line interface and run the tests
   // Otherwise load the GUI app
-  if (getenv("GHUNIT_CLI")) {   
+  if (getenv("GHUNIT_CLI")) {
     retVal = [GHTestRunner run];
   } else {
     // To run all tests (from ENV)

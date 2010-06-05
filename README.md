@@ -57,6 +57,7 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 	- Add a direct dependency, and select your project. (This will cause your application or framework to build before the test target.)
 - Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target. (See example test case below.)
+- By default, the Tests-Info.plist file includes `MainWindow` for `Main nib file base name`. You should clear this field.
 - (Optional) Install Makefile (see instructions below)
 
 ### Installing in your project
@@ -77,6 +78,7 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 - If your main target is an application, you will need to include these source files to the `Test` project manually.
 
 - Now create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target. (See example test case below.)
+- By default, the Tests-Info.plist file includes `MainWindow` for `Main nib file base name`. You should clear this field.
 - (Optional) Install Makefile (see instructions below)
 
 ### Example test case (Mac OS X)
@@ -110,8 +112,7 @@ For example `MyTest.m`:
 		// Run after each test method
 	}
 
-	- (void)testFoo {
-		
+	- (void)testFoo {		
 		GHTestLog(@"I can log to the GHUnit test console: %@", foo);
 		
 		// Assert a is not NULL, with no custom error description
@@ -150,6 +151,7 @@ Frameworks and dynamic libraries are not supported in the iPhone environment, bu
 	- GHUnit header files
 	- GHUnit test main
 - Under 'Other Linker Flags' in the `Test` target, add `-ObjC` and `-all_load`  (`-all_load` may be necessary for running on 3.0 device)
+- By default, the Tests-Info.plist file includes `MainWindow` for `Main nib file base name`. You should clear this field.
 - (Optional) Install Makefile (see instructions below)
 
 Now you can create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target.

@@ -40,7 +40,9 @@ enum {
 /*!
  Asynchronous test case with wait and notify.
  
- Handles the case of notify occuring before wait has started (if it was a synchronous call).
+ If notify occurs before wait has started (if it was a synchronous call), this test
+ case will still work.
+
  Be sure to call prepare before the asynchronous method (otherwise an exception will raise).
  
  @code
@@ -56,6 +58,7 @@ enum {
  - (void)_succeed {
    // Notice the forSelector points to the test above. This is so that
    // stray notifies don't error or falsely succeed other tests.
+   // To ignore the check, forSelector can be NULL.
    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testSuccess)];
  }
  @endcode
@@ -69,10 +72,14 @@ enum {
   NSRecursiveLock *lock_; // Lock to synchronize on
   SEL waitSelector_; // The selector we are waiting on
     
-  NSArray *_runLoopModes; // Run loop modes to run while waiting; Defaults to NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode
+  NSArray *_runLoopModes;
 }
 
-@property (retain, nonatomic) NSArray *runLoopModes;
+/*!
+ Run loop modes to run while waiting; 
+ Defaults to NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode
+ */
+@property (retain, nonatomic) NSArray *runLoopModes; 
 
 /*!
  Prepare before calling the asynchronous method. 
