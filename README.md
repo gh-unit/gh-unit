@@ -13,6 +13,8 @@ For example, your test cases will be run if they subclass any of the following:
 
 [See Downloads](http://github.com/gabriel/gh-unit/downloads)
 
+Note: iPhone OS 4.0 build only works for 4.0 beta 3; The aggregate target for building broke under XCode beta 4 and am waiting for a new XCode release.
+
 ## Why?
 
 The goals of GHUnit are:
