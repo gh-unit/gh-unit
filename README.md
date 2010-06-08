@@ -13,8 +13,6 @@ For example, your test cases will be run if they subclass any of the following:
 
 [See Downloads](http://github.com/gabriel/gh-unit/downloads)
 
-Note: iPhone OS 4.0 build works for iOS 4.0 GM
-
 ## Why?
 
 The goals of GHUnit are:
