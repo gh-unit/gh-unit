@@ -142,7 +142,7 @@ NSString *GHUnitTest = NULL;
   NSString *resultsDir = [tmpDir stringByAppendingPathComponent:@"test-results"];
   
   if (![fileManager fileExistsAtPath:resultsDir])
-    [fileManager createDirectoryAtPath:resultsDir attributes:nil];  
+    [fileManager createDirectoryAtPath:resultsDir withIntermediateDirectories:YES attributes:nil error:error];  
   
   for (id child in self.children) {
     if ([child respondsToSelector:@selector(writeJUnitXMLAtPath:error:)]) {
