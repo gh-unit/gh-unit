@@ -221,7 +221,7 @@ withDescription:GHComposeString(description, ##__VA_ARGS__)]]; \
 #define GHAssertNotEquals(a1, a2, description, ...) \
 do { \
 @try {\
-if (@encode(__typeof__(a1)) != @encode(__typeof__(a2))) { \
+if (strcmp(@encode(__typeof__(a1)), @encode(__typeof__(a2))) != 0) { \
 [self failWithException:[NSException ghu_failureInFile:[NSString stringWithUTF8String:__FILE__] \
 atLine:__LINE__ \
 withDescription:[@"Type mismatch -- " stringByAppendingString:GHComposeString(description, ##__VA_ARGS__)]]]; \
@@ -262,8 +262,8 @@ do { \
 @try {\
 id a1value = (a1); \
 id a2value = (a2); \
-if ( (@encode(__typeof__(a1value)) == @encode(id)) && \
-(@encode(__typeof__(a2value)) == @encode(id)) && \
+if ( (strcmp(@encode(__typeof__(a1value)), @encode(id)) == 0) && \
+(strcmp(@encode(__typeof__(a2value)), @encode(id)) == 0) && \
 ![(id)a1value isEqual:(id)a2value] ) continue; \
 NSString *_expression = [NSString stringWithFormat:@"%s('%@') != %s('%@')", #a1, [a1 description], #a2, [a2 description]]; \
 if (desc) { \
@@ -293,7 +293,7 @@ withDescription:GHComposeString(desc, ##__VA_ARGS__)]]; \
 #define GHAssertOperation(a1, a2, op, description, ...) \
 do { \
 @try {\
-if (@encode(__typeof__(a1)) != @encode(__typeof__(a2))) { \
+if (strcmp(@encode(__typeof__(a1)), @encode(__typeof__(a2))) != 0) { \
 [self failWithException:[NSException ghu_failureInFile:[NSString stringWithUTF8String:__FILE__] \
 atLine:__LINE__ \
 withDescription:[@"Type mismatch -- " stringByAppendingString:GHComposeString(description, ##__VA_ARGS__)]]]; \
