@@ -29,20 +29,32 @@
 
 #import "GHTestViewController.h"
 
-@interface GHTestViewController (Private)
+#import "GHTesting.h"
+
+@interface GHTestViewController ()
 - (void)_updateTest:(id<GHTest>)test;
+- (NSString *)_prefix;
+- (void)_setPrefix:(NSString *)prefix;
+- (void)_updateDetailForTest:(id<GHTest>)test prefix:(NSString *)prefix;
 @end
 
 @implementation GHTestViewController
 
 @synthesize suite=suite_, status=status_, statusProgress=statusProgress_, 
-wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
+wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_,
+running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exceptionLineNumber_;
 
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { 
 		suite_ = [[GHTestSuite suiteFromEnv] retain];
-		dataSource_ = [[GHTestOutlineViewModel alloc] initWithSuite:suite_];
+    
+    NSString *identifier = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"] retain];
+    if (!identifier) identifier = @"Tests";
+    GHUDebug(@"Using identifier: %@", identifier);
+    
+		dataSource_ = [[GHTestOutlineViewModel alloc] initWithIdentifier:identifier suite:suite_];
 		dataSource_.delegate = self;
+    [dataSource_ loadDefaults];
 		self.view; // Force nib awaken
 	}
 	return self;
@@ -63,8 +75,25 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 	[_textView setTextColor:[NSColor whiteColor]];
 	[_textView setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
 	[_textView setString:@""];
+  _textSegmentedControl.selectedSegment = [[NSUserDefaults standardUserDefaults] integerForKey:@"TextSelectedSegment"];
+  
+  NSString *prefix = [self _prefix];
+  if (prefix) {
+    [_searchField setStringValue:prefix];
+    [self updateSearchFilter:nil];
+  }
+  
 	self.wrapInTextView = NO;
 	self.runLabel = @"Run";
+}
+
+- (NSString *)_prefix {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:@"Prefix"];
+}
+
+- (void)_setPrefix:(NSString *)prefix {
+  [[NSUserDefaults standardUserDefaults] setObject:prefix forKey:@"Prefix"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark Running
@@ -83,17 +112,25 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 		self.status = @"Starting tests...";
 		self.runLabel = @"Cancel";
 		BOOL inParallel = [[NSUserDefaults standardUserDefaults] boolForKey:@"RunInParallel"];
-		[dataSource_ run:self inParallel:inParallel];
+    BOOL reraiseExceptions = [[NSUserDefaults standardUserDefaults] boolForKey:@"ReraiseExceptions"];
+    // TODO(gabe): This is confusing; Choosing reraise over in parallel since can't have both
+    if (inParallel && reraiseExceptions) inParallel = NO;
+    GHTestOptions options;
+    if (reraiseExceptions) options |= GHTestOptionReraiseExceptions;
+		[dataSource_ run:self inParallel:inParallel options:options];
 	}
 }
 
 - (void)loadTestSuite {
 	self.status = @"Loading tests...";
-	[suite_ reset];
-	[_outlineView reloadData];
+  [self reload];
+	self.status = @"Select 'Run' to start tests";
+}
+
+- (void)reload {
+  [_outlineView reloadData];
 	[_outlineView reloadItem:nil reloadChildren:YES];
 	[_outlineView expandItem:nil expandChildren:YES];
-	self.status = @"Select 'Run' to start tests";
 }
 
 #pragma mark -
@@ -120,8 +157,58 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 	[_textView setNeedsDisplay:YES];
 }
 
+- (IBAction)updateMode:(id)sender {
+  GHUDebug(@"Update mode: %d", _segmentedControl.selectedSegment);
+  switch(_segmentedControl.selectedSegment) {
+    case 0: {
+      dataSource_.editing = NO;
+      [dataSource_.root setFilter:GHTestNodeFilterNone]; 
+      break;
+    }
+    case 1: {
+      dataSource_.editing = NO;
+      [dataSource_.root setFilter:GHTestNodeFilterFailed]; 
+      break;
+    }
+    case 2: {      
+      dataSource_.editing = YES;      
+      [dataSource_.root setFilter:GHTestNodeFilterNone];
+      break;
+    }
+  }
+  [dataSource_ saveDefaults];
+  [self reload];
+}
+
+- (IBAction)updateSearchFilter:(id)sender {
+  NSString *prefix = [_searchField stringValue];
+  [dataSource_.root setTextFilter:prefix];
+  [self _setPrefix:prefix];
+  [self reload];
+}
+
 - (IBAction)copy:(id)sender {
 	[_textView copy:sender];
+}
+
+- (IBAction)openExceptionFilename:(id)sender {
+  if (self.exceptionFilename) {
+    NSString *path = [self.exceptionFilename stringByExpandingTildeInPath];
+    [[NSWorkspace sharedWorkspace] openFile:path];
+  }
+}
+
+- (IBAction)rerunTest:(id)sender {
+  id<GHTest> test = [[self selectedTest] copyWithZone:NULL];
+  GHUDebug(@"Re-running: %@", test);
+  [self _updateDetailForTest:nil prefix:@"Re-running test."];
+  [test run:GHTestOptionForceSetUpTearDownClass];  
+  [self _updateDetailForTest:test prefix:@"Re-ran test. (This feature is experimental.)"];  
+  [test release];
+} 
+
+- (BOOL)isShowingDetails {
+  return ![[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"];
 }
 
 - (IBAction)toggleDetails:(id)sender {	
@@ -147,51 +234,78 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 
 - (void)saveDefaults {
 	[dataSource_ saveDefaults];
+  [[NSUserDefaults standardUserDefaults] setInteger:_textSegmentedControl.selectedSegment forKey:@"TextSelectedSegment"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)_setText:(NSInteger)row selector:(SEL)selector {
-	if (row < 0) return;
-	id item = [_outlineView itemAtRow:row];
-	NSString *text = [item performSelector:selector];
-	if (text) text = [NSString stringWithFormat:@"%@\n", text]; // Newline important for when we append streaming text
-	[_textView setString:text ? text : @""];	
+- (NSString *)_formatText:(NSString *)text {
+	if (text) return [NSString stringWithFormat:@"%@\n", text]; // Newline important for when we append streaming text
+  return @"";
 }
 
-- (IBAction)edit:(id)sender {
-	dataSource_.editing = ([sender state] == NSOnState);
-	[_outlineView reloadData];
+- (NSString *)stackTraceForSelectedRow:(id<GHTest>)test {
+  if (![test exception]) return @"";
+  NSString *text = [GHTesting descriptionForException:[test exception]];
+  return [self _formatText:text];
+}
+
+- (NSString *)logForSelectedRow:(id<GHTest>)test {
+  NSString *text = [[test log] componentsJoinedByString:@"\n"]; // TODO(gabe): This isn't very performant
+  return [self _formatText:text];
+}
+
+- (NSString *)textForSegment:(NSInteger)segment test:(id<GHTest>)test {
+  if (!test) return @"";
+  switch(segment) {
+		case 0: return [self stackTraceForSelectedRow:test];
+		case 1: return [self logForSelectedRow:test];
+	}
+  return nil;
+}
+
+- (void)_updateDetailForTest:(id<GHTest>)test prefix:(NSString *)prefix {
+  NSMutableString *text = [NSMutableString string];
+  if (prefix) [text appendFormat:@"\n\t%@\n\n", prefix];
+  NSString *testDetail = [self textForSegment:[_textSegmentedControl selectedSegment] test:test];
+  if (testDetail) [text appendString:testDetail];
+  [_textView setString:text];
+  self.exceptionFilename = [GHTesting exceptionFilenameForTest:test];  
+  self.exceptionLineNumber = [GHTesting exceptionLineNumberForTest:test];
 }
 
 - (IBAction)updateTextSegment:(id)sender {
-	switch([sender selectedSegment]) {
-		case 0:
-			[self _setText:[_outlineView selectedRow] selector:@selector(stackTrace)];
-			break;
-		case 1:			
-			[self _setText:[_outlineView selectedRow] selector:@selector(log)];
-			break;
-		case 2:
-			// TODO
-			break;
-	}
+  [self _updateDetailForTest:[self selectedTest] prefix:nil];
+}
+
+- (GHTestNode *)selectedNode {
+  NSInteger row = [_outlineView selectedRow];
+	if (row < 0) return nil;
+  return [_outlineView itemAtRow:row];  
 }
 
 - (id<GHTest>)selectedTest {
-	NSInteger row = [_outlineView selectedRow];
-	if (row < 0) return nil;
-	GHTestNode *node = [_outlineView itemAtRow:row];
-	return node.test;
+	return [self selectedNode].test;
 }
 
 - (void)selectFirstFailure {
 	GHTestNode *failedNode = [dataSource_ findFailure];
 	NSInteger row = [_outlineView rowForItem:failedNode];
-	if (row >= 0) {
-		[_outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-		[_textSegmentedControl setSelectedSegment:0];
-		[self updateTextSegment:_textSegmentedControl];
+	if (row >= 0) {		
+    [self selectRow:row];
 	}
+}
+
+- (void)selectRow:(NSInteger)row {
+  if (row >= 0)
+    [_outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+  
+  [_textView setString:@""];
+  
+	[self updateTextSegment:_textSegmentedControl];
+  
+  self.exceptionFilename = [[self selectedNode] exceptionFilename];  
+  self.exceptionLineNumber = [[self selectedNode] exceptionLineNumber];
+  
 }
 
 - (void)_updateTest:(id<GHTest>)test {
@@ -208,8 +322,7 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 #pragma mark Delegates (GHTestOutlineViewModel)
 
 - (void)testOutlineViewModelDidChangeSelection:(GHTestOutlineViewModel *)testOutlineViewModel {
-	[_textView setString:@""];
-	[self updateTextSegment:_textSegmentedControl];
+  [self selectRow:-1];
 }
 
 #pragma mark Delegates (GHTestRunner)
@@ -237,23 +350,29 @@ wrapInTextView=wrapInTextView_, runLabel=runLabel_, dataSource=dataSource_;
 
 - (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test {
 	[self _updateTest:test];
+  [self updateTextSegment:nil]; // In case test is selected before it ran
 }
 
 - (void)testRunnerDidStart:(GHTestRunner *)runner { 	
-	[self _updateTest:runner.test];
+  self.running = YES;
+	[self _updateTest:runner.test];  
 }
 
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
 	GHUDebug(@"Test runner end: %@", [runner.test identifier]);
 	[self _updateTest:runner.test];
-	[self selectFirstFailure];
+	self.status = [dataSource_ statusString:@"Status: "];
+	//[self selectFirstFailure];
 	self.runLabel = @"Run";
+  [dataSource_ saveDefaults];
+  self.running = NO;
 }
 
 - (void)testRunnerDidCancel:(GHTestRunner *)runner {
 	self.runLabel = @"Run";
 	self.status = [dataSource_ statusString:@"Cancelled... "];
 	self.statusProgress = 0;
+  self.running = NO;
 }
 
 @end

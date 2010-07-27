@@ -8,8 +8,6 @@
 
 #import "GHTestWindowController.h"
 
-#import "GHTestRunner.h"
-
 @interface GHTestApp : NSObject {
 	NSMutableArray *topLevelObjects_;
 	

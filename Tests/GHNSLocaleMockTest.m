@@ -15,9 +15,9 @@
 @implementation GHNSLocaleMockTest
 
 - (void)testLocale {
-	[NSLocale gh_setLocaleIdentifier:@"en_GB"];
-	NSString *localeIdentifier = [[NSLocale currentLocale] localeIdentifier];
-	GHAssertEqualStrings(localeIdentifier, @"en_GB", nil);
+  [NSLocale gh_setLocaleIdentifier:@"en_GB"];
+  NSString *localeIdentifier = [[NSLocale currentLocale] localeIdentifier];
+  GHAssertEqualStrings(localeIdentifier, @"en_GB", nil);
 }
 
 @end

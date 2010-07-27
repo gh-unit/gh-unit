@@ -2,6 +2,8 @@
 .DS_Store
 
 #Ignore user-specific settings
+=======
+build
 *.mode1v3
 *.mode2v3
 *.pbxuser
@@ -14,7 +16,5 @@
 *.swp
 *~.nib
 
-#Ignore the build, since we don't want archived builds
-build
-
+Documentation
 .gitattributes

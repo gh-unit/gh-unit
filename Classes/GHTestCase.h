@@ -83,16 +83,16 @@
  - (void)testB { }
  
  // Override any exceptions; By default exceptions are raised, causing a test failure
- - (void)failWithException:(NSException*)exception { }
+ - (void)failWithException:(NSException *)exception { }
  
  @end
  @endcode
 
  */
 @interface GHTestCase : NSObject {
-	id<GHTestCaseLogWriter> logWriter_; // weak
-	
-	SEL currentSelector_;
+  id<GHTestCaseLogWriter> logWriter_; // weak
+  
+  SEL currentSelector_;
 }
 
 //! The current test selector

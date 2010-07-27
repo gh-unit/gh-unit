@@ -29,19 +29,16 @@
 
 #import "GHTestViewModel.h"
 #import "GTMStackTrace.h"
-
-@interface GHTestViewModel (Private)
-- (void)_loadTestNodes;
-@end
+#import "GHTesting.h"
 
 @implementation GHTestViewModel
 
 @synthesize root=root_, editing=editing_;
 
-- (id)initWithSuite:(GHTestSuite *)suite {
+- (id)initWithIdentifier:(NSString *)identifier suite:(GHTestSuite *)suite {
 	if ((self = [super init])) {		
-		suite_ = [suite retain];		
-		[self loadDefaults]; // Needs to load before test nodes get built
+    identifier_ = [identifier retain];
+		suite_ = [suite retain];				
 		root_ = [[GHTestNode alloc] initWithTest:suite_ children:[suite_ children] source:self];
 		map_ = [[NSMutableDictionary dictionary] retain];		
 	}
@@ -53,12 +50,15 @@
 	for(NSString *identifier in map_) 
 		[[map_ objectForKey:identifier] setDelegate:nil];
 	
+  [identifier_ release];
 	[root_ release];
 	[map_ release];
-	[settingsKey_ release];
-	[settings_ release];
+	[defaults_ release];
 	[suite_ release];
-	[runner_ release];
+  [runner_ cancel];
+  runner_.delegate = nil;
+  [runner_ release];
+  
 	[super dealloc];
 }
 
@@ -68,7 +68,7 @@
 
 - (NSString *)statusString:(NSString *)prefix {
 	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ disabledCount] + [suite_ stats].cancelCount);
-	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs", (self.isRunning ? @"Running" : @"Took"), [suite_ interval]];
+	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs (%0.3fs in test time)", (self.isRunning ? @"Running" : @"Took"), runner_.interval, [suite_ interval]];
 	return [NSString stringWithFormat:@"%@%@ %d/%d (%d failures)", prefix, statusInterval,
 					[suite_ stats].succeedCount, totalRunCount, [suite_ stats].failureCount];	
 }
@@ -76,10 +76,6 @@
 - (void)registerNode:(GHTestNode *)node {
 	[map_ setObject:node forKey:node.identifier];
 	node.delegate = self;
-	
-	// Apply settings
-	BOOL disabled = [[settings_ objectForKey:[NSString stringWithFormat:@"%@-disabled", node.identifier]] boolValue];
-	if (disabled) [node setSelected:NO];
 }
 
 - (GHTestNode *)findTestNode:(id<GHTest>)test {
@@ -130,45 +126,69 @@
 	return nil;
 }
 
-- (void)testNodeDidChange:(GHTestNode *)node {	
-	if (![node hasChildren]) {
-		GHUDebug(@"Node %@ changed: %d", node.identifier, node.isSelected);
-		NSString *key = [NSString stringWithFormat:@"%@-disabled", node.identifier];
-		if (node.isSelected) [settings_ removeObjectForKey:key];
-		else [settings_ setObject:[NSNumber numberWithBool:YES] forKey:key];
-	}
+- (void)testNodeDidChange:(GHTestNode *)node { }
+
+- (NSString *)_defaultsPath {
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+  if ([paths count] == 0) return nil;
+  NSString *identifier = identifier_;
+  if (!identifier) identifier = @"Tests";
+  return [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"GHUnit-%@.tests", identifier]];
 }
 
-- (void)loadDefaults {
-	settingsKey_ = [[NSString stringWithFormat:@"GHUnit4-%@", [suite_ name]] copy];
-	settings_ = [[[NSUserDefaults standardUserDefaults] objectForKey:settingsKey_] mutableCopy];		
-	if (!settings_) settings_ = [[NSMutableDictionary dictionary] retain];
-	GHUDebug(@"Settings: %@", settings_);	
+- (void)_updateTestNodeWithDefaults:(GHTestNode *)node {
+  id<GHTest> test = node.test;
+  id<GHTest> testDefault = [defaults_ objectForKey:test.identifier];
+  if (testDefault) {    
+    test.status = testDefault.status;
+    test.interval = testDefault.interval;
+    #if !TARGET_OS_IPHONE // Don't use hidden state for iPhone
+    if ([test isKindOfClass:[GHTest class]]) 
+      [test setHidden:testDefault.hidden];
+    #endif
+  }
+  for(GHTestNode *childNode in [node children])
+    [self _updateTestNodeWithDefaults:childNode];
+}
+
+- (void)_saveTestNodeToDefaults:(GHTestNode *)node {
+  [defaults_ setObject:node.test forKey:node.test.identifier];
+  for(GHTestNode *childNode in [node children])
+    [self _saveTestNodeToDefaults:childNode];
+}
+
+- (void)loadDefaults {  
+  if (!defaults_) {
+    NSString *path = [self _defaultsPath];
+    if (path) defaults_ = [[NSKeyedUnarchiver unarchiveObjectWithFile:path] retain];
+  }
+  if (!defaults_) defaults_ = [[NSMutableDictionary dictionary] retain];    
+  [self _updateTestNodeWithDefaults:root_];
 }
 
 - (void)saveDefaults {
-	GHUDebug(@"Saving settings: %@", settings_);
-	[[NSUserDefaults standardUserDefaults] setObject:settings_ forKey:settingsKey_];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+  NSString *path = [self _defaultsPath];
+  if (!path || !defaults_) return;
+  
+  [self _saveTestNodeToDefaults:root_];
+  [NSKeyedArchiver archiveRootObject:defaults_ toFile:path];
 }
 
 - (void)cancel {	
 	[runner_ cancel];
 }
 
-- (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel {
-	if (!runner_) {
-		runner_ = [[GHTestRunner runnerForSuite:suite_] retain];		
-		runner_.delegate = delegate;
-	}
-	if (inParallel) {
-		NSOperationQueue *operationQueue = [[[NSOperationQueue alloc] init] autorelease];
-		operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
-		runner_.operationQueue = operationQueue;
-	} else {
-		runner_.operationQueue = nil;
-	}
-	
+- (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel options:(GHTestOptions)options {  
+  // Reset (non-disabled) tests so we don't clear non-filtered tests status; in case we re-filter and they become visible
+  for(id<GHTest> test in [suite_ children])
+    if (!test.disabled) [test reset];
+  
+  if (!runner_) {
+    runner_ = [[GHTestRunner runnerForSuite:suite_] retain];
+  }
+  runner_.delegate = delegate;
+  runner_.options = options;
+  [runner_ setInParallel:inParallel];
 	[runner_ runInBackground];
 }
 
@@ -180,9 +200,9 @@
 
 @implementation GHTestNode
 
-@synthesize test=test_, children=children_, delegate=delegate_;
+@synthesize test=test_, children=children_, delegate=delegate_, filter=filter_, textFilter=textFilter_;
 
-- (id)initWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source {
+- (id)initWithTest:(id<GHTest>)test children:(NSArray */*of id<GHTest>*/)children source:(GHTestViewModel *)source {
 	if ((self = [super init])) {
 		test_ = [test retain];
 		
@@ -209,6 +229,8 @@
 - (void)dealloc {
 	[test_ release];
 	[children_ release];
+  [filteredChildren_ release];
+  [textFilter_ release];
 	[super dealloc];
 }
 
@@ -217,11 +239,72 @@
 }
 
 - (BOOL)hasChildren {
-	return [children_ count] > 0;
+	return [self.children count] > 0;
 }
 
 - (void)notifyChanged {
 	[delegate_ testNodeDidChange:self];
+}
+
+- (NSArray *)children {
+  if (filter_ != GHTestNodeFilterNone || textFilter_) return filteredChildren_;
+  return children_;
+}
+
+- (void)_applyFilters {  
+  NSMutableSet *textFiltered = [NSMutableSet set];
+  for(GHTestNode *childNode in children_) {
+    [childNode setTextFilter:textFilter_];
+    if (textFilter_) {
+      if ([self.name hasPrefix:textFilter_] || [childNode.name hasPrefix:textFilter_] || [childNode hasChildren]) 
+        [textFiltered addObject:childNode];
+    }
+  }
+  
+  NSMutableSet *filtered = [NSMutableSet set];
+  for(GHTestNode *childNode in children_) {      
+    [childNode setFilter:filter_];
+    if (filter_ == GHTestNodeFilterFailed) { 
+      if ([childNode hasChildren] || childNode.failed)
+        [filtered addObject:childNode];
+    }
+  }
+  
+  [filteredChildren_ release];
+  filteredChildren_ = [[NSMutableArray array] retain];
+  for(GHTestNode *childNode in children_) {
+    if ((!textFilter_ || [textFiltered containsObject:childNode]) && 
+        (filter_ == GHTestNodeFilterNone || [filtered containsObject:childNode]) || [childNode hasChildren]) {
+      [filteredChildren_ addObject:childNode];
+      if (![childNode hasChildren]) {
+        [childNode.test setDisabled:NO];
+      }
+    } else {
+      if (![childNode hasChildren]) {
+        [childNode.test setDisabled:YES];
+      }
+    }
+  }
+}
+
+- (void)setTextFilter:(NSString *)textFilter {
+  [self setFilter:filter_ textFilter:textFilter];
+}
+
+- (void)setFilter:(GHTestNodeFilter)filter {
+  [self setFilter:filter textFilter:textFilter_];
+}
+
+- (void)setFilter:(GHTestNodeFilter)filter textFilter:(NSString *)textFilter {
+  filter_ = filter;
+  
+  textFilter = [textFilter stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  if ([textFilter isEqualToString:@""]) textFilter = nil;
+  
+  [textFilter retain];
+  [textFilter_ release];
+  textFilter_ = textFilter;    
+  [self _applyFilters];    
 }
 
 - (NSString *)name {
@@ -249,7 +332,7 @@
 		else if ([test_ status] == GHTestStatusCancelled) {
 			status = @"-";
 			interval = @"";
-		} else if ([test_ isDisabled]) {
+		} else if ([test_ isDisabled] || [test_ isHidden]) {
 			status = @"⊝";
 			interval = @"";
 		}
@@ -289,6 +372,10 @@
 	return [test_ isDisabled];
 }
 
+- (BOOL)isHidden {
+	return [test_ isHidden];
+}
+
 - (BOOL)isEnded {
 	return GHTestStatusEnded([test_ status]);
 }
@@ -300,10 +387,15 @@
 - (NSString *)stackTrace {
 	if (![test_ exception]) return nil;
 
-	return [[NSString stringWithFormat:@"%@ - %@\n%@", 
-					 [[test_ exception] name],
-					 [[test_ exception] reason], 
-					 GHU_GTMStackTraceFromException([test_ exception])] retain];
+	return [GHTesting descriptionForException:[test_ exception]];
+}
+
+- (NSString *)exceptionFilename {
+  return [GHTesting exceptionFilenameForTest:test_];
+}
+
+- (NSInteger)exceptionLineNumber {
+  return [GHTesting exceptionLineNumberForTest:test_];
 }
 
 - (NSString *)log {
@@ -315,11 +407,11 @@
 }
 
 - (BOOL)isSelected {
-	return ![test_ isDisabled];
+	return ![test_ isHidden];
 }
 
 - (void)setSelected:(BOOL)selected {
-	[test_ setDisabled:!selected];
+	[test_ setHidden:!selected];
 	for(GHTestNode *node in children_) 
 		[node setSelected:selected];
 	[self notifyChanged];
