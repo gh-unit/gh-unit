@@ -219,6 +219,7 @@ Then go in the "Arguments" tab. You can add the following environment variables:
 	GHUNIT_CLI - Default NO; Runs tests on the command line (see Debugger Console, Cmd-Shift-R)
 	GHUNIT_RERAISE - Default NO; If an exception is encountered it re-raises it allowing you to crash into the debugger
 	GHUNIT_AUTORUN - Default NO; If YES, tests will start automatically
+  GHUNIT_AUTOEXIT - Default NO; If YES, will exit upon test completion (no matter what); For command line MacOSX testing
 
 ## Test Environment Variables (Recommended)
 
