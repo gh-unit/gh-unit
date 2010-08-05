@@ -85,6 +85,7 @@
 - (IBAction)updateMode:(id)sender;
 - (IBAction)updateSearchFilter:(id)sender;
 - (IBAction)openExceptionFilename:(id)sender;
+- (IBAction)rerunTest:(id)sender;
 
 - (id<GHTest>)selectedTest;
 

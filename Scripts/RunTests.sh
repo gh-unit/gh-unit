@@ -5,9 +5,9 @@ if [ "$GHUNIT_CLI" = "" ] && [ "$GHUNIT_AUTORUN" = "" ]; then
   exit 0
 fi
 
-#export DYLD_ROOT_PATH="$SDKROOT"
+export DYLD_ROOT_PATH="$SDKROOT"
 export DYLD_FRAMEWORK_PATH="$CONFIGURATION_BUILD_DIR"
-#export IPHONE_SIMULATOR_ROOT="$SDKROOT"
+export IPHONE_SIMULATOR_ROOT="$SDKROOT"
 
 export MallocScribble=YES
 export MallocPreScribble=YES

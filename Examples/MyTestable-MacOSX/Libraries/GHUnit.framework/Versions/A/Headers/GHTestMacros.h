@@ -86,6 +86,9 @@ extern NSString *const GHTestFilenameKey;
 extern NSString *const GHTestLineNumberKey;
 extern NSString *const GHTestFailureException;
 
+#if defined(__cplusplus) 
+extern "C" 
+#endif 
 NSString *GHComposeString(NSString *, ...);
 
 // Generates a failure when a1 != noErr
@@ -507,8 +510,8 @@ do { \
 id a1value = (a1); \
 id a2value = (a2); \
 if (a1value == a2value) continue; \
-if ( (@encode(__typeof__(a1value)) == @encode(id)) && \
-(@encode(__typeof__(a2value)) == @encode(id)) && \
+if ( (strcmp(@encode(__typeof__(a1value)), @encode(id)) == 0) && \
+(strcmp(@encode(__typeof__(a2value)), @encode(id)) == 0) && \
 [(id)a1value isEqual: (id)a2value] ) continue; \
 [self failWithException:[NSException ghu_failureInEqualityBetweenObject: a1value \
 andObject: a2value \
@@ -537,7 +540,7 @@ withDescription:GHComposeString(description, ##__VA_ARGS__)]]; \
 #define GHAssertEquals(a1, a2, description, ...) \
 do { \
 @try {\
-if (@encode(__typeof__(a1)) != @encode(__typeof__(a2))) { \
+if ( strcmp(@encode(__typeof__(a1)), @encode(__typeof__(a2))) != 0 ) { \
 [self failWithException:[NSException ghu_failureInFile:[NSString stringWithUTF8String:__FILE__] \
 atLine:__LINE__ \
 withDescription:[@"Type mismatch -- " stringByAppendingString:GHComposeString(description, ##__VA_ARGS__)]]]; \

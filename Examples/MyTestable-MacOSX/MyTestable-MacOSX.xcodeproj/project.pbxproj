@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00F6103D10A1FEDE000E0CB3 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F6103C10A1FEDE000E0CB3 /* GHUnit.framework */; };
-		00F6104310A1FFA9000E0CB3 /* GHUnit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00F6103C10A1FEDE000E0CB3 /* GHUnit.framework */; };
+		000419A4120AAB1E007589A0 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000419A3120AAB1E007589A0 /* GHUnit.framework */; };
 		00F6106110A2000F000E0CB3 /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F6106010A2000F000E0CB3 /* GHUnitTestMain.m */; };
 		00F6106410A20061000E0CB3 /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F6106310A20061000E0CB3 /* MyTest.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
@@ -25,16 +24,17 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				00F6104310A1FFA9000E0CB3 /* GHUnit.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		000419A3120AAB1E007589A0 /* GHUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnit.framework; sourceTree = "<group>"; };
+		00041A50120AAF20007589A0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		00041A8D120AB18C007589A0 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
 		00F6103510A1FEBD000E0CB3 /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00F6103710A1FEBE000E0CB3 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
-		00F6103C10A1FEDE000E0CB3 /* GHUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnit.framework; sourceTree = "<group>"; };
 		00F6106010A2000F000E0CB3 /* GHUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitTestMain.m; sourceTree = "<group>"; };
 		00F6106310A20061000E0CB3 /* MyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTest.m; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00F6103D10A1FEDE000E0CB3 /* GHUnit.framework in Frameworks */,
+				000419A4120AAB1E007589A0 /* GHUnit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +74,7 @@
 		00F6103B10A1FEDE000E0CB3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				00F6103C10A1FEDE000E0CB3 /* GHUnit.framework */,
+				000419A3120AAB1E007589A0 /* GHUnit.framework */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -151,6 +151,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				00041A8D120AB18C007589A0 /* RunTests.sh */,
+				00041A50120AAF20007589A0 /* Makefile */,
 				8D1107310486CEB800E47090 /* MyTestable_MacOSX-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -214,7 +216,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MyTestable-MacOSX" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MyTestable-MacOSX */;
 			projectDirPath = "";
 			projectRoot = "";

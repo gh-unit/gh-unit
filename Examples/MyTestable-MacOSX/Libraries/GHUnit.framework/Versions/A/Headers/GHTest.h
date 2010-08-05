@@ -31,16 +31,17 @@
  Test status.
  */
 typedef enum {
-	GHTestStatusNone = 0,
-	GHTestStatusRunning, // Test is running
-	GHTestStatusCancelling, // Test is being cancelled
-	GHTestStatusCancelled, // Test was cancelled
-	GHTestStatusSucceeded, // Test finished and succeeded
-	GHTestStatusErrored, // Test finished and errored
+  GHTestStatusNone = 0,
+  GHTestStatusRunning, // Test is running
+  GHTestStatusCancelling, // Test is being cancelled
+  GHTestStatusCancelled, // Test was cancelled
+  GHTestStatusSucceeded, // Test finished and succeeded
+  GHTestStatusErrored, // Test finished and errored
 } GHTestStatus;
 
 enum {
-  GHTestOptionReraiseExceptions = 1 << 0, // If YES, will allow exceptions to be raised (so you can trigger the debugger)
+  GHTestOptionReraiseExceptions = 1 << 0, // Allows exceptions to be raised (so you can trigger the debugger)
+  GHTestOptionForceSetUpTearDownClass = 1 << 1, // Runs setUpClass/tearDownClass for this (each) test; Used when re-running a single test in a group
 };
 typedef NSInteger GHTestOptions;
 
@@ -64,10 +65,10 @@ extern BOOL GHTestStatusEnded(GHTestStatus status);
  Test stats.
  */
 typedef struct {
-	NSInteger succeedCount; // Number of succeeded tests
-	NSInteger failureCount; // Number of failed tests
-	NSInteger cancelCount; // Number of aborted tests
-	NSInteger testCount; // Total number of tests 
+  NSInteger succeedCount; // Number of succeeded tests
+  NSInteger failureCount; // Number of failed tests
+  NSInteger cancelCount; // Number of aborted tests
+  NSInteger testCount; // Total number of tests 
 } GHTestStats;
 
 /*!
@@ -85,7 +86,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  The base interface for a runnable test.
  A runnable with a unique identifier, display name, stats, timer, delegate, log and error handling.
  */
-@protocol GHTest <NSObject, NSCoding>
+@protocol GHTest <NSObject, NSCoding, NSCopying>
 
 - (void)run:(GHTestOptions)options;
 
@@ -125,15 +126,6 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 - (void)log:(NSString *)message testCase:(id)testCase;
 @end
 
-@interface GHTestOperation : NSOperation { 
-	id<GHTest> test_;
-  GHTestOptions options_;
-}
-
-- (id)initWithTest:(id<GHTest>)test options:(GHTestOptions)options;
-
-@end
-
 /*!
  Default test implementation with a target/selector pair.
  - Tests a target and selector
@@ -142,21 +134,22 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  - Stores any test specific logging
  */
 @interface GHTest : NSObject <GHTest, GHTestCaseLogWriter> {
-	
-	NSObject<GHTestDelegate> *delegate_; // weak
-	
-	id target_;
-	SEL selector_;
-	
-	NSString *identifier_;
-	NSString *name_;	
-	GHTestStatus status_;
-	NSTimeInterval interval_;
-	BOOL disabled_;
+  
+  NSObject<GHTestDelegate> *delegate_; // weak
+  
+  id target_;
+  SEL selector_;
+  
+  NSString *identifier_;
+  NSString *name_;  
+  GHTestStatus status_;
+  NSTimeInterval interval_;
+  BOOL disabled_;
   BOOL hidden_;
-	NSException *exception_; // If failed
-		
-	NSMutableArray *log_;
+  NSException *exception_; // If failed
+    
+  NSMutableArray *log_;
+
 }
 
 @property (readonly, nonatomic) id target;
@@ -164,7 +157,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 @property (readonly, nonatomic) NSArray *log;
 
 /*!
- Creat test with identifier, name.
+ Create test with identifier, name.
  @param identifier Unique identifier
  @param name Name
  */
@@ -185,3 +178,4 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 + (id)testWithTarget:(id)target selector:(SEL)selector;
 
 @end
+

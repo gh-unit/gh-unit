@@ -1,9 +1,9 @@
 //
-//  GHNSLocale+Mock.h
+//  GHTestOperation.h
 //  GHUnit
 //
-//  Created by Gabriel Handford on 4/13/09.
-//  Copyright 2009. All rights reserved.
+//  Created by Gabriel Handford on 6/4/10.
+//  Copyright 2010. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,33 +27,16 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-/*!
- Category for overriding the current locale at runtime.
-
- @code
- #import "GHNSLocale+Mock.h"
- // This aliases the currentLocale method and with the specified locale identifier
- [NSLocale gh_setLocaleIdentifier:@"en_GB"];
-  
- [[NSLocale currentLocale] localeIdentifier] == "en_GB"
- @endcode
- */
-@interface NSLocale (GHMock)
-
-+ (void)gh_setLocaleIdentifier:(NSString *)localeIdentifier;
+#import "GHTest.h"
 
 /*!
- Aliases to currentLocale with locale set from gh_setLocaleIdentifier.
- If not set, defaults to NSLocale with identifier en_US.
+ Test for running in the context of an NSOperationQueue.
  */
-+ (NSLocale *)gh_currentLocale;
+@interface GHTestOperation : NSOperation { 
+  id<GHTest> test_;
+  GHTestOptions options_;
+}
 
-+ (void)gh_setPreferredLanguages:(NSArray *)preferredLanguages;
-
-/*!
- Aliases to preferredLanguages set from gh_setPreferredLanguages.
- If not set, defaults to [@"en"].
- */
-+ (NSArray *)gh_preferredLanguages;
+- (id)initWithTest:(id<GHTest>)test options:(GHTestOptions)options;
 
 @end

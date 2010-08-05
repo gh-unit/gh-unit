@@ -46,25 +46,25 @@
 		003676950F8E95CF0042FAF7 /* GHMockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 003676930F8E95CF0042FAF7 /* GHMockNSURLConnection.m */; };
 		003676980F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 003676960F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		003676990F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 003676970F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.m */; };
-		0052C73B11BA0F10007F28FD /* GHTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C72D11BA0F10007F28FD /* GHTest.h */; };
+		0052C73B11BA0F10007F28FD /* GHTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C72D11BA0F10007F28FD /* GHTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052C73C11BA0F10007F28FD /* GHTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C72E11BA0F10007F28FD /* GHTest.m */; };
-		0052C73D11BA0F10007F28FD /* GHTestGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C72F11BA0F10007F28FD /* GHTestGroup.h */; };
+		0052C73D11BA0F10007F28FD /* GHTestGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C72F11BA0F10007F28FD /* GHTestGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052C73E11BA0F10007F28FD /* GHTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73011BA0F10007F28FD /* GHTestGroup.m */; };
-		0052C73F11BA0F10007F28FD /* GHTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73111BA0F10007F28FD /* GHTesting.h */; };
+		0052C73F11BA0F10007F28FD /* GHTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73111BA0F10007F28FD /* GHTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052C74011BA0F10007F28FD /* GHTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73211BA0F10007F28FD /* GHTesting.m */; };
-		0052C74111BA0F10007F28FD /* GHTestRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73311BA0F10007F28FD /* GHTestRunner.h */; };
+		0052C74111BA0F10007F28FD /* GHTestRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73311BA0F10007F28FD /* GHTestRunner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052C74211BA0F10007F28FD /* GHTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73411BA0F10007F28FD /* GHTestRunner.m */; };
-		0052C74311BA0F10007F28FD /* GHTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73511BA0F10007F28FD /* GHTestSuite.h */; };
+		0052C74311BA0F10007F28FD /* GHTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73511BA0F10007F28FD /* GHTestSuite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052C74411BA0F10007F28FD /* GHTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73611BA0F10007F28FD /* GHTestSuite.m */; };
-		0052C74511BA0F10007F28FD /* NSException+GHTestFailureExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73711BA0F10007F28FD /* NSException+GHTestFailureExceptions.h */; };
+		0052C74511BA0F10007F28FD /* NSException+GHTestFailureExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73711BA0F10007F28FD /* NSException+GHTestFailureExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052C74611BA0F10007F28FD /* NSException+GHTestFailureExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73811BA0F10007F28FD /* NSException+GHTestFailureExceptions.m */; };
-		0052C74711BA0F10007F28FD /* NSValue+GHValueFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73911BA0F10007F28FD /* NSValue+GHValueFormatter.h */; };
+		0052C74711BA0F10007F28FD /* NSValue+GHValueFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73911BA0F10007F28FD /* NSValue+GHValueFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052C74811BA0F10007F28FD /* NSValue+GHValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73A11BA0F10007F28FD /* NSValue+GHValueFormatter.m */; };
-		0052C75011BA10B8007F28FD /* GHTestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C74E11BA10B8007F28FD /* GHTestOperation.h */; };
+		0052C75011BA10B8007F28FD /* GHTestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C74E11BA10B8007F28FD /* GHTestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052C75111BA10B8007F28FD /* GHTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C74F11BA10B8007F28FD /* GHTestOperation.m */; };
-		0052C75411BA10E6007F28FD /* GHTest+JUnitXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C75211BA10E6007F28FD /* GHTest+JUnitXML.h */; };
+		0052C75411BA10E6007F28FD /* GHTest+JUnitXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C75211BA10E6007F28FD /* GHTest+JUnitXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052C75511BA10E6007F28FD /* GHTest+JUnitXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C75311BA10E6007F28FD /* GHTest+JUnitXML.m */; };
-		0052C76011BA127F007F28FD /* GHTestGroup+JUnitXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C75E11BA127F007F28FD /* GHTestGroup+JUnitXML.h */; };
+		0052C76011BA127F007F28FD /* GHTestGroup+JUnitXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C75E11BA127F007F28FD /* GHTestGroup+JUnitXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052C76111BA127F007F28FD /* GHTestGroup+JUnitXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C75F11BA127F007F28FD /* GHTestGroup+JUnitXML.m */; };
 		0052DE940FFEDC3800EDB178 /* BWSplitView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052DE8A0FFEDC3800EDB178 /* BWSplitView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052DE950FFEDC3800EDB178 /* BWSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052DE8B0FFEDC3800EDB178 /* BWSplitView.m */; };
@@ -642,7 +642,6 @@
 				8DC2EF520486A6940098B216 /* Resources */,
 				8DC2EF540486A6940098B216 /* Sources */,
 				8DC2EF560486A6940098B216 /* Frameworks */,
-				D0A618B8104E425E00184D93 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -718,19 +717,6 @@
 			shellPath = /bin/sh;
 			shellScript = ../Scripts/RunTests.sh;
 			showEnvVarsInLog = 0;
-		};
-		D0A618B8104E425E00184D93 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/env ruby";
-			shellScript = "puts \"OMG\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -855,11 +841,6 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Frameworks\"",
-					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -918,10 +899,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 0;
 				DYLIB_CURRENT_VERSION = "$(GHUNIT_VERSION)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Libraries-MacOSX\"",
-				);
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;

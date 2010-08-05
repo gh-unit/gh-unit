@@ -33,6 +33,15 @@
 #import "GHTestMacros.h"
 #import "GHTestRunner.h"
 
+#import "GHTest.h"
+#import "GHTesting.h"
+#import "GHTestOperation.h"
+#import "GHTestGroup.h"
+#import "GHTest+JUnitXML.h"
+#import "GHTestGroup+JUnitXML.h"
+#import "NSException+GHTestFailureExceptions.h"
+#import "NSValue+GHValueFormatter.h"
+
 #ifdef DEBUG
 #define GHUDebug(fmt, ...) do { \
 fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@"\n"] UTF8String], stdout); \

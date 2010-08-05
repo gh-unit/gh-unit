@@ -1,9 +1,9 @@
 //
-//  GHNSLocale+Mock.h
+//  GHTest+JUnitXML.h
 //  GHUnit
 //
-//  Created by Gabriel Handford on 4/13/09.
-//  Copyright 2009. All rights reserved.
+//  Created by Gabriel Handford on 6/4/10.
+//  Copyright 2010. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,33 +27,14 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-/*!
- Category for overriding the current locale at runtime.
+#import "GHTest.h"
 
- @code
- #import "GHNSLocale+Mock.h"
- // This aliases the currentLocale method and with the specified locale identifier
- [NSLocale gh_setLocaleIdentifier:@"en_GB"];
-  
- [[NSLocale currentLocale] localeIdentifier] == "en_GB"
- @endcode
- */
-@interface NSLocale (GHMock)
-
-+ (void)gh_setLocaleIdentifier:(NSString *)localeIdentifier;
+@interface GHTest (JUnitXML)
 
 /*!
- Aliases to currentLocale with locale set from gh_setLocaleIdentifier.
- If not set, defaults to NSLocale with identifier en_US.
+ Return test results in JUnit XML format for external parsing use
+ (such as a Continuous Integration system like Hudson)
  */
-+ (NSLocale *)gh_currentLocale;
-
-+ (void)gh_setPreferredLanguages:(NSArray *)preferredLanguages;
-
-/*!
- Aliases to preferredLanguages set from gh_setPreferredLanguages.
- If not set, defaults to [@"en"].
- */
-+ (NSArray *)gh_preferredLanguages;
+- (NSString *)JUnitXML;
 
 @end
