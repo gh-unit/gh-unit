@@ -138,15 +138,13 @@ You should see something like:
 
 ## Adding a GHUnit Test Target (iPhone)
 
-Frameworks and dynamic libraries are not supported in the iPhone environment, but you can use the libGHUnitIPhone.a static library.
-
 - Add a `New Target`. Select `Cocoa Touch -> Application`. Name it `Tests` (or something similar).
-- Add some frameworks to `Linked Libraries`
+- Add the following frameworks to `Linked Libraries`:
+  - `GHUnitIOS.framework`
   - `CoreGraphics.framework`
   - `Foundation.framework`
   - `UIKit.framework`
-  - `CoreLocation.framework` (optional)
-- Include the GHUnitIOS framework, in your `Test` target.
+  - (Optional) `CoreLocation.framework`
 - Under 'Other Linker Flags' in the `Test` target, add `-ObjC` and `-all_load`
 - By default, the Tests-Info.plist file includes `MainWindow` for `Main nib file base name`. You should clear this field.
 - (Optional) Install Makefile (see instructions below)
@@ -218,7 +216,7 @@ Then go in the "Arguments" tab. You can add the following environment variables:
 	GHUNIT_CLI - Default NO; Runs tests on the command line (see Debugger Console, Cmd-Shift-R)
 	GHUNIT_RERAISE - Default NO; If an exception is encountered it re-raises it allowing you to crash into the debugger
 	GHUNIT_AUTORUN - Default NO; If YES, tests will start automatically
-  GHUNIT_AUTOEXIT - Default NO; If YES, will exit upon test completion (no matter what); For command line MacOSX testing
+	GHUNIT_AUTOEXIT - Default NO; If YES, will exit upon test completion (no matter what); For command line MacOSX testing
 
 ## Test Environment Variables (Recommended)
 
