@@ -55,9 +55,9 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 	[super dealloc];
 }
 
-- (void)scheduleInRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode {
-	// Noop
-}
+- (void)scheduleInRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode { }
+
+- (void)unscheduleFromRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode { }
 
 #pragma mark -
 
