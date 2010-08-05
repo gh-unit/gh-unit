@@ -211,7 +211,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
   
   [self _setLogWriter:self];
 
-  BOOL reraiseExceptions = (options & GHTestOptionReraiseExceptions == GHTestOptionReraiseExceptions);
+  BOOL reraiseExceptions = ((options & GHTestOptionReraiseExceptions) == GHTestOptionReraiseExceptions);
   [GHTesting runTestWithTarget:target_ selector:selector_ exception:&exception_ interval:&interval_ reraiseExceptions:reraiseExceptions];
   
   [self _setLogWriter:nil];
