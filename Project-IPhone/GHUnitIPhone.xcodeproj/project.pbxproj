@@ -922,6 +922,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0002880E11814C8300D74BBD /* iPhoneTests.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				SDKROOT = iphoneos4.1;
 			};
 			name = Release;

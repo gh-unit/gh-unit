@@ -46,7 +46,11 @@
 //  the License.
 //
 
+#ifdef __cplusplus
+extern "C" NSString *GHUStackTraceFromException(NSException *e);
+#else
 extern NSString *GHUStackTraceFromException(NSException *e);
+#endif
 
 // GTM_BEGIN
 BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass);

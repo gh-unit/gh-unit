@@ -276,13 +276,7 @@ operationQueue=operationQueue_;
   running_ = NO;
 
   if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
-    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self]; 
-  
-  if (getenv("GHUNIT_AUTOEXIT")) {
-    NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
-    exit(self.test.stats.failureCount);
-    [NSApp terminate:self];
-  }
+    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self];   
 }
 
 @end
