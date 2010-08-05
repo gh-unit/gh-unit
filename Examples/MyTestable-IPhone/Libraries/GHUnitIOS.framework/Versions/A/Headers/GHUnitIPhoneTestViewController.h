@@ -1,8 +1,8 @@
 //
-//  GHUnit.h
-//  GHUnit
+//  GHUnitIPhoneTestViewController.h
+//  GHUnitIPhone
 //
-//  Created by Gabriel Handford on 1/19/09.
+//  Created by Gabriel Handford on 2/20/09.
 //  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,16 +27,16 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestCase.h"
-#import "GHAsyncTestCase.h"
-#import "GHTestSuite.h"
-#import "GHTestMacros.h"
-#import "GHTestRunner.h"
+#import "GHTestViewModel.h"
 
-#ifdef DEBUG
-#define GHUDebug(fmt, ...) do { \
-fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@"\n"] UTF8String], stdout); \
-} while(0)
-#else
-#define GHUDebug(fmt, ...) do {} while(0)
-#endif
+@interface GHUnitIPhoneTestViewController : UIViewController <GHTestRunnerDelegate> {
+  UITextView *textView_;
+
+  GHTestNode *testNode_;
+  
+  GHTestRunner *runner_;
+}
+
+- (void)setTest:(id<GHTest>)test;
+
+@end

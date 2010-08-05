@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000418B2120AA52B007589A0 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000418B1120AA52B007589A0 /* GHUnitIOS.framework */; };
+		000418B9120AA53D007589A0 /* GHUnitIPhoneTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 000418B6120AA536007589A0 /* GHUnitIPhoneTestMain.m */; };
 		002D9D4A0F49181E007932FE /* MyTestableAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* MyTestableAppDelegate.m */; };
 		002D9D4E0F4918F1007932FE /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9D4D0F4918F1007932FE /* MyTest.m */; };
 		002D9E0E0F491B49007932FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		002D9E100F491B4C007932FE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		006A590F0FC4A7B600C79A81 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006A590E0FC4A7B600C79A81 /* CoreLocation.framework */; };
-		00D54D8C10E5B84400EE05E3 /* GHUnitIPhoneTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D54D8510E5B84400EE05E3 /* GHUnitIPhoneTestMain.m */; };
-		00D54D8D10E5B84400EE05E3 /* libGHUnitIPhone3_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D54D8710E5B84400EE05E3 /* libGHUnitIPhone3_0.a */; };
-		00D54D8F10E5B84400EE05E3 /* RunTests.sh in Resources */ = {isa = PBXBuildFile; fileRef = 00D54D8B10E5B84400EE05E3 /* RunTests.sh */; };
 		00DA16640F899AF4001FE08E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		1D3623260D0F684500981E51 /* MyTestableAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* MyTestableAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -25,28 +24,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000418B1120AA52B007589A0 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
+		000418B6120AA536007589A0 /* GHUnitIPhoneTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTestMain.m; sourceTree = "<group>"; };
+		000418B7120AA536007589A0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		000418B8120AA536007589A0 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
 		002D9D030F49177B007932FE /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		002D9D050F49177B007932FE /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		002D9D4D0F4918F1007932FE /* MyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTest.m; sourceTree = "<group>"; };
 		006A590E0FC4A7B600C79A81 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		00CDDE300F7703B40089C60E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		00D54D7B10E5B84400EE05E3 /* GHAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAsyncTestCase.h; sourceTree = "<group>"; };
-		00D54D7C10E5B84400EE05E3 /* GHTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTest.h; sourceTree = "<group>"; };
-		00D54D7D10E5B84400EE05E3 /* GHTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestCase.h; sourceTree = "<group>"; };
-		00D54D7E10E5B84400EE05E3 /* GHTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestGroup.h; sourceTree = "<group>"; };
-		00D54D7F10E5B84400EE05E3 /* GHTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTesting.h; sourceTree = "<group>"; };
-		00D54D8010E5B84400EE05E3 /* GHTestMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestMacros.h; sourceTree = "<group>"; };
-		00D54D8110E5B84400EE05E3 /* GHTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestRunner.h; sourceTree = "<group>"; };
-		00D54D8210E5B84400EE05E3 /* GHTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestSuite.h; sourceTree = "<group>"; };
-		00D54D8310E5B84400EE05E3 /* GHUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnit.h; sourceTree = "<group>"; };
-		00D54D8410E5B84400EE05E3 /* GHUnitIPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneAppDelegate.h; sourceTree = "<group>"; };
-		00D54D8510E5B84400EE05E3 /* GHUnitIPhoneTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTestMain.m; sourceTree = "<group>"; };
-		00D54D8610E5B84400EE05E3 /* GHUNSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHUNSObject+Swizzle.h"; sourceTree = "<group>"; };
-		00D54D8710E5B84400EE05E3 /* libGHUnitIPhone3_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGHUnitIPhone3_0.a; sourceTree = "<group>"; };
-		00D54D8810E5B84400EE05E3 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		00D54D8910E5B84400EE05E3 /* NSException+GHTestFailureExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+GHTestFailureExceptions.h"; sourceTree = "<group>"; };
-		00D54D8A10E5B84400EE05E3 /* NSValue+GHValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+GHValueFormatter.h"; sourceTree = "<group>"; };
-		00D54D8B10E5B84400EE05E3 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* MyTestableAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTestableAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* MyTestableAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTestableAppDelegate.m; sourceTree = "<group>"; };
@@ -68,7 +54,7 @@
 				002D9E100F491B4C007932FE /* UIKit.framework in Frameworks */,
 				00DA16640F899AF4001FE08E /* CoreGraphics.framework in Frameworks */,
 				006A590F0FC4A7B600C79A81 /* CoreLocation.framework in Frameworks */,
-				00D54D8D10E5B84400EE05E3 /* libGHUnitIPhone3_0.a in Frameworks */,
+				000418B2120AA52B007589A0 /* GHUnitIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +71,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000418B5120AA536007589A0 /* GHUnit */ = {
+			isa = PBXGroup;
+			children = (
+				000418B6120AA536007589A0 /* GHUnitIPhoneTestMain.m */,
+				000418B7120AA536007589A0 /* Makefile */,
+				000418B8120AA536007589A0 /* RunTests.sh */,
+			);
+			path = GHUnit;
+			sourceTree = "<group>";
+		};
 		002D9D4B0F4918E5007932FE /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,34 +89,11 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		00D54D7A10E5B84400EE05E3 /* libGHUnitIPhone3_0-0.4.18 */ = {
-			isa = PBXGroup;
-			children = (
-				00D54D7B10E5B84400EE05E3 /* GHAsyncTestCase.h */,
-				00D54D7C10E5B84400EE05E3 /* GHTest.h */,
-				00D54D7D10E5B84400EE05E3 /* GHTestCase.h */,
-				00D54D7E10E5B84400EE05E3 /* GHTestGroup.h */,
-				00D54D7F10E5B84400EE05E3 /* GHTesting.h */,
-				00D54D8010E5B84400EE05E3 /* GHTestMacros.h */,
-				00D54D8110E5B84400EE05E3 /* GHTestRunner.h */,
-				00D54D8210E5B84400EE05E3 /* GHTestSuite.h */,
-				00D54D8310E5B84400EE05E3 /* GHUnit.h */,
-				00D54D8410E5B84400EE05E3 /* GHUnitIPhoneAppDelegate.h */,
-				00D54D8510E5B84400EE05E3 /* GHUnitIPhoneTestMain.m */,
-				00D54D8610E5B84400EE05E3 /* GHUNSObject+Swizzle.h */,
-				00D54D8710E5B84400EE05E3 /* libGHUnitIPhone3_0.a */,
-				00D54D8810E5B84400EE05E3 /* Makefile */,
-				00D54D8910E5B84400EE05E3 /* NSException+GHTestFailureExceptions.h */,
-				00D54D8A10E5B84400EE05E3 /* NSValue+GHValueFormatter.h */,
-				00D54D8B10E5B84400EE05E3 /* RunTests.sh */,
-			);
-			path = "libGHUnitIPhone3_0-0.4.18";
-			sourceTree = "<group>";
-		};
 		00DA15A30F897CDD001FE08E /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				00D54D7A10E5B84400EE05E3 /* libGHUnitIPhone3_0-0.4.18 */,
+				000418B5120AA536007589A0 /* GHUnit */,
+				000418B1120AA52B007589A0 /* GHUnitIOS.framework */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -233,7 +206,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MyTestable" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -249,7 +229,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00D54D8F10E5B84400EE05E3 /* RunTests.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +254,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "Libraries/libGHUnitIPhone3_0-0.4.18/RunTests.sh";
+			shellScript = Libraries/GHUnit/RunTests.sh;
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -287,7 +266,7 @@
 			files = (
 				002D9D4A0F49181E007932FE /* MyTestableAppDelegate.m in Sources */,
 				002D9D4E0F4918F1007932FE /* MyTest.m in Sources */,
-				00D54D8C10E5B84400EE05E3 /* GHUnitIPhoneTestMain.m in Sources */,
+				000418B9120AA53D007589A0 /* GHUnitIPhoneTestMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,23 +289,18 @@
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "Tests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/GHUnit\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhoneCL3_0-0.3.14\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhone3_0-0.4.1\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhone3_0-0.4.9\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhone3_0-0.4.13\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhone3_0-0.4.15\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhone3_0-0.4.18\"",
-				);
 				OTHER_LDFLAGS = (
+					"-all_load",
 					"-ObjC",
 					"-framework",
 					Foundation,
@@ -337,7 +311,7 @@
 				PRODUCT_NAME = Tests;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Debug;
 		};
@@ -349,22 +323,17 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "Tests-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Libraries/GHUnit\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhoneCL3_0-0.3.14\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhone3_0-0.4.1\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhone3_0-0.4.9\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhone3_0-0.4.13\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhone3_0-0.4.15\"",
-					"\"$(SRCROOT)/Libraries/libGHUnitIPhone3_0-0.4.18\"",
-				);
 				OTHER_LDFLAGS = (
+					"-all_load",
 					"-ObjC",
 					"-framework",
 					Foundation,
@@ -375,7 +344,7 @@
 				PRODUCT_NAME = Tests;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphonesimulator4.0;
 				ZERO_LINK = NO;
 			};
 			name = Release;

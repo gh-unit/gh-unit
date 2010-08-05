@@ -31,48 +31,55 @@
 
 // Some default statuses to use; Or define and use your own
 enum {
-	kGHUnitWaitStatusUnknown = 0,
-	kGHUnitWaitStatusSuccess,
-	kGHUnitWaitStatusFailure,
-	kGHUnitWaitStatusCancelled
+  kGHUnitWaitStatusUnknown = 0,
+  kGHUnitWaitStatusSuccess,
+  kGHUnitWaitStatusFailure,
+  kGHUnitWaitStatusCancelled
 };
 
 /*!
  Asynchronous test case with wait and notify.
  
- Handles the case of notify occuring before wait has started (if it was a synchronous call).
+ If notify occurs before wait has started (if it was a synchronous call), this test
+ case will still work.
+
  Be sure to call prepare before the asynchronous method (otherwise an exception will raise).
  
  @code
  - (void)testSuccess {
-	 [self prepare];
-	 
-	 // Do asynchronous task here
-	 [self performSelector:@selector(_succeed) withObject:nil afterDelay:0.1];
-	 
-	 [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+   [self prepare];
+   
+   // Do asynchronous task here
+   [self performSelector:@selector(_succeed) withObject:nil afterDelay:0.1];
+   
+   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
  }
  
  - (void)_succeed {
    // Notice the forSelector points to the test above. This is so that
    // stray notifies don't error or falsely succeed other tests.
+   // To ignore the check, forSelector can be NULL.
    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testSuccess)];
  }
  @endcode
  */
 @interface GHAsyncTestCase : GHTestCase {
 
-	NSInteger waitForStatus_;
-	NSInteger notifiedStatus_;
-	
-	BOOL prepared_; // Whether prepared was called before waitForStatus:timeout:
-	NSRecursiveLock *lock_; // Lock to synchronize on
-	SEL waitSelector_; // The selector we are waiting on
-		
-	NSArray *_runLoopModes; // Run loop modes to run while waiting; Defaults to NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode
+  NSInteger waitForStatus_;
+  NSInteger notifiedStatus_;
+  
+  BOOL prepared_; // Whether prepared was called before waitForStatus:timeout:
+  NSRecursiveLock *lock_; // Lock to synchronize on
+  SEL waitSelector_; // The selector we are waiting on
+    
+  NSArray *_runLoopModes;
 }
 
-@property (retain, nonatomic) NSArray *runLoopModes;
+/*!
+ Run loop modes to run while waiting; 
+ Defaults to NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode
+ */
+@property (retain, nonatomic) NSArray *runLoopModes; 
 
 /*!
  Prepare before calling the asynchronous method. 
@@ -93,11 +100,11 @@ enum {
  For example, 
  
  @code
-	- (void)testFoo {
-		[self prepare];
-		// Do asynchronous task here
-		[self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
-	}
+  - (void)testFoo {
+    [self prepare];
+    // Do asynchronous task here
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+  }
  @endcode
  
  @param status kGHUnitWaitStatusSuccess, kGHUnitWaitStatusFailure or custom status 
@@ -119,7 +126,7 @@ enum {
  Notify waiting of status for test selector.
  @param status Status, for example, kGHUnitWaitStatusSuccess
  @param selector If not NULL, then will verify this selector is where we are waiting.
-					This prevents stray asynchronous callbacks to fail a later test
+          This prevents stray asynchronous callbacks to fail a later test
  */
 - (void)notify:(NSInteger)status forSelector:(SEL)selector;
 

@@ -1,9 +1,9 @@
 //
-//  GHNSObject+Swizzle.h
+//  GHTest+JUnitXML.h
 //  GHUnit
 //
-//  Created by Gabriel Handford on 4/13/09.
-//  Copyright 2009. All rights reserved.
+//  Created by Gabriel Handford on 6/4/10.
+//  Copyright 2010. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,10 +27,14 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-@interface NSObject (GHUSwizzle)
+#import "GHTest.h"
 
-+ (void)ghu_swizzleMethod:(SEL)original withMethod:(SEL)alternate;
-+ (void)ghu_swizzleClassMethod:(SEL)original withClassMethod:(SEL)alternate;
+@interface GHTest (JUnitXML)
+
+/*!
+ Return test results in JUnit XML format for external parsing use
+ (such as a Continuous Integration system like Hudson)
+ */
+- (NSString *)JUnitXML;
 
 @end
-

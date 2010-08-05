@@ -79,6 +79,9 @@
 		000287FA11814C2800D74BBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E58D421172937E0037E3C8 /* Foundation.framework */; };
 		000287FB11814C2800D74BBD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E58D4A1172938B0037E3C8 /* CoreGraphics.framework */; };
 		0002882611814D1800D74BBD /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0002877211814A1F00D74BBD /* libGHUnitIOSSimulator.a */; };
+		000418FC120AA67A007589A0 /* GHNSInvocation+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C6B0F4915C2007932FE /* GHNSInvocation+Utils.h */; };
+		000418FD120AA67B007589A0 /* GHNSInvocationProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 00178E2D0FC3981900CA6A07 /* GHNSInvocationProxy.h */; };
+		000418FE120AA67C007589A0 /* GHNSObject+Invocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C6D0F4915C2007932FE /* GHNSObject+Invocation.h */; };
 		004FFC0D11BEFB0A00ADEB22 /* GHTest+JUnitXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0012288B11BA17EC00C038B4 /* GHTest+JUnitXML.m */; };
 		004FFC0E11BEFB0B00ADEB22 /* GHTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0012288D11BA17EC00C038B4 /* GHTest.m */; };
 		004FFC0F11BEFB0D00ADEB22 /* GHTestGroup+JUnitXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0012288F11BA17EC00C038B4 /* GHTestGroup+JUnitXML.m */; };
@@ -645,6 +648,9 @@
 				006D788C120A98C60053B72E /* GHUnitIPhoneTestViewController.h in Headers */,
 				006D788D120A98C80053B72E /* GHUnitIPhoneView.h in Headers */,
 				006D788E120A98C80053B72E /* GHUnitIPhoneViewController.h in Headers */,
+				000418FC120AA67A007589A0 /* GHNSInvocation+Utils.h in Headers */,
+				000418FD120AA67B007589A0 /* GHNSInvocationProxy.h in Headers */,
+				000418FE120AA67C007589A0 /* GHNSObject+Invocation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
