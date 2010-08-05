@@ -369,7 +369,7 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
   
   if (getenv("GHUNIT_AUTOEXIT")) {
     NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
-    exit(self.test.stats.failureCount);
+    exit(runner.test.stats.failureCount);
     [NSApp terminate:self];
   }  
 }
