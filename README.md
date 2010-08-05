@@ -146,21 +146,20 @@ Frameworks and dynamic libraries are not supported in the iPhone environment, bu
   - `Foundation.framework`
   - `UIKit.framework`
   - `CoreLocation.framework` (optional)
-- Include the GHUnit files (from the GHUnit/iPhone Static Library download above), in your `Test` target. These files should include:
-	- libGHUnitIPhone.a (static library)
-	- GHUnit header files
-	- GHUnit test main
-- Under 'Other Linker Flags' in the `Test` target, add `-ObjC` and `-all_load`  (`-all_load` may be necessary for running on 3.0 device)
+- Include the GHUnitIOS framework, in your `Test` target.
+- Under 'Other Linker Flags' in the `Test` target, add `-ObjC` and `-all_load`
 - By default, the Tests-Info.plist file includes `MainWindow` for `Main nib file base name`. You should clear this field.
 - (Optional) Install Makefile (see instructions below)
+- (Optional) Create and and set a prefix header (`Tests_Prefix.pch`) and add `#import <GHUnitIOS/GHUnitIOS.h>` to it, and then you won't have to include that import for every test.
 
 Now you can create a test (either by subclassing `SenTestCase` or `GHTestCase`), adding it to your test target.
+
 
 ### Example test case (iPhone)
 
 For example `MyTest.m`:
 
-	#import "GHUnit.h"
+	#import <GHUnitIOS/GHUnitIOS.h>
 
 	@interface MyTest : GHTestCase { }
 	@end
@@ -284,7 +283,7 @@ From the command line, run the tests from xcodebuild (with the GHUNIT_CLI enviro
 	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
 	
 	// For iPhone app
-	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator3.0 build
+	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator4.0 build
 
 If you are wondering, the `RunTests.sh` script will only run the tests if the env variable GHUNIT_CLI is set. 
 This is why this RunScript phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.

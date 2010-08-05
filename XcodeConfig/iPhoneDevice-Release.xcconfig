@@ -1,6 +1,6 @@
 
 #include "Shared-iPhone.xcconfig"
 
-SDKROOT = iphoneos3.0
-PRODUCT_NAME = GHUnitIPhoneDevice3_0
-ARCHS = $(ARCHS_UNIVERSAL_IPHONE_OS)
+PRODUCT_NAME = GHUnitIOSDevice
+
+

@@ -1,4 +1,0 @@
-
-#include "Shared-iPhone.xcconfig"
-
-PRODUCT_NAME = GHUnitIPhoneSimulator4_0

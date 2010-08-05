@@ -1,15 +1,12 @@
 # Original Script by  Pete Goodliffe
 # from http://accu.org/index.php/journals/1594
 
-# Modified by Juan Batiz-Benet to fit GHUnitIPhone
+# Modified by Juan Batiz-Benet to fit GHUnitIOS
 
-# Should define FLAVOR=2_1,2_1CL,3_0,3_0CL
 # Define these to suit your nefarious purposes
-                 FRAMEWORK_NAME=GHUnitIPhone${FLAVOR}
-                       LIB_NAME=libGHUnitIPhone
+                 FRAMEWORK_NAME=GHUnitIOS
+                       LIB_NAME=libGHUnitIOS
               FRAMEWORK_VERSION=A
-      FRAMEWORK_CURRENT_VERSION=${FLAVOR}
-FRAMEWORK_COMPATIBILITY_VERSION=${FLAVOR}
                      BUILD_TYPE=Release
 
 # Where we'll put the build framework.
@@ -44,8 +41,8 @@ ln -s Versions/Current/$FRAMEWORK_NAME $FRAMEWORK_DIR/$FRAMEWORK_NAME
 
 # Check that this is what your static libraries
 # are called
-ARM_FILES="build/$BUILD_TYPE-iphoneos/${LIB_NAME}Device${FLAVOR}.a"
-I386_FILES="build/$BUILD_TYPE-iphonesimulator/${LIB_NAME}Simulator${FLAVOR}.a"
+ARM_FILES="build/$BUILD_TYPE-iphoneos/${LIB_NAME}Device.a"
+I386_FILES="build/$BUILD_TYPE-iphonesimulator/${LIB_NAME}Simulator.a"
 
 # The trick for creating a fully usable library is
 # to use lipo to glue the different library
@@ -56,14 +53,17 @@ I386_FILES="build/$BUILD_TYPE-iphonesimulator/${LIB_NAME}Simulator${FLAVOR}.a"
 # The library file is given the same name as the
 # framework with no .a extension.
 echo "Framework: Creating library..."
+
 lipo \
   -create \
-  -arch armv6 "$ARM_FILES" \
-  -arch i386 "$I386_FILES" \
+  "$ARM_FILES" \
+  "$I386_FILES" \
   -o "$FRAMEWORK_DIR/Versions/Current/$FRAMEWORK_NAME"
 
 # Now copy the final assets over: your library
 # header files and the plist file
 echo "Framework: Copying assets into current version..."
+cp ../Classes/*.h $FRAMEWORK_DIR/Headers/
+cp ../Classes/GHTest/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes-IPhone/*.h $FRAMEWORK_DIR/Headers/
 cp Framework.plist $FRAMEWORK_DIR/Resources/Info.plist
