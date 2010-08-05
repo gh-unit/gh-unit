@@ -277,7 +277,7 @@ To run the tests from the command line:
 
 From the command line, run the tests from xcodebuild (with the GHUNIT_CLI environment variable set) :
 
-	// For mac app
+	// For mac app; This might seg fault in 10.6, in which case you should use `make test` via Makefile below
 	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
 	
 	// For iPhone app
