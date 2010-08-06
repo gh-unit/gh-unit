@@ -136,7 +136,7 @@ You should see something like:
 
 - Optionally, you can create and and set a prefix header (`Tests_Prefix.pch`) and add `#import <GHUnit/GHUnit.h>` to it, and then you won't have to include that import for every test.
 
-## Adding a GHUnit Test Target (iPhone)
+## Adding a GHUnit Test Target (iOS)
 
 - Add a `New Target`. Select `Cocoa Touch -> Application`. Name it `Tests` (or something similar).
 - Add the following frameworks to `Linked Libraries`:
@@ -147,6 +147,7 @@ You should see something like:
   - (Optional) `CoreLocation.framework`
 - Under 'Other Linker Flags' in the `Test` target, add `-ObjC` and `-all_load`
 - By default, the Tests-Info.plist file includes `MainWindow` for `Main nib file base name`. You should clear this field.
+- Add the [GHUnitIOSTestMain.m](http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project.
 - (Optional) Install Makefile (see instructions below)
 - (Optional) Create and and set a prefix header (`Tests_Prefix.pch`) and add `#import <GHUnitIOS/GHUnitIOS.h>` to it, and then you won't have to include that import for every test.
 
