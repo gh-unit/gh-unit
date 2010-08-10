@@ -1,3 +1,7 @@
+# Release 0.4.24
+- Moved build settings into xcconfig (MacOSX)
+- Striping linked build
+
 # Release 0.4.21
 - Moved build settings into xcconfig (iPhone)
 - Flexible layouts; Works in iPad as universal app

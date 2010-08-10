@@ -1,0 +1,4 @@
+
+#include "GHUnit.xcconfig"
+
+STRIP_INSTALLED_PRODUCT = YES

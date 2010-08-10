@@ -83,6 +83,8 @@
 		00A9540A0FDC7539006A80A6 /* GHNSInvocationProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 00A954080FDC7539006A80A6 /* GHNSInvocationProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00A9540B0FDC7539006A80A6 /* GHNSInvocationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A954090FDC7539006A80A6 /* GHNSInvocationProxy.m */; };
 		00AF0E3A0F2C4D47009F0ABA /* SenTestingKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00970A550F28397F00189A9D /* SenTestingKit.framework */; };
+		00CD28281211C79100DF808D /* GHUnit.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 00CD28271211C79100DF808D /* GHUnit.xcconfig */; };
+		00CD28311211C8A300DF808D /* GHUnit-Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 00CD28301211C8A300DF808D /* GHUnit-Debug.xcconfig */; };
 		00CDDBC41011576E00F5C4D5 /* GHTestOutlineViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 00CDDBC21011576E00F5C4D5 /* GHTestOutlineViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00CDDBC51011576E00F5C4D5 /* GHTestOutlineViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDBC31011576E00F5C4D5 /* GHTestOutlineViewModel.m */; };
 		00CDDCC10F75D6970089C60E /* GHRegisterTestCaseClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */; };
@@ -207,6 +209,9 @@
 		00A954080FDC7539006A80A6 /* GHNSInvocationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHNSInvocationProxy.h; sourceTree = "<group>"; };
 		00A954090FDC7539006A80A6 /* GHNSInvocationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSInvocationProxy.m; sourceTree = "<group>"; };
 		00C1A2BE0F52813200FCCA14 /* GHUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitTestMain.m; sourceTree = "<group>"; };
+		00CD28251211C75100DF808D /* GHUnit-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "GHUnit-Release.xcconfig"; sourceTree = "<group>"; };
+		00CD28271211C79100DF808D /* GHUnit.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = GHUnit.xcconfig; sourceTree = "<group>"; };
+		00CD28301211C8A300DF808D /* GHUnit-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "GHUnit-Debug.xcconfig"; sourceTree = "<group>"; };
 		00CDDBC21011576E00F5C4D5 /* GHTestOutlineViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestOutlineViewModel.h; sourceTree = "<group>"; };
 		00CDDBC31011576E00F5C4D5 /* GHTestOutlineViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestOutlineViewModel.m; sourceTree = "<group>"; };
 		00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHRegisterTestCaseClassTest.m; sourceTree = "<group>"; };
@@ -448,6 +453,9 @@
 			children = (
 				006307900F8E760800C9602A /* Shared.xcconfig */,
 				006307910F8E761C00C9602A /* Shared-IPhone.xcconfig */,
+				00CD28271211C79100DF808D /* GHUnit.xcconfig */,
+				00CD28301211C8A300DF808D /* GHUnit-Debug.xcconfig */,
+				00CD28251211C75100DF808D /* GHUnit-Release.xcconfig */,
 			);
 			name = XcodeConfig;
 			path = ../XcodeConfig;
@@ -698,6 +706,8 @@
 				002D9C230F49158F007932FE /* GHTestWindow.xib in Resources */,
 				0052DEFF0FFEDEBD00EDB178 /* GradientSplitViewDimpleBitmap.tif in Resources */,
 				0052DF000FFEDEBD00EDB178 /* GradientSplitViewDimpleVector.pdf in Resources */,
+				00CD28281211C79100DF808D /* GHUnit.xcconfig in Resources */,
+				00CD28311211C8A300DF808D /* GHUnit-Debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,53 +872,15 @@
 		};
 		1DEB91AE08733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 006307900F8E760800C9602A /* Shared.xcconfig */;
+			baseConfigurationReference = 00CD28301211C8A300DF808D /* GHUnit-Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = "$(GHUNIT_VERSION)";
-				DYLIB_COMPATIBILITY_VERSION = 0;
-				DYLIB_CURRENT_VERSION = "$(GHUNIT_VERSION)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				FRAMEWORK_VERSION = A;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_ENABLE_OBJC_GC = supported;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GHUnit_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
-				GTM_CONFIGURATION_GCC_PREPROCESSOR_DEFINITIONS = "_GLIBCXX_DEBUG_PEDANTIC _GLIBCXX_DEBUG _GLIBCPP_CONCEPT_CHECKS";
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "@rpath";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				PRODUCT_NAME = GHUnit;
-				VERSION_INFO_EXPORT_DECL = GHUNIT_VERSION;
-				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
 		1DEB91AF08733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 006307900F8E760800C9602A /* Shared.xcconfig */;
+			baseConfigurationReference = 00CD28251211C75100DF808D /* GHUnit-Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DYLIB_COMPATIBILITY_VERSION = 0;
-				DYLIB_CURRENT_VERSION = "$(GHUNIT_VERSION)";
-				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_OBJC_GC = supported;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GHUnit_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "@rpath";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				PRODUCT_NAME = GHUnit;
-				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
 		};
