@@ -64,7 +64,7 @@ There are two options. You can install it globally in /Library/Frameworks or wit
 
 - Add a `New Target`. Select `Cocoa -> Application`. Name it `Tests` (or something similar).
 - In the Finder, copy `GHUnit.framework` to your project directory (maybe in MyProject/Frameworks/.)
-- In the `Tests` target, add the `GHUnit.framekwork` files (from MyProject/Frameworks/). It should now be visible as a `Linked Framework` in the target. 
+- In the `Tests` target, add the `GHUnit.framework` files (from MyProject/Frameworks/). It should now be visible as a `Linked Framework` in the target. 
 - In the `Tests` target, under Build Settings, add `@loader_path/../Frameworks` to `Runpath Search Paths` (Under All Configurations)
 - In the `Tests` target, add `New Build Phase` | `New Copy Files Build Phase`. 
 	- Change the Destination to `Frameworks`.

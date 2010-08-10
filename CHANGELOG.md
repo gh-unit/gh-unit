@@ -1,3 +1,6 @@
+# Release 0.4.25
+- Set DEPLOYMENT_POSTPROCESSING (MacOSX); So breakpointing doesn't warn about missing symbols
+
 # Release 0.4.24
 - Moved build settings into xcconfig (MacOSX)
 - Striping linked build
