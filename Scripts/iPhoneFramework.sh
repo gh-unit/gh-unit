@@ -2,6 +2,9 @@
 # from http://accu.org/index.php/journals/1594
 
 # Modified by Juan Batiz-Benet to fit GHUnitIOS
+# Modified by Gabriel Handford for GHUnitIOS
+
+set -e
 
 # Define these to suit your nefarious purposes
                  FRAMEWORK_NAME=GHUnitIOS

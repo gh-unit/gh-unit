@@ -139,12 +139,14 @@ You should see something like:
 ## Adding a GHUnit Test Target (iOS)
 
 - Add a `New Target`. Select `Cocoa Touch -> Application`. Name it `Tests` (or something similar).
+- Add the `GHUnitIOS.framework` to your project.
 - Add the following frameworks to `Linked Libraries`:
   - `GHUnitIOS.framework`
   - `CoreGraphics.framework`
   - `Foundation.framework`
   - `UIKit.framework`
   - (Optional) `CoreLocation.framework`
+- Under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
 - Under 'Other Linker Flags' in the `Test` target, add `-ObjC` and `-all_load`
 - By default, the Tests-Info.plist file includes `MainWindow` for `Main nib file base name`. You should clear this field.
 - Add the [GHUnitIOSTestMain.m](http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project.
