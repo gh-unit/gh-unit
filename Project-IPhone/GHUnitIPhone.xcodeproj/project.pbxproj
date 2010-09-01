@@ -81,6 +81,9 @@
 		000418FC120AA67A007589A0 /* GHNSInvocation+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C6B0F4915C2007932FE /* GHNSInvocation+Utils.h */; };
 		000418FD120AA67B007589A0 /* GHNSInvocationProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 00178E2D0FC3981900CA6A07 /* GHNSInvocationProxy.h */; };
 		000418FE120AA67C007589A0 /* GHNSObject+Invocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C6D0F4915C2007932FE /* GHNSObject+Invocation.h */; };
+		00480FFC122E1C3800E3B69F /* GHTestMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 00480FFB122E1C3800E3B69F /* GHTestMacros.m */; };
+		004810C6122E257500E3B69F /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 004810C5122E257500E3B69F /* GHUnitIOSTestMain.m */; };
+		004810DB122E25DD00E3B69F /* GHUnitIOSTestMain.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00E6527D120C7CDD00DBBDBC /* GHUnitIOSTestMain.m */; };
 		004FFC0D11BEFB0A00ADEB22 /* GHTest+JUnitXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0012288B11BA17EC00C038B4 /* GHTest+JUnitXML.m */; };
 		004FFC0E11BEFB0B00ADEB22 /* GHTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0012288D11BA17EC00C038B4 /* GHTest.m */; };
 		004FFC0F11BEFB0D00ADEB22 /* GHTestGroup+JUnitXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0012288F11BA17EC00C038B4 /* GHTestGroup+JUnitXML.m */; };
@@ -156,6 +159,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				004810DB122E25DD00E3B69F /* GHUnitIOSTestMain.m in CopyFiles */,
 				006596F111BEEB2300E89ABD /* GHTest+JUnitXML.h in CopyFiles */,
 				006596F211BEEB2400E89ABD /* GHTest.h in CopyFiles */,
 				006596F311BEEB2400E89ABD /* GHTestGroup+JUnitXML.h in CopyFiles */,
@@ -279,6 +283,8 @@
 		002D9C790F4915C2007932FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		003280F60FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneTableViewDataSource.h; sourceTree = "<group>"; };
 		003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTableViewDataSource.m; sourceTree = "<group>"; };
+		00480FFB122E1C3800E3B69F /* GHTestMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestMacros.m; sourceTree = "<group>"; };
+		004810C5122E257500E3B69F /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
 		006307B30F8E792F00C9602A /* Shared-iPhone.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Shared-iPhone.xcconfig"; sourceTree = "<group>"; };
 		006D7815120A93880053B72E /* iPhoneFramework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = iPhoneFramework.sh; sourceTree = "<group>"; };
 		006D7883120A98A20053B72E /* GHUnitIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIOS.h; sourceTree = "<group>"; };
@@ -530,6 +536,7 @@
 		00AF12E70F2D880E009F0ABA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				004810C5122E257500E3B69F /* GHUnitIOSTestMain.m */,
 				00DCB8780FA4F9E10022DA5A /* IPhone */,
 				000203F40F8EA86000EC31BA /* Data */,
 				00080FB80F4FC7CB0034DF4C /* GTM */,
@@ -547,6 +554,7 @@
 				00A230BD1022586400337F7B /* GHTestMacrosTest.m */,
 				00A230BF1022587F00337F7B /* GHTestLogTest.m */,
 				00F09A65108D5040000E5AB5 /* GHTestEmpty.m */,
+				00480FFB122E1C3800E3B69F /* GHTestMacros.m */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -718,6 +726,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "GHUnitIPhone" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -861,6 +870,8 @@
 				0051314711C6ED5D00A46E09 /* GHMockNSHTTPURLResponse.m in Sources */,
 				0051315A11C6EDA300A46E09 /* GHNSLocale+Mock.m in Sources */,
 				0051316311C6EDB400A46E09 /* GHUNSObject+Swizzle.m in Sources */,
+				00480FFC122E1C3800E3B69F /* GHTestMacros.m in Sources */,
+				004810C6122E257500E3B69F /* GHUnitIOSTestMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

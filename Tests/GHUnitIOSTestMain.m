@@ -27,12 +27,17 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//
+// DON'T USE THIS FILE, USE THE FILE IN PROJECT-IPHONE ROOT
+// This is special cased since we can't build the framework from XCode
+//
+
 #import <UIKit/UIKit.h>
 
 // If you are using the framework
-#import <GHUnitIOS/GHUnitIOS.h>
+//#import <GHUnitIOS/GHUnitIOS.h>
 // If you are using the static library and importing header files manually
-//#import "GHUnitIOS.h"
+#import "GHUnitIOS.h"
 
 // Default exception handler
 void exceptionHandler(NSException *exception) { 
