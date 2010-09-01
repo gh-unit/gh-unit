@@ -139,6 +139,30 @@ typedef enum {
   }
 }
 
+// Similar to _waitFor:timeout: but just runs the loops
+// From Robert Palmer, pauseForTimeout
+- (void)runForInterval:(NSTimeInterval)interval {
+	NSTimeInterval checkEveryInterval = 0.05;
+	NSDate *runUntilDate = [NSDate dateWithTimeIntervalSinceNow:interval];
+  
+	if (!_runLoopModes)
+		_runLoopModes = [[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSRunLoopCommonModes, nil] retain];
+  
+	NSInteger runIndex = 0;
+  
+	while ([runUntilDate compare:[NSDate date]] == NSOrderedDescending) {
+		NSString *mode = [_runLoopModes objectAtIndex:(runIndex++ % [_runLoopModes count])];
+    
+		[lock_ unlock];
+		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
+			// If there were no run loop sources or timers then we should sleep for the interval
+			[NSThread sleepForTimeInterval:checkEveryInterval];
+		[pool release];
+		[lock_ lock];		
+	}
+}
+
 - (void)notify:(NSInteger)status {
   [self notify:status forSelector:NULL];
 }

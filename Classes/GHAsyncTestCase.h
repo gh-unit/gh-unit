@@ -136,4 +136,11 @@ enum {
  */
 - (void)notify:(NSInteger)status;
 
+/*!
+ Run the run loops for the specified interval. 
+ @param interval
+ @author Adapted from Robert Palmer, pauseForTimeout
+ */
+- (void)runForInterval:(NSTimeInterval)interval;
+
 @end
