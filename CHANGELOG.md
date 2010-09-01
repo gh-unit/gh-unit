@@ -1,3 +1,10 @@
+# Release 0.4.26
+- Fixing LLVM/clang warnings (Whitney Young, nolanw)
+- GHAssertNotEqualStrings will allow for nils (Rusty Zarse)
+- Build warnings under 10.6 (MacOSX); (zykloid)
+- Better error handling on JUnit XML results writing (zykloid)
+- GHAsyncTestCase#runForInterval (Adapted from Robert Palmer, pauseForTimeout)
+
 # Release 0.4.25
 - Set DEPLOYMENT_POSTPROCESSING (MacOSX); So breakpointing doesn't warn about missing symbols
 
