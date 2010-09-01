@@ -266,9 +266,11 @@ operationQueue=operationQueue_;
     // Log JUnit XML if environment variable is set
     if (getenv("WRITE_JUNIT_XML")) {
       NSError *error = nil;
-      [testSuite writeJUnitXML:&error];
-      if (!error) [self log:@"Wrote JUnit XML successfully.\n"];
-      else [self log:[NSString stringWithFormat:@"Error writing JUnit XML: %@\n", [error description]]];
+      if (![testSuite writeJUnitXML:&error]) {
+        [self log:[NSString stringWithFormat:@"Error writing JUnit XML: %@\n", [error localizedDescription]]];
+      } else {
+        [self log:@"Wrote JUnit XML successfully.\n"];
+      }
     }
   }
 
