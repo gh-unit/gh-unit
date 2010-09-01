@@ -586,7 +586,7 @@ withDescription:GHComposeString(description, ##__VA_ARGS__)]]; \
 #define GHAssertEqualsWithAccuracy(a1, a2, accuracy, description, ...) \
 do { \
 @try {\
-if (@encode(__typeof__(a1)) != @encode(__typeof__(a2))) { \
+if (strcmp(@encode(__typeof__(a1)), @encode(__typeof__(a2))) != 0) { \
 [self failWithException:[NSException ghu_failureInFile:[NSString stringWithUTF8String:__FILE__] \
 atLine:__LINE__ \
 withDescription:[@"Type mismatch -- " stringByAppendingString:GHComposeString(description, ##__VA_ARGS__)]]]; \

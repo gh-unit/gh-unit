@@ -310,7 +310,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 - (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options {
   options_ = options;
   
-  NSAssert(!((options_ & GHTestOptionReraiseExceptions == GHTestOptionReraiseExceptions) && operationQueue),
+  NSAssert(!(((options_ & GHTestOptionReraiseExceptions) == GHTestOptionReraiseExceptions) && operationQueue),
            @"Can't run in parallel (through operation queue) and also have re-raise exceptions option set");
   
   [self _reset];

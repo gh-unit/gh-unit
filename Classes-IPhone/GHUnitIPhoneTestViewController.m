@@ -88,7 +88,7 @@
 }
 
 - (void)setTest:(id<GHTest>)test {
-  self.view;
+  [self view];
   self.title = [test name];
 
   [testNode_ release];

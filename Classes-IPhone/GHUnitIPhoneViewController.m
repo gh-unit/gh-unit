@@ -115,7 +115,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 - (void)runTests {
   if (self.dataSource.isRunning) return;
   
-  self.view;
+  [self view];
   runButton_.title = @"Cancel";
   userDidDrag_ = NO; // Reset drag status
   view_.statusLabel.textColor = [UIColor blackColor];
