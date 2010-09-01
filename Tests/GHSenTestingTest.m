@@ -6,7 +6,9 @@
 //  Copyright 2009. All rights reserved.
 //
 
+#define TEST_SENTEST 0
 
+#if TEST_SENTEST
 #import <SenTestingKit/SenTestingKit.h>
 
 // To test that we work with SenTestCase as well
@@ -48,3 +50,4 @@
 
 @end
 
+#endif
