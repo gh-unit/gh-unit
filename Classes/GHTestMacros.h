@@ -418,9 +418,12 @@ do { \
 @try {\
 id a1value = (a1); \
 id a2value = (a2); \
-if ([a1value isKindOfClass:[NSString class]] && \
+if (([a1value isKindOfClass:[NSString class]] && \
 [a2value isKindOfClass:[NSString class]] && \
-[a1value compare:a2value options:0] != NSOrderedSame) continue; \
+[a1value compare:a2value options:0] != NSOrderedSame) || \
+(a1value == nil && [a2value isKindOfClass:[NSString class]]) || \
+(a2value == nil && [a1value isKindOfClass:[NSString class]]) \
+) continue; \
 [self failWithException:[NSException ghu_failureInEqualityBetweenObject: a1value \
 andObject: a2value \
 inFile: [NSString stringWithUTF8String:__FILE__] \
