@@ -138,6 +138,7 @@ You should see something like:
 
 ## Adding a GHUnit Test Target (iOS)
 
+- If you are building from source, run `make` from within the `Project-IPhone` directory to create `GHUnitIOS.framework`.
 - Add a `New Target`. Select `Cocoa Touch -> Application`. Name it `Tests` (or something similar).
 - Add the `GHUnitIOS.framework` to your project.
 - Add the following frameworks to `Linked Libraries`:
