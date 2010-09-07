@@ -94,6 +94,7 @@ For example `MyTest.m`:
 	
 	- (BOOL)shouldRunOnMainThread {
 		// By default NO, but if you have a UI test or test dependent on running on the main thread return YES
+		return NO;
 	}
 	
 	- (void)setUpClass {
@@ -113,13 +114,15 @@ For example `MyTest.m`:
 	}
 
 	- (void)testFoo {		
-		GHTestLog(@"I can log to the GHUnit test console: %@", foo);
+		NSString *a = @"foo";
+		GHTestLog(@"I can log to the GHUnit test console: %@", a);
 		
 		// Assert a is not NULL, with no custom error description
 		GHAssertNotNULL(a, nil);
 	
 		// Assert equal objects, add custom error description
-		GHAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
+		NSString *b = @"bar";
+		GHAssertEqualObjects(a, b, @"a should be equal to: %@. Something bad happened", b);
 	}
 
 	- (void)testBar {
@@ -170,6 +173,7 @@ For example `MyTest.m`:
 
 	- (BOOL)shouldRunOnMainThread {
 		// By default NO, but if you have a UI test or test dependent on running on the main thread return YES
+		return NO;
 	}
 	
 	- (void)setUpClass {
@@ -190,10 +194,12 @@ For example `MyTest.m`:
 
 	- (void)testFoo {
 		// Assert a is not NULL, with no custom error description
+		NSString *a = @"foo";
 		GHAssertNotNULL(a, nil);
 	
 		// Assert equal objects, add custom error description
-		GHAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
+		NSString *b = @"bar";
+		GHAssertEqualObjects(a, b, @"a should be equal to: %@. Something bad happened", b);
 	}
 
 	- (void)testBar {
