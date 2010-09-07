@@ -178,4 +178,3 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 + (id)testWithTarget:(id)target selector:(SEL)selector;
 
 @end
-

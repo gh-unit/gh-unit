@@ -33,4 +33,3 @@
 + (void)ghu_swizzleClassMethod:(SEL)original withClassMethod:(SEL)alternate;
 
 @end
-

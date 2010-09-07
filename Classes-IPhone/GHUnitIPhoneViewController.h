@@ -68,4 +68,3 @@
 - (GHUnitIPhoneTableViewDataSource *)dataSource;
 
 @end
-

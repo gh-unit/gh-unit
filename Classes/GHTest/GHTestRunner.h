@@ -155,5 +155,3 @@
 - (void)log:(NSString *)message;
 
 @end
-
-
