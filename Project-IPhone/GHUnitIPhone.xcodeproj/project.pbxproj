@@ -140,6 +140,14 @@
 		006D788C120A98C60053B72E /* GHUnitIPhoneTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 00080FE30F4FC9260034DF4C /* GHUnitIPhoneTestViewController.h */; };
 		006D788D120A98C80053B72E /* GHUnitIPhoneView.h in Headers */ = {isa = PBXBuildFile; fileRef = 008F39E11174300C001A35C4 /* GHUnitIPhoneView.h */; };
 		006D788E120A98C80053B72E /* GHUnitIPhoneViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C650F4915C2007932FE /* GHUnitIPhoneViewController.h */; };
+		833B27B7125F9BF900072CA4 /* GHUnitIPhoneGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B27B3125F9BF900072CA4 /* GHUnitIPhoneGradientView.m */; };
+		833B27B8125F9BF900072CA4 /* GHUnitIPhoneGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = 833B27B4125F9BF900072CA4 /* GHUnitIPhoneGradientView.h */; };
+		833B27B9125F9BF900072CA4 /* GHUnitIPhoneBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B27B5125F9BF900072CA4 /* GHUnitIPhoneBarView.m */; };
+		833B27BA125F9BF900072CA4 /* GHUnitIPhoneBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 833B27B6125F9BF900072CA4 /* GHUnitIPhoneBarView.h */; };
+		833B27BB125F9BF900072CA4 /* GHUnitIPhoneGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B27B3125F9BF900072CA4 /* GHUnitIPhoneGradientView.m */; };
+		833B27BC125F9BF900072CA4 /* GHUnitIPhoneGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = 833B27B4125F9BF900072CA4 /* GHUnitIPhoneGradientView.h */; };
+		833B27BD125F9BF900072CA4 /* GHUnitIPhoneBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B27B5125F9BF900072CA4 /* GHUnitIPhoneBarView.m */; };
+		833B27BE125F9BF900072CA4 /* GHUnitIPhoneBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 833B27B6125F9BF900072CA4 /* GHUnitIPhoneBarView.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,6 +318,10 @@
 		00E6527D120C7CDD00DBBDBC /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
 		00F09A65108D5040000E5AB5 /* GHTestEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestEmpty.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Tests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tests_Prefix.pch; sourceTree = "<group>"; };
+		833B27B3125F9BF900072CA4 /* GHUnitIPhoneGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneGradientView.m; sourceTree = "<group>"; };
+		833B27B4125F9BF900072CA4 /* GHUnitIPhoneGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneGradientView.h; sourceTree = "<group>"; };
+		833B27B5125F9BF900072CA4 /* GHUnitIPhoneBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneBarView.m; sourceTree = "<group>"; };
+		833B27B6125F9BF900072CA4 /* GHUnitIPhoneBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneBarView.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9A2E33A11A6132C00F7FA51 /* Framework.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Framework.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -464,6 +476,10 @@
 				00080FE40F4FC9260034DF4C /* GHUnitIPhoneTestViewController.m */,
 				003280F60FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.h */,
 				003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */,
+				833B27B4125F9BF900072CA4 /* GHUnitIPhoneGradientView.h */,
+				833B27B3125F9BF900072CA4 /* GHUnitIPhoneGradientView.m */,
+				833B27B5125F9BF900072CA4 /* GHUnitIPhoneBarView.m */,
+				833B27B6125F9BF900072CA4 /* GHUnitIPhoneBarView.h */,
 				008F39E11174300C001A35C4 /* GHUnitIPhoneView.h */,
 				008F39E21174300C001A35C4 /* GHUnitIPhoneView.m */,
 				006D7883120A98A20053B72E /* GHUnitIOS.h */,
@@ -642,6 +658,8 @@
 				006D7887120A98B70053B72E /* GHUnitIPhoneTestViewController.h in Headers */,
 				006D7888120A98B80053B72E /* GHUnitIPhoneView.h in Headers */,
 				006D7889120A98B90053B72E /* GHUnitIPhoneViewController.h in Headers */,
+				833B27B8125F9BF900072CA4 /* GHUnitIPhoneGradientView.h in Headers */,
+				833B27BA125F9BF900072CA4 /* GHUnitIPhoneBarView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +676,8 @@
 				000418FC120AA67A007589A0 /* GHNSInvocation+Utils.h in Headers */,
 				000418FD120AA67B007589A0 /* GHNSInvocationProxy.h in Headers */,
 				000418FE120AA67C007589A0 /* GHNSObject+Invocation.h in Headers */,
+				833B27BC125F9BF900072CA4 /* GHUnitIPhoneGradientView.h in Headers */,
+				833B27BE125F9BF900072CA4 /* GHUnitIPhoneBarView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -815,6 +835,8 @@
 				004FFC1411BEFB1400ADEB22 /* GHTestSuite.m in Sources */,
 				004FFC1611BEFB1900ADEB22 /* NSException+GHTestFailureExceptions.m in Sources */,
 				004FFC1711BEFB1A00ADEB22 /* NSValue+GHValueFormatter.m in Sources */,
+				833B27B7125F9BF900072CA4 /* GHUnitIPhoneGradientView.m in Sources */,
+				833B27B9125F9BF900072CA4 /* GHUnitIPhoneBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,6 +867,8 @@
 				004FFC2011BEFB3200ADEB22 /* GHTestSuite.m in Sources */,
 				004FFC2111BEFB3500ADEB22 /* NSException+GHTestFailureExceptions.m in Sources */,
 				004FFC2211BEFB3600ADEB22 /* NSValue+GHValueFormatter.m in Sources */,
+				833B27BB125F9BF900072CA4 /* GHUnitIPhoneGradientView.m in Sources */,
+				833B27BD125F9BF900072CA4 /* GHUnitIPhoneBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

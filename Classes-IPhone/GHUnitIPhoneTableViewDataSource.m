@@ -28,6 +28,9 @@
 //
 
 #import "GHUnitIPhoneTableViewDataSource.h"
+#import "GHUnitIPhoneBarView.h"
+#import "GHUnitIPhoneGradientView.h"
+
 
 @implementation GHUnitIPhoneTableViewDataSource
 
@@ -63,37 +66,44 @@
   return sectionNode.name;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   GHTestNode *sectionNode = [[[self root] children] objectAtIndex:indexPath.section];
   GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
   
   static NSString *CellIdentifier = @"ReviewFeedViewItem";  
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (!cell)
+  if (!cell) {
     cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];   
-  
-  if (editing_) {
-    cell.textLabel.text = node.name;
-  } else {
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", node.name, node.statusString];
   }
-
-  cell.textLabel.textColor = [UIColor lightGrayColor];
-  cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+	for (UIView* sub in cell.contentView.subviews) {
+		[sub removeFromSuperview];
+	}
   
+  GHUnitIPhoneBarView* barView = [[[GHUnitIPhoneBarView alloc] initWithFrame:CGRectMake(10, 20, 250, 12)] autorelease];
+	barView.status = [node status];
+	GHUnitIPhoneGradientView* gradientView = [[[GHUnitIPhoneGradientView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)] autorelease];
+	GHUnitIPhoneGradientView* selectedGradientView = [[[GHUnitIPhoneGradientView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)] autorelease];	
+	gradientView.isSelected = NO;
+	selectedGradientView.isSelected = YES;
+	cell.backgroundView = gradientView;
+	cell.selectedBackgroundView = selectedGradientView;
+  [cell.contentView addSubview:barView];
+	[cell.contentView setBackgroundColor:[UIColor clearColor]];
+	
+  UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(11, 1, 276, 22)]; 
+  label.backgroundColor = [UIColor clearColor];
+  label.font = [UIFont fontWithName:@"Helvetica-Bold" size:11];
+  label.textColor = [UIColor colorWithWhite:0.25 alpha:1.0];
+  label.highlightedTextColor = [UIColor whiteColor];
+	
   if (editing_) {
-    if (node.isSelected) cell.textLabel.textColor = [UIColor blackColor];
-  } else {
-    if ([node status] == GHTestStatusRunning) {
-      cell.textLabel.textColor = [UIColor blackColor];
-    } else if ([node status] == GHTestStatusErrored) {
-      cell.textLabel.textColor = [UIColor redColor];
-    } else if ([node status] == GHTestStatusSucceeded) {
-      cell.textLabel.textColor = [UIColor blackColor];
-    } else if (node.isSelected) {
-      if (node.isSelected) cell.textLabel.textColor = [UIColor darkGrayColor];
-    }
+    label.text = node.name;
+  } 
+	else {
+    label.text = [NSString stringWithFormat:@"%@ %@", node.name, node.statusString];
   }
+	[cell.contentView addSubview:label];
   
   UITableViewCellAccessoryType accessoryType = UITableViewCellAccessoryNone;
   if (self.isEditing && node.isSelected) accessoryType = UITableViewCellAccessoryCheckmark;
@@ -102,5 +112,6 @@
   
   return cell;  
 }
+
 
 @end

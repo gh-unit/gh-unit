@@ -28,6 +28,7 @@
 //
 
 #import "GHUnitIPhoneViewController.h"
+#import "GHUnitIPhoneGradientView.h"
 
 NSString *const GHUnitPrefixKey = @"Prefix";
 NSString *const GHUnitFilterKey = @"Filter";
@@ -191,8 +192,9 @@ NSString *const GHUnitFilterKey = @"Filter";
 
 #pragma mark Delegates (UITableView)
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  GHTestNode *node = [dataSource_ nodeForIndexPath:indexPath];
+	GHTestNode *node = [dataSource_ nodeForIndexPath:indexPath];
   if (dataSource_.isEditing) {
     [node setSelected:![node isSelected]];
     [node notifyChanged];
@@ -211,7 +213,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 36.0;
+  return 42.0;
 }
 
 #pragma mark Delegates (UIScrollView) 
