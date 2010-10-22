@@ -10,14 +10,14 @@
         <Path>index.html</Path>
         <Subnodes>
          <Node>
-          <Name>Installing</Name>
-          <Path>_installing.html</Path>
+          <Name>Examples</Name>
+          <Path>_examples.html</Path>
           <Subnodes>
           </Subnodes>
          </Node>
          <Node>
-          <Name>Examples</Name>
-          <Path>_examples.html</Path>
+          <Name>Installing</Name>
+          <Path>_installing.html</Path>
           <Subnodes>
           </Subnodes>
          </Node>
