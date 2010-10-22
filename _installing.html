@@ -58,12 +58,14 @@ Installing (iOS)</h2>
 <ul>
 <li>Add a <code>New Target</code>. Select <code>Cocoa Touch -&gt; Application</code>. Name it <code>Tests</code> (or something similar).</li>
 <li>Add the <code>GHUnitIOS.framework</code> to your project.</li>
-<li>Add the following frameworks to <code>Linked Libraries</code>:</li>
+<li>Add the following frameworks to <code>Linked Libraries</code>:<ul>
 <li><code>GHUnitIOS.framework</code></li>
 <li><code>CoreGraphics.framework</code></li>
 <li><code>Foundation.framework</code></li>
 <li><code>UIKit.framework</code></li>
 <li>(Optional) <code>CoreLocation.framework</code></li>
+</ul>
+</li>
 <li>Under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.</li>
 <li>Under 'Other Linker Flags' in the <code>Test</code> target, add <code>-ObjC</code> and <code>-all_load</code></li>
 <li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field.</li>
@@ -137,7 +139,7 @@ Installing in your project</h3>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Oct 21 2010 22:57:07 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Oct 21 2010 23:08:41 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

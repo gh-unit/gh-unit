@@ -10,6 +10,12 @@
         <Path>index.html</Path>
         <Subnodes>
          <Node>
+          <Name>Installing</Name>
+          <Path>_installing.html</Path>
+          <Subnodes>
+          </Subnodes>
+         </Node>
+         <Node>
           <Name>Examples</Name>
           <Path>_examples.html</Path>
           <Subnodes>
@@ -18,12 +24,6 @@
          <Node>
           <Name>Test Macros</Name>
           <Path>_test_macros.html</Path>
-          <Subnodes>
-          </Subnodes>
-         </Node>
-         <Node>
-          <Name>Installing</Name>
-          <Path>_installing.html</Path>
           <Subnodes>
           </Subnodes>
          </Node>
