@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>GHUnit: GHUnit</title>
+<title>GHUnit: Customizing</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -16,8 +16,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="navigation" id="top">
   <div class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
+      <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li class="current"><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
@@ -38,35 +38,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div class="navpath">
+    <ul>
+      <li><a class="el" href="index.html">GHUnit</a>      </li>
+    </ul>
+  </div>
 </div>
 <div class="header">
   <div class="headertitle">
-<h1>GHUnit </h1>  </div>
+<h1>Customizing </h1>  </div>
 </div>
 <div class="contents">
-<h3 class="version">0.4.26 </h3><p>GHUnit is a test framework for Objective-C (Mac OS X 10.5 and above and iPhone 3.x and above). It can be used with SenTestingKit, GTM or all by itself.</p>
-<p>For example, your test cases will be run if they subclass any of the following:</p>
-<ul>
-<li><a class="el" href="interface_g_h_test_case.html" title="The base class for a test case.">GHTestCase</a></li>
-<li>SenTestCase</li>
-<li>GTMTestCase</li>
-</ul>
-<p>Source: <a href="http://github.com/gabriel/gh-unit">http://github.com/gabriel/gh-unit</a></p>
-<p>View docs online: <a href="http://gabriel.github.com/gh-unit/">http://gabriel.github.com/gh-unit/</a></p>
-<p>This manual is divided in the following sections:</p>
-<ul>
-<li><a class="el" href="_examples.html">Examples</a></li>
-<li><a class="el" href="_test_macros.html">Test Macros</a></li>
-<li><a class="el" href="_installing.html">Installing</a></li>
-<li><a class="el" href="_env_variables.html">Environment Variables</a></li>
-<li><a class="el" href="_command_line.html">Command Line &amp; Makefiles</a></li>
-<li><a class="el" href="_customizing.html">Customizing</a></li>
-<li><a class="el" href="_hudson.html">Hudson</a></li>
-</ul>
-<h2><a class="anchor" id="Notes"></a>
-Notes</h2>
-<p>GHUnit was inspired by and uses parts of GTM (google-toolbox-for-mac) code, mostly from UnitTesting: <a href="http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/">http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/</a> </p>
-</div>
+<h2><a class="anchor" id="CustomTests"></a>
+Custom Test Case Classes</h2>
+<p>You can register additional classes at runtime; if you have your own. For example:</p>
+<div class="fragment"><pre class="fragment"> [[GHTesting sharedInstance] registerClassName:<span class="stringliteral">@&quot;MySpecialTestCase&quot;</span>];
+</pre></div><h2><a class="anchor" id="AlternateIOSAppDelegate"></a>
+Using an Alternate iPhone Application Delegate</h2>
+<p>If you want to use a custom application delegate in your test environment, you should subclass GHUnitIPhoneAppDelegate:</p>
+<div class="fragment"><pre class="fragment"> <span class="keyword">@interface </span>MyTestApplicationDelegate : GHUnitIPhoneAppDelegate { }
+ <span class="keyword">@end</span>
+</pre></div><p>Then in GHUnitIPhoneTestMain.m:</p>
+<div class="fragment"><pre class="fragment"> retVal = UIApplicationMain(argc, argv, nil, <span class="stringliteral">@&quot;MyTestApplicationDelegate&quot;</span>);
+</pre></div><p>I am looking into removing this dependency but this will work in the meantime.</p>
+<h2><a class="anchor" id="UsingSenTesting"></a>
+Using SenTestingKit</h2>
+<p>You can also use GHUnit with SenTestCase, for example:</p>
+<div class="fragment"><pre class="fragment"><span class="preprocessor"> #import &lt;SenTestingKit/SenTestingKit.h&gt;</span>
+ 
+ <span class="keyword">@interface </span>MyTest : SenTestCase { }
+ <span class="keyword">@end</span>
+ 
+ <span class="keyword">@implementation </span>MyTest
+ 
+ - (void)setUp {
+   <span class="comment">// Run before each test method</span>
+ }
+ 
+ - (void)tearDown {
+   <span class="comment">// Run after each test method</span>
+ }
+ 
+ - (void)testFoo {
+   <span class="comment">// Assert a is not NULL, with no custom error description</span>
+   STAssertNotNULL(a, nil);
+ 
+   <span class="comment">// Assert equal objects, add custom error description</span>
+   STAssertEqualObjects(a, b, <span class="stringliteral">@&quot;Foo should be equal to: %@. Something bad happened&quot;</span>, bar);
+ }
+ 
+ - (void)testBar {
+   <span class="comment">// Another test</span>
+ }
+ 
+ <span class="keyword">@end</span>
+</pre></div> </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"

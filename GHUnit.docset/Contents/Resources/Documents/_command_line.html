@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>GHUnit: GHUnit</title>
+<title>GHUnit: Command Line</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -16,8 +16,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="navigation" id="top">
   <div class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
+      <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li class="current"><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
@@ -38,35 +38,62 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div class="navpath">
+    <ul>
+      <li><a class="el" href="index.html">GHUnit</a>      </li>
+    </ul>
+  </div>
 </div>
 <div class="header">
   <div class="headertitle">
-<h1>GHUnit </h1>  </div>
+<h1>Command Line </h1>  </div>
 </div>
 <div class="contents">
-<h3 class="version">0.4.26 </h3><p>GHUnit is a test framework for Objective-C (Mac OS X 10.5 and above and iPhone 3.x and above). It can be used with SenTestingKit, GTM or all by itself.</p>
-<p>For example, your test cases will be run if they subclass any of the following:</p>
+<h2><a class="anchor" id="CommandLineRunningTests"></a>
+Running Tests</h2>
+<p>To run the tests from the command line:</p>
 <ul>
-<li><a class="el" href="interface_g_h_test_case.html" title="The base class for a test case.">GHTestCase</a></li>
-<li>SenTestCase</li>
-<li>GTMTestCase</li>
+<li>Copy the RunTests.sh (<a href="http://github.com/gabriel/gh-unit/tree/master/Scripts/RunTests.sh">http://github.com/gabriel/gh-unit/tree/master/Scripts/RunTests.sh</a>) file into your project directory (if you haven't already).</li>
+<li>In XCode:<ul>
+<li>To the <code>Tests</code> target, Add <code>New Build Phase</code> | <code>New Run Script Build Phase</code></li>
+<li>Enter <code>sh RunTests.sh</code> as the script. The path to <code>RunTests.sh</code> should be relative to the xcode project file (.xcodeproj)!<ul>
+<li>(Optional) Uncheck 'Show environment variables in build log'</li>
 </ul>
-<p>Source: <a href="http://github.com/gabriel/gh-unit">http://github.com/gabriel/gh-unit</a></p>
-<p>View docs online: <a href="http://gabriel.github.com/gh-unit/">http://gabriel.github.com/gh-unit/</a></p>
-<p>This manual is divided in the following sections:</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>From the command line, run the tests from xcodebuild (with the GHUNIT_CLI environment variable set):</p>
+<div class="fragment"><pre class="fragment">
+ // For mac app; This might seg fault in 10.6, in which case you should use make test via Makefile below
+ GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
+ 
+ // For iPhone app
+ GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator4.0 build
+ </pre></div><p>If you are wondering, the <code>RunTests.sh</code> script will only run the tests if the env variable GHUNIT_CLI is set. This is why this RunScript phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.</p>
+<p>This may seem strange that we run via xcodebuild with a RunScript phase in order to work on the command line, but otherwise we may not have the environment settings or other XCode specific configuration right.</p>
+<h2><a class="anchor" id="Makefile"></a>
+Makefile</h2>
+<p>Follow the directions above for adding command line support.</p>
+<p>Example Makefile's for Mac or iPhone apps:</p>
 <ul>
-<li><a class="el" href="_examples.html">Examples</a></li>
-<li><a class="el" href="_test_macros.html">Test Macros</a></li>
-<li><a class="el" href="_installing.html">Installing</a></li>
-<li><a class="el" href="_env_variables.html">Environment Variables</a></li>
-<li><a class="el" href="_command_line.html">Command Line &amp; Makefiles</a></li>
-<li><a class="el" href="_customizing.html">Customizing</a></li>
-<li><a class="el" href="_hudson.html">Hudson</a></li>
+<li>Makefile (Mac OS X): <a href="http://github.com/gabriel/gh-unit/tree/master/Project/Makefile">http://github.com/gabriel/gh-unit/tree/master/Project/Makefile</a> (for a Mac App)</li>
+<li>Makefile (iOS): <a href="http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile">http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile</a> (for an iPhone App)</li>
 </ul>
-<h2><a class="anchor" id="Notes"></a>
-Notes</h2>
-<p>GHUnit was inspired by and uses parts of GTM (google-toolbox-for-mac) code, mostly from UnitTesting: <a href="http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/">http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/</a> </p>
-</div>
+<p>The script will return a non-zero exit code on test failure.</p>
+<p>To run the tests via the Makefile:</p>
+<div class="fragment"><pre class="fragment">
+ make test
+ </pre></div><h2><a class="anchor" id="RunningATest"></a>
+Running a Test Case / Single Test</h2>
+<p>The <code>TEST</code> environment variable can be used to run a single test or test case.</p>
+<div class="fragment"><pre class="fragment">
+ // Run all tests in GHSlowTest
+ make test TEST="GHSlowTest"
+ 
+ // Run the method testSlowA in GHSlowTest	
+ make test TEST="GHSlowTest/testSlowA"
+ </pre></div> </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
