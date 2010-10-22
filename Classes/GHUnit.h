@@ -70,9 +70,9 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
 
  
  This manual is divided in the following sections:
- - @subpage Examples
- - @subpage TestMacros
  - @subpage Installing
+ - @subpage Examples
+ - @subpage TestMacros 
  - @subpage EnvVariables
  - @subpage CommandLine "Command Line & Makefiles"
  - @subpage Customizing
@@ -95,11 +95,11 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  - Add a <tt>New Target</tt>. Select <tt>Cocoa Touch -> Application</tt>. Name it <tt>Tests</tt> (or something similar).
  - Add the <tt>GHUnitIOS.framework</tt> to your project.
  - Add the following frameworks to <tt>Linked Libraries</tt>:
- - <tt>GHUnitIOS.framework</tt>
- - <tt>CoreGraphics.framework</tt>
- - <tt>Foundation.framework</tt>
- - <tt>UIKit.framework</tt>
- - (Optional) <tt>CoreLocation.framework</tt>
+    - <tt>GHUnitIOS.framework</tt>
+    - <tt>CoreGraphics.framework</tt>
+    - <tt>Foundation.framework</tt>
+    - <tt>UIKit.framework</tt>
+    - (Optional) <tt>CoreLocation.framework</tt>
  - Under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
  - Under 'Other Linker Flags' in the <tt>Test</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
