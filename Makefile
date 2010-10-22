@@ -6,7 +6,7 @@ docs:
 	cd ~/Library/Developer/Shared/Documentation/DocSets/ && tar zcvpf GHUnit.docset.tgz GHUnit.docset
 	mv ~/Library/Developer/Shared/Documentation/DocSets/GHUnit.docset.tgz Documentation
 
-docs-gh: docs
+gh-pages: docs
 	rm -rf build
 	git checkout gh-pages
 	cp -R Documentation/html/* .

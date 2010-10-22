@@ -70,8 +70,8 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
 
  
  This manual is divided in the following sections:
- - @subpage Installing
  - @subpage Examples
+ - @subpage Installing
  - @subpage TestMacros 
  - @subpage EnvVariables
  - @subpage CommandLine "Command Line & Makefiles"
