@@ -26,6 +26,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 //
 // Portions of this file fall under the following license, marked with:
 // GTM_BEGIN : GTM_END
@@ -56,13 +58,13 @@ NSString *const GHTestFilenameKey = @"GHTestFilenameKey";
 NSString *const GHTestLineNumberKey = @"GHTestLineNumberKey";
 NSString *const GHTestFailureException = @"GHTestFailureException";
 
-@interface NSException (GHTestFailureExceptionsPrivateAdditions)
+@interface NSException(GHTestFailureExceptionsPrivateAdditions)
 + (NSException *)ghu_failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                         reason:(NSString *)reason;
 @end
 
-@implementation NSException  (GHTestFailureExceptionsPrivateAdditions)
+@implementation NSException(GHTestFailureExceptionsPrivateAdditions)
 + (NSException *)ghu_failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                         reason:(NSString *)reason {
@@ -78,7 +80,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
 }
 @end
 
-@implementation NSException (GHTestFailureExceptions)
+@implementation NSException(GHTestFailureExceptions)
 
 + (NSException *)ghu_failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
@@ -234,3 +236,5 @@ NSString *GHComposeString(NSString *formatString, ...) {
 }
 
 // GTM_END
+
+//! @endcond

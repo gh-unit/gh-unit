@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 //
 // Portions of this file fall under the following license, marked with:
 // GTM_BEGIN : GTM_END
@@ -334,3 +336,5 @@ static GHTesting *gSharedInstance;
 // GTM_END
 
 @end
+
+//! @endcond

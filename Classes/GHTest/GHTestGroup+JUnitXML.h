@@ -27,12 +27,16 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHTestGroup.h"
 
-@interface GHTestGroup (JUnitXML)
+@interface GHTestGroup(JUnitXML)
 
 - (NSString *)JUnitXML;
 
 - (BOOL)writeJUnitXMLAtPath:(NSString *)documentsPath error:(NSError **)error;
 
 @end
+
+//! @endcond

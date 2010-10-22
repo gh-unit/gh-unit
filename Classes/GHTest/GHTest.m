@@ -1,6 +1,6 @@
 //
 //  GHTest.m
-//  GHKit
+//  GHUnit
 //
 //  Created by Gabriel Handford on 1/18/09.
 //  Copyright 2009. All rights reserved.
@@ -26,6 +26,8 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
+
+//! @cond DEV
 
 #import "GHTest.h"
 #import "GHTest+JUnitXML.h"
@@ -270,3 +272,5 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 }
 
 @end
+
+//! @endcond

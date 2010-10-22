@@ -6,9 +6,6 @@ COMMAND=xcodebuild
 default:
 	# Set default make action here
 
-docs:
-	cd .. && /Applications/Doxygen.app/Contents/Resources/doxygen
-
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:
 	-rm -rf build/*

@@ -49,8 +49,13 @@
 #import "GHTestMacros.h"
 #import "GHTest.h"
 
-// Log to your test case logger.
-// For example, GHTestLog(@"Some debug info, %@", obj)
+/*!
+ Log to your test case logger.
+ For example,
+ @code
+ GHTestLog(@"Some debug info, %@", obj);
+ @endcode
+ */
 #define GHTestLog(...) [self log:[NSString stringWithFormat:__VA_ARGS__, nil]]
 
 /*!

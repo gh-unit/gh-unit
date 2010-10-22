@@ -29,6 +29,7 @@
 
 #import "GHTestOperation.h"
 
+//! @cond DEV
 
 @implementation GHTestOperation
 
@@ -58,3 +59,5 @@
 }
 
 @end
+
+//! @endcond

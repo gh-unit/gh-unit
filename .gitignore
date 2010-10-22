@@ -4,7 +4,8 @@ build
 *.pbxuser
 *.perspectivev3
 .DS_Store
-Documentation
+Documentation/html
+Documentation/GHUnit.docset.tgz
 *.tm_build_errors
 *.swp
 *~.nib

@@ -26,6 +26,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 //
 // Portions of this file fall under the following license, marked with
 // SENTE_BEGIN - SENTE_END
@@ -63,7 +65,7 @@
 
 // SENTE_BEGIN
 
-@implementation NSValue (GHValueFormatter)
+@implementation NSValue(GHValueFormatter)
 - (NSString *)ghu_contentDescription {
   const char *objCType = [self objCType];
   if (objCType != NULL) {
@@ -155,3 +157,5 @@
 @end
 
 // SENTE_END
+
+//! @endcond

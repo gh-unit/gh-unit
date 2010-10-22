@@ -1,6 +1,6 @@
 //
 //  GHTestViewModel.m
-//  GHKit
+//  GHUnit
 //
 //  Created by Gabriel Handford on 1/17/09.
 //  Copyright 2009. All rights reserved.
@@ -26,6 +26,8 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
+
+//! @cond DEV
 
 #import "GHTestViewModel.h"
 #import "GTMStackTrace.h"
@@ -418,3 +420,5 @@
 }
 
 @end
+
+//! @endcond

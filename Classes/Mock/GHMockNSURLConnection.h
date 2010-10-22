@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import <Foundation/Foundation.h>
 
 extern NSString *const GHMockNSURLConnectionException;
@@ -115,6 +117,13 @@ extern NSString *const GHMockNSURLConnectionException;
  */
 - (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)delay;
 
+/*!
+ Send data to connection delegate.
+ @param data Data to send
+ @param statusCode HTTP status code
+ @param MIMEType Mime type
+ @param afterDelay Delay
+ */
 - (void)receiveData:(NSData *)data statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay;
 
 /*!
@@ -160,3 +169,5 @@ extern NSString *const GHMockNSURLConnectionException;
 - (void)failWithError:(NSError *)error afterDelay:(NSTimeInterval)delay;
 
 @end
+
+//! @endcond

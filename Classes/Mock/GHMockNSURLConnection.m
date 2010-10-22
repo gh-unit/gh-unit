@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHMockNSURLConnection.h"
 #import "GHMockNSHTTPURLResponse.h"
 #import "GHNSObject+Invocation.h"
@@ -123,3 +125,5 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 }
 
 @end
+
+//! @endcond

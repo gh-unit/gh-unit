@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHTestSuite.h"
 
 #import "GHTesting.h"
@@ -161,3 +163,5 @@ NSString *GHUnitTest = NULL;
 }
 
 @end
+
+//! @endcond

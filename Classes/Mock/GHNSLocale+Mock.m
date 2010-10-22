@@ -26,12 +26,15 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
+
+//! @cond DEV
+
 #import "GHNSLocale+Mock.h"
 
 #import "GHUNSObject+Swizzle.h"
 
 // Allows us to override the current locale for testing
-@implementation NSLocale (GHMock)
+@implementation NSLocale(GHMock)
 
 static NSString *gGHUNSLocaleLocaleIdentifier = NULL;
 static NSArray *gGHUNSLocalePreferredLanguages = NULL;
@@ -79,3 +82,4 @@ static BOOL gGHUNSLocaleMockSetup = NO;
 
 @end 
 
+//! @endcond

@@ -26,6 +26,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHTest.h"
 #import "GHTestCase.h"
 
@@ -149,3 +151,5 @@
 - (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options;
 
 @end
+
+//! @endcond

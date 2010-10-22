@@ -31,10 +31,10 @@
 
 // Some default statuses to use; Or define and use your own
 enum {
-  kGHUnitWaitStatusUnknown = 0,
-  kGHUnitWaitStatusSuccess,
-  kGHUnitWaitStatusFailure,
-  kGHUnitWaitStatusCancelled
+  kGHUnitWaitStatusUnknown = 0, //!< Unknown wait status
+  kGHUnitWaitStatusSuccess, //!< Wait status success
+  kGHUnitWaitStatusFailure, //!< Wait status failure
+  kGHUnitWaitStatusCancelled //!< Wait status cancelled
 };
 
 /*!
@@ -46,6 +46,12 @@ enum {
  Be sure to call prepare before the asynchronous method (otherwise an exception will raise).
  
  @code
+ 
+ @interface MyAsyncTest : GHAsyncTestCase { }
+ @end
+ 
+ @implementation MyAsyncTest
+ 
  - (void)testSuccess {
    [self prepare];
    
@@ -61,6 +67,8 @@ enum {
    // To ignore the check, forSelector can be NULL.
    [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testSuccess)];
  }
+ 
+ @end
  @endcode
  */
 @interface GHAsyncTestCase : GHTestCase {
@@ -88,7 +96,6 @@ enum {
 
 /*!
  Prepare and specify the selector we will use in notify.
-
  @param selector
  */
 - (void)prepare:(SEL)selector;
@@ -112,7 +119,9 @@ enum {
  */
 - (void)waitForStatus:(NSInteger)status timeout:(NSTimeInterval)timeout;
 
-// Deprecated
+/*! 
+ @deprecated
+ */
 - (void)waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout;
 
 /*!

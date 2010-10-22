@@ -29,4 +29,11 @@
   // TODO(gabe): Test this was output
 }
 
+- (void)testGHAssertNotEqualStrings {
+  GHAssertNotEqualStrings(@"a", @"b", nil);
+  GHAssertNotEqualStrings(@"a", nil, nil);
+  GHAssertNotEqualStrings(nil, @"a", nil);
+  GHAssertThrows({ GHAssertNotEqualStrings(@"a", @"a", nil); }, nil);
+}
+
 @end

@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHTest.h"
 
 /*!
@@ -40,3 +42,5 @@
 - (id)initWithTest:(id<GHTest>)test options:(GHTestOptions)options;
 
 @end
+
+//! @endcond

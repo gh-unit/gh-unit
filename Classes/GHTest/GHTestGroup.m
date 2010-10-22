@@ -26,6 +26,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHTestGroup.h"
 #import "GHTestCase.h"
 #import "GHTestOperation.h"
@@ -385,3 +387,5 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 @end
+
+//! @endcond
