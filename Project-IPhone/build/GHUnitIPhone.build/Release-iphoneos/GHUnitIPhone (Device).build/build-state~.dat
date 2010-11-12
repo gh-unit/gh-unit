@@ -1,1661 +1,0 @@
-TGHUnitIPhone (Device)
-v7
-r0
-t305014253.249012
-cCheck dependencies
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMObjC2Runtime.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMStackTrace.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSInvocation+Utils.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSObject+Invocation.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneAppDelegate.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneViewController.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneTestViewController.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestViewModel.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestCase.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHAsyncTestCase.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneTableViewDataSource.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSInvocationProxy.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneView.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTest+JUnitXML.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTest.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestGroup+JUnitXML.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestGroup.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTesting.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestOperation.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestRunner.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestSuite.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/NSException+GHTestFailureExceptions.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/NSValue+GHValueFormatter.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMObjC2Runtime.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMStackTrace.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSInvocation+Utils.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cLibtool "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/libGHUnitIOSDevice.a" normal armv6
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSObject+Invocation.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneAppDelegate.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneViewController.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneTestViewController.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestViewModel.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestCase.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHAsyncTestCase.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneTableViewDataSource.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSInvocationProxy.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneView.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTest+JUnitXML.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTest.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestGroup+JUnitXML.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestGroup.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTesting.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestOperation.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestRunner.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestSuite.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/NSException+GHTestFailureExceptions.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/NSValue+GHValueFormatter.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cLibtool "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/libGHUnitIOSDevice.a" normal armv7
-cCreateUniversalBinary /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/libGHUnitIOSDevice.a normal "armv6 armv7"
-cPBXCp build/Release-iphoneos/GHTest+JUnitXML.h ../Classes/GHTest/GHTest+JUnitXML.h
-cPBXCp build/Release-iphoneos/GHTest.h ../Classes/GHTest/GHTest.h
-cPBXCp build/Release-iphoneos/GHTestGroup+JUnitXML.h ../Classes/GHTest/GHTestGroup+JUnitXML.h
-cPBXCp build/Release-iphoneos/GHTestGroup.h ../Classes/GHTest/GHTestGroup.h
-cPBXCp build/Release-iphoneos/GHTesting.h ../Classes/GHTest/GHTesting.h
-cPBXCp build/Release-iphoneos/GHTestOperation.h ../Classes/GHTest/GHTestOperation.h
-cPBXCp build/Release-iphoneos/GHTestRunner.h ../Classes/GHTest/GHTestRunner.h
-cPBXCp build/Release-iphoneos/GHTestSuite.h ../Classes/GHTest/GHTestSuite.h
-cPBXCp build/Release-iphoneos/NSException+GHTestFailureExceptions.h ../Classes/GHTest/NSException+GHTestFailureExceptions.h
-cPBXCp build/Release-iphoneos/NSValue+GHValueFormatter.h ../Classes/GHTest/NSValue+GHValueFormatter.h
-cPBXCp build/Release-iphoneos/Makefile Makefile
-cPBXCp build/Release-iphoneos/GHUnitIPhoneAppDelegate.h ../Classes-IPhone/GHUnitIPhoneAppDelegate.h
-cPBXCp build/Release-iphoneos/GHAsyncTestCase.h ../Classes/GHAsyncTestCase.h
-cPBXCp build/Release-iphoneos/GHTestCase.h ../Classes/GHTestCase.h
-cPBXCp build/Release-iphoneos/GHTestMacros.h ../Classes/GHTestMacros.h
-cPBXCp build/Release-iphoneos/GHUnit.h ../Classes/GHUnit.h
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk
-c000000004C5557950000000000000110
-t1280661397
-s272
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h
-c000000004C53AAAC0000000000000AB3
-t1280551596
-s2739
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004C4FED690000000000001466
-t1280306537
-s5222
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004C52589E00000000000009CD
-t1280465054
-s2509
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/AvailabilityMacros.h
-c000000004C4FEE3F0000000000006724
-t1280306751
-s26404
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/TargetConditionals.h
-c000000004C4FEE3F00000000000031E9
-t1280306751
-s12777
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/dlfcn.h
-c000000004C4FDCFB0000000000000B1C
-t1280302331
-s2844
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/libkern/OSAtomic.h
-c000000004C4FDD490000000000002519
-t1280302409
-s9497
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/mach-o/nlist.h
-c000000004C4FDBF600000000000033C0
-t1280302070
-s13248
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/objc/objc-api.h
-c000000004C4FE3680000000000000955
-t1280303976
-s2389
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/objc/runtime.h
-c000000004C4FE36800000000000053F9
-t1280303976
-s21497
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/stdio.h
-c000000004C4FDD4A00000000000040AC
-t1280302410
-s16556
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/stdlib.h
-c000000004C4FDD4A0000000000002DF5
-t1280302410
-s11765
-
-N/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/usr/include/string.h
-c000000004C4FDD4A0000000000001731
-t1280302410
-s5937
-
-N/Users/gabe/Projects/gh-unit/Classes-IPhone/GHUnitIPhoneAppDelegate.h
-c000000004C6192F30000000000000591
-t1281463027
-s1425
-i<UIKit/UIKit.h>
-
-N/Users/gabe/Projects/gh-unit/Classes-IPhone/GHUnitIPhoneTableViewDataSource.h
-c000000004C6192F300000000000005CE
-t1281463027
-s1486
-i"GHTestViewModel.h"
-
-N/Users/gabe/Projects/gh-unit/Classes-IPhone/GHUnitIPhoneTestViewController.h
-c000000004C6192F300000000000005D0
-t1281463027
-s1488
-i"GHTestViewModel.h"
-
-N/Users/gabe/Projects/gh-unit/Classes-IPhone/GHUnitIPhoneView.h
-c000000004C6192F300000000000006D1
-t1281463027
-s1745
-
-N/Users/gabe/Projects/gh-unit/Classes-IPhone/GHUnitIPhoneViewController.h
-c000000004C6192F3000000000000083C
-t1281463027
-s2108
-i"GHUnitIPhoneView.h"
-i"GHUnitIPhoneTableViewDataSource.h"
-i"GHUnitIPhoneTestViewController.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHAsyncTestCase.h
-c000000004C7DEAE200000000000010C3
-t1283320546
-s4291
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTest+JUnitXML.h
-c000000004C6192F3000000000000059E
-t1281463027
-s1438
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTest.h
-c000000004C6192F30000000000001553
-t1281463027
-s5459
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTestGroup+JUnitXML.h
-c000000004C6192F3000000000000057C
-t1281463027
-s1404
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTestGroup.h
-c000000004C6192F30000000000001311
-t1281463027
-s4881
-i"GHTest.h"
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTestOperation.h
-c000000004C6192F300000000000005C8
-t1281463027
-s1480
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTestRunner.h
-c000000004C6192F30000000000001362
-t1281463027
-s4962
-i"GHTestGroup.h"
-i"GHTestSuite.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTestSuite.h
-c000000004C6192F30000000000000E73
-t1281463027
-s3699
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTesting.h
-c000000004C6192F30000000000001044
-t1281463027
-s4164
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/NSException+GHTestFailureExceptions.h
-c000000004C6192F30000000000000F3E
-t1281463027
-s3902
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/NSValue+GHValueFormatter.h
-c000000004C6192F30000000000000BDB
-t1281463027
-s3035
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTestCase.h
-c000000004C6192F30000000000001095
-t1281463027
-s4245
-i"GHTestMacros.h"
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTestMacros.h
-c000000004C7DE4880000000000009E8F
-t1283318920
-s40591
-i"NSException+GHTestFailureExceptions.h"
-i"NSValue+GHValueFormatter.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/SharedUI/GHTestViewModel.h
-c000000004C6192F30000000000001104
-t1281463027
-s4356
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Libraries/GHKit/GHNSInvocation+Utils.h
-c000000004C6192F50000000000001273
-t1281463029
-s4723
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Libraries/GHKit/GHNSInvocationProxy.h
-c000000004C6192F50000000000001174
-t1281463029
-s4468
-
-N/Users/gabe/Projects/gh-unit/Libraries/GHKit/GHNSObject+Invocation.h
-c000000004C6192F50000000000000E93
-t1281463029
-s3731
-i"GHNSInvocation+Utils.h"
-i"GHNSInvocationProxy.h"
-
-N/Users/gabe/Projects/gh-unit/Libraries/GTM/Foundation/GTMObjC2Runtime.h
-c000000004C6192F50000000000001216
-t1281463029
-s4630
-i<objc/objc-api.h>
-i"GTMDefines.h"
-i<objc/runtime.h>
-i<objc/objc-runtime.h>
-i<objc/Object.h>
-i"objc/Protocol.h"
-i<libkern/OSAtomic.h>
-
-N/Users/gabe/Projects/gh-unit/Libraries/GTM/Foundation/GTMStackTrace.h
-c000000004C6192F50000000000000FDF
-t1281463029
-s4063
-i<CoreFoundation/CoreFoundation.h>
-i"GTMDefines.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.h
-c000000004C6192F30000000000000591
-t1281463027
-s1425
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m
-c000000004C6192F30000000000000919
-t1281463027
-s2329
-i"GHUnitIPhoneAppDelegate.h"
-i"GHUnitIPhoneViewController.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m
-c000000004C6192F30000000000001019
-t1281463027
-s4121
-i"GHUnitIPhoneTableViewDataSource.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m
-c000000004C7DE36D0000000000000DC2
-t1283318637
-s3522
-i"GHUnitIPhoneTestViewController.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m
-c000000004C6192F30000000000000F74
-t1281463027
-s3956
-i"GHUnitIPhoneView.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m
-c000000004C7DE36300000000000024C1
-t1283318627
-s9409
-i"GHUnitIPhoneViewController.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.h
-c000000004C7DEAE200000000000010C3
-t1283320546
-s4291
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m
-c000000004C7DEA2F00000000000017F9
-t1283320367
-s6137
-i"GHAsyncTestCase.h"
-i<objc/runtime.h>
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.h
-c000000004C6192F3000000000000059E
-t1281463027
-s1438
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m
-c000000004C6192F300000000000006C6
-t1281463027
-s1734
-i"GHTest+JUnitXML.h"
-i"GHTesting.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.h
-c000000004C6192F30000000000001553
-t1281463027
-s5459
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m
-c000000004C6192F300000000000020E6
-t1281463027
-s8422
-i"GHTest.h"
-i"GHTest+JUnitXML.h"
-i"GHTesting.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.h
-c000000004C6192F3000000000000057C
-t1281463027
-s1404
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m
-c000000004C6192F300000000000008DA
-t1281463027
-s2266
-i"GHTestGroup+JUnitXML.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.h
-c000000004C6192F30000000000001311
-t1281463027
-s4881
-i"GHTest.h"
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m
-c000000004C7DE3500000000000002CB7
-t1283318608
-s11447
-i"GHTestGroup.h"
-i"GHTestCase.h"
-i"GHTestOperation.h"
-i"GHTesting.h"
-i"GTMStackTrace.h"
-i"GHTestGroup+JUnitXML.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.h
-c000000004C6192F300000000000005C8
-t1281463027
-s1480
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m
-c000000004C6192F300000000000006C7
-t1281463027
-s1735
-i"GHTestOperation.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.h
-c000000004C6192F30000000000001362
-t1281463027
-s4962
-i"GHTestGroup.h"
-i"GHTestSuite.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m
-c000000004C7DE7EB00000000000024DB
-t1283319787
-s9435
-i"GHTestRunner.h"
-i"GHTestSuite.h"
-i"GHTesting.h"
-i<stdio.h>
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.h
-c000000004C6192F30000000000000E73
-t1281463027
-s3699
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m
-c000000004C7DEB470000000000001791
-t1283320647
-s6033
-i"GHTestSuite.h"
-i"GHTesting.h"
-i"GHTestGroup+JUnitXML.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.h
-c000000004C6192F30000000000001044
-t1281463027
-s4164
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m
-c000000004C6192F30000000000002D2D
-t1281463027
-s11565
-i"GHTesting.h"
-i"GHTest.h"
-i"GHTestCase.h"
-i"GTMStackTrace.h"
-i<objc/runtime.h>
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.h
-c000000004C6192F30000000000000F3E
-t1281463027
-s3902
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m
-c000000004C6192F30000000000002039
-t1281463027
-s8249
-i"NSException+GHTestFailureExceptions.h"
-i"NSValue+GHValueFormatter.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.h
-c000000004C6192F30000000000000BDB
-t1281463027
-s3035
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m
-c000000004C6192F30000000000001869
-t1281463027
-s6249
-i"NSValue+GHValueFormatter.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.h
-c000000004C6192F30000000000001095
-t1281463027
-s4245
-i"GHTestMacros.h"
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m
-c000000004C6192F3000000000000072B
-t1281463027
-s1835
-i"GHTestCase.h"
-i"GTMStackTrace.h"
-i"GHTesting.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestMacros.h
-c000000004C7DE4880000000000009E8F
-t1283318920
-s40591
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHUnit.h
-c000000004C6192F30000000000000711
-t1281463027
-s1809
-i"GHTestCase.h"
-i"GHAsyncTestCase.h"
-i"GHTestSuite.h"
-i"GHTestMacros.h"
-i"GHTestRunner.h"
-i"GHTest.h"
-i"GHTesting.h"
-i"GHTestOperation.h"
-i"GHTestGroup.h"
-i"GHTest+JUnitXML.h"
-i"GHTestGroup+JUnitXML.h"
-i"NSException+GHTestFailureExceptions.h"
-i"NSValue+GHValueFormatter.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.h
-c000000004C6192F30000000000001104
-t1281463027
-s4356
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m
-c000000004C6192F30000000000002FFF
-t1281463027
-s12287
-i"GHTestViewModel.h"
-i"GTMStackTrace.h"
-i"GHTesting.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m
-c000000004C6192F500000000000014DF
-t1281463029
-s5343
-i"GHNSInvocation+Utils.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m
-c000000004C6192F500000000000010FB
-t1281463029
-s4347
-i"GHNSInvocationProxy.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.h
-c000000004C6192F50000000000000E93
-t1281463029
-s3731
-i"GHNSInvocation+Utils.h"
-i"GHNSInvocationProxy.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m
-c000000004C6192F500000000000013C1
-t1281463029
-s5057
-i"GHNSObject+Invocation.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m
-c000000004C6192F5000000000000121F
-t1281463029
-s4639
-i"GTMObjC2Runtime.h"
-i<stdlib.h>
-i<string.h>
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m
-c000000004C7DE40500000000000030A2
-t1283318789
-s12450
-i<stdlib.h>
-i<dlfcn.h>
-i<mach-o/nlist.h>
-i"GTMStackTrace.h"
-i"GTMObjC2Runtime.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/GTMDefines.h
-c000000004C6192F50000000000002645
-t1281463029
-s9797
-i<AvailabilityMacros.h>
-i<TargetConditionals.h>
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch
-c000000004C6192FA0000000000000085
-t1281463034
-s133
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-i"GHUnit.h"
-i"GHNSObject+Invocation.h"
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/Makefile
-c000000004C6192FA0000000000000206
-t1281463034
-s518
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHAsyncTestCase.o
-t1283321450
-s17268
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSInvocation+Utils.o
-t1283321449
-s13864
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSInvocationProxy.o
-t1283321450
-s14272
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSObject+Invocation.o
-t1283321449
-s14972
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTest+JUnitXML.o
-t1283321450
-s4024
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTest.o
-t1283321450
-s32080
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestCase.o
-t1283321450
-s7604
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestGroup+JUnitXML.o
-t1283321450
-s5440
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestGroup.o
-t1283321451
-s45016
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestOperation.o
-t1283321450
-s5728
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestRunner.o
-t1283321451
-s33340
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestSuite.o
-t1283321451
-s15932
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestViewModel.o
-t1283321450
-s50768
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTesting.o
-t1283321451
-s22048
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIOSDevice.LinkFileList
-c000000004C7DEE690000000000000E02
-t1283321449
-s3586
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneAppDelegate.o
-t1283321449
-s9640
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneTableViewDataSource.o
-t1283321450
-s39920
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneTestViewController.o
-t1283321450
-s13972
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneView.o
-t1283321450
-s37800
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneViewController.o
-t1283321450
-s44484
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMObjC2Runtime.o
-t1283321449
-s432
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMStackTrace.o
-t1283321449
-s10472
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/NSException+GHTestFailureExceptions.o
-t1283321451
-s13412
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/NSValue+GHValueFormatter.o
-t1283321451
-s7132
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/libGHUnitIOSDevice.a
-t1283321451
-s470568
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHAsyncTestCase.o
-t1283321452
-s17260
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSInvocation+Utils.o
-t1283321451
-s13764
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSInvocationProxy.o
-t1283321452
-s14196
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSObject+Invocation.o
-t1283321451
-s15160
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTest+JUnitXML.o
-t1283321452
-s4024
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTest.o
-t1283321452
-s32136
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestCase.o
-t1283321451
-s7612
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestGroup+JUnitXML.o
-t1283321452
-s5496
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestGroup.o
-t1283321452
-s45648
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestOperation.o
-t1283321452
-s5740
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestRunner.o
-t1283321452
-s33328
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestSuite.o
-t1283321453
-s16108
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestViewModel.o
-t1283321452
-s50848
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTesting.o
-t1283321452
-s22536
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIOSDevice.LinkFileList
-c000000004C7DEE690000000000000E02
-t1283321449
-s3586
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneAppDelegate.o
-t1283321451
-s9640
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneTableViewDataSource.o
-t1283321452
-s40024
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneTestViewController.o
-t1283321451
-s13908
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneView.o
-t1283321452
-s37480
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneViewController.o
-t1283321451
-s44196
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMObjC2Runtime.o
-t1283321451
-s432
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMStackTrace.o
-t1283321451
-s10824
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/NSException+GHTestFailureExceptions.o
-t1283321453
-s13444
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/NSValue+GHValueFormatter.o
-t1283321453
-s7028
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/libGHUnitIOSDevice.a
-t1283321453
-s471784
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHAsyncTestCase.h
-t1283321453
-s4291
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHTest+JUnitXML.h
-t1283321453
-s1438
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHTest.h
-t1283321453
-s5459
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHTestCase.h
-t1283321453
-s4245
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHTestGroup+JUnitXML.h
-t1283321453
-s1404
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHTestGroup.h
-t1283321453
-s4881
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHTestMacros.h
-t1283321453
-s40591
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHTestOperation.h
-t1283321453
-s1480
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHTestRunner.h
-t1283321453
-s4962
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHTestSuite.h
-t1283321453
-s3699
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHTesting.h
-t1283321453
-s4164
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHUnit.h
-t1283321453
-s1809
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/GHUnitIPhoneAppDelegate.h
-t1283321453
-s1425
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/Makefile
-t1283321453
-s518
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/NSException+GHTestFailureExceptions.h
-t1283321453
-s3902
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/NSValue+GHValueFormatter.h
-t1283321453
-s3035
-
-N/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/libGHUnitIOSDevice.a
-t1283321453
-s942400
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies305014248#305014249#0(0"0(0#1#0"6278129405544386560#0"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHAsyncTestCase.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.058184
-e305014250.354318
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHAsyncTestCase.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@80"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m305014250#305014250#0(0"0(0#0#72"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m4659800704#1753"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHAsyncTestCase.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSInvocation+Utils.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014249.494728
-e305014249.782232
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSInvocation+Utils.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@93"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m305014249#305014249#0(0"0(0#0#85"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m4669512496#1771"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSInvocation+Utils.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSInvocationProxy.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.206838
-e305014250.478139
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSInvocationProxy.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@92"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m305014250#305014250#0(0"0(0#0#84"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m4661564080#1769"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSInvocationProxy.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSObject+Invocation.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014249.496002
-e305014249.780355
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSObject+Invocation.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@94"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m305014249#305014249#0(0"0(0#0#86"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m4669535616#1773"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHNSObject+Invocation.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTest+JUnitXML.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.376792
-e305014250.612588
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTest+JUnitXML.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@87"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m305014250#305014250#0(0"0(0#0#79"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m4673972864#1760"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTest+JUnitXML.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTest.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.452062
-e305014250.809506
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTest.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@78"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m305014250#305014250#0(0"0(0#0#70"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m4673504400#1742"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTest.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestCase.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014249.966539
-e305014250.206563
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestCase.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@75"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m305014249#305014250#0(0"0(0#0#67"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m4672497168#1743"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestCase.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestGroup+JUnitXML.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.478417
-e305014250.724785
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestGroup+JUnitXML.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@92"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m305014250#305014250#0(0"0(0#0#84"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m4673746960#1770"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestGroup+JUnitXML.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestGroup.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.612851
-e305014251.113292
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestGroup.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@83"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m305014250#305014251#0(0"0(0#0#75"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m4673037968#1752"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestGroup.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestOperation.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.725053
-e305014250.947574
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestOperation.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@87"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m305014250#305014250#0(0"0(0#0#79"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m4674101456#1760"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestOperation.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestRunner.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.809776
-e305014251.159724
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestRunner.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@84"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m305014250#305014251#0(0"0(0#0#76"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m4661617072#1754"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestRunner.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestSuite.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.947847
-e305014251.266023
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestSuite.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@83"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m305014250#305014251#0(0"0(0#0#75"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m4659787376#1752"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestSuite.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestViewModel.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014249.852113
-e305014250.376507
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestViewModel.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@89"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m305014249#305014250#0(0"0(0#0#81"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m4674145792#1762"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTestViewModel.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTesting.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.653438
-e305014251.026518
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTesting.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@81"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m305014250#305014251#0(0"0(0#0#73"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m4352961536#1748"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHTesting.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneAppDelegate.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014249.724519
-e305014249.966022
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneAppDelegate.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@95"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m305014249#305014249#0(0"0(0#0#87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m7516588542415229952#1776"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneAppDelegate.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneTableViewDataSource.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.139230
-e305014250.451795
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneTableViewDataSource.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@103"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m305014250#305014250#0(0"0(0#0#95"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m4352699264#1792"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneTableViewDataSource.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneTestViewController.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014249.782451
-e305014250.057908
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneTestViewController.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@102"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m305014249#305014250#0(0"0(0#0#94"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m4674347760#1790"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneTestViewController.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneView.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014250.354600
-e305014250.653153
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneView.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@88"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m305014250#305014250#0(0"0(0#0#80"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m4659852928#1762"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneView.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneViewController.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014249.780636
-e305014250.138940
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneViewController.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@98"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m305014249#305014250#0(0"0(0#0#90"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m4674512816#1782"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIPhoneViewController.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMObjC2Runtime.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014249.490015
-e305014249.722404
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMObjC2Runtime.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@97"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m305014249#305014249#0(0"0(0#0#89"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m8018148195752685568#1770"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMObjC2Runtime.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMStackTrace.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014249.493517
-e305014249.851451
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMStackTrace.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-o/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m:106:17:{106:13-106:16}{106:20-106:42}: warning: ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')
-o         if (imp <= (IMP)currDesc->address) {
-o             ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~
-o/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m:119:17:{119:13-119:16}{119:20-119:42}: warning: ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')
-o         if (imp <= (IMP)currDesc->address) {
-o             ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~
-o2 warnings generated.
-lSLF07#2@95"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305014249#305014249#0(646"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m:106:17:{106:13-106:16}{106:20-106:42}: warning: ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')         if (imp <= (IMP)currDesc->address) {             ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m:119:17:{119:13-119:16}{119:20-119:42}: warning: ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')         if (imp <= (IMP)currDesc->address) {             ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~2 warnings generated.2(22@86"Ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')305014249#0#223#0(6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#106#17#0#0#49"ordered comparison of function pointers (* and *)2(6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#106#13#106#16#6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#106#20#106#42#22@86"Ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')305014249#312#223#0(6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#119#17#0#0#49"ordered comparison of function pointers (* and *)2(6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#119#13#119#16#6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#119#20#119#42#0#0#87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m4669486544#1766"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMStackTrace.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/NSException+GHTestFailureExceptions.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.026893
-e305014251.291653
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/NSException+GHTestFailureExceptions.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@107"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m305014251#305014251#0(0"0(0#0#99"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m4672791664#1800"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/NSException+GHTestFailureExceptions.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/NSValue+GHValueFormatter.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.114591
-e305014251.358903
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/NSValue+GHValueFormatter.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m
-xnormal
-xarmv6
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@96"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m305014251#305014251#0(0"0(0#0#88"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m4674016352#1778"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv6" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/NSValue+GHValueFormatter.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHAsyncTestCase.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.889136
-e305014252.190789
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHAsyncTestCase.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@80"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m305014251#305014252#0(0"0(0#0#72"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m4669513312#1753"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHAsyncTestCase.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSInvocation+Utils.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.291941
-e305014251.573082
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSInvocation+Utils.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@93"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m305014251#305014251#0(0"0(0#0#85"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m4674158240#1771"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocation+Utils.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSInvocation+Utils.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSInvocationProxy.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.967281
-e305014252.233251
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSInvocationProxy.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@92"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m305014251#305014252#0(0"0(0#0#84"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m4669459616#1769"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSInvocationProxy.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSInvocationProxy.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSObject+Invocation.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.375177
-e305014251.693532
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSObject+Invocation.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@94"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m305014251#305014251#0(0"0(0#0#86"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m4674502832#1773"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GHKit/GHNSObject+Invocation.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHNSObject+Invocation.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTest+JUnitXML.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.212300
-e305014252.440785
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTest+JUnitXML.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@87"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m305014252#305014252#0(0"0(0#0#79"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m4661196720#1760"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTest+JUnitXML.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTest.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.226124
-e305014252.586412
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTest.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@78"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m305014252#305014252#0(0"0(0#0#70"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m4674497360#1742"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTest.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestCase.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.693828
-e305014251.928323
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestCase.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@75"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m305014251#305014251#0(0"0(0#0#67"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m4661853632#1743"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestCase.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestGroup+JUnitXML.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.233517
-e305014252.473306
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestGroup+JUnitXML.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@92"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m305014252#305014252#0(0"0(0#0#84"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m4669474784#1770"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestGroup+JUnitXML.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestGroup.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.441329
-e305014252.988292
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestGroup.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@83"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m305014252#305014252#0(0"0(0#0#75"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m4669474160#1752"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestGroup.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestOperation.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.486839
-e305014252.725233
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestOperation.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@87"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m305014252#305014252#0(0"0(0#0#79"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m4672602976#1760"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestOperation.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestRunner.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.586749
-e305014252.947119
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestRunner.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@84"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m305014252#305014252#0(0"0(0#0#76"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m4673404720#1754"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestRunner.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestSuite.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.725535
-e305014253.030335
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestSuite.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@83"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m305014252#305014253#0(0"0(0#0#75"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m4352950400#1752"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestSuite.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestViewModel.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.656633
-e305014252.211955
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestViewModel.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@89"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m305014251#305014252#0(0"0(0#0#81"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m4673249248#1762"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/SharedUI/GHTestViewModel.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTestViewModel.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTesting.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.473591
-e305014252.837913
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTesting.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@81"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m305014252#305014252#0(0"0(0#0#73"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m4661617680#1748"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHTesting.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneAppDelegate.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.383411
-e305014251.655730
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneAppDelegate.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@95"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m305014251#305014251#0(0"0(0#0#87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m4674466688#1776"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneAppDelegate.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneTableViewDataSource.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.928636
-e305014252.225827
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneTableViewDataSource.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@103"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m305014251#305014252#0(0"0(0#0#95"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m4672914640#1792"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTableViewDataSource.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneTableViewDataSource.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneTestViewController.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.606778
-e305014251.888859
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneTestViewController.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@102"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m305014251#305014251#0(0"0(0#0#94"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m4353009280#1790"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneTestViewController.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneTestViewController.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneView.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.191043
-e305014252.486547
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneView.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@88"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m305014252#305014252#0(0"0(0#0#80"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m4674466160#1762"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneView.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneView.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneViewController.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.573405
-e305014251.966822
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneViewController.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@98"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m305014251#305014251#0(0"0(0#0#90"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m4673251152#1782"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneViewController.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIPhoneViewController.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMObjC2Runtime.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.159990
-e305014251.374821
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMObjC2Runtime.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@97"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m305014251#305014251#0(0"0(0#0#89"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m4352886176#1770"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMObjC2Runtime.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMObjC2Runtime.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMStackTrace.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014251.266301
-e305014251.606510
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMStackTrace.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-o/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m:106:17:{106:13-106:16}{106:20-106:42}: warning: ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')
-o         if (imp <= (IMP)currDesc->address) {
-o             ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~
-o/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m:119:17:{119:13-119:16}{119:20-119:42}: warning: ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')
-o         if (imp <= (IMP)currDesc->address) {
-o             ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~
-o2 warnings generated.
-lSLF07#2@95"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305014251#305014251#0(646"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m:106:17:{106:13-106:16}{106:20-106:42}: warning: ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')         if (imp <= (IMP)currDesc->address) {             ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m:119:17:{119:13-119:16}{119:20-119:42}: warning: ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')         if (imp <= (IMP)currDesc->address) {             ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~2 warnings generated.2(22@86"Ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')305014251#0#223#0(6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#106#17#0#0#49"ordered comparison of function pointers (* and *)2(6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#106#13#106#16#6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#106#20#106#42#22@86"Ordered comparison of function pointers ('IMP' (aka 'id (*)(id, SEL, ...)') and 'IMP')305014251#312#223#0(6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#119#17#0#0#49"ordered comparison of function pointers (* and *)2(6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#119#13#119#16#6@87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m305011589#119#20#119#42#0#0#87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m4661621824#1766"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Libraries/GTM/Foundation/GTMStackTrace.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMStackTrace.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/NSException+GHTestFailureExceptions.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.838178
-e305014253.082130
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/NSException+GHTestFailureExceptions.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@107"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m305014252#305014253#0(0"0(0#0#99"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m4352961088#1800"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/NSException+GHTestFailureExceptions.o"0#
-
-CCompileC "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/NSValue+GHValueFormatter.o" /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s305014252.947392
-e305014253.139398
-r1
-xCompileC
-xbuild/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/NSValue+GHValueFormatter.o
-x/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m
-xnormal
-xarmv7
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF07#2@96"Compile /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m305014252#305014253#0(0"0(0#0#88"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m4673721888#1778"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wreturn-type -Wunused-variable -isysroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -fasm-blocks -gdwarf-2 -mthumb -miphoneos-version-min=3.0 "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/GHUnitIOSDevice.hmap" -F/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -I/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/include "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources/armv7" "-I/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/DerivedSources" -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition -include /Users/gabe/Projects/gh-unit/Project-IPhone/GHUnitIPhone_Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.m -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/NSValue+GHValueFormatter.o"0#
-
-CCreateUniversalBinary /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/libGHUnitIOSDevice.a normal "armv6 armv7"
-s305014253.156266
-e305014253.208980
-r1
-xCreateUniversalBinary
-x/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/libGHUnitIOSDevice.a
-xnormal
-xarmv6 armv7
-o/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: for architecture: armv6 file: /Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/libGHUnitIOSDevice.a(GTMObjC2Runtime.o) has no symbols
-o/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: for architecture: armv7 file: /Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/libGHUnitIOSDevice.a(GTMObjC2Runtime.o) has no symbols
-lSLF07#2@86"CreateUniversalBinary build/Release-iphoneos/libGHUnitIOSDevice.a normal "armv6 armv7"305014253#305014253#0(584"/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: for architecture: armv6 file: /Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/libGHUnitIOSDevice.a(GTMObjC2Runtime.o) has no symbols/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: for architecture: armv7 file: /Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/libGHUnitIOSDevice.a(GTMObjC2Runtime.o) has no symbols0(0#0#55"/Users/gabe/Projects/gh-unit/Project-IPhone/armv6 armv74353008448#886"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool -static "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/libGHUnitIOSDevice.a" "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/libGHUnitIOSDevice.a" -o /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos/libGHUnitIOSDevice.a0#
-
-CLibtool "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/libGHUnitIOSDevice.a" normal armv6
-s305014251.359157
-e305014251.382905
-r1
-xLibtool
-x/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/libGHUnitIOSDevice.a
-xnormal
-xarmv6
-o/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: file: /Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMObjC2Runtime.o has no symbols
-lSLF07#2@134"Libtool "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/libGHUnitIOSDevice.a" normal armv6305014251#305014251#0(246"/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: file: /Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GTMObjC2Runtime.o has no symbols0(0#0#0"4674460448#1032"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv IPHONEOS_DEPLOYMENT_TARGET 3.0    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool -static -arch_only armv6 -syslibroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -L/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -filelist "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/GHUnitIOSDevice.LinkFileList" -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv6/libGHUnitIOSDevice.a"0#
-
-CLibtool "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/libGHUnitIOSDevice.a" normal armv7
-s305014253.139515
-e305014253.155932
-r1
-xLibtool
-x/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/libGHUnitIOSDevice.a
-xnormal
-xarmv7
-o/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: file: /Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMObjC2Runtime.o has no symbols
-lSLF07#2@134"Libtool "build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/libGHUnitIOSDevice.a" normal armv7305014253#305014253#0(246"/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool: file: /Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GTMObjC2Runtime.o has no symbols0(0#0#0"4674475328#1032"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv IPHONEOS_DEPLOYMENT_TARGET 3.0    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin/libtool -static -arch_only armv7 -syslibroot /Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk -L/Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos -filelist "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/GHUnitIOSDevice.LinkFileList" -o "/Users/gabe/Projects/gh-unit/Project-IPhone/build/GHUnitIPhone.build/Release-iphoneos/GHUnitIPhone (Device).build/Objects-normal/armv7/libGHUnitIOSDevice.a"0#
-
-CPBXCp build/Release-iphoneos/GHAsyncTestCase.h ../Classes/GHAsyncTestCase.h
-s305014253.226225
-e305014253.248939
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHAsyncTestCase.h
-x../Classes/GHAsyncTestCase.h
-lSLF07#2@33"Copy ../Classes/GHAsyncTestCase.h305014253#305014253#0(0"0(0#0#72"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.h4669491680#711"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHAsyncTestCase.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHTest+JUnitXML.h ../Classes/GHTest/GHTest+JUnitXML.h
-s305014253.209134
-e305014253.220144
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHTest+JUnitXML.h
-x../Classes/GHTest/GHTest+JUnitXML.h
-lSLF07#2@40"Copy ../Classes/GHTest/GHTest+JUnitXML.h305014253#305014253#0(0"0(0#0#79"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.h4673702976#718"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest+JUnitXML.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHTest.h ../Classes/GHTest/GHTest.h
-s305014253.209821
-e305014253.227125
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHTest.h
-x../Classes/GHTest/GHTest.h
-lSLF07#2@31"Copy ../Classes/GHTest/GHTest.h305014253#305014253#0(0"0(0#0#70"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.h4674469120#709"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTest.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHTestCase.h ../Classes/GHTestCase.h
-s305014253.227692
-e305014253.247371
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHTestCase.h
-x../Classes/GHTestCase.h
-lSLF07#2@28"Copy ../Classes/GHTestCase.h305014253#305014253#0(0"0(0#0#67"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.h4310603968#706"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestCase.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHTestGroup+JUnitXML.h ../Classes/GHTest/GHTestGroup+JUnitXML.h
-s305014253.210449
-e305014253.220301
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHTestGroup+JUnitXML.h
-x../Classes/GHTest/GHTestGroup+JUnitXML.h
-lSLF07#2@45"Copy ../Classes/GHTest/GHTestGroup+JUnitXML.h305014253#305014253#0(0"0(0#0#84"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.h4674493200#723"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup+JUnitXML.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHTestGroup.h ../Classes/GHTest/GHTestGroup.h
-s305014253.211221
-e305014253.220431
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHTestGroup.h
-x../Classes/GHTest/GHTestGroup.h
-lSLF07#2@36"Copy ../Classes/GHTest/GHTestGroup.h305014253#305014253#0(0"0(0#0#75"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.h4674421744#714"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestGroup.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHTestMacros.h ../Classes/GHTestMacros.h
-s305014253.228473
-e305014253.247571
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHTestMacros.h
-x../Classes/GHTestMacros.h
-lSLF07#2@30"Copy ../Classes/GHTestMacros.h305014253#305014253#0(0"0(0#0#69"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestMacros.h4669505856#708"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTestMacros.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHTestOperation.h ../Classes/GHTest/GHTestOperation.h
-s305014253.212713
-e305014253.227447
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHTestOperation.h
-x../Classes/GHTest/GHTestOperation.h
-lSLF07#2@40"Copy ../Classes/GHTest/GHTestOperation.h305014253#305014253#0(0"0(0#0#79"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.h4674448208#718"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestOperation.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHTestRunner.h ../Classes/GHTest/GHTestRunner.h
-s305014253.213503
-e305014253.240898
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHTestRunner.h
-x../Classes/GHTest/GHTestRunner.h
-lSLF07#2@37"Copy ../Classes/GHTest/GHTestRunner.h305014253#305014253#0(0"0(0#0#76"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.h4352639328#715"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestRunner.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHTestSuite.h ../Classes/GHTest/GHTestSuite.h
-s305014253.217535
-e305014253.241036
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHTestSuite.h
-x../Classes/GHTest/GHTestSuite.h
-lSLF07#2@36"Copy ../Classes/GHTest/GHTestSuite.h305014253#305014253#0(0"0(0#0#75"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.h4352960608#714"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTestSuite.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHTesting.h ../Classes/GHTest/GHTesting.h
-s305014253.211975
-e305014253.227297
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHTesting.h
-x../Classes/GHTest/GHTesting.h
-lSLF07#2@34"Copy ../Classes/GHTest/GHTesting.h305014253#305014253#0(0"0(0#0#73"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.h4674434896#712"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/GHTesting.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHUnit.h ../Classes/GHUnit.h
-s305014253.229225
-e305014253.247748
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHUnit.h
-x../Classes/GHUnit.h
-lSLF07#2@24"Copy ../Classes/GHUnit.h305014253#305014253#0(0"0(0#0#63"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHUnit.h4669498416#702"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHUnit.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/GHUnitIPhoneAppDelegate.h ../Classes-IPhone/GHUnitIPhoneAppDelegate.h
-s305014253.225334
-e305014253.240753
-r1
-xPBXCp
-xbuild/Release-iphoneos/GHUnitIPhoneAppDelegate.h
-x../Classes-IPhone/GHUnitIPhoneAppDelegate.h
-lSLF07#2@48"Copy ../Classes-IPhone/GHUnitIPhoneAppDelegate.h305014253#305014253#0(0"0(0#0#87"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.h4310391312#726"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes-IPhone/GHUnitIPhoneAppDelegate.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/Makefile Makefile
-s305014253.221064
-e305014253.240583
-r1
-xPBXCp
-xbuild/Release-iphoneos/Makefile
-xMakefile
-lSLF07#2@13"Copy Makefile305014253#305014253#0(0"0(0#0#52"/Users/gabe/Projects/gh-unit/Project-IPhone/Makefile4352898672#691"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/Makefile /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/NSException+GHTestFailureExceptions.h ../Classes/GHTest/NSException+GHTestFailureExceptions.h
-s305014253.218371
-e305014253.241182
-r1
-xPBXCp
-xbuild/Release-iphoneos/NSException+GHTestFailureExceptions.h
-x../Classes/GHTest/NSException+GHTestFailureExceptions.h
-lSLF07#2@60"Copy ../Classes/GHTest/NSException+GHTestFailureExceptions.h305014253#305014253#0(0"0(0#0#99"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.h4353006352#738"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSException+GHTestFailureExceptions.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
-CPBXCp build/Release-iphoneos/NSValue+GHValueFormatter.h ../Classes/GHTest/NSValue+GHValueFormatter.h
-s305014253.219190
-e305014253.241326
-r1
-xPBXCp
-xbuild/Release-iphoneos/NSValue+GHValueFormatter.h
-x../Classes/GHTest/NSValue+GHValueFormatter.h
-lSLF07#2@49"Copy ../Classes/GHTest/NSValue+GHValueFormatter.h305014253#305014253#0(0"0(0#0#88"/Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.h4352990352#727"    cd /Users/gabe/Projects/gh-unit/Project-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/opt/local/bin:/opt/subversion/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/usr/local/flex_sdk_3/bin:/usr/local/mysql/bin:/usr/local/air_sdk/bin:/opt/PalmSDK/:/Users/gabe/Projects/android-sdk-mac/tools"    /Developer-3.2.4/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-IPhone/../Classes/GHTest/NSValue+GHValueFormatter.h /Users/gabe/Projects/gh-unit/Project-IPhone/build/Release-iphoneos0#
-
