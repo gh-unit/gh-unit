@@ -69,9 +69,9 @@ Installing (iOS)</h2>
 <li>Under 'Other Linker Flags' in the <code>Tests</code> target, add <code>-ObjC</code> and <code>-all_load</code></li>
 <li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field.</li>
 <li>Add the GHUnitIOSTestMain.m (<a href="http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m">http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m</a>) file into your project.</li>
-<li>(Optional) <a class="el" href="_command_line.html#Makefile">Makefile</a> Install Makefile</li>
 <li>(Optional) Create and and set a prefix header (<code>Tests_Prefix.pch</code>) and add <code>import &lt;GHUnit/GHUnit.h&gt;</code> to it, and then you won't have to include that import for every test.</li>
-<li><a class="el" href="_examples.html">Examples</a> Create a test</li>
+<li>(Optional) <a class="el" href="_command_line.html#Makefile">Install Makefile</a></li>
+<li><a class="el" href="_examples.html">Create a test</a></li>
 </ul>
 <p>Now you can create a test (either by subclassing <code>SenTestCase</code> or <code><a class="el" href="interface_g_h_test_case.html" title="The base class for a test case.">GHTestCase</a></code>), adding it to your test target.</p>
 <h2><a class="anchor" id="InstallMacOSX"></a>
@@ -92,8 +92,8 @@ Installing in /Library/Frameworks</h3>
 <li>Copy GHUnitTestMain.m (<a href="http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m">http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m</a>) into your project and include in the Test target.</li>
 <li>Now create a test (either by subclassing <code>SenTestCase</code> or <code><a class="el" href="interface_g_h_test_case.html" title="The base class for a test case.">GHTestCase</a></code>), adding it to your test target. (See example test case below.)</li>
 <li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field.</li>
-<li>(Optional) <a class="el" href="_command_line.html#Makefile">Makefile</a> Install Makefile</li>
-<li><a class="el" href="_examples.html">Examples</a> Create a test</li>
+<li>(Optional) <a class="el" href="_command_line.html#Makefile">Install Makefile</a></li>
+<li><a class="el" href="_examples.html">Create a test</a></li>
 </ul>
 <h3><a class="anchor" id="InstallProject"></a>
 Installing in your project</h3>
@@ -123,8 +123,8 @@ Installing in your project</h3>
 <ul>
 <li>Now create a test (either by subclassing <code>SenTestCase</code> or <code><a class="el" href="interface_g_h_test_case.html" title="The base class for a test case.">GHTestCase</a></code>), adding it to your test target. (See example test case below.)</li>
 <li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field.</li>
-<li>(Optional) <a class="el" href="_command_line.html#Makefile">Makefile</a> Install Makefile</li>
-<li><a class="el" href="_examples.html">Examples</a> Create a test </li>
+<li>(Optional) <a class="el" href="_command_line.html#Makefile">Install Makefile</a></li>
+<li><a class="el" href="_examples.html">Create a test</a> </li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -141,7 +141,7 @@ Installing in your project</h3>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Nov 12 2010 11:52:18 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Nov 12 2010 11:58:04 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
