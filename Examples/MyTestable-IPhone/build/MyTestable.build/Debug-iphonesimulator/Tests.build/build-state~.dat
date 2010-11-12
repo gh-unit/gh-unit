@@ -1,0 +1,222 @@
+TTests
+v7
+r0
+t302687587.436506
+cCheck dependencies
+cProcessInfoPlistFile /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app/Info.plist Tests-Info.plist
+cProcessPCH /var/folders/Ex/ExrV3443Gey7aKvtaJPTTk++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/UIKit-gpvtifkqbkozjofutdeyiepeuxxm/UIKit.h.gch /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/MyTestableAppDelegate.o /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Classes/MyTestableAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/MyTest.o /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIPhoneTestMain.o /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cPhaseScriptExecution "Run Script" /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Script-00C1A3190F52872F00FCCA14.sh
+
+N/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk
+c000000004C494D410000000000000132
+t1279872321
+s306
+
+N/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004BFDFE39000000000027C7D0
+t1274936889
+s2607056
+
+N/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000004BFF44C00000000000068F90
+t1275020480
+s429968
+
+N/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004BFDFE7C000000000029D5D0
+t1274936956
+s2741712
+
+N/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004C0470BB00000000000009CD
+t1275359419
+s2509
+
+N/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004C0471620000000001D47210
+t1275359586
+s30700048
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Classes/MyTestableAppDelegate.h
+c000000004B84C2DD0000000000000143
+t1266991837
+s323
+i<UIKit/UIKit.h>
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Classes/MyTestableAppDelegate.m
+c000000004B84C2DD00000000000001E6
+t1266991837
+s486
+i"MyTestableAppDelegate.h"
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m
+c000000004C5A68A20000000000000C3F
+t1280993442
+s3135
+i<UIKit/UIKit.h>
+i"GHUnit.h"
+i"GHTesting.h"
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnitIOS.framework/GHUnitIOS
+c000000004C5A6906000000000020645C
+t1280993542
+s2122844
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m
+c000000004B84C2DD0000000000000191
+t1266991837
+s401
+i"GHUnit.h"
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app
+t2
+s0
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app.dSYM
+t2
+s0
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app/Info.plist
+t1280994786
+s496
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app/PkgInfo
+t1280994786
+s8
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app/Tests
+t2
+s0
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIPhoneTestMain.o
+t2
+s0
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/MyTest.o
+t2
+s0
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/MyTestableAppDelegate.o
+t1280994787
+s43836
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/Tests.LinkFileList
+c000000004C5A6DE200000000000001C7
+t1280994786
+s455
+
+N/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Script-00C1A3190F52872F00FCCA14.sh
+c000000004C5A6DE10000000000000027
+t1280994785
+s39
+
+N/var/folders/Ex/ExrV3443Gey7aKvtaJPTTk++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/UIKit-gpvtifkqbkozjofutdeyiepeuxxm/UIKit.h.gch
+t1280994787
+s15227888
+
+NTests-Info.plist
+c000000004B84C2DD00000000000002B3
+t1266991837
+s691
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies302687585#302687586#0(0"0(0#1#0"8689298240#0"0#
+
+CCompileC build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIPhoneTestMain.o /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s302687587.306764
+e302687587.366521
+r0
+xCompileC
+xbuild/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIPhoneTestMain.o
+x/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:32:19: error: GHUnit.h: No such file or directory
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:33:22: error: GHTesting.h: No such file or directory
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m: In function 'exceptionHandler':
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:37: warning: implicit declaration of function 'GHUStackTraceFromException'
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m: In function 'main':
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:74: error: 'GHTestRunner' undeclared (first use in this function)
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:74: error: (Each undeclared identifier is reported only once
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:74: error: for each function it appears in.)
+o{standard input}:70:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_0" minus "L00000000001$pb"
+o{standard input}:70:symbol: "L_OBJC_SELECTOR_REFERENCES_0" can't be undefined in a subtraction expression
+o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_0
+lSLF07#2@103"Compile /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m302687587#302687587#0(1470"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:32:19: error: GHUnit.h: No such file or directory/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:33:22: error: GHTesting.h: No such file or directory/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m: In function 'exceptionHandler':/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:37: warning: implicit declaration of function 'GHUStackTraceFromException'/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m: In function 'main':/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:74: error: 'GHTestRunner' undeclared (first use in this function)/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:74: error: (Each undeclared identifier is reported only once/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m:74: error: for each function it appears in.){standard input}:70:non-relocatable subtraction expression, "L_OBJC_SELECTOR_REFERENCES_0" minus "L00000000001$pb"{standard input}:70:symbol: "L_OBJC_SELECTOR_REFERENCES_0" can't be undefined in a subtraction expression{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_04(4@35"GHUnit.h: No such file or directory302687587#0#146#0(6@95"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m302686242#32#0#32#0#28"*: No such file or directory0(4@38"GHTesting.h: No such file or directory302687587#146#149#0(6@95"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m302686242#33#0#33#0#28"*: No such file or directory0(22@61"Implicit declaration of function 'GHUStackTraceFromException'302687587#424#171#0(6@95"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m302686242#37#0#37#0#36"implicit declaration of function '*'0(4@54"'GHTestRunner' undeclared (first use in this function)302687587#712#162#0(6@95"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m302686242#74#0#74#0#43"'*' undeclared (first use in this function)0(0#0#95"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m8644658080#2222"    cd /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -F/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/DerivedSources -include /var/folders/Ex/ExrV3443Gey7aKvtaJPTTk++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/UIKit-gpvtifkqbkozjofutdeyiepeuxxm/UIKit.h -c /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries/GHUnit/GHUnitIPhoneTestMain.m -o /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIPhoneTestMain.o1#
+
+CCompileC build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/MyTest.o /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s302687587.305383
+e302687587.361152
+r0
+xCompileC
+xbuild/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/MyTest.o
+x/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m:9:19: error: GHUnit.h: No such file or directory
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m:11: error: cannot find interface declaration for 'GHTestCase', superclass of 'MyTest'
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m: In function '-[MyTest testFail]':
+o/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m:25: warning: implicit declaration of function 'GHAssertTrue'
+lSLF07#2@78"Compile /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m302687587#302687587#0(515"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m:9:19: error: GHUnit.h: No such file or directory/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m:11: error: cannot find interface declaration for 'GHTestCase', superclass of 'MyTest'/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m: In function '-[MyTest testFail]':/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m:25: warning: implicit declaration of function 'GHAssertTrue'3(4@35"GHUnit.h: No such file or directory302687587#0#120#0(6@70"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m288684637#9#0#9#0#28"*: No such file or directory0(4@74"Cannot find interface declaration for 'GHTestCase', superclass of 'MyTest'302687587#120#157#0(6@70"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m288684637#11#0#11#0#60"cannot find interface declaration for '*', superclass of '*'0(22@47"Implicit declaration of function 'GHAssertTrue'302687587#383#132#0(6@70"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m288684637#25#0#25#0#36"implicit declaration of function '*'0(0#0#70"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m8652845312#2183"    cd /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -F/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/DerivedSources -include /var/folders/Ex/ExrV3443Gey7aKvtaJPTTk++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/UIKit-gpvtifkqbkozjofutdeyiepeuxxm/UIKit.h -c /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests/MyTest.m -o /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/MyTest.o1#
+
+CCompileC build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/MyTestableAppDelegate.o /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Classes/MyTestableAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s302687587.303792
+e302687587.402598
+r1
+xCompileC
+xbuild/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/MyTestableAppDelegate.o
+x/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Classes/MyTestableAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@95"Compile /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Classes/MyTestableAppDelegate.m302687587#302687587#0(0"0(0#0#87"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Classes/MyTestableAppDelegate.m8655199264#2215"    cd /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -F/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/DerivedSources -include /var/folders/Ex/ExrV3443Gey7aKvtaJPTTk++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/UIKit-gpvtifkqbkozjofutdeyiepeuxxm/UIKit.h -c /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Classes/MyTestableAppDelegate.m -o /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/MyTestableAppDelegate.o0#
+
+CGenerateDSYMFile /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app.dSYM /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app/Tests
+r0
+
+CLd /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app/Tests normal i386
+r0
+
+CPhaseScriptExecution "Run Script" /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Script-00C1A3190F52872F00FCCA14.sh
+s302687587.402740
+e302687587.436429
+r1
+xPhaseScriptExecution
+xRun Script
+x/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Script-00C1A3190F52872F00FCCA14.sh
+lSLF07#2@36"Run custom shell script 'Run Script'302687587#302687587#0(0"0(0#0#0"8609460032#226"    cd /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone    /bin/sh -c /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Script-00C1A3190F52872F00FCCA14.sh0#
+
+CProcessInfoPlistFile /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app/Info.plist Tests-Info.plist
+s302687586.029371
+e302687586.033260
+r1
+xProcessInfoPlistFile
+x/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app/Info.plist
+xTests-Info.plist
+lSLF07#2@24"Process Tests-Info.plist302687586#302687586#0(0"0(0#0#72"/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Tests-Info.plist8654791488#536"    cd /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone    setenv PATH "/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility Tests-Info.plist -genpkginfo /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app/Info.plist0#
+
+CProcessPCH /var/folders/Ex/ExrV3443Gey7aKvtaJPTTk++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/UIKit-gpvtifkqbkozjofutdeyiepeuxxm/UIKit.h.gch /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h normal i386 objective-c com.apple.compilers.gcc.4_2
+s302687586.033394
+e302687587.303615
+r1
+xProcessPCH
+x/var/folders/Ex/ExrV3443Gey7aKvtaJPTTk++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/UIKit-gpvtifkqbkozjofutdeyiepeuxxm/UIKit.h.gch
+x/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@158"Precompile /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h302687586#302687587#0(0"0(0#0#147"/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h8645725632#2120"    cd /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone    setenv LANG en_US.US-ASCII    setenv PATH "/Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer-3.2.4/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -F/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/Libraries -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/MyTestable.build/Debug-iphonesimulator/Tests.build/DerivedSources -c /Developer-3.2.4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h -o /var/folders/Ex/ExrV3443Gey7aKvtaJPTTk++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/UIKit-gpvtifkqbkozjofutdeyiepeuxxm/UIKit.h.gch0#
+
+CTouch /Users/gabe/Projects/gh-unit/Examples/MyTestable-IPhone/build/Debug-iphonesimulator/Tests.app
+r0
+

@@ -1,0 +1,8 @@
+000000004c61ce5d00000000000000cc 99640f433579e658cd5f6a701e45972b ffffffffffffffffffffffffffffffff 204 /Users/gabe/Projects/gh-unit/Examples/MyTestable-MacOSX/build/Debug/Tests.app/Contents/Frameworks/GHUnit.framework
+ed8b572d251305da905e22b70966b926 0ca16f0307d52be2cceada5f235cfbda ffffffffffffffffffffffffffffffff 0 /Users/gabe/Projects/gh-unit/Examples/MyTestable-MacOSX/build/MyTestable-MacOSX.build/Debug/Tests.build/Objects-normal/x86_64/MyTest.o
+ed8b572d6955b89c905e22b70966a668 b35b3693350610eb20a85a5dfcd5cbcd ffffffffffffffffffffffffffffffff 0 /Users/gabe/Projects/gh-unit/Examples/MyTestable-MacOSX/build/MyTestable-MacOSX.build/Debug/Tests.build/Objects-normal/x86_64/GHUnitTestMain.o
+000000004c44df2000000000000017ed ed8b572d2536480f905e22b70966af7b ffffffffffffffffffffffffffffffff 53560336 /var/folders/Ex/ExrV3443Gey7aKvtaJPTTk++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/AppKit-ftbrzxusjzjxcigcxpdaosthzdqf/AppKit.h.gch
+00000000000000000000000000000000 606a633b2ae49f033135eadc66968aea ffffffffffffffffffffffffffffffff 831 /Users/gabe/Projects/gh-unit/Examples/MyTestable-MacOSX/build/Debug/Tests.app/Contents/Info.plist
+00000000000000000000000000000000 606a633b2ae49f033135eadc66968aea ffffffffffffffffffffffffffffffff 8 /Users/gabe/Projects/gh-unit/Examples/MyTestable-MacOSX/build/Debug/Tests.app/Contents/PkgInfo
+03e4c6b684b4b0f54276cf7986bf76da 5a596b0566713ef66bca62ad139e30c6 ffffffffffffffffffffffffffffffff 0 /Users/gabe/Projects/gh-unit/Examples/MyTestable-MacOSX/build/Debug/Tests.app
+bffa59903e7ee513ec428002df832e13 257a90658316d504636b250b47795b5a ffffffffffffffffffffffffffffffff 0 /Users/gabe/Projects/gh-unit/Examples/MyTestable-MacOSX/build/Debug/Tests.app/Contents/MacOS/Tests

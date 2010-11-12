@@ -49,14 +49,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>Examples </h1>  </div>
 </div>
 <div class="contents">
-<ul>
-<li><a class="el" href="_examples.html#ExampleIOS">Example Test Class (iOS)</a></li>
-<li><a class="el" href="_examples.html#ExampleMacOSX">Example Test Class (Mac OS X)</a></li>
-</ul>
 <h2><a class="anchor" id="ExampleIOS"></a>
-Example Test Class (iOS)</h2>
+Example Test Class</h2>
 <p>For example <code>MyTest.m</code>:</p>
-<div class="fragment"><pre class="fragment"><span class="preprocessor"> #import &lt;GHUnitIOS/GHUnitIOS.h&gt;</span>
+<div class="fragment"><pre class="fragment"><span class="preprocessor"> #import &lt;GHUnit/GHUnit.h&gt;</span>
  
  <span class="keyword">@interface </span>MyTest : <a class="code" href="interface_g_h_test_case.html" title="The base class for a test case.">GHTestCase</a> { }
  <span class="keyword">@end</span>
@@ -97,65 +93,16 @@ Example Test Class (iOS)</h2>
  
  <span class="keyword">@end</span>
 </pre></div><p>Now you should be ready to Build and Run the <code>Test</code> target.</p>
-<p>You should see something like:</p>
+<p>For iOS, you should see something like:</p>
 <div align="center">
 <img src="http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png" alt="GHUnit-IPhone-0.4.18.png"/>
 </div>
 <p>An example of an iPhone project with GHUnit test setup can be found at: MyTestable-IPhone (<a href="http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone">http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone</a>).</p>
-<h2><a class="anchor" id="ExampleMacOSX"></a>
-Example Test Class (Mac OS X)</h2>
-<div class="fragment"><pre class="fragment"> For example &lt;tt&gt;MyTest.m&lt;/tt&gt;:
- 
-<span class="preprocessor"> #import &lt;GHUnit/GHUnit.h&gt;</span>
- 
- <span class="keyword">@interface </span>MyTest : <a class="code" href="interface_g_h_test_case.html" title="The base class for a test case.">GHTestCase</a> { }
- <span class="keyword">@end</span>
- 
- <span class="keyword">@implementation </span>MyTest
- 
- - (BOOL)shouldRunOnMainThread {
-   <span class="comment">// By default NO, but if you have a UI test or test dependent on running on the main thread return YES</span>
- }
- 
- - (void)setUpClass {
-   <span class="comment">// Run at start of all tests in the class</span>
- }
- 
- - (void)tearDownClass {
-   <span class="comment">// Run at end of all tests in the class</span>
- }
- 
- - (void)setUp {
-   <span class="comment">// Run before each test method</span>
- }
- 
- - (void)tearDown {
-   <span class="comment">// Run after each test method</span>
- }
- 
- - (void)testFoo {      
-   GHTestLog(<span class="stringliteral">@&quot;I can log to the GHUnit test console: %@&quot;</span>, foo);
- 
-   <span class="comment">// Assert a is not NULL, with no custom error description</span>
-   <a class="code" href="_g_h_test_macros_8h.html#ac9c25f79aea7bce89e97b862c3b10379" title="Generates a failure when a1 is NULL.">GHAssertNotNULL</a>(a, nil);
- 
-   <span class="comment">// Assert equal objects, add custom error description</span>
-   <a class="code" href="_g_h_test_macros_8h.html#a456379cf01f6d782fea2c0a4193a42fd" title="Generates a failure when !{ [a1 isEqualTo:a2] } is false (or one is nil and the other is not)...">GHAssertEqualObjects</a>(a, b, <span class="stringliteral">@&quot;Foo should be equal to: %@. Something bad happened&quot;</span>, bar);
- }
- 
- - (void)testBar {
-   <span class="comment">// Another test</span>
- }
- 
- <span class="keyword">@end</span>
-</pre></div><p>You should see something like:</p>
+<p>For Mac OS X, you should see something like:</p>
 <div align="center">
 <img src="http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.18.png" alt="GHUnit-0.4.18.png"/>
 </div>
-<ul>
-<li>Optionally, you can create and and set a prefix header (<code>Tests_Prefix.pch</code>) and add <code>import &lt;GHUnit/GHUnit.h&gt;</code> to it, and then you won't have to include that import for every test. </li>
-</ul>
-</div>
+ </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -170,7 +117,7 @@ Example Test Class (Mac OS X)</h2>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Oct 21 2010 23:12:39 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Nov 12 2010 11:52:18 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

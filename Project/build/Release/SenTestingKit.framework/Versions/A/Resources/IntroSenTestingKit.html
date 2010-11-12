@@ -1,0 +1,210 @@
+<HTML>
+		<HEAD>
+		<TITLE>
+			 The SenTestingKit Framework (Objective-C)
+		</TITLE>
+		</HEAD>
+	<BODY bgcolor="#ffffff">
+
+
+<br><h1><FONT COLOR="#000066">The
+SenTestingKit Framework</FONT></h1><br>
+<blockquote>
+<b>Framework: </b>
+/Library/Frameworks/SenTestingKit.framework</blockquote>
+<blockquote>
+<b>Header File Directories: </b>
+/Library/Frameworks/SenTestingKit.framework/Headers</blockquote>
+<br><h3>Introduction</h3><br>
+
+
+<P><B>Problem</B>
+<P>Testing, for instance:
+<UL><LI>"Need for testing / Not enough time to do it" vicious circle.
+<LI>"Don't fix it if it ain't broke" vs "It needs refactoring".</UL></P>
+
+
+<P><B>A Solution</B>
+<P>Smalltalk Testing Framework, written by KentBeck [1], ported to Java by Gamma [2], ported to Objective C in 1997 by Sen:te.</P>
+
+
+<P><B>An Example</B>
+<P>You want to test your Set class, or a change you made to it. You can represent predictable reactions in a subclass of SenTestCase. STAssertTrue is a macro that will raise an exception if its condition parameter is false.</P>
+
+<PRE>
+- testAddSet
+{
+	Set *set = [Set set];
+	NSString *string = @"A string";
+	NSNumber *number = [NSNumber numberWithInt:5];
+
+	[set addObject: string];
+	[set addObject: string];
+	[set addObject: number];
+		
+	STAssertTrue (([set count] == 2), @"Count should be 2.");
+	STAssertFalse (([set isEmpty]), @"Set should not be empty.");
+	STAssertTrue (([set containsObject:number]), @"Set should contain number.");
+}
+</PRE>
+
+<P>Now you want to make sure that two sets are equal when their contents are the same.</P>
+
+<PRE>
+- testEqualsSet
+{
+	Set *set = [Set set];
+	NSString *string = @"A string";
+	NSNumber *number = [NSNumber numberWithInt:5];
+
+	[set addObject: string];
+	[set addObject: string];
+	[set addObject: number];
+		
+	STAssertEqualObjects (set, [Set setWithObjects:number, string, nil], @"Testing set equality.");
+}
+</PRE>
+
+<P>You notice code duplication for setting up the tests. Testers talk about setting up a test fixture. Just add instance variables to the SenTestCase subclass:</P>
+
+<PRE>
+@interface SetTest:SenTestCase
+{
+	Set *set, otherSet;
+	NSString *string;
+	NSNumber *number;
+}
+@end
+</PRE>
+
+<P>and initialize the fixture in setUp:</P>
+<PRE>
+...
+- (void) setUp
+{
+	set = [[Set set] retain];
+	string = @"A string";
+	number = [[NSNumber numberWithInt:5] retain];
+	otherSet = [Set setWithObjects:number, string, nil] retain];
+}
+
+- (void) testAdd
+{
+	[set addObject: string];
+	[set addObject: string];
+	[set addObject: number];
+	STAssertTrue (([set containsObject:number]), @"Set should contain number.");
+	STAssertTrue (([set count] == 2), @"Count should be 2.");
+}
+
+- (void) testEquals
+{
+	[set addObject: string];
+	[set addObject: number];
+	STAssertEqualObjects (set, otherSet, @"set should equal otherSet.");
+}
+
+- (void) tearDown
+{
+	[set release];
+	[otherSet release];
+}
+
+...
+</PRE>
+
+<P>You can now run the tests, and exceptions will be raised in case of failures.</P>
+<PRE>
+	[[SetTest testWithSelector:@selector (testAdd)] run];
+</PRE>
+
+<P>If you want to run the tests together, you can create a SenTestSuite:</P>
+<PRE>
+    suite = [SenTestSuite suiteWithName:@"A suite"];
+    [suite addTest:[SetTest testWithSelector:@selector (testAdd)]];
+    [suite addTest:[SetTest testWithSelector:@selector (testEquals)]];
+
+    [suite run];
+</PRE>
+
+<P>You can also compose suites:</P>
+<PRE>
+    [suite addTest:myTestSuite];
+    [suite addTest:yourTestSuite];
+</PRE>
+
+
+<H3>In practice</H3>
+<P>In practice you only have to write test methods in subclasses of SenTestCase, and let the SenTestingKit take care of everything else. Test suites will be automatically created with your test cases at runtime, and these will be executed.</P>
+<UL>
+<LI>	Write a test instead of a debug or print statement.
+<LI>	When you want add functionality to the system, write a test first.
+<LI>	When someone discovers a defect, write a test.
+<LI>	Make sure tests stay running (ProjectBuilder integration is great for this!).
+<LI>	Don't go home until your tests are 100%.
+
+</UL>
+
+<h3>The Framework</H3>
+<P><B>Distinguishes</B><P>
+<UL>
+<LI>	Failure = anticipated problem, a test that failed
+<LI>	Unexpected failure = unforeseen (catastrophic)  problem, exception.
+</UL>
+
+<P><B>Implements</B>
+<UL>
+<LI>	<A HREF="SenTestCase.html">SenTestCase</A> <BR>
+<UL>
+		<LI>Defines the fixture to run multiple tests. 
+		<LI>A SenTestCase subclass implements one or several test methods. SenTestCase instances will be created for all test selectors. 
+
+</UL>
+<P>
+
+<LI>	<A HREF="SenTestCase_Macros.html">SenTestCase_Macros</A> <BR>
+<UL>
+		<LI>Defines assertion macros:
+			<UL>
+ 				<LI>STAssertTrue()
+				<LI>STAssertFalse()
+				<LI>STAssertTrueNoThrow()
+				<LI>STAssertFalseNoThrow().
+				<LI>STAssertEqualObjects()
+				<LI>STAssertEquals()
+				<LI>STAssertEqualsWithAccuracy()
+				<LI>STAssertNoThrow()
+				<LI>STAssertNoThrowSpecific()
+				<LI>STAssertNoThrowSpecificNamed()
+				<LI>STAssertNotNil()
+				<LI>STAssertThrows()
+				<LI>STAssertThrowsSpecific()
+				<LI>STAssertThrowsSpecificNamed()
+				<LI>STAssertTrue()
+				<LI>STAssertTrueNoThrow()
+				<LI>STFail()
+			</UL>
+</UL>
+<P>
+
+<LI>	<A HREF="SenTestSuite.html">SenTestSuite</A><BR>
+		<UL><LI>A composite of SenTests (SenTestCases and SenTestSuites).
+		<LI>Has a name.</UL><P>
+
+<LI>	<A HREF="SenTestRun.html">SenTestRun</A><BR>
+<UL>		<LI>A result object for a Test. Running a Test returns a SenTestRun.
+		<LI>Register start and finish dates, failures and errors
+		<LI>SenTestCaseRun and SenTestSuiteRun are subclasses of SenTestRun.</UL><P>
+
+<LI>	SenTestObserver<BR>
+<UL>		<LI>Observe, forward or log  notifications from SenTestRuns.</UL><P>
+</UL>
+
+<P><B>Provides</B>
+<UL>
+<LI>	A default SenTestSuite of all the test cases found in the runtime environment (all methods with no parameters, returning no value, and prefixed with 'test' in all subclasses of SenTestCase).
+</UL>
+
+<hr><p>&#169; 1997-2005 Sen:te (Sente SA).</p>
+</BODY>
+</HTML>

@@ -1,0 +1,214 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/SenTestRun">SenTestRun</A></H1></FONT><BR>
+
+
+
+	<blockquote><DL><DT><B>Inherits From:</B></DT>  
+	<DD>NSObject</DD>
+</DL></blockquote>
+
+
+
+	<blockquote><DL><DT><B>Conforms To:</B></DT>
+	<DD>NSCoding</DD>
+</DL></blockquote>
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>SenTestRun.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Class Description</H2>
+A TestResult collects the results of executing a test. The test framework distinguishes between <I>failures</I> which are anticipated and checked for problems like a test that failed; and <I>unexpected failures</I> which are unforeseen (catastrophic) problems, like an exception.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Variables</H2>
+	<blockquote>
+	
+		<CODE>NSTimeInterval <B>startDate</B>;</CODE><BR>
+		<CODE>NSTimeInterval <B>stopDate</B>;</CODE><BR>
+		<CODE>SenTest * <B>test</B>;</CODE><BR>
+	<P><TABLE>
+	
+		<TR><TD>startDate</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>stopDate</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>test</TD><TD>No description.</TD></TR>
+	
+	</TABLE>
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#+ testRunWithTest:">+ testRunWithTest:</A></DD>
+		
+			<DD> <A HREF="#- initWithTest:">- initWithTest:</A></DD>
+		
+			<DD> <A HREF="#- test">- test</A></DD>
+		
+			<DD> <A HREF="#- start">- start</A></DD>
+		
+			<DD> <A HREF="#- stop">- stop</A></DD>
+		
+			<DD> <A HREF="#- startDate">- startDate</A></DD>
+		
+			<DD> <A HREF="#- stopDate">- stopDate</A></DD>
+		
+			<DD> <A HREF="#- totalDuration">- totalDuration</A></DD>
+		
+			<DD> <A HREF="#- testDuration">- testDuration</A></DD>
+		
+			<DD> <A HREF="#- testCaseCount">- testCaseCount</A></DD>
+		
+			<DD> <A HREF="#- failureCount">- failureCount</A></DD>
+		
+			<DD> <A HREF="#- unexpectedExceptionCount">- unexpectedExceptionCount</A></DD>
+		
+			<DD> <A HREF="#- totalFailureCount">- totalFailureCount</A></DD>
+		
+			<DD> <A HREF="#- hasSucceeded">- hasSucceeded</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Class Methods</H2>
+ 
+	
+		
+		<A NAME="+ testRunWithTest:"></A><H3><A NAME="//apple_ref/occ/clm/SenTestRun/testRunWithTest:">testRunWithTest:</A></H3>
+		<CODE>+ (id)<B>testRunWithTest:</B>(SenTest *)<EM>aTest</EM>
+			
+		</CODE><P>
+		No method description.
+	
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- failureCount"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/failureCount">failureCount</A></H3><P>
+		<CODE>- (unsigned int)<B>failureCount</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- hasSucceeded"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/hasSucceeded">hasSucceeded</A></H3><P>
+		<CODE>- (BOOL)<B>hasSucceeded</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- initWithTest:"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/initWithTest:">initWithTest:</A></H3><P>
+		<CODE>- (id)<B>initWithTest:</B>(SenTest *)<EM>aTest</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- start"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/start">start</A></H3><P>
+		<CODE>- (void)<B>start</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- startDate"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/startDate">startDate</A></H3><P>
+		<CODE>- (NSDate *)<B>startDate</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- stop"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/stop">stop</A></H3><P>
+		<CODE>- (void)<B>stop</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- stopDate"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/stopDate">stopDate</A></H3><P>
+		<CODE>- (NSDate *)<B>stopDate</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- test"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/test">test</A></H3><P>
+		<CODE>- (SenTest *)<B>test</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- testCaseCount"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/testCaseCount">testCaseCount</A></H3><P>
+		<CODE>- (unsigned int)<B>testCaseCount</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- testDuration"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/testDuration">testDuration</A></H3><P>
+		<CODE>- (NSTimeInterval)<B>testDuration</B>
+		</CODE><P>
+		Time spent in test cases
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- totalDuration"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/totalDuration">totalDuration</A></H3><P>
+		<CODE>- (NSTimeInterval)<B>totalDuration</B>
+		</CODE><P>
+		Total elapsed time
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- totalFailureCount"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/totalFailureCount">totalFailureCount</A></H3><P>
+		<CODE>- (unsigned int)<B>totalFailureCount</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- unexpectedExceptionCount"></A><H3><A NAME="//apple_ref/occ/instm/SenTestRun/unexpectedExceptionCount">unexpectedExceptionCount</A></H3><P>
+		<CODE>- (unsigned int)<B>unexpectedExceptionCount</B>
+		</CODE><P>
+		No method description.
+	
+
+
+
+
+<P><HR>
+CVS Version 1.6 Copyright &copy;2004 by Sente SA.  All Rights Reserved.   Fri Apr 01 13:49:07 2005
+<P>
+</BODY></HTML>

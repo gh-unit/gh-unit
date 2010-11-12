@@ -1,0 +1,307 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/NSException (SenTestFailure)">NSException (SenTestFailure)</A></H1></FONT><BR>
+
+
+
+
+
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>NSException_SenTestFailure.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Category Description</H2>
+No category description.
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Global Variables</H2>
+	<blockquote>
+	
+		
+		<H4>Synopsis:</H4>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenTestFailureException">SenTestFailureException</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenFailureTypeKey">SenFailureTypeKey</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenConditionFailure">SenConditionFailure</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenRaiseFailure">SenRaiseFailure</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenEqualityFailure">SenEqualityFailure</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenUnconditionalFailure">SenUnconditionalFailure</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenTestConditionKey">SenTestConditionKey</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenTestEqualityLeftKey">SenTestEqualityLeftKey</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenTestEqualityRightKey">SenTestEqualityRightKey</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenTestEqualityAccuracyKey">SenTestEqualityAccuracyKey</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenTestFilenameKey">SenTestFilenameKey</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenTestLineNumberKey">SenTestLineNumberKey</A></B>;</CODE><BR>
+		
+			<CODE>NSString * const <B><A NAME="//apple_ref/c/data/SenTestDescriptionKey">SenTestDescriptionKey</A></B>;</CODE><BR>
+		
+		
+	
+	</blockquote>
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- filename">- filename</A></DD>
+		
+			<DD> <A HREF="#- filePathInProject">- filePathInProject</A></DD>
+		
+			<DD> <A HREF="#- lineNumber">- lineNumber</A></DD>
+		
+			<DD> <A HREF="#+ failureInFile:atLine:withDescription:">+ failureInFile:atLine:withDescription:</A></DD>
+		
+			<DD> <A HREF="#+ failureInCondition:isTrue:inFile:atLine:withDescription:">+ failureInCondition:isTrue:inFile:atLine:withDescription:</A></DD>
+		
+			<DD> <A HREF="#+ failureInEqualityBetweenObject:andObject:inFile:atLine:withDescription:">+ failureInEqualityBetweenObject:andObject:inFile:atLine:withDescription:</A></DD>
+		
+			<DD> <A HREF="#+ failureInEqualityBetweenValue:andValue:withAccuracy:inFile:atLine:withDescription:">+ failureInEqualityBetweenValue:andValue:withAccuracy:inFile:atLine:withDescription:</A></DD>
+		
+			<DD> <A HREF="#+ failureInRaise:inFile:atLine:withDescription:">+ failureInRaise:inFile:atLine:withDescription:</A></DD>
+		
+			<DD> <A HREF="#+ failureInRaise:exception:inFile:atLine:withDescription:">+ failureInRaise:exception:inFile:atLine:withDescription:</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Class Methods</H2>
+ 
+	
+		
+		<A NAME="+ failureInCondition:isTrue:inFile:atLine:withDescription:"></A><H3><A NAME="//apple_ref/occ/clm/NSException (SenTestFailure)/failureInCondition:isTrue:inFile:atLine:withDescription:">failureInCondition:isTrue:inFile:atLine:withDescription:</A></H3>
+		<CODE>+ (NSException *)<B>failureInCondition:</B>(NSString *)<EM>condition</EM> <B>isTrue:</B>(BOOL)<EM>isTrue</EM> <B>inFile:</B>(NSString *)<EM>filename</EM> <B>atLine:</B>(int)<EM>lineNumber</EM> <B>withDescription:</B>(NSString *)<EM>formatString, ...</EM>
+			
+		</CODE><P>
+		This method returns a NSException with a name of &quot;SenTestFailureException&quot;. 
+A reason constructed from the <I>condition</I>, the boolean <I>isTrue</I> and the 
+<I>formatString</I> and the variable number of arguments that follow it 
+(just like in the NSString method -stringWithFormat:). 
+And an user info dictionary that contain the following information for the 
+given keys: 
+<TABLE BORDER="3">
+	<TR><TD>SenFailureTypeKey</TD><TD>SenConditionFailure.</TD></TR>
+
+	<TR><TD>SenTestConditionKey</TD><TD>The <I>condition</I> (as a string) that caused this failure.</TD></TR>
+
+	<TR><TD>SenTestFilenameKey</TD><TD>The <I>filename</I> containing the code that caused the exception.</TD></TR>
+
+	<TR><TD>SenTestLineNumberKey</TD><TD>The <I>lineNumber</I> of the code that caused the exception.</TD></TR>
+
+	<TR><TD>SenTestDescriptionKey</TD><TD>A description constructed from the <I>formatString</I> and 
+the variable number of arguments that follow it.</TD></TR>
+</TABLE>
+
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ failureInEqualityBetweenObject:andObject:inFile:atLine:withDescription:"></A><H3><A NAME="//apple_ref/occ/clm/NSException (SenTestFailure)/failureInEqualityBetweenObject:andObject:inFile:atLine:withDescription:">failureInEqualityBetweenObject:andObject:inFile:atLine:withDescription:</A></H3>
+		<CODE>+ (NSException *)<B>failureInEqualityBetweenObject:</B>(id)<EM>left</EM> <B>andObject:</B>(id)<EM>right</EM> <B>inFile:</B>(NSString *)<EM>filename</EM> <B>atLine:</B>(int)<EM>lineNumber</EM> <B>withDescription:</B>(NSString *)<EM>formatString, ...</EM>
+			
+		</CODE><P>
+		This method returns a NSException with a name of &quot;SenTestFailureException&quot;. 
+A reason constructed from the descriptions of the <I>left</I> and <I>right</I> objects and 
+the <I>formatString</I> and the variable number of arguments that follow it 
+(just like in the NSString method -stringWithFormat:). 
+And an user info dictionary that contain the following information for the 
+given keys: 
+<TABLE BORDER="3">
+	<TR><TD>SenFailureTypeKey</TD><TD>SenEqualityFailure.</TD></TR>
+
+	<TR><TD>SenTestEqualityLeftKey</TD><TD>The <I>left</I> object.</TD></TR>
+
+	<TR><TD>SenTestEqualityRightKey</TD><TD>The <I>right</I> object.</TD></TR>
+
+	<TR><TD>SenTestFilenameKey</TD><TD>The <I>filename</I> containing the code that caused the exception.</TD></TR>
+
+	<TR><TD>SenTestLineNumberKey</TD><TD>The <I>lineNumber</I> of the code that caused the exception.</TD></TR>
+
+	<TR><TD>SenTestDescriptionKey</TD><TD>A description constructed from the <I>formatString</I> and 
+the variable number of arguments that follow it.</TD></TR>
+</TABLE>
+
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ failureInEqualityBetweenValue:andValue:withAccuracy:inFile:atLine:withDescription:"></A><H3><A NAME="//apple_ref/occ/clm/NSException (SenTestFailure)/failureInEqualityBetweenValue:andValue:withAccuracy:inFile:atLine:withDescription:">failureInEqualityBetweenValue:andValue:withAccuracy:inFile:atLine:withDescription:</A></H3>
+		<CODE>+ (NSException *)<B>failureInEqualityBetweenValue:</B>(NSValue *)<EM>left</EM> <B>andValue:</B>(NSValue *)<EM>right</EM> <B>withAccuracy:</B>(NSValue *)<EM>accuracy</EM> <B>inFile:</B>(NSString *)<EM>filename</EM> <B>atLine:</B>(int)<EM>lineNumber</EM> <B>withDescription:</B>(NSString *)<EM>formatString, ...</EM>
+			
+		</CODE><P>
+		This method returns a NSException with a name of &quot;SenTestFailureException&quot;. 
+A reason constructed from the descriptions of the <I>left</I> and <I>right</I> objects and 
+the <I>formatString</I> and the variable number of arguments that follow it 
+(just like in the NSString method -stringWithFormat:). 
+And an user info dictionary that contain the following information for the 
+given keys: 
+<TABLE BORDER="3">
+	<TR><TD>SenFailureTypeKey</TD><TD>SenEqualityFailure.</TD></TR>
+
+	<TR><TD>SenTestEqualityLeftKey</TD><TD>The <I>left</I> object.</TD></TR>
+
+	<TR><TD>SenTestEqualityRightKey</TD><TD>The <I>right</I> object.</TD></TR>
+
+	<TR><TD>SenTestEqualityAccuracyKey</TD><TD>The difference object.</TD></TR>
+
+	<TR><TD>SenTestFilenameKey</TD><TD>The <I>filename</I> containing the code that caused the exception.</TD></TR>
+
+	<TR><TD>SenTestLineNumberKey</TD><TD>The <I>lineNumber</I> of the code that caused the exception.</TD></TR>
+
+	<TR><TD>SenTestDescriptionKey</TD><TD>A description constructed from the <I>formatString</I> and 
+the variable number of arguments that follow it.</TD></TR>
+</TABLE>
+
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ failureInFile:atLine:withDescription:"></A><H3><A NAME="//apple_ref/occ/clm/NSException (SenTestFailure)/failureInFile:atLine:withDescription:">failureInFile:atLine:withDescription:</A></H3>
+		<CODE>+ (NSException *)<B>failureInFile:</B>(NSString *)<EM>filename</EM> <B>atLine:</B>(int)<EM>lineNumber</EM> <B>withDescription:</B>(NSString *)<EM>formatString, ...</EM>
+			
+		</CODE><P>
+		This method returns a NSException with a name of &quot;SenTestFailureException&quot;. 
+A reason constructed from the <I>formatString</I> and the variable number of 
+arguments that follow it (just like in the NSString method -stringWithFormat:). 
+And an user info dictionary that contain the following information for the 
+given keys: 
+<TABLE BORDER="3">
+	<TR><TD>SenFailureTypeKey</TD><TD>SenUnconditionalFailure.</TD></TR>
+
+	<TR><TD>SenTestFilenameKey</TD><TD>The <I>filename</I> containing the code that caused the exception.</TD></TR>
+
+	<TR><TD>SenTestLineNumberKey</TD><TD>The <I>lineNumber</I> of the code that caused the exception.</TD></TR>
+
+	<TR><TD>SenTestDescriptionKey</TD><TD>A description constructed from the <I>formatString</I> and 
+the variable number of arguments that follow it.</TD></TR>
+</TABLE>
+
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ failureInRaise:exception:inFile:atLine:withDescription:"></A><H3><A NAME="//apple_ref/occ/clm/NSException (SenTestFailure)/failureInRaise:exception:inFile:atLine:withDescription:">failureInRaise:exception:inFile:atLine:withDescription:</A></H3>
+		<CODE>+ (NSException *)<B>failureInRaise:</B>(NSString *)<EM>expression</EM> <B>exception:</B>(NSException *)<EM>exception</EM> <B>inFile:</B>(NSString *)<EM>filename</EM> <B>atLine:</B>(int)<EM>lineNumber</EM> <B>withDescription:</B>(NSString *)<EM>formatString, ...</EM>
+			
+		</CODE><P>
+		This method returns a NSException with a name of &quot;SenTestFailureException&quot;. 
+A reason constructed from the <I>expression</I>, the reason for the <I>exception</I> and the 
+<I>formatString</I> and the variable number of arguments that follow it 
+(just like in the NSString method -stringWithFormat:). 
+And an user info dictionary that contain the following information for the 
+given keys: 
+<TABLE BORDER="3">
+	<TR><TD>SenFailureTypeKey</TD><TD>SenRaiseFailure.</TD></TR>
+
+	<TR><TD>SenTestConditionKey</TD><TD>The <I>expression</I> as a string.</TD></TR>
+
+	<TR><TD>SenTestFilenameKey</TD><TD>The <I>filename</I> containing the code that caused the <I>exception</I>.</TD></TR>
+
+	<TR><TD>SenTestLineNumberKey</TD><TD>The <I>lineNumber</I> of the code that caused the <I>exception</I>.</TD></TR>
+
+	<TR><TD>SenTestDescriptionKey</TD><TD>A description constructed from the <I>formatString</I> and 
+the variable number of arguments that follow it.</TD></TR>
+</TABLE>
+
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ failureInRaise:inFile:atLine:withDescription:"></A><H3><A NAME="//apple_ref/occ/clm/NSException (SenTestFailure)/failureInRaise:inFile:atLine:withDescription:">failureInRaise:inFile:atLine:withDescription:</A></H3>
+		<CODE>+ (NSException *)<B>failureInRaise:</B>(NSString *)<EM>expression</EM> <B>inFile:</B>(NSString *)<EM>filename</EM> <B>atLine:</B>(int)<EM>lineNumber</EM> <B>withDescription:</B>(NSString *)<EM>formatString, ...</EM>
+			
+		</CODE><P>
+		This method returns a NSException with a name of &quot;SenTestFailureException&quot;. 
+A reason constructed from the <I>expression</I> and the 
+<I>formatString</I> and the variable number of arguments that follow it 
+(just like in the NSString method -stringWithFormat:). 
+And an user info dictionary that contain the following information for the 
+given keys: 
+<TABLE BORDER="3">
+	<TR><TD>SenFailureTypeKey</TD><TD>SenRaiseFailure.</TD></TR>
+
+	<TR><TD>SenTestConditionKey</TD><TD>The <I>expression</I> as a string.</TD></TR>
+
+	<TR><TD>SenTestFilenameKey</TD><TD>The <I>filename</I> containing the code that caused the exception.</TD></TR>
+
+	<TR><TD>SenTestLineNumberKey</TD><TD>The <I>lineNumber</I> of the code that caused the exception.</TD></TR>
+
+	<TR><TD>SenTestDescriptionKey</TD><TD>A description constructed from the <I>formatString</I> and 
+the variable number of arguments that follow it.</TD></TR>
+</TABLE>
+
+	
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- filePathInProject"></A><H3><A NAME="//apple_ref/occ/instm/NSException (SenTestFailure)/filePathInProject">filePathInProject</A></H3><P>
+		<CODE>- (NSString *)<B>filePathInProject</B>
+		</CODE><P>
+		This method returns the path to the source code file that caused this 
+exception. If [<B>self</B> filename] is <B>nil</B> or empty then <I>Unknown</I>.m is returned. If 
+the file cannot be found in the current directory or any of sub-directories 
+then the name of aFilename is returned. Note that the current 
+directory is searched only if it is a project directory. A project directory 
+is one that contains the file <I>PB</I>.project or XXX.xcode or XXX.pbproj where 
+XXX is the name of the current directory.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- filename"></A><H3><A NAME="//apple_ref/occ/instm/NSException (SenTestFailure)/filename">filename</A></H3><P>
+		<CODE>- (NSString *)<B>filename</B>
+		</CODE><P>
+		The filename containing the code that caused this exception.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- lineNumber"></A><H3><A NAME="//apple_ref/occ/instm/NSException (SenTestFailure)/lineNumber">lineNumber</A></H3><P>
+		<CODE>- (NSNumber *)<B>lineNumber</B>
+		</CODE><P>
+		The line number of the code that caused the exception.
+	
+
+
+
+
+<P><HR>
+CVS Version 1.9 Copyright &copy;2005 by Sente SA.  All Rights Reserved.   Fri Apr 01 13:49:06 2005
+<P>
+</BODY></HTML>

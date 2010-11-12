@@ -1,0 +1,542 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/SenTestCase_Macros">SenTestCase_Macros</A></H1></FONT><BR>
+
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>SenTestCase_Macros.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Macro Definitions</H2>
+	<blockquote>
+	
+		
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertEqualObjects">STAssertEqualObjects</A></B>(a1, a2, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when <CODE> [a1 isEqualTo:a2] </CODE> is false 
+(or one is <B>nil</B> and the other is not). 
+<TABLE BORDER="3">
+	<TR><TD><I>a1</I></TD><TD>The object on the left.</TD></TR>
+
+	<TR><TD><I>a2</I></TD><TD>The object on the right.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertEquals">STAssertEquals</A></B>(a1, a2, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAbsoluteDifference">STAbsoluteDifference</A></B>(left,right)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when <I>a1</I> is not equal to <I>a2</I>. This test is for 
+C scalars, structs and unions. 
+<TABLE BORDER="3">
+	<TR><TD><I>a1</I></TD><TD>The argument on the left.</TD></TR>
+
+	<TR><TD><I>a2</I></TD><TD>The argument on the right.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertEqualsWithAccuracy">STAssertEqualsWithAccuracy</A></B>(a1, a2, accuracy, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when <I>a1</I> is not equal to <I>a2</I> within + or - <I>accuracy</I> is false. 
+This test is for scalars such as floats and doubles where small differences 
+could make these items not exactly equal, but also works for all scalars. 
+<TABLE BORDER="3">
+	<TR><TD><I>a1</I></TD><TD>The scalar on the left.</TD></TR>
+
+	<TR><TD><I>a2</I></TD><TD>The scalar on the right.</TD></TR>
+
+	<TR><TD><I>accuracy</I></TD><TD>The maximum difference between <I>a1</I> and <I>a2</I> for these values to be 
+considered equal.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STFail">STFail</A></B>(description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure unconditionally. 
+<TABLE BORDER="3">
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertNotNil">STAssertNotNil</A></B>(a1, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when <I>a1</I> is <B>nil</B>. 
+<TABLE BORDER="3">
+	<TR><TD><I>a1</I></TD><TD>An object.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertTrue">STAssertTrue</A></B>(expr, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when expression evaluates to false. 
+<TABLE BORDER="3">
+	<TR><TD><I>expr</I></TD><TD>The expression that is tested.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertTrueNoThrow">STAssertTrueNoThrow</A></B>(expr, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when expression evaluates to false and in addition will 
+generate error messages if an exception is encountered. 
+<TABLE BORDER="3">
+	<TR><TD><I>expr</I></TD><TD>The expression that is tested.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertFalse">STAssertFalse</A></B>(expr, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when the expression evaluates to true. 
+<TABLE BORDER="3">
+	<TR><TD><I>expr</I></TD><TD>The expression that is tested.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertFalseNoThrow">STAssertFalseNoThrow</A></B>(expr, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when the expression evaluates to true and in addition 
+will generate error messages if an exception is encountered. 
+<TABLE BORDER="3">
+	<TR><TD><I>expr</I></TD><TD>The expression that is tested.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertThrows">STAssertThrows</A></B>(expr, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when expression does not throw an exception. 
+<TABLE BORDER="3">
+	<TR><TD>expression</TD><TD>The expression that is evaluated.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertThrowsSpecific">STAssertThrowsSpecific</A></B>(expr, specificException, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when expression does not throw an exception of a 
+specific class. 
+<TABLE BORDER="3">
+	<TR><TD>expression</TD><TD>The expression that is evaluated.</TD></TR>
+
+	<TR><TD><I>specificException</I></TD><TD>The specified class of the exception.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertThrowsSpecificNamed">STAssertThrowsSpecificNamed</A></B>(expr, specificException, aName, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when expression does not throw an exception of a 
+specific class with a specific name. Useful for those frameworks like 
+AppKit or Foundation that throw generic NSException w/specific names 
+(NSInvalidArgumentException, etc). 
+<TABLE BORDER="3">
+	<TR><TD>expression</TD><TD>The expression that is evaluated.</TD></TR>
+
+	<TR><TD><I>specificException</I></TD><TD>The specified class of the exception.</TD></TR>
+
+	<TR><TD><I>aName</I></TD><TD>The name of the specified exception.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertNoThrow">STAssertNoThrow</A></B>(expr, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when expression does throw an exception. 
+<TABLE BORDER="3">
+	<TR><TD>expression</TD><TD>The expression that is evaluated.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertNoThrowSpecific">STAssertNoThrowSpecific</A></B>(expr, specificException, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when expression does throw an exception of the specitied 
+class. Any other exception is okay (i.e. does not generate a failure). 
+<TABLE BORDER="3">
+	<TR><TD>expression</TD><TD>The expression that is evaluated.</TD></TR>
+
+	<TR><TD><I>specificException</I></TD><TD>The specified class of the exception.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertNoThrowSpecificNamed">STAssertNoThrowSpecificNamed</A></B>(expr, specificException, aName, description, ...)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		Generates a failure when expression does throw an exception of a 
+specific class with a specific name. Useful for those frameworks like 
+AppKit or Foundation that throw generic NSException w/specific names 
+(NSInvalidArgumentException, etc). 
+<TABLE BORDER="3">
+	<TR><TD>expression</TD><TD>The expression that is evaluated.</TD></TR>
+
+	<TR><TD><I>specificException</I></TD><TD>The specified class of the exception.</TD></TR>
+
+	<TR><TD><I>aName</I></TD><TD>The name of the specified exception.</TD></TR>
+
+	<TR><TD><I>description</I></TD><TD>A format string as in the printf() function. Can be <B>nil</B> or 
+an empty string but must be present.</TD></TR>
+
+	<TR><TD>...</TD><TD>A variable number of arguments to the format string. Can be absent.</TD></TR>
+</TABLE>
+
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/fail">fail</A></B>()</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure unconditionally.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/fail1">fail1</A></B>(description)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure unconditionally.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/should">should</A></B>(expression)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure when <I>expression</I> evaluates to false.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/should1">should1</A></B>(expression, description)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure when <I>expression</I> evaluates to false.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldnt">shouldnt</A></B>(expression)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure when a <I>expression</I> evaluates to true.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldnt1">shouldnt1</A></B>(expression, description)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure when a <I>expression</I> evaluates to true.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldBeEqual">shouldBeEqual</A></B>(left, right)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure when <CODE> [left isEqualTo:right] </CODE> is false 
+(or <I>left</I> is <B>nil</B> and <I>right</I> is not).
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldBeEqual1">shouldBeEqual1</A></B>(left, right, description)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure when <CODE> [left isEqualTo:right] </CODE> is false 
+(or <I>left</I> is <B>nil</B> and <I>right</I> is not).
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldRaise">shouldRaise</A></B>(expression)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure when <I>expression</I> does not raise an exception.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldRaise1">shouldRaise1</A></B>(expression, description)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure when <I>expression</I> does not raise an exception.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldntRaise">shouldntRaise</A></B>(expression)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure when <I>expression</I> does raise an exception.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldntRaise1">shouldntRaise1</A></B>(expression, description)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Generates a failure when <I>expression</I> does raise an exception.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldnoraise">shouldnoraise</A></B>(expression)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Wrapper for should() that will generate error messages if an exception is 
+raised. Uses new-style exception.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/should1noraise">should1noraise</A></B>(expression, description)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Wrapper for should() that will generate error messages if an exception is 
+raised. Uses new-style exception.
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldntnoraise">shouldntnoraise</A></B>(expression)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Wrapper for shouldnt() that will generate error messages if an exception is 
+raised. Uses new-style exceptions
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldnt1noraise">shouldnt1noraise</A></B>(expression, description)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		This macro has been deprecated as of Feb 2004. 
+Wrapper for shouldnt() that will generate error messages if an exception is 
+raised. Uses new-style exceptions
+		
+	
+	</blockquote>
+
+
+
+
+
+
+
+
+
+
+<P><HR>
+CVS Version 1.25 Copyright &copy;2005 by Sente SA.  All Rights Reserved.   Fri Apr 01 13:49:06 2005
+<P>
+</BODY></HTML>
