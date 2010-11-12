@@ -18,7 +18,8 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 ## Links
 
 - The online [API documentation](http://gabriel.github.com/gh-unit/).
-- The [group](http://groups.google.com/group/ghunit)
+- The [group](http://groups.google.com/group/ghunit).
+- The [installation documentation](http://gabriel.github.com/gh-unit/_installing.html).
 
 ## Mac OS X
 
