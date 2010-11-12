@@ -103,9 +103,9 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  - Under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
  - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project.
- - (Optional) @ref Makefile Install Makefile
  - (Optional) Create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnit/GHUnit.h></tt> to it, and then you won't have to include that import for every test.
- - @ref Examples Create a test
+ - (Optional) @ref Makefile "Install Makefile"
+ - @ref Examples "Create a test"
  
  Now you can create a test (either by subclassing <tt>SenTestCase</tt> or <tt>GHTestCase</tt>), adding it to your test target.
  
@@ -125,8 +125,8 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  - Copy GHUnitTestMain.m (http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
  - Now create a test (either by subclassing <tt>SenTestCase</tt> or <tt>GHTestCase</tt>), adding it to your test target. (See example test case below.)
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
- - (Optional) @ref Makefile Install Makefile
- - @ref Examples Create a test
+ - (Optional) @ref Makefile "Install Makefile"
+ - @ref Examples "Create a test"
  
  @subsection InstallProject Installing in your project
  
@@ -147,8 +147,8 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  - Now create a test (either by subclassing <tt>SenTestCase</tt> or <tt>GHTestCase</tt>), adding it to your test target. (See example test case below.)
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
- - (Optional) @ref Makefile Install Makefile
- - @ref Examples Create a test
+ - (Optional) @ref Makefile "Install Makefile"
+ - @ref Examples "Create a test"
  */
  
 /*!
