@@ -5,4 +5,4 @@ ZERO_LINK = NO
 IPHONEOS_DEPLOYMENT_TARGET = 3.0
 
 // Testing with LLVM
-GCC_VERSION = com.apple.compilers.llvm.clang.1_0
+//GCC_VERSION = com.apple.compilers.llvm.clang.1_0

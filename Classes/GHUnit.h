@@ -42,6 +42,10 @@
 #import "NSException+GHTestFailureExceptions.h"
 #import "NSValue+GHValueFormatter.h"
 
+#if TARGET_OS_IPHONE
+#import "GHUnitIPhoneAppDelegate.h"
+#endif
+
 #ifdef DEBUG
 #define GHUDebug(fmt, ...) do { \
 fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@"\n"] UTF8String], stdout); \
@@ -503,7 +507,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  the following in <tt>Test report XMLs</tt>:
  
  @verbatim
- build/test-results/*.xml
+ build/test-results/&#42;.xml
  @endverbatim
  
  That's all it takes. Check in a change that breaks one of your tests. Hudson

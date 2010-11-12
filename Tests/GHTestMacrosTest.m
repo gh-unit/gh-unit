@@ -24,6 +24,14 @@
   }, nil);
 }
 
+- (void)testEqualsCGFloat {
+  CGFloat expectedX = 100;
+  CGFloat actualX = 200;
+  GHAssertThrows({
+    GHAssertEquals(actualX, expectedX, @"Expected failure");
+  }, nil);
+}
+
 - (void)testNSLog {
   NSLog(@"Testing NSLog");  
   // TODO(gabe): Test this was output

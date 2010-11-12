@@ -1,3 +1,6 @@
+# Release 0.4.27
+- Added in GHUnitIPhoneAppDelegate for subclassing test app delegate
+
 # Release 0.4.26
 - Fixing LLVM/clang warnings (Whitney Young, nolanw)
 - GHAssertNotEqualStrings will allow for nils (Rusty Zarse)

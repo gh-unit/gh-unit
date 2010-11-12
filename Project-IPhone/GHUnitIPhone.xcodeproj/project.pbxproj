@@ -129,8 +129,6 @@
 		0065970211BEEB2D00E89ABD /* GHTestSuite.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0012289811BA17EC00C038B4 /* GHTestSuite.h */; };
 		0065970311BEEB2D00E89ABD /* NSException+GHTestFailureExceptions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0012289A11BA17EC00C038B4 /* NSException+GHTestFailureExceptions.h */; };
 		0065970411BEEB2D00E89ABD /* NSValue+GHValueFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0012289C11BA17EC00C038B4 /* NSValue+GHValueFormatter.h */; };
-		006D7884120A98A20053B72E /* GHUnitIOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 006D7883120A98A20053B72E /* GHUnitIOS.h */; };
-		006D7885120A98A20053B72E /* GHUnitIOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 006D7883120A98A20053B72E /* GHUnitIOS.h */; };
 		006D7886120A98B20053B72E /* GHUnitIPhoneTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 003280F60FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.h */; };
 		006D7887120A98B70053B72E /* GHUnitIPhoneTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 00080FE30F4FC9260034DF4C /* GHUnitIPhoneTestViewController.h */; };
 		006D7888120A98B80053B72E /* GHUnitIPhoneView.h in Headers */ = {isa = PBXBuildFile; fileRef = 008F39E11174300C001A35C4 /* GHUnitIPhoneView.h */; };
@@ -139,6 +137,12 @@
 		006D788C120A98C60053B72E /* GHUnitIPhoneTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 00080FE30F4FC9260034DF4C /* GHUnitIPhoneTestViewController.h */; };
 		006D788D120A98C80053B72E /* GHUnitIPhoneView.h in Headers */ = {isa = PBXBuildFile; fileRef = 008F39E11174300C001A35C4 /* GHUnitIPhoneView.h */; };
 		006D788E120A98C80053B72E /* GHUnitIPhoneViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C650F4915C2007932FE /* GHUnitIPhoneViewController.h */; };
+		00803E6F128DEA9F0033DA60 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E58D4A1172938B0037E3C8 /* CoreGraphics.framework */; };
+		00803E70128DEA9F0033DA60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E58D421172937E0037E3C8 /* Foundation.framework */; };
+		00803E71128DEA9F0033DA60 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001ED8BD117292330046CD38 /* UIKit.framework */; };
+		00803E79128DEAE60033DA60 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00803E78128DEAE60033DA60 /* CoreGraphics.framework */; };
+		00803E7B128DEAE60033DA60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00803E7A128DEAE60033DA60 /* Foundation.framework */; };
+		00803E7D128DEAE60033DA60 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00803E7C128DEAE60033DA60 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,13 +289,15 @@
 		004810C5122E257500E3B69F /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
 		006307B30F8E792F00C9602A /* Shared-iPhone.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Shared-iPhone.xcconfig"; sourceTree = "<group>"; };
 		006D7815120A93880053B72E /* iPhoneFramework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = iPhoneFramework.sh; sourceTree = "<group>"; };
-		006D7883120A98A20053B72E /* GHUnitIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIOS.h; sourceTree = "<group>"; };
 		007730230F8D8DF400586577 /* GHAsyncTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCaseTest.m; sourceTree = "<group>"; };
 		007730240F8D8DF400586577 /* GHRegisterTestCaseClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHRegisterTestCaseClassTest.m; sourceTree = "<group>"; };
 		007730260F8D8DF400586577 /* GHSpecialTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHSpecialTestCase.h; sourceTree = "<group>"; };
 		007730270F8D8DF400586577 /* GHSpecialTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSpecialTestCase.m; sourceTree = "<group>"; };
 		0077302C0F8D8E0900586577 /* GHAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAsyncTestCase.h; sourceTree = "<group>"; };
 		0077302D0F8D8E0900586577 /* GHAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCase.m; sourceTree = "<group>"; };
+		00803E78128DEAE60033DA60 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		00803E7A128DEAE60033DA60 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		00803E7C128DEAE60033DA60 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		008F39E11174300C001A35C4 /* GHUnitIPhoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneView.h; sourceTree = "<group>"; };
 		008F39E21174300C001A35C4 /* GHUnitIPhoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneView.m; sourceTree = "<group>"; };
 		00A230BD1022586400337F7B /* GHTestMacrosTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestMacrosTest.m; sourceTree = "<group>"; };
@@ -317,6 +323,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00803E79128DEAE60033DA60 /* CoreGraphics.framework in Frameworks */,
+				00803E7B128DEAE60033DA60 /* Foundation.framework in Frameworks */,
+				00803E7D128DEAE60033DA60 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +333,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00803E6F128DEA9F0033DA60 /* CoreGraphics.framework in Frameworks */,
+				00803E70128DEA9F0033DA60 /* Foundation.framework in Frameworks */,
+				00803E71128DEA9F0033DA60 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +476,6 @@
 				003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */,
 				008F39E11174300C001A35C4 /* GHUnitIPhoneView.h */,
 				008F39E21174300C001A35C4 /* GHUnitIPhoneView.m */,
-				006D7883120A98A20053B72E /* GHUnitIOS.h */,
 			);
 			name = "Classes-IPhone";
 			path = "../Classes-IPhone";
@@ -593,6 +604,9 @@
 				00A9533E0FDA2DD4006A80A6 /* Scripts */,
 				00CDDD780F76FC660089C60E /* Makefile */,
 				0020596B0F9501F100FC1898 /* TODO.md */,
+				00803E78128DEAE60033DA60 /* CoreGraphics.framework */,
+				00803E7A128DEAE60033DA60 /* Foundation.framework */,
+				00803E7C128DEAE60033DA60 /* UIKit.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -600,8 +614,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* Tests_Prefix.pch */,
 				00DA12F10F8722DD001FE08E /* GHUnitIPhone_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* Tests_Prefix.pch */,
 				00E6527D120C7CDD00DBBDBC /* GHUnitIOSTestMain.m */,
 			);
 			name = "Other Sources";
@@ -634,7 +648,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				004FFC1511BEFB1600ADEB22 /* GHTestViewModel.h in Headers */,
-				006D7884120A98A20053B72E /* GHUnitIOS.h in Headers */,
 				006D7886120A98B20053B72E /* GHUnitIPhoneTableViewDataSource.h in Headers */,
 				006D7887120A98B70053B72E /* GHUnitIPhoneTestViewController.h in Headers */,
 				006D7888120A98B80053B72E /* GHUnitIPhoneView.h in Headers */,
@@ -647,7 +660,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				004FFC1F11BEFB3100ADEB22 /* GHTestViewModel.h in Headers */,
-				006D7885120A98A20053B72E /* GHUnitIOS.h in Headers */,
 				006D788B120A98C50053B72E /* GHUnitIPhoneTableViewDataSource.h in Headers */,
 				006D788C120A98C60053B72E /* GHUnitIPhoneTestViewController.h in Headers */,
 				006D788D120A98C80053B72E /* GHUnitIPhoneView.h in Headers */,
@@ -697,9 +709,9 @@
 			productReference = 000287A311814A5300D74BBD /* libGHUnitIOSDevice.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		000287DE11814C2800D74BBD /* Tests (4.0) */ = {
+		000287DE11814C2800D74BBD /* Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 000287FD11814C2800D74BBD /* Build configuration list for PBXNativeTarget "Tests (4.0)" */;
+			buildConfigurationList = 000287FD11814C2800D74BBD /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
 				000287E111814C2800D74BBD /* Resources */,
 				000287E711814C2800D74BBD /* Sources */,
@@ -711,7 +723,7 @@
 			dependencies = (
 				0002880411814C3600D74BBD /* PBXTargetDependency */,
 			);
-			name = "Tests (4.0)";
+			name = Tests;
 			productName = GHUnitIPhone;
 			productReference = 0002880011814C2800D74BBD /* Tests.app */;
 			productType = "com.apple.product-type.application";
@@ -737,7 +749,7 @@
 			targets = (
 				0002874211814A1F00D74BBD /* GHUnitIPhone (Simulator) */,
 				0002877311814A5300D74BBD /* GHUnitIPhone (Device) */,
-				000287DE11814C2800D74BBD /* Tests (4.0) */,
+				000287DE11814C2800D74BBD /* Tests */,
 				006D780C120A93230053B72E /* Run make to build framework */,
 			);
 		};
@@ -918,7 +930,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0002880E11814C8300D74BBD /* iPhoneTests.xcconfig */;
 			buildSettings = {
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Debug;
 		};
@@ -926,8 +938,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0002880E11814C8300D74BBD /* iPhoneTests.xcconfig */;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Release;
 		};
@@ -1000,7 +1011,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		000287FD11814C2800D74BBD /* Build configuration list for PBXNativeTarget "Tests (4.0)" */ = {
+		000287FD11814C2800D74BBD /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				000287FE11814C2800D74BBD /* Debug */,
