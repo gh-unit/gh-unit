@@ -93,19 +93,19 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  @section InstallingIOS Installing (iOS)
  
  - Add a <tt>New Target</tt>. Select <tt>Cocoa Touch -> Application</tt>. Name it <tt>Tests</tt> (or something similar).
- - Add the <tt>GHUnitIOS.framework</tt> to your project.
+ - Add the <tt>GHUnit.framework</tt> to your project.
  - Add the following frameworks to <tt>Linked Libraries</tt>:
-    - <tt>GHUnitIOS.framework</tt>
+    - <tt>GHUnit.framework</tt>
     - <tt>CoreGraphics.framework</tt>
     - <tt>Foundation.framework</tt>
     - <tt>UIKit.framework</tt>
-    - (Optional) <tt>CoreLocation.framework</tt>
- - Under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
- - Under 'Other Linker Flags' in the <tt>Test</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
+ - Under 'Framework Search Paths' make sure the (parent) directory to GHUnit.framework is listed.
+ - Under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
  - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project.
- - (Optional) Install Makefile (see instructions below)
- - (Optional) Create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnitIOS/GHUnitIOS.h></tt> to it, and then you won't have to include that import for every test.
+ - (Optional) @ref Makefile Install Makefile
+ - (Optional) Create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnit/GHUnit.h></tt> to it, and then you won't have to include that import for every test.
+ - @ref Examples Create a test
  
  Now you can create a test (either by subclassing <tt>SenTestCase</tt> or <tt>GHTestCase</tt>), adding it to your test target.
  
@@ -125,7 +125,8 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  - Copy GHUnitTestMain.m (http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target.
  - Now create a test (either by subclassing <tt>SenTestCase</tt> or <tt>GHTestCase</tt>), adding it to your test target. (See example test case below.)
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
- - (Optional) Install Makefile (see instructions below)
+ - (Optional) @ref Makefile Install Makefile
+ - @ref Examples Create a test
  
  @subsection InstallProject Installing in your project
  
@@ -146,22 +147,19 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  - Now create a test (either by subclassing <tt>SenTestCase</tt> or <tt>GHTestCase</tt>), adding it to your test target. (See example test case below.)
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
- - (Optional) Install Makefile (see instructions below)
- 
+ - (Optional) @ref Makefile Install Makefile
+ - @ref Examples Create a test
  */
  
 /*!
  @page Examples Examples
  
- - @ref ExampleIOS
- - @ref ExampleMacOSX
- 
- @section ExampleIOS Example Test Class (iOS)
+ @section ExampleIOS Example Test Class
  
  For example <tt>MyTest.m</tt>:
  
  @code
- #import <GHUnitIOS/GHUnitIOS.h>
+ #import <GHUnit/GHUnit.h>
  
  @interface MyTest : GHTestCase { }
  @end
@@ -205,68 +203,15 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  Now you should be ready to Build and Run the <tt>Test</tt> target.
  
- You should see something like:
+ For iOS, you should see something like:
  
  @image html http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png
  
  An example of an iPhone project with GHUnit test setup can be found at: MyTestable-IPhone (http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone).
- 
- 
- @section ExampleMacOSX Example Test Class (Mac OS X)
- 
- @code
- For example <tt>MyTest.m</tt>:
- 
- #import <GHUnit/GHUnit.h>
- 
- @interface MyTest : GHTestCase { }
- @end
- 
- @implementation MyTest
- 
- - (BOOL)shouldRunOnMainThread {
-   // By default NO, but if you have a UI test or test dependent on running on the main thread return YES
- }
- 
- - (void)setUpClass {
-   // Run at start of all tests in the class
- }
- 
- - (void)tearDownClass {
-   // Run at end of all tests in the class
- }
- 
- - (void)setUp {
-   // Run before each test method
- }
- 
- - (void)tearDown {
-   // Run after each test method
- }
- 
- - (void)testFoo {		
-   GHTestLog(@"I can log to the GHUnit test console: %@", foo);
- 
-   // Assert a is not NULL, with no custom error description
-   GHAssertNotNULL(a, nil);
- 
-   // Assert equal objects, add custom error description
-   GHAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
- }
- 
- - (void)testBar {
-   // Another test
- }
- 
- @end
- 
- @endcode
- 
- You should see something like:
+  
+ For Mac OS X, you should see something like:
  
  @image html http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.18.png
- 
- - Optionally, you can create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnit/GHUnit.h></tt> to it, and then you won't have to include that import for every test.
  
  */
  
