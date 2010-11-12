@@ -30,9 +30,9 @@
 #import <UIKit/UIKit.h>
 
 // If you are using the framework
-#import <GHUnitIOS/GHUnitIOS.h>
+#import <GHUnit/GHUnit.h>
 // If you are using the static library and importing header files manually
-//#import "GHUnitIOS.h"
+//#import "GHUnit.h"
 
 // Default exception handler
 void exceptionHandler(NSException *exception) { 
