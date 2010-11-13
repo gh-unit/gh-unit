@@ -61,6 +61,7 @@ Example Test Class</h2>
  
  - (BOOL)shouldRunOnMainThread {
    <span class="comment">// By default NO, but if you have a UI test or test dependent on running on the main thread return YES</span>
+   <span class="keywordflow">return</span> NO;
  }
  
  - (void)setUpClass {
@@ -79,12 +80,16 @@ Example Test Class</h2>
    <span class="comment">// Run after each test method</span>
  }  
  
- - (void)testFoo {
+ - (void)testFoo {       
+   NSString *a = <span class="stringliteral">@&quot;foo&quot;</span>;
+   GHTestLog(<span class="stringliteral">@&quot;I can log to the GHUnit test console: %@&quot;</span>, a);
+ 
    <span class="comment">// Assert a is not NULL, with no custom error description</span>
    <a class="code" href="_g_h_test_macros_8h.html#ac9c25f79aea7bce89e97b862c3b10379" title="Generates a failure when a1 is NULL.">GHAssertNotNULL</a>(a, nil);
  
    <span class="comment">// Assert equal objects, add custom error description</span>
-   <a class="code" href="_g_h_test_macros_8h.html#a456379cf01f6d782fea2c0a4193a42fd" title="Generates a failure when !{ [a1 isEqualTo:a2] } is false (or one is nil and the other is not)...">GHAssertEqualObjects</a>(a, b, <span class="stringliteral">@&quot;Foo should be equal to: %@. Something bad happened&quot;</span>, bar);
+   NSString *b = <span class="stringliteral">@&quot;bar&quot;</span>;
+   <a class="code" href="_g_h_test_macros_8h.html#a456379cf01f6d782fea2c0a4193a42fd" title="Generates a failure when !{ [a1 isEqualTo:a2] } is false (or one is nil and the other is not)...">GHAssertEqualObjects</a>(a, b, <span class="stringliteral">@&quot;A custom error message. a should be equal to: %@.&quot;</span>, b);
  }
  
  - (void)testBar {
@@ -117,7 +122,7 @@ Example Test Class</h2>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Nov 12 2010 12:00:26 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Nov 12 2010 16:46:19 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

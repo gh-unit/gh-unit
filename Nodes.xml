@@ -22,6 +22,12 @@
           </Subnodes>
          </Node>
          <Node>
+          <Name>Building</Name>
+          <Path>_building.html</Path>
+          <Subnodes>
+          </Subnodes>
+         </Node>
+         <Node>
           <Name>Test Macros</Name>
           <Path>_test_macros.html</Path>
           <Subnodes>

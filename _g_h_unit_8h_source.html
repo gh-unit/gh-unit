@@ -93,14 +93,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00042"></a>00042 <span class="preprocessor">#import &quot;NSException+GHTestFailureExceptions.h&quot;</span>
 <a name="l00043"></a>00043 <span class="preprocessor">#import &quot;NSValue+GHValueFormatter.h&quot;</span>
 <a name="l00044"></a>00044 
-<a name="l00045"></a>00045 <span class="preprocessor">#ifdef DEBUG</span>
-<a name="l00046"></a>00046 <span class="preprocessor"></span><span class="preprocessor">#define GHUDebug(fmt, ...) do { \</span>
-<a name="l00047"></a>00047 <span class="preprocessor">fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@&quot;\n&quot;] UTF8String], stdout); \</span>
-<a name="l00048"></a>00048 <span class="preprocessor">} while(0)</span>
-<a name="l00049"></a>00049 <span class="preprocessor"></span><span class="preprocessor">#else</span>
-<a name="l00050"></a>00050 <span class="preprocessor"></span><span class="preprocessor">#define GHUDebug(fmt, ...) do {} while(0)</span>
-<a name="l00051"></a>00051 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00052"></a>00052 <span class="preprocessor"></span>
+<a name="l00045"></a>00045 <span class="preprocessor">#if TARGET_OS_IPHONE</span>
+<a name="l00046"></a>00046 <span class="preprocessor"></span><span class="preprocessor">#import &quot;GHUnitIPhoneAppDelegate.h&quot;</span>
+<a name="l00047"></a>00047 <span class="preprocessor">#endif</span>
+<a name="l00048"></a>00048 <span class="preprocessor"></span>
+<a name="l00049"></a>00049 <span class="preprocessor">#ifdef DEBUG</span>
+<a name="l00050"></a>00050 <span class="preprocessor"></span><span class="preprocessor">#define GHUDebug(fmt, ...) do { \</span>
+<a name="l00051"></a>00051 <span class="preprocessor">fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@&quot;\n&quot;] UTF8String], stdout); \</span>
+<a name="l00052"></a>00052 <span class="preprocessor">} while(0)</span>
+<a name="l00053"></a>00053 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00054"></a>00054 <span class="preprocessor"></span><span class="preprocessor">#define GHUDebug(fmt, ...) do {} while(0)</span>
+<a name="l00055"></a>00055 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00056"></a>00056 <span class="preprocessor"></span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -117,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Nov 12 2010 12:00:26 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Nov 12 2010 16:46:19 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
