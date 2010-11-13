@@ -10,3 +10,4 @@ Documentation/GHUnit.docset.tgz
 *.swp
 *~.nib
 .gitattributes
+GHUnit.docset
