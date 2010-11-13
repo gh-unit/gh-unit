@@ -76,6 +76,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  This manual is divided in the following sections:
  - @subpage Examples
  - @subpage Installing
+ - @subpage Building
  - @subpage TestMacros 
  - @subpage EnvVariables
  - @subpage CommandLine "Command Line & Makefiles"
@@ -156,6 +157,14 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  */
  
 /*!
+ @page Building Building
+ 
+ For iOS, run <tt>make</tt> from within the <tt>Project-IPhone</tt> directory. The framework is in <tt>Project-IPhone/build/Framework/</tt>.
+ 
+ For Mac OS X, the framework build is stored in <tt>Project/build/Release/</tt>.
+ */
+
+/*!
  @page Examples Examples
  
  @section ExampleIOS Example Test Class
@@ -172,6 +181,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  - (BOOL)shouldRunOnMainThread {
    // By default NO, but if you have a UI test or test dependent on running on the main thread return YES
+   return NO;
  }
  
  - (void)setUpClass {
@@ -190,12 +200,16 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
    // Run after each test method
  }	
  
- - (void)testFoo {
+ - (void)testFoo {       
+   NSString *a = @"foo";
+   GHTestLog(@"I can log to the GHUnit test console: %@", a);
+ 
    // Assert a is not NULL, with no custom error description
    GHAssertNotNULL(a, nil);
  
    // Assert equal objects, add custom error description
-   GHAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
+   NSString *b = @"bar";
+   GHAssertEqualObjects(a, b, @"A custom error message. a should be equal to: %@.", b);
  }
  
  - (void)testBar {
