@@ -15,7 +15,12 @@
 @end
 
 
-@interface GHTestOutlineViewModel : GHTestViewModel {
+
+@interface GHTestOutlineViewModel : GHTestViewModel 
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060 // on lines like this to not confuse IB
+  <NSOutlineViewDelegate, NSOutlineViewDataSource> 	
+#endif
+{
 	id<GHTestOutlineViewModelDelegate> delegate_; // weak
 	
 	NSButtonCell *editCell_;

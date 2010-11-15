@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHTestGroup.h"
 
 /*!
@@ -112,3 +114,5 @@ extern NSString *GHUnitTest;
 - (BOOL)writeJUnitXML:(NSError **)error;
 
 @end
+
+//! @endcond

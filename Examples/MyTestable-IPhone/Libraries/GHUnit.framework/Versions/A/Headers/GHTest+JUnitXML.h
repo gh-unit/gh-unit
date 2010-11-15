@@ -1,5 +1,5 @@
 //
-//  GHTestGroup+JUnitXML.h
+//  GHTest+JUnitXML.h
 //  GHUnit
 //
 //  Created by Gabriel Handford on 6/4/10.
@@ -27,12 +27,18 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestGroup.h"
+//! @cond DEV
 
-@interface GHTestGroup (JUnitXML)
+#import "GHTest.h"
 
+@interface GHTest(JUnitXML)
+
+/*!
+ Return test results in JUnit XML format for external parsing use
+ (such as a Continuous Integration system like Hudson)
+ */
 - (NSString *)JUnitXML;
 
-- (BOOL)writeJUnitXMLAtPath:(NSString *)documentsPath error:(NSError **)error;
-
 @end
+
+//! @endcond

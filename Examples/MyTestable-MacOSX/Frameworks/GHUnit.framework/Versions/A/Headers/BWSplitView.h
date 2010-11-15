@@ -8,7 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface BWSplitView : NSSplitView  {
+@interface BWSplitView : NSSplitView
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060 // on lines like this to not confuse IB
+  <NSSplitViewDelegate>
+#endif
+{
 	NSColor *color;
 	BOOL colorIsEnabled, checkboxIsEnabled, dividerCanCollapse, collapsibleSubviewCollapsed;
 	id secondaryDelegate;

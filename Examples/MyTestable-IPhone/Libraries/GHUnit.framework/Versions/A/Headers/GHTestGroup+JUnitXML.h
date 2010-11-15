@@ -1,9 +1,9 @@
 //
-//  GHUnit.h
+//  GHTestGroup+JUnitXML.h
 //  GHUnit
 //
-//  Created by Gabriel Handford on 1/19/09.
-//  Copyright 2009. All rights reserved.
+//  Created by Gabriel Handford on 6/4/10.
+//  Copyright 2010. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,25 +27,16 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestCase.h"
-#import "GHAsyncTestCase.h"
-#import "GHTestSuite.h"
-#import "GHTestMacros.h"
-#import "GHTestRunner.h"
+//! @cond DEV
 
-#import "GHTest.h"
-#import "GHTesting.h"
-#import "GHTestOperation.h"
 #import "GHTestGroup.h"
-#import "GHTest+JUnitXML.h"
-#import "GHTestGroup+JUnitXML.h"
-#import "NSException+GHTestFailureExceptions.h"
-#import "NSValue+GHValueFormatter.h"
 
-#ifdef DEBUG
-#define GHUDebug(fmt, ...) do { \
-fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@"\n"] UTF8String], stdout); \
-} while(0)
-#else
-#define GHUDebug(fmt, ...) do {} while(0)
-#endif
+@interface GHTestGroup(JUnitXML)
+
+- (NSString *)JUnitXML;
+
+- (BOOL)writeJUnitXMLAtPath:(NSString *)documentsPath error:(NSError **)error;
+
+@end
+
+//! @endcond

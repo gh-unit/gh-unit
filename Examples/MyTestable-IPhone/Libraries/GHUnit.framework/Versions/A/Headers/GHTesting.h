@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 //
 // Portions of this file fall under the following license, marked with:
 // GTM_BEGIN : GTM_END
@@ -46,7 +48,11 @@
 //  the License.
 //
 
+#ifdef __cplusplus
+extern "C" NSString *GHUStackTraceFromException(NSException *e);
+#else
 extern NSString *GHUStackTraceFromException(NSException *e);
+#endif
 
 // GTM_BEGIN
 BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass);
@@ -138,3 +144,5 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass);
 @protocol GHSenTestCase 
 - (void)raiseAfterFailure;
 @end
+
+//! @endcond

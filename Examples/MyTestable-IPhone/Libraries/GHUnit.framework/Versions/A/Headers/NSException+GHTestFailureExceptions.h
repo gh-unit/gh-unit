@@ -26,6 +26,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 //
 // Portions of this file fall under the following license, marked with:
 // GTM_BEGIN : GTM_END
@@ -54,7 +56,7 @@ extern NSString *const GHTestFailureException;
 
 #import <Foundation/Foundation.h>
 
-@interface NSException (GHUTestFailureExceptions)
+@interface NSException(GHUTestFailureExceptions)
 + (NSException *)ghu_failureInFile:(NSString *)filename 
                         atLine:(int)lineNumber 
                withDescription:(NSString *)formatString, ...;
@@ -86,3 +88,5 @@ extern NSString *const GHTestFailureException;
 @end
 
 // GTM_END
+
+//! @endcond

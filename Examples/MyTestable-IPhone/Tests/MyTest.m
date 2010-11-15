@@ -6,7 +6,7 @@
 //  Copyright 2009. All rights reserved.
 //
 
-#import <GHUnitIOS/GHUnitIOS.h>
+#import <GHUnit/GHUnit.h>
 
 @interface MyTest : GHTestCase { }
 @end
