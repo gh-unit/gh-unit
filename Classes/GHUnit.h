@@ -567,7 +567,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  the following in <tt>Test report XMLs</tt>:
  
  @verbatim
- build/test-results/&#42;.xml
+ build/test-results/*.xml
  @endverbatim
  
  That's all it takes. Check in a change that breaks one of your tests. Hudson
