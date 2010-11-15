@@ -62,7 +62,7 @@ Using Hudson with GHUnit</h2>
  make clean &amp;&amp; WRITE_JUNIT_XML=YES make test
  </pre></div><p>6. Under <code>Post-build Actions</code>, check <code>Publish JUnit test result report</code> and enter the following in <code>Test report XMLs</code>:</p>
 <div class="fragment"><pre class="fragment">
- build/test-results/&amp;#42;.xml
+ build/test-results/*.xml
  </pre></div><p>That's all it takes. Check in a change that breaks one of your tests. Hudson should detect the change, run a build and test, and then report the failure. Fix the test, check in again, and you should see a successful build report.</p>
 <h2><a class="anchor" id="Troubleshooting"></a>
 Troubleshooting</h2>
@@ -82,7 +82,7 @@ Troubleshooting</h2>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Nov 14 2010 16:05:53 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Nov 15 2010 13:32:30 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
