@@ -49,15 +49,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>Examples </h1>  </div>
 </div>
 <div class="contents">
-<h2><a class="anchor" id="ExampleIOS"></a>
-Example Test Class</h2>
-<p>For example <code>MyTest.m</code>:</p>
+<ul>
+<li><a class="el" href="_examples.html#ExampleTestCase">Example Test Case</a></li>
+<li><a class="el" href="_examples.html#ExampleAsyncTestCase">Example Async Test Case</a></li>
+</ul>
+<h2><a class="anchor" id="ExampleTestCase"></a>
+Example Test Case</h2>
+<p>For example <code>ExampleTest.m</code>:</p>
 <div class="fragment"><pre class="fragment"><span class="preprocessor"> #import &lt;GHUnit/GHUnit.h&gt;</span>
  
- <span class="keyword">@interface </span>MyTest : <a class="code" href="interface_g_h_test_case.html" title="The base class for a test case.">GHTestCase</a> { }
+ <span class="keyword">@interface </span>ExampleTest : <a class="code" href="interface_g_h_test_case.html" title="The base class for a test case.">GHTestCase</a> { }
  <span class="keyword">@end</span>
  
- <span class="keyword">@implementation </span>MyTest
+ <span class="keyword">@implementation </span>ExampleTest
  
  - (BOOL)shouldRunOnMainThread {
    <span class="comment">// By default NO, but if you have a UI test or test dependent on running on the main thread return YES</span>
@@ -97,17 +101,52 @@ Example Test Class</h2>
  }
  
  <span class="keyword">@end</span>
-</pre></div><p>Now you should be ready to Build and Run the <code>Test</code> target.</p>
-<p>For iOS, you should see something like:</p>
-<div align="center">
-<img src="http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png" alt="GHUnit-IPhone-0.4.18.png"/>
+</pre></div><h2><a class="anchor" id="ExampleAsyncTestCase"></a>
+Example Async Test Case</h2>
+<div class="fragment"><pre class="fragment"><span class="preprocessor"> #import &lt;GHUnit/GHUnit.h&gt;</span>
+ 
+ <span class="keyword">@interface </span>ExampleAsyncTest : <a class="code" href="interface_g_h_async_test_case.html" title="Asynchronous test case with wait and notify.">GHAsyncTestCase</a> { }
+ <span class="keyword">@end</span>
+ 
+ <span class="keyword">@implementation </span>ExampleAsyncTest
+  
+ - (void)testURLConnection {
+   
+   <span class="comment">// Call prepare to setup the asynchronous action.</span>
+   <span class="comment">// This helps in cases where the action is synchronous and the</span>
+   <span class="comment">// action occurs before the wait is actually called.</span>
+   [<span class="keyword">self</span> prepare];
+
+   NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://www.google.com&quot;]];
+   NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+
+   <span class="comment">// Wait until notify called for timeout (seconds); If notify is not called with kGHUnitWaitStatusSuccess then</span>
+   <span class="comment">// we will throw an error.</span>
+   [<span class="keyword">self</span> waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+
+   [connection release];
+ }
+ 
+ - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+   <span class="comment">// Notify of success, specifying the method where wait is called.</span>
+   <span class="comment">// This prevents stray notifies from affecting other tests.</span>
+   [<span class="keyword">self</span> notify:kGHUnitWaitStatusSuccess forSelector:@selector(testURLConnection)];
+ }
+ 
+ - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+   <span class="comment">// Notify of connection failure</span>
+   [<span class="keyword">self</span> notify:kGHUnitWaitStatusFailure forSelector:@selector(testURLConnection)];
+ }
+ 
+ - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+   GHTestLog(<span class="stringliteral">@&quot;%@&quot;</span>, [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
+ } 
+ 
+ <span class="keyword">@end</span>
+</pre></div><h2><a class="anchor" id="ExampleProjects"></a>
+Example Projects</h2>
+<p>Example projects can be found at: <a href="http://github.com/gabriel/gh-unit/tree/master/Examples/">http://github.com/gabriel/gh-unit/tree/master/Examples/</a> </p>
 </div>
-<p>An example of an iPhone project with GHUnit test setup can be found at: MyTestable-IPhone (<a href="http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone">http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone</a>).</p>
-<p>For Mac OS X, you should see something like:</p>
-<div align="center">
-<img src="http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.18.png" alt="GHUnit-0.4.18.png"/>
-</div>
- </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -122,7 +161,7 @@ Example Test Class</h2>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Nov 12 2010 16:46:19 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Nov 14 2010 16:05:53 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
