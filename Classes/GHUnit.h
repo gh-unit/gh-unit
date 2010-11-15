@@ -83,6 +83,11 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  - @subpage Customizing
  - @subpage Hudson 
  
+ 
+ @image html http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png
+ 
+ @image html http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.18.png 
+ 
  @section Notes Notes
  
  GHUnit was inspired by and uses parts of GTM (google-toolbox-for-mac) code, mostly from UnitTesting: http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/
@@ -167,17 +172,20 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
 /*!
  @page Examples Examples
  
- @section ExampleIOS Example Test Class
+ - @ref ExampleTestCase
+ - @ref ExampleAsyncTestCase
  
- For example <tt>MyTest.m</tt>:
+ @section ExampleTestCase Example Test Case
+ 
+ For example <tt>ExampleTest.m</tt>:
  
  @code
  #import <GHUnit/GHUnit.h>
  
- @interface MyTest : GHTestCase { }
+ @interface ExampleTest : GHTestCase { }
  @end
  
- @implementation MyTest
+ @implementation ExampleTest
  
  - (BOOL)shouldRunOnMainThread {
    // By default NO, but if you have a UI test or test dependent on running on the main thread return YES
@@ -219,18 +227,56 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  @end
  @endcode
  
- Now you should be ready to Build and Run the <tt>Test</tt> target.
+ @section ExampleAsyncTestCase Example Async Test Case
  
- For iOS, you should see something like:
+ @code
+ #import <GHUnit/GHUnit.h>
  
- @image html http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png
+ @interface ExampleAsyncTest : GHAsyncTestCase { }
+ @end
  
- An example of an iPhone project with GHUnit test setup can be found at: MyTestable-IPhone (http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone).
+ @implementation ExampleAsyncTest
   
- For Mac OS X, you should see something like:
+ - (void)testURLConnection {
+   
+   // Call prepare to setup the asynchronous action.
+   // This helps in cases where the action is synchronous and the
+   // action occurs before the wait is actually called.
+   [self prepare];
+
+   NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
+   NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+
+   // Wait until notify called for timeout (seconds); If notify is not called with kGHUnitWaitStatusSuccess then
+   // we will throw an error.
+   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+
+   [connection release];
+ }
  
- @image html http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.18.png
+ - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+   // Notify of success, specifying the method where wait is called.
+   // This prevents stray notifies from affecting other tests.
+   [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testURLConnection)];
+ }
  
+ - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+   // Notify of connection failure
+   [self notify:kGHUnitWaitStatusFailure forSelector:@selector(testURLConnection)];
+ }
+ 
+ - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+   GHTestLog(@"%@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
+ } 
+ 
+ @end
+ @endcode
+ 
+ 
+ @section ExampleProjects Example Projects
+ 
+ Example projects can be found at: http://github.com/gabriel/gh-unit/tree/master/Examples/ 
+  
  */
  
 /*!
