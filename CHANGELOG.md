@@ -4,6 +4,7 @@
 - Fix issue #38
 - Fix issue #39
 - Fix issue #36
+- Fix issue #19
 
 # Release 0.4.27
 - Added in GHUnitIPhoneAppDelegate for subclassing test app delegate

@@ -180,6 +180,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  For example <tt>ExampleTest.m</tt>:
  
  @code
+ // For iOS
  #import <GHUnitIOS/GHUnit.h> 
  // For Mac OS X
  //#import <GHUnit/GHUnit.h>
@@ -232,6 +233,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  @section ExampleAsyncTestCase Example Async Test Case
  
  @code
+ // For iOS
  #import <GHUnitIOS/GHUnit.h> 
  // For Mac OS X
  //#import <GHUnit/GHUnit.h> 

@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import <Foundation/Foundation.h>
 
 /*!
@@ -44,3 +46,5 @@
 - (void)setHeaders:(NSDictionary *)headers;
 
 @end
+
+//! @endcond

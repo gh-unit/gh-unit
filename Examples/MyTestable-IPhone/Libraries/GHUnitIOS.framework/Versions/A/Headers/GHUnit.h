@@ -76,11 +76,17 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  This manual is divided in the following sections:
  - @subpage Examples
  - @subpage Installing
+ - @subpage Building
  - @subpage TestMacros 
  - @subpage EnvVariables
  - @subpage CommandLine "Command Line & Makefiles"
  - @subpage Customizing
  - @subpage Hudson 
+ 
+ 
+ @image html http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png
+ 
+ @image html http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.18.png 
  
  @section Notes Notes
  
@@ -97,9 +103,9 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  @section InstallingIOS Installing (iOS)
  
  - Add a <tt>New Target</tt>. Select <tt>Cocoa Touch -> Application</tt>. Name it <tt>Tests</tt> (or something similar).
- - Add the <tt>GHUnit.framework</tt> to your project.
+ - Add the <tt>GHUnitIOS.framework</tt> to your project.
  - Add the following frameworks to <tt>Linked Libraries</tt>:
-    - <tt>GHUnit.framework</tt>
+    - <tt>GHUnitIOS.framework</tt>
     - <tt>CoreGraphics.framework</tt>
     - <tt>Foundation.framework</tt>
     - <tt>UIKit.framework</tt>
@@ -107,7 +113,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  - Under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
  - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project.
- - (Optional) Create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnit/GHUnit.h></tt> to it, and then you won't have to include that import for every test.
+ - (Optional) Create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnitIOS/GHUnit.h></tt> to it, and then you won't have to include that import for every test.
  - (Optional) @ref Makefile "Install Makefile"
  - @ref Examples "Create a test"
  
@@ -156,22 +162,37 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  */
  
 /*!
+ @page Building Building
+ 
+ For iOS, run <tt>make</tt> from within the <tt>Project-IPhone</tt> directory. The framework is in <tt>Project-IPhone/build/Framework/</tt>.
+ 
+ For Mac OS X, the framework build is stored in <tt>Project/build/Release/</tt>.
+ */
+
+/*!
  @page Examples Examples
  
- @section ExampleIOS Example Test Class
+ - @ref ExampleTestCase
+ - @ref ExampleAsyncTestCase
  
- For example <tt>MyTest.m</tt>:
+ @section ExampleTestCase Example Test Case
+ 
+ For example <tt>ExampleTest.m</tt>:
  
  @code
- #import <GHUnit/GHUnit.h>
+ // For iOS
+ #import <GHUnitIOS/GHUnit.h> 
+ // For Mac OS X
+ //#import <GHUnit/GHUnit.h>
  
- @interface MyTest : GHTestCase { }
+ @interface ExampleTest : GHTestCase { }
  @end
  
- @implementation MyTest
+ @implementation ExampleTest
  
  - (BOOL)shouldRunOnMainThread {
    // By default NO, but if you have a UI test or test dependent on running on the main thread return YES
+   return NO;
  }
  
  - (void)setUpClass {
@@ -190,12 +211,16 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
    // Run after each test method
  }	
  
- - (void)testFoo {
+ - (void)testFoo {       
+   NSString *a = @"foo";
+   GHTestLog(@"I can log to the GHUnit test console: %@", a);
+ 
    // Assert a is not NULL, with no custom error description
    GHAssertNotNULL(a, nil);
  
    // Assert equal objects, add custom error description
-   GHAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
+   NSString *b = @"bar";
+   GHAssertEqualObjects(a, b, @"A custom error message. a should be equal to: %@.", b);
  }
  
  - (void)testBar {
@@ -205,18 +230,59 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  @end
  @endcode
  
- Now you should be ready to Build and Run the <tt>Test</tt> target.
+ @section ExampleAsyncTestCase Example Async Test Case
  
- For iOS, you should see something like:
+ @code
+ // For iOS
+ #import <GHUnitIOS/GHUnit.h> 
+ // For Mac OS X
+ //#import <GHUnit/GHUnit.h> 
  
- @image html http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png
+ @interface ExampleAsyncTest : GHAsyncTestCase { }
+ @end
  
- An example of an iPhone project with GHUnit test setup can be found at: MyTestable-IPhone (http://github.com/gabriel/gh-unit/tree/master/Examples/MyTestable-IPhone).
+ @implementation ExampleAsyncTest
   
- For Mac OS X, you should see something like:
+ - (void)testURLConnection {
+   
+   // Call prepare to setup the asynchronous action.
+   // This helps in cases where the action is synchronous and the
+   // action occurs before the wait is actually called.
+   [self prepare];
+
+   NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
+   NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+
+   // Wait until notify called for timeout (seconds); If notify is not called with kGHUnitWaitStatusSuccess then
+   // we will throw an error.
+   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+
+   [connection release];
+ }
  
- @image html http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.18.png
+ - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+   // Notify of success, specifying the method where wait is called.
+   // This prevents stray notifies from affecting other tests.
+   [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testURLConnection)];
+ }
  
+ - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+   // Notify of connection failure
+   [self notify:kGHUnitWaitStatusFailure forSelector:@selector(testURLConnection)];
+ }
+ 
+ - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+   GHTestLog(@"%@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
+ } 
+ 
+ @end
+ @endcode
+ 
+ 
+ @section ExampleProjects Example Projects
+ 
+ Example projects can be found at: http://github.com/gabriel/gh-unit/tree/master/Examples/ 
+  
  */
  
 /*!
@@ -507,7 +573,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  the following in <tt>Test report XMLs</tt>:
  
  @verbatim
- build/test-results/&#42;.xml
+ build/test-results/\*.xml
  @endverbatim
  
  That's all it takes. Check in a change that breaks one of your tests. Hudson

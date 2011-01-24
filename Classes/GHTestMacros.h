@@ -429,7 +429,7 @@ if (([a1value isKindOfClass:[NSString class]] && \
 (a1value == nil && [a2value isKindOfClass:[NSString class]]) || \
 (a2value == nil && [a1value isKindOfClass:[NSString class]]) \
 ) continue; \
-[self failWithException:[NSException ghu_failureInEqualityBetweenObject: a1value \
+[self failWithException:[NSException ghu_failureInInequalityBetweenObject: a1value \
 andObject: a2value \
 inFile: [NSString stringWithUTF8String:__FILE__] \
 atLine: __LINE__ \
@@ -985,6 +985,11 @@ continue; \
                                          inFile:(NSString *)filename
                                          atLine:(int)lineNumber
                                 withDescription:(NSString *)formatString, ...;
++ (NSException *)ghu_failureInInequalityBetweenObject:(id)left
+                                            andObject:(id)right
+                                               inFile:(NSString *)filename
+                                               atLine:(int)lineNumber
+                                      withDescription:(NSString *)formatString, ...;
 + (NSException *)ghu_failureInEqualityBetweenValue:(NSValue *)left 
                                       andValue:(NSValue *)right 
                                   withAccuracy:(NSValue *)accuracy 

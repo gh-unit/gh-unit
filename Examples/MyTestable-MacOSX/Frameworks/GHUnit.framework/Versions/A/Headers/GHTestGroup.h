@@ -26,6 +26,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHTest.h"
 #import "GHTestCase.h"
 
@@ -126,13 +128,34 @@
  */
 - (void)addTestCase:(id)testCase;
 
+/*!
+ Add a test group to this test group.
+ @param testGroup Test group to add
+ */
 - (void)addTestGroup:(GHTestGroup *)testGroup;
 
+/*!
+ Add tests to this group.
+ @param tests Tests to add
+ */
 - (void)addTests:(NSArray */*of id<GHTest>*/)tests;
 
+/*!
+ Add test to this group.
+ @param test Test to add
+ */
 - (void)addTest:(id<GHTest>)test;
 
+/*!
+ Whether the test group should run on the main thread.
+ Call passes to test case instance if enabled.
+ */
 - (BOOL)shouldRunOnMainThread;
+
+/*!
+ @result YES if we have any enabled chilren, NO if all children have been disabled.
+ */
+- (BOOL)hasEnabledChildren;
 
 /*!
  Get list of failed tests.
@@ -149,3 +172,5 @@
 - (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options;
 
 @end
+
+//! @endcond

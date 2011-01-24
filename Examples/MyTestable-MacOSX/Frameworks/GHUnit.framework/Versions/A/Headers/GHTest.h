@@ -1,6 +1,6 @@
 //
 //  GHTest.h
-//  GHKit
+//  GHUnit
 //
 //  Created by Gabriel Handford on 1/18/09.
 //  Copyright 2009. All rights reserved.
@@ -26,6 +26,8 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
+
+//! @cond DEV
 
 /*!
  Test status.
@@ -179,3 +181,4 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 
 @end
 
+//! @endcond

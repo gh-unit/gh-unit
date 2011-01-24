@@ -59,7 +59,6 @@ int main(int argc, char *argv[]) {
    
    For malloc debugging see: http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html
    */
-  
   NSSetUncaughtExceptionHandler(&exceptionHandler);
   
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];

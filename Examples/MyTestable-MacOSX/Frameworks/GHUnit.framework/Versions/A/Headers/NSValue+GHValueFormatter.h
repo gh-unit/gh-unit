@@ -26,6 +26,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 //
 // Portions of this file fall under the following license, marked with
 // SENTE_BEGIN - SENTE_END
@@ -61,7 +63,9 @@
 #import <Foundation/Foundation.h>
 
 // SENTE_BEGIN
-@interface NSValue (GHValueFormatter)
+@interface NSValue(GHValueFormatter)
 - (NSString *)ghu_contentDescription;
 @end
 // SENTE_END
+
+//! @endcond

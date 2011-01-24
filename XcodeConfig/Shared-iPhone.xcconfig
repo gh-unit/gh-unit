@@ -1,0 +1,8 @@
+#include "Shared.xcconfig"
+
+GCC_PREFIX_HEADER = GHUnitIPhone_Prefix.pch
+ZERO_LINK = NO
+IPHONEOS_DEPLOYMENT_TARGET = 3.0
+
+// Testing with LLVM
+//GCC_VERSION = com.apple.compilers.llvm.clang.1_0

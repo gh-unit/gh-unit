@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 //
 // Portions of this file fall under the following license, marked with:
 // GTM_BEGIN : GTM_END
@@ -142,3 +144,5 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass);
 @protocol GHSenTestCase 
 - (void)raiseAfterFailure;
 @end
+
+//! @endcond

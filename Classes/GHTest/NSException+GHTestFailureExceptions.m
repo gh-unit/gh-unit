@@ -143,6 +143,28 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
   return [self ghu_failureInFile:filename atLine:lineNumber reason:reason];
 }
 
++ (NSException *)ghu_failureInInequalityBetweenObject:(id)left
+                                          andObject:(id)right
+                                             inFile:(NSString *)filename
+                                             atLine:(int)lineNumber
+                                    withDescription:(NSString *)formatString, ... {
+  
+  NSString *testDescription = @"";
+  if (formatString) {
+    va_list vl;
+    va_start(vl, formatString);
+    testDescription =
+    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    va_end(vl);
+  }
+  
+  NSString *reason =
+  [NSString stringWithFormat:@"'%@' should not be equal to '%@'. %@",
+   [left description], [right description], testDescription];
+  
+  return [self ghu_failureInFile:filename atLine:lineNumber reason:reason];
+}
+
 + (NSException *)ghu_failureInEqualityBetweenValue:(NSValue *)left
                                       andValue:(NSValue *)right
                                   withAccuracy:(NSValue *)accuracy

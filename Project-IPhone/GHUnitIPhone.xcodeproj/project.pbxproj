@@ -145,6 +145,7 @@
 		00803E7D128DEAE60033DA60 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00803E7C128DEAE60033DA60 /* UIKit.framework */; };
 		0080411A1290B1B60033DA60 /* GHNSURLConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 008041191290B1B60033DA60 /* GHNSURLConnectionTest.m */; };
 		008041261290B1ED0033DA60 /* GHKVObserveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 008041251290B1ED0033DA60 /* GHKVObserveTest.m */; };
+		00EB372412F39961000366F4 /* Shared-iPhone.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 00EB372312F39961000366F4 /* Shared-iPhone.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,7 +290,6 @@
 		003280F60FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneTableViewDataSource.h; sourceTree = "<group>"; };
 		003280F70FB0C712006350E7 /* GHUnitIPhoneTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTableViewDataSource.m; sourceTree = "<group>"; };
 		004810C5122E257500E3B69F /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
-		006307B30F8E792F00C9602A /* Shared-iPhone.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Shared-iPhone.xcconfig"; sourceTree = "<group>"; };
 		006D7815120A93880053B72E /* iPhoneFramework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = iPhoneFramework.sh; sourceTree = "<group>"; };
 		007730230F8D8DF400586577 /* GHAsyncTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCaseTest.m; sourceTree = "<group>"; };
 		007730240F8D8DF400586577 /* GHRegisterTestCaseClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHRegisterTestCaseClassTest.m; sourceTree = "<group>"; };
@@ -316,6 +316,7 @@
 		00E58D421172937E0037E3C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		00E58D4A1172938B0037E3C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		00E6527D120C7CDD00DBBDBC /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
+		00EB372312F39961000366F4 /* Shared-iPhone.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Shared-iPhone.xcconfig"; sourceTree = "<group>"; };
 		00F09A65108D5040000E5AB5 /* GHTestEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestEmpty.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Tests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tests_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -429,12 +430,12 @@
 			isa = PBXGroup;
 			children = (
 				002A15890F8E74550082A4BB /* Shared.xcconfig */,
-				006307B30F8E792F00C9602A /* Shared-iPhone.xcconfig */,
 				0002873C1181499000D74BBD /* iPhoneSimulator-Release.xcconfig */,
 				0002873B1181491F00D74BBD /* iPhoneSimulator-Debug.xcconfig */,
 				0002873E118149CE00D74BBD /* iPhoneDevice-Release.xcconfig */,
 				00028740118149E700D74BBD /* iPhoneDevice-Debug.xcconfig */,
 				0002880E11814C8300D74BBD /* iPhoneTests.xcconfig */,
+				00EB372312F39961000366F4 /* Shared-iPhone.xcconfig */,
 			);
 			name = XcodeConfig;
 			path = ../XcodeConfig;
@@ -767,6 +768,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				000287E211814C2800D74BBD /* example.json in Resources */,
+				00EB372412F39961000366F4 /* Shared-iPhone.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

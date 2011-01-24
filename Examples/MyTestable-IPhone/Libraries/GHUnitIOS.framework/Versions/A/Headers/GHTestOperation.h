@@ -1,5 +1,5 @@
 //
-//  GHTest+JUnitXML.h
+//  GHTestOperation.h
 //  GHUnit
 //
 //  Created by Gabriel Handford on 6/4/10.
@@ -31,13 +31,15 @@
 
 #import "GHTest.h"
 
-@interface GHTest(JUnitXML)
-
 /*!
- Return test results in JUnit XML format for external parsing use
- (such as a Continuous Integration system like Hudson)
+ Test for running in the context of an NSOperationQueue.
  */
-- (NSString *)JUnitXML;
+@interface GHTestOperation : NSOperation { 
+  id<GHTest> test_;
+  GHTestOptions options_;
+}
+
+- (id)initWithTest:(id<GHTest>)test options:(GHTestOptions)options;
 
 @end
 

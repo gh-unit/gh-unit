@@ -70,6 +70,11 @@ extern NSString *const GHTestFailureException;
                                          inFile:(NSString *)filename
                                          atLine:(int)lineNumber
                                 withDescription:(NSString *)formatString, ...;
++ (NSException *)ghu_failureInInequalityBetweenObject:(id)left
+                                            andObject:(id)right
+                                               inFile:(NSString *)filename
+                                               atLine:(int)lineNumber
+                                      withDescription:(NSString *)formatString, ...;
 + (NSException *)ghu_failureInEqualityBetweenValue:(NSValue *)left 
                                       andValue:(NSValue *)right 
                                   withAccuracy:(NSValue *)accuracy 
