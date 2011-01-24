@@ -1,7 +1,7 @@
 
 default:
-	xcodebuild -target "GHUnitIPhone (Simulator)" -configuration Release build
-	xcodebuild -target "GHUnitIPhone (Device)" -configuration Release build
+	xcodebuild -sdk iphonesimulator -target "GHUnitIPhone (Simulator)" -configuration Release build
+	xcodebuild -sdk iphoneos -target "GHUnitIPhone (Device)" -configuration Release build
 	BUILD_DIR="build" BUILD_STYLE="Release" sh ../Scripts/CombineLibs.sh
 	sh ../Scripts/iPhoneFramework.sh
 

@@ -70,3 +70,5 @@ cp ../Classes/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes/GHTest/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes-IPhone/*.h $FRAMEWORK_DIR/Headers/
 cp Framework.plist $FRAMEWORK_DIR/Resources/Info.plist
+echo "GHUnit.framework is located in: `cd $FRAMEWORK_DIR; pwd`"
+
