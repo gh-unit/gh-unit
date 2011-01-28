@@ -1,3 +1,10 @@
+# Release 0.4.28
+- Building as GHUnitIOS.framework for iOS.
+- Fix issue #37
+- Fix issue #38
+- Fix issue #39
+- Fix issue #36
+
 # Release 0.4.27
 - Added in GHUnitIPhoneAppDelegate for subclassing test app delegate
 

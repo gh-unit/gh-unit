@@ -261,8 +261,12 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   }
 }
 
+- (BOOL)hasEnabledChildren {
+  return (([children_ count] - [self disabledCount]) <= 0);
+}
+
 - (void)_run:(NSOperationQueue *)operationQueue {
-  if (status_ == GHTestStatusCancelled || (([children_ count] - [self disabledCount]) <= 0)) {
+  if (status_ == GHTestStatusCancelled || [self hasEnabledChildren]) {
     return;
   }
   
@@ -320,6 +324,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 - (BOOL)shouldRunOnMainThread {
+  if (self.isDisabled) return NO;
   if ([testCase_ respondsToSelector:@selector(shouldRunOnMainThread)]) 
     return [testCase_ shouldRunOnMainThread];
   return NO;

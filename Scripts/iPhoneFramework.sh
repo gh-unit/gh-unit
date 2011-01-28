@@ -7,7 +7,7 @@
 set -e
 
 # Define these to suit your nefarious purposes
-                 FRAMEWORK_NAME=GHUnit
+                 FRAMEWORK_NAME=GHUnitIOS
                        LIB_NAME=libGHUnitIOS
               FRAMEWORK_VERSION=A
                      BUILD_TYPE=Release
