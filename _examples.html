@@ -56,7 +56,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h2><a class="anchor" id="ExampleTestCase"></a>
 Example Test Case</h2>
 <p>For example <code>ExampleTest.m</code>:</p>
-<div class="fragment"><pre class="fragment"><span class="preprocessor"> #import &lt;GHUnit/GHUnit.h&gt;</span>
+<div class="fragment"><pre class="fragment"> <span class="comment">// For iOS</span>
+<span class="preprocessor"> #import &lt;GHUnitIOS/GHUnit.h&gt;</span> 
+ <span class="comment">// For Mac OS X</span>
+ <span class="comment">//#import &lt;GHUnit/GHUnit.h&gt;</span>
  
  <span class="keyword">@interface </span>ExampleTest : <a class="code" href="interface_g_h_test_case.html" title="The base class for a test case.">GHTestCase</a> { }
  <span class="keyword">@end</span>
@@ -103,7 +106,10 @@ Example Test Case</h2>
  <span class="keyword">@end</span>
 </pre></div><h2><a class="anchor" id="ExampleAsyncTestCase"></a>
 Example Async Test Case</h2>
-<div class="fragment"><pre class="fragment"><span class="preprocessor"> #import &lt;GHUnit/GHUnit.h&gt;</span>
+<div class="fragment"><pre class="fragment"> <span class="comment">// For iOS</span>
+<span class="preprocessor"> #import &lt;GHUnitIOS/GHUnit.h&gt;</span> 
+ <span class="comment">// For Mac OS X</span>
+ <span class="comment">//#import &lt;GHUnit/GHUnit.h&gt; </span>
  
  <span class="keyword">@interface </span>ExampleAsyncTest : <a class="code" href="interface_g_h_async_test_case.html" title="Asynchronous test case with wait and notify.">GHAsyncTestCase</a> { }
  <span class="keyword">@end</span>
@@ -161,7 +167,7 @@ Example Projects</h2>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Nov 15 2010 13:32:30 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Jan 28 2011 17:29:56 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

@@ -120,25 +120,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00070"></a>00070                                          inFile:(NSString *)filename
 <a name="l00071"></a>00071                                          atLine:(<span class="keywordtype">int</span>)lineNumber
 <a name="l00072"></a>00072                                 withDescription:(NSString *)formatString, ...;
-<a name="l00073"></a>00073 + (NSException *)ghu_failureInEqualityBetweenValue:(NSValue *)left 
-<a name="l00074"></a>00074                                       andValue:(NSValue *)right 
-<a name="l00075"></a>00075                                   withAccuracy:(NSValue *)accuracy 
-<a name="l00076"></a>00076                                         inFile:(NSString *)filename 
-<a name="l00077"></a>00077                                         atLine:(<span class="keywordtype">int</span>) ineNumber
-<a name="l00078"></a>00078                                withDescription:(NSString *)formatString, ...;
-<a name="l00079"></a>00079 + (NSException *)ghu_failureInRaise:(NSString *)expression 
-<a name="l00080"></a>00080                          inFile:(NSString *)filename 
-<a name="l00081"></a>00081                          atLine:(<span class="keywordtype">int</span>)lineNumber
-<a name="l00082"></a>00082                 withDescription:(NSString *)formatString, ...;
-<a name="l00083"></a>00083 + (NSException *)ghu_failureInRaise:(NSString *)expression 
-<a name="l00084"></a>00084                       exception:(NSException *)exception 
+<a name="l00073"></a>00073 + (NSException *)ghu_failureInInequalityBetweenObject:(<span class="keywordtype">id</span>)left
+<a name="l00074"></a>00074                                             andObject:(<span class="keywordtype">id</span>)right
+<a name="l00075"></a>00075                                                inFile:(NSString *)filename
+<a name="l00076"></a>00076                                                atLine:(<span class="keywordtype">int</span>)lineNumber
+<a name="l00077"></a>00077                                       withDescription:(NSString *)formatString, ...;
+<a name="l00078"></a>00078 + (NSException *)ghu_failureInEqualityBetweenValue:(NSValue *)left 
+<a name="l00079"></a>00079                                       andValue:(NSValue *)right 
+<a name="l00080"></a>00080                                   withAccuracy:(NSValue *)accuracy 
+<a name="l00081"></a>00081                                         inFile:(NSString *)filename 
+<a name="l00082"></a>00082                                         atLine:(<span class="keywordtype">int</span>) ineNumber
+<a name="l00083"></a>00083                                withDescription:(NSString *)formatString, ...;
+<a name="l00084"></a>00084 + (NSException *)ghu_failureInRaise:(NSString *)expression 
 <a name="l00085"></a>00085                          inFile:(NSString *)filename 
-<a name="l00086"></a>00086                          atLine:(<span class="keywordtype">int</span>)lineNumber 
+<a name="l00086"></a>00086                          atLine:(<span class="keywordtype">int</span>)lineNumber
 <a name="l00087"></a>00087                 withDescription:(NSString *)formatString, ...;
-<a name="l00088"></a>00088 <span class="keyword">@end</span>
-<a name="l00089"></a>00089 
-<a name="l00090"></a>00090 <span class="comment">// GTM_END</span>
-<a name="l00091"></a>00091 
+<a name="l00088"></a>00088 + (NSException *)ghu_failureInRaise:(NSString *)expression 
+<a name="l00089"></a>00089                       exception:(NSException *)exception 
+<a name="l00090"></a>00090                          inFile:(NSString *)filename 
+<a name="l00091"></a>00091                          atLine:(<span class="keywordtype">int</span>)lineNumber 
+<a name="l00092"></a>00092                 withDescription:(NSString *)formatString, ...;
+<a name="l00093"></a>00093 <span class="keyword">@end</span>
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 <span class="comment">// GTM_END</span>
+<a name="l00096"></a>00096 
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -155,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Nov 15 2010 13:32:30 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Jan 28 2011 17:29:56 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

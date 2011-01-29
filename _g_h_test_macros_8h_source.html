@@ -375,7 +375,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00429"></a>00429 <span class="preprocessor">(a1value == nil &amp;&amp; [a2value isKindOfClass:[NSString class]]) || \</span>
 <a name="l00430"></a>00430 <span class="preprocessor">(a2value == nil &amp;&amp; [a1value isKindOfClass:[NSString class]]) \</span>
 <a name="l00431"></a>00431 <span class="preprocessor">) continue; \</span>
-<a name="l00432"></a>00432 <span class="preprocessor">[self failWithException:[NSException ghu_failureInEqualityBetweenObject: a1value \</span>
+<a name="l00432"></a>00432 <span class="preprocessor">[self failWithException:[NSException ghu_failureInInequalityBetweenObject: a1value \</span>
 <a name="l00433"></a>00433 <span class="preprocessor">andObject: a2value \</span>
 <a name="l00434"></a>00434 <span class="preprocessor">inFile: [NSString stringWithUTF8String:__FILE__] \</span>
 <a name="l00435"></a>00435 <span class="preprocessor">atLine: __LINE__ \</span>
@@ -808,25 +808,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00985"></a>00985                                          inFile:(NSString *)filename
 <a name="l00986"></a>00986                                          atLine:(<span class="keywordtype">int</span>)lineNumber
 <a name="l00987"></a>00987                                 withDescription:(NSString *)formatString, ...;
-<a name="l00988"></a>00988 + (NSException *)ghu_failureInEqualityBetweenValue:(NSValue *)left 
-<a name="l00989"></a>00989                                       andValue:(NSValue *)right 
-<a name="l00990"></a>00990                                   withAccuracy:(NSValue *)accuracy 
-<a name="l00991"></a>00991                                         inFile:(NSString *)filename 
-<a name="l00992"></a>00992                                         atLine:(<span class="keywordtype">int</span>) ineNumber
-<a name="l00993"></a>00993                                withDescription:(NSString *)formatString, ...;
-<a name="l00994"></a>00994 + (NSException *)ghu_failureInRaise:(NSString *)expression 
-<a name="l00995"></a>00995                          inFile:(NSString *)filename 
-<a name="l00996"></a>00996                          atLine:(<span class="keywordtype">int</span>)lineNumber
-<a name="l00997"></a>00997                 withDescription:(NSString *)formatString, ...;
-<a name="l00998"></a>00998 + (NSException *)ghu_failureInRaise:(NSString *)expression 
-<a name="l00999"></a>00999                       exception:(NSException *)exception 
+<a name="l00988"></a>00988 + (NSException *)ghu_failureInInequalityBetweenObject:(<span class="keywordtype">id</span>)left
+<a name="l00989"></a>00989                                             andObject:(<span class="keywordtype">id</span>)right
+<a name="l00990"></a>00990                                                inFile:(NSString *)filename
+<a name="l00991"></a>00991                                                atLine:(<span class="keywordtype">int</span>)lineNumber
+<a name="l00992"></a>00992                                       withDescription:(NSString *)formatString, ...;
+<a name="l00993"></a>00993 + (NSException *)ghu_failureInEqualityBetweenValue:(NSValue *)left 
+<a name="l00994"></a>00994                                       andValue:(NSValue *)right 
+<a name="l00995"></a>00995                                   withAccuracy:(NSValue *)accuracy 
+<a name="l00996"></a>00996                                         inFile:(NSString *)filename 
+<a name="l00997"></a>00997                                         atLine:(<span class="keywordtype">int</span>) ineNumber
+<a name="l00998"></a>00998                                withDescription:(NSString *)formatString, ...;
+<a name="l00999"></a>00999 + (NSException *)ghu_failureInRaise:(NSString *)expression 
 <a name="l01000"></a>01000                          inFile:(NSString *)filename 
-<a name="l01001"></a>01001                          atLine:(<span class="keywordtype">int</span>)lineNumber 
+<a name="l01001"></a>01001                          atLine:(<span class="keywordtype">int</span>)lineNumber
 <a name="l01002"></a>01002                 withDescription:(NSString *)formatString, ...;
-<a name="l01003"></a>01003 <span class="keyword">@end</span>
-<a name="l01004"></a>01004 
-<a name="l01006"></a>01006 
-<a name="l01007"></a>01007 <span class="comment">// SENTE_END</span>
+<a name="l01003"></a>01003 + (NSException *)ghu_failureInRaise:(NSString *)expression 
+<a name="l01004"></a>01004                       exception:(NSException *)exception 
+<a name="l01005"></a>01005                          inFile:(NSString *)filename 
+<a name="l01006"></a>01006                          atLine:(<span class="keywordtype">int</span>)lineNumber 
+<a name="l01007"></a>01007                 withDescription:(NSString *)formatString, ...;
+<a name="l01008"></a>01008 <span class="keyword">@end</span>
+<a name="l01009"></a>01009 
+<a name="l01011"></a>01011 
+<a name="l01012"></a>01012 <span class="comment">// SENTE_END</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -843,7 +848,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Nov 15 2010 13:32:30 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Jan 28 2011 17:29:56 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

@@ -1293,7 +1293,7 @@ withDescription:GHComposeString(description, ##__VA_ARGS__)]]; \
 (a1value == nil &amp;&amp; [a2value isKindOfClass:[NSString <span class="keyword">class</span>]]) || \
 (a2value == nil &amp;&amp; [a1value isKindOfClass:[NSString <span class="keyword">class</span>]]) \
 ) <span class="keywordflow">continue</span>; \
-[<span class="keyword">self</span> failWithException:[NSException ghu_failureInEqualityBetweenObject: a1value \
+[<span class="keyword">self</span> failWithException:[NSException ghu_failureInInequalityBetweenObject: a1value \
 andObject: a2value \
 inFile: [NSString stringWithUTF8String:__FILE__] \
 atLine: __LINE__ \
@@ -2129,7 +2129,7 @@ withDescription: GHComposeString(description, ##__VA_ARGS__)]]
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Nov 15 2010 13:32:30 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Jan 28 2011 17:29:56 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
