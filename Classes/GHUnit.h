@@ -573,7 +573,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  the following in <tt>Test report XMLs</tt>:
  
  @verbatim
- build/test-results/\*.xml
+ build/test-results/ *.xml     (Remove the extra-space, which is there to work around doxygen bug)
  @endverbatim
  
  That's all it takes. Check in a change that breaks one of your tests. Hudson
@@ -588,3 +588,4 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  address this.   
   
  */
+ 
