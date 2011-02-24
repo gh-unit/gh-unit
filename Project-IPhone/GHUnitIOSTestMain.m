@@ -30,7 +30,7 @@
 #import <UIKit/UIKit.h>
 
 // If you are using the framework
-#import <GHUnit/GHUnit.h>
+#import <GHUnitIOS/GHUnit.h>
 // If you are using the static library and importing header files manually
 //#import "GHUnit.h"
 

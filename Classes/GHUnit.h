@@ -103,19 +103,20 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  @section InstallingIOS Installing (iOS)
  
  - Add a <tt>New Target</tt>. Select <tt>Cocoa Touch -> Application</tt>. Name it <tt>Tests</tt> (or something similar).
- - Add the <tt>GHUnitIOS.framework</tt> to your project.
+ - Copy and add <tt>GHUnitIOS.framework</tt> into your project. (Add Existing Files, select <tt>GHUnitIOS.framework</tt>, and select the "Tests" target.)
  - Add the following frameworks to <tt>Linked Libraries</tt>:
     - <tt>GHUnitIOS.framework</tt>
     - <tt>CoreGraphics.framework</tt>
     - <tt>Foundation.framework</tt>
     - <tt>UIKit.framework</tt>
- - Under 'Framework Search Paths' make sure the (parent) directory to GHUnit.framework is listed.
+ - Under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
  - Under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
- - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project.
+ - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project and make sure its enabled for the "Tests" target.
  - (Optional) Create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnitIOS/GHUnit.h></tt> to it, and then you won't have to include that import for every test.
  - (Optional) @ref Makefile "Install Makefile"
  - @ref Examples "Create a test"
+ - Build and run the "Tests" target.
  
  Now you can create a test (either by subclassing <tt>SenTestCase</tt> or <tt>GHTestCase</tt>), adding it to your test target.
  
@@ -348,7 +349,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  @endverbatim
  
- Somewhere between runTest and NSObject alloc there may be an object that wasn't retained.
+ Somewhere between runTest and NSObject alloc (in [Foo foo]) there may be an object that wasn't retained. 38615 is the thread id from "2009-10-15 13:02:24.746 Tests[38615:40b]", and 0x1c8e680 is the  address in "message sent to deallocated instance 0x1c8e680".
  
  Also using <tt>MallocScribble=YES</tt> causes the malloc library to overwrite freed memory with a well-known value (0x55), and occasionally checks freed malloc blocks to make sure the memory has not been over-written overwritten written since it was cleared.
  
