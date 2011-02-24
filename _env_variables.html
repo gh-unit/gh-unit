@@ -89,7 +89,7 @@ Test Environment Variables (Recommended)</h2>
  
  ALLOC 0x1a9ad10-0x1a9ad6f [size=96]: thread_a024a500 |start | main | UIApplicationMain | GSEventRun | GSEventRunModal | CFRunLoopRunInMode | CFRunLoopRunSpecific | __NSThreadPerformPerform | -[GHTestGroup _run:] | -[GHTest run] | +[GHTesting runTest:selector:withObject:exception:interval:] | -[Foo foo] | +[NSObject alloc] | +[NSObject allocWithZone:] | _internal_class_createInstance | _internal_class_createInstanceFromZone | calloc | malloc_zone_calloc 
  
- </pre></div><p>Somewhere between runTest and NSObject alloc there may be an object that wasn't retained.</p>
+ </pre></div><p>Somewhere between runTest and NSObject alloc (in [Foo foo]) there may be an object that wasn't retained. 38615 is the thread id from "2009-10-15 13:02:24.746 Tests[38615:40b]", and 0x1c8e680 is the address in "message sent to deallocated instance 0x1c8e680".</p>
 <p>Also using <code>MallocScribble=YES</code> causes the malloc library to overwrite freed memory with a well-known value (0x55), and occasionally checks freed malloc blocks to make sure the memory has not been over-written overwritten written since it was cleared.</p>
 <p>For more info on these variables see MallocDebug (<a href="http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html">http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html</a>)</p>
 <p>For more info on malloc_history see malloc_history (<a href="http://developer.apple.com/mac/library/documentation/Darwin/Reference/ManPages/man1/malloc_history.1.html">http://developer.apple.com/mac/library/documentation/Darwin/Reference/ManPages/man1/malloc_history.1.html</a>) </p>
@@ -108,7 +108,7 @@ Test Environment Variables (Recommended)</h2>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Jan 28 2011 17:38:38 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Feb 24 2011 12:04:28 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
