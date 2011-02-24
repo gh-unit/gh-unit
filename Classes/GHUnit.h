@@ -118,7 +118,6 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  - @ref Examples "Create a test"
  - Build and run the "Tests" target.
  
- Now you can create a test (either by subclassing <tt>SenTestCase</tt> or <tt>GHTestCase</tt>), adding it to your test target.
  
  @section InstallMacOSX Installing (Mac OS X)
  
