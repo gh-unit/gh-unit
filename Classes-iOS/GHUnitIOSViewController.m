@@ -28,7 +28,6 @@
 //
 
 #import "GHUnitIPhoneViewController.h"
-#import <objc/message.h>
 
 NSString *const GHUnitTextFilterKey = @"TextFilter";
 NSString *const GHUnitFilterKey = @"Filter";
@@ -122,6 +121,7 @@ NSString *const GHUnitFilterKey = @"Filter";
          dataSource_ = [[GHUnitIOSTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[GHTestSuite suiteFromEnv]];
 	 }
      [dataSource_ loadDefaults];
+	 [dataSource_ loadDefaults];
  }
  return dataSource_;
 }
