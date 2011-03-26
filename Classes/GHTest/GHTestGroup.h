@@ -123,6 +123,21 @@
 + (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate;
 
 /*!
+ Create test group from a test case Class Name.
+ @param anClassName <tt>NSString</tt> with the class of this test case.
+ @param delegate Delegate, notifies of test start and end
+ @result New test group
+ */
++ (GHTestGroup *)testGroupFromTestCaseClassName:(NSString*)anClassName delegate:(id<GHTestDelegate>)delegate;
+
+/*!
+ Create an test case from an Class name.
+ @param anClassName <tt>NSString</tt> with the class of this test case.
+ @result New autoreleseable Test Case or <tt>nil</tt> if can't initialize.
+ */
++ (GHTestCase*)testCaseFromClassName:(NSString*)anClassName;
+
+/*!
  Add a test case (or test group) to this test group.
  @param testCase Test case, could be a subclass of SenTestCase or GHTestCase
  */
