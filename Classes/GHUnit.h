@@ -480,6 +480,36 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  [[GHTesting sharedInstance] registerClassName:@"MySpecialTestCase"];
  @endcode 
  
+ @section CustomTestSuite Using an Alternate Test Suite Class
+ 
+ If you want to create an custom Test Suite to your iPhone Application in order to have more control 
+ over the Test Cases follow this steps:
+ 
+ Create your own subclasse of GHTestSuite. 
+ Here is an example:
+ 
+ @code
+ @interface myTestSuite : GHTestSuite {}
+ @end  
+ 
+ @implementation myTestSuite
+ - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate {
+	[super initWithName:name delegate:delegate];
+ 
+	 [self addTestGroup:
+	 [GHTestGroup testGroupFromTestCaseClassName:@"myTestCaseForDelegates" delegate:nil]]; 
+	 
+	 [self addTestGroup:
+	 [GHTestGroup testGroupFromTestCaseClassName:@"myTestCaseForClasses" delegate:nil]]; 
+ }
+ @endcode 
+ 
+ Once that you have your Test Suite created, <b>you must inform that you will use an custom Suite Class</b>.
+ To do that, open your executable properties and under Arguments > Variables to be set in the environment,
+ create a new record named <tt>CLASS_SUITE</tt> and set <tt>myTestSuite</tt> as value.
+ 
+ Now when you run, the test application will use your custom <b>Test Suite Class</b>.
+ 
  @section AlternateIOSAppDelegate Using an Alternate iPhone Application Delegate
  
  If you want to use a custom application delegate in your test environment, you should subclass GHUnitIPhoneAppDelegate:
