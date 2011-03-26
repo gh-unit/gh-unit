@@ -28,6 +28,7 @@
 //
 
 #import "GHUnitIPhoneViewController.h"
+#import <objc/message.h>
 
 NSString *const GHUnitPrefixKey = @"Prefix";
 NSString *const GHUnitFilterKey = @"Filter";
@@ -92,11 +93,39 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (GHUnitIPhoneTableViewDataSource *)dataSource {
-  if (!dataSource_) {
-    dataSource_ = [[GHUnitIPhoneTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[GHTestSuite suiteFromEnv]];  
-    [dataSource_ loadDefaults];    
-  }
-  return dataSource_;
+ // Create Data Source if needed.
+ if (!dataSource_) {
+
+	 // Conditionally grab an custom Test Suite from CLASS_SUITE environment.
+	 const char* cClassSuite = getenv("CLASS_SUITE");
+	 if (cClassSuite) {
+		 NSString *name = [NSString stringWithUTF8String:cClassSuite];
+		 Class customClassSuite = NSClassFromString( name );
+
+		 ////////////////////////////////////	 ////////////////////////////////////
+		 // Init the suite.
+		 GHTestSuite *anSuite = [[[customClassSuite alloc] initWithName:name delegate:nil] autorelease];
+		 
+		 // If can't initialize, raise exception.
+		 if ( anSuite == nil ) {
+			 [NSException raise:NSInternalInconsistencyException
+						 format:@"The Test Suite Class '%@' defined in 'CLASS_SUITE' enviroment variable can't be initiated. Please check!", name];
+			 return;
+		 }
+		 
+		 ////////////////////////////////////
+		 // Init the Data Source.
+		 dataSource_ = [[GHUnitIPhoneTableViewDataSource alloc] initWithIdentifier:name suite:anSuite];  
+	 } 
+
+	 ////////////////////////////////////
+	 // Default Class Suite.
+	 else {
+		 dataSource_ = [[GHUnitIPhoneTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[GHTestSuite suiteFromEnv]];  
+	 }
+ }
+ [dataSource_ loadDefaults];    
+ return dataSource_;
 }
 
 - (void)reload {
