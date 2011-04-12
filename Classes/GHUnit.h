@@ -102,15 +102,15 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  @section InstallingIOS Installing (iOS)
  
- - Add a <tt>New Target</tt>. Select <tt>Cocoa Touch -> Application</tt>. Name it <tt>Tests</tt> (or something similar).
- - Copy and add <tt>GHUnitIOS.framework</tt> into your project. (Add Existing Files, select <tt>GHUnitIOS.framework</tt>, and select the "Tests" target.)
+ - Add a <tt>New Target</tt>. Select <tt>iOS -> Application</tt>. Name it <tt>Tests</tt> (or something similar). For XCode 4, you can select the View-based application and can deselect the 'Add Unit Tests' option.
+ - Copy and add <tt>GHUnitIOS.framework</tt> into your project. (Add Files to ..., select <tt>GHUnitIOS.framework</tt>, and select the "Tests" target.)
  - Add the following frameworks to <tt>Linked Libraries</tt>:
     - <tt>GHUnitIOS.framework</tt>
     - <tt>CoreGraphics.framework</tt>
     - <tt>Foundation.framework</tt>
     - <tt>UIKit.framework</tt>
- - Under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
- - Under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
+ - In Build Settings, under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
+ - In Build Settigns, under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
  - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project and make sure its enabled for the "Tests" target.
  - (Optional) Create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnitIOS/GHUnit.h></tt> to it, and then you won't have to include that import for every test.
