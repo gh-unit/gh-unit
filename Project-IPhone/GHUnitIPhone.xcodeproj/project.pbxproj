@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		006D780C120A93230053B72E /* Run make to build framework */ = {
+		006D780C120A93230053B72E /* Run make (in Project-IPhone) to build framework */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 006D7811120A93330053B72E /* Build configuration list for PBXAggregateTarget "Run make to build framework" */;
+			buildConfigurationList = 006D7811120A93330053B72E /* Build configuration list for PBXAggregateTarget "Run make (in Project-IPhone) to build framework" */;
 			buildPhases = (
 				006D780B120A93230053B72E /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = "Run make to build framework";
+			name = "Run make (in Project-IPhone) to build framework";
 			productName = "Use make 4_0 for iOS 4 builds";
 		};
 /* End PBXAggregateTarget section */
@@ -530,13 +530,6 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
-		008F396C117429EB001A35C4 /* Resources-iPad */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Resources-iPad";
-			sourceTree = "<group>";
-		};
 		00A9533E0FDA2DD4006A80A6 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,15 +598,11 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				002A15860F8E74550082A4BB /* XcodeConfig */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				008F396C117429EB001A35C4 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				00A9533E0FDA2DD4006A80A6 /* Scripts */,
 				00CDDD780F76FC660089C60E /* Makefile */,
 				0020596B0F9501F100FC1898 /* TODO.md */,
-				00803E78128DEAE60033DA60 /* CoreGraphics.framework */,
-				00803E7A128DEAE60033DA60 /* Foundation.framework */,
-				00803E7C128DEAE60033DA60 /* UIKit.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -640,6 +629,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00803E78128DEAE60033DA60 /* CoreGraphics.framework */,
+				00803E7A128DEAE60033DA60 /* Foundation.framework */,
+				00803E7C128DEAE60033DA60 /* UIKit.framework */,
 				00E58D4A1172938B0037E3C8 /* CoreGraphics.framework */,
 				00E58D421172937E0037E3C8 /* Foundation.framework */,
 				001ED8BD117292330046CD38 /* UIKit.framework */,
@@ -757,7 +749,7 @@
 				0002874211814A1F00D74BBD /* GHUnitIPhone (Simulator) */,
 				0002877311814A5300D74BBD /* GHUnitIPhone (Device) */,
 				000287DE11814C2800D74BBD /* Tests */,
-				006D780C120A93230053B72E /* Run make to build framework */,
+				006D780C120A93230053B72E /* Run make (in Project-IPhone) to build framework */,
 			);
 		};
 /* End PBXProject section */
@@ -1026,7 +1018,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		006D7811120A93330053B72E /* Build configuration list for PBXAggregateTarget "Run make to build framework" */ = {
+		006D7811120A93330053B72E /* Build configuration list for PBXAggregateTarget "Run make (in Project-IPhone) to build framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				006D780D120A93230053B72E /* Debug */,
