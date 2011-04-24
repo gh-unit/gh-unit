@@ -1,8 +1,4 @@
 
-TEST_TARGET=Tests
-SDK=macosx10.5
-COMMAND=xcodebuild
-
 default:
 	# Set default make action here
 
@@ -11,6 +7,4 @@ clean:
 	-rm -rf build/*
 
 test:
-	GHUNIT_AUTORUN=1 GHUNIT_AUTOEXIT=1 $(COMMAND) -target $(TEST_TARGET) -configuration Debug -sdk $(SDK) build
-
-	
+	GHUNIT_AUTORUN=1 GHUNIT_AUTOEXIT=1 xcodebuild -target Tests -configuration Debug -sdk macosx build

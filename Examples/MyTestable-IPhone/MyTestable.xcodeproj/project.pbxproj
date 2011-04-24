@@ -10,10 +10,8 @@
 		002D9D4A0F49181E007932FE /* MyTestableAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* MyTestableAppDelegate.m */; };
 		002D9D4E0F4918F1007932FE /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9D4D0F4918F1007932FE /* MyTest.m */; };
 		0080407E1290AC280033DA60 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0080407D1290AC280033DA60 /* GHUnitIOSTestMain.m */; };
-		00DB58A0131701FA00AF998E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DB589F131701FA00AF998E /* CoreGraphics.framework */; };
-		00DB58A2131701FA00AF998E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DB58A1131701FA00AF998E /* Foundation.framework */; };
-		00DB58A4131701FA00AF998E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DB58A3131701FA00AF998E /* UIKit.framework */; };
 		00EB37BF12F3A295000366F4 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EB37BE12F3A295000366F4 /* GHUnitIOS.framework */; };
+		00F1D9FC135C0B02001E7961 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F1D9FB135C0B02001E7961 /* CoreGraphics.framework */; };
 		1D3623260D0F684500981E51 /* MyTestableAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* MyTestableAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
@@ -26,10 +24,8 @@
 		0080407D1290AC280033DA60 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
 		008040951290AC9E0033DA60 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
 		00CDDE300F7703B40089C60E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		00DB589F131701FA00AF998E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		00DB58A1131701FA00AF998E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		00DB58A3131701FA00AF998E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		00EB37BE12F3A295000366F4 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
+		00F1D9FB135C0B02001E7961 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		1D3623240D0F684500981E51 /* MyTestableAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTestableAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* MyTestableAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTestableAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* MyTestable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTestable.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,10 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00F1D9FC135C0B02001E7961 /* CoreGraphics.framework in Frameworks */,
 				00EB37BF12F3A295000366F4 /* GHUnitIOS.framework in Frameworks */,
-				00DB58A0131701FA00AF998E /* CoreGraphics.framework in Frameworks */,
-				00DB58A2131701FA00AF998E /* Foundation.framework in Frameworks */,
-				00DB58A4131701FA00AF998E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,9 +101,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				002D9D050F49177B007932FE /* Tests-Info.plist */,
-				00DB589F131701FA00AF998E /* CoreGraphics.framework */,
-				00DB58A1131701FA00AF998E /* Foundation.framework */,
-				00DB58A3131701FA00AF998E /* UIKit.framework */,
+				00F1D9FB135C0B02001E7961 /* CoreGraphics.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -267,14 +259,13 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "Tests-Info.plist";
 				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
+					"-all_load",
+					"-ObjC",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tests;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -295,19 +286,17 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "Tests-Info.plist";
 				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
+					"-all_load",
+					"-ObjC",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tests;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -315,7 +304,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -330,7 +318,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MyTestable_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;

@@ -430,12 +430,12 @@
 			isa = PBXGroup;
 			children = (
 				002A15890F8E74550082A4BB /* Shared.xcconfig */,
+				00EB372312F39961000366F4 /* Shared-iPhone.xcconfig */,
 				0002873C1181499000D74BBD /* iPhoneSimulator-Release.xcconfig */,
 				0002873B1181491F00D74BBD /* iPhoneSimulator-Debug.xcconfig */,
 				0002873E118149CE00D74BBD /* iPhoneDevice-Release.xcconfig */,
 				00028740118149E700D74BBD /* iPhoneDevice-Debug.xcconfig */,
 				0002880E11814C8300D74BBD /* iPhoneTests.xcconfig */,
-				00EB372312F39961000366F4 /* Shared-iPhone.xcconfig */,
 			);
 			name = XcodeConfig;
 			path = ../XcodeConfig;
@@ -900,6 +900,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0002873B1181491F00D74BBD /* iPhoneSimulator-Debug.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -907,6 +908,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0002873C1181499000D74BBD /* iPhoneSimulator-Release.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};

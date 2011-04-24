@@ -97,13 +97,31 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
 /*!
  @page Installing Installing
  
- - @ref InstallingIOS
- - @ref InstallMacOSX
+ - @ref InstallingIOSXCode4
+ - @ref InstallingIOSXCode3
+ - @ref InstallMacOSXXCode4
+ - @ref InstallMacOSXXCode3
  
- @section InstallingIOS Installing (iOS)
+ @section InstallingIOSXCode4 Installing in XCode 4 (iOS)
  
- - Add a <tt>New Target</tt>. Select <tt>iOS -> Application</tt>. Name it <tt>Tests</tt> (or something similar). For XCode 4, you can select the View-based application and can deselect the 'Add Unit Tests' option.
- - Copy and add <tt>GHUnitIOS.framework</tt> into your project. (Add Files to ..., select <tt>GHUnitIOS.framework</tt>, and select the "Tests" target.)
+ - Add a <tt>New Target</tt>. Select <tt>iOS -> Application</tt>. You can select the Window-based application. Name it <tt>Tests</tt> (or something similar). And you can deselect the 'Add Unit Tests' option.
+ - Copy and add <tt>GHUnitIOS.framework</tt> into your project: Add Files to 'App'..., select <tt>GHUnitIOS.framework</tt>, and select only the "Tests" target.
+ - In the "Tests" target, Build Phases, Link Binary with Libraries, make sure the following Frameworks are present:
+    - <tt>GHUnitIOS.framework</tt>
+    - <tt>CoreGraphics.framework</tt>
+    - <tt>Foundation.framework</tt>
+    - <tt>UIKit.framework</tt>
+ - In the "Tests" target, Build Settings, under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
+ - In the "Tests" target, Build Settigns, under 'Other Linker Flags' in the "Tests" target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
+ - By default, the Tests-Info.plist file includes <tt>MainWindow_iPhone</tt> and <tt>MainWindow_iPad</tt> for <tt>Main nib file base name</tt>. You should remove both these fields.
+ - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project and make sure its enabled for the "Tests" target. You should delete the existing main.m file (or replace the contents of the existing main.m with GHUnitIOSTestMain.m).
+ - @ref Examples "Create a test"
+ - Build and run the "Tests" target.
+ 
+ @section InstallingIOSXCode3 Installing in XCode 3 (iOS)
+ 
+ - Add a <tt>New Target</tt>. Select <tt>iOS -> Application</tt>. Name it <tt>Tests</tt> (or something similar).
+ - Copy and add <tt>GHUnitIOS.framework</tt> into your project: Add Files to ..., select <tt>GHUnitIOS.framework</tt>, and select the <tt>Tests</tt> target.
  - Add the following frameworks to <tt>Linked Libraries</tt>:
     - <tt>GHUnitIOS.framework</tt>
     - <tt>CoreGraphics.framework</tt>
@@ -119,7 +137,23 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  - Build and run the "Tests" target.
  
  
- @section InstallMacOSX Installing (Mac OS X)
+ @section InstallMacOSXXCode4 Installing in XCode 4 (Mac OS X)
+ 
+ - Add a <tt>New Target</tt>. Select <tt>Application -> Cocoa Application</tt>. Name it <tt>Tests</tt> (or something similar).
+ - Copy and add <tt>GHUnit.framework</tt> into your project: Add Files to 'App'..., select <tt>GHUnit.framework</tt>, and select only the "Tests" target.
+ - In the "Tests" target, in Build Settings, add <tt>@loader_path/../Frameworks</tt> to <tt>Runpath Search Paths</tt>.
+ - In the "Tests" target, in Build Phases, select <tt>Add Build Phase</tt> and then <tt>Add Copy Files</tt>. 
+    - Change the Destination to <tt>Frameworks</tt>.
+    - Drag <tt>GHUnit.framework</tt> from the project file view into the the Copy Files build phase.
+    - Make sure the copy phase appears before any <tt>Run Script</tt> phases.
+ - Copy GHUnitTestMain.m (http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target. You should delete the existing main.m file (or replace the contents of the existing main.m with GHUnitTestMain.m).
+ 
+ - @ref Examples "Create a test"
+ - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field. You can also delete the existing MainMenu.xib.
+ - (Optional) @ref Makefile "Install Makefile"
+ - @ref Examples "Create a test"
+ 
+ @section InstallMacOSXXCode3 Installing in XCode 3 (Mac OS X)
  
  You can install it globally in /Library/Frameworks or with a little extra effort embed it with your project.
  
@@ -376,10 +410,10 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  @verbatim
  // For mac app; This might seg fault in 10.6, in which case you should use make test via Makefile below
- GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
+ GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx build	
  
- // For iPhone app
- GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator4.0 build
+ // For iOS app
+ GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator build
  @endverbatim
  
  If you are wondering, the <tt>RunTests.sh</tt> script will only run the tests if the env variable GHUNIT_CLI is set. 
@@ -392,10 +426,13 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  Follow the directions above for adding command line support.
  
+ Unfortunately, running Mac OS X and iOS tests from the command line isn't always supported since certain frameworks can't work
+ headless and will seg fault.
+ 
  Example Makefile's for Mac or iPhone apps:
  
- - Makefile (Mac OS X): http://github.com/gabriel/gh-unit/tree/master/Project/Makefile (for a Mac App)
- - Makefile (iOS): http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile (for an iPhone App)
+ - Makefile (Mac OS X): http://github.com/gabriel/gh-unit/tree/master/Project/Makefile.example (for a Mac App)
+ - Makefile (iOS): http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile.example (for an iOS App)
  
  The script will return a non-zero exit code on test failure.
  

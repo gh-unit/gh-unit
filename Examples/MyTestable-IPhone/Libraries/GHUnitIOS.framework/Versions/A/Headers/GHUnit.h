@@ -102,22 +102,22 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  @section InstallingIOS Installing (iOS)
  
- - Add a <tt>New Target</tt>. Select <tt>Cocoa Touch -> Application</tt>. Name it <tt>Tests</tt> (or something similar).
- - Add the <tt>GHUnitIOS.framework</tt> to your project.
+ - Add a <tt>New Target</tt>. Select <tt>iOS -> Application</tt>. Name it <tt>Tests</tt> (or something similar). For XCode 4, you can select the View-based application and can deselect the 'Add Unit Tests' option.
+ - Copy and add <tt>GHUnitIOS.framework</tt> into your project. (Add Files to ..., select <tt>GHUnitIOS.framework</tt>, and select the "Tests" target.)
  - Add the following frameworks to <tt>Linked Libraries</tt>:
     - <tt>GHUnitIOS.framework</tt>
     - <tt>CoreGraphics.framework</tt>
     - <tt>Foundation.framework</tt>
     - <tt>UIKit.framework</tt>
- - Under 'Framework Search Paths' make sure the (parent) directory to GHUnit.framework is listed.
- - Under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
+ - In Build Settings, under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
+ - In Build Settigns, under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
- - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project.
+ - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project and make sure its enabled for the "Tests" target.
  - (Optional) Create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnitIOS/GHUnit.h></tt> to it, and then you won't have to include that import for every test.
  - (Optional) @ref Makefile "Install Makefile"
  - @ref Examples "Create a test"
+ - Build and run the "Tests" target.
  
- Now you can create a test (either by subclassing <tt>SenTestCase</tt> or <tt>GHTestCase</tt>), adding it to your test target.
  
  @section InstallMacOSX Installing (Mac OS X)
  
@@ -348,7 +348,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  @endverbatim
  
- Somewhere between runTest and NSObject alloc there may be an object that wasn't retained.
+ Somewhere between runTest and NSObject alloc (in [Foo foo]) there may be an object that wasn't retained. 38615 is the thread id from "2009-10-15 13:02:24.746 Tests[38615:40b]", and 0x1c8e680 is the  address in "message sent to deallocated instance 0x1c8e680".
  
  Also using <tt>MallocScribble=YES</tt> causes the malloc library to overwrite freed memory with a well-known value (0x55), and occasionally checks freed malloc blocks to make sure the memory has not been over-written overwritten written since it was cleared.
  
@@ -376,10 +376,10 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  @verbatim
  // For mac app; This might seg fault in 10.6, in which case you should use make test via Makefile below
- GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx10.5 build	
+ GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx build	
  
- // For iPhone app
- GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator4.0 build
+ // For iOS app
+ GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator build
  @endverbatim
  
  If you are wondering, the <tt>RunTests.sh</tt> script will only run the tests if the env variable GHUNIT_CLI is set. 
@@ -394,8 +394,8 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  
  Example Makefile's for Mac or iPhone apps:
  
- - Makefile (Mac OS X): http://github.com/gabriel/gh-unit/tree/master/Project/Makefile (for a Mac App)
- - Makefile (iOS): http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile (for an iPhone App)
+ - Makefile (Mac OS X): http://github.com/gabriel/gh-unit/tree/master/Project/Makefile.example (for a Mac App)
+ - Makefile (iOS): http://github.com/gabriel/gh-unit/tree/master/Project-IPhone/Makefile.example (for an iOS App)
  
  The script will return a non-zero exit code on test failure.
  
@@ -573,7 +573,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  the following in <tt>Test report XMLs</tt>:
  
  @verbatim
- build/test-results/\*.xml
+ build/test-results/ *.xml     (Remove the extra-space, which is there to work around doxygen bug)
  @endverbatim
  
  That's all it takes. Check in a change that breaks one of your tests. Hudson
@@ -588,3 +588,4 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  address this.   
   
  */
+ 

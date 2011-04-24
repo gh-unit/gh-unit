@@ -38,10 +38,19 @@ if [ ! -e "$TEST_TARGET_EXECUTABLE_PATH" ]; then
   exit 1
 fi
 
-RUN_CMD="$TEST_TARGET_EXECUTABLE_PATH -RegisterForSystemEvents"
+# From $IPHONE_SIMULATOR_ROOT we figure out what the path to the simulator binary is
+# /Developer4/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
+# /Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator 
 
-echo "Running: $RUN_CMD"
-$RUN_CMD
+export IPHONE_SIMULATOR_APPLICATION="$IPHONE_SIMULATOR_ROOT/../../Applications/iPhone Simulator.app/Contents/MacOS/iPhone Simulator"
+
+"$IPHONE_SIMULATOR_APPLICATION" -SimulateApplication $TEST_TARGET_EXECUTABLE_PATH
+#RUN_CMD="$IPHONE_SIMULATOR_APPLICATION -SimulateApplication $TEST_TARGET_EXECUTABLE_PATH"
+
+#RUN_CMD="$TEST_TARGET_EXECUTABLE_PATH -RegisterForSystemEvents"
+
+#echo "Running: $RUN_CMD"
+#"$RUN_CMD"
 RETVAL=$?
 
 unset DYLD_ROOT_PATH

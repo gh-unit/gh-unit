@@ -229,8 +229,6 @@
 		00DCB7DA0FA4F1300022DA5A /* GHMockNSURLConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockNSURLConnectionTest.m; sourceTree = "<group>"; };
 		00DCB7DB0FA4F1300022DA5A /* GHNSLocaleMockTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSLocaleMockTest.m; sourceTree = "<group>"; };
 		00F09A8E108D50F2000E5AB5 /* GHTestEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestEmpty.m; sourceTree = "<group>"; };
-		00F09ADC108D527A000E5AB5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		00F09ADE108D527A000E5AB5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -520,8 +518,6 @@
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
-				00F09ADC108D527A000E5AB5 /* Cocoa.framework */,
-				00F09ADE108D527A000E5AB5 /* Foundation.framework */,
 			);
 			name = GHUnit;
 			sourceTree = "<group>";
@@ -815,6 +811,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
@@ -823,6 +820,7 @@
 				GCC_PREFIX_HEADER = Tests_Prefix.pch;
 				GTM_CONFIGURATION_GCC_PREPROCESSOR_DEFINITIONS = "_GLIBCXX_DEBUG_PEDANTIC _GLIBCXX_DEBUG _GLIBCPP_CONCEPT_CHECKS";
 				INFOPLIST_FILE = "Tests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -830,6 +828,7 @@
 					AppKit,
 				);
 				PRODUCT_NAME = Tests;
+				SDKROOT = "";
 			};
 			name = Debug;
 		};
@@ -841,6 +840,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Tests_Prefix.pch;
 				INFOPLIST_FILE = "Tests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -848,6 +848,7 @@
 					AppKit,
 				);
 				PRODUCT_NAME = Tests;
+				SDKROOT = "";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -856,6 +857,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00CD28301211C8A300DF808D /* GHUnit-Debug.xcconfig */;
 			buildSettings = {
+				SDKROOT = "";
 			};
 			name = Debug;
 		};
@@ -863,6 +865,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00CD28251211C75100DF808D /* GHUnit-Release.xcconfig */;
 			buildSettings = {
+				SDKROOT = "";
 			};
 			name = Release;
 		};
