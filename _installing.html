@@ -50,14 +50,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <ul>
-<li><a class="el" href="_installing.html#InstallingIOS">Installing (iOS)</a></li>
-<li><a class="el" href="_installing.html#InstallMacOSX">Installing (Mac OS X)</a></li>
+<li><a class="el" href="_installing.html#InstallingIOSXCode4">Installing in XCode 4 (iOS)</a></li>
+<li><a class="el" href="_installing.html#InstallingIOSXCode3">Installing in XCode 3 (iOS)</a></li>
+<li><a class="el" href="_installing.html#InstallMacOSXXCode4">Installing in XCode 4 (Mac OS X)</a></li>
+<li><a class="el" href="_installing.html#InstallMacOSXXCode3">Installing in XCode 3 (Mac OS X)</a></li>
 </ul>
-<h2><a class="anchor" id="InstallingIOS"></a>
-Installing (iOS)</h2>
+<h2><a class="anchor" id="InstallingIOSXCode4"></a>
+Installing in XCode 4 (iOS)</h2>
 <ul>
-<li>Add a <code>New Target</code>. Select <code>Cocoa Touch -&gt; Application</code>. Name it <code>Tests</code> (or something similar).</li>
-<li>Copy and add <code>GHUnitIOS.framework</code> into your project. (Add Existing Files, select <code>GHUnitIOS.framework</code>, and select the "Tests" target.)</li>
+<li>Add a <code>New Target</code>. Select <code>iOS -&gt; Application</code>. You can select the Window-based application. Name it <code>Tests</code> (or something similar). And you can deselect the 'Add Unit Tests' option.</li>
+<li>Copy and add <code>GHUnitIOS.framework</code> into your project: Add Files to 'App'..., select <code>GHUnitIOS.framework</code>, and select only the "Tests" target.</li>
+<li>In the "Tests" target, Build Phases, Link Binary with Libraries, make sure the following Frameworks are present:<ul>
+<li><code>GHUnitIOS.framework</code></li>
+<li><code>CoreGraphics.framework</code></li>
+<li><code>Foundation.framework</code></li>
+<li><code>UIKit.framework</code></li>
+</ul>
+</li>
+<li>In the "Tests" target, Build Settings, under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.</li>
+<li>In the "Tests" target, Build Settigns, under 'Other Linker Flags' in the "Tests" target, add <code>-ObjC</code> and <code>-all_load</code></li>
+<li>By default, the Tests-Info.plist file includes <code>MainWindow_iPhone</code> and <code>MainWindow_iPad</code> for <code>Main nib file base name</code>. You should remove both these fields.</li>
+<li>Add the GHUnitIOSTestMain.m (<a href="http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m">http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m</a>) file into your project and make sure its enabled for the "Tests" target. You should delete the existing main.m file (or replace the contents of the existing main.m with GHUnitIOSTestMain.m).</li>
+<li><a class="el" href="_examples.html">Create a test</a></li>
+<li>Build and run the "Tests" target.</li>
+</ul>
+<h2><a class="anchor" id="InstallingIOSXCode3"></a>
+Installing in XCode 3 (iOS)</h2>
+<ul>
+<li>Add a <code>New Target</code>. Select <code>iOS -&gt; Application</code>. Name it <code>Tests</code> (or something similar).</li>
+<li>Copy and add <code>GHUnitIOS.framework</code> into your project: Add Files to ..., select <code>GHUnitIOS.framework</code>, and select the <code>Tests</code> target.</li>
 <li>Add the following frameworks to <code>Linked Libraries</code>:<ul>
 <li><code>GHUnitIOS.framework</code></li>
 <li><code>CoreGraphics.framework</code></li>
@@ -65,8 +86,8 @@ Installing (iOS)</h2>
 <li><code>UIKit.framework</code></li>
 </ul>
 </li>
-<li>Under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.</li>
-<li>Under 'Other Linker Flags' in the <code>Tests</code> target, add <code>-ObjC</code> and <code>-all_load</code></li>
+<li>In Build Settings, under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.</li>
+<li>In Build Settigns, under 'Other Linker Flags' in the <code>Tests</code> target, add <code>-ObjC</code> and <code>-all_load</code></li>
 <li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field.</li>
 <li>Add the GHUnitIOSTestMain.m (<a href="http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m">http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m</a>) file into your project and make sure its enabled for the "Tests" target.</li>
 <li>(Optional) Create and and set a prefix header (<code>Tests_Prefix.pch</code>) and add <code>import &lt;GHUnitIOS/GHUnit.h&gt;</code> to it, and then you won't have to include that import for every test.</li>
@@ -74,8 +95,28 @@ Installing (iOS)</h2>
 <li><a class="el" href="_examples.html">Create a test</a></li>
 <li>Build and run the "Tests" target.</li>
 </ul>
-<h2><a class="anchor" id="InstallMacOSX"></a>
-Installing (Mac OS X)</h2>
+<h2><a class="anchor" id="InstallMacOSXXCode4"></a>
+Installing in XCode 4 (Mac OS X)</h2>
+<ul>
+<li>Add a <code>New Target</code>. Select <code>Application -&gt; Cocoa Application</code>. Name it <code>Tests</code> (or something similar).</li>
+<li>Copy and add <code>GHUnit.framework</code> into your project: Add Files to 'App'..., select <code>GHUnit.framework</code>, and select only the "Tests" target.</li>
+<li>In the "Tests" target, in Build Settings, add <code>/../Frameworks</code> to <code>Runpath Search Paths</code>.</li>
+<li>In the "Tests" target, in Build Phases, select <code>Add Build Phase</code> and then <code>Add Copy Files</code>.<ul>
+<li>Change the Destination to <code>Frameworks</code>.</li>
+<li>Drag <code>GHUnit.framework</code> from the project file view into the the Copy Files build phase.</li>
+<li>Make sure the copy phase appears before any <code>Run Script</code> phases.</li>
+</ul>
+</li>
+<li>Copy GHUnitTestMain.m (<a href="http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m">http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m</a>) into your project and include in the Test target. You should delete the existing main.m file (or replace the contents of the existing main.m with GHUnitTestMain.m).</li>
+</ul>
+<ul>
+<li><a class="el" href="_examples.html">Create a test</a></li>
+<li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field. You can also delete the existing MainMenu.xib.</li>
+<li>(Optional) <a class="el" href="_command_line.html#Makefile">Install Makefile</a></li>
+<li><a class="el" href="_examples.html">Create a test</a></li>
+</ul>
+<h2><a class="anchor" id="InstallMacOSXXCode3"></a>
+Installing in XCode 3 (Mac OS X)</h2>
 <p>You can install it globally in /Library/Frameworks or with a little extra effort embed it with your project.</p>
 <h3><a class="anchor" id="InstallLibraryFrameworks"></a>
 Installing in /Library/Frameworks</h3>
@@ -141,7 +182,7 @@ Installing in your project</h3>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Feb 24 2011 12:05:21 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Apr 24 2011 12:58:48 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
