@@ -38,10 +38,10 @@ if [ ! -e "$TEST_TARGET_EXECUTABLE_PATH" ]; then
   exit 1
 fi
 
-RUN_CMD="$TEST_TARGET_EXECUTABLE_PATH -RegisterForSystemEvents"
+RUN_CMD="\"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
 
 echo "Running: $RUN_CMD"
-$RUN_CMD
+eval $RUN_CMD
 RETVAL=$?
 
 unset DYLD_ROOT_PATH
