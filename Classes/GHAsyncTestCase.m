@@ -174,12 +174,12 @@ typedef enum {
   // Make sure the notify is for the currently waiting test
   if (selector != NULL && !sel_isEqual(waitSelector_, selector)) {
     NSLog(@"Warning: Notified from %@ but we were waiting for %@", NSStringFromSelector(selector), NSStringFromSelector(waitSelector_));
-    return;
-  } 
+  }  else {
+    [lock_ lock];
+    notifiedStatus_ = status;
+    [lock_ unlock];
+  }
 
-  [lock_ lock];
-  notifiedStatus_ = status;
-  [lock_ unlock];
   [pool release];
 }
 
