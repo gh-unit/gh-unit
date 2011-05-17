@@ -11,12 +11,6 @@ export DYLD_ROOT_PATH="$SDKROOT"
 export DYLD_FRAMEWORK_PATH="$CONFIGURATION_BUILD_DIR"
 export IPHONE_SIMULATOR_ROOT="$SDKROOT"
 
-export MallocScribble=YES
-export MallocPreScribble=YES
-export MallocGuardEdges=YES
-export MallocStackLogging=YES
-export MallocStackLoggingNoCompact=YES
-
 export NSDebugEnabled=YES
 export NSZombieEnabled=YES
 export NSDeallocateZombies=NO

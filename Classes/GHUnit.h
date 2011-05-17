@@ -128,7 +128,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
     - <tt>Foundation.framework</tt>
     - <tt>UIKit.framework</tt>
  - In Build Settings, under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
- - In Build Settigns, under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
+ - In Build Settings, under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
  - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project and make sure its enabled for the "Tests" target.
  - (Optional) Create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnitIOS/GHUnit.h></tt> to it, and then you won't have to include that import for every test.
