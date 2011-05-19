@@ -70,11 +70,13 @@ int main(int argc, char *argv[]) {
   int retVal = 0;
   // If GHUNIT_CLI is set we are using the command line interface and run the tests
   // Otherwise load the GUI app
-  if (getenv("GHUNIT_CLI")) {
-    retVal = [GHTestRunner run];
-  } else {
+    
+  // Do our GHUNIT_CLI checks elsewhere; we have enough tests that use UIKit that doing the GHTestRunner version without loading the UIKit stack is a recipe for failure.
+//  if (getenv("GHUNIT_CLI")) {
+//    retVal = [GHTestRunner run];
+//  } else {
     retVal = UIApplicationMain(argc, argv, nil, @"GHUnitIPhoneAppDelegate");
-  }
+//  }
   [pool release];
   return retVal;
 }
