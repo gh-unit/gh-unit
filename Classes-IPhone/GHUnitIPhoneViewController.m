@@ -275,9 +275,17 @@ NSString *const GHUnitFilterKey = @"Filter";
   // Save defaults after test run
   [self saveDefaults];
   
-  if (getenv("GHUNIT_AUTOEXIT")) {
-    NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
-    exit(runner.test.stats.failureCount);
+  if (getenv("GHUNIT_AUTOEXIT")) 
+  {
+     NSNumber* failures_count_ = [ NSNumber numberWithInt: runner.test.stats.failureCount ];
+     NSDictionary* user_info_ = [ NSDictionary dictionaryWithObject: failures_count_
+                                                             forKey: @"failed tests count" ];
+     
+     NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
+     NSException* exception_ = [ NSException exceptionWithName: @"autoexit exception" 
+                                                        reason: @"tests launched successfully"
+                                                      userInfo: user_info_ ];     
+     @throw exception_;
   }
 }
 
