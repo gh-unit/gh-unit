@@ -1,6 +1,5 @@
 #!/bin/sh
 
-set -o errexit
 
 # If we aren't running from the command line, then exit
 if [ "$GHUNIT_CLI" = "" ] && [ "$GHUNIT_AUTORUN" = "" ]; then
