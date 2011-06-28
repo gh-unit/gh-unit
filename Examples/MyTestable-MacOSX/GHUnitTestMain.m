@@ -31,7 +31,6 @@
 
 #import <GHUnit/GHUnit.h>
 #import <GHUnit/GHTestApp.h>
-#import <GHUnit/GHTesting.h>
 
 // Default exception handler
 void exceptionHandler(NSException *exception) {	

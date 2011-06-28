@@ -1,7 +1,0 @@
-
-#include "Shared-iPhone.xcconfig"
-
-PRODUCT_NAME = GHUnitIPhoneSimulator4_0
-
-GCC_PREPROCESSOR_DEFINITIONS = DEBUG
-GCC_OPTIMIZATION_LEVEL = 0

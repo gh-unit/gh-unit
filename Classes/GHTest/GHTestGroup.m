@@ -26,6 +26,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHTestGroup.h"
 #import "GHTestCase.h"
 #import "GHTestOperation.h"
@@ -259,8 +261,12 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   }
 }
 
+- (BOOL)hasEnabledChildren {
+  return (([children_ count] - [self disabledCount]) <= 0);
+}
+
 - (void)_run:(NSOperationQueue *)operationQueue {
-  if (status_ == GHTestStatusCancelled || (([children_ count] - [self disabledCount]) <= 0)) {
+  if (status_ == GHTestStatusCancelled || [self hasEnabledChildren]) {
     return;
   }
   
@@ -310,7 +316,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 - (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options {
   options_ = options;
   
-  NSAssert(!((options_ & GHTestOptionReraiseExceptions == GHTestOptionReraiseExceptions) && operationQueue),
+  NSAssert(!(((options_ & GHTestOptionReraiseExceptions) == GHTestOptionReraiseExceptions) && operationQueue),
            @"Can't run in parallel (through operation queue) and also have re-raise exceptions option set");
   
   [self _reset];
@@ -318,6 +324,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 - (BOOL)shouldRunOnMainThread {
+  if (self.isDisabled) return NO;
   if ([testCase_ respondsToSelector:@selector(shouldRunOnMainThread)]) 
     return [testCase_ shouldRunOnMainThread];
   return NO;
@@ -385,3 +392,5 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 @end
+
+//! @endcond

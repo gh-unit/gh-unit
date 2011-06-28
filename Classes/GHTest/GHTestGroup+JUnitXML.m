@@ -27,10 +27,12 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHTestGroup+JUnitXML.h"
 
 
-@implementation GHTestGroup (JUnitXML)
+@implementation GHTestGroup(JUnitXML)
 
 - (BOOL)writeJUnitXMLAtPath:(NSString *)path error:(NSError **)error {
   if (self.stats.testCount > 0) {
@@ -58,3 +60,5 @@
 }
 
 @end
+
+//! @endcond

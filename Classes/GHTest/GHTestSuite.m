@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHTestSuite.h"
 
 #import "GHTesting.h"
@@ -135,22 +137,31 @@ NSString *GHUnitTest = NULL;
  JUnit XML to be in its own file.
  */
 - (BOOL)writeJUnitXML:(NSError **)error {
+  NSParameterAssert(error);
   BOOL allSuccess = YES;
   
   NSFileManager *fileManager = [NSFileManager defaultManager];
   NSString *tmpDir = NSTemporaryDirectory();
   NSString *resultsDir = [tmpDir stringByAppendingPathComponent:@"test-results"];
   
-  if (![fileManager fileExistsAtPath:resultsDir])
-    [fileManager createDirectoryAtPath:resultsDir withIntermediateDirectories:YES attributes:nil error:error];  
-  
+  if (![fileManager fileExistsAtPath:resultsDir]) {
+    if (![fileManager createDirectoryAtPath:resultsDir withIntermediateDirectories:YES attributes:nil error:error]) {
+      NSLog (@"Error while creating results directory: %@", [*error localizedDescription]);
+      return NO;
+    }
+  }
+    
   for (id child in self.children) {
     if ([child respondsToSelector:@selector(writeJUnitXMLAtPath:error:)]) {
-      if (![child writeJUnitXMLAtPath:resultsDir error:error]) 
+      if (![child writeJUnitXMLAtPath:resultsDir error:error]) {
+        NSLog (@"Error writing JUnit XML: %@", [*error localizedDescription]);
         allSuccess = NO;
+      }
     }
   }
   return allSuccess;
 }
 
 @end
+
+//! @endcond

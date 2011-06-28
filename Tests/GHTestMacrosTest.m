@@ -24,9 +24,28 @@
   }, nil);
 }
 
+- (void)testEqualsCGFloat {
+  CGFloat expectedX = 100;
+  CGFloat actualX = 200;
+  GHAssertThrows({
+    GHAssertEquals(actualX, expectedX, @"Expected failure");
+  }, nil);
+}
+
 - (void)testNSLog {
   NSLog(@"Testing NSLog");  
   // TODO(gabe): Test this was output
+}
+
+- (void)testGHAssertNotEqualStrings_EXPECTED {
+  GHAssertNotEqualStrings(@"a", @"a", nil);
+}
+
+- (void)testGHAssertNotEqualStrings {
+  GHAssertNotEqualStrings(@"a", @"b", nil);
+  GHAssertNotEqualStrings(@"a", nil, nil);
+  GHAssertNotEqualStrings(nil, @"a", nil);
+  GHAssertThrows({ GHAssertNotEqualStrings(@"a", @"a", nil); }, nil);
 }
 
 @end

@@ -26,6 +26,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 //
 // Portions of this file fall under the following license, marked with:
 // GTM_BEGIN : GTM_END
@@ -56,13 +58,13 @@ NSString *const GHTestFilenameKey = @"GHTestFilenameKey";
 NSString *const GHTestLineNumberKey = @"GHTestLineNumberKey";
 NSString *const GHTestFailureException = @"GHTestFailureException";
 
-@interface NSException (GHTestFailureExceptionsPrivateAdditions)
+@interface NSException(GHTestFailureExceptionsPrivateAdditions)
 + (NSException *)ghu_failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                         reason:(NSString *)reason;
 @end
 
-@implementation NSException  (GHTestFailureExceptionsPrivateAdditions)
+@implementation NSException(GHTestFailureExceptionsPrivateAdditions)
 + (NSException *)ghu_failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
                         reason:(NSString *)reason {
@@ -78,7 +80,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
 }
 @end
 
-@implementation NSException (GHTestFailureExceptions)
+@implementation NSException(GHTestFailureExceptions)
 
 + (NSException *)ghu_failureInFile:(NSString *)filename
                         atLine:(int)lineNumber
@@ -136,6 +138,28 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
   
   NSString *reason =
   [NSString stringWithFormat:@"'%@' should be equal to '%@'. %@",
+   [left description], [right description], testDescription];
+  
+  return [self ghu_failureInFile:filename atLine:lineNumber reason:reason];
+}
+
++ (NSException *)ghu_failureInInequalityBetweenObject:(id)left
+                                          andObject:(id)right
+                                             inFile:(NSString *)filename
+                                             atLine:(int)lineNumber
+                                    withDescription:(NSString *)formatString, ... {
+  
+  NSString *testDescription = @"";
+  if (formatString) {
+    va_list vl;
+    va_start(vl, formatString);
+    testDescription =
+    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    va_end(vl);
+  }
+  
+  NSString *reason =
+  [NSString stringWithFormat:@"'%@' should not be equal to '%@'. %@",
    [left description], [right description], testDescription];
   
   return [self ghu_failureInFile:filename atLine:lineNumber reason:reason];
@@ -234,3 +258,5 @@ NSString *GHComposeString(NSString *formatString, ...) {
 }
 
 // GTM_END
+
+//! @endcond

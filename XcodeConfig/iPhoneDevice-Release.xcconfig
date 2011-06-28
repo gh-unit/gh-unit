@@ -1,6 +1,8 @@
 
 #include "Shared-iPhone.xcconfig"
 
+PRODUCT_NAME = GHUnitIOSDevice
+
 SDKROOT = iphoneos
-PRODUCT_NAME = GHUnitIPhoneDevice3_0
-ARCHS = $(ARCHS_UNIVERSAL_IPHONE_OS)
+ARCHS = armv6 armv7
+VALID_ARCHS = armv6 armv7

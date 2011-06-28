@@ -115,7 +115,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 - (void)runTests {
   if (self.dataSource.isRunning) return;
   
-  self.view;
+  [self view];
   runButton_.title = @"Cancel";
   userDidDrag_ = NO; // Reset drag status
   view_.statusLabel.textColor = [UIColor blackColor];
@@ -274,8 +274,11 @@ NSString *const GHUnitFilterKey = @"Filter";
   
   // Save defaults after test run
   [self saveDefaults];
-
-    if (getenv("GHUNIT_CLI")) exit(runner.stats.failureCount);
+  
+  if (getenv("GHUNIT_AUTOEXIT")) {
+    NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
+    exit(runner.test.stats.failureCount);
+  }
 }
 
 #pragma mark Delegates (UISearchBar)

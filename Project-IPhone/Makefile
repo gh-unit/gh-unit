@@ -1,16 +1,13 @@
 
-
 default:
-	xcodebuild -target "CombineLibs (3.0)" -configuration Release build
-
-4_0:
-	xcodebuild -target "GHUnitIPhone (Simulator-4.0)" -configuration Release build
-	xcodebuild -target "GHUnitIPhone (Device-4.0)" -configuration Release build
-	BUILD_DIR="build" BUILD_STYLE="Release" FLAVOR="4_0" GHUNIT_VERSION="0.4.22" sh ../Scripts/CombineLibs.sh
+	xcodebuild -target "GHUnitIPhone (Device)" -configuration Release
+	xcodebuild -target "GHUnitIPhone (Simulator)" -configuration Release
+	BUILD_DIR="build" BUILD_STYLE="Release" sh ../Scripts/CombineLibs.sh
+	sh ../Scripts/iPhoneFramework.sh
 
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:
 	-rm -rf build/*
 
 test:
-	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator4.0 build
+	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug build

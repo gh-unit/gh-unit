@@ -1,3 +1,28 @@
+# Release 0.4.28
+- Building as GHUnitIOS.framework for iOS.
+- Fix issue #37
+- Fix issue #38
+- Fix issue #39
+- Fix issue #36
+- Fix issue #19
+
+# Release 0.4.27
+- Added in GHUnitIPhoneAppDelegate for subclassing test app delegate
+
+# Release 0.4.26
+- Fixing LLVM/clang warnings (Whitney Young, nolanw)
+- GHAssertNotEqualStrings will allow for nils (Rusty Zarse)
+- Build warnings under 10.6 (MacOSX); (zykloid)
+- Better error handling on JUnit XML results writing (zykloid)
+- GHAsyncTestCase#runForInterval (Adapted from Robert Palmer, pauseForTimeout)
+
+# Release 0.4.25
+- Set DEPLOYMENT_POSTPROCESSING (MacOSX); So breakpointing doesn't warn about missing symbols
+
+# Release 0.4.24
+- Moved build settings into xcconfig (MacOSX)
+- Striping linked build
+
 # Release 0.4.21
 - Moved build settings into xcconfig (iPhone)
 - Flexible layouts; Works in iPad as universal app

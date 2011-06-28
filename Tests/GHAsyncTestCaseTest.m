@@ -81,21 +81,3 @@
 @end
 
 
-@interface GHAsyncConnectionTestCaseTest : GHAsyncTestCase { }
-@end
-
-@implementation GHAsyncConnectionTestCaseTest
-
-- (void)_testURLConnection {
-  [self prepare];
-  NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
-  [[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES] retain];
-  [self waitForStatus:kGHUnitWaitStatusSuccess timeout:30.0];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-  [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testURLConnection)];
-}
-
-@end
-

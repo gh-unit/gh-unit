@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHMockNSHTTPURLResponse.h"
 
 @implementation GHMockNSHTTPURLResponse
@@ -63,3 +65,5 @@
 }
 
 @end
+
+//! @endcond

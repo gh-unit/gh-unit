@@ -25,6 +25,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 //
 // Portions of this file fall under the following license, marked with:
 // GTM_BEGIN : GTM_END
@@ -166,7 +168,8 @@ operationQueue=operationQueue_;
 }
 
 - (void)_log:(NSString *)message {
-  fputs([[message stringByAppendingString:@"\n"] UTF8String], stdout);
+  fputs([message UTF8String], stdout);
+  fputs("\n", stdout);
   fflush(stdout);
   
   if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
@@ -177,7 +180,7 @@ operationQueue=operationQueue_;
 
 - (void)testDidStart:(id<GHTest>)test source:(id<GHTest>)source {
   if (![source conformsToProtocol:@protocol(GHTestGroup)]) {
-    [self log:[NSString stringWithFormat:@"%@ ", [source identifier]]];
+    [self log:[NSString stringWithFormat:@"Starting %@\n", [source identifier]]];
   }
   
   if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
@@ -193,7 +196,7 @@ operationQueue=operationQueue_;
   
   if ([source status] != GHTestStatusCancelled) {
     if (![source conformsToProtocol:@protocol(GHTestGroup)]) {      
-      NSString *message = [NSString stringWithFormat:@"%@ (%0.3fs)\n", 
+      NSString *message = [NSString stringWithFormat:@" %@ (%0.3fs)\n\n", 
                            ([source stats].failureCount > 0 ? @"FAIL" : @"OK"), [source interval]]; 
       [self log:message];
     }
@@ -266,9 +269,11 @@ operationQueue=operationQueue_;
     // Log JUnit XML if environment variable is set
     if (getenv("WRITE_JUNIT_XML")) {
       NSError *error = nil;
-      [testSuite writeJUnitXML:&error];
-      if (!error) [self log:@"Wrote JUnit XML successfully.\n"];
-      else [self log:[NSString stringWithFormat:@"Error writing JUnit XML: %@\n", [error description]]];
+      if (![testSuite writeJUnitXML:&error]) {
+        [self log:[NSString stringWithFormat:@"Error writing JUnit XML: %@\n", [error localizedDescription]]];
+      } else {
+        [self log:@"Wrote JUnit XML successfully.\n"];
+      }
     }
   }
 
@@ -276,7 +281,9 @@ operationQueue=operationQueue_;
   running_ = NO;
 
   if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
-    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self]; 
+    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self];   
 }
 
 @end
+
+//! @endcond

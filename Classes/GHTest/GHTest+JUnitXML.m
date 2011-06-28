@@ -30,7 +30,9 @@
 #import "GHTest+JUnitXML.h"
 #import "GHTesting.h"
 
-@implementation GHTest (JUnitXML)
+//! @cond DEV
+
+@implementation GHTest(JUnitXML)
 
 - (NSString *)JUnitXML {
   return [NSString stringWithFormat:
@@ -41,3 +43,5 @@
 }
 
 @end
+
+//! @endcond
