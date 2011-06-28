@@ -1,22 +1,8 @@
-#Ignore the Mac OS X .DS_Store files
-.DS_Store
-
-#Ignore user-specific settings
-=======
-build
+Project/build/*
+Project-IPhone/build/*
+build/*
+Examples/MyTestable-IPhone/build/*
 *.mode1v3
-*.mode2v3
 *.pbxuser
-*.perspectivev3
-
-#Ignore textmate build errors
-*.tm_build_errors
-
-#Ignore temp nibs and swap files
-*.swp
-*~.nib
-
 Documentation
-.gitattributes
-
-xcuserdata
+Project/tests.log

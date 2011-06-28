@@ -16,35 +16,7 @@
 @implementation GHSenTestingTest
 
 - (void)test {
-  STAssertTrue(YES, nil);
-}
-
-- (void)testFail_EXPECTED {
-  STAssertTrue(NO, nil);
+	STAssertTrue(YES, nil);
 }
 
 @end
-
-@interface GHSenTestFailWithException : SenTestCase {
-  BOOL _failWithException;
-}
-@end
-
-@implementation GHSenTestFailWithException
-
-- (void)failWithException:(NSException *)exception {
-  _failWithException = YES;
-  NSLog(@"Failed with exception: %@", exception);
-}
-
-- (void)testFailWithException {
-  STFail(@"Fail");
-  NSAssert(_failWithException, @"failWithException: was overriden");
-}
-
-- (void)testFailWithExceptionCall_EXPECTED {
-  [super failWithException:[NSException exceptionWithName:@"GHSenTestFailWithException" reason:@"Testing" userInfo:nil]];
-}
-
-@end
-

@@ -91,11 +91,7 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 }
 
 - (void)receiveFromPath:(NSString *)path statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay {
-  NSData *data = [self loadDataFromPath:path];
-  [self receiveData:data statusCode:statusCode MIMEType:MIMEType afterDelay:delay];
-}
-
-- (void)receiveData:(NSData *)data statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay {	
+	NSData *data = [self loadDataFromPath:path];
 	GHMockNSHTTPURLResponse *response = [[[GHMockNSHTTPURLResponse alloc] initWithURL:[request_ URL] 
 																																					 MIMEType:MIMEType
 																															expectedContentLength:[data length] 

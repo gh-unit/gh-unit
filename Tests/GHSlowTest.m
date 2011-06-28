@@ -14,8 +14,10 @@
 
 @implementation GHSlowTest
 
-- (void)test2Seconds {
-  [NSThread sleepForTimeInterval:2];
+#define kSlowTestTimeInterval 0.1
+
+- (void)testSlow {
+	[NSThread sleepForTimeInterval:5];
 }
 
 @end

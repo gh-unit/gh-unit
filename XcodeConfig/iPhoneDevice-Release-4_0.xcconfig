@@ -1,6 +1,0 @@
-
-#include "Shared-iPhone.xcconfig"
-
-PRODUCT_NAME = GHUnitIPhoneDevice4_0
-
-

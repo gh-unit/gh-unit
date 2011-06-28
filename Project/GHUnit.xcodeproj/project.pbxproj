@@ -13,9 +13,20 @@
 		0020570D0F945D2700FC1898 /* GHNSLocale+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = 002057090F945D2700FC1898 /* GHNSLocale+Mock.m */; };
 		002058510F9467F900FC1898 /* GHUNSObject+Swizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0020584F0F9467F900FC1898 /* GHUNSObject+Swizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002058520F9467F900FC1898 /* GHUNSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 002058500F9467F900FC1898 /* GHUNSObject+Swizzle.m */; };
+		002D9C0A0F49158F007932FE /* GHTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BD80F49158F007932FE /* GHTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002D9C0B0F49158F007932FE /* GHTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BD90F49158F007932FE /* GHTest.m */; };
 		002D9C0C0F49158F007932FE /* GHTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BDA0F49158F007932FE /* GHTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C0D0F49158F007932FE /* GHTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BDB0F49158F007932FE /* GHTestCase.m */; };
+		002D9C0E0F49158F007932FE /* GHTestGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BDC0F49158F007932FE /* GHTestGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002D9C0F0F49158F007932FE /* GHTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BDD0F49158F007932FE /* GHTestGroup.m */; };
 		002D9C100F49158F007932FE /* GHTestMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BDE0F49158F007932FE /* GHTestMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002D9C110F49158F007932FE /* GHTestMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BDF0F49158F007932FE /* GHTestMacros.m */; };
+		002D9C120F49158F007932FE /* GHTestRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE00F49158F007932FE /* GHTestRunner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002D9C130F49158F007932FE /* GHTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE10F49158F007932FE /* GHTestRunner.m */; };
+		002D9C140F49158F007932FE /* GHTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE20F49158F007932FE /* GHTestSuite.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002D9C150F49158F007932FE /* GHTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE30F49158F007932FE /* GHTestSuite.m */; };
+		002D9C160F49158F007932FE /* GHTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE40F49158F007932FE /* GHTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002D9C170F49158F007932FE /* GHTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE50F49158F007932FE /* GHTesting.m */; };
 		002D9C180F49158F007932FE /* GHUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE60F49158F007932FE /* GHUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C190F49158F007932FE /* GHTestViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9BE80F49158F007932FE /* GHTestViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		002D9C1A0F49158F007932FE /* GHTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BE90F49158F007932FE /* GHTestViewModel.m */; };
@@ -34,7 +45,7 @@
 		002D9C2B0F49158F007932FE /* GHNSObject+Invocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9BFE0F49158F007932FE /* GHNSObject+Invocation.m */; };
 		002D9C2F0F49158F007932FE /* GTMObjC2Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C040F49158F007932FE /* GTMObjC2Runtime.h */; settings = {ATTRIBUTES = (); }; };
 		002D9C300F49158F007932FE /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9C050F49158F007932FE /* GTMObjC2Runtime.m */; };
-		002D9C310F49158F007932FE /* GTMStackTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C060F49158F007932FE /* GTMStackTrace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		002D9C310F49158F007932FE /* GTMStackTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C060F49158F007932FE /* GTMStackTrace.h */; };
 		002D9C320F49158F007932FE /* GTMStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9C070F49158F007932FE /* GTMStackTrace.m */; };
 		002D9C330F49158F007932FE /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 002D9C080F49158F007932FE /* GTMDefines.h */; settings = {ATTRIBUTES = (); }; };
 		002E73BF0F2C219600427636 /* GHSenTestingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00970A2F0F2836CE00189A9D /* GHSenTestingTest.m */; };
@@ -46,26 +57,6 @@
 		003676950F8E95CF0042FAF7 /* GHMockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 003676930F8E95CF0042FAF7 /* GHMockNSURLConnection.m */; };
 		003676980F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 003676960F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		003676990F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 003676970F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.m */; };
-		0052C73B11BA0F10007F28FD /* GHTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C72D11BA0F10007F28FD /* GHTest.h */; };
-		0052C73C11BA0F10007F28FD /* GHTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C72E11BA0F10007F28FD /* GHTest.m */; };
-		0052C73D11BA0F10007F28FD /* GHTestGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C72F11BA0F10007F28FD /* GHTestGroup.h */; };
-		0052C73E11BA0F10007F28FD /* GHTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73011BA0F10007F28FD /* GHTestGroup.m */; };
-		0052C73F11BA0F10007F28FD /* GHTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73111BA0F10007F28FD /* GHTesting.h */; };
-		0052C74011BA0F10007F28FD /* GHTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73211BA0F10007F28FD /* GHTesting.m */; };
-		0052C74111BA0F10007F28FD /* GHTestRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73311BA0F10007F28FD /* GHTestRunner.h */; };
-		0052C74211BA0F10007F28FD /* GHTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73411BA0F10007F28FD /* GHTestRunner.m */; };
-		0052C74311BA0F10007F28FD /* GHTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73511BA0F10007F28FD /* GHTestSuite.h */; };
-		0052C74411BA0F10007F28FD /* GHTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73611BA0F10007F28FD /* GHTestSuite.m */; };
-		0052C74511BA0F10007F28FD /* NSException+GHTestFailureExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73711BA0F10007F28FD /* NSException+GHTestFailureExceptions.h */; };
-		0052C74611BA0F10007F28FD /* NSException+GHTestFailureExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73811BA0F10007F28FD /* NSException+GHTestFailureExceptions.m */; };
-		0052C74711BA0F10007F28FD /* NSValue+GHValueFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C73911BA0F10007F28FD /* NSValue+GHValueFormatter.h */; };
-		0052C74811BA0F10007F28FD /* NSValue+GHValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C73A11BA0F10007F28FD /* NSValue+GHValueFormatter.m */; };
-		0052C75011BA10B8007F28FD /* GHTestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C74E11BA10B8007F28FD /* GHTestOperation.h */; };
-		0052C75111BA10B8007F28FD /* GHTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C74F11BA10B8007F28FD /* GHTestOperation.m */; };
-		0052C75411BA10E6007F28FD /* GHTest+JUnitXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C75211BA10E6007F28FD /* GHTest+JUnitXML.h */; };
-		0052C75511BA10E6007F28FD /* GHTest+JUnitXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C75311BA10E6007F28FD /* GHTest+JUnitXML.m */; };
-		0052C76011BA127F007F28FD /* GHTestGroup+JUnitXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052C75E11BA127F007F28FD /* GHTestGroup+JUnitXML.h */; };
-		0052C76111BA127F007F28FD /* GHTestGroup+JUnitXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052C75F11BA127F007F28FD /* GHTestGroup+JUnitXML.m */; };
 		0052DE940FFEDC3800EDB178 /* BWSplitView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052DE8A0FFEDC3800EDB178 /* BWSplitView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0052DE950FFEDC3800EDB178 /* BWSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0052DE8B0FFEDC3800EDB178 /* BWSplitView.m */; };
 		0052DEBA0FFEDC8300EDB178 /* NSColor+BWAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0052DEA80FFEDC8300EDB178 /* NSColor+BWAdditions.h */; settings = {ATTRIBUTES = (); }; };
@@ -88,11 +79,6 @@
 		00CDDCC10F75D6970089C60E /* GHRegisterTestCaseClassTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */; };
 		00CDDCE00F76F7730089C60E /* GHSpecialTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDDCDF0F76F7730089C60E /* GHSpecialTestCase.m */; };
 		00CDDD300F76FABD0089C60E /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C1A2BE0F52813200FCCA14 /* GHUnitTestMain.m */; };
-		00D54B3610E4B88E00EE05E3 /* BWHyperlinkButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D54B3210E4B88E00EE05E3 /* BWHyperlinkButton.h */; };
-		00D54B3710E4B88E00EE05E3 /* BWHyperlinkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D54B3310E4B88E00EE05E3 /* BWHyperlinkButton.m */; };
-		00D54B3810E4B88E00EE05E3 /* BWHyperlinkButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D54B3410E4B88E00EE05E3 /* BWHyperlinkButtonCell.h */; };
-		00D54B3910E4B88E00EE05E3 /* BWHyperlinkButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D54B3510E4B88E00EE05E3 /* BWHyperlinkButtonCell.m */; };
-		00D54C9A10E5AF5F00EE05E3 /* GHTestLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D54C9910E5AF5F00EE05E3 /* GHTestLogTest.m */; };
 		00DCB7DC0FA4F1300022DA5A /* GHMockNSURLConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DCB7DA0FA4F1300022DA5A /* GHMockNSURLConnectionTest.m */; };
 		00DCB7DD0FA4F1300022DA5A /* GHNSLocaleMockTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DCB7DB0FA4F1300022DA5A /* GHNSLocaleMockTest.m */; };
 		00DCBB060FA523EC0022DA5A /* GHAsyncTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00772F910F8D7ABA00586577 /* GHAsyncTestCaseTest.m */; };
@@ -130,9 +116,20 @@
 		002057090F945D2700FC1898 /* GHNSLocale+Mock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHNSLocale+Mock.m"; sourceTree = "<group>"; };
 		0020584F0F9467F900FC1898 /* GHUNSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHUNSObject+Swizzle.h"; sourceTree = "<group>"; };
 		002058500F9467F900FC1898 /* GHUNSObject+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHUNSObject+Swizzle.m"; sourceTree = "<group>"; };
+		002D9BD80F49158F007932FE /* GHTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTest.h; sourceTree = "<group>"; };
+		002D9BD90F49158F007932FE /* GHTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTest.m; sourceTree = "<group>"; };
 		002D9BDA0F49158F007932FE /* GHTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestCase.h; sourceTree = "<group>"; };
 		002D9BDB0F49158F007932FE /* GHTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestCase.m; sourceTree = "<group>"; };
+		002D9BDC0F49158F007932FE /* GHTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestGroup.h; sourceTree = "<group>"; };
+		002D9BDD0F49158F007932FE /* GHTestGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestGroup.m; sourceTree = "<group>"; };
 		002D9BDE0F49158F007932FE /* GHTestMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestMacros.h; sourceTree = "<group>"; };
+		002D9BDF0F49158F007932FE /* GHTestMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestMacros.m; sourceTree = "<group>"; };
+		002D9BE00F49158F007932FE /* GHTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestRunner.h; sourceTree = "<group>"; };
+		002D9BE10F49158F007932FE /* GHTestRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestRunner.m; sourceTree = "<group>"; };
+		002D9BE20F49158F007932FE /* GHTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestSuite.h; sourceTree = "<group>"; };
+		002D9BE30F49158F007932FE /* GHTestSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestSuite.m; sourceTree = "<group>"; };
+		002D9BE40F49158F007932FE /* GHTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTesting.h; sourceTree = "<group>"; };
+		002D9BE50F49158F007932FE /* GHTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTesting.m; sourceTree = "<group>"; };
 		002D9BE60F49158F007932FE /* GHUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnit.h; sourceTree = "<group>"; };
 		002D9BE80F49158F007932FE /* GHTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestViewModel.h; sourceTree = "<group>"; };
 		002D9BE90F49158F007932FE /* GHTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestViewModel.m; sourceTree = "<group>"; };
@@ -162,26 +159,6 @@
 		003676930F8E95CF0042FAF7 /* GHMockNSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockNSURLConnection.m; sourceTree = "<group>"; };
 		003676960F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHMockNSHTTPURLResponse.h; sourceTree = "<group>"; };
 		003676970F8E976A0042FAF7 /* GHMockNSHTTPURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockNSHTTPURLResponse.m; sourceTree = "<group>"; };
-		0052C72D11BA0F10007F28FD /* GHTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTest.h; sourceTree = "<group>"; };
-		0052C72E11BA0F10007F28FD /* GHTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTest.m; sourceTree = "<group>"; };
-		0052C72F11BA0F10007F28FD /* GHTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestGroup.h; sourceTree = "<group>"; };
-		0052C73011BA0F10007F28FD /* GHTestGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestGroup.m; sourceTree = "<group>"; };
-		0052C73111BA0F10007F28FD /* GHTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTesting.h; sourceTree = "<group>"; };
-		0052C73211BA0F10007F28FD /* GHTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTesting.m; sourceTree = "<group>"; };
-		0052C73311BA0F10007F28FD /* GHTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestRunner.h; sourceTree = "<group>"; };
-		0052C73411BA0F10007F28FD /* GHTestRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestRunner.m; sourceTree = "<group>"; };
-		0052C73511BA0F10007F28FD /* GHTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestSuite.h; sourceTree = "<group>"; };
-		0052C73611BA0F10007F28FD /* GHTestSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestSuite.m; sourceTree = "<group>"; };
-		0052C73711BA0F10007F28FD /* NSException+GHTestFailureExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+GHTestFailureExceptions.h"; sourceTree = "<group>"; };
-		0052C73811BA0F10007F28FD /* NSException+GHTestFailureExceptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSException+GHTestFailureExceptions.m"; sourceTree = "<group>"; };
-		0052C73911BA0F10007F28FD /* NSValue+GHValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+GHValueFormatter.h"; sourceTree = "<group>"; };
-		0052C73A11BA0F10007F28FD /* NSValue+GHValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+GHValueFormatter.m"; sourceTree = "<group>"; };
-		0052C74E11BA10B8007F28FD /* GHTestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestOperation.h; sourceTree = "<group>"; };
-		0052C74F11BA10B8007F28FD /* GHTestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestOperation.m; sourceTree = "<group>"; };
-		0052C75211BA10E6007F28FD /* GHTest+JUnitXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHTest+JUnitXML.h"; sourceTree = "<group>"; };
-		0052C75311BA10E6007F28FD /* GHTest+JUnitXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHTest+JUnitXML.m"; sourceTree = "<group>"; };
-		0052C75E11BA127F007F28FD /* GHTestGroup+JUnitXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHTestGroup+JUnitXML.h"; sourceTree = "<group>"; };
-		0052C75F11BA127F007F28FD /* GHTestGroup+JUnitXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GHTestGroup+JUnitXML.m"; sourceTree = "<group>"; };
 		0052DE8A0FFEDC3800EDB178 /* BWSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSplitView.h; sourceTree = "<group>"; };
 		0052DE8B0FFEDC3800EDB178 /* BWSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSplitView.m; sourceTree = "<group>"; };
 		0052DEA80FFEDC8300EDB178 /* NSColor+BWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+BWAdditions.h"; sourceTree = "<group>"; };
@@ -207,6 +184,7 @@
 		00A954080FDC7539006A80A6 /* GHNSInvocationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHNSInvocationProxy.h; sourceTree = "<group>"; };
 		00A954090FDC7539006A80A6 /* GHNSInvocationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSInvocationProxy.m; sourceTree = "<group>"; };
 		00C1A2BE0F52813200FCCA14 /* GHUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitTestMain.m; sourceTree = "<group>"; };
+		00C1A2D80F52847700FCCA14 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
 		00CDDBC21011576E00F5C4D5 /* GHTestOutlineViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestOutlineViewModel.h; sourceTree = "<group>"; };
 		00CDDBC31011576E00F5C4D5 /* GHTestOutlineViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestOutlineViewModel.m; sourceTree = "<group>"; };
 		00CDDCC00F75D6970089C60E /* GHRegisterTestCaseClassTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHRegisterTestCaseClassTest.m; sourceTree = "<group>"; };
@@ -215,18 +193,8 @@
 		00CDDD2C0F76F9B30089C60E /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = SOURCE_ROOT; };
 		00CDDD2D0F76F9B30089C60E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
 		00CDDD800F76FC880089C60E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		00D54A1F10E470B600EE05E3 /* CombineLibs.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = CombineLibs.sh; sourceTree = "<group>"; };
-		00D54A2010E470B600EE05E3 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
-		00D54B3210E4B88E00EE05E3 /* BWHyperlinkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWHyperlinkButton.h; sourceTree = "<group>"; };
-		00D54B3310E4B88E00EE05E3 /* BWHyperlinkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWHyperlinkButton.m; sourceTree = "<group>"; };
-		00D54B3410E4B88E00EE05E3 /* BWHyperlinkButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWHyperlinkButtonCell.h; sourceTree = "<group>"; };
-		00D54B3510E4B88E00EE05E3 /* BWHyperlinkButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWHyperlinkButtonCell.m; sourceTree = "<group>"; };
-		00D54C9910E5AF5F00EE05E3 /* GHTestLogTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestLogTest.m; sourceTree = "<group>"; };
 		00DCB7DA0FA4F1300022DA5A /* GHMockNSURLConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockNSURLConnectionTest.m; sourceTree = "<group>"; };
 		00DCB7DB0FA4F1300022DA5A /* GHNSLocaleMockTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSLocaleMockTest.m; sourceTree = "<group>"; };
-		00F09A8E108D50F2000E5AB5 /* GHTestEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestEmpty.m; sourceTree = "<group>"; };
-		00F09ADC108D527A000E5AB5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		00F09ADE108D527A000E5AB5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -269,15 +237,26 @@
 		002D9BD70F49158F007932FE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0052C72C11BA0F10007F28FD /* GHTest */,
 				0036768D0F8E95A80042FAF7 /* Mock */,
-				002D9BE70F49158F007932FE /* SharedUI */,
+				002D9BD80F49158F007932FE /* GHTest.h */,
+				002D9BD90F49158F007932FE /* GHTest.m */,
 				002D9BDA0F49158F007932FE /* GHTestCase.h */,
 				002D9BDB0F49158F007932FE /* GHTestCase.m */,
 				00772F8A0F8D7A6400586577 /* GHAsyncTestCase.h */,
 				00772F8B0F8D7A6400586577 /* GHAsyncTestCase.m */,
+				002D9BDC0F49158F007932FE /* GHTestGroup.h */,
+				002D9BDD0F49158F007932FE /* GHTestGroup.m */,
 				002D9BDE0F49158F007932FE /* GHTestMacros.h */,
+				002D9BDF0F49158F007932FE /* GHTestMacros.m */,
+				002D9BE00F49158F007932FE /* GHTestRunner.h */,
+				002D9BE10F49158F007932FE /* GHTestRunner.m */,
+				002D9BE20F49158F007932FE /* GHTestSuite.h */,
+				002D9BE30F49158F007932FE /* GHTestSuite.m */,
+				002D9BE40F49158F007932FE /* GHTesting.h */,
+				002D9BE50F49158F007932FE /* GHTesting.m */,
 				002D9BE60F49158F007932FE /* GHUnit.h */,
+				002D9BE70F49158F007932FE /* SharedUI */,
+				00C1A2D80F52847700FCCA14 /* RunTests.sh */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -379,33 +358,6 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
-		0052C72C11BA0F10007F28FD /* GHTest */ = {
-			isa = PBXGroup;
-			children = (
-				0052C72D11BA0F10007F28FD /* GHTest.h */,
-				0052C72E11BA0F10007F28FD /* GHTest.m */,
-				0052C75211BA10E6007F28FD /* GHTest+JUnitXML.h */,
-				0052C75311BA10E6007F28FD /* GHTest+JUnitXML.m */,
-				0052C74E11BA10B8007F28FD /* GHTestOperation.h */,
-				0052C74F11BA10B8007F28FD /* GHTestOperation.m */,
-				0052C72F11BA0F10007F28FD /* GHTestGroup.h */,
-				0052C73011BA0F10007F28FD /* GHTestGroup.m */,
-				0052C75E11BA127F007F28FD /* GHTestGroup+JUnitXML.h */,
-				0052C75F11BA127F007F28FD /* GHTestGroup+JUnitXML.m */,
-				0052C73111BA0F10007F28FD /* GHTesting.h */,
-				0052C73211BA0F10007F28FD /* GHTesting.m */,
-				0052C73311BA0F10007F28FD /* GHTestRunner.h */,
-				0052C73411BA0F10007F28FD /* GHTestRunner.m */,
-				0052C73511BA0F10007F28FD /* GHTestSuite.h */,
-				0052C73611BA0F10007F28FD /* GHTestSuite.m */,
-				0052C73711BA0F10007F28FD /* NSException+GHTestFailureExceptions.h */,
-				0052C73811BA0F10007F28FD /* NSException+GHTestFailureExceptions.m */,
-				0052C73911BA0F10007F28FD /* NSValue+GHValueFormatter.h */,
-				0052C73A11BA0F10007F28FD /* NSValue+GHValueFormatter.m */,
-			);
-			path = GHTest;
-			sourceTree = "<group>";
-		};
 		0052DE880FFEDC3800EDB178 /* Libraries-MaxOSX */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,10 +370,6 @@
 		0052DE890FFEDC3800EDB178 /* BWToolkitFramework */ = {
 			isa = PBXGroup;
 			children = (
-				00D54B3210E4B88E00EE05E3 /* BWHyperlinkButton.h */,
-				00D54B3310E4B88E00EE05E3 /* BWHyperlinkButton.m */,
-				00D54B3410E4B88E00EE05E3 /* BWHyperlinkButtonCell.h */,
-				00D54B3510E4B88E00EE05E3 /* BWHyperlinkButtonCell.m */,
 				0052DEFD0FFEDEBD00EDB178 /* GradientSplitViewDimpleBitmap.tif */,
 				0052DEFE0FFEDEBD00EDB178 /* GradientSplitViewDimpleVector.pdf */,
 				0052DEA80FFEDC8300EDB178 /* NSColor+BWAdditions.h */,
@@ -471,21 +419,9 @@
 				0091B12A100EEE9B000B8C77 /* GHTestFail.m */,
 				0016AEC81012A11B009F4F8F /* GHTestOnMainThread.m */,
 				00A22E7D102214FA00337F7B /* GHTestMacrosTest.m */,
-				00F09A8E108D50F2000E5AB5 /* GHTestEmpty.m */,
-				00D54C9910E5AF5F00EE05E3 /* GHTestLogTest.m */,
 			);
 			name = Tests;
 			path = ../Tests;
-			sourceTree = SOURCE_ROOT;
-		};
-		00D54A1E10E470B600EE05E3 /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				00D54A1F10E470B600EE05E3 /* CombineLibs.sh */,
-				00D54A2010E470B600EE05E3 /* RunTests.sh */,
-			);
-			name = Scripts;
-			path = ../Scripts;
 			sourceTree = SOURCE_ROOT;
 		};
 		034768DFFF38A50411DB9C8B /* Products */ = {
@@ -509,13 +445,10 @@
 				0052DE880FFEDC3800EDB178 /* Libraries-MaxOSX */,
 				009DD7A40F26EC6C0058A2B0 /* Tests */,
 				0062B73B0F2C1F9200B0562A /* XcodeConfig */,
-				00D54A1E10E470B600EE05E3 /* Scripts */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
-				00F09ADC108D527A000E5AB5 /* Cocoa.framework */,
-				00F09ADE108D527A000E5AB5 /* Foundation.framework */,
 			);
 			name = GHUnit;
 			sourceTree = "<group>";
@@ -574,8 +507,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				002D9C0A0F49158F007932FE /* GHTest.h in Headers */,
 				002D9C0C0F49158F007932FE /* GHTestCase.h in Headers */,
+				002D9C0E0F49158F007932FE /* GHTestGroup.h in Headers */,
 				002D9C100F49158F007932FE /* GHTestMacros.h in Headers */,
+				002D9C120F49158F007932FE /* GHTestRunner.h in Headers */,
+				002D9C140F49158F007932FE /* GHTestSuite.h in Headers */,
+				002D9C160F49158F007932FE /* GHTesting.h in Headers */,
 				002D9C180F49158F007932FE /* GHUnit.h in Headers */,
 				002D9C190F49158F007932FE /* GHTestViewModel.h in Headers */,
 				002D9C1B0F49158F007932FE /* GHTestApp.h in Headers */,
@@ -596,18 +534,6 @@
 				0052DEBA0FFEDC8300EDB178 /* NSColor+BWAdditions.h in Headers */,
 				0052DEBD0FFEDC8300EDB178 /* NSEvent+BWAdditions.h in Headers */,
 				00CDDBC41011576E00F5C4D5 /* GHTestOutlineViewModel.h in Headers */,
-				00D54B3610E4B88E00EE05E3 /* BWHyperlinkButton.h in Headers */,
-				00D54B3810E4B88E00EE05E3 /* BWHyperlinkButtonCell.h in Headers */,
-				0052C73B11BA0F10007F28FD /* GHTest.h in Headers */,
-				0052C73D11BA0F10007F28FD /* GHTestGroup.h in Headers */,
-				0052C73F11BA0F10007F28FD /* GHTesting.h in Headers */,
-				0052C74111BA0F10007F28FD /* GHTestRunner.h in Headers */,
-				0052C74311BA0F10007F28FD /* GHTestSuite.h in Headers */,
-				0052C74511BA0F10007F28FD /* NSException+GHTestFailureExceptions.h in Headers */,
-				0052C74711BA0F10007F28FD /* NSValue+GHValueFormatter.h in Headers */,
-				0052C75011BA10B8007F28FD /* GHTestOperation.h in Headers */,
-				0052C75411BA10E6007F28FD /* GHTest+JUnitXML.h in Headers */,
-				0052C76011BA127F007F28FD /* GHTestGroup+JUnitXML.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,8 +635,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = ../Scripts/RunTests.sh;
-			showEnvVarsInLog = 0;
+			shellScript = ../Classes/RunTests.sh;
 		};
 		D0A618B8104E425E00184D93 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -746,7 +671,6 @@
 				0091B12B100EEE9B000B8C77 /* GHTestFail.m in Sources */,
 				0016AEC91012A11B009F4F8F /* GHTestOnMainThread.m in Sources */,
 				00A22E7E102214FA00337F7B /* GHTestMacrosTest.m in Sources */,
-				00D54C9A10E5AF5F00EE05E3 /* GHTestLogTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,7 +678,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				002D9C0B0F49158F007932FE /* GHTest.m in Sources */,
 				002D9C0D0F49158F007932FE /* GHTestCase.m in Sources */,
+				002D9C0F0F49158F007932FE /* GHTestGroup.m in Sources */,
+				002D9C110F49158F007932FE /* GHTestMacros.m in Sources */,
+				002D9C130F49158F007932FE /* GHTestRunner.m in Sources */,
+				002D9C150F49158F007932FE /* GHTestSuite.m in Sources */,
+				002D9C170F49158F007932FE /* GHTesting.m in Sources */,
 				002D9C1A0F49158F007932FE /* GHTestViewModel.m in Sources */,
 				002D9C1C0F49158F007932FE /* GHTestApp.m in Sources */,
 				002D9C220F49158F007932FE /* GHTestViewController.m in Sources */,
@@ -773,18 +703,6 @@
 				0052DEBB0FFEDC8300EDB178 /* NSColor+BWAdditions.m in Sources */,
 				0052DEBE0FFEDC8300EDB178 /* NSEvent+BWAdditions.m in Sources */,
 				00CDDBC51011576E00F5C4D5 /* GHTestOutlineViewModel.m in Sources */,
-				00D54B3710E4B88E00EE05E3 /* BWHyperlinkButton.m in Sources */,
-				00D54B3910E4B88E00EE05E3 /* BWHyperlinkButtonCell.m in Sources */,
-				0052C73C11BA0F10007F28FD /* GHTest.m in Sources */,
-				0052C73E11BA0F10007F28FD /* GHTestGroup.m in Sources */,
-				0052C74011BA0F10007F28FD /* GHTesting.m in Sources */,
-				0052C74211BA0F10007F28FD /* GHTestRunner.m in Sources */,
-				0052C74411BA0F10007F28FD /* GHTestSuite.m in Sources */,
-				0052C74611BA0F10007F28FD /* NSException+GHTestFailureExceptions.m in Sources */,
-				0052C74811BA0F10007F28FD /* NSValue+GHValueFormatter.m in Sources */,
-				0052C75111BA10B8007F28FD /* GHTestOperation.m in Sources */,
-				0052C75511BA10E6007F28FD /* GHTest+JUnitXML.m in Sources */,
-				0052C76111BA127F007F28FD /* GHTestGroup+JUnitXML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,10 +732,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/../Frameworks\"",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -845,7 +763,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -882,7 +799,10 @@
 				CURRENT_PROJECT_VERSION = "$(GHUNIT_VERSION)";
 				DYLIB_COMPATIBILITY_VERSION = 0;
 				DYLIB_CURRENT_VERSION = "$(GHUNIT_VERSION)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Libraries-MacOSX\"",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -895,7 +815,6 @@
 				GTM_CONFIGURATION_GCC_PREPROCESSOR_DEFINITIONS = "_GLIBCXX_DEBUG_PEDANTIC _GLIBCXX_DEBUG _GLIBCPP_CONCEPT_CHECKS";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = GHUnit;
 				VERSION_INFO_EXPORT_DECL = GHUNIT_VERSION;
 				WRAPPER_EXTENSION = framework;
@@ -907,7 +826,6 @@
 			baseConfigurationReference = 006307900F8E760800C9602A /* Shared.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 0;
 				DYLIB_CURRENT_VERSION = "$(GHUNIT_VERSION)";
@@ -922,6 +840,7 @@
 				GCC_PREFIX_HEADER = GHUnit_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = GHUnit;
 				WRAPPER_EXTENSION = framework;

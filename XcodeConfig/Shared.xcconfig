@@ -1,17 +1,14 @@
-GHUNIT_VERSION = 0.4.22
+GHUNIT_VERSION = 0.4.10
 
 GHUNIT_GENERAL_OTHER_CFLAGS = -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition
 
 OTHER_CFLAGS = $(inherited) $(GHUNIT_GENERAL_OTHER_CFLAGS)
 
-GCC_TREAT_WARNINGS_AS_ERRORS = NO // TODO(gabe): Fix warning
-
-CURRENT_PROJECT_VERSION = ${GHUNIT_VERSION}
+GCC_TREAT_WARNINGS_AS_ERRORS=YES
 
 // Static libs can be included in bundles so make them position independent
 GCC_DYNAMIC_NO_PIC = NO
 
-// Static libs should not have their internal globals or external symbols stripped.
+//  Static libs should not have their internal globals or external symbols
+//  stripped.
 STRIP_STYLE = debugging
-
-PRODUCT_NAME = GHUnit

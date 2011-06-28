@@ -1,6 +1,6 @@
 //
-//  GHNSLocale+Mock.h
-//  GHUnit
+//  GHMockNSLocale.m
+//  GHUnitIPhone
 //
 //  Created by Gabriel Handford on 4/13/09.
 //  Copyright 2009. All rights reserved.
@@ -38,7 +38,7 @@ static NSArray *gGHUNSLocalePreferredLanguages = NULL;
 static BOOL gGHUNSLocaleMockSetup = NO;
 
 + (void)_gh_setUpMock {
-	@synchronized([NSLocale class]) {
+	@synchronized([self class]) {
 		if (!gGHUNSLocaleMockSetup) {
 			// TODO(gabe): Check and handle swizzle errors
 			[NSLocale ghu_swizzleClassMethod:@selector(currentLocale) withClassMethod:@selector(gh_currentLocale)];
@@ -65,7 +65,7 @@ static BOOL gGHUNSLocaleMockSetup = NO;
 	if (gGHUNSLocaleLocaleIdentifier != NULL) {
 		return [[[NSLocale alloc] initWithLocaleIdentifier:gGHUNSLocaleLocaleIdentifier] autorelease];
 	} else {
-		return [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+		return [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];;
 	}
 }
 

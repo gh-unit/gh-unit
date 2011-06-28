@@ -147,10 +147,6 @@ static GHTesting *gSharedInstance;
 
 - (NSArray *)loadTestsFromTarget:(id)target {
 	NSMutableArray *tests = [NSMutableArray array];
-    
-    if ([target respondsToSelector:@selector(loadDynamicTestCases)]) {
-        [target performSelector:@selector(loadDynamicTestCases)];
-    }
 	
 	unsigned int methodCount;
 	Method *methods = class_copyMethodList([target class], &methodCount);

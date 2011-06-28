@@ -15,5 +15,4 @@ clean:
 
 test:
 	GHUNIT_CLI=1 $(COMMAND) -target $(TEST_TARGET) -configuration Debug -sdk $(SDK) build
-
 	

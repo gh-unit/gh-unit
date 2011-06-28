@@ -36,6 +36,5 @@
 @property (retain, nonatomic) IBOutlet GHTestViewController *viewController;
 
 - (IBAction)runTests:(id)sender;
-- (IBAction)copy:(id)sender;
-
+- (IBAction)edit:(id)sender;
 @end

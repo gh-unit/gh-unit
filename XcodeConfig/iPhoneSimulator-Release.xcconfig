@@ -1,8 +1,0 @@
-
-#include "Shared-iPhone.xcconfig"
-
-SDKROOT = iphonesimulator4.0
-PRODUCT_NAME = GHUnitIPhoneSimulator3_0
-
-
-
