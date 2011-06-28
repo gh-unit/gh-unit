@@ -27,13 +27,15 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHUNSObject+Swizzle.h"
 
 #import <objc/runtime.h>
 
 BOOL GHU_PerformSwizzle(Class klass, SEL origSel, SEL altSel, BOOL forInstance);
 
-@implementation NSObject (GHUSwizzle)
+@implementation NSObject(GHUSwizzle)
 
 + (void)ghu_swizzleMethod:(SEL)original withMethod:(SEL)alternate {
 	GHU_PerformSwizzle([self class], original, alternate, YES);
@@ -55,7 +57,7 @@ BOOL GHU_PerformSwizzle(Class klass, SEL origSel, SEL altSel, BOOL forInstance) 
 	// Look for the methods in the implementation of the immediate class
 	Class iterKlass = (forInstance ? klass : klass->isa);
 	Method origMethod = NULL, altMethod = NULL;
-	NSUInteger methodCount = 0;
+	unsigned int methodCount = 0;
 	Method *mlist = class_copyMethodList(iterKlass, &methodCount);
 	if ( mlist != NULL ) {
 		int i;
@@ -125,3 +127,5 @@ BOOL GHU_PerformSwizzle(Class klass, SEL origSel, SEL altSel, BOOL forInstance) 
 	
 	return YES;
 }
+
+//! @endcond

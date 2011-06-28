@@ -45,14 +45,16 @@
 	self.window.contentView = viewController_.view;	
 	NSString *bundleVersion = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"CFBundleVersion"];
 	self.window.title = [NSString stringWithFormat:@"GHUnit %@", bundleVersion];	
+  
+  if (getenv("GHUNIT_AUTORUN")) [self runTests:nil];
 }
 
 - (IBAction)runTests:(id)sender {
-    [viewController_ runTests];
+  [viewController_ runTests];
 }
 
-- (IBAction)edit:(id)sender {
-    [viewController_ edit:sender];
+- (IBAction)copy:(id)sender {
+  [viewController_ copy:sender];
 }
 
 - (void)dealloc {
@@ -62,6 +64,11 @@
 
 - (void)windowWillClose:(NSNotification *)notification {
 	[[NSApplication sharedApplication] terminate:self];
+}
+
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
+  if ([viewController_ isShowingDetails] && frameSize.width < 600) return sender.frame.size;
+  return frameSize;
 }
 
 @end

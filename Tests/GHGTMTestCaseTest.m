@@ -15,7 +15,7 @@
 @implementation GHGTMTestCaseTest
 
 - (void)test {
-	STAssertTrue(YES, nil);
+  STAssertTrue(YES, nil);
 }
 
 @end

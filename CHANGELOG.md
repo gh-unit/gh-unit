@@ -1,3 +1,82 @@
+# Release 0.4.28
+- Building as GHUnitIOS.framework for iOS.
+- Fix issue #37
+- Fix issue #38
+- Fix issue #39
+- Fix issue #36
+- Fix issue #19
+
+# Release 0.4.27
+- Added in GHUnitIPhoneAppDelegate for subclassing test app delegate
+
+# Release 0.4.26
+- Fixing LLVM/clang warnings (Whitney Young, nolanw)
+- GHAssertNotEqualStrings will allow for nils (Rusty Zarse)
+- Build warnings under 10.6 (MacOSX); (zykloid)
+- Better error handling on JUnit XML results writing (zykloid)
+- GHAsyncTestCase#runForInterval (Adapted from Robert Palmer, pauseForTimeout)
+
+# Release 0.4.25
+- Set DEPLOYMENT_POSTPROCESSING (MacOSX); So breakpointing doesn't warn about missing symbols
+
+# Release 0.4.24
+- Moved build settings into xcconfig (MacOSX)
+- Striping linked build
+
+# Release 0.4.21
+- Moved build settings into xcconfig (iPhone)
+- Flexible layouts; Works in iPad as universal app
+
+# Release 0.4.20
+- Fix armv6/armv7 device build setting
+
+# Release 0.4.19
+- Fix autorun env on iPhone
+- Added re-run test (experimental!)
+- Test log viewer (iPhone)
+- Showing time in tests vs time running
+
+# Release 0.4.18
+- Fixing test stats on parallel running
+- Adding reraiseException options (MacOSX)
+- Adding env var support for reraise and autorun (see README)
+- Smaller font size for test view (iPhone)
+- Show filename/line number in trace on failure
+- Show link to exception filename on failure (MacOSX)
+- Fix bug where test trace/log doesn't update if selected before running
+
+# Release 0.4.17
+- Fixing disabled on new test bug
+- Fixing bugs with All/Failed/Edit views not showing tests properly (MacOSX)
+
+# Release 0.4.16
+- Fixing hidden tests bug
+
+# Release 0.4.15
+- Text filter (MacOSX)
+- Text filter now searches test case and test names (prefix)
+- Failed filter (MacOSX/iPhone)
+- Copy text in text view (MacOSX)
+- Remember test state
+
+# Release 0.4.14
+- Fix window resizing when showing details
+- Adding test for 0 found test cases
+
+# Release 0.4.13
+- Fixing framework build: Header error and 32/64 bit universal (MacOSX)
+- Fixing SenTest macros not failing correctly
+- Fixing persist of test enabled/disabled state
+- Fixing SenTest macros
+
+# Release 0.4.12
+- Fixing compile warning in main (iPhone)
+
+# Release 0.4.11
+- Added value formatter (from http://github.com/JohannesRudolph); For better Assert error messages.
+- Fixed deprecation warning (iPhone)
+- Added default exception handler to give stack trace if triggered outside of GHUnit run
+
 # Release 0.4.10
 - Added Search Bar
 - Added GHTestSuite#suiteWithPrefix:options

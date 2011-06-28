@@ -27,6 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//! @cond DEV
+
 #import "GHMockNSURLConnection.h"
 #import "GHMockNSHTTPURLResponse.h"
 #import "GHNSObject+Invocation.h"
@@ -55,9 +57,9 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 	[super dealloc];
 }
 
-- (void)scheduleInRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode {
-	// Noop
-}
+- (void)scheduleInRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode { }
+
+- (void)unscheduleFromRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode { }
 
 #pragma mark -
 
@@ -91,7 +93,11 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 }
 
 - (void)receiveFromPath:(NSString *)path statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay {
-	NSData *data = [self loadDataFromPath:path];
+  NSData *data = [self loadDataFromPath:path];
+  [self receiveData:data statusCode:statusCode MIMEType:MIMEType afterDelay:delay];
+}
+
+- (void)receiveData:(NSData *)data statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay {	
 	GHMockNSHTTPURLResponse *response = [[[GHMockNSHTTPURLResponse alloc] initWithURL:[request_ URL] 
 																																					 MIMEType:MIMEType
 																															expectedContentLength:[data length] 
@@ -119,3 +125,5 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 }
 
 @end
+
+//! @endcond
