@@ -274,8 +274,6 @@ NSString *const GHUnitFilterKey = @"Filter";
   
   // Save defaults after test run
   [self saveDefaults];
-
-    if (getenv("GHUNIT_CLI")) exit(runner.stats.failureCount);
 }
 
 #pragma mark Delegates (UISearchBar)
