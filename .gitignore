@@ -1,7 +1,7 @@
 GHUnit.docset
 Makefile
-Project
-Project-IPhone
+Project-MacOSX
+Project-iOS
 Examples
 Classes
 Libraries
