@@ -1,0 +1,347 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/SenTestCase">SenTestCase</A></H1></FONT><BR>
+
+
+
+	<blockquote><DL><DT><B>Inherits From:</B></DT>  
+	<DD>SenTest</DD>
+</DL></blockquote>
+
+
+
+	<blockquote><DL><DT><B>Conforms To:</B></DT>
+	<DD>NSCoding</DD>
+</DL></blockquote>
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>SenTestCase.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Class Description</H2>
+A test case defines the fixture to run multiple tests. To define a test case:<P>
+
+1) create a subclass of SenTestCase<P>
+
+2) implement test methods<P>
+
+3) optionally define instance variables that store the state of the fixture<P>
+
+4) optionally initialize the fixture state by overriding setUp<P>
+
+5) optionally clean-up after a test by overriding tearDown.<P>
+
+Test methods with no parameters, returning no value, and prefixed with 'test', such as: 
+<CODE>&nbsp;&nbsp;&nbsp;&nbsp; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;- (void) testSomething; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;</CODE><P>
+
+are automatically recognized as test cases by the SenTestingKit framework. Each SenTestCase subclass' defaultTestSuite is a SenTestSuite which includes theses tests.<P>
+
+Test methods implementations usually contains assertions that must be verified for the test to pass: the STAssertTrue() macro defined below. Here is an example:<P>
+
+<CODE>&nbsp;&nbsp;&nbsp;&nbsp; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;@interface MathTest : SenTestCase <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float f1; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float f2; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;- (void) testAddition; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;@end<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;@implementation MathTest <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;- (void) setUp <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f1 = 2.0; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f2 = 3.0; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;- (void) testAddition <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STAssertTrue (f1 + f2 == 5.0, @&quot;<I>f</I> + <I>f</I> should equal 5.0&quot;, f1, f2); <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;@end <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;</CODE>
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Macro Definitions</H2>
+	<blockquote>
+	
+		
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertNotNil">STAssertNotNil</A></B>(a1, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertTrue">STAssertTrue</A></B>(expression, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertFalse">STAssertFalse</A></B>(expression, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertEqualObjects">STAssertEqualObjects</A></B>(a1, a2, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertEquals">STAssertEquals</A></B>(a1, a2, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertEqualsWithAccuracy">STAssertEqualsWithAccuracy</A></B>(left, right, accuracy, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertThrows">STAssertThrows</A></B>(expression, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertThrowsSpecific">STAssertThrowsSpecific</A></B>(expression, specificException, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertThrowsSpecificNamed">STAssertThrowsSpecificNamed</A></B>(expr, specificException, aName, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertNoThrow">STAssertNoThrow</A></B>(expression, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertNoThrowSpecific">STAssertNoThrowSpecific</A></B>(expression, specificException, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertNoThrowSpecificNamed">STAssertNoThrowSpecificNamed</A></B>(expr, specificException, aName, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STFail">STFail</A></B>(description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertTrueNoThrow">STAssertTrueNoThrow</A></B>(expression, description, ...)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/STAssertFalseNoThrow">STAssertFalseNoThrow</A></B>(expression, description, ...)</CODE><BR>
+		
+		
+	
+		<hr WIDTH=25% ALIGN=LEFT>
+		<H4>Synopsis:</H4>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/should">should</A></B>(expression)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/should1">should1</A></B>(expression,description)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldnt">shouldnt</A></B>(expression)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldnt1">shouldnt1</A></B>(expression,description)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldBeEqual">shouldBeEqual</A></B>(left,right)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldBeEqual1">shouldBeEqual1</A></B>(left,right,description)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldRaise">shouldRaise</A></B>(expression)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldRaise1">shouldRaise1</A></B>(expression,description)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldntRaise">shouldntRaise</A></B>(expression)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldntRaise1">shouldntRaise1</A></B>(expression,description)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/fail">fail</A></B>()</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/fail1">fail1</A></B>(description)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldnoraise">shouldnoraise</A></B>(expression)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/should1noraise">should1noraise</A></B>(expression,description)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldntnoraise">shouldntnoraise</A></B>(expression)</CODE><BR>
+		
+			<CODE><B><A NAME="//apple_ref/c/func/shouldnt1noraise">shouldnt1noraise</A></B>(expression,description)</CODE><BR>
+		
+		
+		<H4>Description:</H4>
+		These marcos are deprecated
+		
+	
+	</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Variables</H2>
+	<blockquote>
+	
+		<CODE>NSInvocation *<B>invocation</B>;</CODE><BR>
+		<CODE>SenTestCaseRun *<B>run</B>;</CODE><BR>
+		<CODE>SEL <B>failureAction</B>;</CODE><BR>
+	<P><TABLE>
+	
+		<TR><TD>invocation</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>run</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>failureAction</TD><TD>No description.</TD></TR>
+	
+	</TABLE>
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+			Creating test cases
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#+ testCaseWithInvocation:">+ testCaseWithInvocation:</A></DD>
+		
+			<DD> <A HREF="#- initWithInvocation:">- initWithInvocation:</A></DD>
+		
+			<DD> <A HREF="#+ testCaseWithSelector:">+ testCaseWithSelector:</A></DD>
+		
+			<DD> <A HREF="#- initWithSelector:">- initWithSelector:</A></DD>
+		
+		</DL>
+	
+		
+			Setting and returning invocation and selector
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- setInvocation:">- setInvocation:</A></DD>
+		
+			<DD> <A HREF="#- invocation">- invocation</A></DD>
+		
+			<DD> <A HREF="#- selector">- selector</A></DD>
+		
+		</DL>
+	
+		
+			Setting test case behavior after a failure
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- continueAfterFailure">- continueAfterFailure</A></DD>
+		
+			<DD> <A HREF="#- raiseAfterFailure">- raiseAfterFailure</A></DD>
+		
+		</DL>
+	
+		
+			Failing a test, used by all macros
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- failWithException:">- failWithException:</A></DD>
+		
+		</DL>
+	
+		
+			Returning the class' test methods
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#+ testInvocations">+ testInvocations</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Class Methods</H2>
+ 
+	
+		
+		<A NAME="+ testCaseWithInvocation:"></A><H3><A NAME="//apple_ref/occ/clm/SenTestCase/testCaseWithInvocation:">testCaseWithInvocation:</A></H3>
+		<CODE>+ (id)<B>testCaseWithInvocation:</B>(NSInvocation *)<EM>anInvocation</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ testCaseWithSelector:"></A><H3><A NAME="//apple_ref/occ/clm/SenTestCase/testCaseWithSelector:">testCaseWithSelector:</A></H3>
+		<CODE>+ (id)<B>testCaseWithSelector:</B>(SEL)<EM>aSelector</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ testInvocations"></A><H3><A NAME="//apple_ref/occ/clm/SenTestCase/testInvocations">testInvocations</A></H3>
+		<CODE>+ (NSArray *)<B>testInvocations</B>
+		</CODE><P>
+		No method description.
+	
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- continueAfterFailure"></A><H3><A NAME="//apple_ref/occ/instm/SenTestCase/continueAfterFailure">continueAfterFailure</A></H3><P>
+		<CODE>- (void)<B>continueAfterFailure</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- failWithException:"></A><H3><A NAME="//apple_ref/occ/instm/SenTestCase/failWithException:">failWithException:</A></H3><P>
+		<CODE>- (void)<B>failWithException:</B>(NSException *)<EM>anException</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- initWithInvocation:"></A><H3><A NAME="//apple_ref/occ/instm/SenTestCase/initWithInvocation:">initWithInvocation:</A></H3><P>
+		<CODE>- (id)<B>initWithInvocation:</B>(NSInvocation *)<EM>anInvocation</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- initWithSelector:"></A><H3><A NAME="//apple_ref/occ/instm/SenTestCase/initWithSelector:">initWithSelector:</A></H3><P>
+		<CODE>- (id)<B>initWithSelector:</B>(SEL)<EM>aSelector</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- invocation"></A><H3><A NAME="//apple_ref/occ/instm/SenTestCase/invocation">invocation</A></H3><P>
+		<CODE>- (NSInvocation *)<B>invocation</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- raiseAfterFailure"></A><H3><A NAME="//apple_ref/occ/instm/SenTestCase/raiseAfterFailure">raiseAfterFailure</A></H3><P>
+		<CODE>- (void)<B>raiseAfterFailure</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- selector"></A><H3><A NAME="//apple_ref/occ/instm/SenTestCase/selector">selector</A></H3><P>
+		<CODE>- (SEL)<B>selector</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setInvocation:"></A><H3><A NAME="//apple_ref/occ/instm/SenTestCase/setInvocation:">setInvocation:</A></H3><P>
+		<CODE>- (void)<B>setInvocation:</B>(NSInvocation *)<EM>anInvocation</EM>
+			
+		</CODE><P>
+		No method description.
+	
+
+
+
+
+<P><HR>
+CVS Version 1.24 Copyright &copy;2005 by Sente SA.  All Rights Reserved.   Fri Apr 01 13:49:06 2005
+<P>
+</BODY></HTML>

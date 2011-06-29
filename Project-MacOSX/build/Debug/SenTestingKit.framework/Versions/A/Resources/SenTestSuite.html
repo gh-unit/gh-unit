@@ -1,0 +1,190 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/SenTestSuite">SenTestSuite</A></H1></FONT><BR>
+
+
+
+	<blockquote><DL><DT><B>Inherits From:</B></DT>  
+	<DD>SenTest</DD>
+</DL></blockquote>
+
+
+
+	<blockquote><DL><DT><B>Conforms To:</B></DT>
+	<DD>NSCoding</DD>
+</DL></blockquote>
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>SenTestSuite.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Class Description</H2>
+A TestSuite is a Composite of Tests. It runs a collection of test cases. Here is an example using the dynamic test definition.<P>
+
+<CODE>&nbsp;&nbsp;&nbsp;&nbsp; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;SenTestSuite *suite= [SenTestSuite testSuiteWithName:@&quot;My tests&quot;]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;[suite addTest: [MathTest testCaseWithSelector:@selector(testAdd)]]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;[suite addTest: [MathTest testCaseWithSelector:@selector(testDivideByZero)]]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;</CODE><P>
+
+Alternatively, a TestSuite can extract the tests to be run automatically. To do so you pass the class of your TestCase class to the TestSuite constructor.<P>
+
+<CODE>&nbsp;&nbsp;&nbsp;&nbsp; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;SenTestSuite *suite= [SenTestSuite testSuiteForTestCaseClass:[MathTest class]]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;</CODE><P>
+
+This creates a suite with all the methods starting with &quot;test&quot; that take no arguments.<P>
+
+And finally, a TestSuite of all the test cases found in the runtime can be created automatically:<P>
+
+<CODE>&nbsp;&nbsp;&nbsp;&nbsp; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;SenTestSuite *suite = [SenTestSuite defaultTestSuite]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;</CODE><P>
+
+This creates a suite of suites with all the SenTestCase subclasses methods starting with &quot;test&quot; that take no arguments.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Variables</H2>
+	<blockquote>
+	
+		<CODE>NSString *<B>name</B>;</CODE><BR>
+		<CODE>NSMutableArray *<B>tests</B>;</CODE><BR>
+	<P><TABLE>
+	
+		<TR><TD>name</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>tests</TD><TD>No description.</TD></TR>
+	
+	</TABLE>
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#+ defaultTestSuite">+ defaultTestSuite</A></DD>
+		
+			<DD> <A HREF="#+ testSuiteForBundlePath:">+ testSuiteForBundlePath:</A></DD>
+		
+			<DD> <A HREF="#+ testSuiteForTestCaseWithName:">+ testSuiteForTestCaseWithName:</A></DD>
+		
+			<DD> <A HREF="#+ testSuiteForTestCaseClass:">+ testSuiteForTestCaseClass:</A></DD>
+		
+			<DD> <A HREF="#+ testSuiteWithName:">+ testSuiteWithName:</A></DD>
+		
+			<DD> <A HREF="#- initWithName:">- initWithName:</A></DD>
+		
+			<DD> <A HREF="#- addTest:">- addTest:</A></DD>
+		
+			<DD> <A HREF="#- addTestsEnumeratedBy:">- addTestsEnumeratedBy:</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Class Methods</H2>
+ 
+	
+		
+		<A NAME="+ defaultTestSuite"></A><H3><A NAME="//apple_ref/occ/clm/SenTestSuite/defaultTestSuite">defaultTestSuite</A></H3>
+		<CODE>+ (id)<B>defaultTestSuite</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ testSuiteForBundlePath:"></A><H3><A NAME="//apple_ref/occ/clm/SenTestSuite/testSuiteForBundlePath:">testSuiteForBundlePath:</A></H3>
+		<CODE>+ (id)<B>testSuiteForBundlePath:</B>(NSString *)<EM>bundlePath</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ testSuiteForTestCaseClass:"></A><H3><A NAME="//apple_ref/occ/clm/SenTestSuite/testSuiteForTestCaseClass:">testSuiteForTestCaseClass:</A></H3>
+		<CODE>+ (id)<B>testSuiteForTestCaseClass:</B>(Class)<EM>aClass</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ testSuiteForTestCaseWithName:"></A><H3><A NAME="//apple_ref/occ/clm/SenTestSuite/testSuiteForTestCaseWithName:">testSuiteForTestCaseWithName:</A></H3>
+		<CODE>+ (id)<B>testSuiteForTestCaseWithName:</B>(NSString *)<EM>aName</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ testSuiteWithName:"></A><H3><A NAME="//apple_ref/occ/clm/SenTestSuite/testSuiteWithName:">testSuiteWithName:</A></H3>
+		<CODE>+ (id)<B>testSuiteWithName:</B>(NSString *)<EM>aName</EM>
+			
+		</CODE><P>
+		No method description.
+	
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- addTest:"></A><H3><A NAME="//apple_ref/occ/instm/SenTestSuite/addTest:">addTest:</A></H3><P>
+		<CODE>- (void)<B>addTest:</B>(SenTest *)<EM>aTest</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- addTestsEnumeratedBy:"></A><H3><A NAME="//apple_ref/occ/instm/SenTestSuite/addTestsEnumeratedBy:">addTestsEnumeratedBy:</A></H3><P>
+		<CODE>- (void)<B>addTestsEnumeratedBy:</B>(NSEnumerator *)<EM>anEnumerator</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- initWithName:"></A><H3><A NAME="//apple_ref/occ/instm/SenTestSuite/initWithName:">initWithName:</A></H3><P>
+		<CODE>- (id)<B>initWithName:</B>(NSString *)<EM>aName</EM>
+			
+		</CODE><P>
+		No method description.
+	
+
+
+
+
+<P><HR>
+CVS Version 1.7 Copyright &copy;2004 by Sente SA.  All Rights Reserved.   Fri Apr 01 13:49:07 2005
+<P>
+</BODY></HTML>

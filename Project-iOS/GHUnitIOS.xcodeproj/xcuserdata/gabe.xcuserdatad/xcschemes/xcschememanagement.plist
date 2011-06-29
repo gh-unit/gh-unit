@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Blah.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>GHUnitIOS (Device).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>GHUnitIOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>Run make in Project-iOS to build.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0041C5E913BA7B8A0015FC22</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0041C61213BA7C6C0015FC22</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0097C42013BA7E5000D3BEF0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0097C44613BA7E7400D3BEF0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0097C4A713BA7FC800D3BEF0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>00C979A713BA817400FC285C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

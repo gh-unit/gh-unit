@@ -67,7 +67,8 @@ Example Test Case</h2>
  <span class="keyword">@implementation </span>ExampleTest
  
  - (BOOL)shouldRunOnMainThread {
-   <span class="comment">// By default NO, but if you have a UI test or test dependent on running on the main thread return YES</span>
+   <span class="comment">// By default NO, but if you have a UI test or test dependent on running on the main thread return YES.</span>
+   <span class="comment">// Also an async test that calls back on the main thread, you&#39;ll probably want to return YES.</span>
    <span class="keywordflow">return</span> NO;
  }
  
@@ -167,7 +168,7 @@ Example Projects</h2>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Apr 24 2011 12:58:49 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Jun 28 2011 17:36:36 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

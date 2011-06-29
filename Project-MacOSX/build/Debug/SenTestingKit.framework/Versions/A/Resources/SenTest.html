@@ -1,0 +1,161 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/SenTest">SenTest</A></H1></FONT><BR>
+
+
+
+	<blockquote><DL><DT><B>Inherits From:</B></DT>  
+	<DD>NSObject</DD>
+</DL></blockquote>
+
+
+
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>SenTest.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Class Description</H2>
+An abstract Test class. The SenTest, SenTestCase and SenTestSuite classes implement a Composite pattern.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+			Number of test cases
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- testCaseCount">- testCaseCount</A></DD>
+		
+			<DD> <A HREF="#- isEmpty">- isEmpty</A></DD>
+		
+		</DL>
+	
+		
+			Test's name
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- name">- name</A></DD>
+		
+		</DL>
+	
+		
+			Creating test runs
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- testRunClass">- testRunClass</A></DD>
+		
+			<DD> <A HREF="#- performTest:">- performTest:</A></DD>
+		
+			<DD> <A HREF="#- run">- run</A></DD>
+		
+		</DL>
+	
+		
+			Pre- and post-test methods
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- setUp">- setUp</A></DD>
+		
+			<DD> <A HREF="#- tearDown">- tearDown</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- isEmpty"></A><H3><A NAME="//apple_ref/occ/instm/SenTest/isEmpty">isEmpty</A></H3><P>
+		<CODE>- (BOOL)<B>isEmpty</B>
+		</CODE><P>
+		Returns YES if testCaseCount is 0.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- name"></A><H3><A NAME="//apple_ref/occ/instm/SenTest/name">name</A></H3><P>
+		<CODE>- (NSString *)<B>name</B>
+		</CODE><P>
+		Must be overridden by subclasses.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- performTest:"></A><H3><A NAME="//apple_ref/occ/instm/SenTest/performTest:">performTest:</A></H3><P>
+		<CODE>- (void)<B>performTest:</B>(SenTestRun *)<EM>aRun</EM>
+			
+		</CODE><P>
+		The method through which tests are executed. Must be overridden by subclasses.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- run"></A><H3><A NAME="//apple_ref/occ/instm/SenTest/run">run</A></H3><P>
+		<CODE>- (SenTestRun *)<B>run</B>
+		</CODE><P>
+		Creates a SenTestRun of the testRunClass and passes it as a parameter to the performTest method.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setUp"></A><H3><A NAME="//apple_ref/occ/instm/SenTest/setUp">setUp</A></H3><P>
+		<CODE>- (void)<B>setUp</B>
+		</CODE><P>
+		Sets up the fixture. This method is called before a test is executed.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- tearDown"></A><H3><A NAME="//apple_ref/occ/instm/SenTest/tearDown">tearDown</A></H3><P>
+		<CODE>- (void)<B>tearDown</B>
+		</CODE><P>
+		Tears down the fixture. This method is called after a test is executed.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- testCaseCount"></A><H3><A NAME="//apple_ref/occ/instm/SenTest/testCaseCount">testCaseCount</A></H3><P>
+		<CODE>- (unsigned int)<B>testCaseCount</B>
+		</CODE><P>
+		Must be overridden by subclasses.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- testRunClass"></A><H3><A NAME="//apple_ref/occ/instm/SenTest/testRunClass">testRunClass</A></H3><P>
+		<CODE>- (Class)<B>testRunClass</B>
+		</CODE><P>
+		The SenTestRun subclass that will be created when a test is run to hold the test's results. Must be overridden by subclasses.
+	
+
+
+
+
+<P><HR>
+CVS Version 1.7 Copyright &copy;2004 by Sente SA.  All Rights Reserved.   Fri Apr 01 13:49:06 2005
+<P>
+</BODY></HTML>

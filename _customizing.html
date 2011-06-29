@@ -54,11 +54,11 @@ Custom Test Case Classes</h2>
 <p>You can register additional classes at runtime; if you have your own. For example:</p>
 <div class="fragment"><pre class="fragment"> [[GHTesting sharedInstance] registerClassName:<span class="stringliteral">@&quot;MySpecialTestCase&quot;</span>];
 </pre></div><h2><a class="anchor" id="AlternateIOSAppDelegate"></a>
-Using an Alternate iPhone Application Delegate</h2>
-<p>If you want to use a custom application delegate in your test environment, you should subclass GHUnitIPhoneAppDelegate:</p>
-<div class="fragment"><pre class="fragment"> <span class="keyword">@interface </span>MyTestApplicationDelegate : GHUnitIPhoneAppDelegate { }
+Using an Alternate iOS Application Delegate</h2>
+<p>If you want to use a custom application delegate in your test environment, you should subclass GHUnitIOSAppDelegate:</p>
+<div class="fragment"><pre class="fragment"> <span class="keyword">@interface </span>MyTestApplicationDelegate : GHUnitIOSAppDelegate { }
  <span class="keyword">@end</span>
-</pre></div><p>Then in GHUnitIPhoneTestMain.m:</p>
+</pre></div><p>Then in GHUnitIOSTestMain.m:</p>
 <div class="fragment"><pre class="fragment"> retVal = UIApplicationMain(argc, argv, nil, <span class="stringliteral">@&quot;MyTestApplicationDelegate&quot;</span>);
 </pre></div><p>I am looking into removing this dependency but this will work in the meantime.</p>
 <h2><a class="anchor" id="UsingSenTesting"></a>
@@ -107,7 +107,7 @@ Using SenTestingKit</h2>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Apr 24 2011 12:58:49 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Jun 28 2011 17:36:36 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
