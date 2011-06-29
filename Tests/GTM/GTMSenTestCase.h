@@ -57,8 +57,15 @@
 #import <SenTestingKit/SenTestingKit.h>
 #else
 #import <Foundation/Foundation.h>
-NSString *STComposeString(NSString *, ...);
+#ifdef __cplusplus
+extern "C" {
 #endif
+  NSString *STComposeString(NSString *, ...);
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // !GTM_IPHONE_SDK
 
 // Generates a failure when a1 != noErr
 //  Args:

@@ -67,7 +67,7 @@
 }
 
 - (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-  if ([viewController_ isShowingDetails] && frameSize.width < 600) return sender.frame.size;
+  if ([viewController_ isShowingDetails] && frameSize.width < MIN_WINDOW_WIDTH) return sender.frame.size;
   return frameSize;
 }
 

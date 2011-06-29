@@ -105,7 +105,7 @@ operationQueue=operationQueue_;
 + (int)run {
   GHTestRunner *testRunner = [GHTestRunner runnerFromEnv];
   [testRunner runTests];
-  return testRunner.stats.failureCount; 
+  return (int)testRunner.stats.failureCount; 
 }
 
 - (void)setInParallel:(BOOL)inParallel {
@@ -134,7 +134,7 @@ operationQueue=operationQueue_;
   } else {
     [test_ run:options_];
   }
-  return self.stats.failureCount;
+  return (int)self.stats.failureCount;
 }
 
 - (NSTimeInterval)interval {

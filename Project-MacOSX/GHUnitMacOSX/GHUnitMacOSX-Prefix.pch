@@ -1,0 +1,14 @@
+//
+// Prefix header for all source files of the 'GHUnitMacOSX' target in the 'GHUnitMacOSX' project
+//
+
+#ifdef __OBJC__
+  #import <Cocoa/Cocoa.h>
+  
+  // GHKit Dependencies
+  #import "GHNSInvocation+Utils.h"
+  #import "GHNSObject+Invocation.h"
+
+  #import "GHUnit.h"
+
+#endif

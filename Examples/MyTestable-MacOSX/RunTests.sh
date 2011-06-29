@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -o errexit
-
 # If we aren't running from the command line, then exit
 if [ "$GHUNIT_CLI" = "" ] && [ "$GHUNIT_AUTORUN" = "" ]; then
   exit 0
@@ -10,12 +8,6 @@ fi
 export DYLD_ROOT_PATH="$SDKROOT"
 export DYLD_FRAMEWORK_PATH="$CONFIGURATION_BUILD_DIR"
 export IPHONE_SIMULATOR_ROOT="$SDKROOT"
-
-export MallocScribble=YES
-export MallocPreScribble=YES
-export MallocGuardEdges=YES
-export MallocStackLogging=YES
-export MallocStackLoggingNoCompact=YES
 
 export NSDebugEnabled=YES
 export NSZombieEnabled=YES
@@ -38,10 +30,10 @@ if [ ! -e "$TEST_TARGET_EXECUTABLE_PATH" ]; then
   exit 1
 fi
 
-RUN_CMD="$TEST_TARGET_EXECUTABLE_PATH -RegisterForSystemEvents"
+RUN_CMD="\"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
 
 echo "Running: $RUN_CMD"
-$RUN_CMD
+eval $RUN_CMD
 RETVAL=$?
 
 unset DYLD_ROOT_PATH

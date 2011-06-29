@@ -81,3 +81,28 @@
 @end
 
 
+@interface GHAsyncExceptionTest : GHAsyncTestCase { }
+@end
+
+@implementation GHAsyncExceptionTest
+
+- (BOOL)shouldRunOnMainThread {
+  return YES;
+}
+
+- (void)test_EXPECTED {
+  [self prepare];
+  [self performSelectorInBackground:@selector(_delayedRaise) withObject:nil];
+  [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+}
+
+- (void)_delayedRaise {
+  [self performSelectorOnMainThread:@selector(_raiseException) withObject:nil waitUntilDone:YES];
+}
+
+- (void)_raiseException {
+  [NSException raise:NSGenericException format:@"Test exception"];
+}
+   
+@end
+

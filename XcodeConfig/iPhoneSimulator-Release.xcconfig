@@ -1,8 +1,0 @@
-
-#include "Shared-iPhone.xcconfig"
-
-PRODUCT_NAME = GHUnitIOSSimulator
-
-SDKROOT = iphonesimulator
-ARCHS = i386
-VALID_ARCHS = i386

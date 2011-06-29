@@ -1,6 +1,6 @@
 //
 //  GHTestEmpty.m
-//  GHUnitIPhone
+//  GHUnitIOS
 //
 //  Created by Gabriel Handford on 10/19/09.
 //  Copyright 2009. All rights reserved.

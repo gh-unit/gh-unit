@@ -1,3 +1,7 @@
+# Release 0.4.29
+- Changing paths to use iOS instead of iPhone
+- Rebuilding iOS project using XCode 4
+
 # Release 0.4.28
 - Building as GHUnitIOS.framework for iOS.
 - Fix issue #37
@@ -7,7 +11,7 @@
 - Fix issue #19
 
 # Release 0.4.27
-- Added in GHUnitIPhoneAppDelegate for subclassing test app delegate
+- Added in GHUnitIOSAppDelegate for subclassing test app delegate
 
 # Release 0.4.26
 - Fixing LLVM/clang warnings (Whitney Young, nolanw)
@@ -98,7 +102,7 @@
 - UI fixes
 
 # Release 0.4.5 (2008-07-21)
-- Including GHUnitIPhoneAppDelegate so you can subclass and interact with UIApplication delegate in tests
+- Including GHUnitIOSAppDelegate so you can subclass and interact with UIApplication delegate in tests
 
 # Release 0.4.4 (2008-07-20)
 - Ignore disable/cancelled tests in scroll (iPhone)

@@ -1,6 +1,6 @@
 //
 //  GHNSURLConnectionTest.m
-//  GHUnitIPhone
+//  GHUnitIOS
 //
 //  Created by Gabriel Handford on 11/14/10.
 //  Copyright 2010. All rights reserved.

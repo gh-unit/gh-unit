@@ -1,6 +1,6 @@
 //
 //  GHTestLogTest.m
-//  GHUnitIPhone
+//  GHUnitIOS
 //
 //  Created by Gabriel Handford on 7/30/09.
 //  Copyright 2009. All rights reserved.
@@ -22,7 +22,7 @@
 
 - (void)testNSLog {
   for(NSInteger i = 0; i < 5; i++) {
-    NSLog(@"Using NSLog: %d", i);
+    NSLog(@"Using NSLog: %li", i);
     fputs([@"stdout\n" UTF8String], stdout);
     fflush(stdout);   
   }
