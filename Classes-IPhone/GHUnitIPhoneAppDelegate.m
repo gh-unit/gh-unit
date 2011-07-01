@@ -33,6 +33,15 @@
 @implementation GHUnitIPhoneAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+  if (getenv("GHUNIT_CLI")) {
+    int exitStatus = [GHTestRunner run];
+    if ([application respondsToSelector:@selector(_terminateWithStatus:)]) {
+      [application performSelector:@selector(_terminateWithStatus:)
+                        withObject:(id)exitStatus];
+    } else {
+      exit(exitStatus);
+    }
+  }
   GHUnitIPhoneViewController *viewController = [[GHUnitIPhoneViewController alloc] init];   
   [viewController loadDefaults];
   navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController];
