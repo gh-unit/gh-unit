@@ -114,7 +114,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  - In the "Tests" target, Build Settings, under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
  - In the "Tests" target, Build Settigns, under 'Other Linker Flags' in the "Tests" target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
  - By default, the Tests-Info.plist file includes <tt>MainWindow_iPhone</tt> and <tt>MainWindow_iPad</tt> for <tt>Main nib file base name</tt>. You should remove both these fields.
- - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project and make sure its enabled for the "Tests" target. You should delete the existing main.m file (or replace the contents of the existing main.m with GHUnitIOSTestMain.m).
+ - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-iOS/GHUnitIOSTestMain.m) file into your project and make sure its enabled for the "Tests" target. You should delete the existing main.m file (or replace the contents of the existing main.m with GHUnitIOSTestMain.m).
  - @ref Examples "Create a test"
  - Build and run the "Tests" target.
  - You can remove the files: TestsAppDelete* and MainWindow* that were generated with the Tests target.
@@ -132,7 +132,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
  - In Build Settings, under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.
  - In Build Settings, under 'Other Linker Flags' in the <tt>Tests</tt> target, add <tt>-ObjC</tt> and <tt>-all_load</tt>
  - By default, the Tests-Info.plist file includes <tt>MainWindow</tt> for <tt>Main nib file base name</tt>. You should clear this field.
- - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m) file into your project and make sure its enabled for the "Tests" target.
+ - Add the GHUnitIOSTestMain.m (http://github.com/gabriel/gh-unit/blob/master/Project-iOS/GHUnitIOSTestMain.m) file into your project and make sure its enabled for the "Tests" target.
  - (Optional) Create and and set a prefix header (<tt>Tests_Prefix.pch</tt>) and add <tt>#import <GHUnitIOS/GHUnit.h></tt> to it, and then you won't have to include that import for every test.
  - @ref Examples "Create a test"
  - Build and run the "Tests" target.
@@ -199,7 +199,7 @@ fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@
 /*!
  @page Building Building
  
- For iOS, run <tt>make</tt> from within the <tt>Project-IPhone</tt> directory. The framework is in <tt>Project-IPhone/build/Framework/</tt>.
+ For iOS, run <tt>make</tt> from within the <tt>Project-iOS</tt> directory. The framework is in <tt>Project-iOS/build/Framework/</tt>.
  
  For Mac OS X, the framework build is stored in <tt>Project/build/Release/</tt>.
  */

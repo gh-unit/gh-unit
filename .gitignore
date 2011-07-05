@@ -12,4 +12,5 @@ Documentation/GHUnit.docset.tgz
 .gitattributes
 GHUnit.docset
 *.xcuserdatad
-Project-iOS/GHUnitIOS.xcodeproj/xcuserdata/*
+Project-iOS/GHUnitIOS.xcodeproj/xcuserdata
+Project-iOS/GHUnitIOS.xcodeproj/project.xcworkspace/xcuserdata
