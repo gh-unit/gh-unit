@@ -102,7 +102,7 @@ Installing in XCode 4 (Mac OS X)</h2>
 <ul>
 <li>Add a <code>New Target</code>. Select <code>Application -&gt; Cocoa Application</code>. Name it <code>Tests</code> (or something similar).</li>
 <li>Copy and add <code>GHUnit.framework</code> into your project: Add Files to 'App'..., select <code>GHUnit.framework</code>, and select only the "Tests" target.</li>
-<li>In the "Tests" target, in Build Settings, add <code>/../Frameworks</code> to <code>Runpath Search Paths</code>.</li>
+<li>In the "Tests" target, in Build Settings, add <code>@loader_path/../Frameworks</code> to <code>Runpath Search Paths</code>.</li>
 <li>In the "Tests" target, in Build Phases, select <code>Add Build Phase</code> and then <code>Add Copy Files</code>.<ul>
 <li>Change the Destination to <code>Frameworks</code>.</li>
 <li>Drag <code>GHUnit.framework</code> from the project file view into the the Copy Files build phase.</li>
@@ -110,7 +110,7 @@ Installing in XCode 4 (Mac OS X)</h2>
 </ul>
 </li>
 <li>Copy GHUnitTestMain.m (<a href="http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m">http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m</a>) into your project and include in the Test target. You should delete the existing main.m file (or replace the contents of the existing main.m with GHUnitTestMain.m).</li>
-<li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field. You can also delete the existing MainMenu.xib.</li>
+<li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field. You can also delete the existing MainMenu.xib and files like TestsAppDelegate.*.</li>
 <li><a class="el" href="_examples.html">Create a test</a></li>
 <li>Build and run the "Tests" target.</li>
 <li>(Optional) <a class="el" href="_command_line.html#Makefile">Install Makefile</a></li>
@@ -182,7 +182,7 @@ Installing in your project</h3>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Tue Jun 28 2011 17:36:36 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Jul 4 2011 19:00:10 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
