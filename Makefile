@@ -7,7 +7,8 @@ docs:
 	mv ~/Library/Developer/Shared/Documentation/DocSets/GHUnit.docset.tgz Documentation
 
 gh-pages: docs
-	rm -rf build
+	rm -rf Project-MacOSX/build
+	rm -rf Project-iOS/build
 	git checkout gh-pages
 	cp -R Documentation/html/* .
 	rm -rf Documentation
