@@ -33,7 +33,16 @@
 @implementation GHUnitIOSAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-  GHUnitIOSViewController *viewController = [[GHUnitIOSViewController alloc] init];   
+  if (getenv("GHUNIT_CLI")) {
+    int exitStatus = [GHTestRunner run];
+    if ([application respondsToSelector:@selector(_terminateWithStatus:)]) {
+      [application performSelector:@selector(_terminateWithStatus:)
+                        withObject:(id)exitStatus];
+    } else {
+      exit(exitStatus);
+    }
+  }
+  GHUnitIOSViewController *viewController = [[GHUnitIOSViewController alloc] init];
   [viewController loadDefaults];
   navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController];
   [viewController release];

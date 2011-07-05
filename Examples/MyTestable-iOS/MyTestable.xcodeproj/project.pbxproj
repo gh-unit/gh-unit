@@ -10,7 +10,7 @@
 		002D9D4A0F49181E007932FE /* MyTestableAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* MyTestableAppDelegate.m */; };
 		002D9D4E0F4918F1007932FE /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002D9D4D0F4918F1007932FE /* MyTest.m */; };
 		0080407E1290AC280033DA60 /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0080407D1290AC280033DA60 /* GHUnitIOSTestMain.m */; };
-		00EB37BF12F3A295000366F4 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EB37BE12F3A295000366F4 /* GHUnitIOS.framework */; };
+		0090D65513C2A60700C25A92 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0090D65413C2A60700C25A92 /* GHUnitIOS.framework */; };
 		00F1D9FC135C0B02001E7961 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F1D9FB135C0B02001E7961 /* CoreGraphics.framework */; };
 		1D3623260D0F684500981E51 /* MyTestableAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* MyTestableAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -23,8 +23,8 @@
 		002D9D4D0F4918F1007932FE /* MyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTest.m; sourceTree = "<group>"; };
 		0080407D1290AC280033DA60 /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
 		008040951290AC9E0033DA60 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
+		0090D65413C2A60700C25A92 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		00CDDE300F7703B40089C60E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		00EB37BE12F3A295000366F4 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		00F1D9FB135C0B02001E7961 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		1D3623240D0F684500981E51 /* MyTestableAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTestableAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* MyTestableAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTestableAppDelegate.m; sourceTree = "<group>"; };
@@ -41,7 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00F1D9FC135C0B02001E7961 /* CoreGraphics.framework in Frameworks */,
-				00EB37BF12F3A295000366F4 /* GHUnitIOS.framework in Frameworks */,
+				0090D65513C2A60700C25A92 /* GHUnitIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,12 +64,12 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		00DA15A30F897CDD001FE08E /* Libraries */ = {
+		0090D65313C2A60700C25A92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				00EB37BE12F3A295000366F4 /* GHUnitIOS.framework */,
+				0090D65413C2A60700C25A92 /* GHUnitIOS.framework */,
 			);
-			path = Libraries;
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
@@ -95,7 +95,7 @@
 			children = (
 				00CDDE300F7703B40089C60E /* Makefile */,
 				080E96DDFE201D6D7F000001 /* Classes */,
-				00DA15A30F897CDD001FE08E /* Libraries */,
+				0090D65313C2A60700C25A92 /* Frameworks */,
 				002D9D4B0F4918E5007932FE /* Tests */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -254,6 +254,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
@@ -282,6 +283,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "Tests-Info.plist";

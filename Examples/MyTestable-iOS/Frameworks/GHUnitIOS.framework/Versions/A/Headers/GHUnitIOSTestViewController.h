@@ -1,9 +1,9 @@
 //
-//  GHUnitIPhoneView.h
-//  GHUnitIPhone
+//  GHUnitIOSTestViewController.h
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 4/12/10.
-//  Copyright 2010. All rights reserved.
+//  Created by Gabriel Handford on 2/20/09.
+//  Copyright 2009. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,26 +27,16 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import "GHTestViewModel.h"
 
-@interface GHUnitIPhoneView : UIView {
-  UISearchBar *searchBar_;
+@interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate> {
+  UITextView *textView_;
+
+  GHTestNode *testNode_;
   
-  UITableView *tableView_;
-  
-  //! Status label at bottom of the view
-  UILabel *statusLabel_;
- 
-  UISegmentedControl *filterControl_;
-    
-  UIToolbar *runToolbar_;  
-  
-  UIView *footerView_;
+  GHTestRunner *runner_;
 }
 
-@property (readonly, nonatomic) UILabel *statusLabel;
-@property (readonly, nonatomic) UISegmentedControl *filterControl;
-@property (readonly, nonatomic) UISearchBar *searchBar;
-@property (readonly, nonatomic) UITableView *tableView;
-
+- (void)setTest:(id<GHTest>)test;
 
 @end
