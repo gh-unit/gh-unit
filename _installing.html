@@ -70,7 +70,7 @@ Installing in XCode 4 (iOS)</h2>
 <li>In the "Tests" target, Build Settings, under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.</li>
 <li>In the "Tests" target, Build Settigns, under 'Other Linker Flags' in the "Tests" target, add <code>-ObjC</code> and <code>-all_load</code></li>
 <li>By default, the Tests-Info.plist file includes <code>MainWindow_iPhone</code> and <code>MainWindow_iPad</code> for <code>Main nib file base name</code>. You should remove both these fields.</li>
-<li>Add the GHUnitIOSTestMain.m (<a href="http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m">http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m</a>) file into your project and make sure its enabled for the "Tests" target. You should delete the existing main.m file (or replace the contents of the existing main.m with GHUnitIOSTestMain.m).</li>
+<li>Add the GHUnitIOSTestMain.m (<a href="http://github.com/gabriel/gh-unit/blob/master/Project-iOS/GHUnitIOSTestMain.m">http://github.com/gabriel/gh-unit/blob/master/Project-iOS/GHUnitIOSTestMain.m</a>) file into your project and make sure its enabled for the "Tests" target. You should delete the existing main.m file (or replace the contents of the existing main.m with GHUnitIOSTestMain.m).</li>
 <li><a class="el" href="_examples.html">Create a test</a></li>
 <li>Build and run the "Tests" target.</li>
 <li>You can remove the files: TestsAppDelete* and MainWindow* that were generated with the Tests target.</li>
@@ -91,7 +91,7 @@ Installing in XCode 3 (iOS)</h2>
 <li>In Build Settings, under 'Framework Search Paths' make sure the (parent) directory to GHUnitIOS.framework is listed.</li>
 <li>In Build Settings, under 'Other Linker Flags' in the <code>Tests</code> target, add <code>-ObjC</code> and <code>-all_load</code></li>
 <li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field.</li>
-<li>Add the GHUnitIOSTestMain.m (<a href="http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m">http://github.com/gabriel/gh-unit/blob/master/Project-IPhone/GHUnitIOSTestMain.m</a>) file into your project and make sure its enabled for the "Tests" target.</li>
+<li>Add the GHUnitIOSTestMain.m (<a href="http://github.com/gabriel/gh-unit/blob/master/Project-iOS/GHUnitIOSTestMain.m">http://github.com/gabriel/gh-unit/blob/master/Project-iOS/GHUnitIOSTestMain.m</a>) file into your project and make sure its enabled for the "Tests" target.</li>
 <li>(Optional) Create and and set a prefix header (<code>Tests_Prefix.pch</code>) and add <code>import &lt;GHUnitIOS/GHUnit.h&gt;</code> to it, and then you won't have to include that import for every test.</li>
 <li><a class="el" href="_examples.html">Create a test</a></li>
 <li>Build and run the "Tests" target.</li>
@@ -182,7 +182,7 @@ Installing in your project</h3>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Jul 4 2011 19:00:10 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Jul 4 2011 19:18:23 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
