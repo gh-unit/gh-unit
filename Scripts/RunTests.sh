@@ -35,8 +35,10 @@ fi
 RUN_CMD="\"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
 
 echo "Running: $RUN_CMD"
+set +o errexit # Disable exiting on error so script continues if tests fail
 eval $RUN_CMD
 RETVAL=$?
+set -o errexit
 
 unset DYLD_ROOT_PATH
 unset DYLD_FRAMEWORK_PATH
