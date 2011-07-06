@@ -6,6 +6,7 @@
 //  Copyright 2009. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import "GHTestViewModel.h"
 @class GHTestOutlineViewModel;
 

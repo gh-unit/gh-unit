@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		00271A3813C28D1F00B06B98 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0083D08613BCFDDB00F71F21 /* GHUnit.framework */; };
 		00271A3913C294F800B06B98 /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D0DC13BCFE1700F71F21 /* GHUnitTestMain.m */; };
+		004E186E13C518C1007D842B /* GTMGarbageCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 004E186B13C518C1007D842B /* GTMGarbageCollection.h */; };
+		004E186F13C518C1007D842B /* GTMNSString+XML.h in Headers */ = {isa = PBXBuildFile; fileRef = 004E186C13C518C1007D842B /* GTMNSString+XML.h */; };
+		004E187013C518C1007D842B /* GTMNSString+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 004E186D13C518C1007D842B /* GTMNSString+XML.m */; };
 		0083D08A13BCFDDB00F71F21 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0083D08913BCFDDB00F71F21 /* Cocoa.framework */; };
 		0083D09413BCFDDB00F71F21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0083D09213BCFDDB00F71F21 /* InfoPlist.strings */; };
 		0083D0EA13BCFE1700F71F21 /* GHAsyncTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0083D0B413BCFE1700F71F21 /* GHAsyncTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -120,6 +123,9 @@
 
 /* Begin PBXFileReference section */
 		00271A3A13C2965200B06B98 /* RunTests.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = RunTests.sh; path = ../../Scripts/RunTests.sh; sourceTree = "<group>"; };
+		004E186B13C518C1007D842B /* GTMGarbageCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMGarbageCollection.h; sourceTree = "<group>"; };
+		004E186C13C518C1007D842B /* GTMNSString+XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+XML.h"; sourceTree = "<group>"; };
+		004E186D13C518C1007D842B /* GTMNSString+XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+XML.m"; sourceTree = "<group>"; };
 		0083D08613BCFDDB00F71F21 /* GHUnit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GHUnit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0083D08913BCFDDB00F71F21 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0083D08C13BCFDDB00F71F21 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -127,7 +133,6 @@
 		0083D08E13BCFDDB00F71F21 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0083D09113BCFDDB00F71F21 /* GHUnitMacOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GHUnitMacOSX-Info.plist"; sourceTree = "<group>"; };
 		0083D09313BCFDDB00F71F21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0083D09513BCFDDB00F71F21 /* GHUnitMacOSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GHUnitMacOSX-Prefix.pch"; sourceTree = "<group>"; };
 		0083D0B413BCFE1700F71F21 /* GHAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAsyncTestCase.h; sourceTree = "<group>"; };
 		0083D0B513BCFE1700F71F21 /* GHAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCase.m; sourceTree = "<group>"; };
 		0083D0B713BCFE1700F71F21 /* GHTest+JUnitXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHTest+JUnitXML.h"; sourceTree = "<group>"; };
@@ -299,7 +304,6 @@
 				0083D19513C28B8700F71F21 /* GTM */,
 				0083D09113BCFDDB00F71F21 /* GHUnitMacOSX-Info.plist */,
 				0083D09213BCFDDB00F71F21 /* InfoPlist.strings */,
-				0083D09513BCFDDB00F71F21 /* GHUnitMacOSX-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -503,6 +507,9 @@
 		0083D19613C28B8700F71F21 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				004E186B13C518C1007D842B /* GTMGarbageCollection.h */,
+				004E186C13C518C1007D842B /* GTMNSString+XML.h */,
+				004E186D13C518C1007D842B /* GTMNSString+XML.m */,
 				0083D19713C28B8700F71F21 /* GTMObjC2Runtime.h */,
 				0083D19813C28B8700F71F21 /* GTMObjC2Runtime.m */,
 				0083D19913C28B8700F71F21 /* GTMStackTrace.h */,
@@ -547,6 +554,8 @@
 				0083D1A213C28B8700F71F21 /* GTMObjC2Runtime.h in Headers */,
 				0083D1A413C28B8700F71F21 /* GTMStackTrace.h in Headers */,
 				0083D1A613C28B8700F71F21 /* GTMDefines.h in Headers */,
+				004E186E13C518C1007D842B /* GTMGarbageCollection.h in Headers */,
+				004E186F13C518C1007D842B /* GTMNSString+XML.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +694,7 @@
 				0083D1A113C28B8700F71F21 /* GHNSObject+Invocation.m in Sources */,
 				0083D1A313C28B8700F71F21 /* GTMObjC2Runtime.m in Sources */,
 				0083D1A513C28B8700F71F21 /* GTMStackTrace.m in Sources */,
+				004E187013C518C1007D842B /* GTMNSString+XML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,8 +792,6 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GHUnitMacOSX/GHUnitMacOSX-Prefix.pch";
 				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				PRODUCT_NAME = GHUnit;
 				WRAPPER_EXTENSION = framework;
@@ -797,8 +805,6 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GHUnitMacOSX/GHUnitMacOSX-Prefix.pch";
 				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				PRODUCT_NAME = GHUnit;
 				WRAPPER_EXTENSION = framework;
