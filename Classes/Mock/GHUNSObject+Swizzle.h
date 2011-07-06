@@ -29,6 +29,8 @@
 
 //! @cond DEV
 
+#import <Foundation/Foundation.h>
+
 @interface NSObject(GHUSwizzle)
 
 + (void)ghu_swizzleMethod:(SEL)original withMethod:(SEL)alternate;

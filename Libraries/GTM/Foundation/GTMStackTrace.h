@@ -16,6 +16,7 @@
 //  the License.
 //
 
+#import <Foundation/Foundation.h>
 #include <CoreFoundation/CoreFoundation.h>
 #import "GTMDefines.h"
 

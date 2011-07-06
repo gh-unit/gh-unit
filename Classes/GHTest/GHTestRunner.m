@@ -46,6 +46,8 @@
 //  the License.
 //
 
+#import "GHNSObject+Invocation.h"
+
 #import "GHTestRunner.h"
 #import "GHTestSuite.h"
 #import "GHTesting.h"

@@ -229,7 +229,6 @@
 		0041C65013BA7C9A0015FC22 /* GHUnitIOSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSView.m; sourceTree = "<group>"; };
 		0041C65113BA7C9A0015FC22 /* GHUnitIOSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIOSViewController.h; sourceTree = "<group>"; };
 		0041C65213BA7C9A0015FC22 /* GHUnitIOSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSViewController.m; sourceTree = "<group>"; };
-		0041C6B613BA7CBE0015FC22 /* GHUnitIOS_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHUnitIOS_Prefix.pch; sourceTree = "<group>"; };
 		0041C6B713BA7CBE0015FC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0041C6B813BA7CBE0015FC22 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		0041C6B913BA7CBE0015FC22 /* Tests_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tests_Prefix.pch; sourceTree = "<group>"; };
@@ -323,7 +322,6 @@
 				00C979CB13BA81E200FC285C /* README.md */,
 				0041C6B813BA7CBE0015FC22 /* Makefile */,
 				0041C6B713BA7CBE0015FC22 /* Info.plist */,
-				0041C6B613BA7CBE0015FC22 /* GHUnitIOS_Prefix.pch */,
 				0041C6B913BA7CBE0015FC22 /* Tests_Prefix.pch */,
 				0041C62013BA7C9A0015FC22 /* Classes */,
 				0041C64813BA7C9A0015FC22 /* Classes-iOS */,

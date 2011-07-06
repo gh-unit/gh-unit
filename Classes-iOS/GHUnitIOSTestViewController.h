@@ -27,6 +27,7 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import <UIKit/UIKit.h>
 #import "GHTestViewModel.h"
 
 @interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate> {

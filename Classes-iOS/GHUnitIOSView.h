@@ -27,6 +27,9 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 
 @interface GHUnitIOSView : UIView {
   UISearchBar *searchBar_;

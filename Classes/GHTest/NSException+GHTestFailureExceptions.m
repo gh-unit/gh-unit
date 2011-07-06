@@ -49,6 +49,7 @@
 
 // GTM_BEGIN - Contains modifications by JR
 
+#import <Foundation/Foundation.h>
 
 #import "NSException+GHTestFailureExceptions.h"
 

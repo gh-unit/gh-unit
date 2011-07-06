@@ -1,6 +1,5 @@
 #include "Shared.xcconfig"
 
-GCC_PREFIX_HEADER = GHUnitIOS_Prefix.pch
 ZERO_LINK = NO
 SDKROOT = iphoneos
 IPHONEOS_DEPLOYMENT_TARGET = 3.0

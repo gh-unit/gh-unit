@@ -33,6 +33,7 @@
 #import "GHTest+JUnitXML.h"
 
 #import "GHTesting.h"
+#import "GHTestCase.h"
 
 @interface GHTest ()
 - (void)_setLogWriter:(id<GHTestCaseLogWriter>)logWriter;

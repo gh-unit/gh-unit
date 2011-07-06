@@ -1,6 +1,0 @@
-#ifdef __OBJC__
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import "GHUnit.h"
-#import "GHNSObject+Invocation.h"
-#endif

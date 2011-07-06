@@ -65,6 +65,8 @@
  *
  */
 
+#import <Foundation/Foundation.h>
+
 /*!
  Proxy that allows invocation on a separate thread, or with a delay.
  

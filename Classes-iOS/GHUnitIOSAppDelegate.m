@@ -29,6 +29,7 @@
 
 #import "GHUnitIOSAppDelegate.h"
 #import "GHUnitIOSViewController.h"
+#import "GHUnit.h"
 
 @implementation GHUnitIOSAppDelegate
 
