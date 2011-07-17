@@ -13,7 +13,7 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 - Search and filter tests by keywords. 
 - View logging by test case.
 - Show stack traces and useful debugging information.
-- Be embeddable as a framework (using @rpath) for Mac OSX apps, or as a static library in your iPhone projects.
+- Include as a framework in your projects
 
 ## Links
 
