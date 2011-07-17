@@ -10,20 +10,26 @@
         <Path>index.html</Path>
         <Subnodes>
          <Node>
+          <Name>Installing</Name>
+          <Path>_installing.html</Path>
+          <Subnodes>
+           <Node>
+            <Name>Installing in Xcode 3</Name>
+            <Path>_installing_xcode3.html</Path>
+            <Subnodes>
+            </Subnodes>
+           </Node>
+          </Subnodes>
+         </Node>
+         <Node>
           <Name>Examples</Name>
           <Path>_examples.html</Path>
           <Subnodes>
           </Subnodes>
          </Node>
          <Node>
-          <Name>Installing</Name>
-          <Path>_installing.html</Path>
-          <Subnodes>
-          </Subnodes>
-         </Node>
-         <Node>
-          <Name>Building</Name>
-          <Path>_building.html</Path>
+          <Name>Command Line</Name>
+          <Path>_command_line.html</Path>
           <Subnodes>
           </Subnodes>
          </Node>
@@ -34,14 +40,14 @@
           </Subnodes>
          </Node>
          <Node>
-          <Name>Environment Variables</Name>
-          <Path>_env_variables.html</Path>
+          <Name>Building</Name>
+          <Path>_building.html</Path>
           <Subnodes>
           </Subnodes>
          </Node>
          <Node>
-          <Name>Command Line</Name>
-          <Path>_command_line.html</Path>
+          <Name>Environment Variables</Name>
+          <Path>_env_variables.html</Path>
           <Subnodes>
           </Subnodes>
          </Node>

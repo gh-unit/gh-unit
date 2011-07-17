@@ -50,29 +50,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h2><a class="anchor" id="CommandLineRunningTests"></a>
-Running Tests</h2>
+Running from the Command Line</h2>
 <p>To run the tests from the command line:</p>
 <ul>
-<li>Copy the RunTests.sh (<a href="http://github.com/gabriel/gh-unit/tree/master/Scripts/RunTests.sh">http://github.com/gabriel/gh-unit/tree/master/Scripts/RunTests.sh</a>) file into your project directory.</li>
-<li>In the <code>Tests</code> target, (and Build Phases in XCode 4), add <code>New Build Phase</code> | <code>New Run Script Build Phase</code><ul>
-<li>Enter <code>sh RunTests.sh</code> as the script. The path to <code>RunTests.sh</code> should be relative to the xcode project file (.xcodeproj).</li>
-<li>(Optional) Uncheck 'Show environment variables in build log'</li>
+<li>Copy the RunTests.sh (<a href="http://github.com/gabriel/gh-unit/tree/master/Scripts/RunTests.sh">http://github.com/gabriel/gh-unit/tree/master/Scripts/RunTests.sh</a>) file into your project in the same directory as the xcodeproj file.</li>
 </ul>
-</li>
+<ul>
+<li>In the Tests target, Build Phases, Select Add Build Phase + button, and select Add Run Script.</li>
 </ul>
-<p>From the command line, run the tests from xcodebuild (with the GHUNIT_CLI environment variable set):</p>
+<div align="center">
+<img src="http://rel.me.s3.amazonaws.com/gh-unit/images/RunningCLI/2_add_build_phase.png" alt="2_add_build_phase.png"/>
+</div>
+<ul>
+<li>For the script enter: <code>sh RunTests.sh</code></li>
+</ul>
+<div align="center">
+<img src="http://rel.me.s3.amazonaws.com/gh-unit/images/RunningCLI/3_configure_phase.png" alt="3_configure_phase.png"/>
+</div>
+<p>The path to RunTests.sh should be relative to the xcode project file (.xcodeproj). You can uncheck 'Show environment variables in build log' if you want.</p>
+<ul>
+<li>Now run the tests From the command line:</li>
+</ul>
 <div class="fragment"><pre class="fragment">
- // For mac app; This might seg fault in 10.6, in which case you should use make test via Makefile below
- GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx build	
- 
  // For iOS app
  GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator build
- </pre></div><p>If you are wondering, the <code>RunTests.sh</code> script will only run the tests if the env variable GHUNIT_CLI is set. This is why this RunScript phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.</p>
-<p>This may seem strange that we run via xcodebuild with a RunScript phase in order to work on the command line, but otherwise we may not have the environment settings or other XCode specific configuration right.</p>
+ 
+ // For mac app
+ GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk macosx build	
+ </pre></div><p>If you get and error like: <code>Couldn't register Tests with the bootstrap server.</code> it means an iPhone simulator is running and you need to close it.</p>
+<h3><a class="anchor" id="CommandLineEnv"></a>
+Command Line Environment</h3>
+<p>The RunTests.sh script will only run the tests if the env variable GHUNIT_CLI is set. This is why this RunScript phase is ignored when running the test GUI. This is how we use a single Test target for both the GUI and command line testing.</p>
+<p>This may seem strange that we run via xcodebuild with a RunScript phase in order to work on the command line, but otherwise we may not have the environment settings or other Xcode specific configuration right.</p>
 <h2><a class="anchor" id="Makefile"></a>
 Makefile</h2>
 <p>Follow the directions above for adding command line support.</p>
-<p>Unfortunately, running Mac OS X and iOS tests from the command line isn't always supported since certain frameworks can't work headless and will seg fault.</p>
 <p>Example Makefile's for Mac or iPhone apps:</p>
 <ul>
 <li>Makefile (Mac OS X): <a href="http://github.com/gabriel/gh-unit/tree/master/Project/Makefile.example">http://github.com/gabriel/gh-unit/tree/master/Project/Makefile.example</a> (for a Mac App)</li>
@@ -82,7 +94,8 @@ Makefile</h2>
 <p>To run the tests via the Makefile:</p>
 <div class="fragment"><pre class="fragment">
  make test
- </pre></div><h2><a class="anchor" id="RunningATest"></a>
+ </pre></div><p>Unfortunately, running Mac OS X from the command line isn't always supported since certain frameworks can't work headless and will seg fault.</p>
+<h2><a class="anchor" id="RunningATest"></a>
 Running a Test Case / Single Test</h2>
 <p>The <code>TEST</code> environment variable can be used to run a single test or test case.</p>
 <div class="fragment"><pre class="fragment">
@@ -106,7 +119,7 @@ Running a Test Case / Single Test</h2>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Jul 6 2011 15:38:09 for GHUnit by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Sat Jul 16 2011 20:08:47 for GHUnit by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
