@@ -15,11 +15,15 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 - Show stack traces and useful debugging information.
 - Include as a framework in your projects
 
+## Install (Docset)
+
+- Open Xcode, Preferences and select the Documentation tab.
+- Select the plus icon (bottom left) and specify: `http://gabriel.github.com/gh-unit/publish/me.rel.GHUnit.atom`
+
 ## Links
 
-- The online [API documentation](http://gabriel.github.com/gh-unit/).
-- The [group](http://groups.google.com/group/ghunit).
-- The [installation documentation](http://gabriel.github.com/gh-unit/_installing.html).
+- [Online documentation](http://gabriel.github.com/gh-unit/)
+- [Google Group](http://groups.google.com/group/ghunit)
 
 ## Mac OS X
 

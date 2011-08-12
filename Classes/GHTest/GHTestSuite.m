@@ -132,7 +132,7 @@ NSString *GHUnitTest = NULL;
 
 @implementation GHTestSuite (JUnitXML)
 
-/*!
+/*
  Override logic to write children individually, as we want each test group's
  JUnit XML to be in its own file.
  */

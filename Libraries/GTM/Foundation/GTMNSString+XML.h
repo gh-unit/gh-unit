@@ -23,7 +23,7 @@
 
 /// Get a string where characters that need escaping for XML are escaped and invalid characters removed
 //
-/// This call escapes '&', '<, '>', '\'', '"' per the xml spec and removes all
+/// This call escapes '&amp;', '<, '>', '\'', '"' per the xml spec and removes all
 /// invalid characters as defined by Section 2.2 of the xml spec.
 ///
 /// For obvious reasons this call is only safe once.

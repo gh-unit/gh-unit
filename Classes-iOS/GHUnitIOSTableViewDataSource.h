@@ -30,6 +30,9 @@
 #import <UIKit/UIKit.h>
 #import "GHTestViewModel.h"
 
+/*
+ Table view data source for iOS test application.
+ */
 @interface GHUnitIOSTableViewDataSource : GHTestViewModel <UITableViewDataSource> {
   
 }

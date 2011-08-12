@@ -30,6 +30,9 @@
 #import <UIKit/UIKit.h>
 #import "GHTestViewModel.h"
 
+/*
+ View controller for a test.
+ */
 @interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate> {
   UITextView *textView_;
 

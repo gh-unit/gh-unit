@@ -27,16 +27,23 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//! @cond DEV
-
-#import <Foundation/Foundation.h>
-
+/*!
+ Method swizzling.
+ */
 @interface NSObject(GHUSwizzle)
 
-+ (void)ghu_swizzleMethod:(SEL)original withMethod:(SEL)alternate;
-+ (void)ghu_swizzleClassMethod:(SEL)original withClassMethod:(SEL)alternate;
+/*!
+ Swizzle instance method.
+ @param original Original method
+ @param withMethod New method
+ */
++ (void)ghu_swizzleMethod:(SEL)original withMethod:(SEL)withMethod;
+
+/*!
+ Swizzle class method.
+ @param original Original method
+ @param withClassMethod New method
+ */
++ (void)ghu_swizzleClassMethod:(SEL)original withClassMethod:(SEL)withClassMethod;
 
 @end
-
-//! @endcond
-

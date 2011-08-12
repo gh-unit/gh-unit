@@ -27,23 +27,24 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//! @cond DEV
-
 #import <Foundation/Foundation.h>
 
 /*!
  Category for overriding the current locale at runtime.
 
- @code
- #import "GHNSLocale+Mock.h"
- // This aliases the currentLocale method and with the specified locale identifier
- [NSLocale gh_setLocaleIdentifier:@"en_GB"];
-  
- [[NSLocale currentLocale] localeIdentifier] == "en_GB"
- @endcode
+     #import "GHNSLocale+Mock.h"
+     // This aliases the currentLocale method and with the specified locale identifier
+     [NSLocale gh_setLocaleIdentifier:@"en_GB"];
+      
+     [[NSLocale currentLocale] localeIdentifier] == "en_GB"
+
  */
 @interface NSLocale(GHMock)
 
+/*!
+ Set locale.
+ @param localeIdentifier Locale identifier, e.g. "en_US"
+ */
 + (void)gh_setLocaleIdentifier:(NSString *)localeIdentifier;
 
 /*!
@@ -52,6 +53,10 @@
  */
 + (NSLocale *)gh_currentLocale;
 
+/*!
+ Set preferred languages. To reset, set to nil.
+ @param preferredLanguages Preferred languages to set
+ */
 + (void)gh_setPreferredLanguages:(NSArray *)preferredLanguages;
 
 /*!
@@ -61,5 +66,3 @@
 + (NSArray *)gh_preferredLanguages;
 
 @end
-
-//! @endcond
