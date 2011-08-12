@@ -119,6 +119,7 @@
 		0066A0C013C51359006B7022 /* GTMNSString+XML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0066A0BB13C51359006B7022 /* GTMNSString+XML.h */; };
 		0066A0C113C51359006B7022 /* GTMNSString+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066A0BC13C51359006B7022 /* GTMNSString+XML.m */; };
 		0066A0C213C51359006B7022 /* GTMNSString+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066A0BC13C51359006B7022 /* GTMNSString+XML.m */; };
+		0088BC9413F4C19E0084C69E /* GHUnitIPhoneAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 00C979CD13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.h */; };
 		0097C45B13BA7EEC00D3BEF0 /* GHNSInvocation+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0097C44C13BA7EEC00D3BEF0 /* GHNSInvocation+Utils.h */; };
 		0097C45C13BA7EEC00D3BEF0 /* GHNSInvocation+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0097C44C13BA7EEC00D3BEF0 /* GHNSInvocation+Utils.h */; };
 		0097C45D13BA7EEC00D3BEF0 /* GHNSInvocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0097C44D13BA7EEC00D3BEF0 /* GHNSInvocation+Utils.m */; };
@@ -664,6 +665,7 @@
 				0097C47013BA7EEC00D3BEF0 /* GTMDefines.h in Headers */,
 				0066A0BE13C51359006B7022 /* GTMGarbageCollection.h in Headers */,
 				0066A0C013C51359006B7022 /* GTMNSString+XML.h in Headers */,
+				0088BC9413F4C19E0084C69E /* GHUnitIPhoneAppDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
