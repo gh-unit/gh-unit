@@ -1006,6 +1006,17 @@ continue; \
 } while (0)
 
 
+/*! Assert a view has not changed
+ TODO: ADD A UNIQUE IDENTIFIER HERE
+ */
+#define GHVerifyView(view) \
+do { \
+[self verifyView:view];\
+} while (0)
+
+
+//! @cond DEV
+
 @interface NSException(GHTestMacros_GTMSenTestAdditions)
 + (NSException *)ghu_failureInFile:(NSString *)filename 
                         atLine:(int)lineNumber 

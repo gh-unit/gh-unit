@@ -48,6 +48,7 @@
 
 #import "GHTestMacros.h"
 #import "GHTest.h"
+#import "UIKit/UIKit.h"
 
 /*!
  Log to your test case logger. For example,
@@ -93,8 +94,10 @@
  */
 @interface GHTestCase : NSObject {
   id<GHTestCaseLogWriter> logWriter_; // weak
-  
+
   SEL currentSelector_;
+
+  NSInteger imageVerifyCount_;
 }
 
 //! The current test selector
@@ -120,6 +123,8 @@
  Run before the tests (once per test case).
  */
 - (void)setUpClass;
+
+- (BOOL)verifyView:(UIView *)view;
 
 /*! 
  Run after the tests (once per test case).

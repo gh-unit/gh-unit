@@ -168,6 +168,17 @@
 		00C979A313BA809600FC285C /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9799013BA809600FC285C /* GTMSenTestCase.m */; };
 		00C979CF13BA8A5100FC285C /* GHUnitIPhoneAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 00C979CD13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.h */; };
 		00C979D013BA8A5100FC285C /* GHUnitIPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C979CE13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.m */; };
+		421C7B8F13F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */; };
+		421C7B9013F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */; };
+		421C7B9113F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */; };
+		421C7B9213F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */; };
+		421C7B9C13F0BA7200E21E74 /* RoboEyesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B9A13F0BA7200E21E74 /* RoboEyesKit.h */; };
+		421C7B9D13F0BA7200E21E74 /* RoboEyesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B9A13F0BA7200E21E74 /* RoboEyesKit.h */; };
+		421C7B9E13F0BA7200E21E74 /* RoboEyesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C7B9B13F0BA7200E21E74 /* RoboEyesKit.m */; };
+		421C7B9F13F0BA7200E21E74 /* RoboEyesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C7B9B13F0BA7200E21E74 /* RoboEyesKit.m */; };
+		42A678EF1401423D0060D1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
+		42A678FF1401509B0060D1B5 /* YKUIImageViewControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 42A678FD1401509B0060D1B5 /* YKUIImageViewControl.h */; };
+		42A679001401509B0060D1B5 /* YKUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A678FE1401509B0060D1B5 /* YKUIImageViewControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -294,6 +305,13 @@
 		00C979CB13BA81E200FC285C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		00C979CD13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneAppDelegate.h; sourceTree = "<group>"; };
 		00C979CE13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneAppDelegate.m; sourceTree = "<group>"; };
+		421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIOSTestView.h; sourceTree = "<group>"; };
+		421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestView.m; sourceTree = "<group>"; };
+		421C7B9A13F0BA7200E21E74 /* RoboEyesKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoboEyesKit.h; sourceTree = "<group>"; };
+		421C7B9B13F0BA7200E21E74 /* RoboEyesKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoboEyesKit.m; sourceTree = "<group>"; };
+		42A678EE1401423D0060D1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		42A678FD1401509B0060D1B5 /* YKUIImageViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIImageViewControl.h; sourceTree = "<group>"; };
+		42A678FE1401509B0060D1B5 /* YKUIImageViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIImageViewControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +319,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42A678EF1401423D0060D1B5 /* QuartzCore.framework in Frameworks */,
 				0041C5EE13BA7B8A0015FC22 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +377,7 @@
 		0041C5EC13BA7B8A0015FC22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42A678EE1401423D0060D1B5 /* QuartzCore.framework */,
 				00C9797613BA802400FC285C /* GHUnitIOS.framework */,
 				0041C5ED13BA7B8A0015FC22 /* Foundation.framework */,
 				0097C42313BA7E5000D3BEF0 /* UIKit.framework */,
@@ -395,6 +415,8 @@
 		0041C62013BA7C9A0015FC22 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				421C7B9A13F0BA7200E21E74 /* RoboEyesKit.h */,
+				421C7B9B13F0BA7200E21E74 /* RoboEyesKit.m */,
 				0041C62113BA7C9A0015FC22 /* GHAsyncTestCase.h */,
 				0041C62213BA7C9A0015FC22 /* GHAsyncTestCase.m */,
 				0041C62313BA7C9A0015FC22 /* GHTest */,
@@ -475,6 +497,8 @@
 				0041C65013BA7C9A0015FC22 /* GHUnitIOSView.m */,
 				0041C65113BA7C9A0015FC22 /* GHUnitIOSViewController.h */,
 				0041C65213BA7C9A0015FC22 /* GHUnitIOSViewController.m */,
+				421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */,
+				421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */,
 			);
 			name = "Classes-iOS";
 			path = "../Classes-iOS";
@@ -483,6 +507,7 @@
 		0097C44A13BA7EEC00D3BEF0 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				42A678FC1401509B0060D1B5 /* YelpKit */,
 				0097C44B13BA7EEC00D3BEF0 /* GHKit */,
 				0097C45213BA7EEC00D3BEF0 /* GTM */,
 				0097C45913BA7EEC00D3BEF0 /* README.md */,
@@ -596,6 +621,15 @@
 			path = GTM;
 			sourceTree = "<group>";
 		};
+		42A678FC1401509B0060D1B5 /* YelpKit */ = {
+			isa = PBXGroup;
+			children = (
+				42A678FD1401509B0060D1B5 /* YKUIImageViewControl.h */,
+				42A678FE1401509B0060D1B5 /* YKUIImageViewControl.m */,
+			);
+			path = YelpKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -636,6 +670,9 @@
 				00C979CF13BA8A5100FC285C /* GHUnitIPhoneAppDelegate.h in Headers */,
 				0066A0BD13C51359006B7022 /* GTMGarbageCollection.h in Headers */,
 				0066A0BF13C51359006B7022 /* GTMNSString+XML.h in Headers */,
+				421C7B8F13F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */,
+				421C7B9C13F0BA7200E21E74 /* RoboEyesKit.h in Headers */,
+				42A678FF1401509B0060D1B5 /* YKUIImageViewControl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,6 +713,7 @@
 				0066A0BE13C51359006B7022 /* GTMGarbageCollection.h in Headers */,
 				0066A0C013C51359006B7022 /* GTMNSString+XML.h in Headers */,
 				0088BC9413F4C19E0084C69E /* GHUnitIPhoneAppDelegate.h in Headers */,
+				421C7B9013F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,6 +863,9 @@
 				0097C46D13BA7EEC00D3BEF0 /* GTMStackTrace.m in Sources */,
 				00C979D013BA8A5100FC285C /* GHUnitIPhoneAppDelegate.m in Sources */,
 				0066A0C113C51359006B7022 /* GTMNSString+XML.m in Sources */,
+				421C7B9113F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */,
+				421C7B9E13F0BA7200E21E74 /* RoboEyesKit.m in Sources */,
+				42A679001401509B0060D1B5 /* YKUIImageViewControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,6 +901,8 @@
 				0097C46A13BA7EEC00D3BEF0 /* GTMObjC2Runtime.m in Sources */,
 				0097C46E13BA7EEC00D3BEF0 /* GTMStackTrace.m in Sources */,
 				0066A0C213C51359006B7022 /* GTMNSString+XML.m in Sources */,
+				421C7B9213F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */,
+				421C7B9F13F0BA7200E21E74 /* RoboEyesKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

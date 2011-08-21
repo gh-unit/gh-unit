@@ -47,20 +47,11 @@
   [super dealloc];
 }
 
-- (void)loadView {  
-  textView_ = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];  
-  textView_.font = [UIFont fontWithName:@"Courier New-Bold" size:12];
-  textView_.backgroundColor = [UIColor colorWithWhite:0.96f alpha:1.0f];
-  textView_.textColor = [UIColor blackColor];
-  textView_.editable = NO;
-  textView_.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  textView_.showsHorizontalScrollIndicator = YES;
-  textView_.showsVerticalScrollIndicator = YES;
-  textView_.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-  textView_.contentSize = CGSizeMake(10000, 10000);
-  textView_.scrollEnabled = YES;
-  self.view = textView_;
-  [textView_ release]; // Retained by self.view
+- (void)loadView {
+  testView_ = [[GHUnitIOSTestView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+  testView_.controlDelegate = self;
+  self.view = testView_;
+  [testView_ release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -70,7 +61,7 @@
 - (void)_runTest {
   id<GHTest> test = [testNode_.test copyWithZone:NULL];
   NSLog(@"Re-running: %@", test);
-  textView_.text = @"Running...";
+  //textView_.text = @"Running...";
   [test run:GHTestOptionForceSetUpTearDownClass];  
   [self setTest:test];
   [test release];
@@ -83,7 +74,14 @@
   if (log) [text appendFormat:@"\nLog:\n%@\n", log];
   NSString *stackTrace = [testNode_ stackTrace];
   if (stackTrace) [text appendFormat:@"\n%@\n", stackTrace];
-  textView_.text = text;    
+  if ([testNode_.test.exception.name isEqualToString:@"GHViewChangeException"]) {
+    NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
+    UIImage *originalImage = [exceptionUserInfo objectForKey:@"OriginalImage"];
+    UIImage *newImage = [exceptionUserInfo objectForKey:@"NewImage"];
+    [testView_ setOriginalImage:originalImage newImage:newImage text:text];
+  } else {
+    [testView_ setText:text];
+  }
   return text;
 }
 
@@ -95,6 +93,28 @@
   testNode_ = [[GHTestNode nodeWithTest:test children:nil source:nil] retain];
   NSString *text = [self updateTestView];
   NSLog(@"%@", text);
+}
+
+#pragma mark Delegates (GHUnitIOSTestView)
+
+- (void)testViewDidSelectOriginalImage:(GHUnitIOSTestView *)testView {
+  UIViewController *viewController = [[UIViewController alloc] init];
+  UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+  UIImage *originalImage = [testNode_.test.exception.userInfo objectForKey:@"OriginalImage"];
+  [scrollView addSubview:[[[UIImageView alloc] initWithImage:originalImage] autorelease]];
+  scrollView.contentSize = originalImage.size;
+  viewController.view = scrollView;
+  [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)testViewDidSelectNewImage:(GHUnitIOSTestView *)testView {
+  UIViewController *viewController = [[UIViewController alloc] init];
+  UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+  UIImage *newImage = [testNode_.test.exception.userInfo objectForKey:@"NewImage"];
+  [scrollView addSubview:[[[UIImageView alloc] initWithImage:newImage] autorelease]];
+  scrollView.contentSize = newImage.size;
+  viewController.view = scrollView;
+  [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end
