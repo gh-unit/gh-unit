@@ -27,17 +27,8 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//
-// DON'T USE THIS FILE, USE THE FILE IN PROJECT-IPHONE ROOT
-// This is special cased since we can't build the framework from XCode
-//
 
 #import <UIKit/UIKit.h>
-
-// If you are using the framework
-//#import <GHUnitIOS/GHUnit.h>
-// If you are using the static library and importing header files manually
-#import "GHUnit.h"
 
 int main(int argc, char *argv[]) {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
