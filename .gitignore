@@ -4,7 +4,6 @@ build
 *.pbxuser
 *.perspectivev3
 .DS_Store
-Documentation/appledoc
 Documentation/output
 *.tm_build_errors
 *.swp
