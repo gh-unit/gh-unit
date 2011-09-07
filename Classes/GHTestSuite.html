@@ -1,0 +1,644 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>GHTestSuite Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">GHUnit </a></h1>
+				<a id="developerHome" href="../index.html">GHUnit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">GHTestSuite Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/allTests">&nbsp;&nbsp;&nbsp;&nbsp;+ allTests</option>
+	
+	<option value="//api/name/suiteFromEnv">&nbsp;&nbsp;&nbsp;&nbsp;+ suiteFromEnv</option>
+	
+	<option value="//api/name/suiteWithPrefix:options:">&nbsp;&nbsp;&nbsp;&nbsp;+ suiteWithPrefix:options:</option>
+	
+	<option value="//api/name/suiteWithTestCaseClass:method:">&nbsp;&nbsp;&nbsp;&nbsp;+ suiteWithTestCaseClass:method:</option>
+	
+	<option value="//api/name/suiteWithTestFilter:">&nbsp;&nbsp;&nbsp;&nbsp;+ suiteWithTestFilter:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/initWithName:testCases:delegate:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:testCases:delegate:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allTests">allTests</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/suiteFromEnv">suiteFromEnv</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/suiteWithPrefix:options:">suiteWithPrefix:options:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/suiteWithTestCaseClass:method:">suiteWithTestCaseClass:method:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/suiteWithTestFilter:">suiteWithTestFilter:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:testCases:delegate:">initWithName:testCases:delegate:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="GHTestSuite Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">GHTestSuite Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/GHTestGroup.html">GHTestGroup</a> : NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">GHTestSuite.h<br />GHTestSuite.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Test suite is an alias for test group.</p>
+
+<p>A test case is an instance of a test case class with test methods.
+A test is a id<a href="../Classes/GHTest.html">GHTest</a> which represents a target and a selector.
+A test group is a collection of tests; A collection of id<a href="../Classes/GHTest.html">GHTest</a> (<a href="../Classes/GHTest.html">GHTest</a> or <a href="../Classes/GHTestGroup.html">GHTestGroup</a>).</p>
+
+<p>For example, if you have 2 test cases, GHTestCase1 (with some test methods) and GHTestCase2 (with some test methods),
+your test suite might look like:</p>
+
+<p>&ldquo;Tests&rdquo; (<a href="GHTestSuite.html">GHTestSuite</a>)
+  <a href="../Classes/GHTestGroup.html">GHTestGroup</a> (collection of tests from GHTestCase1)</p>
+
+<pre><code>- (void)testA1 (GHTest with target GHTestCase1 + testA1)
+- (void)testA2 (GHTest with target GHTestCase1 + testA2)
+</code></pre>
+
+<p>  <a href="../Classes/GHTestGroup.html">GHTestGroup</a> (collection of tests from GHTestCase2)</p>
+
+<pre><code>- (void)testB1; (GHTest with target GHTestCase2 + testB1)
+- (void)testB2; (GHTest with target GHTestCase2 + testB2)  
+</code></pre>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithName:testCases:delegate:">&ndash;&nbsp;initWithName:testCases:delegate:</a></code>
+		<span class="tooltip"><p>Create test suite with test cases.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allTests">+&nbsp;allTests</a></code>
+		<span class="tooltip"><p>Creates a suite of all tests.
+Will load all classes that subclass from <a href="../Classes/GHTestCase.html">GHTestCase</a>, SenTestCase or GTMTestCase (or register test case class).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/suiteWithTestFilter:">+&nbsp;suiteWithTestFilter:</a></code>
+		<span class="tooltip"><p>Create suite of tests with filter.
+This is useful for running a single test or all tests in a single test case.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/suiteWithPrefix:options:">+&nbsp;suiteWithPrefix:options:</a></code>
+		<span class="tooltip"><p>Create suite of tests that start with prefix.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/suiteWithTestCaseClass:method:">+&nbsp;suiteWithTestCaseClass:method:</a></code>
+		<span class="tooltip"><p>Suite for a single test/method.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/suiteFromEnv">+&nbsp;suiteFromEnv</a></code>
+		<span class="tooltip"><p>Return test suite based on environment (TEST=TestFoo/foo)</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/allTests" title="allTests"></a>
+	<h3 class="subsubtitle method-title">allTests</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a suite of all tests.
+Will load all classes that subclass from <a href="../Classes/GHTestCase.html">GHTestCase</a>, SenTestCase or GTMTestCase (or register test case class).</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (GHTestSuite *)allTests</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Suite</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestSuite.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/suiteFromEnv" title="suiteFromEnv"></a>
+	<h3 class="subsubtitle method-title">suiteFromEnv</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return test suite based on environment (TEST=TestFoo/foo)</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (GHTestSuite *)suiteFromEnv</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Suite</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestSuite.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/suiteWithPrefix:options:" title="suiteWithPrefix:options:"></a>
+	<h3 class="subsubtitle method-title">suiteWithPrefix:options:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create suite of tests that start with prefix.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (GHTestSuite *)suiteWithPrefix:(NSString *)<em>prefix</em> options:(NSStringCompareOptions)<em>options</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>prefix</em></dt>
+			<dd><p>If test case class starts with the prefix; If nil or empty string, returns all tests</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Compare options</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestSuite.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/suiteWithTestCaseClass:method:" title="suiteWithTestCaseClass:method:"></a>
+	<h3 class="subsubtitle method-title">suiteWithTestCaseClass:method:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Suite for a single test/method.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (GHTestSuite *)suiteWithTestCaseClass:(Class)<em>testCaseClass</em> method:(SEL)<em>method</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>testCaseClass</em></dt>
+			<dd><p>Test case class</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>method</em></dt>
+			<dd><p>Method</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Suite</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestSuite.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/suiteWithTestFilter:" title="suiteWithTestFilter:"></a>
+	<h3 class="subsubtitle method-title">suiteWithTestFilter:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create suite of tests with filter.
+This is useful for running a single test or all tests in a single test case.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (GHTestSuite *)suiteWithTestFilter:(NSString *)<em>testFilter</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>testFilter</em></dt>
+			<dd><p>Test filter</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Suite</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>For example,
+&lsquo;GHSlowTest&rsquo; &mdash; Runs all test method in GHSlowTest
+&lsquo;GHSlowTest/testSlowA &mdash; Only runs the test method testSlowA in GHSlowTest</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestSuite.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithName:testCases:delegate:" title="initWithName:testCases:delegate:"></a>
+	<h3 class="subsubtitle method-title">initWithName:testCases:delegate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create test suite with test cases.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> testCases:(NSArray *)<em>testCases</em> delegate:(id&lt;GHTestDelegate&gt;)<em>delegate</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>Label to give the suite</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>testCases</em></dt>
+			<dd><p>Array of init'ed test case classes</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>Delegate</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestSuite.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-09-07)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

@@ -1,0 +1,1058 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>GHTestViewModel Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">GHUnit </a></h1>
+				<a id="developerHome" href="../index.html">GHUnit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">GHTestViewModel Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
+	
+	<option value="//api/name/findFailure">&nbsp;&nbsp;&nbsp;&nbsp;- findFailure</option>
+	
+	<option value="//api/name/findFailureFromNode:">&nbsp;&nbsp;&nbsp;&nbsp;- findFailureFromNode:</option>
+	
+	<option value="//api/name/findTestNodeForTest:">&nbsp;&nbsp;&nbsp;&nbsp;- findTestNodeForTest:</option>
+	
+	<option value="//api/name/indexPathToTest:">&nbsp;&nbsp;&nbsp;&nbsp;- indexPathToTest:</option>
+	
+	<option value="//api/name/initWithIdentifier:suite:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithIdentifier:suite:</option>
+	
+	<option value="//api/name/isRunning">&nbsp;&nbsp;&nbsp;&nbsp;- isRunning</option>
+	
+	<option value="//api/name/loadDefaults">&nbsp;&nbsp;&nbsp;&nbsp;- loadDefaults</option>
+	
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;- name</option>
+	
+	<option value="//api/name/numberOfGroups">&nbsp;&nbsp;&nbsp;&nbsp;- numberOfGroups</option>
+	
+	<option value="//api/name/numberOfTestsInGroup:">&nbsp;&nbsp;&nbsp;&nbsp;- numberOfTestsInGroup:</option>
+	
+	<option value="//api/name/registerNode:">&nbsp;&nbsp;&nbsp;&nbsp;- registerNode:</option>
+	
+	<option value="//api/name/run:inParallel:options:">&nbsp;&nbsp;&nbsp;&nbsp;- run:inParallel:options:</option>
+	
+	<option value="//api/name/saveDefaults">&nbsp;&nbsp;&nbsp;&nbsp;- saveDefaults</option>
+	
+	<option value="//api/name/statusString:">&nbsp;&nbsp;&nbsp;&nbsp;- statusString:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findFailure">findFailure</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findFailureFromNode:">findFailureFromNode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findTestNodeForTest:">findTestNodeForTest:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/indexPathToTest:">indexPathToTest:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithIdentifier:suite:">initWithIdentifier:suite:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isRunning">isRunning</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadDefaults">loadDefaults</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/numberOfGroups">numberOfGroups</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/numberOfTestsInGroup:">numberOfTestsInGroup:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registerNode:">registerNode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/run:inParallel:options:">run:inParallel:options:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/saveDefaults">saveDefaults</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/statusString:">statusString:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="GHTestViewModel Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">GHTestViewModel Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">GHTestNodeDelegate</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">GHTestViewModel.h<br />GHTestViewModel.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Test view model for use in a tree view.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithIdentifier:suite:">&ndash;&nbsp;initWithIdentifier:suite:</a></code>
+		<span class="tooltip"><p>Create view model with root test group node.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/name">&ndash;&nbsp;name</a></code>
+		<span class="tooltip"><p>Name of test suite.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/statusString:">&ndash;&nbsp;statusString:</a></code>
+		<span class="tooltip"><p>Status description.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findTestNodeForTest:">&ndash;&nbsp;findTestNodeForTest:</a></code>
+		<span class="tooltip"><p>Find the test node from the test.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findFailure">&ndash;&nbsp;findFailure</a></code>
+		<span class="tooltip"><p>Find the first failure.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findFailureFromNode:">&ndash;&nbsp;findFailureFromNode:</a></code>
+		<span class="tooltip"><p>Find the next failure starting from node.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/registerNode:">&ndash;&nbsp;registerNode:</a></code>
+		<span class="tooltip"><p>Register node, so that we can do a lookup later. See <a href="#//api/name/findTestNodeForTest:">findTestNodeForTest:</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/numberOfGroups">&ndash;&nbsp;numberOfGroups</a></code>
+		<span class="tooltip"><p>Returns the number of test groups.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/numberOfTestsInGroup:">&ndash;&nbsp;numberOfTestsInGroup:</a></code>
+		<span class="tooltip"><p>Returns the number of tests in group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/indexPathToTest:">&ndash;&nbsp;indexPathToTest:</a></code>
+		<span class="tooltip"><p>Search for path to test.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadDefaults">&ndash;&nbsp;loadDefaults</a></code>
+		<span class="tooltip"><p>Load defaults (user settings saved with <a href="#//api/name/saveDefaults">saveDefaults</a>).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/saveDefaults">&ndash;&nbsp;saveDefaults</a></code>
+		<span class="tooltip"><p>Save defaults (user settings to be loaded with <a href="#//api/name/loadDefaults">loadDefaults</a>).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/run:inParallel:options:">&ndash;&nbsp;run:inParallel:options:</a></code>
+		<span class="tooltip"><p>Run with current test suite.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
+		<span class="tooltip"><p>Cancel test run.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isRunning">&ndash;&nbsp;isRunning</a></code>
+		<span class="tooltip"><p>Check if running.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cancel" title="cancel"></a>
+	<h3 class="subsubtitle method-title">cancel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Cancel test run.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/findFailure" title="findFailure"></a>
+	<h3 class="subsubtitle method-title">findFailure</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Find the first failure.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (GHTestNode *)findFailure</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The first failure</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/findFailureFromNode:" title="findFailureFromNode:"></a>
+	<h3 class="subsubtitle method-title">findFailureFromNode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Find the next failure starting from node.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (GHTestNode *)findFailureFromNode:(GHTestNode *)<em>node</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>node</em></dt>
+			<dd><p>Node to start from</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/findTestNodeForTest:" title="findTestNodeForTest:"></a>
+	<h3 class="subsubtitle method-title">findTestNodeForTest:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Find the test node from the test.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (GHTestNode *)findTestNodeForTest:(id&lt;GHTest&gt;)<em>test</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>test</em></dt>
+			<dd><p>Find test</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/indexPathToTest:" title="indexPathToTest:"></a>
+	<h3 class="subsubtitle method-title">indexPathToTest:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Search for path to test.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSIndexPath *)indexPathToTest:(id&lt;GHTest&gt;)<em>test</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>test</em></dt>
+			<dd><p>Test</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Index path</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithIdentifier:suite:" title="initWithIdentifier:suite:"></a>
+	<h3 class="subsubtitle method-title">initWithIdentifier:suite:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create view model with root test group node.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithIdentifier:(NSString *)<em>identifier</em> suite:(GHTestSuite *)<em>suite</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifier</em></dt>
+			<dd><p>Unique identifier for test model (used to load defaults)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>suite</em></dt>
+			<dd><p>Suite</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isRunning" title="isRunning"></a>
+	<h3 class="subsubtitle method-title">isRunning</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if running.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)isRunning</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if running.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadDefaults" title="loadDefaults"></a>
+	<h3 class="subsubtitle method-title">loadDefaults</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Load defaults (user settings saved with <a href="#//api/name/saveDefaults">saveDefaults</a>).</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)loadDefaults</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Name of test suite.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)name</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Name of test suite.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/numberOfGroups" title="numberOfGroups"></a>
+	<h3 class="subsubtitle method-title">numberOfGroups</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the number of test groups.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSInteger)numberOfGroups</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns the number of test groups.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/numberOfTestsInGroup:" title="numberOfTestsInGroup:"></a>
+	<h3 class="subsubtitle method-title">numberOfTestsInGroup:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the number of tests in group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSInteger)numberOfTestsInGroup:(NSInteger)<em>group</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>group</em></dt>
+			<dd><p>Group number</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The number of tests in group.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/registerNode:" title="registerNode:"></a>
+	<h3 class="subsubtitle method-title">registerNode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Register node, so that we can do a lookup later. See <a href="#//api/name/findTestNodeForTest:">findTestNodeForTest:</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)registerNode:(GHTestNode *)<em>node</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>node</em></dt>
+			<dd><p>Node to register</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/run:inParallel:options:" title="run:inParallel:options:"></a>
+	<h3 class="subsubtitle method-title">run:inParallel:options:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Run with current test suite.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)run:(id&lt;GHTestRunnerDelegate&gt;)<em>delegate</em> inParallel:(BOOL)<em>inParallel</em> options:(GHTestOptions)<em>options</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>Callback</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inParallel</em></dt>
+			<dd><p>If YES, will run tests in operation queue</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Options</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/saveDefaults" title="saveDefaults"></a>
+	<h3 class="subsubtitle method-title">saveDefaults</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Save defaults (user settings to be loaded with <a href="#//api/name/loadDefaults">loadDefaults</a>).</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)saveDefaults</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/statusString:" title="statusString:"></a>
+	<h3 class="subsubtitle method-title">statusString:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Status description.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)statusString:(NSString *)<em>prefix</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>prefix</em></dt>
+			<dd><p>Prefix to append</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Current status string</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestViewModel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-09-07)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

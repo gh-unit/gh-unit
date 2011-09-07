@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>guide_testing Document</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../../css/stylesPrint.css" />	
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">GHUnit </a></h1>
+				<a id="developerHome" href="../index.html">GHUnit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode" id="pageTitleHeader">guide_testing Document</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar"></ul>
+		</header>
+		<article>
+			<a title="guide_testing Document" name="top"></a>
+			<div id="overview_contents" role="main">
+				<div id="container">	
+					<h2>Create a Test</h2>
+
+<ul>
+<li>Command click on the Tests folder and select: New File&hellip;</li>
+<li>Under iOS, Cocoa Touch, select Objective-C class and select Next. Leave the default subclass and select Next again.</li>
+<li>Name the file MyTest.m and make sure its enabled only for the &ldquo;Tests&rdquo; target.</li>
+<li>Delete the MyTest.h file and update the MyTest.m file.</li>
+</ul>
+
+
+<p>MyTest.m:</p>
+
+<pre><code>#import &lt;GHUnitIOS/GHUnit.h&gt; 
+
+@interface MyTest : GHTestCase { }
+@end
+
+@implementation MyTest
+
+- (void)testStrings {       
+  NSString *string1 = @"a string";
+  GHTestLog(@"I can log to the GHUnit test console: %@", string1);
+
+  // Assert string1 is not NULL, with no custom error description
+  GHAssertNotNULL(string1, nil);
+
+  // Assert equal objects, add custom error description
+  NSString *string2 = @"a string";
+  GHAssertEqualObjects(string1, string2, @"A custom error message. string1 should be equal to: %@.", string2);
+}
+
+@end
+</code></pre>
+
+<p><img src="images/13_adding_test.png" alt="Add Test" /></p>
+
+<ul>
+<li>Now run the &ldquo;Tests&rdquo; target. Hit the Run button in the top right.</li>
+</ul>
+
+
+<p><img src="images/14_running_with_test.png" alt="Running Test" /></p>
+
+<h2>Examples</h2>
+
+<p>ExampleTest.m:</p>
+
+<pre><code>// For iOS
+#import &lt;GHUnitIOS/GHUnit.h&gt; 
+// For Mac OS X
+//#import &lt;GHUnit/GHUnit.h&gt;
+
+@interface ExampleTest : GHTestCase { }
+@end
+
+@implementation ExampleTest
+
+- (BOOL)shouldRunOnMainThread {
+  // By default NO, but if you have a UI test or test dependent on running on the main thread return YES.
+  // Also an async test that calls back on the main thread, you'll probably want to return YES.
+  return NO;
+}
+
+- (void)setUpClass {
+  // Run at start of all tests in the class
+}
+
+- (void)tearDownClass {
+  // Run at end of all tests in the class
+}
+
+- (void)setUp {
+  // Run before each test method
+}
+
+- (void)tearDown {
+  // Run after each test method
+}   
+
+- (void)testFoo {       
+  NSString *a = @"foo";
+  GHTestLog(@"I can log to the GHUnit test console: %@", a);
+
+  // Assert a is not NULL, with no custom error description
+  GHAssertNotNULL(a, nil);
+
+  // Assert equal objects, add custom error description
+  NSString *b = @"bar";
+  GHAssertEqualObjects(a, b, @"A custom error message. a should be equal to: %@.", b);
+}
+
+- (void)testBar {
+  // Another test
+}
+
+@end
+</code></pre>
+
+<p>ExampleAsyncTest.m:</p>
+
+<pre><code>// For iOS
+#import &lt;GHUnitIOS/GHUnit.h&gt; 
+// For Mac OS X
+//#import &lt;GHUnit/GHUnit.h&gt; 
+
+@interface ExampleAsyncTest : GHAsyncTestCase { }
+@end
+
+@implementation ExampleAsyncTest
+
+- (void)testURLConnection {
+
+  // Call prepare to setup the asynchronous action.
+  // This helps in cases where the action is synchronous and the
+  // action occurs before the wait is actually called.
+  [self prepare];
+
+  NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]]http://www.google.com"]];
+  NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+
+  // Wait until notify called for timeout (seconds); If notify is not called with kGHUnitWaitStatusSuccess then
+  // we will throw an error.
+  [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+
+  [connection release];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+  // Notify of success, specifying the method where wait is called.
+  // This prevents stray notifies from affecting other tests.
+  [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testURLConnection)];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+  // Notify of connection failure
+  [self notify:kGHUnitWaitStatusFailure forSelector:@selector(testURLConnection)];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+  GHTestLog(@"%@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
+} 
+
+@end
+</code></pre>
+
+<p>Example projects can be found at: <a href="http://github.com/gabriel/gh-unit/tree/master/Examples/">http://github.com/gabriel/gh-unit/tree/master/Examples/</a></p>
+
+<h2>Assert Macros</h2>
+
+<p>The following test macros are included.</p>
+
+<p>These macros are directly from: <a href="http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/GTMSenTestCase.h">GTMSenTestCase.h</a>
+prefixed with GH so as not to conflict with the GTM macros if you are using those in your project.</p>
+
+<p>The description argument appends extra information for when the assert fails; though most of the time you might leave it as nil.</p>
+
+<pre><code>GHAssertNoErr(a1, description, ...)
+GHAssertErr(a1, a2, description, ...)
+GHAssertNotNULL(a1, description, ...)
+GHAssertNULL(a1, description, ...)
+GHAssertNotEquals(a1, a2, description, ...)
+GHAssertNotEqualObjects(a1, a2, desc, ...)
+GHAssertOperation(a1, a2, op, description, ...)
+GHAssertGreaterThan(a1, a2, description, ...)
+GHAssertGreaterThanOrEqual(a1, a2, description, ...)
+GHAssertLessThan(a1, a2, description, ...)
+GHAssertLessThanOrEqual(a1, a2, description, ...)
+GHAssertEqualStrings(a1, a2, description, ...)
+GHAssertNotEqualStrings(a1, a2, description, ...)
+GHAssertEqualCStrings(a1, a2, description, ...)
+GHAssertNotEqualCStrings(a1, a2, description, ...)
+GHAssertEqualObjects(a1, a2, description, ...)
+GHAssertEquals(a1, a2, description, ...)
+GHAbsoluteDifference(left,right) (MAX(left,right)-MIN(left,right))
+GHAssertEqualsWithAccuracy(a1, a2, accuracy, description, ...)
+GHFail(description, ...)
+GHAssertNil(a1, description, ...)
+GHAssertNotNil(a1, description, ...)
+GHAssertTrue(expr, description, ...)
+GHAssertTrueNoThrow(expr, description, ...)
+GHAssertFalse(expr, description, ...)
+GHAssertFalseNoThrow(expr, description, ...)
+GHAssertThrows(expr, description, ...)
+GHAssertThrowsSpecific(expr, specificException, description, ...)
+GHAssertThrowsSpecificNamed(expr, specificException, aName, description, ...)
+GHAssertNoThrow(expr, description, ...)
+GHAssertNoThrowSpecific(expr, specificException, description, ...)
+GHAssertNoThrowSpecificNamed(expr, specificException, aName, description, ...)
+</code></pre>
+
+<h2>Custom Test Case Classes</h2>
+
+<p>You can register additional classes at runtime; if you have your own. For example:</p>
+
+<pre><code>[[GHTesting sharedInstance] registerClassName:@"MySpecialTestCase"];
+</code></pre>
+
+<h2>Using an Alternate (Test) iOS Application Delegate</h2>
+
+<p>If you want to use a custom application delegate in your test environment, you should subclass <a href="../../Classes/GHUnitIOSAppDelegate.html">GHUnitIOSAppDelegate</a>:</p>
+
+<pre><code> @interface MyTestApplicationDelegate : GHUnitIOSAppDelegate { }
+ @end
+</code></pre>
+
+<p>Then in main.m (or GHUnitIOSTestMain.m):</p>
+
+<pre><code>int retVal = UIApplicationMain(argc, argv, nil, @"MyTestApplicationDelegate");
+</code></pre>
+
+<h2>Using SenTestingKit</h2>
+
+<p>You can also use GHUnit with SenTestCase, for example:</p>
+
+<pre><code>#import &lt;SenTestingKit/SenTestingKit.h&gt;
+
+@interface MyTest : SenTestCase { }
+@end
+
+@implementation MyTest
+
+- (void)setUp {
+ // Run before each test method
+}
+
+- (void)tearDown {
+ // Run after each test method
+}
+
+- (void)testFoo {
+ // Assert a is not NULL, with no custom error description
+ STAssertNotNULL(a, nil);
+
+ // Assert equal objects, add custom error description
+ STAssertEqualObjects(a, b, @"Foo should be equal to: %@. Something bad happened", bar);
+}
+
+- (void)testBar {
+ // Another test
+}
+
+@end
+</code></pre>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-09-07)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					
+					</div>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

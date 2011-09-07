@@ -1,0 +1,458 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NSLocale(GHMock) Category Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">GHUnit </a></h1>
+				<a id="developerHome" href="../index.html">GHUnit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NSLocale(GHMock) Category Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/gh_currentLocale">&nbsp;&nbsp;&nbsp;&nbsp;+ gh_currentLocale</option>
+	
+	<option value="//api/name/gh_preferredLanguages">&nbsp;&nbsp;&nbsp;&nbsp;+ gh_preferredLanguages</option>
+	
+	<option value="//api/name/gh_setLocaleIdentifier:">&nbsp;&nbsp;&nbsp;&nbsp;+ gh_setLocaleIdentifier:</option>
+	
+	<option value="//api/name/gh_setPreferredLanguages:">&nbsp;&nbsp;&nbsp;&nbsp;+ gh_setPreferredLanguages:</option>
+	
+	
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/gh_currentLocale">gh_currentLocale</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/gh_preferredLanguages">gh_preferredLanguages</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/gh_setLocaleIdentifier:">gh_setLocaleIdentifier:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/gh_setPreferredLanguages:">gh_setPreferredLanguages:</a></span></li>
+	
+</ul></li>
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NSLocale(GHMock) Category Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NSLocale(GHMock) Category Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">GHNSLocale+Mock.h<br />GHNSLocale+Mock.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Category for overriding the current locale at runtime.</p>
+
+<pre><code> #import "GHNSLocale+Mock.h"
+ // This aliases the currentLocale method and with the specified locale identifier
+ [NSLocale gh_setLocaleIdentifier:@"en_GB"];
+
+ [[NSLocale currentLocale] localeIdentifier] == "en_GB"
+</code></pre>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/gh_setLocaleIdentifier:">+&nbsp;gh_setLocaleIdentifier:</a></code>
+		<span class="tooltip"><p>Set locale.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/gh_currentLocale">+&nbsp;gh_currentLocale</a></code>
+		<span class="tooltip"><p>Aliases to currentLocale with locale set from gh_setLocaleIdentifier.
+If not set, defaults to NSLocale with identifier en_US.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/gh_setPreferredLanguages:">+&nbsp;gh_setPreferredLanguages:</a></code>
+		<span class="tooltip"><p>Set preferred languages. To reset, set to nil.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/gh_preferredLanguages">+&nbsp;gh_preferredLanguages</a></code>
+		<span class="tooltip"><p>Aliases to preferredLanguages set from gh_setPreferredLanguages.
+If not set, defaults to [@&ldquo;en&rdquo;].</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/gh_currentLocale" title="gh_currentLocale"></a>
+	<h3 class="subsubtitle method-title">gh_currentLocale</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Aliases to currentLocale with locale set from gh_setLocaleIdentifier.
+If not set, defaults to NSLocale with identifier en_US.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSLocale *)gh_currentLocale</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHNSLocale+Mock.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/gh_preferredLanguages" title="gh_preferredLanguages"></a>
+	<h3 class="subsubtitle method-title">gh_preferredLanguages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Aliases to preferredLanguages set from gh_setPreferredLanguages.
+If not set, defaults to [@&ldquo;en&rdquo;].</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSArray *)gh_preferredLanguages</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHNSLocale+Mock.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/gh_setLocaleIdentifier:" title="gh_setLocaleIdentifier:"></a>
+	<h3 class="subsubtitle method-title">gh_setLocaleIdentifier:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set locale.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)gh_setLocaleIdentifier:(NSString *)<em>localeIdentifier</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>localeIdentifier</em></dt>
+			<dd><p>Locale identifier, e.g. &ldquo;en_US&rdquo;</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHNSLocale+Mock.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/gh_setPreferredLanguages:" title="gh_setPreferredLanguages:"></a>
+	<h3 class="subsubtitle method-title">gh_setPreferredLanguages:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set preferred languages. To reset, set to nil.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)gh_setPreferredLanguages:(NSArray *)<em>preferredLanguages</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>preferredLanguages</em></dt>
+			<dd><p>Preferred languages to set</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHNSLocale+Mock.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-09-07)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

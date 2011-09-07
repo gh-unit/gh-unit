@@ -1,0 +1,1404 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>GHTestGroup Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">GHUnit </a></h1>
+				<a id="developerHome" href="../index.html">GHUnit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">GHTestGroup Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/children">&nbsp;&nbsp;&nbsp;&nbsp;children</option>
+	
+	<option value="//api/name/parent">&nbsp;&nbsp;&nbsp;&nbsp;parent</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/testGroupFromTestCase:delegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ testGroupFromTestCase:delegate:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addTest:">&nbsp;&nbsp;&nbsp;&nbsp;- addTest:</option>
+	
+	<option value="//api/name/addTestCase:">&nbsp;&nbsp;&nbsp;&nbsp;- addTestCase:</option>
+	
+	<option value="//api/name/addTestGroup:">&nbsp;&nbsp;&nbsp;&nbsp;- addTestGroup:</option>
+	
+	<option value="//api/name/addTests:">&nbsp;&nbsp;&nbsp;&nbsp;- addTests:</option>
+	
+	<option value="//api/name/failedTests">&nbsp;&nbsp;&nbsp;&nbsp;- failedTests</option>
+	
+	<option value="//api/name/hasEnabledChildren">&nbsp;&nbsp;&nbsp;&nbsp;- hasEnabledChildren</option>
+	
+	<option value="//api/name/initWithName:delegate:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:delegate:</option>
+	
+	<option value="//api/name/initWithTestCase:delegate:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithTestCase:delegate:</option>
+	
+	<option value="//api/name/initWithTestCase:selector:delegate:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithTestCase:selector:delegate:</option>
+	
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;- name</option>
+	
+	<option value="//api/name/runInOperationQueue:options:">&nbsp;&nbsp;&nbsp;&nbsp;- runInOperationQueue:options:</option>
+	
+	<option value="//api/name/shouldRunOnMainThread">&nbsp;&nbsp;&nbsp;&nbsp;- shouldRunOnMainThread</option>
+	
+	<option value="//api/name/test:didLog:source:">&nbsp;&nbsp;&nbsp;&nbsp;- test:didLog:source:</option>
+	
+	<option value="//api/name/testDidEnd:source:">&nbsp;&nbsp;&nbsp;&nbsp;- testDidEnd:source:</option>
+	
+	<option value="//api/name/testDidStart:source:">&nbsp;&nbsp;&nbsp;&nbsp;- testDidStart:source:</option>
+	
+	<option value="//api/name/testDidUpdate:source:">&nbsp;&nbsp;&nbsp;&nbsp;- testDidUpdate:source:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/children">children</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parent">parent</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/testGroupFromTestCase:delegate:">testGroupFromTestCase:delegate:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addTest:">addTest:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addTestCase:">addTestCase:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addTestGroup:">addTestGroup:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addTests:">addTests:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/failedTests">failedTests</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasEnabledChildren">hasEnabledChildren</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:delegate:">initWithName:delegate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithTestCase:delegate:">initWithTestCase:delegate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithTestCase:selector:delegate:">initWithTestCase:selector:delegate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/runInOperationQueue:options:">runInOperationQueue:options:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shouldRunOnMainThread">shouldRunOnMainThread</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/test:didLog:source:">test:didLog:source:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/testDidEnd:source:">testDidEnd:source:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/testDidStart:source:">testDidStart:source:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/testDidUpdate:source:">testDidUpdate:source:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="GHTestGroup Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">GHTestGroup Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/GHTestDelegate.html">GHTestDelegate</a><br /><a href="../Protocols/GHTestGroup.html">GHTestGroup</a></td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">GHTestGroup.h<br />GHTestGroup.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A collection of tests (or test groups).</p>
+
+<p>A test group is a collection of <code>id</code>GHTest<code></code>, that may represent a set of test case methods.</p>
+
+<p>For example, if you had the following <a href="../Classes/GHTestCase.html">GHTestCase</a>.</p>
+
+<pre><code> @interface FooTest : GHTestCase {}
+ - (void)testFoo;
+ - (void)testBar;
+ @end
+</code></pre>
+
+<p>The <a href="GHTestGroup.html">GHTestGroup</a> would consist of and array of <a href="../Classes/GHTest.html">GHTest</a>: FooTest#testFoo, FooTest#testBar,
+each test being a target and selector pair.</p>
+
+<p>A test group may also consist of a group of groups (since <a href="GHTestGroup.html">GHTestGroup</a> conforms to <a href="../Classes/GHTest.html">GHTest</a>),
+and this might represent a <a href="../Classes/GHTestSuite.html">GHTestSuite</a>.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/children">&nbsp;&nbsp;children</a></code>
+		<span class="tooltip"><p>Children for test group.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parent">&nbsp;&nbsp;parent</a></code>
+		<span class="tooltip"><p>Parent for test group.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithName:delegate:">&ndash;&nbsp;initWithName:delegate:</a></code>
+		<span class="tooltip"><p>Create an empty test group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithTestCase:delegate:">&ndash;&nbsp;initWithTestCase:delegate:</a></code>
+		<span class="tooltip"><p>Create test group from a test case.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithTestCase:selector:delegate:">&ndash;&nbsp;initWithTestCase:selector:delegate:</a></code>
+		<span class="tooltip"><p>Create test group from a single test.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/testGroupFromTestCase:delegate:">+&nbsp;testGroupFromTestCase:delegate:</a></code>
+		<span class="tooltip"><p>Create test group from a test case.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addTestCase:">&ndash;&nbsp;addTestCase:</a></code>
+		<span class="tooltip"><p>Add a test case (or test group) to this test group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addTestGroup:">&ndash;&nbsp;addTestGroup:</a></code>
+		<span class="tooltip"><p>Add a test group to this test group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addTests:">&ndash;&nbsp;addTests:</a></code>
+		<span class="tooltip"><p>Add tests to this group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addTest:">&ndash;&nbsp;addTest:</a></code>
+		<span class="tooltip"><p>Add test to this group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shouldRunOnMainThread">&ndash;&nbsp;shouldRunOnMainThread</a></code>
+		<span class="tooltip"><p>Whether the test group should run on the main thread.
+Call passes to test case instance if enabled.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hasEnabledChildren">&ndash;&nbsp;hasEnabledChildren</a></code>
+		<span class="tooltip"><p>YES if we have any enabled chilren, NO if all <a href="#//api/name/children">children</a> have been disabled.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/failedTests">&ndash;&nbsp;failedTests</a></code>
+		<span class="tooltip"><p>Get list of failed tests.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/runInOperationQueue:options:">&ndash;&nbsp;runInOperationQueue:options:</a></code>
+		<span class="tooltip"><p>Run in operation queue.
+Tests from the group are added and will block until they have completed.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/name">&ndash;&nbsp;name</a></code>
+		<span class="tooltip"><p>Name.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/test:didLog:source:">&ndash;&nbsp;test:didLog:source:</a></code>
+		<span class="tooltip"><p>Test logged a message.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/testDidStart:source:">&ndash;&nbsp;testDidStart:source:</a></code>
+		<span class="tooltip"><p>Test started.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/testDidUpdate:source:">&ndash;&nbsp;testDidUpdate:source:</a></code>
+		<span class="tooltip"><p>Test updated.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/testDidEnd:source:">&ndash;&nbsp;testDidEnd:source:</a></code>
+		<span class="tooltip"><p>Test ended.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/children" title="children"></a>
+	<h3 class="subsubtitle method-title">children</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Children for test group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSArray *children</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/parent" title="parent"></a>
+	<h3 class="subsubtitle method-title">parent</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Parent for test group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) id&lt;GHTestGroup&gt; parent</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/testGroupFromTestCase:delegate:" title="testGroupFromTestCase:delegate:"></a>
+	<h3 class="subsubtitle method-title">testGroupFromTestCase:delegate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create test group from a test case.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (GHTestGroup *)testGroupFromTestCase:(id)<em>testCase</em> delegate:(id&lt;GHTestDelegate&gt;)<em>delegate</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>testCase</em></dt>
+			<dd><p>Test case, could be a subclass of SenTestCase or <a href="../Classes/GHTestCase.html">GHTestCase</a></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>Delegate, notifies of test start and end</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>New test group</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addTest:" title="addTest:"></a>
+	<h3 class="subsubtitle method-title">addTest:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add test to this group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addTest:(id&lt;GHTest&gt;)<em>test</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>test</em></dt>
+			<dd><p>Test to add</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addTestCase:" title="addTestCase:"></a>
+	<h3 class="subsubtitle method-title">addTestCase:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a test case (or test group) to this test group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addTestCase:(id)<em>testCase</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>testCase</em></dt>
+			<dd><p>Test case, could be a subclass of SenTestCase or <a href="../Classes/GHTestCase.html">GHTestCase</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addTestGroup:" title="addTestGroup:"></a>
+	<h3 class="subsubtitle method-title">addTestGroup:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a test group to this test group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addTestGroup:(GHTestGroup *)<em>testGroup</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>testGroup</em></dt>
+			<dd><p>Test group to add</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addTests:" title="addTests:"></a>
+	<h3 class="subsubtitle method-title">addTests:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add tests to this group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addTests:(NSArray *)<em>tests</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tests</em></dt>
+			<dd><p>Tests to add</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/failedTests" title="failedTests"></a>
+	<h3 class="subsubtitle method-title">failedTests</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get list of failed tests.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)failedTests</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Failed tests</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/hasEnabledChildren" title="hasEnabledChildren"></a>
+	<h3 class="subsubtitle method-title">hasEnabledChildren</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>YES if we have any enabled chilren, NO if all <a href="#//api/name/children">children</a> have been disabled.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)hasEnabledChildren</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if we have any enabled chilren, NO if all <a href="#//api/name/children">children</a> have been disabled.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithName:delegate:" title="initWithName:delegate:"></a>
+	<h3 class="subsubtitle method-title">initWithName:delegate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create an empty test group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> delegate:(id&lt;GHTestDelegate&gt;)<em>delegate</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The <a href="#//api/name/name">name</a> of the test group</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>Delegate, notifies of test start and end</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>New test group</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithTestCase:delegate:" title="initWithTestCase:delegate:"></a>
+	<h3 class="subsubtitle method-title">initWithTestCase:delegate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create test group from a test case.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithTestCase:(id)<em>testCase</em> delegate:(id&lt;GHTestDelegate&gt;)<em>delegate</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>testCase</em></dt>
+			<dd><p>Test case, could be a subclass of SenTestCase or <a href="../Classes/GHTestCase.html">GHTestCase</a></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>Delegate, notifies of test start and end</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>New test group</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithTestCase:selector:delegate:" title="initWithTestCase:selector:delegate:"></a>
+	<h3 class="subsubtitle method-title">initWithTestCase:selector:delegate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create test group from a single test.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithTestCase:(id)<em>testCase</em> selector:(SEL)<em>selector</em> delegate:(id&lt;GHTestDelegate&gt;)<em>delegate</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>testCase</em></dt>
+			<dd><p>Test case, could be a subclass of SenTestCase or <a href="../Classes/GHTestCase.html">GHTestCase</a></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>selector</em></dt>
+			<dd><p>Test to run</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>Delegate, notifies of test start and end</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Name.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)name</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/runInOperationQueue:options:" title="runInOperationQueue:options:"></a>
+	<h3 class="subsubtitle method-title">runInOperationQueue:options:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Run in operation queue.
+Tests from the group are added and will block until they have completed.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)runInOperationQueue:(NSOperationQueue *)<em>operationQueue</em> options:(GHTestOptions)<em>options</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>operationQueue</em></dt>
+			<dd><p>If nil, then runs as is</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Options</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shouldRunOnMainThread" title="shouldRunOnMainThread"></a>
+	<h3 class="subsubtitle method-title">shouldRunOnMainThread</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether the test group should run on the main thread.
+Call passes to test case instance if enabled.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)shouldRunOnMainThread</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/test:didLog:source:" title="test:didLog:source:"></a>
+	<h3 class="subsubtitle method-title">test:didLog:source:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Test logged a message.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)test:(id&lt;GHTest&gt;)<em>test</em> didLog:(NSString *)<em>message</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>test</em></dt>
+			<dd><p>Test</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>didLog</em></dt>
+			<dd><p>Message</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>source</em></dt>
+			<dd><p>If tests are nested, than source corresponds to the originator of the delegate call</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/testDidEnd:source:" title="testDidEnd:source:"></a>
+	<h3 class="subsubtitle method-title">testDidEnd:source:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Test ended.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)testDidEnd:(id&lt;GHTest&gt;)<em>test</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>test</em></dt>
+			<dd><p>Test</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>source</em></dt>
+			<dd><p>If tests are nested, than source corresponds to the originator of the delegate call</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/testDidStart:source:" title="testDidStart:source:"></a>
+	<h3 class="subsubtitle method-title">testDidStart:source:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Test started.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)testDidStart:(id&lt;GHTest&gt;)<em>test</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>test</em></dt>
+			<dd><p>Test</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>source</em></dt>
+			<dd><p>If tests are nested, than source corresponds to the originator of the delegate call</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/testDidUpdate:source:" title="testDidUpdate:source:"></a>
+	<h3 class="subsubtitle method-title">testDidUpdate:source:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Test updated.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)testDidUpdate:(id&lt;GHTest&gt;)<em>test</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>test</em></dt>
+			<dd><p>Test</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>source</em></dt>
+			<dd><p>If tests are nested, than source corresponds to the originator of the delegate call</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-09-07)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

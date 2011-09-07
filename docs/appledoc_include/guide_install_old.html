@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>guide_install_old Document</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../../css/stylesPrint.css" />	
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">GHUnit </a></h1>
+				<a id="developerHome" href="../index.html">GHUnit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode" id="pageTitleHeader">guide_install_old Document</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar"></ul>
+		</header>
+		<article>
+			<a title="guide_install_old Document" name="top"></a>
+			<div id="overview_contents" role="main">
+				<div id="container">	
+					<h2>Installing in iOS (Xcode 3)</h2>
+
+<p>To use GHUnit in your project, you&rsquo;ll need to create and configure a test target.</p>
+
+<ul>
+<li>Add a <code>New Target</code>. Select <code>iOS -&gt; Application</code>. Name it <code>Tests</code> (or something similar).</li>
+<li>Copy and add <code>GHUnitIOS.framework</code> into your project: Add Files to &hellip;, select <code>GHUnitIOS.framework</code>, and select the <code>Tests</code> target.</li>
+<li>Add the following frameworks to <code>Linked Libraries</code>:
+
+<ul>
+<li><code>GHUnitIOS.framework</code></li>
+<li><code>CoreGraphics.framework</code></li>
+<li><code>Foundation.framework</code></li>
+<li><code>UIKit.framework</code></li>
+</ul>
+</li>
+<li>In Build Settings, under &lsquo;Framework Search Paths&rsquo; make sure the (parent) directory to GHUnitIOS.framework is listed.</li>
+<li>In Build Settings, under &lsquo;Other Linker Flags&rsquo; in the <code>Tests</code> target, add <code>-ObjC</code> and <code>-all_load</code></li>
+<li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field.</li>
+<li>Add the <a href="http://github.com/gabriel/gh-unit/blob/master/Project-iOS/GHUnitIOSTestMain.m">GHUnitIOSTestMain.m</a> file into your project and make sure its enabled for the &ldquo;Tests&rdquo; target.</li>
+<li>(Optional) Create and and set a prefix header (<code>Tests_Prefix.pch</code>) and add <code>#import &lt;GHUnitIOS/GHUnit.h&gt;</code> to it, and then you won&rsquo;t have to include that import for every test.</li>
+<li>Now you can <a href="guide_testing.html">create and run tests</a>!</li>
+</ul>
+
+
+<h2>Installing in Mac OS X (Xcode 3)</h2>
+
+<p>To use GHUnit in your project, you&rsquo;ll need to create and configure a test target.</p>
+
+<ul>
+<li>Add a <code>New Target</code>. Select <code>Cocoa -&gt; Application</code>. Name it <code>Tests</code> (or something similar).</li>
+<li>In the Finder, copy <code>GHUnit.framework</code> to your project directory (maybe in MyProject/Frameworks/.)</li>
+<li>In the <code>Tests</code> target, add the <code>GHUnit.framework</code> files (from MyProject/Frameworks/). It should now be visible as a <code>Linked Framework</code> in the target.</li>
+<li>In the <code>Tests</code> target, under Build Settings, add <code>@loader_path/../Frameworks</code> to <code>Runpath Search Paths</code> (Under All Configurations)</li>
+<li>In the <code>Tests</code> target, add <code>New Build Phase</code> | <code>New Copy Files Build Phase</code>.
+
+<ul>
+<li>Change the Destination to <code>Frameworks</code>.</li>
+<li>Drag <code>GHUnit.framework</code> into the the build phase</li>
+<li>Make sure the copy phase appears before any <code>Run Script</code> phases</li>
+</ul>
+</li>
+<li><p>Copy <a href="http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m"><code>GHUnitTestMain.m</code></a> into your project and include in the Test target.</p></li>
+<li><p>If your main target is a library:</p>
+
+<ul>
+<li>In the <code>Target 'Tests' Info</code> window, <code>General</code> tab:
+
+<ul>
+<li>Add a linked library, and select your main target; This is so you can link your test target against your main target, and then you don&rsquo;t have to manually include source files in both targets.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>If your main target is an application, you will need to include these source files to the <code>Test</code> project manually.</p></li>
+<li><p>Now create a test (either by subclassing <code>SenTestCase</code> or <code>GHTestCase</code>), adding it to your test target. (See example test case below.)</p></li>
+<li>By default, the Tests-Info.plist file includes <code>MainWindow</code> for <code>Main nib file base name</code>. You should clear this field.</li>
+<li>Now you can <a href="guide_testing.html">create and run tests</a>!</li>
+</ul>
+
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-09-07)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					
+					</div>
+				</div>
+			</div>
+		</article>
+	</body>
+</html>

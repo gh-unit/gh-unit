@@ -1,988 +1,0 @@
-TTests
-v3
-r1
-cCheck dependencies
-cProcessInfoPlistFile /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Info.plist Tests/Tests-Info.plist
-cProcessPCH /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch.gch Tests/Tests-Prefix.pch normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHRegisterTestCaseClassTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHRegisterTestCaseClassTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSetUpTearDownTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSetUpTearDownTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHMockNSURLConnectionTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHMockNSURLConnectionTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestFail.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestFail.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestOnMainThread.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestOnMainThread.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSenTestingTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSenTestingTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestEmpty.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestEmpty.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSpecialTestCase.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSpecialTestCase.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHAsyncTestCaseTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHAsyncTestCaseTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHGTMTestCaseTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHGTMTestCaseTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSLocaleMockTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSLocaleMockTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHKVObserveTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHKVObserveTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSURLConnectionTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSURLConnectionTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSlowTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSlowTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestLogTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestLogTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestMacrosTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestMacrosTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIOSTestMain.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHUnitIOSTestMain.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GTMSenTestCase.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GTM/GTMSenTestCase.m normal i386 objective-c com.apple.compilers.llvmgcc42
-cLd /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Tests normal i386
-cGenerateDSYMFile /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app.dSYM /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Tests
-cCpResource ../Tests/Data/example.json build/Debug-iphonesimulator/Tests.app/example.json
-cCopyStringsFile /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/en.lproj/InfoPlist.strings ../Tests/../Project-iOS/Tests/en.lproj/InfoPlist.strings
-cPhaseScriptExecution "Run Script" /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Script-00C979CC13BA886700FC285C.sh
-cTouch /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
-c000000004D93ED360000000000000110
-t1301540150
-s272
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004D93DF6900000000002999B0
-t1301536617
-s2726320
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004D93DFEA000000000029DA70
-t1301536746
-s2742896
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004D93DFDD0000000000001466
-t1301536733
-s5222
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004D93ECBE0000000000000AA1
-t1301540030
-s2721
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000004D93ED1B0000000000766870
-t1301540123
-s7759984
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/Availability.h
-c000000004D4F7A2B0000000000001B19
-t1297054251
-s6937
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/AvailabilityMacros.h
-c000000004D4F7A2B0000000000007A5E
-t1297054251
-s31326
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/TargetConditionals.h
-c000000004D4F7A2B00000000000031E9
-t1297054251
-s12777
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/unistd.h
-c000000004D4F6E9A0000000000006662
-t1297051290
-s26210
-
-N/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin10/4.2.1/include/stdarg.h
-c000000004D55C82600000000000010DD
-t1297467430
-s4317
-
-N/Users/gabe/Projects/gh-unit/Classes/GHAsyncTestCase.h
-c000000004DB480FA000000000000118F
-t1303675130
-s4495
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTest.h
-c000000004DB480FA0000000000001570
-t1303675130
-s5488
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTestGroup.h
-c000000004DB480FA00000000000014DE
-t1303675130
-s5342
-i"GHTest.h"
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTest/GHTestSuite.h
-c000000004DB480FA0000000000000E90
-t1303675130
-s3728
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTestCase.h
-c000000004DB480FA00000000000010AC
-t1303675130
-s4268
-i"GHTestMacros.h"
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/GHTestMacros.h
-c000000004DB480FA0000000000009FD6
-t1303675130
-s40918
-i"NSException+GHTestFailureExceptions.h"
-i"NSValue+GHValueFormatter.h"
-
-N/Users/gabe/Projects/gh-unit/Classes/Mock/GHNSLocale+Mock.h
-c000000004DB480FA00000000000007F0
-t1303675130
-s2032
-i"GHNSLocale+Mock.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes-iOS/GHUnitIOSAppDelegate.h
-c000000004E0A527B0000000000000588
-t1309299323
-s1416
-i<UIKit/UIKit.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHAsyncTestCase.h
-c000000004DB480FA000000000000118F
-t1303675130
-s4495
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHTest/GHTest+JUnitXML.h
-c000000004DB480FA00000000000005BA
-t1303675130
-s1466
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHTest/GHTest.h
-c000000004DB480FA0000000000001570
-t1303675130
-s5488
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHTest/GHTestGroup+JUnitXML.h
-c000000004DB480FA0000000000000598
-t1303675130
-s1432
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHTest/GHTestGroup.h
-c000000004DB480FA00000000000014DE
-t1303675130
-s5342
-i"GHTest.h"
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHTest/GHTestOperation.h
-c000000004DB480FA00000000000005E6
-t1303675130
-s1510
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHTest/GHTestRunner.h
-c000000004DB480FA000000000000137E
-t1303675130
-s4990
-i"GHTestGroup.h"
-i"GHTestSuite.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHTest/GHTestSuite.h
-c000000004DB480FA0000000000000E90
-t1303675130
-s3728
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHTest/GHTesting.h
-c000000004DB480FA0000000000001061
-t1303675130
-s4193
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHTest/NSException+GHTestFailureExceptions.h
-c000000004DB480FA00000000000010C0
-t1303675130
-s4288
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHTest/NSValue+GHValueFormatter.h
-c000000004DB480FA0000000000000BF7
-t1303675130
-s3063
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/GHUnit.h
-c000000004E0A527B000000000000660F
-t1309299323
-s26127
-i"GHTestCase.h"
-i"GHAsyncTestCase.h"
-i"GHTestSuite.h"
-i"GHTestMacros.h"
-i"GHTestRunner.h"
-i"GHTest.h"
-i"GHTesting.h"
-i"GHTestOperation.h"
-i"GHTestGroup.h"
-i"GHTest+JUnitXML.h"
-i"GHTestGroup+JUnitXML.h"
-i"NSException+GHTestFailureExceptions.h"
-i"NSValue+GHValueFormatter.h"
-i"GHUnitIOSAppDelegate.h"
-i<GHUnitIOS/GHUnit.h>
-i<GHUnitIOS/GHUnit.h>
-i<SenTestingKit/SenTestingKit.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/Mock/GHMockNSURLConnection.h
-c000000004DB480FA00000000000017DD
-t1303675130
-s6109
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Classes/Mock/GHNSLocale+Mock.h
-c000000004DB480FA00000000000007F0
-t1303675130
-s2032
-i"GHNSLocale+Mock.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Libraries/GTM/GTMDefines.h
-c000000004DB480FA0000000000002645
-t1303675130
-s9797
-i<AvailabilityMacros.h>
-i<TargetConditionals.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/../Project-iOS/Tests/en.lproj/InfoPlist.strings
-c000000004E0A4848000000000000002D
-t1309296712
-s45
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/Data/example.json
-c000000004DB480FA0000000000000010
-t1303675130
-s16
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHAsyncTestCaseTest.m
-c000000004E0A4CFB0000000000000C4A
-t1309297915
-s3146
-i"GHAsyncTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHGTMTestCaseTest.m
-c000000004DD206500000000000000150
-t1305609808
-s336
-i"GTMSenTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHKVObserveTest.m
-c000000004E0A527B000000000000048E
-t1309299323
-s1166
-i"GHAsyncTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHMockNSURLConnectionTest.m
-c000000004DB480FA0000000000000D5E
-t1303675130
-s3422
-i"GHAsyncTestCase.h"
-i"GHMockNSURLConnection.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSLocaleMockTest.m
-c000000004E0A527B00000000000001DF
-t1309299323
-s479
-i"GHTestCase.h"
-i"GHNSLocale+Mock.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSURLConnectionTest.m
-c000000004E0A527B000000000000065C
-t1309299323
-s1628
-i"GHAsyncTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHRegisterTestCaseClassTest.m
-c000000004DB480FA0000000000000134
-t1303675130
-s308
-i"GHSpecialTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSenTestingTest.m
-c000000004DD206570000000000000401
-t1305609815
-s1025
-i<SenTestingKit/SenTestingKit.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSetUpTearDownTest.m
-c000000004DB480FA00000000000006CE
-t1303675130
-s1742
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSlowTest.m
-c000000004DB480FA0000000000000121
-t1303675130
-s289
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSpecialTestCase.m
-c000000004DB480FA00000000000000CA
-t1303675130
-s202
-i"GHSpecialTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestEmpty.m
-c000000004E0A527B00000000000000E8
-t1309299323
-s232
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestFail.m
-c000000004DB480FA00000000000003CD
-t1303675130
-s973
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestLogTest.m
-c000000004E0A527B000000000000021B
-t1309299323
-s539
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestMacrosTest.m
-c000000004DB480FA000000000000041B
-t1303675130
-s1051
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestOnMainThread.m
-c000000004DB480FA00000000000004D3
-t1303675130
-s1235
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHUnitIOSTestMain.m
-c000000004E0A53190000000000000D14
-t1309299481
-s3348
-i<UIKit/UIKit.h>
-i"GHUnit.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GTM/GTMSenTestCase.h
-c000000004DB480FA000000000000C38C
-t1303675130
-s50060
-i"GTMDefines.h"
-i<SenTestingKit/SenTestingKit.h>
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GTM/GTMSenTestCase.m
-c000000004DD206530000000000002C4E
-t1305609811
-s11342
-i"GTMSenTestCase.h"
-i<unistd.h>
-i<stdarg.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/GHUnitIOS
-c000000004E0A5485000000000020DA44
-t1309299845
-s2153028
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHAsyncTestCase.h
-c000000004E0A5485000000000000118F
-t1309299845
-s4495
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHTest+JUnitXML.h
-c000000004E0A548500000000000005BA
-t1309299845
-s1466
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHTest.h
-c000000004E0A54850000000000001570
-t1309299845
-s5488
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHTestCase.h
-c000000004E0A548500000000000010AC
-t1309299845
-s4268
-i"GHTestMacros.h"
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHTestGroup+JUnitXML.h
-c000000004E0A54850000000000000598
-t1309299845
-s1432
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHTestGroup.h
-c000000004E0A548500000000000014DE
-t1309299845
-s5342
-i"GHTest.h"
-i"GHTestCase.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHTestMacros.h
-c000000004E0A54850000000000009FD6
-t1309299845
-s40918
-i"NSException+GHTestFailureExceptions.h"
-i"NSValue+GHValueFormatter.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHTestOperation.h
-c000000004E0A548500000000000005E6
-t1309299845
-s1510
-i"GHTest.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHTestRunner.h
-c000000004E0A5485000000000000137E
-t1309299845
-s4990
-i"GHTestGroup.h"
-i"GHTestSuite.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHTestSuite.h
-c000000004E0A54850000000000000E90
-t1309299845
-s3728
-i"GHTestGroup.h"
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHTesting.h
-c000000004E0A54850000000000001061
-t1309299845
-s4193
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHUnit.h
-c000000004E0A5485000000000000660F
-t1309299845
-s26127
-i"GHTestCase.h"
-i"GHAsyncTestCase.h"
-i"GHTestSuite.h"
-i"GHTestMacros.h"
-i"GHTestRunner.h"
-i"GHTest.h"
-i"GHTesting.h"
-i"GHTestOperation.h"
-i"GHTestGroup.h"
-i"GHTest+JUnitXML.h"
-i"GHTestGroup+JUnitXML.h"
-i"NSException+GHTestFailureExceptions.h"
-i"NSValue+GHValueFormatter.h"
-i"GHUnitIOSAppDelegate.h"
-i<GHUnitIOS/GHUnit.h>
-i<GHUnitIOS/GHUnit.h>
-i<SenTestingKit/SenTestingKit.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/GHUnitIOSAppDelegate.h
-c000000004E0A54850000000000000588
-t1309299845
-s1416
-i<UIKit/UIKit.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/NSException+GHTestFailureExceptions.h
-c000000004E0A548500000000000010C0
-t1309299845
-s4288
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.framework/Headers/NSValue+GHValueFormatter.h
-c000000004E0A54850000000000000BF7
-t1309299845
-s3063
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/Tests/Tests-Prefix.pch
-c000000004E0A48490000000000000138
-t1309296713
-s312
-i<Availability.h>
-i<UIKit/UIKit.h>
-i<Foundation/Foundation.h>
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app.dSYM
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Info.plist
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/PkgInfo
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Tests
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/en.lproj/InfoPlist.strings
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/example.json
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHAsyncTestCaseTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHGTMTestCaseTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHKVObserveTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHMockNSURLConnectionTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSLocaleMockTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSURLConnectionTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHRegisterTestCaseClassTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSenTestingTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSetUpTearDownTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSlowTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSpecialTestCase.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestEmpty.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestFail.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestLogTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestMacrosTest.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestOnMainThread.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIOSTestMain.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GTMSenTestCase.o
-t2
-s0
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/Tests.LinkFileList
-c000000004E0A54CA000000000000099F
-t1309299914
-s2463
-
-N/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Script-00C979CC13BA886700FC285C.sh
-c000000004E0A54CA0000000000000024
-t1309299914
-s36
-
-N/Users/gabe/Projects/gh-unit/Tests/GHSpecialTestCase.h
-c000000004DB480FA00000000000000B5
-t1303675130
-s181
-
-N/Users/gabe/Projects/gh-unit/Tests/GTM/GTMSenTestCase.h
-c000000004DB480FA000000000000C38C
-t1303675130
-s50060
-i"GTMDefines.h"
-i<SenTestingKit/SenTestingKit.h>
-i<Foundation/Foundation.h>
-
-N/var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch.gch
-t1309296945
-s12283312
-
-NTests/Tests-Info.plist
-c000000004E0A48FF0000000000000588
-t1309296895
-s1416
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHAsyncTestCaseTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHGTMTestCaseTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHKVObserveTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHMockNSURLConnectionTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSLocaleMockTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSURLConnectionTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHRegisterTestCaseClassTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSenTestingTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSetUpTearDownTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSlowTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSpecialTestCase.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestEmpty.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestFail.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestLogTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestMacrosTest.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestOnMainThread.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHUnitIOSTestMain.m
-r0
-
-CBuild AST from /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GTM/GTMSenTestCase.m
-r0
-
-CCheck dependencies
-r0
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesb056994a8cbab341^0aa0b44a8cbab341^---0#1#0#--18"Check dependencies
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHAsyncTestCaseTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHAsyncTestCaseTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.783904
-e330992714.869298
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHAsyncTestCaseTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHAsyncTestCaseTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection79"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHAsyncTestCaseTest.m3acbc84a8cbab341^d3a2de4a8cbab341^---0#0#0#-19%DVTDocumentLocation2@87"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHAsyncTestCaseTest.m0000000000000000^2194"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHAsyncTestCaseTest.o ../Tests/GHAsyncTestCaseTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHAsyncTestCaseTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHAsyncTestCaseTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHGTMTestCaseTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHGTMTestCaseTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.783907
-e330992714.847421
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHGTMTestCaseTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHGTMTestCaseTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection77"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHGTMTestCaseTest.m7deac84a8cbab341^0ff0d84a8cbab341^---0#0#0#-19%DVTDocumentLocation2@85"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHGTMTestCaseTest.m0000000000000000^2186"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHGTMTestCaseTest.o ../Tests/GHGTMTestCaseTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHGTMTestCaseTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHGTMTestCaseTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHKVObserveTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHKVObserveTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.785019
-e330992714.861195
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHKVObserveTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHKVObserveTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHKVObserveTest.m6e14c94a8cbab341^2fa7dc4a8cbab341^---0#0#0#-19%DVTDocumentLocation2@83"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHKVObserveTest.m0000000000000000^2178"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHKVObserveTest.o ../Tests/GHKVObserveTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHKVObserveTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHKVObserveTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHMockNSURLConnectionTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHMockNSURLConnectionTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.722589
-e330992714.840241
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHMockNSURLConnectionTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHMockNSURLConnectionTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHMockNSURLConnectionTest.m1634b94a8cbab341^5019d74a8cbab341^---0#0#0#-19%DVTDocumentLocation2@93"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHMockNSURLConnectionTest.m0000000000000000^2218"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHMockNSURLConnectionTest.o ../Tests/GHMockNSURLConnectionTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHMockNSURLConnectionTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHMockNSURLConnectionTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSLocaleMockTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSLocaleMockTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.784999
-e330992714.862811
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSLocaleMockTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSLocaleMockTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection78"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSLocaleMockTest.m0515c94a8cbab341^14e7dc4a8cbab341^---0#0#0#-19%DVTDocumentLocation2@86"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSLocaleMockTest.m0000000000000000^2190"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSLocaleMockTest.o ../Tests/GHNSLocaleMockTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSLocaleMockTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSLocaleMockTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSURLConnectionTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSURLConnectionTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.797574
-e330992714.881919
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSURLConnectionTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSURLConnectionTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSURLConnectionTest.m6a50cc4a8cbab341^dbc4e14a8cbab341^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSURLConnectionTest.m0000000000000000^2202"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSURLConnectionTest.o ../Tests/GHNSURLConnectionTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHNSURLConnectionTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHNSURLConnectionTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHRegisterTestCaseClassTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHRegisterTestCaseClassTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.722447
-e330992714.784908
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHRegisterTestCaseClassTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHRegisterTestCaseClassTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection87"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHRegisterTestCaseClassTest.m9432b94a8cbab341^bbefc84a8cbab341^---0#0#0#-19%DVTDocumentLocation2@95"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHRegisterTestCaseClassTest.m0000000000000000^2226"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHRegisterTestCaseClassTest.o ../Tests/GHRegisterTestCaseClassTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHRegisterTestCaseClassTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHRegisterTestCaseClassTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSenTestingTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSenTestingTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.722866
-e330992714.782967
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSenTestingTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSenTestingTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSenTestingTest.m4b3bb94a8cbab341^df6fc84a8cbab341^---0#0#0#-19%DVTDocumentLocation2@84"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSenTestingTest.m0000000000000000^2182"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSenTestingTest.o ../Tests/GHSenTestingTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSenTestingTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSenTestingTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSetUpTearDownTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSetUpTearDownTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.722494
-e330992714.797419
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSetUpTearDownTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSetUpTearDownTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection79"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSetUpTearDownTest.mf33bb94a8cbab341^6423cc4a8cbab341^---0#0#0#-19%DVTDocumentLocation2@87"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSetUpTearDownTest.m0000000000000000^2194"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSetUpTearDownTest.o ../Tests/GHSetUpTearDownTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSetUpTearDownTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSetUpTearDownTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSlowTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSlowTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.817201
-e330992714.881442
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSlowTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSlowTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection70"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSlowTest.m9560d14a8cbab341^61a6e14a8cbab341^---0#0#0#-19%DVTDocumentLocation2@78"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSlowTest.m0000000000000000^2158"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSlowTest.o ../Tests/GHSlowTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSlowTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSlowTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSpecialTestCase.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSpecialTestCase.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.723051
-e330992714.784735
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSpecialTestCase.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSpecialTestCase.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection77"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSpecialTestCase.m103db94a8cbab341^dee7c84a8cbab341^---0#0#0#-19%DVTDocumentLocation2@85"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSpecialTestCase.m0000000000000000^2186"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSpecialTestCase.o ../Tests/GHSpecialTestCase.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHSpecialTestCase.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHSpecialTestCase.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestEmpty.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestEmpty.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.722962
-e330992714.783525
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestEmpty.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestEmpty.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestEmpty.m7232b94a8cbab341^22c1c84a8cbab341^---0#0#0#-19%DVTDocumentLocation2@79"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestEmpty.m0000000000000000^2162"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestEmpty.o ../Tests/GHTestEmpty.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestEmpty.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestEmpty.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestFail.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestFail.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.722608
-e330992714.817024
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestFail.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestFail.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection70"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestFail.mc632b94a8cbab341^4a28d14a8cbab341^---0#0#0#-19%DVTDocumentLocation2@78"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestFail.m0000000000000000^2158"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestFail.o ../Tests/GHTestFail.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestFail.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestFail.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestLogTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestLogTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.818562
-e330992714.875802
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestLogTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestLogTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection73"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestLogTest.ma7add14a8cbab341^3b34e04a8cbab341^---0#0#0#-19%DVTDocumentLocation2@81"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestLogTest.m0000000000000000^2170"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestLogTest.o ../Tests/GHTestLogTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestLogTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestLogTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestMacrosTest.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestMacrosTest.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.840399
-e330992714.930490
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestMacrosTest.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestMacrosTest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestMacrosTest.mfe46d74a8cbab341^fc34ee4a8cbab341^---0#0#0#-19%DVTDocumentLocation2@84"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestMacrosTest.m0000000000000000^2182"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestMacrosTest.o ../Tests/GHTestMacrosTest.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestMacrosTest.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestMacrosTest.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestOnMainThread.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestOnMainThread.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.722710
-e330992714.818309
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestOnMainThread.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestOnMainThread.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection78"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestOnMainThread.md333b94a8cbab341^4e7cd14a8cbab341^---0#0#0#-19%DVTDocumentLocation2@86"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestOnMainThread.m0000000000000000^2190"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestOnMainThread.o ../Tests/GHTestOnMainThread.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHTestOnMainThread.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHTestOnMainThread.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIOSTestMain.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHUnitIOSTestMain.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.847572
-e330992714.901937
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIOSTestMain.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHUnitIOSTestMain.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection77"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHUnitIOSTestMain.mc617d94a8cbab341^47e5e64a8cbab341^---0#0#0#-19%DVTDocumentLocation2@85"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHUnitIOSTestMain.m0000000000000000^2186"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIOSTestMain.o ../Tests/GHUnitIOSTestMain.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GHUnitIOSTestMain.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GHUnitIOSTestMain.o
-
-CCompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GTMSenTestCase.o /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GTM/GTMSenTestCase.m normal i386 objective-c com.apple.compilers.llvmgcc42
-s330992714.861357
-e330992714.937917
-r1
-xCompileC
-xbuild/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GTMSenTestCase.o
-x/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GTM/GTMSenTestCase.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvmgcc42
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection78"Compile /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GTM/GTMSenTestCase.m309fdc4a8cbab341^481af04a8cbab341^---0#0#0#-19%DVTDocumentLocation2@86"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GTM/GTMSenTestCase.m0000000000000000^2182"CompileC build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GTMSenTestCase.o ../Tests/GTM/GTMSenTestCase.m normal i386 objective-c com.apple.compilers.llvmgcc42    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-generated-files.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-own-target-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-all-target-headers.hmap -iquote /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-project-headers.hmap -I/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources/i386 -I/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -include /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch -c /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/GTM/GTMSenTestCase.m -o /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/GTMSenTestCase.o
-
-CCopyStringsFile /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/en.lproj/InfoPlist.strings ../Tests/../Project-iOS/Tests/en.lproj/InfoPlist.strings
-s330992715.037071
-e330992715.039481
-r1
-xCopyStringsFile
-x/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/en.lproj/InfoPlist.strings
-x../Tests/../Project-iOS/Tests/en.lproj/InfoPlist.strings
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection61"Copy ../Tests/../Project-iOS/Tests/en.lproj/InfoPlist.strings7899094b8cbab341^a01b0a4b8cbab341^---0#0#0#-19%DVTDocumentLocation2@113"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/../Tests/../Project-iOS/Tests/en.lproj/InfoPlist.strings0000000000000000^555"CopyStringsFile build/Debug-iphonesimulator/Tests.app/en.lproj/InfoPlist.strings ../Tests/../Project-iOS/Tests/en.lproj/InfoPlist.strings    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/en.lproj -- ../Tests/../Project-iOS/Tests/en.lproj/InfoPlist.strings
-
-CCpResource ../Tests/Data/example.json build/Debug-iphonesimulator/Tests.app/example.json
-s330992715.037067
-e330992715.039060
-r1
-xCpResource
-x../Tests/Data/example.json
-xbuild/Debug-iphonesimulator/Tests.app/example.json
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection55"Copy build/Debug-iphonesimulator/Tests.app/example.json2096094b8cbab341^3b000a4b8cbab341^---0#0#0#-19%DVTDocumentLocation2@107"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/example.json0000204d2205f041^514"CpResource ../Tests/Data/example.json build/Debug-iphonesimulator/Tests.app/example.json    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/gabe/Projects/gh-unit/Project-iOS/../Tests/Data/example.json /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app
-
-CGenerateDSYMFile /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app.dSYM /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Tests
-s330992714.985600
-e330992715.031737
-r1
-xGenerateDSYMFile
-x/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app.dSYM
-x/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Tests
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Generating /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app.dSYMd861fc4a8cbab341^211f084b8cbab341^---0#0#0#-19%DVTDocumentLocation2@99"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app.dSYM0000204d2205f041^487"GenerateDSYMFile build/Debug-iphonesimulator/Tests.app.dSYM build/Debug-iphonesimulator/Tests.app/Tests    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Tests -o /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app.dSYM
-
-CLd /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Tests normal i386
-s330992714.938067
-e330992714.985423
-r1
-xLd
-x/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Tests
-xnormal
-xi386
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Link /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Tests8b35f04a8cbab341^af44fc4a8cbab341^---0#0#0#--1048"Ld build/Debug-iphonesimulator/Tests.app/Tests normal i386    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator -F/Users/gabe/Projects/gh-unit/Project-iOS -filelist /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/Tests.LinkFileList -mmacosx-version-min=10.6 -ObjC -all_load -Xlinker -objc_abi_version -Xlinker 2 -framework UIKit -framework Foundation -framework CoreGraphics -framework GHUnitIOS -o /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Tests
-
-CPhaseScriptExecution "Run Script" /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Script-00C979CC13BA886700FC285C.sh
-s330992715.040770
-e330992715.052863
-r1
-xPhaseScriptExecution
-xRun Script
-x/Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Script-00C979CC13BA886700FC285C.sh
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection36"Run custom shell script 'Run Script'33f90a4b8cbab341^b5870d4b8cbab341^---0#0#0#--17884"PhaseScriptExecution "Run Script" build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Script-00C979CC13BA886700FC285C.sh    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv ACTION build    setenv ALTERNATE_GROUP "AD\\domain users"    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER gabe    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build    setenv BUILD_ROOT /Users/gabe/Projects/gh-unit/Project-iOS/build    setenv BUILD_STYLE Debug    setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator    setenv CACHE_ROOT /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299    setenv CCHROOT /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app    setenv COMBINE_HIDPI_IMAGES NO    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator    setenv CONFIGURATION_TEMP_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator    setenv CONTENTS_FOLDER_PATH Tests.app    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv DEVELOPER_BIN_DIR /Developer/usr/bin    setenv DEVELOPER_DIR /Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Developer/Library    setenv DEVELOPER_SDK_DIR /Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Developer/Tools    setenv DEVELOPER_USR_DIR /Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH Tests.app/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/GHUnitIOS.dst    setenv DWARF_DSYM_FILE_NAME Tests.app.dSYM    setenv DWARF_DSYM_FOLDER_PATH /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv ENABLE_OPENMP_SUPPORT NO    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".svn CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) CVS .svn .git *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH Tests.app/Executables    setenv EXECUTABLE_FOLDER_PATH Tests.app    setenv EXECUTABLE_NAME Tests    setenv EXECUTABLE_PATH Tests.app/Tests    setenv FILE_LIST /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/FixedFiles    setenv FRAMEWORKS_FOLDER_PATH Tests.app/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator\"  \"/Users/gabe/Projects/gh-unit/Project-iOS\""    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME Tests.app    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD gnu99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER Tests/Tests-Prefix.pch    setenv GCC_PREPROCESSOR_DEFINITIONS DEBUG    setenv GCC_SYMBOLS_PRIVATE_EXTERN NO    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvmgcc42    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvmgcc42    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 1954207199    setenv GROUP "AD\\domain users"    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/include\" "    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE Tests/Tests-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PATH Tests.app/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH Tests.app/English.lproj/InfoPlist.strings    setenv INSTALL_DIR /tmp/GHUnitIOS.dst/Applications    setenv INSTALL_GROUP "AD\\domain users"    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER gabe    setenv INSTALL_PATH /Applications    setenv INSTALL_ROOT /tmp/GHUnitIOS.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 4.3    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH Tests.app/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Tests-LinkMap-normal-i386.txt    setenv LD_OPENMP_FLAGS -fopenmp    setenv LEGACY_DEVELOPER_DIR /Developer/Library/Xcode/PrivatePlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX /Developer/usr/bin/lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal/i386/Tests.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH Tests.app/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 10J4138    setenv MAC_OS_X_VERSION_ACTUAL 1067    setenv MAC_OS_X_VERSION_MAJOR 1060    setenv MAC_OS_X_VERSION_MINOR 0607    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJECT_FILE_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Objects-normal    setenv OBJROOT /Users/gabe/Projects/gh-unit/Project-iOS/build    setenv ONLY_ACTIVE_ARCH NO    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS "-ObjC -all_load"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Developer/Headers /Developer/SDKs /Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH Tests.app/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/PkgInfo    setenv PKGINFO_PATH Tests.app/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Developer/Library/Xcode/PrivatePlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 8H7    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 40300    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PLUGINS_FOLDER_PATH Tests.app/PlugIns    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH Tests.app/PrivateHeaders    setenv PRODUCT_NAME Tests    setenv PRODUCT_SETTINGS_PATH /Users/gabe/Projects/gh-unit/Project-iOS/Tests/Tests-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT GHUnitIOS    setenv PROJECT_DERIVED_FILE_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/DerivedSources    setenv PROJECT_DIR /Users/gabe/Projects/gh-unit/Project-iOS    setenv PROJECT_FILE_PATH /Users/gabe/Projects/gh-unit/Project-iOS/GHUnitIOS.xcodeproj    setenv PROJECT_NAME GHUnitIOS    setenv PROJECT_TEMP_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build    setenv PUBLIC_HEADERS_FOLDER_PATH Tests.app/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH Tests.app/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk    setenv SDK_DIR /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk    setenv SDK_NAME iphonesimulator4.3    setenv SDK_PRODUCT_BUILD_VERSION 8H7    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHALLOW_BUNDLE YES    setenv SHARED_DERIVED_FILE_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH Tests.app/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH Tests.app/SharedSupport    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT /Users/gabe/Projects/gh-unit/Project-iOS    setenv SRCROOT /Users/gabe/Projects/gh-unit/Project-iOS    setenv STANDARD_C_PLUS_PLUS_LIBRARY_TYPE dynamic    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMBOL_REPOSITORY_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/SymbolRepositories    setenv SYMROOT /Users/gabe/Projects/gh-unit/Project-iOS/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1,2    setenv TARGETNAME Tests    setenv TARGET_BUILD_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator    setenv TARGET_NAME Tests    setenv TARGET_TEMP_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build    setenv TEMP_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build    setenv TEMP_FILES_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build    setenv TEMP_FILE_DIR /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build    setenv TEMP_ROOT /Users/gabe/Projects/gh-unit/Project-iOS/build    setenv TEST_AFTER_BUILD NO    setenv UID 1299    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH Tests.app    setenv UNSTRIPPED_PRODUCT NO    setenv USER gabe    setenv USER_APPS_DIR /Users/gabe/Applications    setenv USER_LIBRARY_DIR /Users/gabe/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH Tests.app/version.plist    setenv VERSION_INFO_BUILDER gabe    setenv VERSION_INFO_FILE Tests_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:Tests  PROJECT:GHUnitIOS-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME Tests.app    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4A2002a    setenv XCODE_VERSION_ACTUAL 0402    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0400    setenv YACC /Developer/usr/bin/yacc    /bin/sh -c /Users/gabe/Projects/gh-unit/Project-iOS/build/GHUnitIOS.build/Debug-iphonesimulator/Tests.build/Script-00C979CC13BA886700FC285C.sh
-
-CProcessInfoPlistFile /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Info.plist Tests/Tests-Info.plist
-s330992714.717791
-e330992714.720846
-r1
-xProcessInfoPlistFile
-x/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Info.plist
-xTests/Tests-Info.plist
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection30"Process Tests/Tests-Info.plistbad9b74a8cbab341^56b9b84a8cbab341^---0#0#0#-19%DVTDocumentLocation2@79"file://localhost/Users/gabe/Projects/gh-unit/Project-iOS/Tests/Tests-Info.plist0000000000000000^578"ProcessInfoPlistFile build/Debug-iphonesimulator/Tests.app/Info.plist Tests/Tests-Info.plist    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility Tests/Tests-Info.plist -genpkginfo /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app/Info.plist
-
-CProcessPCH /Users/gabe/Library/Developer/Xcode/DerivedData/GHUnitIOS-chrktxhyoozfnmajnczlqpmqzqai/Index/PrecompiledHeaders/Tests-Prefix-gmbibbqltqepandmbdushojvtiuv_ast/Tests-Prefix.pch.pth Tests/Tests-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
-r0
-
-CProcessPCH /var/folders/6+/6+cQ2coKGIaszOLls7ZYY+++-FA/-Caches-/com.apple.Xcode.1299/SharedPrecompiledHeaders/Tests-Prefix-cserhdbxewrwkicxycdnhusccbks/Tests-Prefix.pch.gch Tests/Tests-Prefix.pch normal i386 objective-c com.apple.compilers.llvmgcc42
-r0
-
-CTouch /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app
-s330992715.054150
-e330992715.058404
-r1
-xTouch
-x/Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection84"Touch /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app03ee0d4b8cbab341^e4f30e4b8cbab341^---0#0#0#--324"Touch build/Debug-iphonesimulator/Tests.app    cd /Users/gabe/Projects/gh-unit/Project-iOS    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/gabe/Projects/gh-unit/Project-iOS/build/Debug-iphonesimulator/Tests.app
-
