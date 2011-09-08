@@ -80,7 +80,7 @@
 	node.delegate = self;
 }
 
-- (GHTestNode *)findTestNode:(id<GHTest>)test {
+- (GHTestNode *)findTestNodeForTest:(id<GHTest>)test {
 	return [map_ objectForKey:[test identifier]];
 }
 

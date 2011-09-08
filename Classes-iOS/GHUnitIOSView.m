@@ -51,7 +51,7 @@
     [tableView_ release]; 
     
     footerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
-    footerView_.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+    footerView_.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
     
     // Status label
     statusLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 310, 36)];

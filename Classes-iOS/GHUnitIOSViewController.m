@@ -211,7 +211,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 36.0;
+  return 36.0f;
 }
 
 #pragma mark Delegates (UIScrollView) 

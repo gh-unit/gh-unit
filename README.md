@@ -23,6 +23,7 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 ## Links
 
 - [Online documentation](http://gabriel.github.com/gh-unit/)
+- [How to install, create and run tests](http://gabriel.github.com/gh-unit/docs/index.html)
 - [Google Group](http://groups.google.com/group/ghunit)
 
 ## Mac OS X

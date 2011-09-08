@@ -50,7 +50,7 @@
 - (void)loadView {  
   textView_ = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];  
   textView_.font = [UIFont fontWithName:@"Courier New-Bold" size:12];
-  textView_.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
+  textView_.backgroundColor = [UIColor colorWithWhite:0.96f alpha:1.0f];
   textView_.textColor = [UIColor blackColor];
   textView_.editable = NO;
   textView_.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

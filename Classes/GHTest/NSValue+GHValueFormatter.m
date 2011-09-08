@@ -122,7 +122,7 @@
           return [NSString stringWithFormat:@"%u", scalarValue];
         }
         case 'f': {
-          float scalarValue = 0.0;
+          float scalarValue = 0.0f;
           [self getValue:(void *)&scalarValue];
           return [NSString stringWithFormat:@"%f", scalarValue];
         }
