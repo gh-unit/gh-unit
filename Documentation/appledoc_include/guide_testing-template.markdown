@@ -2,32 +2,30 @@
 ## Create a Test
 
 - Command click on the Tests folder and select: New File...
-- Under iOS, Cocoa Touch, select Objective-C class and select Next. Leave the default subclass and select Next again.
+- Select Objective-C class (iOS, Cocoa Touch or Mac OS X, Cocoa) and select Next. Leave the default subclass and select Next again.
 - Name the file MyTest.m and make sure its enabled only for the "Tests" target.
 - Delete the MyTest.h file and update the MyTest.m file.
 
-MyTest.m:
+        #import <GHUnitIOS/GHUnit.h> 
 
-    #import <GHUnitIOS/GHUnit.h> 
+        @interface MyTest : GHTestCase { }
+        @end
 
-    @interface MyTest : GHTestCase { }
-    @end
+        @implementation MyTest
 
-    @implementation MyTest
+        - (void)testStrings {       
+          NSString *string1 = @"a string";
+          GHTestLog(@"I can log to the GHUnit test console: %@", string1);
 
-    - (void)testStrings {       
-      NSString *string1 = @"a string";
-      GHTestLog(@"I can log to the GHUnit test console: %@", string1);
+          // Assert string1 is not NULL, with no custom error description
+          GHAssertNotNULL(string1, nil);
 
-      // Assert string1 is not NULL, with no custom error description
-      GHAssertNotNULL(string1, nil);
+          // Assert equal objects, add custom error description
+          NSString *string2 = @"a string";
+          GHAssertEqualObjects(string1, string2, @"A custom error message. string1 should be equal to: %@.", string2);
+        }
 
-      // Assert equal objects, add custom error description
-      NSString *string2 = @"a string";
-      GHAssertEqualObjects(string1, string2, @"A custom error message. string1 should be equal to: %@.", string2);
-    }
-
-    @end
+        @end
 
 
 ![Add Test](images/13_adding_test.png)
