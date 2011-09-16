@@ -275,8 +275,8 @@
   [filteredChildren_ release];
   filteredChildren_ = [[NSMutableArray array] retain];
   for(GHTestNode *childNode in children_) {
-    if ((!textFilter_ || [textFiltered containsObject:childNode]) && 
-        (filter_ == GHTestNodeFilterNone || [filtered containsObject:childNode]) || [childNode hasChildren]) {
+    if (((!textFilter_ || [textFiltered containsObject:childNode]) && 
+        (filter_ == GHTestNodeFilterNone || [filtered containsObject:childNode])) || [childNode hasChildren]) {
       [filteredChildren_ addObject:childNode];
       if (![childNode hasChildren]) {
         [childNode.test setDisabled:NO];
