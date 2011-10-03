@@ -5,7 +5,7 @@ To use GHUnit in your project, you'll need to create and configure a test target
 
 - Add a `New Target`. Select `Application -> Cocoa Application`. Name it `Tests` (or something similar).
  - Copy and add `GHUnit.framework` into your project: Add Files to 'App'..., select `GHUnit.framework`, and select only the "Tests" target.
- - In the "Tests" target, in Build Settings, add `@@loader_path/../Frameworks` to `Runpath Search Paths`.
+ - In the "Tests" target, in Build Settings, add `@loader_path/../Frameworks` to `Runpath Search Paths`.
  - In the "Tests" target, in Build Phases, select `Add Build Phase` and then `Add Copy Files`. 
     - Change the Destination to `Frameworks`.
     - Drag `GHUnit.framework` from the project file view into the the Copy Files build phase.
