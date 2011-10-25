@@ -21,7 +21,6 @@
 
     textLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 100)];
     textLabel_.font = [UIFont systemFontOfSize:12];
-    textLabel_.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
     textLabel_.textColor = [UIColor blackColor];
     textLabel_.numberOfLines = 0;
     [self addSubview:textLabel_];
@@ -42,6 +41,17 @@
     newImageView_.hidden = YES;
     [self addSubview:newImageView_];
     [newImageView_ release];
+
+    approveButton_ = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [approveButton_ addTarget:self action:@selector(_approveChange) forControlEvents:UIControlEventTouchUpInside];
+    approveButton_.hidden = YES;
+    [approveButton_ setTitle:@"Approve this change" forState:UIControlStateNormal];
+    [approveButton_ setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    approveButton_.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:18];
+    // TODO(johnb): Not getting the image from the framework bundle
+    UIImage *image = [UIImage imageNamed:@"checkmark.png"];
+    [approveButton_ setImage:image forState:UIControlStateNormal];
+    [self addSubview:approveButton_];
   }
   return self;
 }
@@ -72,9 +82,16 @@
     newImageFrame.size.height = aspectRatio * newImageFrame.size.width;
     newImageView_.frame = newImageFrame;
   }
-  
+
+  y += MAX(originalImageFrame.size.height, newImageFrame.size.height) + 10;
+
+  if (!approveButton_.hidden) {
+    approveButton_.frame = CGRectMake(10, y, 300, 30);
+    y += 40;
+  }
+
   CGRect textViewFrame = textLabel_.frame;
-  textViewFrame.origin.y = y + MAX(originalImageFrame.size.height, newImageFrame.size.height) + 10;
+  textViewFrame.origin.y = y;
   textLabel_.frame = textViewFrame;
   
   self.contentSize = CGSizeMake(self.frame.size.width, textViewFrame.origin.y + textViewFrame.size.height + 10);
@@ -88,11 +105,16 @@
   [controlDelegate_ testViewDidSelectNewImage:self];  
 }
 
+- (void)_approveChange {
+  [controlDelegate_ testViewDidApproveChange:self];
+}
+
 - (void)setOriginalImage:(UIImage *)originalImage newImage:(UIImage *)newImage text:(NSString *)text {
   originalImageView_.image = originalImage;
-  originalImageView_.hidden = NO;
+  originalImageView_.hidden = originalImage ? NO : YES;
   newImageView_.image = newImage;
   newImageView_.hidden = NO;
+  approveButton_.hidden = NO;
   textLabel_.text = text;
   [self _layout];
 }
@@ -100,6 +122,7 @@
 - (void)setText:(NSString *)text {
   originalImageView_.hidden = YES;
   newImageView_.hidden = YES;
+  approveButton_.hidden = YES;
   textLabel_.text = text;
   [self _layout];
 }

@@ -96,8 +96,6 @@
   id<GHTestCaseLogWriter> logWriter_; // weak
 
   SEL currentSelector_;
-
-  NSInteger imageVerifyCount_;
 }
 
 //! The current test selector
@@ -123,8 +121,6 @@
  Run before the tests (once per test case).
  */
 - (void)setUpClass;
-
-- (BOOL)verifyView:(UIView *)view;
 
 /*! 
  Run after the tests (once per test case).

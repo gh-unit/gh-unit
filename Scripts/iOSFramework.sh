@@ -71,6 +71,7 @@ cp ../Classes/GHTest/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes/SharedUI/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes-iOS/*.h $FRAMEWORK_DIR/Headers/
 cp Framework.plist $FRAMEWORK_DIR/Resources/Info.plist
+cp ../Resources/*.png $FRAMEWORK_DIR/Resources/
 
 echo ""
 echo "The framework was built at: $FRAMEWORK_DIR"

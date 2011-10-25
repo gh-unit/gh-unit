@@ -28,7 +28,7 @@
 //
 
 #import "GHUnitIOSTestViewController.h"
-
+#import "JBViewTestCase.h"
 
 @implementation GHUnitIOSTestViewController
 
@@ -61,7 +61,7 @@
 - (void)_runTest {
   id<GHTest> test = [testNode_.test copyWithZone:NULL];
   NSLog(@"Re-running: %@", test);
-  //textView_.text = @"Running...";
+  [testView_ setText:@"Running..."];
   [test run:GHTestOptionForceSetUpTearDownClass];  
   [self setTest:test];
   [test release];
@@ -79,6 +79,11 @@
     UIImage *originalImage = [exceptionUserInfo objectForKey:@"OriginalImage"];
     UIImage *newImage = [exceptionUserInfo objectForKey:@"NewImage"];
     [testView_ setOriginalImage:originalImage newImage:newImage text:text];
+  } else if ([testNode_.test.exception.name isEqualToString:@"GHViewUnavailableException"]) {
+    NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
+    //UIImage *originalImage = [exceptionUserInfo objectForKey:@"OriginalImage"];
+    UIImage *newImage = [exceptionUserInfo objectForKey:@"NewImage"];
+    [testView_ setOriginalImage:nil newImage:newImage text:text];
   } else {
     [testView_ setText:text];
   }
@@ -115,6 +120,15 @@
   scrollView.contentSize = newImage.size;
   viewController.view = scrollView;
   [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)testViewDidApproveChange:(GHUnitIOSTestView *)testView {
+  // TODO(johnb): Change some UI to reflect that the change has been accepted
+  // Save new image as the approved version
+  NSString *imageFilename = [testNode_.test.exception.userInfo objectForKey:@"ImageFilename"];
+  UIImage *newImage = [testNode_.test.exception.userInfo objectForKey:@"NewImage"];
+  [JBViewTestCase saveToDocumentsWithImage:newImage filename:imageFilename];
+  [self _runTest];
 }
 
 @end

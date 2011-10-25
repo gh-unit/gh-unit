@@ -30,7 +30,6 @@
 #import "GHTestCase.h"
 #import "GTMStackTrace.h"
 #import "GHTesting.h"
-#import "RoboEyesKit.h"
 
 @implementation GHTestCase
 
@@ -40,32 +39,7 @@
   [exception raise];
 }
 
-// Check if a view is the same as it was last time
-// If it isn't, raise an exception with both the new and old images
-- (BOOL)verifyView:(UIView *)view {
-  // View testing file names have the format [test class name]-[test selector name]-[# of verify in selector]-[view class name]
-  NSString *filename = [NSString stringWithFormat:@"%@-%@-%d-%@", NSStringFromClass([self class]), NSStringFromSelector(currentSelector_), imageVerifyCount_, NSStringFromClass([view class])];
-  NSLog(@"Filename will be %@", filename);
-  UIImage *originalViewImage = [RoboEyesKit readImageWithName:filename];
-  UIImage *newViewImage = [RoboEyesKit imageWithView:view];
-  // For now if there isn't an originalViewImage, let's just save one
-  if (!originalViewImage) {
-    NSLog(@"No image available for filename %@", filename);
-    [RoboEyesKit saveToDocumentsWithImage:newViewImage name:filename];
-    return YES;
-  }
-  if (![RoboEyesKit compareImage:originalViewImage withNewImage:newViewImage]) {
-    NSDictionary *exceptionDictionary = [NSDictionary dictionaryWithObjectsAndKeys:originalViewImage, @"OriginalImage", newViewImage, @"NewImage", nil];
-    [[NSException exceptionWithName:@"GHViewChangeException" reason:@"View has changed" userInfo:exceptionDictionary] raise];
-    return NO;
-  }
-  imageVerifyCount_++;
-  return YES;
-}
-
-- (void)setUp {
-  imageVerifyCount_ = 0;
-}
+- (void)setUp { }
 
 - (void)tearDown { }
 

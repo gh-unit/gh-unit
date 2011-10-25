@@ -34,7 +34,7 @@
 /*
  View controller for a test.
  */
-@interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate> {
+@interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate, GHUnitIOSTestViewDelegate> {
   GHUnitIOSTestView *testView_;
 
   GHTestNode *testNode_;

@@ -87,7 +87,12 @@
     if ([node status] == GHTestStatusRunning) {
       cell.textLabel.textColor = [UIColor blackColor];
     } else if ([node status] == GHTestStatusErrored) {
-      cell.textLabel.textColor = [UIColor redColor];
+      //NSLog(@"Got a node: %@", node);
+      if ([node.test.exception.name isEqualToString:@"GHViewUnavailableException"]) {
+        cell.textLabel.textColor = [UIColor colorWithRed:0.60 green:0.60 blue:0 alpha:1.0];
+      } else {
+        cell.textLabel.textColor = [UIColor redColor];
+      }
     } else if ([node status] == GHTestStatusSucceeded) {
       cell.textLabel.textColor = [UIColor blackColor];
     } else if (node.isSelected) {
