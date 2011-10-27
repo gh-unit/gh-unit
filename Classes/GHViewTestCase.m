@@ -31,6 +31,10 @@
 #import "GHUnit.h"
 #import <QuartzCore/QuartzCore.h>
 
+typedef struct {
+  unsigned char r, g, b, a;
+} GHPixel;
+
 @interface GHViewTestCase ()
 + (NSString *)imagesDirectory;
 + (NSString *)pathForFilename:(NSString *)filename;
@@ -91,7 +95,6 @@
   return image;
 }
 
-
 // Delete all test images from the documents directory
 + (void)clearTestImages {
   NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -105,32 +108,7 @@
   }
 }
 
- //! Super ghetto image comparison
 + (BOOL)compareImage:(UIImage *)image withNewImage:(UIImage *)newImage {
-  if (!image || !newImage) return NO;
-  if ((image.size.width != newImage.size.width) || (image.size.height != newImage.size.height)) return NO;
-  CFDataRef imageData = (CFDataRef)UIImagePNGRepresentation(image);
-  CFDataRef newImageData = (CFDataRef)UIImagePNGRepresentation(newImage);
-  const UInt32 *imagePixels = (const UInt32*)CFDataGetBytePtr(imageData);
-  const UInt32 *newImagePixels = (const UInt32*)CFDataGetBytePtr(newImageData);
-  for (int j = 0; j < CFDataGetLength(imageData) / 4; j++)
-  {
-    // XOR the pixels here?
-    if (imagePixels[j] != newImagePixels[j])
-    {
-      GHUDebug(@"imagePixels[%d]: %x newImagePixels[%d]: %x", j, imagePixels[j], j, newImagePixels[j]);
-      return NO;
-    }
-  }
-  return YES;
-}
-
-
-typedef struct {
-  unsigned char r, g, b, a;
-} pixel;
-
-+ (BOOL)compareImage2:(UIImage *)image withNewImage:(UIImage *)newImage {
   if (!image || !newImage) return NO;
   // If the images are different sizes, just fail
   if ((image.size.width != newImage.size.width) || (image.size.height != newImage.size.height)) {
@@ -138,8 +116,8 @@ typedef struct {
     return NO;
   }
   // Allocate a buffer big enough to hold all the pixels
-  pixel *imagePixels = (pixel *) calloc(1, image.size.width * image.size.height * sizeof(pixel));
-  pixel *newImagePixels = (pixel *) calloc(1, image.size.width * image.size.height * sizeof(pixel));
+  GHPixel *imagePixels = (GHPixel *) calloc(1, image.size.width * image.size.height * sizeof(GHPixel));
+  GHPixel *newImagePixels = (GHPixel *) calloc(1, image.size.width * image.size.height * sizeof(GHPixel));
   
   if (!imagePixels || !newImagePixels) {
     GHUDebug(@"Unable to create pixel array for image comparieson.");
@@ -238,7 +216,7 @@ typedef struct {
   if (!originalViewImage) {
     GHUDebug(@"No image available for filename %@", filename);
     [[NSException exceptionWithName:@"GHViewUnavailableException" reason:@"No image saved for view" userInfo:exceptionDictionary] raise];
-  } else if (![[self class] compareImage2:originalViewImage withNewImage:newViewImage]) {
+  } else if (![[self class] compareImage:originalViewImage withNewImage:newViewImage]) {
     [exceptionDictionary setObject:originalViewImage forKey:@"OriginalImage"];
     [[NSException exceptionWithName:@"GHViewChangeException" reason:@"View has changed" userInfo:exceptionDictionary] raise];
   }

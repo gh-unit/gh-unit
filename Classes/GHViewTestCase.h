@@ -64,6 +64,14 @@ reason:@"GHVerifyView can only be called from within a GHViewTestCase class"] ra
 
      @end
 
+ In order to record results across test runs, the PrepareUITests.sh script needs
+ to be run as a build step. This script copies any test images (saved locally in
+ $PROJECT_DIR/TestImages) to the app bundle so that calls to GHVerifyView have
+ images from previous runs with which to compare.
+
+ After changes to views are approved in the simulator, the CopyTestImages.sh script
+ should be run manually in Terminal. This script copies any approved view changes
+ back to the project directory.
  */
 @interface GHViewTestCase : GHTestCase {
   NSInteger imageVerifyCount_;
