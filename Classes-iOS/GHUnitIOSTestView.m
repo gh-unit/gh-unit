@@ -34,10 +34,8 @@
 
 @synthesize controlDelegate=controlDelegate_;
 
-- (id)initWithFrame:(CGRect)frame
-{
-  self = [super initWithFrame:frame];
-  if (self) {
+- (id)initWithFrame:(CGRect)frame {
+  if ((self = [super initWithFrame:frame])) {
     self.backgroundColor = [UIColor whiteColor];
 
     textLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 100)];

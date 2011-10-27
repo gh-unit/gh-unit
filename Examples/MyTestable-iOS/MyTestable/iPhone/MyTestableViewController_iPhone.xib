@@ -35,13 +35,13 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUILabel" id="50328016">
+					<object class="IBUILabel" id="671329451">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{9, 114}, {303, 63}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="465597194"/>
+						<reference key="NSNextKeyView" ref="112407993"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -49,7 +49,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">This is an iPhone view we want to verify. If it changes, the corresponding test will fail.</string>
-						<object class="NSColor" key="IBUITextColor" id="722991229">
+						<object class="NSColor" key="IBUITextColor" id="344898714">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
@@ -68,7 +68,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUILabel" id="465597194">
+					<object class="IBUILabel" id="112407993">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{10, 161}, {310, 137}}</string>
@@ -85,7 +85,7 @@
 ICBfX19fIHxfX3wvICB8XyAKICAvIF9fX1x8ICB8ICBcfCAgfCAgXC8gICAgXHwgIFwgICBfX1wKIC8g
 L18vICA+ICAgWSAgXCAgfCAgLyAgIHwgIFwgIHx8ICB8ICAKIFxfX18gIC98X19ffCAgL19fX18vfF9f
 X3wgIC9fX3x8X198ICAKL19fX19fLyAgICAgIFwvICAgICAgICAgICBcLw</string>
-						<reference key="IBUITextColor" ref="722991229"/>
+						<reference key="IBUITextColor" ref="344898714"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
@@ -106,13 +106,10 @@ X3wgIC9fX3x8X198ICAKL19fX19fLyAgICAgIFwvICAgICAgICAgICBcLw</string>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="50328016"/>
+				<reference key="NSNextKeyView" ref="671329451"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace">
-						<int key="NSID">2</int>
-					</object>
+					<int key="NSColorSpace">2</int>
+					<bytes key="NSRGB">MC45OTIxNTY5MjI4IDAuOTQ5MDE5NjcwNSAwLjgxMTc2NDc3NjcAA</bytes>
 				</object>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -141,8 +138,8 @@ X3wgIC9fX3x8X198ICAKL19fX19fLyAgICAgIFwvICAgICAgICAgICBcLw</string>
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="50328016"/>
-							<reference ref="465597194"/>
+							<reference ref="671329451"/>
+							<reference ref="112407993"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -159,12 +156,12 @@ X3wgIC9fX3x8X198ICAKL19fX19fLyAgICAgIFwvICAgICAgICAgICBcLw</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
-						<reference key="object" ref="50328016"/>
+						<reference key="object" ref="671329451"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">9</int>
-						<reference key="object" ref="465597194"/>
+						<reference key="object" ref="112407993"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>

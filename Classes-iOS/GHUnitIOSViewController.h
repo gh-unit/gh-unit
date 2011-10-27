@@ -38,7 +38,7 @@
 @interface GHUnitIOSViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate, UISearchBarDelegate> {
     
   GHUnitIOSView *view_;
-  
+
   GHUnitIOSTableViewDataSource *dataSource_;
   GHTestSuite *suite_;
   

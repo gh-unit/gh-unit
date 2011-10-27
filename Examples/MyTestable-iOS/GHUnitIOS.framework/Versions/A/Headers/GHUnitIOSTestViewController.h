@@ -30,12 +30,14 @@
 #import <UIKit/UIKit.h>
 #import "GHTestViewModel.h"
 #import "GHUnitIOSTestView.h"
+#import "GHImageDiffView.h"
 
 /*
  View controller for a test.
  */
 @interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate, GHUnitIOSTestViewDelegate> {
   GHUnitIOSTestView *testView_;
+  GHImageDiffView *imageDiffView_;
 
   GHTestNode *testNode_;
   

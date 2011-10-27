@@ -139,7 +139,7 @@ typedef struct {
                                                        CGImageGetColorSpace(newImage.CGImage),
                                                        kCGImageAlphaPremultipliedLast
                                                        );
-  if (!imageContext || !imageContext) {
+  if (!imageContext || !newImageContext) {
     GHUDebug(@"Unable to create image contexts for image comparison");
     return NO;
   }
@@ -172,6 +172,29 @@ typedef struct {
   
   return YES;
 }
+
++ (UIImage *)diffWithImage:(UIImage *)image newImage:(UIImage *)newImage {
+  if (!image || !newImage) return nil;
+  // Use the largest size and width
+  CGSize imageSize = CGSizeMake(MAX(image.size.width, newImage.size.width), MAX(image.size.height, newImage.size.height));
+
+  UIGraphicsBeginImageContext(imageSize);
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  // Draw the original image
+  [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+  // Overlay the new image inverted and at half alpha
+  CGContextSetAlpha(context, 0.5);
+  CGContextBeginTransparencyLayer(context, NULL);
+  [newImage drawInRect:CGRectMake(0, 0, newImage.size.width, newImage.size.height)];
+  CGContextSetBlendMode(context, kCGBlendModeDifference);
+  CGContextSetFillColorWithColor(context,[UIColor whiteColor].CGColor);
+  CGContextFillRect(context, CGRectMake(0, 0, image.size.width, image.size.height));
+  CGContextEndTransparencyLayer(context);
+  UIImage *returnImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  return returnImage;
+}
+
 
 - (void)_setUp {
   imageVerifyCount_ = 0;
@@ -217,6 +240,8 @@ typedef struct {
     GHUDebug(@"No image available for filename %@", filename);
     [[NSException exceptionWithName:@"GHViewUnavailableException" reason:@"No image saved for view" userInfo:exceptionDictionary] raise];
   } else if (![[self class] compareImage:originalViewImage withNewImage:newViewImage]) {
+    UIImage *diffImage = [[self class] diffWithImage:originalViewImage newImage:newViewImage];
+    [exceptionDictionary setObject:diffImage forKey:@"DiffImage"];
     [exceptionDictionary setObject:originalViewImage forKey:@"OriginalImage"];
     [[NSException exceptionWithName:@"GHViewChangeException" reason:@"View has changed" userInfo:exceptionDictionary] raise];
   }

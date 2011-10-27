@@ -67,6 +67,18 @@
   [test release];
 }
 
+- (void)_showImageDiff {
+  if (!imageDiffView_) imageDiffView_ = [[GHImageDiffView alloc] initWithFrame:CGRectZero];
+  UIImage *originalImage = [testNode_.test.exception.userInfo objectForKey:@"OriginalImage"];
+  UIImage *newImage = [testNode_.test.exception.userInfo objectForKey:@"NewImage"];
+  UIImage *diffImage = [testNode_.test.exception.userInfo objectForKey:@"DiffImage"];
+  [imageDiffView_ setOriginalImage:originalImage newImage:newImage diffImage:diffImage];
+  UIViewController *viewController = [[UIViewController alloc] init];
+  viewController.view = imageDiffView_;
+  [self.navigationController pushViewController:viewController animated:YES];
+  [viewController release];
+}
+
 - (NSString *)updateTestView {
   NSMutableString *text = [NSMutableString stringWithCapacity:200];
   [text appendFormat:@"%@ %@\n", [testNode_ identifier], [testNode_ statusString]];
@@ -102,23 +114,13 @@
 #pragma mark Delegates (GHUnitIOSTestView)
 
 - (void)testViewDidSelectOriginalImage:(GHUnitIOSTestView *)testView {
-  UIViewController *viewController = [[UIViewController alloc] init];
-  UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-  UIImage *originalImage = [testNode_.test.exception.userInfo objectForKey:@"OriginalImage"];
-  [scrollView addSubview:[[[UIImageView alloc] initWithImage:originalImage] autorelease]];
-  scrollView.contentSize = originalImage.size;
-  viewController.view = scrollView;
-  [self.navigationController pushViewController:viewController animated:YES];
+  [self _showImageDiff];
+  [imageDiffView_ showOriginalImage];
 }
 
 - (void)testViewDidSelectNewImage:(GHUnitIOSTestView *)testView {
-  UIViewController *viewController = [[UIViewController alloc] init];
-  UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-  UIImage *newImage = [testNode_.test.exception.userInfo objectForKey:@"NewImage"];
-  [scrollView addSubview:[[[UIImageView alloc] initWithImage:newImage] autorelease]];
-  scrollView.contentSize = newImage.size;
-  viewController.view = scrollView;
-  [self.navigationController pushViewController:viewController animated:YES];
+  [self _showImageDiff];
+  [imageDiffView_ showNewImage];
 }
 
 - (void)testViewDidApproveChange:(GHUnitIOSTestView *)testView {
