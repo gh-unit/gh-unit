@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		007F25E713D27C680023DEA7 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007F25E613D27C680023DEA7 /* GHUnitIOS.framework */; };
 		007F25EB13D280D30023DEA7 /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 007F25EA13D280D30023DEA7 /* MyTest.m */; };
 		0088BCA313F4C37D0084C69E /* MyTestableAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0088BCA113F4C37D0084C69E /* MyTestableAppDelegate.m */; };
 		00AEE3AB13D27AE9000CD90E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00AEE3AA13D27AE9000CD90E /* UIKit.framework */; };
@@ -24,10 +23,21 @@
 		00AEE3DF13D27B33000CD90E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00AEE3AE13D27AE9000CD90E /* CoreGraphics.framework */; };
 		00AEE3E513D27B33000CD90E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00AEE3E313D27B33000CD90E /* InfoPlist.strings */; };
 		00AEE3E813D27B33000CD90E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AEE3E713D27B33000CD90E /* main.m */; };
+		4228631C1459052D00BF3ED2 /* MyViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228631B1459052D00BF3ED2 /* MyViewTest.m */; };
+		4228631E145906DE00BF3ED2 /* MyViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228631B1459052D00BF3ED2 /* MyViewTest.m */; };
+		4228631F145906F200BF3ED2 /* MyTestableAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0088BCA113F4C37D0084C69E /* MyTestableAppDelegate.m */; };
+		42286320145906F800BF3ED2 /* MyTestableAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AEE3BE13D27AE9000CD90E /* MyTestableAppDelegate_iPhone.m */; };
+		42286321145906FB00BF3ED2 /* MyTestableAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AEE3C513D27AE9000CD90E /* MyTestableAppDelegate_iPad.m */; };
+		422863231459078B00BF3ED2 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 422863221459078B00BF3ED2 /* GHUnitIOS.framework */; };
+		422863391459093C00BF3ED2 /* MyTestableViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 422863371459093C00BF3ED2 /* MyTestableViewController_iPhone.m */; };
+		4228633A1459093C00BF3ED2 /* MyTestableViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422863381459093C00BF3ED2 /* MyTestableViewController_iPhone.xib */; };
+		4228633B145909DE00BF3ED2 /* MyTestableViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 422863371459093C00BF3ED2 /* MyTestableViewController_iPhone.m */; };
+		4228633C145909E400BF3ED2 /* MyTestableViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422863381459093C00BF3ED2 /* MyTestableViewController_iPhone.xib */; };
+		4228634014590BD900BF3ED2 /* MyTestableViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228633E14590BD900BF3ED2 /* MyTestableViewController_iPad.m */; };
+		4228634114590BD900BF3ED2 /* MyTestableViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4228633F14590BD900BF3ED2 /* MyTestableViewController_iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		007F25E613D27C680023DEA7 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		007F25EA13D280D30023DEA7 /* MyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTest.m; sourceTree = "<group>"; };
 		007F25EC13D281FD0023DEA7 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		0088BCA113F4C37D0084C69E /* MyTestableAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTestableAppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +61,14 @@
 		00AEE3E413D27B33000CD90E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		00AEE3E613D27B33000CD90E /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		00AEE3E713D27B33000CD90E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4228631B1459052D00BF3ED2 /* MyViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewTest.m; sourceTree = "<group>"; };
+		422863221459078B00BF3ED2 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
+		422863361459093C00BF3ED2 /* MyTestableViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTestableViewController_iPhone.h; path = iPhone/MyTestableViewController_iPhone.h; sourceTree = "<group>"; };
+		422863371459093C00BF3ED2 /* MyTestableViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTestableViewController_iPhone.m; path = iPhone/MyTestableViewController_iPhone.m; sourceTree = "<group>"; };
+		422863381459093C00BF3ED2 /* MyTestableViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyTestableViewController_iPhone.xib; path = iPhone/MyTestableViewController_iPhone.xib; sourceTree = "<group>"; };
+		4228633D14590BD900BF3ED2 /* MyTestableViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTestableViewController_iPad.h; path = iPad/MyTestableViewController_iPad.h; sourceTree = "<group>"; };
+		4228633E14590BD900BF3ED2 /* MyTestableViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTestableViewController_iPad.m; path = iPad/MyTestableViewController_iPad.m; sourceTree = "<group>"; };
+		4228633F14590BD900BF3ED2 /* MyTestableViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyTestableViewController_iPad.xib; path = iPad/MyTestableViewController_iPad.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +89,7 @@
 				00AEE3DD13D27B33000CD90E /* UIKit.framework in Frameworks */,
 				00AEE3DE13D27B33000CD90E /* Foundation.framework in Frameworks */,
 				00AEE3DF13D27B33000CD90E /* CoreGraphics.framework in Frameworks */,
-				007F25E713D27C680023DEA7 /* GHUnitIOS.framework in Frameworks */,
+				422863231459078B00BF3ED2 /* GHUnitIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +119,7 @@
 		00AEE3A913D27AE9000CD90E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				007F25E613D27C680023DEA7 /* GHUnitIOS.framework */,
+				422863221459078B00BF3ED2 /* GHUnitIOS.framework */,
 				00AEE3AA13D27AE9000CD90E /* UIKit.framework */,
 				00AEE3AC13D27AE9000CD90E /* Foundation.framework */,
 				00AEE3AE13D27AE9000CD90E /* CoreGraphics.framework */,
@@ -112,8 +130,8 @@
 		00AEE3B013D27AE9000CD90E /* MyTestable */ = {
 			isa = PBXGroup;
 			children = (
-				0088BCA113F4C37D0084C69E /* MyTestableAppDelegate.m */,
 				0088BCA213F4C37D0084C69E /* MyTestableAppDelegate.h */,
+				0088BCA113F4C37D0084C69E /* MyTestableAppDelegate.m */,
 				00AEE3BC13D27AE9000CD90E /* iPhone */,
 				00AEE3C313D27AE9000CD90E /* iPad */,
 				00AEE3B113D27AE9000CD90E /* Supporting Files */,
@@ -138,6 +156,9 @@
 				00AEE3BD13D27AE9000CD90E /* MyTestableAppDelegate_iPhone.h */,
 				00AEE3BE13D27AE9000CD90E /* MyTestableAppDelegate_iPhone.m */,
 				00AEE3C013D27AE9000CD90E /* MainWindow_iPhone.xib */,
+				422863361459093C00BF3ED2 /* MyTestableViewController_iPhone.h */,
+				422863371459093C00BF3ED2 /* MyTestableViewController_iPhone.m */,
+				422863381459093C00BF3ED2 /* MyTestableViewController_iPhone.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -148,6 +169,9 @@
 				00AEE3C413D27AE9000CD90E /* MyTestableAppDelegate_iPad.h */,
 				00AEE3C513D27AE9000CD90E /* MyTestableAppDelegate_iPad.m */,
 				00AEE3C713D27AE9000CD90E /* MainWindow_iPad.xib */,
+				4228633D14590BD900BF3ED2 /* MyTestableViewController_iPad.h */,
+				4228633E14590BD900BF3ED2 /* MyTestableViewController_iPad.m */,
+				4228633F14590BD900BF3ED2 /* MyTestableViewController_iPad.xib */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -157,6 +181,7 @@
 			children = (
 				00AEE3E113D27B33000CD90E /* Supporting Files */,
 				007F25EA13D280D30023DEA7 /* MyTest.m */,
+				4228631B1459052D00BF3ED2 /* MyViewTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -199,7 +224,8 @@
 				00AEE3D713D27B33000CD90E /* Sources */,
 				00AEE3D813D27B33000CD90E /* Frameworks */,
 				00AEE3D913D27B33000CD90E /* Resources */,
-				007F25EE13D283960023DEA7 /* ShellScript */,
+				4228634214590F8E00BF3ED2 /* Prepare UI Tests */,
+				007F25EE13D283960023DEA7 /* RunTests.sh */,
 			);
 			buildRules = (
 			);
@@ -241,6 +267,7 @@
 				00AEE3B513D27AE9000CD90E /* InfoPlist.strings in Resources */,
 				00AEE3C213D27AE9000CD90E /* MainWindow_iPhone.xib in Resources */,
 				00AEE3C913D27AE9000CD90E /* MainWindow_iPad.xib in Resources */,
+				4228633C145909E400BF3ED2 /* MyTestableViewController_iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,25 +276,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				00AEE3E513D27B33000CD90E /* InfoPlist.strings in Resources */,
+				4228633A1459093C00BF3ED2 /* MyTestableViewController_iPhone.xib in Resources */,
+				4228634114590BD900BF3ED2 /* MyTestableViewController_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		007F25EE13D283960023DEA7 /* ShellScript */ = {
+		007F25EE13D283960023DEA7 /* RunTests.sh */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = RunTests.sh;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "sh ../../Scripts/RunTests.sh";
 			showEnvVarsInLog = 0;
+		};
+		4228634214590F8E00BF3ED2 /* Prepare UI Tests */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare UI Tests";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ../../Scripts/PrepareUITests.sh;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -280,6 +324,8 @@
 				00AEE3BF13D27AE9000CD90E /* MyTestableAppDelegate_iPhone.m in Sources */,
 				00AEE3C613D27AE9000CD90E /* MyTestableAppDelegate_iPad.m in Sources */,
 				0088BCA313F4C37D0084C69E /* MyTestableAppDelegate.m in Sources */,
+				4228631C1459052D00BF3ED2 /* MyViewTest.m in Sources */,
+				4228633B145909DE00BF3ED2 /* MyTestableViewController_iPhone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +335,12 @@
 			files = (
 				00AEE3E813D27B33000CD90E /* main.m in Sources */,
 				007F25EB13D280D30023DEA7 /* MyTest.m in Sources */,
+				4228631E145906DE00BF3ED2 /* MyViewTest.m in Sources */,
+				4228631F145906F200BF3ED2 /* MyTestableAppDelegate.m in Sources */,
+				42286320145906F800BF3ED2 /* MyTestableAppDelegate_iPhone.m in Sources */,
+				42286321145906FB00BF3ED2 /* MyTestableAppDelegate_iPad.m in Sources */,
+				422863391459093C00BF3ED2 /* MyTestableViewController_iPhone.m in Sources */,
+				4228634014590BD900BF3ED2 /* MyTestableViewController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

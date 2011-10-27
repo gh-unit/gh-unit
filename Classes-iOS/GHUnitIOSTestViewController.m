@@ -28,7 +28,7 @@
 //
 
 #import "GHUnitIOSTestViewController.h"
-
+#import "GHViewTestCase.h"
 
 @implementation GHUnitIOSTestViewController
 
@@ -47,20 +47,11 @@
   [super dealloc];
 }
 
-- (void)loadView {  
-  textView_ = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];  
-  textView_.font = [UIFont fontWithName:@"Courier New-Bold" size:12];
-  textView_.backgroundColor = [UIColor colorWithWhite:0.96f alpha:1.0f];
-  textView_.textColor = [UIColor blackColor];
-  textView_.editable = NO;
-  textView_.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  textView_.showsHorizontalScrollIndicator = YES;
-  textView_.showsVerticalScrollIndicator = YES;
-  textView_.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-  textView_.contentSize = CGSizeMake(10000, 10000);
-  textView_.scrollEnabled = YES;
-  self.view = textView_;
-  [textView_ release]; // Retained by self.view
+- (void)loadView {
+  testView_ = [[GHUnitIOSTestView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+  testView_.controlDelegate = self;
+  self.view = testView_;
+  [testView_ release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -70,10 +61,22 @@
 - (void)_runTest {
   id<GHTest> test = [testNode_.test copyWithZone:NULL];
   NSLog(@"Re-running: %@", test);
-  textView_.text = @"Running...";
+  [testView_ setText:@"Running..."];
   [test run:GHTestOptionForceSetUpTearDownClass];  
   [self setTest:test];
   [test release];
+}
+
+- (void)_showImageDiff {
+  if (!imageDiffView_) imageDiffView_ = [[GHImageDiffView alloc] initWithFrame:CGRectZero];
+  UIImage *originalImage = [testNode_.test.exception.userInfo objectForKey:@"OriginalImage"];
+  UIImage *newImage = [testNode_.test.exception.userInfo objectForKey:@"NewImage"];
+  UIImage *diffImage = [testNode_.test.exception.userInfo objectForKey:@"DiffImage"];
+  [imageDiffView_ setOriginalImage:originalImage newImage:newImage diffImage:diffImage];
+  UIViewController *viewController = [[UIViewController alloc] init];
+  viewController.view = imageDiffView_;
+  [self.navigationController pushViewController:viewController animated:YES];
+  [viewController release];
 }
 
 - (NSString *)updateTestView {
@@ -83,7 +86,18 @@
   if (log) [text appendFormat:@"\nLog:\n%@\n", log];
   NSString *stackTrace = [testNode_ stackTrace];
   if (stackTrace) [text appendFormat:@"\n%@\n", stackTrace];
-  textView_.text = text;    
+  if ([testNode_.test.exception.name isEqualToString:@"GHViewChangeException"]) {
+    NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
+    UIImage *originalImage = [exceptionUserInfo objectForKey:@"OriginalImage"];
+    UIImage *newImage = [exceptionUserInfo objectForKey:@"NewImage"];
+    [testView_ setOriginalImage:originalImage newImage:newImage text:text];
+  } else if ([testNode_.test.exception.name isEqualToString:@"GHViewUnavailableException"]) {
+    NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
+    UIImage *newImage = [exceptionUserInfo objectForKey:@"NewImage"];
+    [testView_ setOriginalImage:nil newImage:newImage text:text];
+  } else {
+    [testView_ setText:text];
+  }
   return text;
 }
 
@@ -95,6 +109,26 @@
   testNode_ = [[GHTestNode nodeWithTest:test children:nil source:nil] retain];
   NSString *text = [self updateTestView];
   NSLog(@"%@", text);
+}
+
+#pragma mark Delegates (GHUnitIOSTestView)
+
+- (void)testViewDidSelectOriginalImage:(GHUnitIOSTestView *)testView {
+  [self _showImageDiff];
+  [imageDiffView_ showOriginalImage];
+}
+
+- (void)testViewDidSelectNewImage:(GHUnitIOSTestView *)testView {
+  [self _showImageDiff];
+  [imageDiffView_ showNewImage];
+}
+
+- (void)testViewDidApproveChange:(GHUnitIOSTestView *)testView {
+  // Save new image as the approved version
+  NSString *imageFilename = [testNode_.test.exception.userInfo objectForKey:@"ImageFilename"];
+  UIImage *newImage = [testNode_.test.exception.userInfo objectForKey:@"NewImage"];
+  [GHViewTestCase saveToDocumentsWithImage:newImage filename:imageFilename];
+  [self _runTest];
 }
 
 @end

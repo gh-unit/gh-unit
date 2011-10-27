@@ -14,6 +14,9 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 - View logging by test case.
 - Show stack traces and useful debugging information.
 - Include as a framework in your projects
+- Determine whether views have changed (UI verification)
+- Quickly approve and record view changes
+- View image diff to see where views have chaned
 
 ## Install (Docset)
 
@@ -34,5 +37,6 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 
 ![GHUnit-IPhone-0.4.18](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png)
 
+![GHUnit-IPhone-0.4.33](https://johnboiles.s3.amazonaws.com/GHUnitTestViewer.jpg)
 
-
+![GHUnit-IPhone-0.4.33](https://johnboiles.s3.amazonaws.com/GHUnitImageViewer.jpg)

@@ -51,7 +51,8 @@ NSString *GHUnitTest = NULL;
   NSArray *testCases = [[GHTesting sharedInstance] loadAllTestCases];
   GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" testCases:nil delegate:nil];  
   for(id testCase in testCases) {
-    [allTests addTestCase:testCase];
+    // Ignore test cases that can't be run at the command line
+    if (!([testCase respondsToSelector:@selector(isCLIDisabled)] && [testCase isCLIDisabled] && getenv("GHUNIT_CLI"))) [allTests addTestCase:testCase];
   }
   return [allTests autorelease];
 }

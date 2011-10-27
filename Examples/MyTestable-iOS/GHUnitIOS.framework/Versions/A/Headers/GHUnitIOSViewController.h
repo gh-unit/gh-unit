@@ -32,17 +32,19 @@
 #import "GHUnitIOSTableViewDataSource.h"
 #import "GHUnitIOSTestViewController.h"
 
+/*
+ Main view controller for the iOS test application.
+ */
 @interface GHUnitIOSViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate, UISearchBarDelegate> {
     
   GHUnitIOSView *view_;
-  
-  //! Data source for table view
+
   GHUnitIOSTableViewDataSource *dataSource_;
   GHTestSuite *suite_;
   
   UIBarButtonItem *runButton_;
   
-  //! If set then we will no longer auto scroll as tests are run
+  // If set then we will no longer auto scroll as tests are run
   BOOL userDidDrag_;
   
 }

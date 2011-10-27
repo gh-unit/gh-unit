@@ -9,3 +9,5 @@ clean:
 test:
 	GHUNIT_CLI=1 xcodebuild -target Tests -configuration Debug -sdk iphonesimulator build	
 
+copytestimages:
+	../../Scripts/CopyTestImages.sh

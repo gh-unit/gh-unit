@@ -27,12 +27,10 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//! @cond DEV
-
 #import <Foundation/Foundation.h>
 
-/*!
- NSHTTPURLResponse for use with mocking.
+/*
+ NSHTTPURLResponse subclass for use with mocking.
  Allows us to manually set the status code and headers in the response.
  */
 @interface GHMockNSHTTPURLResponse : NSHTTPURLResponse {
@@ -46,5 +44,3 @@
 - (void)setHeaders:(NSDictionary *)headers;
 
 @end
-
-//! @endcond

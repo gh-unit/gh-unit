@@ -605,6 +605,9 @@
 /* Begin PBXProject section */
 		0083D07C13BCFDDB00F71F21 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 0083D07F13BCFDDB00F71F21 /* Build configuration list for PBXProject "GHUnitMacOSX" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;

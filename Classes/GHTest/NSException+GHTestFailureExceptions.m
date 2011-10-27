@@ -244,6 +244,21 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
   return [self ghu_failureInFile:filename atLine:lineNumber reason:reason];
 }
 
++ (NSException *)ghu_failureWithName:(NSString *)name
+                              inFile:(NSString *)filename
+                              atLine:(int)lineNumber
+                              reason:(NSString *)reason {
+  NSDictionary *userInfo =
+  [NSDictionary dictionaryWithObjectsAndKeys:
+   [NSNumber numberWithInteger:lineNumber], GHTestLineNumberKey,
+   filename, GHTestFilenameKey,
+   nil];
+  
+  return [self exceptionWithName:name
+                          reason:reason
+                        userInfo:userInfo];
+}
+
 @end
 
 NSString *GHComposeString(NSString *formatString, ...) {
