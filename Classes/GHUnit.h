@@ -29,7 +29,6 @@
 
 #import "GHTestCase.h"
 #import "GHAsyncTestCase.h"
-#import "GHViewTestCase.h"
 #import "GHTestSuite.h"
 #import "GHTestMacros.h"
 #import "GHTestRunner.h"
@@ -45,6 +44,7 @@
 
 #if TARGET_OS_IPHONE
 #import "GHUnitIOSAppDelegate.h"
+#import "GHViewTestCase.h"
 #endif
 
 #ifdef DEBUG

@@ -28,6 +28,7 @@
 //
 
 #import "GHViewTestCase.h"
+#import "GHUnit.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface GHViewTestCase ()
@@ -53,7 +54,7 @@
   NSFileManager *fileManager = [NSFileManager defaultManager];
   NSError *error = nil;
   [fileManager createDirectoryAtPath:[self imagesDirectory] withIntermediateDirectories:YES attributes:nil error:&error];
-  if (error) NSLog(@"Unable to create directory %@", [self imagesDirectory]);
+  if (error) GHUDebug(@"Unable to create directory %@", [self imagesDirectory]);
 }
 
 + (UIImage *)imageWithView:(UIView *)view {
@@ -69,23 +70,23 @@
 
 + (void)saveToDocumentsWithImage:(UIImage *)image filename:(NSString *)filename {
   NSString *filePath = [self pathForFilename:filename];
-  NSLog(@"Saving test image to %@", filePath);
+  GHUDebug(@"Saving view test image to %@", filePath);
   // Save image as PNG
   [self createImagesDirectory];
   BOOL saved = [UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
-  if (!saved) NSLog(@"Unable to save image to %@", filePath);
+  if (!saved) GHUDebug(@"Unable to save image to %@", filePath);
 }
 
 + (UIImage *)readImageWithFilename:(NSString *)filename {
   NSString* filePath = [self pathForFilename:filename];
-  NSLog(@"Trying to load image at path %@", filePath);
+  GHUDebug(@"Trying to load image at path %@", filePath);
   // First look in the documents directory for the image
   UIImage *image = [UIImage imageWithContentsOfFile:filePath];
   // Otherwise look in the app bundle
-  if (image) NSLog(@"Found image in documents directory");
+  if (image) GHUDebug(@"Found image in documents directory");
   if (!image) {
     image = [UIImage imageNamed:filename];
-    if (image) NSLog(@"Found image in app bundle");
+    if (image) GHUDebug(@"Found image in app bundle");
   }
   return image;
 }
@@ -99,7 +100,7 @@
   for (NSString *file in [fileManager contentsOfDirectoryAtPath:directory error:&error]) {
     BOOL success = [fileManager removeItemAtPath:[NSString stringWithFormat:@"%@/%@", directory, file] error:&error];
     if (!success || error) {
-      NSLog(@"Unable to delete file %@%@", directory, file);
+      GHUDebug(@"Unable to delete file %@%@", directory, file);
     }
   }
 }
@@ -112,13 +113,12 @@
   CFDataRef newImageData = (CFDataRef)UIImagePNGRepresentation(newImage);
   const UInt32 *imagePixels = (const UInt32*)CFDataGetBytePtr(imageData);
   const UInt32 *newImagePixels = (const UInt32*)CFDataGetBytePtr(newImageData);
-  if (CFDataGetLength(imageData) != CFDataGetLength(newImageData)) NSLog(@"WARNING: images are different lengths");
   for (int j = 0; j < CFDataGetLength(imageData) / 4; j++)
   {
     // XOR the pixels here?
     if (imagePixels[j] != newImagePixels[j])
     {
-      NSLog(@"imagePixels[%d]: %x newImagePixels[%d]: %x", j, imagePixels[j], j, newImagePixels[j]);
+      GHUDebug(@"imagePixels[%d]: %x newImagePixels[%d]: %x", j, imagePixels[j], j, newImagePixels[j]);
       return NO;
     }
   }
@@ -131,9 +131,10 @@ typedef struct {
 } pixel;
 
 + (BOOL)compareImage2:(UIImage *)image withNewImage:(UIImage *)newImage {
+  if (!image || !newImage) return NO;
   // If the images are different sizes, just fail
   if ((image.size.width != newImage.size.width) || (image.size.height != newImage.size.height)) {
-    NSLog(@"Images are differnt sizes");
+    GHUDebug(@"Images are differnt sizes");
     return NO;
   }
   // Allocate a buffer big enough to hold all the pixels
@@ -141,7 +142,7 @@ typedef struct {
   pixel *newImagePixels = (pixel *) calloc(1, image.size.width * image.size.height * sizeof(pixel));
   
   if (!imagePixels || !newImagePixels) {
-    NSLog(@"Unable to create pixel array for image comparieson.");
+    GHUDebug(@"Unable to create pixel array for image comparieson.");
     return NO;
   }
   CGContextRef imageContext = CGBitmapContextCreate((void *)imagePixels,
@@ -161,7 +162,7 @@ typedef struct {
                                                        kCGImageAlphaPremultipliedLast
                                                        );
   if (!imageContext || !imageContext) {
-    NSLog(@"Unable to create image contexts for image comparison");
+    GHUDebug(@"Unable to create image contexts for image comparison");
     return NO;
   }
   // Draw the image in the bitmap
@@ -205,20 +206,27 @@ typedef struct {
   return YES;
 }
 
-- (void)verifyView:(UIView *)view inFilename:(NSString *)filename atLineNumber:(int)lineNumber {
+- (CGSize)sizeForView:(UIView *)view {
+  // If the view is a UIScrollView, return the contet
+  if ([view isKindOfClass:[UIScrollView class]]) {
+    UIScrollView *scrollView = (UIScrollView *)view;
+    return scrollView.contentSize;
+  }
+  return view.frame.size;
+}
+
+- (void)verifyView:(UIView *)view filename:(NSString *)filename lineNumber:(int)lineNumber {
   // Fail if the view is nil
   if (!view) [[NSException ghu_failureInFile:filename atLine:lineNumber withDescription:@"View cannot be nil in GHVerifyView"] raise];
   // Fail if the view has CGSizeZero
   if (CGSizeEqualToSize(view.frame.size, CGSizeZero)) [[NSException ghu_failureInFile:filename atLine:lineNumber withDescription:@"View must have a nonzero size in GHVerifyView"] raise];
+
   // View testing file names have the format [test class name]-[test selector name]-[# of verify in selector]-[view class name]
   NSString *imageFilename = [NSString stringWithFormat:@"%@-%@-%d-%@.png", NSStringFromClass([self class]), NSStringFromSelector(currentSelector_), imageVerifyCount_, NSStringFromClass([view class])];
   UIImage *originalViewImage = [[self class] readImageWithFilename:imageFilename];
 
-  // If the view is a UIScrollView, size it to the content size
-  if ([view isKindOfClass:[UIScrollView class]]) {
-    UIScrollView *scrollView = (UIScrollView *)view;
-    view.frame = CGRectMake(view.frame.origin.x, view.frame.origin.y, scrollView.contentSize.width, scrollView.contentSize.height);
-  }
+  CGSize viewSize = [self sizeForView:view];
+  view.frame = CGRectMake(0, 0, viewSize.width, viewSize.height);
 
   UIImage *newViewImage = [[self class] imageWithView:view];
   NSMutableDictionary *exceptionDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -228,7 +236,7 @@ typedef struct {
                                               filename, GHTestFilenameKey,
                                               nil];
   if (!originalViewImage) {
-    NSLog(@"No image available for filename %@", filename);
+    GHUDebug(@"No image available for filename %@", filename);
     [[NSException exceptionWithName:@"GHViewUnavailableException" reason:@"No image saved for view" userInfo:exceptionDictionary] raise];
   } else if (![[self class] compareImage2:originalViewImage withNewImage:newViewImage]) {
     [exceptionDictionary setObject:originalViewImage forKey:@"OriginalImage"];
