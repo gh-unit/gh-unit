@@ -39,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		007F25EA13D280D30023DEA7 /* MyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTest.m; sourceTree = "<group>"; };
-		007F25EC13D281FD0023DEA7 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		0088BCA113F4C37D0084C69E /* MyTestableAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTestableAppDelegate.m; sourceTree = "<group>"; };
 		0088BCA213F4C37D0084C69E /* MyTestableAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTestableAppDelegate.h; sourceTree = "<group>"; };
 		00AEE3A613D27AE9000CD90E /* MyTestable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTestable.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,7 +98,6 @@
 		00AEE39B13D27AE9000CD90E = {
 			isa = PBXGroup;
 			children = (
-				007F25EC13D281FD0023DEA7 /* Makefile */,
 				00AEE3B013D27AE9000CD90E /* MyTestable */,
 				00AEE3E013D27B33000CD90E /* Tests */,
 				00AEE3A913D27AE9000CD90E /* Frameworks */,

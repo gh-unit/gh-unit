@@ -48,7 +48,6 @@
 
 #import "GHTestMacros.h"
 #import "GHTest.h"
-#import "UIKit/UIKit.h"
 
 /*!
  Log to your test case logger. For example,
