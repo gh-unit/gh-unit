@@ -1006,8 +1006,6 @@ continue; \
 } while (0)
 
 
-//! @cond DEV
-
 @interface NSException(GHTestMacros_GTMSenTestAdditions)
 + (NSException *)ghu_failureInFile:(NSString *)filename 
                         atLine:(int)lineNumber 

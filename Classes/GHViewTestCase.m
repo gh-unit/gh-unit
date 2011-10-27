@@ -207,7 +207,7 @@ typedef struct {
 }
 
 - (CGSize)sizeForView:(UIView *)view {
-  // If the view is a UIScrollView, return the contet
+  // If the view is a UIScrollView, return the contentSize
   if ([view isKindOfClass:[UIScrollView class]]) {
     UIScrollView *scrollView = (UIScrollView *)view;
     return scrollView.contentSize;

@@ -87,7 +87,6 @@
     if ([node status] == GHTestStatusRunning) {
       cell.textLabel.textColor = [UIColor blackColor];
     } else if ([node status] == GHTestStatusErrored) {
-      //NSLog(@"Got a node: %@", node);
       if ([node.test.exception.name isEqualToString:@"GHViewUnavailableException"]) {
         cell.textLabel.textColor = [UIColor colorWithRed:0.60 green:0.60 blue:0 alpha:1.0];
       } else {

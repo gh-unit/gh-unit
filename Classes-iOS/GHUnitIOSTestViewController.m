@@ -81,7 +81,6 @@
     [testView_ setOriginalImage:originalImage newImage:newImage text:text];
   } else if ([testNode_.test.exception.name isEqualToString:@"GHViewUnavailableException"]) {
     NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
-    //UIImage *originalImage = [exceptionUserInfo objectForKey:@"OriginalImage"];
     UIImage *newImage = [exceptionUserInfo objectForKey:@"NewImage"];
     [testView_ setOriginalImage:nil newImage:newImage text:text];
   } else {
@@ -123,7 +122,6 @@
 }
 
 - (void)testViewDidApproveChange:(GHUnitIOSTestView *)testView {
-  // TODO(johnb): Change some UI to reflect that the change has been accepted
   // Save new image as the approved version
   NSString *imageFilename = [testNode_.test.exception.userInfo objectForKey:@"ImageFilename"];
   UIImage *newImage = [testNode_.test.exception.userInfo objectForKey:@"NewImage"];

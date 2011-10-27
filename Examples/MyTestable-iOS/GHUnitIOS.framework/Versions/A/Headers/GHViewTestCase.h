@@ -30,7 +30,7 @@
 #import "GHTestCase.h"
 #import <UIKit/UIKit.h>
 
-/*! 
+/*!
  Assert that a view has not changed. Raises exception if the view has changed or if
  no image exists from previous test runs.
 
@@ -38,20 +38,79 @@
  */
 #define GHVerifyView(view) \
 do { \
-[self verifyView:view inFilename:[NSString stringWithUTF8String:__FILE__] atLineNumber:__LINE__];\
+if (![self isKindOfClass:[GHViewTestCase class]]) \
+[[NSException ghu_failureWithName:@"GHInvalidTestException" \
+inFile:[NSString stringWithUTF8String:__FILE__] \
+atLine:__LINE__ \
+reason:@"GHVerifyView can only be called from within a GHViewTestCase class"] raise]; \
+[self verifyView:view filename:[NSString stringWithUTF8String:__FILE__] lineNumber:__LINE__]; \
 } while (0)
 
+/*!
+ View verification test case.
 
-@interface GHViewTestCase : GHTestCase {  
+ Supports GHVerifyView, which renders a view and compares it against a saved
+ image from a previous test run.
+
+     @interface MyViewTest : GHViewTestCase { }
+     @end
+
+     @implementation MyViewTest
+
+     - (void)testMyView {
+       MyView *myView = [[MyView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+       GHVerifyView(myView);
+     }
+
+     @end
+
+ */
+@interface GHViewTestCase : GHTestCase {
   NSInteger imageVerifyCount_;
 }
 
-- (BOOL)isCLIDisabled;
-
-- (void)verifyView:(UIView *)view inFilename:(NSString *)filename atLineNumber:(int)lineNumber;
-
+/*!
+ Clear all test images in the documents directory
+ */
 + (void)clearTestImages;
 
+/*!
+ Save an image to the documents directory as filename
+
+ @param image Image to save
+ @param filename Filename for the saved image
+ */
 + (void)saveToDocumentsWithImage:(UIImage *)image filename:(NSString *)filename;
+
+/*!
+ Whether the test class should be run as a part of command line tests.
+ By default this is YES since there are some small differences in rendering
+ from the command line vs rendering in the simulator
+
+ @result YES if this test class is disabled for command line tests
+ */
+- (BOOL)isCLIDisabled;
+
+/*!
+ Size for a given view. Subclasses can override this to provide custom sizes
+ for views before rendering. The default implementation returns contentSize
+ for scrollviews and returns self.frame.size for all other views.
+
+ @param view View for which to calculate the size
+ @result Size at which the view should be rendered
+ */
+- (CGSize)sizeForView:(UIView *)view;
+
+/*!
+ Called from the GHVerifyView macro. This method should not be called manually.
+ Verifies that a view hasn't changed since the last time it was approved. Raises
+ a GHViewChangeException if the view has changed. Raises a GHViewUnavailableException
+ if there is no image from a previous run.
+
+ @param view View to verify
+ @param filename Filename of the call to GHVerifyView
+ @param lineNumber Line number of the call to GHVerifyView
+ */
+- (void)verifyView:(UIView *)view filename:(NSString *)filename lineNumber:(int)lineNumber;
 
 @end

@@ -1006,8 +1006,6 @@ continue; \
 } while (0)
 
 
-//! @cond DEV
-
 @interface NSException(GHTestMacros_GTMSenTestAdditions)
 + (NSException *)ghu_failureInFile:(NSString *)filename 
                         atLine:(int)lineNumber 
@@ -1042,6 +1040,10 @@ continue; \
                          inFile:(NSString *)filename 
                          atLine:(int)lineNumber 
                 withDescription:(NSString *)formatString, ...;
++ (NSException *)ghu_failureWithName:(NSString *)name
+                              inFile:(NSString *)filename
+                              atLine:(int)lineNumber
+                              reason:(NSString *)reason;
 @end
 
 // SENTE_END
