@@ -93,7 +93,7 @@
  */
 @interface GHTestCase : NSObject {
   id<GHTestCaseLogWriter> logWriter_; // weak
-  
+
   SEL currentSelector_;
 }
 

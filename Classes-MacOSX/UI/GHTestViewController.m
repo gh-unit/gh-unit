@@ -349,7 +349,7 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 }
 
 - (void)_updateTest:(id<GHTest>)test {
-	GHTestNode *testNode = [dataSource_ findTestNode:test];
+	GHTestNode *testNode = [dataSource_ findTestNodeForTest:test];
 	[_outlineView reloadItem:testNode];	
 
 	NSInteger runCount = [suite_ stats].succeedCount + [suite_ stats].failureCount;

@@ -259,6 +259,8 @@ NSString *const SenTestLineNumberKey = @"SenTestLineNumberKey";
     // this log the exception.  This ensures they are only logged once but the
     // outer layers get the exceptions to report counts, etc.
     @try {
+      // For internal setup
+      if ([self respondsToSelector:@selector(_setUp)]) [self _setUp];
       [self setUp];
       @try {
         [self performSelector:currentSelector_];

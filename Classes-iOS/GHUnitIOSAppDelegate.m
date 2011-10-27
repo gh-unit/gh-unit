@@ -52,7 +52,10 @@
   GHUDebug(@"Setting window view");
   [window_ addSubview:navigationController_.view];
   [window_ makeKeyAndVisible];
-  
+
+  // Delete all interim saved images from previous UI tests
+  [GHViewTestCase clearTestImages];
+
   if (getenv("GHUNIT_AUTORUN")) [viewController runTests];
 }
 
