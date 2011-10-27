@@ -21,10 +21,10 @@ mkdir -p "$UI_TEST_IMAGES_DIR"
 
 if [[ -d "$SIM_DOCUMENTS_DIR" && $(ls -1A "$SIM_DOCUMENTS_DIR") ]]; then
 	echo "Found the following files:"
-	ls "$SIM_DOCUMENTS_DIR"/RoboEyes*.png
+	ls "$SIM_DOCUMENTS_DIR"/*.png
 	# Copy any saved images from the app's documents to the test images folder
 	echo "Saving images to $UI_TEST_IMAGES_DIR"
-	cp "$SIM_DOCUMENTS_DIR"/RoboEyes*.png "$UI_TEST_IMAGES_DIR"
+	cp "$SIM_DOCUMENTS_DIR"/*.png "$UI_TEST_IMAGES_DIR"
 else
 	echo "No saved test images found"
 fi

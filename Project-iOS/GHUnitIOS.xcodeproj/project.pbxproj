@@ -179,10 +179,6 @@
 		42A678EF1401423D0060D1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
 		42A678FF1401509B0060D1B5 /* YKUIImageViewControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 42A678FD1401509B0060D1B5 /* YKUIImageViewControl.h */; };
 		42A679001401509B0060D1B5 /* YKUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A678FE1401509B0060D1B5 /* YKUIImageViewControl.m */; };
-		42A8C225144CF55C005B9CF8 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A8C21F144CEA5A005B9CF8 /* checkmark.png */; };
-		42A8C226144CF55C005B9CF8 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A8C21F144CEA5A005B9CF8 /* checkmark.png */; };
-		42A8C227144CF55F005B9CF8 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A8C220144CEA5A005B9CF8 /* checkmark@2x.png */; };
-		42A8C228144CF55F005B9CF8 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42A8C220144CEA5A005B9CF8 /* checkmark@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -316,8 +312,6 @@
 		42A678EE1401423D0060D1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		42A678FD1401509B0060D1B5 /* YKUIImageViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIImageViewControl.h; sourceTree = "<group>"; };
 		42A678FE1401509B0060D1B5 /* YKUIImageViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIImageViewControl.m; sourceTree = "<group>"; };
-		42A8C21F144CEA5A005B9CF8 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
-		42A8C220144CEA5A005B9CF8 /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,7 +348,6 @@
 		0041C5DF13BA7B8A0015FC22 = {
 			isa = PBXGroup;
 			children = (
-				42A8C21E144CEA5A005B9CF8 /* Resources */,
 				00C979CA13BA81E200FC285C /* CHANGELOG.md */,
 				00C979CB13BA81E200FC285C /* README.md */,
 				0041C6B813BA7CBE0015FC22 /* Makefile */,
@@ -637,16 +630,6 @@
 			path = YelpKit;
 			sourceTree = "<group>";
 		};
-		42A8C21E144CEA5A005B9CF8 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				42A8C21F144CEA5A005B9CF8 /* checkmark.png */,
-				42A8C220144CEA5A005B9CF8 /* checkmark@2x.png */,
-			);
-			name = Resources;
-			path = ../Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -835,8 +818,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42A8C226144CF55C005B9CF8 /* checkmark.png in Resources */,
-				42A8C228144CF55F005B9CF8 /* checkmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,8 +825,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42A8C225144CF55C005B9CF8 /* checkmark.png in Resources */,
-				42A8C227144CF55F005B9CF8 /* checkmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

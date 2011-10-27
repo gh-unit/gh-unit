@@ -29,9 +29,13 @@
 
 #import <UIKit/UIKit.h>
 #import "GHTestViewModel.h"
+#import "GHUnitIOSTestView.h"
 
-@interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate> {
-  UITextView *textView_;
+/*
+ View controller for a test.
+ */
+@interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate, GHUnitIOSTestViewDelegate> {
+  GHUnitIOSTestView *testView_;
 
   GHTestNode *testNode_;
   

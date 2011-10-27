@@ -48,9 +48,6 @@
     [approveButton_ setTitle:@"Approve this change" forState:UIControlStateNormal];
     [approveButton_ setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     approveButton_.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:18];
-    // TODO(johnb): Not getting the image from the framework bundle
-    UIImage *image = [UIImage imageNamed:@"checkmark.png"];
-    [approveButton_ setImage:image forState:UIControlStateNormal];
     [self addSubview:approveButton_];
   }
   return self;
