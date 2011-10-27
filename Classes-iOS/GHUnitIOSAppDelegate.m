@@ -54,7 +54,7 @@
   [window_ makeKeyAndVisible];
 
   // Delete all interim saved images from previous UI tests
-  [JBViewTestCase clearTestImages];
+  [GHViewTestCase clearTestImages];
 
   if (getenv("GHUNIT_AUTORUN")) [viewController runTests];
 }

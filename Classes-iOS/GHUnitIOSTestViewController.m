@@ -28,7 +28,7 @@
 //
 
 #import "GHUnitIOSTestViewController.h"
-#import "JBViewTestCase.h"
+#import "GHViewTestCase.h"
 
 @implementation GHUnitIOSTestViewController
 
@@ -127,7 +127,7 @@
   // Save new image as the approved version
   NSString *imageFilename = [testNode_.test.exception.userInfo objectForKey:@"ImageFilename"];
   UIImage *newImage = [testNode_.test.exception.userInfo objectForKey:@"NewImage"];
-  [JBViewTestCase saveToDocumentsWithImage:newImage filename:imageFilename];
+  [GHViewTestCase saveToDocumentsWithImage:newImage filename:imageFilename];
   [self _runTest];
 }
 

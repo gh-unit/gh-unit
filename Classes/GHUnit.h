@@ -29,7 +29,7 @@
 
 #import "GHTestCase.h"
 #import "GHAsyncTestCase.h"
-#import "JBViewTestCase.h"
+#import "GHViewTestCase.h"
 #import "GHTestSuite.h"
 #import "GHTestMacros.h"
 #import "GHTestRunner.h"

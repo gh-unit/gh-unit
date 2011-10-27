@@ -168,14 +168,14 @@
 		00C979A313BA809600FC285C /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9799013BA809600FC285C /* GTMSenTestCase.m */; };
 		00C979CF13BA8A5100FC285C /* GHUnitIPhoneAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 00C979CD13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.h */; };
 		00C979D013BA8A5100FC285C /* GHUnitIPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C979CE13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.m */; };
-		420D93891450DA29001DAFFE /* JBViewTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 420D93871450DA29001DAFFE /* JBViewTestCase.h */; };
-		420D938A1450DA29001DAFFE /* JBViewTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 420D93871450DA29001DAFFE /* JBViewTestCase.h */; };
-		420D938B1450DA29001DAFFE /* JBViewTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D93881450DA29001DAFFE /* JBViewTestCase.m */; };
-		420D938C1450DA29001DAFFE /* JBViewTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D93881450DA29001DAFFE /* JBViewTestCase.m */; };
 		421C7B8F13F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */; };
 		421C7B9013F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */; };
 		421C7B9113F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */; };
 		421C7B9213F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */; };
+		422863111458BC1200BF3ED2 /* GHViewTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 4228630F1458BC1200BF3ED2 /* GHViewTestCase.h */; };
+		422863121458BC1200BF3ED2 /* GHViewTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 4228630F1458BC1200BF3ED2 /* GHViewTestCase.h */; };
+		422863131458BC1200BF3ED2 /* GHViewTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 422863101458BC1200BF3ED2 /* GHViewTestCase.m */; };
+		422863141458BC1200BF3ED2 /* GHViewTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 422863101458BC1200BF3ED2 /* GHViewTestCase.m */; };
 		42A678EF1401423D0060D1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
 		42A678FF1401509B0060D1B5 /* YKUIImageViewControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 42A678FD1401509B0060D1B5 /* YKUIImageViewControl.h */; };
 		42A679001401509B0060D1B5 /* YKUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A678FE1401509B0060D1B5 /* YKUIImageViewControl.m */; };
@@ -309,10 +309,10 @@
 		00C979CB13BA81E200FC285C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		00C979CD13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneAppDelegate.h; sourceTree = "<group>"; };
 		00C979CE13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneAppDelegate.m; sourceTree = "<group>"; };
-		420D93871450DA29001DAFFE /* JBViewTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBViewTestCase.h; sourceTree = "<group>"; };
-		420D93881450DA29001DAFFE /* JBViewTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBViewTestCase.m; sourceTree = "<group>"; };
 		421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIOSTestView.h; sourceTree = "<group>"; };
 		421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestView.m; sourceTree = "<group>"; };
+		4228630F1458BC1200BF3ED2 /* GHViewTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHViewTestCase.h; sourceTree = "<group>"; };
+		422863101458BC1200BF3ED2 /* GHViewTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHViewTestCase.m; sourceTree = "<group>"; };
 		42A678EE1401423D0060D1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		42A678FD1401509B0060D1B5 /* YKUIImageViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIImageViewControl.h; sourceTree = "<group>"; };
 		42A678FE1401509B0060D1B5 /* YKUIImageViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIImageViewControl.m; sourceTree = "<group>"; };
@@ -422,8 +422,8 @@
 		0041C62013BA7C9A0015FC22 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				420D93871450DA29001DAFFE /* JBViewTestCase.h */,
-				420D93881450DA29001DAFFE /* JBViewTestCase.m */,
+				4228630F1458BC1200BF3ED2 /* GHViewTestCase.h */,
+				422863101458BC1200BF3ED2 /* GHViewTestCase.m */,
 				0041C62113BA7C9A0015FC22 /* GHAsyncTestCase.h */,
 				0041C62213BA7C9A0015FC22 /* GHAsyncTestCase.m */,
 				0041C62313BA7C9A0015FC22 /* GHTest */,
@@ -689,7 +689,7 @@
 				0066A0BF13C51359006B7022 /* GTMNSString+XML.h in Headers */,
 				421C7B8F13F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */,
 				42A678FF1401509B0060D1B5 /* YKUIImageViewControl.h in Headers */,
-				420D93891450DA29001DAFFE /* JBViewTestCase.h in Headers */,
+				422863111458BC1200BF3ED2 /* GHViewTestCase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,7 +731,7 @@
 				0066A0C013C51359006B7022 /* GTMNSString+XML.h in Headers */,
 				0088BC9413F4C19E0084C69E /* GHUnitIPhoneAppDelegate.h in Headers */,
 				421C7B9013F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */,
-				420D938A1450DA29001DAFFE /* JBViewTestCase.h in Headers */,
+				422863121458BC1200BF3ED2 /* GHViewTestCase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,7 +903,7 @@
 				0066A0C113C51359006B7022 /* GTMNSString+XML.m in Sources */,
 				421C7B9113F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */,
 				42A679001401509B0060D1B5 /* YKUIImageViewControl.m in Sources */,
-				420D938B1450DA29001DAFFE /* JBViewTestCase.m in Sources */,
+				422863131458BC1200BF3ED2 /* GHViewTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,7 +940,7 @@
 				0097C46E13BA7EEC00D3BEF0 /* GTMStackTrace.m in Sources */,
 				0066A0C213C51359006B7022 /* GTMNSString+XML.m in Sources */,
 				421C7B9213F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */,
-				420D938C1450DA29001DAFFE /* JBViewTestCase.m in Sources */,
+				422863141458BC1200BF3ED2 /* GHViewTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
