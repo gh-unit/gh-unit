@@ -1,20 +1,20 @@
 <?xml version="1.0" standalone="no"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:docset="http://developer.apple.com/rss/docset_extensions" xml:lang="en">
-    <id>http://gabriel.github.com/gh-unit/publish/me.rel.GHUnit.atom/20111003111034</id>
+    <id>http://gabriel.github.com/gh-unit/publish/me.rel.GHUnit.atom/20111027145821</id>
     <title type="text">GHUnit Documentation</title>
     <rights>Copyright © 2011 GHUnit. All rights reserved.</rights>
     <link rel="self" href="http://gabriel.github.com/gh-unit/publish/me.rel.GHUnit.atom"></link>
     <docset:publisherName>GHUnit</docset:publisherName>
     <docset:publisherID>me.rel.documentation</docset:publisherID>
-    <updated>2011-10-03T11:10:34-07:00</updated>
+    <updated>2011-10-27T14:58:21-07:00</updated>
     <entry>
-        <id>tag:gabriel.github.com,2011-10-03:me.rel.GHUnit/0.4.32</id>
+        <id>tag:gabriel.github.com,2011-10-27:me.rel.GHUnit/0.4.33</id>
         <title type="text">GHUnit Documentation</title>
-        <updated>2011-10-03T11:10:34-07:00</updated>
-        <content type="text">GHUnit Documentation (v0.4.32)</content>
-        <link rel="enclosure" type="application/octet-stream" href="http://gabriel.github.com/gh-unit/publish/me.rel.GHUnit-0.4.32.xar" length="3301651"></link>
+        <updated>2011-10-27T14:58:21-07:00</updated>
+        <content type="text">GHUnit Documentation (v0.4.33)</content>
+        <link rel="enclosure" type="application/octet-stream" href="http://gabriel.github.com/gh-unit/publish/me.rel.GHUnit-0.4.33.xar" length="3309439"></link>
         <docset:identifier>me.rel.GHUnit</docset:identifier>
-        <docset:version>0.4.32</docset:version>
+        <docset:version>0.4.33</docset:version>
         <docset:minimumXcodeVersion>3.0.0</docset:minimumXcodeVersion>
     </entry>
 </feed>

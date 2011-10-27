@@ -1,0 +1,582 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>GHViewTestCase Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">GHUnit </a></h1>
+				<a id="developerHome" href="../index.html">GHUnit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">GHViewTestCase Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/clearTestImages">&nbsp;&nbsp;&nbsp;&nbsp;+ clearTestImages</option>
+	
+	<option value="//api/name/saveToDocumentsWithImage:filename:">&nbsp;&nbsp;&nbsp;&nbsp;+ saveToDocumentsWithImage:filename:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/isCLIDisabled">&nbsp;&nbsp;&nbsp;&nbsp;- isCLIDisabled</option>
+	
+	<option value="//api/name/sizeForView:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeForView:</option>
+	
+	<option value="//api/name/verifyView:filename:lineNumber:">&nbsp;&nbsp;&nbsp;&nbsp;- verifyView:filename:lineNumber:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clearTestImages">clearTestImages</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/saveToDocumentsWithImage:filename:">saveToDocumentsWithImage:filename:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isCLIDisabled">isCLIDisabled</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeForView:">sizeForView:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/verifyView:filename:lineNumber:">verifyView:filename:lineNumber:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="GHViewTestCase Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">GHViewTestCase Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/GHTestCase.html">GHTestCase</a> : NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">GHViewTestCase.h<br />GHViewTestCase.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>View verification test case.</p>
+
+<p>Supports GHVerifyView, which renders a view and compares it against a saved
+image from a previous test run.</p>
+
+<pre><code> @interface MyViewTest : GHViewTestCase { }
+ @end
+
+ @implementation MyViewTest
+
+ - (void)testMyView {
+   MyView *myView = [[MyView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+   GHVerifyView(myView);
+ }
+
+ @end
+</code></pre>
+
+<p>In order to record results across test runs, the PrepareUITests.sh script needs
+to be run as a build step. This script copies any test images (saved locally in
+$PROJECT_DIR/TestImages) to the app bundle so that calls to GHVerifyView have
+images from previous runs with which to compare.</p>
+
+<p>After changes to views are approved in the simulator, the CopyTestImages.sh script
+should be run manually in Terminal. This script copies any approved view changes
+back to the project directory.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clearTestImages">+&nbsp;clearTestImages</a></code>
+		<span class="tooltip"><p>Clear all test images in the documents directory</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/saveToDocumentsWithImage:filename:">+&nbsp;saveToDocumentsWithImage:filename:</a></code>
+		<span class="tooltip"><p>Save an image to the documents directory as filename</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isCLIDisabled">&ndash;&nbsp;isCLIDisabled</a></code>
+		<span class="tooltip"><p>Whether the test class should be run as a part of command line tests.
+By default this is YES since there are some small differences in rendering
+from the command line vs rendering in the simulator</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sizeForView:">&ndash;&nbsp;sizeForView:</a></code>
+		<span class="tooltip"><p>Size for a given view. Subclasses can override this to provide custom sizes
+for views before rendering. The default implementation returns contentSize
+for scrollviews and returns self.frame.size for all other views.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/verifyView:filename:lineNumber:">&ndash;&nbsp;verifyView:filename:lineNumber:</a></code>
+		<span class="tooltip"><p>Called from the GHVerifyView macro. This method should not be called manually.
+Verifies that a view hasn&rsquo;t changed since the last time it was approved. Raises
+a GHViewChangeException if the view has changed. Raises a GHViewUnavailableException
+if there is no image from a previous run.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/clearTestImages" title="clearTestImages"></a>
+	<h3 class="subsubtitle method-title">clearTestImages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Clear all test images in the documents directory</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)clearTestImages</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHViewTestCase.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/saveToDocumentsWithImage:filename:" title="saveToDocumentsWithImage:filename:"></a>
+	<h3 class="subsubtitle method-title">saveToDocumentsWithImage:filename:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Save an image to the documents directory as filename</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)saveToDocumentsWithImage:(UIImage *)<em>image</em> filename:(NSString *)<em>filename</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>image</em></dt>
+			<dd><p>Image to save</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>filename</em></dt>
+			<dd><p>Filename for the saved image</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHViewTestCase.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/isCLIDisabled" title="isCLIDisabled"></a>
+	<h3 class="subsubtitle method-title">isCLIDisabled</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether the test class should be run as a part of command line tests.
+By default this is YES since there are some small differences in rendering
+from the command line vs rendering in the simulator</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)isCLIDisabled</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if this test class is disabled for command line tests</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHViewTestCase.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sizeForView:" title="sizeForView:"></a>
+	<h3 class="subsubtitle method-title">sizeForView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Size for a given view. Subclasses can override this to provide custom sizes
+for views before rendering. The default implementation returns contentSize
+for scrollviews and returns self.frame.size for all other views.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (CGSize)sizeForView:(UIView *)<em>view</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>View for which to calculate the size</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Size at which the view should be rendered</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHViewTestCase.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/verifyView:filename:lineNumber:" title="verifyView:filename:lineNumber:"></a>
+	<h3 class="subsubtitle method-title">verifyView:filename:lineNumber:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called from the GHVerifyView macro. This method should not be called manually.
+Verifies that a view hasn&rsquo;t changed since the last time it was approved. Raises
+a GHViewChangeException if the view has changed. Raises a GHViewUnavailableException
+if there is no image from a previous run.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)verifyView:(UIView *)<em>view</em> filename:(NSString *)<em>filename</em> lineNumber:(int)<em>lineNumber</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>View to verify</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>filename</em></dt>
+			<dd><p>Filename of the call to GHVerifyView</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>lineNumber</em></dt>
+			<dd><p>Line number of the call to GHVerifyView</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHViewTestCase.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-10-27)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>
