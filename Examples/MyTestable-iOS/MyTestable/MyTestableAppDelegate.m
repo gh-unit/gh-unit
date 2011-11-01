@@ -3,7 +3,7 @@
 //  MyTestable
 //
 //  Created by Gabriel Handford on 7/16/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011. All rights reserved.
 //
 
 #import "MyTestableAppDelegate.h"
@@ -17,7 +17,7 @@
 {
   // Override point for customization after application launch.
   [self.window makeKeyAndVisible];
-    return YES;
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -62,7 +62,7 @@
 - (void)dealloc
 {
   [_window release];
-    [super dealloc];
+  [super dealloc];
 }
 
 @end
