@@ -40,20 +40,20 @@
     [scrollView_ release];
 
     segmentedControl_ = [[UISegmentedControl alloc] initWithFrame:CGRectZero];
-    [segmentedControl_ insertSegmentWithTitle:@"Original" atIndex:0 animated:NO];
+    [segmentedControl_ insertSegmentWithTitle:@"Saved" atIndex:0 animated:NO];
     [segmentedControl_ insertSegmentWithTitle:@"New" atIndex:1 animated:NO];
     [segmentedControl_ insertSegmentWithTitle:@"Diff" atIndex:2 animated:NO];
     [segmentedControl_ addTarget:self action:@selector(segmentedControlDidChange:) forControlEvents:UIControlEventValueChanged];
     [self addSubview:segmentedControl_];
     [segmentedControl_ release];
 
-    originalImageView_ = [[UIImageView alloc] initWithFrame:CGRectZero];
-    [scrollView_ addSubview:originalImageView_];
-    [originalImageView_ release];
+    savedImageView_ = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [scrollView_ addSubview:savedImageView_];
+    [savedImageView_ release];
 
-    newImageView_ = [[UIImageView alloc] initWithFrame:CGRectZero];
-    [scrollView_ addSubview:newImageView_];
-    [newImageView_ release];
+    renderedImageView_ = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [scrollView_ addSubview:renderedImageView_];
+    [renderedImageView_ release];
 
     diffImageView_ = [[UIImageView alloc] initWithFrame:CGRectZero];
     [scrollView_ addSubview:diffImageView_];
@@ -69,33 +69,36 @@
   segmentedControl_.frame = CGRectMake((self.frame.size.width - 300) / 2, self.frame.size.height - 40, 300, 30);
 }
 
-- (void)setOriginalImage:(UIImage *)originalImage newImage:(UIImage *)newImage diffImage:(UIImage *)diffImage {
-  originalImageView_.image = originalImage;
-  [originalImageView_ sizeToFit];
-  newImageView_.image = newImage;
-  [newImageView_ sizeToFit];
+- (void)setSavedImage:(UIImage *)savedImage renderedImage:(UIImage *)renderedImage diffImage:(UIImage *)diffImage {
+  savedImageView_.image = savedImage;
+  [savedImageView_ sizeToFit];
+  [segmentedControl_ setEnabled:!!savedImage forSegmentAtIndex:0];
+  renderedImageView_.image = renderedImage;
+  [renderedImageView_ sizeToFit];
+  [segmentedControl_ setEnabled:!!renderedImage forSegmentAtIndex:1];
   diffImageView_.image = diffImage;
   [diffImageView_ sizeToFit];
-  scrollView_.contentSize = CGSizeMake(MAX(originalImage.size.width, newImage.size.width), MAX(originalImage.size.height, newImage.size.height));
+  [segmentedControl_ setEnabled:!!diffImage forSegmentAtIndex:2];
+  scrollView_.contentSize = CGSizeMake(MAX(savedImage.size.width, renderedImage.size.width), MAX(savedImage.size.height, renderedImage.size.height));
 }
 
-- (void)showOriginalImage {
-  originalImageView_.hidden = NO;
-  newImageView_.hidden = YES;
+- (void)showSavedImage {
+  savedImageView_.hidden = NO;
+  renderedImageView_.hidden = YES;
   diffImageView_.hidden = YES;
   segmentedControl_.selectedSegmentIndex = 0;
 }
 
-- (void)showNewImage {
-  originalImageView_.hidden = YES;
-  newImageView_.hidden = NO;
+- (void)showRenderedImage {
+  savedImageView_.hidden = YES;
+  renderedImageView_.hidden = NO;
   diffImageView_.hidden = YES;
   segmentedControl_.selectedSegmentIndex = 1;
 }
 
 - (void)showDiffImage {
-  originalImageView_.hidden = YES;
-  newImageView_.hidden = YES;
+  savedImageView_.hidden = YES;
+  renderedImageView_.hidden = YES;
   diffImageView_.hidden = NO;
   segmentedControl_.selectedSegmentIndex = 2;
 }
@@ -103,8 +106,8 @@
 #pragma mark UISegmentedControl
 
 - (void)segmentedControlDidChange:(UISegmentedControl *)segmentedControl {
-  if (segmentedControl.selectedSegmentIndex == 0) [self showOriginalImage];
-  else if (segmentedControl.selectedSegmentIndex == 1) [self showNewImage];
+  if (segmentedControl.selectedSegmentIndex == 0) [self showSavedImage];
+  else if (segmentedControl.selectedSegmentIndex == 1) [self showRenderedImage];
   else if (segmentedControl.selectedSegmentIndex == 2) [self showDiffImage];
 }
 
