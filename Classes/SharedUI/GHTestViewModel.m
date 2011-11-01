@@ -258,7 +258,7 @@
   for(GHTestNode *childNode in children_) {
     [childNode setTextFilter:textFilter_];
     if (textFilter_) {
-      if ([self.name hasPrefix:textFilter_] || [childNode.name hasPrefix:textFilter_] || [childNode hasChildren]) 
+      if (([self.name rangeOfString:textFilter_].location != NSNotFound) || ([childNode.name rangeOfString:textFilter_].location != NSNotFound) || [childNode hasChildren]) 
         [textFiltered addObject:childNode];
     }
   }
@@ -275,8 +275,8 @@
   [filteredChildren_ release];
   filteredChildren_ = [[NSMutableArray array] retain];
   for(GHTestNode *childNode in children_) {
-    if ((!textFilter_ || [textFiltered containsObject:childNode]) && 
-        (filter_ == GHTestNodeFilterNone || [filtered containsObject:childNode]) || [childNode hasChildren]) {
+    if (((!textFilter_ || [textFiltered containsObject:childNode]) && 
+        (filter_ == GHTestNodeFilterNone || [filtered containsObject:childNode])) || [childNode hasChildren]) {
       [filteredChildren_ addObject:childNode];
       if (![childNode hasChildren]) {
         [childNode.test setDisabled:NO];
