@@ -241,7 +241,7 @@ typedef struct {
   } else if (![[self class] compareImage:originalViewImage withRenderedImage:newViewImage]) {
     UIImage *diffImage = [[self class] diffWithImage:originalViewImage renderedImage:newViewImage];
     [exceptionDictionary setObject:diffImage forKey:@"DiffImage"];
-    [exceptionDictionary setObject:originalViewImage forKey:@"OriginalImage"];
+    [exceptionDictionary setObject:originalViewImage forKey:@"SavedImage"];
     [[NSException exceptionWithName:@"GHViewChangeException" reason:@"View has changed" userInfo:exceptionDictionary] raise];
   }
   imageVerifyCount_++;

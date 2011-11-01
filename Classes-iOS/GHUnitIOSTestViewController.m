@@ -69,10 +69,10 @@
 
 - (void)_showImageDiff {
   if (!imageDiffView_) imageDiffView_ = [[GHImageDiffView alloc] initWithFrame:CGRectZero];
-  UIImage *originalImage = [testNode_.test.exception.userInfo objectForKey:@"OriginalImage"];
+  UIImage *savedImage = [testNode_.test.exception.userInfo objectForKey:@"SavedImage"];
   UIImage *renderedImage = [testNode_.test.exception.userInfo objectForKey:@"RenderedImage"];
   UIImage *diffImage = [testNode_.test.exception.userInfo objectForKey:@"DiffImage"];
-  [imageDiffView_ setOriginalImage:originalImage renderedImage:renderedImage diffImage:diffImage];
+  [imageDiffView_ setSavedImage:savedImage renderedImage:renderedImage diffImage:diffImage];
   UIViewController *viewController = [[UIViewController alloc] init];
   viewController.view = imageDiffView_;
   [self.navigationController pushViewController:viewController animated:YES];
@@ -88,13 +88,13 @@
   if (stackTrace) [text appendFormat:@"\n%@\n", stackTrace];
   if ([testNode_.test.exception.name isEqualToString:@"GHViewChangeException"]) {
     NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
-    UIImage *originalImage = [exceptionUserInfo objectForKey:@"OriginalImage"];
+    UIImage *savedImage = [exceptionUserInfo objectForKey:@"SavedImage"];
     UIImage *renderedImage = [exceptionUserInfo objectForKey:@"RenderedImage"];
-    [testView_ setOriginalImage:originalImage renderedImage:renderedImage text:text];
+    [testView_ setSavedImage:savedImage renderedImage:renderedImage text:text];
   } else if ([testNode_.test.exception.name isEqualToString:@"GHViewUnavailableException"]) {
     NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
     UIImage *renderedImage = [exceptionUserInfo objectForKey:@"RenderedImage"];
-    [testView_ setOriginalImage:nil renderedImage:renderedImage text:text];
+    [testView_ setSavedImage:nil renderedImage:renderedImage text:text];
   } else {
     [testView_ setText:text];
   }
@@ -113,9 +113,9 @@
 
 #pragma mark Delegates (GHUnitIOSTestView)
 
-- (void)testViewDidSelectOriginalImage:(GHUnitIOSTestView *)testView {
+- (void)testViewDidSelectSavedImage:(GHUnitIOSTestView *)testView {
   [self _showImageDiff];
-  [imageDiffView_ showOriginalImage];
+  [imageDiffView_ showSavedImage];
 }
 
 - (void)testViewDidSelectRenderedImage:(GHUnitIOSTestView *)testView {

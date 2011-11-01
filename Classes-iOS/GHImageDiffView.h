@@ -33,14 +33,14 @@
   UIScrollView *scrollView_;
   UISegmentedControl *segmentedControl_;
 
-  UIImageView *originalImageView_;
+  UIImageView *savedImageView_;
   UIImageView *renderedImageView_;
   UIImageView *diffImageView_;
 }
 
-- (void)setOriginalImage:(UIImage *)originalImage renderedImage:(UIImage *)renderedImage diffImage:(UIImage *)diffImage;
+- (void)setSavedImage:(UIImage *)savedImage renderedImage:(UIImage *)renderedImage diffImage:(UIImage *)diffImage;
 
-- (void)showOriginalImage;
+- (void)showSavedImage;
 
 - (void)showRenderedImage;
 
