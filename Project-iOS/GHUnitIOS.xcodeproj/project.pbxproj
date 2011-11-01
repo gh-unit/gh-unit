@@ -178,6 +178,10 @@
 		422863141458BC1200BF3ED2 /* GHViewTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 422863101458BC1200BF3ED2 /* GHViewTestCase.m */; };
 		4228635814595D0400BF3ED2 /* GHImageDiffView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4228635614595D0400BF3ED2 /* GHImageDiffView.h */; };
 		4228635914595D0400BF3ED2 /* GHImageDiffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228635714595D0400BF3ED2 /* GHImageDiffView.m */; };
+		423AF3341460962700F04DC7 /* YKUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A678FE1401509B0060D1B5 /* YKUIImageViewControl.m */; };
+		423AF3371460965C00F04DC7 /* GHImageDiffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228635714595D0400BF3ED2 /* GHImageDiffView.m */; };
+		423AF3381460968200F04DC7 /* GHUnitIPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C979CE13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.m */; };
+		423AF3391460969000F04DC7 /* GHImageDiffView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4228635614595D0400BF3ED2 /* GHImageDiffView.h */; };
 		42A678EF1401423D0060D1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
 		42A678FF1401509B0060D1B5 /* YKUIImageViewControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 42A678FD1401509B0060D1B5 /* YKUIImageViewControl.h */; };
 		42A679001401509B0060D1B5 /* YKUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A678FE1401509B0060D1B5 /* YKUIImageViewControl.m */; };
@@ -722,6 +726,7 @@
 				0088BC9413F4C19E0084C69E /* GHUnitIPhoneAppDelegate.h in Headers */,
 				421C7B9013F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */,
 				422863121458BC1200BF3ED2 /* GHViewTestCase.h in Headers */,
+				423AF3391460969000F04DC7 /* GHImageDiffView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,6 +933,9 @@
 				0066A0C213C51359006B7022 /* GTMNSString+XML.m in Sources */,
 				421C7B9213F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */,
 				422863141458BC1200BF3ED2 /* GHViewTestCase.m in Sources */,
+				423AF3341460962700F04DC7 /* YKUIImageViewControl.m in Sources */,
+				423AF3371460965C00F04DC7 /* GHImageDiffView.m in Sources */,
+				423AF3381460968200F04DC7 /* GHUnitIPhoneAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
