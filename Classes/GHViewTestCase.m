@@ -195,7 +195,6 @@ typedef struct {
   return returnImage;
 }
 
-
 - (void)_setUp {
   imageVerifyCount_ = 0;
 }

@@ -72,10 +72,13 @@
 - (void)setOriginalImage:(UIImage *)originalImage newImage:(UIImage *)newImage diffImage:(UIImage *)diffImage {
   originalImageView_.image = originalImage;
   [originalImageView_ sizeToFit];
+  [segmentedControl_ setEnabled:!!originalImage forSegmentAtIndex:0];
   newImageView_.image = newImage;
   [newImageView_ sizeToFit];
+  [segmentedControl_ setEnabled:!!newImage forSegmentAtIndex:1];
   diffImageView_.image = diffImage;
   [diffImageView_ sizeToFit];
+  [segmentedControl_ setEnabled:!!diffImage forSegmentAtIndex:2];
   scrollView_.contentSize = CGSizeMake(MAX(originalImage.size.width, newImage.size.width), MAX(originalImage.size.height, newImage.size.height));
 }
 

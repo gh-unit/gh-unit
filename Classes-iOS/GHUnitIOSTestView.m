@@ -99,7 +99,7 @@
     newImageView_.frame = newImageFrame;
   }
 
-  y += MAX(originalImageFrame.size.height, newImageFrame.size.height) + 10;
+  y += roundf(MAX(originalImageFrame.size.height, newImageFrame.size.height) + 10);
 
   if (!approveButton_.hidden) {
     approveButton_.frame = CGRectMake(10, y, 300, 30);
