@@ -41,7 +41,7 @@ typedef struct {
 + (void)createImagesDirectory;
 + (UIImage *)imageWithView:(UIView *)view;
 + (UIImage *)readImageWithFilename:(NSString *)name;
-+ (BOOL)compareImage:(UIImage *)image withNewImage:(UIImage *)newImage;
++ (BOOL)compareImage:(UIImage *)image withRenderedImage:(UIImage *)renderedImage;
 @end
 
 @implementation GHViewTestCase
@@ -108,18 +108,18 @@ typedef struct {
   }
 }
 
-+ (BOOL)compareImage:(UIImage *)image withNewImage:(UIImage *)newImage {
-  if (!image || !newImage) return NO;
++ (BOOL)compareImage:(UIImage *)image withRenderedImage:(UIImage *)renderedImage {
+  if (!image || !renderedImage) return NO;
   // If the images are different sizes, just fail
-  if ((image.size.width != newImage.size.width) || (image.size.height != newImage.size.height)) {
+  if ((image.size.width != renderedImage.size.width) || (image.size.height != renderedImage.size.height)) {
     GHUDebug(@"Images are differnt sizes");
     return NO;
   }
   // Allocate a buffer big enough to hold all the pixels
   GHPixel *imagePixels = (GHPixel *) calloc(1, image.size.width * image.size.height * sizeof(GHPixel));
-  GHPixel *newImagePixels = (GHPixel *) calloc(1, image.size.width * image.size.height * sizeof(GHPixel));
+  GHPixel *renderedImagePixels = (GHPixel *) calloc(1, image.size.width * image.size.height * sizeof(GHPixel));
   
-  if (!imagePixels || !newImagePixels) {
+  if (!imagePixels || !renderedImagePixels) {
     GHUDebug(@"Unable to create pixel array for image comparieson.");
     return NO;
   }
@@ -131,52 +131,52 @@ typedef struct {
                                                     CGImageGetColorSpace(image.CGImage),
                                                     kCGImageAlphaPremultipliedLast
                                                     );
-  CGContextRef newImageContext = CGBitmapContextCreate((void *)newImagePixels,
-                                                       newImage.size.width,
-                                                       newImage.size.height,
+  CGContextRef renderedImageContext = CGBitmapContextCreate((void *)renderedImagePixels,
+                                                       renderedImage.size.width,
+                                                       renderedImage.size.height,
                                                        8,
-                                                       newImage.size.width * 4,
-                                                       CGImageGetColorSpace(newImage.CGImage),
+                                                       renderedImage.size.width * 4,
+                                                       CGImageGetColorSpace(renderedImage.CGImage),
                                                        kCGImageAlphaPremultipliedLast
                                                        );
-  if (!imageContext || !newImageContext) {
+  if (!imageContext || !renderedImageContext) {
     GHUDebug(@"Unable to create image contexts for image comparison");
     return NO;
   }
   // Draw the image in the bitmap
   CGContextDrawImage(imageContext, CGRectMake(0.0f, 0.0f, image.size.width, image.size.height), image.CGImage);
-  CGContextDrawImage(newImageContext, CGRectMake(0.0f, 0.0f, newImage.size.width, newImage.size.height), newImage.CGImage);
+  CGContextDrawImage(renderedImageContext, CGRectMake(0.0f, 0.0f, renderedImage.size.width, renderedImage.size.height), renderedImage.CGImage);
 
   for (int x = 0; x < image.size.width; x++) {
     for (int y = 0; y < image.size.height; y++) {
       NSInteger pixelIndex = x * y;
-      if ((imagePixels[pixelIndex].r != newImagePixels[pixelIndex].r)
-          || (imagePixels[pixelIndex].g != newImagePixels[pixelIndex].g)
-          || (imagePixels[pixelIndex].b != newImagePixels[pixelIndex].b)) {
+      if ((imagePixels[pixelIndex].r != renderedImagePixels[pixelIndex].r)
+          || (imagePixels[pixelIndex].g != renderedImagePixels[pixelIndex].g)
+          || (imagePixels[pixelIndex].b != renderedImagePixels[pixelIndex].b)) {
         NSLog(@"Image was different at pixel (%d, %d). Old was (r%d, g%d, b%d), new was (r%d, g%d, b%d)", x, y,
               imagePixels[pixelIndex].r, imagePixels[pixelIndex].g, imagePixels[pixelIndex].b,
-              newImagePixels[pixelIndex].r, newImagePixels[pixelIndex].g, newImagePixels[pixelIndex].b);
+              renderedImagePixels[pixelIndex].r, renderedImagePixels[pixelIndex].g, renderedImagePixels[pixelIndex].b);
         CGContextRelease(imageContext);
-        CGContextRelease(newImageContext);
+        CGContextRelease(renderedImageContext);
         free(imagePixels);
-        free(newImagePixels);
+        free(renderedImagePixels);
         return NO;
       }
     }
   }
   
   CGContextRelease(imageContext);
-  CGContextRelease(newImageContext);
+  CGContextRelease(renderedImageContext);
   free(imagePixels);
-  free(newImagePixels);
+  free(renderedImagePixels);
   
   return YES;
 }
 
-+ (UIImage *)diffWithImage:(UIImage *)image newImage:(UIImage *)newImage {
-  if (!image || !newImage) return nil;
++ (UIImage *)diffWithImage:(UIImage *)image renderedImage:(UIImage *)renderedImage {
+  if (!image || !renderedImage) return nil;
   // Use the largest size and width
-  CGSize imageSize = CGSizeMake(MAX(image.size.width, newImage.size.width), MAX(image.size.height, newImage.size.height));
+  CGSize imageSize = CGSizeMake(MAX(image.size.width, renderedImage.size.width), MAX(image.size.height, renderedImage.size.height));
 
   UIGraphicsBeginImageContext(imageSize);
   CGContextRef context = UIGraphicsGetCurrentContext();
@@ -185,7 +185,7 @@ typedef struct {
   // Overlay the new image inverted and at half alpha
   CGContextSetAlpha(context, 0.5);
   CGContextBeginTransparencyLayer(context, NULL);
-  [newImage drawInRect:CGRectMake(0, 0, newImage.size.width, newImage.size.height)];
+  [renderedImage drawInRect:CGRectMake(0, 0, renderedImage.size.width, renderedImage.size.height)];
   CGContextSetBlendMode(context, kCGBlendModeDifference);
   CGContextSetFillColorWithColor(context,[UIColor whiteColor].CGColor);
   CGContextFillRect(context, CGRectMake(0, 0, image.size.width, image.size.height));
@@ -230,7 +230,7 @@ typedef struct {
 
   UIImage *newViewImage = [[self class] imageWithView:view];
   NSMutableDictionary *exceptionDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                              newViewImage, @"NewImage",
+                                              newViewImage, @"RenderedImage",
                                               imageFilename, @"ImageFilename",
                                               [NSNumber numberWithInteger:lineNumber], GHTestLineNumberKey,
                                               filename, GHTestFilenameKey,
@@ -238,8 +238,8 @@ typedef struct {
   if (!originalViewImage) {
     GHUDebug(@"No image available for filename %@", filename);
     [[NSException exceptionWithName:@"GHViewUnavailableException" reason:@"No image saved for view" userInfo:exceptionDictionary] raise];
-  } else if (![[self class] compareImage:originalViewImage withNewImage:newViewImage]) {
-    UIImage *diffImage = [[self class] diffWithImage:originalViewImage newImage:newViewImage];
+  } else if (![[self class] compareImage:originalViewImage withRenderedImage:newViewImage]) {
+    UIImage *diffImage = [[self class] diffWithImage:originalViewImage renderedImage:newViewImage];
     [exceptionDictionary setObject:diffImage forKey:@"DiffImage"];
     [exceptionDictionary setObject:originalViewImage forKey:@"OriginalImage"];
     [[NSException exceptionWithName:@"GHViewChangeException" reason:@"View has changed" userInfo:exceptionDictionary] raise];

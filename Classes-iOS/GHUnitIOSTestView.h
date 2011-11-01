@@ -34,7 +34,7 @@
 
 @protocol GHUnitIOSTestViewDelegate <NSObject>
 - (void)testViewDidSelectOriginalImage:(GHUnitIOSTestView *)testView;
-- (void)testViewDidSelectNewImage:(GHUnitIOSTestView *)testView;
+- (void)testViewDidSelectRenderedImage:(GHUnitIOSTestView *)testView;
 - (void)testViewDidApproveChange:(GHUnitIOSTestView *)testView;
 @end
 
@@ -44,7 +44,7 @@
   // TODO(johnb): Perhaps hold a scrollview here as subclassing UIViews can be weird.
 
   YKUIImageViewControl *originalImageView_;
-  YKUIImageViewControl *newImageView_;
+  YKUIImageViewControl *renderedImageView_;
 
   UIButton *approveButton_;
 
@@ -52,7 +52,7 @@
 }
 @property(assign, nonatomic) id<GHUnitIOSTestViewDelegate> controlDelegate;
 
-- (void)setOriginalImage:(UIImage *)originalImage newImage:(UIImage *)newImage text:(NSString *)text;
+- (void)setOriginalImage:(UIImage *)originalImage renderedImage:(UIImage *)renderedImage text:(NSString *)text;
 
 - (void)setText:(NSString *)text;
 

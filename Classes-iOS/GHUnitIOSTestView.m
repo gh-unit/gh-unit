@@ -53,13 +53,13 @@
     [self addSubview:originalImageView_];
     [originalImageView_ release];
 
-    newImageView_ = [[YKUIImageViewControl alloc] initWithFrame:CGRectMake(165, 10, 145, 100)];
-    [newImageView_ addTarget:self action:@selector(_selectNewImage) forControlEvents:UIControlEventTouchUpInside];
-    [newImageView_.layer setBorderWidth:2.0];
-    [newImageView_.layer setBorderColor:[UIColor blackColor].CGColor];
-    newImageView_.hidden = YES;
-    [self addSubview:newImageView_];
-    [newImageView_ release];
+    renderedImageView_ = [[YKUIImageViewControl alloc] initWithFrame:CGRectMake(165, 10, 145, 100)];
+    [renderedImageView_ addTarget:self action:@selector(_selectRenderedImage) forControlEvents:UIControlEventTouchUpInside];
+    [renderedImageView_.layer setBorderWidth:2.0];
+    [renderedImageView_.layer setBorderColor:[UIColor blackColor].CGColor];
+    renderedImageView_.hidden = YES;
+    [self addSubview:renderedImageView_];
+    [renderedImageView_ release];
 
     approveButton_ = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [approveButton_ addTarget:self action:@selector(_approveChange) forControlEvents:UIControlEventTouchUpInside];
@@ -78,7 +78,7 @@
 - (void)_layout {
   CGFloat y = 10;
   CGRect originalImageFrame = CGRectZero;
-  CGRect newImageFrame = CGRectZero;
+  CGRect renderedImageFrame = CGRectZero;
 
   CGRect textLabelFrame = textLabel_.frame;
   textLabelFrame.size.height = [textLabel_.text sizeWithFont:textLabel_.font constrainedToSize:CGSizeMake(textLabel_.frame.size.width, 10000) lineBreakMode:UILineBreakModeWordWrap].height;
@@ -92,14 +92,14 @@
     originalImageView_.frame = originalImageFrame;
   }
   
-  if (newImageView_.image && !newImageView_.hidden) {
-    CGFloat aspectRatio = newImageView_.image.size.height / newImageView_.image.size.width;
-    newImageFrame = newImageView_.frame;
-    newImageFrame.size.height = aspectRatio * newImageFrame.size.width;
-    newImageView_.frame = newImageFrame;
+  if (renderedImageView_.image && !renderedImageView_.hidden) {
+    CGFloat aspectRatio = renderedImageView_.image.size.height / renderedImageView_.image.size.width;
+    renderedImageFrame = renderedImageView_.frame;
+    renderedImageFrame.size.height = aspectRatio * renderedImageFrame.size.width;
+    renderedImageView_.frame = renderedImageFrame;
   }
 
-  y += roundf(MAX(originalImageFrame.size.height, newImageFrame.size.height) + 10);
+  y += roundf(MAX(originalImageFrame.size.height, renderedImageFrame.size.height) + 10);
 
   if (!approveButton_.hidden) {
     approveButton_.frame = CGRectMake(10, y, 300, 30);
@@ -117,19 +117,19 @@
   [controlDelegate_ testViewDidSelectOriginalImage:self];
 }
 
-- (void)_selectNewImage {
-  [controlDelegate_ testViewDidSelectNewImage:self];  
+- (void)_selectRenderedImage {
+  [controlDelegate_ testViewDidSelectRenderedImage:self];  
 }
 
 - (void)_approveChange {
   [controlDelegate_ testViewDidApproveChange:self];
 }
 
-- (void)setOriginalImage:(UIImage *)originalImage newImage:(UIImage *)newImage text:(NSString *)text {
+- (void)setOriginalImage:(UIImage *)originalImage renderedImage:(UIImage *)renderedImage text:(NSString *)text {
   originalImageView_.image = originalImage;
   originalImageView_.hidden = originalImage ? NO : YES;
-  newImageView_.image = newImage;
-  newImageView_.hidden = NO;
+  renderedImageView_.image = renderedImage;
+  renderedImageView_.hidden = NO;
   approveButton_.hidden = NO;
   textLabel_.text = text;
   [self _layout];
@@ -137,7 +137,7 @@
 
 - (void)setText:(NSString *)text {
   originalImageView_.hidden = YES;
-  newImageView_.hidden = YES;
+  renderedImageView_.hidden = YES;
   approveButton_.hidden = YES;
   textLabel_.text = text;
   [self _layout];

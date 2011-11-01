@@ -70,9 +70,9 @@
 - (void)_showImageDiff {
   if (!imageDiffView_) imageDiffView_ = [[GHImageDiffView alloc] initWithFrame:CGRectZero];
   UIImage *originalImage = [testNode_.test.exception.userInfo objectForKey:@"OriginalImage"];
-  UIImage *newImage = [testNode_.test.exception.userInfo objectForKey:@"NewImage"];
+  UIImage *renderedImage = [testNode_.test.exception.userInfo objectForKey:@"RenderedImage"];
   UIImage *diffImage = [testNode_.test.exception.userInfo objectForKey:@"DiffImage"];
-  [imageDiffView_ setOriginalImage:originalImage newImage:newImage diffImage:diffImage];
+  [imageDiffView_ setOriginalImage:originalImage renderedImage:renderedImage diffImage:diffImage];
   UIViewController *viewController = [[UIViewController alloc] init];
   viewController.view = imageDiffView_;
   [self.navigationController pushViewController:viewController animated:YES];
@@ -89,12 +89,12 @@
   if ([testNode_.test.exception.name isEqualToString:@"GHViewChangeException"]) {
     NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
     UIImage *originalImage = [exceptionUserInfo objectForKey:@"OriginalImage"];
-    UIImage *newImage = [exceptionUserInfo objectForKey:@"NewImage"];
-    [testView_ setOriginalImage:originalImage newImage:newImage text:text];
+    UIImage *renderedImage = [exceptionUserInfo objectForKey:@"RenderedImage"];
+    [testView_ setOriginalImage:originalImage renderedImage:renderedImage text:text];
   } else if ([testNode_.test.exception.name isEqualToString:@"GHViewUnavailableException"]) {
     NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
-    UIImage *newImage = [exceptionUserInfo objectForKey:@"NewImage"];
-    [testView_ setOriginalImage:nil newImage:newImage text:text];
+    UIImage *renderedImage = [exceptionUserInfo objectForKey:@"RenderedImage"];
+    [testView_ setOriginalImage:nil renderedImage:renderedImage text:text];
   } else {
     [testView_ setText:text];
   }
@@ -118,16 +118,16 @@
   [imageDiffView_ showOriginalImage];
 }
 
-- (void)testViewDidSelectNewImage:(GHUnitIOSTestView *)testView {
+- (void)testViewDidSelectRenderedImage:(GHUnitIOSTestView *)testView {
   [self _showImageDiff];
-  [imageDiffView_ showNewImage];
+  [imageDiffView_ showRenderedImage];
 }
 
 - (void)testViewDidApproveChange:(GHUnitIOSTestView *)testView {
   // Save new image as the approved version
   NSString *imageFilename = [testNode_.test.exception.userInfo objectForKey:@"ImageFilename"];
-  UIImage *newImage = [testNode_.test.exception.userInfo objectForKey:@"NewImage"];
-  [GHViewTestCase saveToDocumentsWithImage:newImage filename:imageFilename];
+  UIImage *renderedImage = [testNode_.test.exception.userInfo objectForKey:@"RenderedImage"];
+  [GHViewTestCase saveToDocumentsWithImage:renderedImage filename:imageFilename];
   [self _runTest];
 }
 

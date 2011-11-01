@@ -34,15 +34,15 @@
   UISegmentedControl *segmentedControl_;
 
   UIImageView *originalImageView_;
-  UIImageView *newImageView_;
+  UIImageView *renderedImageView_;
   UIImageView *diffImageView_;
 }
 
-- (void)setOriginalImage:(UIImage *)originalImage newImage:(UIImage *)newImage diffImage:(UIImage *)diffImage;
+- (void)setOriginalImage:(UIImage *)originalImage renderedImage:(UIImage *)renderedImage diffImage:(UIImage *)diffImage;
 
 - (void)showOriginalImage;
 
-- (void)showNewImage;
+- (void)showRenderedImage;
 
 - (void)showDiffImage;
 
