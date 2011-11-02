@@ -71,7 +71,19 @@ reason:@"GHVerifyView can only be called from within a GHViewTestCase class"] ra
 
  After changes to views are approved in the simulator, the CopyTestImages.sh script
  should be run manually in Terminal. This script copies any approved view changes
- back to the project directory.
+ back to the project directory. Images are saved with filenames of the following format:
+
+     [test class name]-[test selector name]-[UIScreen scale]-[# of call to GHVerifyView in selector]-[view class name].png
+
+ Note that because of differences in text rendering between retina and non-retina
+ devices/simulators, different images are saved for test runs using retina then
+ non-retina.
+
+ Also note that there are commonly rendering differences across iOS versions.
+ Therefore it is common for tests to fail when they are run using a different iOS
+ version then the one that created the saved test image. This also applies to tests
+ that are run at the command line (the xcodebuild flag '-sdk iphonesimulator'
+ usually corresponds to the latest iOS simulator available).
  */
 @interface GHViewTestCase : GHTestCase {
   NSInteger imageVerifyCount_;
@@ -89,15 +101,6 @@ reason:@"GHVerifyView can only be called from within a GHViewTestCase class"] ra
  @param filename Filename for the saved image
  */
 + (void)saveToDocumentsWithImage:(UIImage *)image filename:(NSString *)filename;
-
-/*!
- Whether the test class should be run as a part of command line tests.
- By default this is YES since there are some small differences in rendering
- from the command line vs rendering in the simulator
-
- @result YES if this test class is disabled for command line tests
- */
-- (BOOL)isCLIDisabled;
 
 /*!
  Size for a given view. Subclasses can override this to provide custom sizes
