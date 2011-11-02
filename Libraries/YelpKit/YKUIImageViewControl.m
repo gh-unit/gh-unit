@@ -11,6 +11,7 @@
 
 @implementation YKUIImageViewControl
 
+@dynamic image;
 @synthesize imageView=_imageView;
 
 - (id)initWithFrame:(CGRect)frame {

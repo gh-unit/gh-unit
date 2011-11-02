@@ -55,6 +55,10 @@
   NSLog(@"%@", [GHTesting descriptionForException:exception]);
 }
 
+- (BOOL)isCLIDisabled {
+  return NO;
+}
+
 #pragma mark Logging
 
 - (void)log:(NSString *)message {

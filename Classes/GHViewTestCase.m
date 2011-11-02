@@ -199,13 +199,6 @@ typedef struct {
   imageVerifyCount_ = 0;
 }
 
-- (BOOL)isCLIDisabled {
-  // There seem to be some weird text rendering inconsistencies when views are rendered
-  // when run from the command line, vs when views are rendered in the simulator. For now
-  // We're only supporting tests in the simulator.
-  return YES;
-}
-
 - (CGSize)sizeForView:(UIView *)view {
   // If the view is a UIScrollView, return the contentSize
   if ([view isKindOfClass:[UIScrollView class]]) {
@@ -221,8 +214,13 @@ typedef struct {
   // Fail if the view has CGSizeZero
   if (CGSizeEqualToSize(view.frame.size, CGSizeZero)) [[NSException ghu_failureInFile:filename atLine:lineNumber withDescription:@"View must have a nonzero size in GHVerifyView"] raise];
 
-  // View testing file names have the format [test class name]-[test selector name]-[# of verify in selector]-[view class name]
-  NSString *imageFilename = [NSString stringWithFormat:@"%@-%@-%d-%@.png", NSStringFromClass([self class]), NSStringFromSelector(currentSelector_), imageVerifyCount_, NSStringFromClass([view class])];
+  // View testing file names have the format [test class name]-[test selector name]-[UIScreen scale]-[# of verify in selector]-[view class name]
+  NSString *imageFilename = [NSString stringWithFormat:@"%@-%@-%1.0f-%d-%@.png",
+                             NSStringFromClass([self class]),
+                             NSStringFromSelector(currentSelector_),
+                             [[UIScreen mainScreen] scale],
+                             imageVerifyCount_,
+                             NSStringFromClass([view class])];
   UIImage *originalViewImage = [[self class] readImageWithFilename:imageFilename];
 
   CGSize viewSize = [self sizeForView:view];

@@ -37,6 +37,8 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 
 ![GHUnit-IPhone-0.4.18](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png)
 
-![GHUnit-IPhone-0.4.33](https://johnboiles.s3.amazonaws.com/GHUnitTestViewer.jpg)
+![GHUnit-IPhone-0.4.34](https://johnboiles.s3.amazonaws.com/ghunittestview.png)
 
-![GHUnit-IPhone-0.4.33](https://johnboiles.s3.amazonaws.com/GHUnitImageViewer.jpg)
+![GHUnit-IPhone-0.4.34](https://johnboiles.s3.amazonaws.com/ghunitnewimage.png)
+
+![GHUnit-IPhone-0.4.34](https://johnboiles.s3.amazonaws.com/ghunitdiff.png)
