@@ -149,4 +149,13 @@
  */
 - (void)log:(NSString *)message;
 
+/*!
+ Whether the test class should be run as a part of command line tests.
+ By default this is NO. Subclasses can override this method to disable
+ test classes that are problematic at the command line.
+
+ @result YES if this test class is disabled for command line tests
+ */
+- (BOOL)isCLIDisabled;
+
 @end
