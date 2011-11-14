@@ -33,22 +33,3 @@
 }
 
 @end
-
-@interface GHTestFailWithException : GHTestCase {
-  BOOL _failWithException;
-}
-@end
-
-@implementation GHTestFailWithException
-
-- (void)failWithException:(NSException *)exception {
-  _failWithException = YES;
-  GHTestLog(@"Failed with exception: %@", exception);
-}
-
-- (void)testFailWithException {
-  GHFail(@"Fail");
-  NSAssert(_failWithException, @"failWithException: was overriden");
-}
-
-@end

@@ -108,12 +108,6 @@
 //! Run after each test method
 - (void)tearDown;
 
-/*! 
- By default exceptions are raised, causing a test failure
-
- @param exception Exception that was raised by test
- */
-- (void)failWithException:(NSException*)exception;
 // GTM_END
 
 /*! 
