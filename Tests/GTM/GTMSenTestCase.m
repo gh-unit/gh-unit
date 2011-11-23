@@ -106,7 +106,7 @@
 
   NSString *reason =
     [NSString stringWithFormat:@"'%@' should be equal to '%@'. %@",
-     [left description], [right description], testDescription];
+     [left text], [right text], testDescription];
 
   return [self failureInFile:filename atLine:lineNumber reason:reason];
 }
