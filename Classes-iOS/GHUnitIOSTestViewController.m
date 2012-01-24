@@ -44,6 +44,7 @@
 
 - (void)dealloc {
   [testNode_ release];
+  [group_ release];
   [super dealloc];
 }
 
@@ -59,12 +60,16 @@
 }
 
 - (void)_runTest {
-  id<GHTest> test = [testNode_.test copyWithZone:NULL];
-  NSLog(@"Re-running: %@", test);
+  NSLog(@"Re-running: %@", group_);
   [testView_ setText:@"Running..."];
-  [test run:GHTestOptionForceSetUpTearDownClass];  
-  [self setTest:test];
+
+  id<GHTest> test = [testNode_.test copyWithZone:nil];
+  GHTestGroup* group = [[GHTestGroup alloc] initWithGroup:group_ test:test];
+  [group run:GHTestOptionForceSetUpTearDownClass];  
+  [self setTest:test group:group];
+    
   [test release];
+  [group release];
 }
 
 - (void)_showImageDiff {
@@ -101,12 +106,14 @@
   return text;
 }
 
-- (void)setTest:(id<GHTest>)test {
+- (void)setTest:(id<GHTest>)test group:(id<GHTest>)group {
   [self view];
   self.title = [test name];
 
   [testNode_ release];
   testNode_ = [[GHTestNode nodeWithTest:test children:nil source:nil] retain];
+  [group_ release];
+  group_ = [group retain];
   NSString *text = [self updateTestView];
   NSLog(@"%@", text);
 }

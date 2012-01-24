@@ -204,7 +204,7 @@ NSString *const GHUnitFilterKey = @"Filter";
     GHTestNode *testNode = [[sectionNode children] objectAtIndex:indexPath.row];
     
     GHUnitIOSTestViewController *testViewController = [[GHUnitIOSTestViewController alloc] init]; 
-    [testViewController setTest:testNode.test];
+    [testViewController setTest:testNode.test group:sectionNode.test];
     [self.navigationController pushViewController:testViewController animated:YES];
     [testViewController release];
   }
