@@ -16,7 +16,7 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 - Include as a framework in your projects
 - Determine whether views have changed (UI verification)
 - Quickly approve and record view changes
-- View image diff to see where views have chaned
+- View image diff to see where views have changed
 
 ## Install (Docset)
 
