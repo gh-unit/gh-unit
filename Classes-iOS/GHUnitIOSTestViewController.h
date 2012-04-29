@@ -40,10 +40,11 @@
   GHImageDiffView *imageDiffView_;
 
   GHTestNode *testNode_;
+  GHTestGroup *group_;
   
   GHTestRunner *runner_;
 }
 
-- (void)setTest:(id<GHTest>)test;
+- (void)setTest:(id<GHTest>)test group:(id<GHTest>)group;
 
 @end

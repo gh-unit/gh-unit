@@ -125,6 +125,10 @@
  */
 - (id)initWithTestCase:(id)testCase selector:(SEL)selector delegate:(id<GHTestDelegate>)delegate;
 
+
+- (id)initWithGroup:(GHTestGroup*)group test:(id<GHTest>)test;
+ 
+
 /*!
  Create test group from a test case.
  @param testCase Test case, could be a subclass of SenTestCase or GHTestCase

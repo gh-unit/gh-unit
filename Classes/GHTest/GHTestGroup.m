@@ -72,6 +72,16 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   return self;
 }
 
+- (id)initWithGroup:(GHTestGroup*)group test:(id<GHTest>)test {
+    if ((self = [super init])) {
+        name_ = [group.name retain];        
+        children_ = [[NSMutableArray arrayWithObject:test] retain];
+        delegate_ = group.delegate;
+        testCase_ = group.testCase;
+    } 
+    return self;
+}
+
 + (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
   return [[[GHTestGroup alloc] initWithTestCase:testCase delegate:delegate] autorelease];
 }
