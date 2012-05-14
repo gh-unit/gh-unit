@@ -32,11 +32,11 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 
 ## Mac OS X
 
-![GHUnit-0.4.18](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-0.4.18.png)
+![GHUnit-0.4.18](http://rel.me.s3.amazonaws.com/images/GHUnit-0.4.18.png)
 
 ## iOS
 
-![GHUnit-IPhone-0.4.18](http://rel.me.s3.amazonaws.com/gh-unit/images/GHUnit-IPhone-0.4.18.png)
+![GHUnit-IPhone-0.4.18](http://rel.me.s3.amazonaws.com/images/GHUnit-IPhone-0.4.18.png)
 
 ![GHUnit-IPhone-0.4.34](https://johnboiles.s3.amazonaws.com/ghunittestview.png)
 
