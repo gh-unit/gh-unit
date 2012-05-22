@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -239,7 +239,7 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 	<span class="tooltip">
 		<code><a href="#//api/name/run">+&nbsp;run</a></code>
 		<span class="tooltip"><p>Run the test runner. Usually called from the test main.
-Reads the TEST environment variable and filters on that; or all tests are <a href="#//api/name/run">run</a>.</p></span>
+Reads the TEST environment variable and filters on that; or all tests are run.</p></span>
 	</span>
 	
 	
@@ -286,45 +286,21 @@ Reads the TEST environment variable and filters on that; or all tests are <a hre
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/testDidUpdate:source:">&ndash;&nbsp;testDidUpdate:source:</a></code>
 		<span class="tooltip"><p>Test updated.</p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/testDidEnd:source:">&ndash;&nbsp;testDidEnd:source:</a></code>
 		<span class="tooltip"><p>Test ended.</p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/test:didLog:source:">&ndash;&nbsp;test:didLog:source:</a></code>
 		<span class="tooltip"><p>Test logged a message.</p></span>
@@ -354,12 +330,14 @@ Reads the TEST environment variable and filters on that; or all tests are <a hre
 	
 	<div class="method-subsection brief-description">
 		<p>Run the test runner. Usually called from the test main.
-Reads the TEST environment variable and filters on that; or all tests are <a href="#//api/name/run">run</a>.</p>
+Reads the TEST environment variable and filters on that; or all tests are run.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (int)run</code></div>
-	
+
+    
 	
 	
 	
@@ -396,9 +374,11 @@ Reads the TEST environment variable and filters on that; or all tests are <a hre
 		<p>Create runner for all tests.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (GHTestRunner *)runnerForAllTests</code></div>
-	
+
+    
 	
 	
 	
@@ -444,9 +424,11 @@ Reads the TEST environment variable and filters on that; or all tests are <a hre
 		<p>Create runner for test suite.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (GHTestRunner *)runnerForSuite:(GHTestSuite *)<em>suite</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -493,9 +475,11 @@ Reads the TEST environment variable and filters on that; or all tests are <a hre
 		<p>Create runner for class and method.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (GHTestRunner *)runnerForTestClassName:(NSString *)<em>testClassName</em> methodName:(NSString *)<em>methodName</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -548,9 +532,11 @@ Reads the TEST environment variable and filters on that; or all tests are <a hre
 If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that test case or test method.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (GHTestRunner *)runnerFromEnv</code></div>
-	
+
+    
 	
 	
 	
@@ -590,9 +576,11 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 		<p>Cancel test <a href="#//api/name/run">run</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
-	
+
+    
 	
 	
 	
@@ -624,9 +612,11 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 		<p>Create runner for test.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithTest:(id&lt;GHTest&gt;)<em>test</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -668,9 +658,11 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 		<p>Write message to console.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)log:(NSString *)<em>message</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -712,9 +704,11 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 		<p>Run in the background.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)runInBackground</code></div>
-	
+
+    
 	
 	
 	
@@ -746,9 +740,11 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 		<p>Start the test runner.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (int)runTests</code></div>
-	
+
+    
 	
 	
 	
@@ -785,9 +781,11 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 		<p>Test logged a message.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)test:(id&lt;GHTest&gt;)<em>test</em> didLog:(NSString *)<em>message</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -839,9 +837,11 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 		<p>Test ended.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)testDidEnd:(id&lt;GHTest&gt;)<em>test</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -888,9 +888,11 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 		<p>Test started.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)testDidStart:(id&lt;GHTest&gt;)<em>test</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -937,9 +939,11 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 		<p>Test updated.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)testDidUpdate:(id&lt;GHTest&gt;)<em>test</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -989,9 +993,9 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-10-27)</span><br />
+						<p><span class="copyright">&copy; 2012 GHUnit. All rights reserved. (Last updated: 2012-05-22)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -1079,6 +1083,14 @@ If the TEST env is set, then we will only <a href="#//api/name/run">run</a> that
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

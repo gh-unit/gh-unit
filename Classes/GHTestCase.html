@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -48,6 +48,8 @@
 	
 	<option value="//api/name/handleException:">&nbsp;&nbsp;&nbsp;&nbsp;- handleException:</option>
 	
+	<option value="//api/name/isCLIDisabled">&nbsp;&nbsp;&nbsp;&nbsp;- isCLIDisabled</option>
+	
 	<option value="//api/name/log:">&nbsp;&nbsp;&nbsp;&nbsp;- log:</option>
 	
 	<option value="//api/name/setUpClass">&nbsp;&nbsp;&nbsp;&nbsp;- setUpClass</option>
@@ -87,6 +89,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/failWithException:">failWithException:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/handleException:">handleException:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isCLIDisabled">isCLIDisabled</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/log:">log:</a></span></li>
 	
@@ -225,6 +229,15 @@ This is not meant to be used directly, see GHTestLog(&hellip;) macro.</p></span>
 	</span>
 	
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isCLIDisabled">&ndash;&nbsp;isCLIDisabled</a></code>
+		<span class="tooltip"><p>Whether the test class should be run as a part of command line tests.
+By default this is NO. Subclasses can override this method to disable
+test classes that are problematic at the command line.</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -252,9 +265,11 @@ This is not meant to be used directly, see GHTestLog(&hellip;) macro.</p></span>
 		<p>By default exceptions are raised, causing a test failure</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)failWithException:(NSException *)<em>exception</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -296,9 +311,11 @@ This is not meant to be used directly, see GHTestLog(&hellip;) macro.</p></span>
 		<p>Any special handling of exceptions after they are thrown; By default logs stack trace to standard out.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)handleException:(NSException *)<em>exception</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -331,6 +348,49 @@ This is not meant to be used directly, see GHTestLog(&hellip;) macro.</p></span>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/isCLIDisabled" title="isCLIDisabled"></a>
+	<h3 class="subsubtitle method-title">isCLIDisabled</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Whether the test class should be run as a part of command line tests.
+By default this is NO. Subclasses can override this method to disable
+test classes that are problematic at the command line.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isCLIDisabled</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if this test class is disabled for command line tests</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHTestCase.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/log:" title="log:"></a>
 	<h3 class="subsubtitle method-title">log:</h3>
 	
@@ -341,9 +401,11 @@ This is not meant to be used directly, see GHTestLog(&hellip;) macro.</p></span>
 This is not meant to be used directly, see GHTestLog(&hellip;) macro.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)log:(NSString *)<em>message</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -385,9 +447,11 @@ This is not meant to be used directly, see GHTestLog(&hellip;) macro.</p>
 		<p>Run before the tests (once per test case).</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)setUpClass</code></div>
-	
+
+    
 	
 	
 	
@@ -421,9 +485,11 @@ test case to override the default.
 Default is NO, tests are run on a separate thread by default.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)shouldRunOnMainThread</code></div>
-	
+
+    
 	
 	
 	
@@ -460,9 +526,11 @@ Default is NO, tests are run on a separate thread by default.</p>
 		<p>Run after the tests (once per test case).</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)tearDownClass</code></div>
-	
+
+    
 	
 	
 	
@@ -497,9 +565,9 @@ Default is NO, tests are run on a separate thread by default.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-10-27)</span><br />
+						<p><span class="copyright">&copy; 2012 GHUnit. All rights reserved. (Last updated: 2012-05-22)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -587,6 +655,14 @@ Default is NO, tests are run on a separate thread by default.</p>
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

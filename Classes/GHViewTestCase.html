@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -51,8 +51,6 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/isCLIDisabled">&nbsp;&nbsp;&nbsp;&nbsp;- isCLIDisabled</option>
-	
 	<option value="//api/name/sizeForView:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeForView:</option>
 	
 	<option value="//api/name/verifyView:filename:lineNumber:">&nbsp;&nbsp;&nbsp;&nbsp;- verifyView:filename:lineNumber:</option>
@@ -92,8 +90,6 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isCLIDisabled">isCLIDisabled</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeForView:">sizeForView:</a></span></li>
 	
@@ -161,7 +157,20 @@ images from previous runs with which to compare.</p>
 
 <p>After changes to views are approved in the simulator, the CopyTestImages.sh script
 should be run manually in Terminal. This script copies any approved view changes
-back to the project directory.</p>
+back to the project directory. Images are saved with filenames of the following format:</p>
+
+<pre><code> [test class name]-[test selector name][UIScreen scale]-[# of call to GHVerifyView in selector]-[view class name].png
+</code></pre>
+
+<p>Note that because of differences in text rendering between retina and non-retina
+devices/simulators, different images are saved for test runs using retina then
+non-retina.</p>
+
+<p>Also note that there are commonly rendering differences across iOS versions.
+Therefore it is common for tests to fail when they are run using a different iOS
+version then the one that created the saved test image. This also applies to tests
+that are run at the command line (the xcodebuild flag &lsquo;-sdk iphonesimulator&rsquo;
+usually corresponds to the latest iOS simulator available).</p>
 					</div>
 					
 					
@@ -188,15 +197,6 @@ back to the project directory.</p>
 	<span class="tooltip">
 		<code><a href="#//api/name/saveToDocumentsWithImage:filename:">+&nbsp;saveToDocumentsWithImage:filename:</a></code>
 		<span class="tooltip"><p>Save an image to the documents directory as filename</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/isCLIDisabled">&ndash;&nbsp;isCLIDisabled</a></code>
-		<span class="tooltip"><p>Whether the test class should be run as a part of command line tests.
-By default this is YES since there are some small differences in rendering
-from the command line vs rendering in the simulator</p></span>
 	</span>
 	
 	
@@ -244,9 +244,11 @@ if there is no image from a previous run.</p></span>
 		<p>Clear all test images in the documents directory</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)clearTestImages</code></div>
-	
+
+    
 	
 	
 	
@@ -278,9 +280,11 @@ if there is no image from a previous run.</p></span>
 		<p>Save an image to the documents directory as filename</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)saveToDocumentsWithImage:(UIImage *)<em>image</em> filename:(NSString *)<em>filename</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -326,47 +330,6 @@ if there is no image from a previous run.</p></span>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/isCLIDisabled" title="isCLIDisabled"></a>
-	<h3 class="subsubtitle method-title">isCLIDisabled</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Whether the test class should be run as a part of command line tests.
-By default this is YES since there are some small differences in rendering
-from the command line vs rendering in the simulator</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (BOOL)isCLIDisabled</code></div>
-	
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>YES if this test class is disabled for command line tests</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">GHViewTestCase.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/sizeForView:" title="sizeForView:"></a>
 	<h3 class="subsubtitle method-title">sizeForView:</h3>
 	
@@ -378,9 +341,11 @@ for views before rendering. The default implementation returns contentSize
 for scrollviews and returns self.frame.size for all other views.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGSize)sizeForView:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -430,9 +395,11 @@ a GHViewChangeException if the view has changed. Raises a GHViewUnavailableExcep
 if there is no image from a previous run.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)verifyView:(UIView *)<em>view</em> filename:(NSString *)<em>filename</em> lineNumber:(int)<em>lineNumber</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -487,9 +454,9 @@ if there is no image from a previous run.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-10-27)</span><br />
+						<p><span class="copyright">&copy; 2012 GHUnit. All rights reserved. (Last updated: 2012-05-22)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -577,6 +544,14 @@ if there is no image from a previous run.</p>
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -193,7 +193,7 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/identifier">&nbsp;&nbsp;identifier</a></code>
-		<span class="tooltip"><p>Unique <a href="#//api/name/identifier">identifier</a> for test.</p></span>
+		<span class="tooltip"><p>Unique identifier for test.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -214,14 +214,14 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/status">&nbsp;&nbsp;status</a></code>
-		<span class="tooltip"><p>Test <a href="#//api/name/status">status</a>.</p></span>
+		<span class="tooltip"><p>Test status.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/stats">&nbsp;&nbsp;stats</a></code>
-		<span class="tooltip"><p>Test <a href="../Protocols/GHTest.html#//api/name/stats">stats</a>.</p></span>
+		<span class="tooltip"><p>Test stats.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -235,14 +235,14 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/disabled">&nbsp;&nbsp;disabled</a></code>
-		<span class="tooltip"><p>Whether test is <a href="../Protocols/GHTest.html#//api/name/disabled">disabled</a>.</p></span>
+		<span class="tooltip"><p>Whether test is disabled.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/hidden">&nbsp;&nbsp;hidden</a></code>
-		<span class="tooltip"><p>Whether test is <a href="../Protocols/GHTest.html#//api/name/hidden">hidden</a>.</p></span>
+		<span class="tooltip"><p>Whether test is hidden.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -311,9 +311,11 @@
 		<p>Delegate for test.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) id&lt;GHTestDelegate&gt; delegate</code></div>
-	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) id&lt;&gt; delegate</code></div>
+
+    
 	
 	
 	
@@ -342,12 +344,14 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Whether test is <a href="../Protocols/GHTest.html#//api/name/disabled">disabled</a>.</p>
+		<p>Whether test is disabled.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic, getter=isDisabled) BOOL disabled</code></div>
-	
+
+    
 	
 	
 	
@@ -379,9 +383,11 @@
 		<p>Exception that occurred.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (retain, nonatomic) NSException *exception</code></div>
-	
+
+    
 	
 	
 	
@@ -410,12 +416,14 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Whether test is <a href="../Protocols/GHTest.html#//api/name/hidden">hidden</a>.</p>
+		<p>Whether test is hidden.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic, getter=isHidden) BOOL hidden</code></div>
-	
+
+    
 	
 	
 	
@@ -444,12 +452,14 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Unique <a href="#//api/name/identifier">identifier</a> for test.</p>
+		<p>Unique identifier for test.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *identifier</code></div>
-	
+
+    
 	
 	
 	
@@ -481,9 +491,11 @@
 		<p>How long the test took to run. Defaults to -1, if not run.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSTimeInterval interval</code></div>
-	
+
+    
 	
 	
 	
@@ -515,9 +527,11 @@
 		<p>Name (readable) for test.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *name</code></div>
-	
+
+    
 	
 	
 	
@@ -546,12 +560,14 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Test <a href="../Protocols/GHTest.html#//api/name/stats">stats</a>.</p>
+		<p>Test stats.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) GHTestStats stats</code></div>
-	
+
+    
 	
 	
 	
@@ -580,12 +596,14 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Test <a href="#//api/name/status">status</a>.</p>
+		<p>Test status.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) GHTestStatus status</code></div>
-	
+
+    
 	
 	
 	
@@ -627,9 +645,11 @@
 		<p>Cancel the test.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
-	
+
+    
 	
 	
 	
@@ -661,9 +681,11 @@
 		<p>The number of <a href="../Protocols/GHTest.html#//api/name/disabled">disabled</a> tests</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSInteger)disabledCount</code></div>
-	
+
+    
 	
 	
 	
@@ -700,9 +722,11 @@
 		<p>Messages logged during this test run</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)log</code></div>
-	
+
+    
 	
 	
 	
@@ -739,9 +763,11 @@
 		<p>Reset the test.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)reset</code></div>
-	
+
+    
 	
 	
 	
@@ -773,9 +799,11 @@
 		<p>Run the test.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)run:(GHTestOptions)<em>options</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -820,9 +848,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-10-27)</span><br />
+						<p><span class="copyright">&copy; 2012 GHUnit. All rights reserved. (Last updated: 2012-05-22)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -910,6 +938,14 @@
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

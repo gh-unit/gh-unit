@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -214,10 +214,10 @@
  @end
 </code></pre>
 
-<p>The <a href="GHTestGroup.html">GHTestGroup</a> would consist of and array of <a href="../Classes/GHTest.html">GHTest</a>: FooTest#testFoo, FooTest#testBar,
+<p>The GHTestGroup would consist of and array of <a href="../Classes/GHTest.html">GHTest</a>: FooTest#testFoo, FooTest#testBar,
 each test being a target and selector pair.</p>
 
-<p>A test group may also consist of a group of groups (since <a href="GHTestGroup.html">GHTestGroup</a> conforms to <a href="../Classes/GHTest.html">GHTest</a>),
+<p>A test group may also consist of a group of groups (since GHTestGroup conforms to <a href="../Classes/GHTest.html">GHTest</a>),
 and this might represent a <a href="../Classes/GHTestSuite.html">GHTestSuite</a>.</p>
 					</div>
 					
@@ -349,60 +349,28 @@ Tests from the group are added and will block until they have completed.</p></sp
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/test:didLog:source:">&ndash;&nbsp;test:didLog:source:</a></code>
 		<span class="tooltip"><p>Test logged a message.</p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/testDidStart:source:">&ndash;&nbsp;testDidStart:source:</a></code>
 		<span class="tooltip"><p>Test started.</p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/testDidUpdate:source:">&ndash;&nbsp;testDidUpdate:source:</a></code>
 		<span class="tooltip"><p>Test updated.</p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/testDidEnd:source:">&ndash;&nbsp;testDidEnd:source:</a></code>
 		<span class="tooltip"><p>Test ended.</p></span>
@@ -432,9 +400,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Children for test group.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSArray *children</code></div>
-	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, strong, nonatomic) NSArray *children</code></div>
+
+    
 	
 	
 	
@@ -466,9 +436,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Parent for test group.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) id&lt;GHTestGroup&gt; parent</code></div>
-	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (unsafe_unretained, nonatomic) id&lt;&gt; parent</code></div>
+
+    
 	
 	
 	
@@ -508,9 +480,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Create test group from a test case.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (GHTestGroup *)testGroupFromTestCase:(id)<em>testCase</em> delegate:(id&lt;GHTestDelegate&gt;)<em>delegate</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -570,9 +544,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Add test to this group.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addTest:(id&lt;GHTest&gt;)<em>test</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -614,9 +590,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Add a test case (or test group) to this test group.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addTestCase:(id)<em>testCase</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -658,9 +636,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Add a test group to this test group.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addTestGroup:(GHTestGroup *)<em>testGroup</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -702,9 +682,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Add tests to this group.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addTests:(NSArray *)<em>tests</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -746,9 +728,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Get list of failed tests.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)failedTests</code></div>
-	
+
+    
 	
 	
 	
@@ -785,9 +769,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>YES if we have any enabled chilren, NO if all <a href="#//api/name/children">children</a> have been disabled.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)hasEnabledChildren</code></div>
-	
+
+    
 	
 	
 	
@@ -824,9 +810,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Create an empty test group.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> delegate:(id&lt;GHTestDelegate&gt;)<em>delegate</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -878,9 +866,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Create test group from a test case.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithTestCase:(id)<em>testCase</em> delegate:(id&lt;GHTestDelegate&gt;)<em>delegate</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -932,9 +922,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Create test group from a single test.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithTestCase:(id)<em>testCase</em> selector:(SEL)<em>selector</em> delegate:(id&lt;GHTestDelegate&gt;)<em>delegate</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -986,9 +978,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 		<p>Name.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSString *)name</code></div>
-	
+
+    
 	
 	
 	
@@ -1021,9 +1015,11 @@ Tests from the group are added and will block until they have completed.</p></sp
 Tests from the group are added and will block until they have completed.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)runInOperationQueue:(NSOperationQueue *)<em>operationQueue</em> options:(GHTestOptions)<em>options</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1071,9 +1067,11 @@ Tests from the group are added and will block until they have completed.</p>
 Call passes to test case instance if enabled.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)shouldRunOnMainThread</code></div>
-	
+
+    
 	
 	
 	
@@ -1105,9 +1103,11 @@ Call passes to test case instance if enabled.</p>
 		<p>Test logged a message.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)test:(id&lt;GHTest&gt;)<em>test</em> didLog:(NSString *)<em>message</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1159,9 +1159,11 @@ Call passes to test case instance if enabled.</p>
 		<p>Test ended.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)testDidEnd:(id&lt;GHTest&gt;)<em>test</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1208,9 +1210,11 @@ Call passes to test case instance if enabled.</p>
 		<p>Test started.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)testDidStart:(id&lt;GHTest&gt;)<em>test</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1257,9 +1261,11 @@ Call passes to test case instance if enabled.</p>
 		<p>Test updated.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)testDidUpdate:(id&lt;GHTest&gt;)<em>test</em> source:(id&lt;GHTest&gt;)<em>source</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1309,9 +1315,9 @@ Call passes to test case instance if enabled.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 GHUnit. All rights reserved. (Last updated: 2011-10-27)</span><br />
+						<p><span class="copyright">&copy; 2012 GHUnit. All rights reserved. (Last updated: 2012-05-22)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -1399,6 +1405,14 @@ Call passes to test case instance if enabled.</p>
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>
