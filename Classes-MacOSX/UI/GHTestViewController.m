@@ -397,6 +397,8 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 	[self _updateTest:runner.test];
 	self.status = [dataSource_ statusString:@"Status: "];
 	//[self selectFirstFailure];
+  // TODO(gabe): This should be unnecessary
+  self.statusProgress = 100.0;
 	self.runLabel = @"Run";
   [dataSource_ saveDefaults];
   self.running = NO;
