@@ -51,13 +51,8 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)dealloc {
-  [dataSource_ release];  
-  [suite_ release];
-  [runButton_ release];
   view_.tableView.delegate = nil;
   view_.searchBar.delegate = nil;
-  [view_ release];
-  [super dealloc];
 }
 
 - (void)loadDefaults { }
@@ -69,7 +64,6 @@ NSString *const GHUnitFilterKey = @"Filter";
 - (void)loadView {
   [super loadView];
 
-  [runButton_ release];
   runButton_ = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStyleDone
                                                target:self action:@selector(_toggleTestsRunning)];
   self.navigationItem.rightBarButtonItem = runButton_;  
@@ -77,7 +71,6 @@ NSString *const GHUnitFilterKey = @"Filter";
   // Clear view
   view_.tableView.delegate = nil;
   view_.searchBar.delegate = nil;
-  [view_ release];
   
   view_ = [[GHUnitIOSView alloc] initWithFrame:CGRectMake(0, 0, 320, 344)];
   view_.searchBar.delegate = self;
@@ -206,7 +199,6 @@ NSString *const GHUnitFilterKey = @"Filter";
     GHUnitIOSTestViewController *testViewController = [[GHUnitIOSTestViewController alloc] init]; 
     [testViewController setTest:testNode.test];
     [self.navigationController pushViewController:testViewController animated:YES];
-    [testViewController release];
   }
 }
 

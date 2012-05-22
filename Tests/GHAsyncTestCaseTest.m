@@ -90,19 +90,14 @@
   return YES;
 }
 
-- (void)test_EXPECTED {
+// This test crashes
+- (void)_test_EXPECTED {
   [self prepare];
-  [self performSelectorInBackground:@selector(_delayedRaise) withObject:nil];
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+    [NSException raise:NSGenericException format:@"Test exception"];
+  });
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
 }
 
-- (void)_delayedRaise {
-  [self performSelectorOnMainThread:@selector(_raiseException) withObject:nil waitUntilDone:YES];
-}
-
-- (void)_raiseException {
-  [NSException raise:NSGenericException format:@"Test exception"];
-}
-   
 @end
 

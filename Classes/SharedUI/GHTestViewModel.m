@@ -30,7 +30,6 @@
 //! @cond DEV
 
 #import "GHTestViewModel.h"
-#import "GTMStackTrace.h"
 #import "GHTesting.h"
 
 @implementation GHTestViewModel
@@ -39,10 +38,10 @@
 
 - (id)initWithIdentifier:(NSString *)identifier suite:(GHTestSuite *)suite {
 	if ((self = [super init])) {		
-    identifier_ = [identifier retain];
-		suite_ = [suite retain];				
+    identifier_ = identifier;
+		suite_ = suite;				
 		root_ = [[GHTestNode alloc] initWithTest:suite_ children:[suite_ children] source:self];
-		map_ = [[NSMutableDictionary dictionary] retain];		
+		map_ = [NSMutableDictionary dictionary];		
 	}
 	return self;
 }
@@ -52,16 +51,9 @@
 	for(NSString *identifier in map_) 
 		[[map_ objectForKey:identifier] setDelegate:nil];
 	
-  [identifier_ release];
-	[root_ release];
-	[map_ release];
-	[defaults_ release];
-	[suite_ release];
   [runner_ cancel];
   runner_.delegate = nil;
-  [runner_ release];
   
-	[super dealloc];
 }
 
 - (NSString *)name {
@@ -162,9 +154,9 @@
 - (void)loadDefaults {  
   if (!defaults_) {
     NSString *path = [self _defaultsPath];
-    if (path) defaults_ = [[NSKeyedUnarchiver unarchiveObjectWithFile:path] retain];
+    if (path) defaults_ = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
   }
-  if (!defaults_) defaults_ = [[NSMutableDictionary dictionary] retain];    
+  if (!defaults_) defaults_ = [NSMutableDictionary dictionary];    
   [self _updateTestNodeWithDefaults:root_];
 }
 
@@ -186,14 +178,12 @@
     if (!test.disabled) [test reset];
   
   if (!runner_) {
-    runner_ = [[GHTestRunner runnerForSuite:suite_] retain];
+    runner_ = [GHTestRunner runnerForSuite:suite_];
   }
   runner_.delegate = delegate;
   runner_.options = options;
   [runner_ setInParallel:inParallel];
-  [runner_ runTests];
-  
-	//[runner_ runInBackground];
+	[runner_ runInBackground];
 }
 
 - (BOOL)isRunning {
@@ -208,7 +198,7 @@
 
 - (id)initWithTest:(id<GHTest>)test children:(NSArray */*of id<GHTest>*/)children source:(GHTestViewModel *)source {
 	if ((self = [super init])) {
-		test_ = [test retain];
+		test_ = test;
 		
 		NSMutableArray *nodeChildren = [NSMutableArray array];
 		for(id<GHTest> test in children) {	
@@ -224,22 +214,15 @@
 			if (node)
 				[nodeChildren addObject:node];
 		}
-		children_ = [nodeChildren retain];
+		children_ = nodeChildren;
 		[source registerNode:self];
 	}
 	return self;
 }
 
-- (void)dealloc {
-	[test_ release];
-	[children_ release];
-  [filteredChildren_ release];
-  [textFilter_ release];
-	[super dealloc];
-}
 
 + (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray *)children source:(GHTestViewModel *)source {
-	return [[[GHTestNode alloc] initWithTest:test children:children source:source] autorelease];
+	return [[GHTestNode alloc] initWithTest:test children:children source:source];
 }
 
 - (BOOL)hasChildren {
@@ -274,11 +257,10 @@
     }
   }
   
-  [filteredChildren_ release];
-  filteredChildren_ = [[NSMutableArray array] retain];
+  filteredChildren_ = [NSMutableArray array];
   for(GHTestNode *childNode in children_) {
     if ((!textFilter_ || [textFiltered containsObject:childNode]) && 
-        (filter_ == GHTestNodeFilterNone || [filtered containsObject:childNode]) || [childNode hasChildren]) {
+        ((filter_ == GHTestNodeFilterNone || [filtered containsObject:childNode]) || [childNode hasChildren])) {
       [filteredChildren_ addObject:childNode];
       if (![childNode hasChildren]) {
         [childNode.test setDisabled:NO];
@@ -305,8 +287,6 @@
   textFilter = [textFilter stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
   if ([textFilter isEqualToString:@""]) textFilter = nil;
   
-  [textFilter retain];
-  [textFilter_ release];
   textFilter_ = textFilter;    
   [self _applyFilters];    
 }

@@ -16,14 +16,14 @@
 		NSBundle *bundle = [NSBundle bundleForClass:[self class]];	
 		topLevelObjects_ = [[NSMutableArray alloc] init]; 
 		NSDictionary *externalNameTable = [NSDictionary dictionaryWithObjectsAndKeys:self, @"NSOwner", topLevelObjects_, @"NSTopLevelObjects", nil]; 
-		[bundle loadNibFile:@"GHTestApp" externalNameTable:externalNameTable withZone:[self zone]];			
+		[bundle loadNibFile:@"GHTestApp" externalNameTable:externalNameTable withZone:nil];			
 	}
 	return self;
 }
 
 - (id)initWithSuite:(GHTestSuite *)suite {
 	// Since init loads XIB we need to set suite early; For backwards compat.
-	suite_ = [suite retain];
+	suite_ = suite;
 	if ((self = [self init])) { }
 	return self;
 }
@@ -37,9 +37,6 @@
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[suite_ release];
-	[topLevelObjects_ release];
-	[super dealloc];
 }
 
 - (void)runTests {

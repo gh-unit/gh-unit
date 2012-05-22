@@ -70,7 +70,7 @@
   static NSString *CellIdentifier = @"ReviewFeedViewItem";  
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (!cell)
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];   
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];   
   
   if (editing_) {
     cell.textLabel.text = node.name;

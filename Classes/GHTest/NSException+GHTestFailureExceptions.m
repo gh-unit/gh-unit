@@ -92,7 +92,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -112,7 +112,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -133,7 +133,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -155,7 +155,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -178,7 +178,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -206,7 +206,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -227,7 +227,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -267,7 +267,7 @@ NSString *GHComposeString(NSString *formatString, ...) {
     va_list vl;
     va_start(vl, formatString);
     reason =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   return reason;

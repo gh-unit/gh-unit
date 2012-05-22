@@ -75,8 +75,7 @@
  */
 @interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup> {
   
-  NSObject<GHTestDelegate> *delegate_; // weak
-  id<GHTestGroup> parent_; // weak
+  id<GHTestGroup> __unsafe_unretained parent_; // weak
   
   NSMutableArray */*of id<GHTest>*/children_;
     
@@ -96,9 +95,9 @@
   NSException *exception_; // If exception happens in group setUpClass/tearDownClass
 }
 
-@property (readonly, nonatomic) NSArray */*of id<GHTest>*/children;
-@property (assign, nonatomic) id<GHTestGroup> parent;
-@property (readonly, nonatomic) id testCase;
+@property (readonly, strong, nonatomic) NSArray */*of id<GHTest>*/children;
+@property (unsafe_unretained, nonatomic) id<GHTestGroup> parent;
+@property (readonly, strong, nonatomic) id testCase;
 @property (assign, nonatomic) GHTestOptions options;
 
 /*!

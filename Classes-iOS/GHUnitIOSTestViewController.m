@@ -37,21 +37,15 @@
     UIBarButtonItem *runButton = [[UIBarButtonItem alloc] initWithTitle:@"Re-run" style:UIBarButtonItemStyleDone
                                                  target:self action:@selector(_runTest)];
     self.navigationItem.rightBarButtonItem = runButton;
-    [runButton release];
   }
   return self;
 }
 
-- (void)dealloc {
-  [testNode_ release];
-  [super dealloc];
-}
 
 - (void)loadView {
   testView_ = [[GHUnitIOSTestView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
   testView_.controlDelegate = self;
   self.view = testView_;
-  [testView_ release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -64,7 +58,6 @@
   [testView_ setText:@"Running..."];
   [test run:GHTestOptionForceSetUpTearDownClass];  
   [self setTest:test];
-  [test release];
 }
 
 - (void)_showImageDiff {
@@ -76,7 +69,6 @@
   UIViewController *viewController = [[UIViewController alloc] init];
   viewController.view = imageDiffView_;
   [self.navigationController pushViewController:viewController animated:YES];
-  [viewController release];
 }
 
 - (NSString *)updateTestView {
@@ -105,8 +97,7 @@
   [self view];
   self.title = [test name];
 
-  [testNode_ release];
-  testNode_ = [[GHTestNode nodeWithTest:test children:nil source:nil] retain];
+  testNode_ = [GHTestNode nodeWithTest:test children:nil source:nil];
   NSString *text = [self updateTestView];
   NSLog(@"%@", text);
 }

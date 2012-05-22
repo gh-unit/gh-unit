@@ -42,13 +42,11 @@
     searchBar_.showsCancelButton = NO;
     searchBar_.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self addSubview:searchBar_];
-    [searchBar_ release];
     
     // Table view
     tableView_ = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView_.sectionIndexMinimumDisplayRowCount = 5;
     [self addSubview:tableView_];
-    [tableView_ release]; 
     
     footerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
     footerView_.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
@@ -61,10 +59,8 @@
     statusLabel_.numberOfLines = 2;
     statusLabel_.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [footerView_ addSubview:statusLabel_];
-    [statusLabel_ release];
     
     [self addSubview:footerView_];
-    [footerView_ release];
     
     runToolbar_ = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
     filterControl_ = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"All", @"Failed", nil]];
@@ -72,9 +68,7 @@
     filterControl_.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     filterControl_.segmentedControlStyle = UISegmentedControlStyleBar;
     [runToolbar_ addSubview:filterControl_];
-    [filterControl_ release];
     [self addSubview:runToolbar_];
-    [runToolbar_ release];    
   }
   return self;
 }

@@ -49,7 +49,7 @@
   
 }
 
-@property (retain, nonatomic) GHTestSuite *suite;
+@property (strong, nonatomic) GHTestSuite *suite;
 
 - (void)reloadTest:(id<GHTest>)test;
 

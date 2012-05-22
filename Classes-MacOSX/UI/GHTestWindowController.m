@@ -57,10 +57,6 @@
   [viewController_ copy:sender];
 }
 
-- (void)dealloc {
-	[viewController_ release];
-	[super dealloc];
-}
 
 - (void)windowWillClose:(NSNotification *)notification {
 	[[NSApplication sharedApplication] terminate:self];

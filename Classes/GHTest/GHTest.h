@@ -229,8 +229,6 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  */
 @interface GHTest : NSObject <GHTest, GHTestCaseLogWriter> {
   
-  NSObject<GHTestDelegate> *delegate_; // weak
-  
   id target_;
   SEL selector_;
   
@@ -246,9 +244,9 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 
 }
 
-@property (readonly, nonatomic) id target;
+@property (readonly, strong, nonatomic) id target;
 @property (readonly, nonatomic) SEL selector;
-@property (readonly, nonatomic) NSArray *log;
+@property (readonly, strong, nonatomic) NSArray *log;
 
 /*!
  Create test with identifier, name.

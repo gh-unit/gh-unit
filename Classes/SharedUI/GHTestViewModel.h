@@ -173,16 +173,16 @@ typedef enum {
 	NSMutableArray */*of GHTestNode*/children_;
   NSMutableArray */* of GHTestNode*/filteredChildren_;
 
-	id<GHTestNodeDelegate> delegate_;
+	id<GHTestNodeDelegate> __unsafe_unretained delegate_;
   GHTestNodeFilter filter_;
   NSString *textFilter_;
 }
 
-@property (readonly, nonatomic) NSArray */* of GHTestNode*/children;
-@property (readonly, nonatomic) id<GHTest> test;
-@property (assign, nonatomic) id<GHTestNodeDelegate> delegate;
+@property (readonly, strong, nonatomic) NSArray */* of GHTestNode*/children;
+@property (readonly, strong, nonatomic) id<GHTest> test;
+@property (unsafe_unretained, nonatomic) id<GHTestNodeDelegate> delegate;
 @property (assign, nonatomic) GHTestNodeFilter filter;
-@property (retain, nonatomic) NSString *textFilter;
+@property (strong, nonatomic) NSString *textFilter;
 
 - (id)initWithTest:(id<GHTest>)test children:(NSArray */*of id<GHTest>*/)children source:(GHTestViewModel *)source;
 + (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray */*of id<GHTest>*/)children source:(GHTestViewModel *)source;

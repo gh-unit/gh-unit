@@ -85,8 +85,8 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 
 - (id)initWithIdentifier:(NSString *)identifier name:(NSString *)name {
   if ((self = [self init])) {
-    identifier_ = [identifier retain];
-    name_ = [name retain];
+    identifier_ = identifier;
+    name_ = name;
     interval_ = -1;
     status_ = GHTestStatusNone;
   }
@@ -97,24 +97,16 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
   NSString *name = NSStringFromSelector(selector);
   NSString *identifier = [NSString stringWithFormat:@"%@/%@", NSStringFromClass([target class]), name];
   if ((self = [self initWithIdentifier:identifier name:name])) {
-    target_ = [target retain];
+    target_ = target;
     selector_ = selector;
   }
   return self;  
 }
 
 + (id)testWithTarget:(id)target selector:(SEL)selector {
-  return [[[self alloc] initWithTarget:target selector:selector] autorelease];
+  return [[self alloc] initWithTarget:target selector:selector];
 }
 
-- (void)dealloc {
-  [identifier_ release];
-  [name_ release];
-  [target_ release];
-  [exception_ release];
-  [log_ release]; 
-  [super dealloc];
-}
 
 - (BOOL)isEqual:(id)test {
   return ((test == self) || 
@@ -139,7 +131,6 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 - (void)reset {
   status_ = GHTestStatusNone;
   interval_ = 0;
-  [exception_ release];
   exception_ = nil; 
   [delegate_ testDidUpdate:self source:self];
 }
@@ -169,8 +160,6 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 }
 
 - (void)setException:(NSException *)exception {
-  [exception retain];
-  [exception_ release];
   exception_ = exception;
   status_ = GHTestStatusErrored;
   [delegate_ testDidUpdate:self source:self];
@@ -184,7 +173,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
     }
   } @catch(NSException *exception) {
     // If we fail in the setUpClass, then we will cancel all the child tests (below)
-    exception_ = [exception retain];
+    exception_ = exception;
     status_ = GHTestStatusErrored;
   }
 }
@@ -195,7 +184,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
     if ([target_ respondsToSelector:@selector(tearDownClass)])    
       [target_ tearDownClass];
   } @catch(NSException *exception) {          
-    exception_ = [exception retain];
+    exception_ = exception;
     status_ = GHTestStatusErrored;
   }
 }
@@ -215,7 +204,9 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
   [self _setLogWriter:self];
 
   BOOL reraiseExceptions = ((options & GHTestOptionReraiseExceptions) == GHTestOptionReraiseExceptions);
-  [GHTesting runTestWithTarget:target_ selector:selector_ exception:&exception_ interval:&interval_ reraiseExceptions:reraiseExceptions];
+  NSException *exception = nil;
+  [GHTesting runTestWithTarget:target_ selector:selector_ exception:&exception interval:&interval_ reraiseExceptions:reraiseExceptions];
+  exception_ = exception;
   
   [self _setLogWriter:nil];
 
@@ -236,7 +227,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 }
 
 - (void)log:(NSString *)message testCase:(id)testCase {
-  if (!log_) log_ = [[NSMutableArray array] retain];
+  if (!log_) log_ = [NSMutableArray array];
   [log_ addObject:message];
   [delegate_ test:self didLog:message source:self];
 }

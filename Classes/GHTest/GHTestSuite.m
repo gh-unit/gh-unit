@@ -36,6 +36,10 @@
 
 NSString *GHUnitTest = NULL;
 
+@interface GHTestSuite (CLIDisabled)
+- (BOOL)isCLIDisabled;
+@end
+
 @implementation GHTestSuite
 
 - (id)initWithName:(NSString *)name testCases:(NSArray *)testCases delegate:(id<GHTestDelegate>)delegate {
@@ -54,20 +58,19 @@ NSString *GHUnitTest = NULL;
     // Ignore test cases that can't be run at the command line
     if (!([testCase respondsToSelector:@selector(isCLIDisabled)] && [testCase isCLIDisabled] && getenv("GHUNIT_CLI"))) [allTests addTestCase:testCase];
   }
-  return [allTests autorelease];
+  return allTests;
 }
 
 + (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method { 
   NSString *name = [NSString stringWithFormat:@"%@/%@", NSStringFromClass(testCaseClass), NSStringFromSelector(method)];
-  GHTestSuite *testSuite = [[[GHTestSuite alloc] initWithName:name testCases:nil delegate:nil] autorelease];
-  id testCase = [[[testCaseClass alloc] init] autorelease];
+  GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:name testCases:nil delegate:nil];
+  id testCase = [[testCaseClass alloc] init];
   if (!testCase) {
     NSLog(@"Couldn't instantiate test: %@", NSStringFromClass(testCaseClass));
     return nil;
   }
   GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:method delegate:nil];
   [testSuite addTestGroup:group];
-  [group release];
   return testSuite;
 }
 
@@ -82,7 +85,7 @@ NSString *GHUnitTest = NULL;
     if ([className compare:prefix options:options range:NSMakeRange(0, [prefix length])] == NSOrderedSame)
       [testSuite addTestCase:testCase];
   }
-  return [testSuite autorelease];
+  return testSuite;
   
 }
 
@@ -95,7 +98,7 @@ NSString *GHUnitTest = NULL;
     if ([components count] == 2) {    
       NSString *testCaseClassName = [components objectAtIndex:0];
       Class testCaseClass = NSClassFromString(testCaseClassName);
-      id testCase = [[[testCaseClass alloc] init] autorelease];
+      id testCase = [[testCaseClass alloc] init];
       if (!testCase) {
         NSLog(@"Couldn't find test: %@", testCaseClassName);
         continue;
@@ -103,10 +106,9 @@ NSString *GHUnitTest = NULL;
       NSString *methodName = [components objectAtIndex:1];
       GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:NSSelectorFromString(methodName) delegate:nil];
       [testSuite addTestGroup:group];
-      [group release];
     } else {
       Class testCaseClass = NSClassFromString(testFilter);
-      id testCase = [[[testCaseClass alloc] init] autorelease];
+      id testCase = [[testCaseClass alloc] init];
       if (!testCase) {
         NSLog(@"Couldn't find test: %@", testFilter);
         continue;
@@ -115,7 +117,7 @@ NSString *GHUnitTest = NULL;
     }
   }
   
-  return [testSuite autorelease];
+  return testSuite;
 }
 
 + (GHTestSuite *)suiteFromEnv {

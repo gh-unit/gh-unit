@@ -18,7 +18,6 @@
 
 #import "GTMDefines.h"
 #import "GTMNSString+XML.h"
-#import "GTMGarbageCollection.h"
 
 enum {
   kGTMXMLCharModeEncodeQUOT  = 0,
@@ -111,7 +110,7 @@ static NSString *AutoreleasedCloneForXML(NSString *src, BOOL escaping) {
 
   // this block is common between GTMNSString+HTML and GTMNSString+XML but
   // it's so short that it isn't really worth trying to share.
-  const UniChar *buffer = CFStringGetCharactersPtr((CFStringRef)src);
+  const UniChar *buffer = CFStringGetCharactersPtr((__bridge CFStringRef)src);
   if (!buffer) {
     // We want this buffer to be autoreleased.
     NSMutableData *data = [NSMutableData dataWithLength:length * sizeof(UniChar)];
@@ -143,7 +142,7 @@ static NSString *AutoreleasedCloneForXML(NSString *src, BOOL escaping) {
       
       // start by adding what we already collected (if anything)
       if (goodRunLength) {
-        CFStringAppendCharacters((CFMutableStringRef)finalString, 
+        CFStringAppendCharacters((__bridge CFMutableStringRef)finalString, 
                                  goodRun, 
                                  goodRunLength);
         goodRunLength = 0;
@@ -162,7 +161,7 @@ static NSString *AutoreleasedCloneForXML(NSString *src, BOOL escaping) {
   
   // anything left to add?
   if (goodRunLength) {
-    CFStringAppendCharacters((CFMutableStringRef)finalString, 
+    CFStringAppendCharacters((__bridge CFMutableStringRef)finalString, 
                              goodRun, 
                              goodRunLength);
   }

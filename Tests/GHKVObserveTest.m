@@ -13,7 +13,7 @@
   NSString *_text;
 }
 
-@property (retain, nonatomic) NSString *text;
+@property (strong, nonatomic) NSString *text;
 
 - (void)updateText;
 
@@ -47,10 +47,6 @@
 
 @synthesize text=_text;
 
-- (void)dealloc {
-  [_text release];
-  [super dealloc];
-}
 
 - (void)updateText {
   [self performSelector:@selector(setText:) withObject:@"Test" afterDelay:0.1];

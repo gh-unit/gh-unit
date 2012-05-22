@@ -37,7 +37,6 @@
     scrollView_.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     scrollView_.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
     [self addSubview:scrollView_];
-    [scrollView_ release];
 
     segmentedControl_ = [[UISegmentedControl alloc] initWithFrame:CGRectZero];
     [segmentedControl_ insertSegmentWithTitle:@"Original" atIndex:0 animated:NO];
@@ -45,19 +44,15 @@
     [segmentedControl_ insertSegmentWithTitle:@"Diff" atIndex:2 animated:NO];
     [segmentedControl_ addTarget:self action:@selector(segmentedControlDidChange:) forControlEvents:UIControlEventValueChanged];
     [self addSubview:segmentedControl_];
-    [segmentedControl_ release];
 
     originalImageView_ = [[UIImageView alloc] initWithFrame:CGRectZero];
     [scrollView_ addSubview:originalImageView_];
-    [originalImageView_ release];
 
     newImageView_ = [[UIImageView alloc] initWithFrame:CGRectZero];
     [scrollView_ addSubview:newImageView_];
-    [newImageView_ release];
 
     diffImageView_ = [[UIImageView alloc] initWithFrame:CGRectZero];
     [scrollView_ addSubview:diffImageView_];
-    [diffImageView_ release];
   }
   return self;
 }

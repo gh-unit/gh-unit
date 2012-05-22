@@ -1,9 +1,9 @@
 //
-//  GHNSObject+Swizzle.h
-//  GHUnit
+//  GHUIImageViewControl.m
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 4/13/09.
-//  Copyright 2009. All rights reserved.
+//  Created by Gabriel Handford on 4/1/11.
+//  Copyright 2011. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,25 +27,45 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "GHUIImageViewControl.h"
 
-/*!
- Method swizzling.
- */
-@interface NSObject(GHUSwizzle)
 
-/*!
- Swizzle instance method.
- @param original Original method
- @param withMethod New method
- */
-+ (void)ghu_swizzleMethod:(SEL)original withMethod:(SEL)withMethod;
+@implementation GHUIImageViewControl
 
-/*!
- Swizzle class method.
- @param original Original method
- @param withClassMethod New method
- */
-+ (void)ghu_swizzleClassMethod:(SEL)original withClassMethod:(SEL)withClassMethod;
+@synthesize imageView=_imageView;
+
+- (id)initWithFrame:(CGRect)frame {
+  if ((self = [super initWithFrame:frame])) {
+    _imageView = [[UIImageView alloc] init];
+    [self addSubview:_imageView];
+  }
+  return self;
+}
+
+- (id)initWithFrame:(CGRect)frame image:(UIImage *)image highlightedImage:(UIImage *)highlightedImage {
+  if ((self = [super initWithFrame:frame])) {
+    _imageView = [[UIImageView alloc] initWithImage:image highlightedImage:highlightedImage];
+    [self addSubview:_imageView];
+  }
+  return self;
+}
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+  _imageView.frame = self.bounds;
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+  [super setHighlighted:highlighted];
+  _imageView.highlighted = highlighted;
+}
+
+- (UIImage *)image {
+  return _imageView.image;
+}
+
+- (void)setImage:(UIImage *)image {
+  _imageView.image = image;
+}
 
 @end

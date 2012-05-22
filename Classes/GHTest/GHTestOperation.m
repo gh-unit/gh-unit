@@ -35,15 +35,10 @@
 
 - (id)initWithTest:(id<GHTest>)test options:(GHTestOptions)options {
   if ((self = [super init])) {
-    test_ = [test retain];
+    test_ = test;
     options_ = options;
   }
   return self;
-}
-
-- (void)dealloc {
-  [test_ release];
-  [super dealloc];
 }
 
 - (void)cancel {
@@ -52,10 +47,10 @@
 }
 
 - (void)main {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  if (!self.isCancelled) 
-    [test_ run:options_];
-  [pool release];
+  @autoreleasepool {
+    if (!self.isCancelled) 
+      [test_ run:options_];
+  }
 }
 
 @end

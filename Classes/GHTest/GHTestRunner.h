@@ -130,7 +130,7 @@
   
   id<GHTest> test_; // The test to run; Could be a GHTestGroup (suite), GHTestGroup (test case), or GHTest (target/selector)
   
-  NSObject<GHTestRunnerDelegate> *delegate_; // weak
+  NSObject<GHTestRunnerDelegate> *__unsafe_unretained delegate_; // weak
     
   GHTestOptions options_; 
   
@@ -142,14 +142,14 @@
   NSOperationQueue *operationQueue_; //! If running a suite in operation queue
 }
 
-@property (retain) id<GHTest> test;
-@property (assign) NSObject<GHTestRunnerDelegate> *delegate;
+@property  (strong) id<GHTest> test;
+@property (unsafe_unretained) NSObject<GHTestRunnerDelegate> *delegate;
 @property (assign) GHTestOptions options;
 @property (readonly) GHTestStats stats;
 @property (readonly, getter=isRunning) BOOL running;
 @property (readonly, getter=isCancelling) BOOL cancelling;
 @property (readonly) NSTimeInterval interval;
-@property (retain, nonatomic) NSOperationQueue *operationQueue;
+@property (strong, nonatomic) NSOperationQueue *operationQueue;
 @property (assign, nonatomic, getter=isInParallel) BOOL inParallel;
 
 /*!

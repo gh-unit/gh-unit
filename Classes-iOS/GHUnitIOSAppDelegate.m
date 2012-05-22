@@ -31,14 +31,17 @@
 #import "GHUnitIOSViewController.h"
 #import "GHUnit.h"
 
+@interface GHUnitIOSAppDelegate (Terminate)
+- (void)_terminateWithStatus:(int)status;
+@end
+
 @implementation GHUnitIOSAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   if (getenv("GHUNIT_CLI")) {
     int exitStatus = [GHTestRunner run];
     if ([application respondsToSelector:@selector(_terminateWithStatus:)]) {
-      [application performSelector:@selector(_terminateWithStatus:)
-                        withObject:(id)exitStatus];
+      [(id)application _terminateWithStatus:exitStatus];
     } else {
       exit(exitStatus);
     }
@@ -46,7 +49,6 @@
   GHUnitIOSViewController *viewController = [[GHUnitIOSViewController alloc] init];
   [viewController loadDefaults];
   navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController];
-  [viewController release];
   CGSize size = [[UIScreen mainScreen] bounds].size;
   window_ = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
   [window_ addSubview:navigationController_.view];
@@ -63,10 +65,5 @@
   [[[navigationController_ viewControllers] objectAtIndex:0] saveDefaults]; 
 }
 
-- (void)dealloc {
-  [navigationController_ release];
-  [window_ release];
-  [super dealloc];
-}
 
 @end

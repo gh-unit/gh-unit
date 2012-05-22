@@ -28,7 +28,6 @@
 //
 
 #import "GHTestCase.h"
-#import "GTMStackTrace.h"
 #import "GHTesting.h"
 
 @implementation GHTestCase

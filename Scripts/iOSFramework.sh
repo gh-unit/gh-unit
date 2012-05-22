@@ -67,6 +67,7 @@ lipo \
 # header files and the plist file
 echo "Framework: Copying assets into current version..."
 cp ../Classes/*.h $FRAMEWORK_DIR/Headers/
+cp ../Classes/Mock/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes/GHTest/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes/SharedUI/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes-iOS/*.h $FRAMEWORK_DIR/Headers/

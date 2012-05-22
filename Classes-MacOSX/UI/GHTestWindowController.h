@@ -33,7 +33,7 @@
 	GHTestViewController *viewController_;
 }
 
-@property (retain, nonatomic) IBOutlet GHTestViewController *viewController;
+@property ( nonatomic) IBOutlet GHTestViewController *viewController;
 
 - (IBAction)runTests:(id)sender;
 - (IBAction)copy:(id)sender;

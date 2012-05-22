@@ -46,9 +46,9 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { 
-		suite_ = [[GHTestSuite suiteFromEnv] retain];
+		suite_ = [GHTestSuite suiteFromEnv];
     
-    NSString *identifier = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"] retain];
+    NSString *identifier = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
     if (!identifier) identifier = @"Tests";
     GHUDebug(@"Using identifier: %@", identifier);
     
@@ -62,18 +62,13 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 
 - (void)dealloc {
 	dataSource_.delegate = nil;
-	[dataSource_ release];
-	[suite_ release];
-	[status_ release];
-  [_detailsView release];
-	[super dealloc];
 }
 
 - (void)awakeFromNib {
 	_outlineView.delegate = dataSource_;
 	_outlineView.dataSource = dataSource_;
   
-  [_detailsView retain]; // If we remove from superview, need to keep it retained
+   // If we remove from superview, need to keep it retained
 	
 	[_textView setTextColor:[NSColor whiteColor]];
 	[_textView setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
@@ -209,7 +204,6 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
   [self _updateDetailForTest:nil prefix:@"Re-running test."];
   [test run:GHTestOptionForceSetUpTearDownClass];  
   [self _updateDetailForTest:test prefix:@"Re-ran test. (This feature is experimental.)"];  
-  [test release];
 }
 
 - (BOOL)isShowingDetails {

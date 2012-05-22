@@ -46,8 +46,6 @@
 //  the License.
 //
 
-#import "GHNSObject+Invocation.h"
-
 #import "GHTestRunner.h"
 #import "GHTestSuite.h"
 #import "GHTesting.h"
@@ -63,24 +61,17 @@
 
 @implementation GHTestRunner
 
-#define kGHTestRunnerDelegateProxyWait YES
-
 @synthesize test=test_, options=options_, delegate=delegate_, running=running_, cancelling=cancelling_,
 operationQueue=operationQueue_;
 
 - (id)initWithTest:(id<GHTest>)test {
   if ((self = [self init])) {
-    test_ = [test retain];
+    test_ = test;
     test_.delegate = self;
   }
   return self;
 }
 
-- (void)dealloc {
-  [test_ release];
-  [operationQueue_ release];
-  [super dealloc];
-}
 
 + (GHTestRunner *)runnerForAllTests {
   GHTestSuite *suite = [GHTestSuite allTests];
@@ -89,7 +80,7 @@ operationQueue=operationQueue_;
 
 + (GHTestRunner *)runnerForSuite:(GHTestSuite *)suite { 
   GHTestRunner *runner = [[GHTestRunner alloc] initWithTest:suite];
-  return [runner autorelease];
+  return runner;
 }
 
 + (GHTestRunner *)runnerForTestClassName:(NSString *)testClassName methodName:(NSString *)methodName {
@@ -112,7 +103,7 @@ operationQueue=operationQueue_;
 
 - (void)setInParallel:(BOOL)inParallel {
   if (inParallel) {
-    NSOperationQueue *operationQueue = [[[NSOperationQueue alloc] init] autorelease];
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
     operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
     self.operationQueue = operationQueue;
   } else {
@@ -155,9 +146,9 @@ operationQueue=operationQueue_;
 }
 
 - (void)_runInBackground {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  [self runTests];
-  [pool release];
+  @autoreleasepool {
+    [self runTests];
+  }
 }
 
 - (GHTestStats)stats {
@@ -174,8 +165,10 @@ operationQueue=operationQueue_;
   fputs("\n", stdout);
   fflush(stdout);
   
-  if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
-    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didLog:message];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
+      [delegate_ testRunner:self didLog:message];
+  });  
 }
 
 #pragma mark Delegates (GHTest)
@@ -185,13 +178,17 @@ operationQueue=operationQueue_;
     [self log:[NSString stringWithFormat:@"Starting %@\n", [source identifier]]];
   }
   
-  if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
-    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didStartTest:source]; 
+  dispatch_async(dispatch_get_main_queue(), ^{
+    if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
+    [delegate_ testRunner:self didStartTest:source]; 
+  });
 }
 
 - (void)testDidUpdate:(id<GHTest>)test source:(id<GHTest>)source {  
-  if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:)])
-    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didUpdateTest:source];  
+  dispatch_async(dispatch_get_main_queue(), ^{
+    if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:)])
+      [delegate_ testRunner:self didUpdateTest:source];  
+  });
 }
 
 - (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source { 
@@ -203,8 +200,10 @@ operationQueue=operationQueue_;
       [self log:message];
     }
     
-    if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
-      [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self didEndTest:source];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
+        [delegate_ testRunner:self didEndTest:source];
+    });
 
   } else {
     [self log:[NSString stringWithFormat:@"Cancelled\n", [source identifier]]];
@@ -220,8 +219,10 @@ operationQueue=operationQueue_;
 
 - (void)test:(id<GHTest>)test didLog:(NSString *)message source:(id<GHTest>)source {
   [self _log:[NSString stringWithFormat:@"%@: %@", source, message]];
-  if ([delegate_ respondsToSelector:@selector(testRunner:test:didLog:)])
-    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunner:self test:source didLog:message];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    if ([delegate_ respondsToSelector:@selector(testRunner:test:didLog:)])
+      [delegate_ testRunner:self test:source didLog:message];
+  });
 }
 
 #pragma mark Notifications (Private)
@@ -230,8 +231,10 @@ operationQueue=operationQueue_;
   NSString *message = [NSString stringWithFormat:@"Test Suite '%@' started.\n", [test_ name]];
   [self log:message];
   
-  if ([delegate_ respondsToSelector:@selector(testRunnerDidStart:)])
-    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidStart:self];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    if ([delegate_ respondsToSelector:@selector(testRunnerDidStart:)])
+      [delegate_ testRunnerDidStart:self];
+  });
 }
 
 - (void)_notifyCancelled {
@@ -241,8 +244,10 @@ operationQueue=operationQueue_;
   cancelling_ = NO;
   running_ = NO;
   
-  if ([delegate_ respondsToSelector:@selector(testRunnerDidCancel:)])
-    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidCancel:self];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    if ([delegate_ respondsToSelector:@selector(testRunnerDidCancel:)])
+      [delegate_ testRunnerDidCancel:self];
+  });
 }
 
 - (void)_notifyFinished {
@@ -282,8 +287,10 @@ operationQueue=operationQueue_;
   cancelling_ = NO;
   running_ = NO;
 
-  if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
-    [[delegate_ ghu_proxyOnMainThread:kGHTestRunnerDelegateProxyWait] testRunnerDidEnd:self];   
+  dispatch_async(dispatch_get_main_queue(), ^{
+    if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
+      [delegate_ testRunnerDidEnd:self];   
+  });
 }
 
 @end

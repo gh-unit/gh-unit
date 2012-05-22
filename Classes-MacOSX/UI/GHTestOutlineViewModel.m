@@ -70,7 +70,6 @@
 			
 			NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[item name] attributes:attributes];
 			[cell setAttributedTitle:attributedString];
-			[attributedString release];			
 		} else {			
 			[cell setTitle:[item name]];	
 			[cell setTextColor:textColor];
@@ -101,7 +100,7 @@
 	if ([[tableColumn identifier] isEqual:@"name"] && self.isEditing) {		
 		// TODO(gabe): Doesn't work if you try to re-use cells so making a new one; 
 		// Need help with this; This might explode if you have a lot of tests
-		NSButtonCell *cell = [[[NSButtonCell alloc] init] autorelease];
+		NSButtonCell *cell = [[NSButtonCell alloc] init];
 		[cell setControlSize:NSSmallControlSize];
 		[cell setFont:[NSFont fontWithName:@"Lucida Grande" size:11]];
 		[cell setButtonType:NSSwitchButton];		

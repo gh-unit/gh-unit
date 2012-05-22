@@ -28,6 +28,6 @@
 	NSButtonCell *editCell_;
 }
 
-@property (assign, nonatomic) id<GHTestOutlineViewModelDelegate> delegate;
+@property ( nonatomic) id<GHTestOutlineViewModelDelegate> delegate;
 
 @end
