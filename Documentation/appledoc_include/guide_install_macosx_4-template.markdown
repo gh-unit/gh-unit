@@ -11,5 +11,5 @@ To use GHUnit in your project, you'll need to create and configure a test target
     - Drag `GHUnit.framework` from the project file view into the the Copy Files build phase.
     - Make sure the copy phase appears before any `Run Script` phases.
 - Copy [GHUnitTestMain.m](http://github.com/gabriel/gh-unit/tree/master/Classes-MacOSX/GHUnitTestMain.m) into your project and include in the Test target. You should delete the existing main.m file (or replace the contents of the existing main.m with GHUnitTestMain.m).
-- By default, the Tests-Info.plist file includes `MainWindow` for `Main nib file base name`. You should clear this field. You can also delete the existing MainMenu.xib and files like TestsAppDelegate.*.
+- By default, the Tests-Info.plist file includes `MainMenu` for `Main nib file base name`. You should clear this field. You can also delete the existing MainMenu.xib and files like TestsAppDelegate.*.
 - Now you can [create and run tests](guide_testing)!

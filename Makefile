@@ -6,7 +6,7 @@ VERSION=$(shell cat XcodeConfig/Shared.xcconfig | grep "GHUNIT_VERSION =" | cut 
 
 docs:
 	rm -rf Documentation/output
-	Documentation/appledoc/appledoc -t Documentation/appledoc/Templates -o Documentation/output -p $(NAME) -v $(VERSION) -c "$(NAME)" --company-id "$(COMPANY_ID)" --warn-undocumented-object --warn-undocumented-member --warn-empty-description --warn-unknown-directive --warn-invalid-crossref --warn-missing-arg --no-repeat-first-par --keep-intermediate-files --docset-feed-url $(GITHUB_DOC_URL)/publish/%DOCSETATOMFILENAME --docset-package-url $(GITHUB_DOC_URL)/publish/%DOCSETPACKAGEFILENAME --publish-docset --index-desc Documentation/index_desc.txt --include Documentation/appledoc_include/ --include Documentation/index-template.markdown --verbose=3 --create-html --create-docset --publish-docset --exit-threshold 2 Classes/ Classes-iOS/ Classes-MacOSX/
+	appledoc -o Documentation/output -p $(NAME) -v $(VERSION) -c "$(NAME)" --company-id "$(COMPANY_ID)" --warn-undocumented-object --warn-undocumented-member --warn-empty-description --warn-unknown-directive --warn-invalid-crossref --warn-missing-arg --no-repeat-first-par --keep-intermediate-files --docset-feed-url $(GITHUB_DOC_URL)/publish/%DOCSETATOMFILENAME --docset-package-url $(GITHUB_DOC_URL)/publish/%DOCSETPACKAGEFILENAME --publish-docset --index-desc Documentation/index_desc.txt --include Documentation/appledoc_include/ --include Documentation/index-template.markdown --verbose=3 --create-html --create-docset --publish-docset --exit-threshold 2 Classes/ Classes-iOS/ Classes-MacOSX/
 
 gh-pages: docs
 	rm -rf ../doctmp

@@ -20,7 +20,7 @@ To use GHUnit in your project, you'll need to create and configure a test target
 
 ## Configure the Test Target
 
-- Download and copy the GHUnitIOS.framework to your project. Command click on Frameworks in the Project Navigator and select: Add Files to "MyTestable"...
+- Download and copy the GHUnitIOS.framework to your project. Command click on Frameworks in the Project Navigator and select: Add Files to "MyTestable". (This should automatically add GHUnitIOS.framework to your Link Binary With Libraries Build Phase for the Tests target.)
 
 ![Add Framework](images/6_add_framework.png)
 
@@ -36,15 +36,7 @@ To use GHUnit in your project, you'll need to create and configure a test target
 
 ![Remove Test Files](images/9_remove_test_files.png)
 
-- By default, the Tests-Info.plist file includes MainWindow_iPhone and MainWindow_iPad for Main nib file base name. You should remove both these fields.
-
-![Fix plist](images/9b_fix_plist.png)
-
-- After removing these entries, the Tests-Info.plist should look like this.
-
-![Fixed plist](images/9c_fixed_plist.png)
-
-- In Tests folder, in Supporting Files, main.m, replace the last argument of UIApplicationMain with `@"GHUnitIOSAppDelegate"` or `@"GHUnitIPhoneAppDelegate"`.
+- In Tests folder, in Supporting Files, main.m, replace the last argument of UIApplicationMain with `@"GHUnitIOSAppDelegate"`. Remove the #import "AppDelegate.h" if present.
 
 ![Main Method](images/10_main.png)
 
