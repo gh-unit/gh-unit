@@ -21,7 +21,7 @@
 }
 
 - (void)testNSLog {
-  for(NSInteger i = 0; i < 5; i++) {
+  for(int i = 0; i < 5; i++) {
     NSLog(@"Using NSLog: %d", i);
     fputs([@"stdout\n" UTF8String], stdout);
     fflush(stdout);   

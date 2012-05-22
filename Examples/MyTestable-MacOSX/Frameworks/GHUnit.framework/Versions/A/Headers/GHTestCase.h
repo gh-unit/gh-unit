@@ -92,14 +92,14 @@
 
  */
 @interface GHTestCase : NSObject {
-  id<GHTestCaseLogWriter> logWriter_; // weak
+  id<GHTestCaseLogWriter> __unsafe_unretained logWriter_; // weak
 
   SEL currentSelector_;
 }
 
 //! The current test selector
 @property (assign, nonatomic) SEL currentSelector; 
-@property (assign, nonatomic) id<GHTestCaseLogWriter> logWriter;
+@property (unsafe_unretained, nonatomic) id<GHTestCaseLogWriter> logWriter;
 
 // GTM_BEGIN
 //! Run before each test method
@@ -148,5 +148,14 @@
  @param message Message to log
  */
 - (void)log:(NSString *)message;
+
+/*!
+ Whether the test class should be run as a part of command line tests.
+ By default this is NO. Subclasses can override this method to disable
+ test classes that are problematic at the command line.
+
+ @result YES if this test class is disabled for command line tests
+ */
+- (BOOL)isCLIDisabled;
 
 @end

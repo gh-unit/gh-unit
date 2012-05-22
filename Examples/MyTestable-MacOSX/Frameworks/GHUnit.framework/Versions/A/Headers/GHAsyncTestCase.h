@@ -89,7 +89,7 @@ enum {
  Run loop modes to run while waiting; 
  Defaults to NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode
  */
-@property (retain, nonatomic) NSArray *runLoopModes; 
+@property (strong, nonatomic) NSArray *runLoopModes; 
 
 /*!
  Prepare before calling the asynchronous method. 

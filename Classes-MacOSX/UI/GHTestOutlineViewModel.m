@@ -10,7 +10,7 @@
 
 @implementation GHTestOutlineViewModel
 
-@synthesize delegate=delegate_;
+@synthesize delegate;
 
 #pragma mark DataSource (NSOutlineView)
 
@@ -115,7 +115,7 @@
 #pragma mark Delegates (NSOutlineView)
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification {
-	[delegate_ testOutlineViewModelDidChangeSelection:self];
+	[self.delegate testOutlineViewModelDidChangeSelection:self];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {

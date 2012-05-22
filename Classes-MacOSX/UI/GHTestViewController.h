@@ -63,14 +63,14 @@
 @property (readonly, nonatomic) id<GHTest> selectedTest;
 @property (readonly, nonatomic) GHTestOutlineViewModel *dataSource;
 
-@property ( nonatomic) NSString *status;
+@property (strong, nonatomic) NSString *status;
 @property (assign, nonatomic) double statusProgress;
-@property ( nonatomic) NSString *runLabel;
+@property (strong, nonatomic) NSString *runLabel;
 
-@property ( nonatomic) GHTestSuite *suite;
+@property (strong, nonatomic) GHTestSuite *suite;
 @property (assign, nonatomic, getter=isRunning) BOOL running;
 
-@property ( nonatomic) NSString *exceptionFilename;
+@property (strong, nonatomic) NSString *exceptionFilename;
 @property (assign, nonatomic) NSInteger exceptionLineNumber;
 
 @property (assign, nonatomic) BOOL reraiseExceptions;

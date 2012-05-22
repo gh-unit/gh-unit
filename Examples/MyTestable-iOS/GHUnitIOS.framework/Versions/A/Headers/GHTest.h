@@ -52,7 +52,7 @@ typedef NSInteger GHTestOptions;
  Generate string from GHTestStatus
  @param status
  */
-extern NSString* NSStringFromGHTestStatus(GHTestStatus status);
+extern NSString *NSStringFromGHTestStatus(GHTestStatus status);
 
 /*!
  Check if test is running (or trying to cancel).
@@ -229,8 +229,6 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  */
 @interface GHTest : NSObject <GHTest, GHTestCaseLogWriter> {
   
-  NSObject<GHTestDelegate> *delegate_; // weak
-  
   id target_;
   SEL selector_;
   
@@ -246,9 +244,9 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
 
 }
 
-@property (readonly, nonatomic) id target;
+@property (readonly, strong, nonatomic) id target;
 @property (readonly, nonatomic) SEL selector;
-@property (readonly, nonatomic) NSArray *log;
+@property (readonly, strong, nonatomic) NSArray *log;
 
 /*!
  Create test with identifier, name.

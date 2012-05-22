@@ -1,9 +1,9 @@
 //
-//  GHTestWindowController.h
-//  GHKit
+//  GHUIImageViewControl.h
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 1/17/09.
-//  Copyright 2009. All rights reserved.
+//  Created by Gabriel Handford on 4/1/11.
+//  Copyright 2011. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,15 +27,15 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface GHTestWindowController : NSWindowController {
-	GHTestViewController *viewController_;
+@interface GHUIImageViewControl : UIControl { 
+  UIImageView *_imageView;
 }
 
-@property (strong, nonatomic) IBOutlet GHTestViewController *viewController;
+@property (readonly, nonatomic) UIImageView *imageView;
+@property (nonatomic) UIImage *image;
 
-- (IBAction)runTests:(id)sender;
-- (IBAction)copy:(id)sender;
+- (id)initWithFrame:(CGRect)frame image:(UIImage *)image highlightedImage:(UIImage *)highlightedImage;
 
 @end
