@@ -32,6 +32,7 @@
 
 @implementation GHUIImageViewControl
 
+@dynamic image;
 @synthesize imageView=_imageView;
 
 - (id)initWithFrame:(CGRect)frame {
@@ -60,12 +61,8 @@
   _imageView.highlighted = highlighted;
 }
 
-- (UIImage *)image {
-  return _imageView.image;
-}
-
-- (void)setImage:(UIImage *)image {
-  _imageView.image = image;
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+  return _imageView;
 }
 
 @end

@@ -145,8 +145,6 @@
 		00CEA042156C2E0B00BA3276 /* GHUIImageViewControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 00CEA03F156C2E0B00BA3276 /* GHUIImageViewControl.h */; };
 		00CEA043156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */; };
 		00CEA044156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */; };
-		00CEA045156C2E1C00BA3276 /* GHImageDiffView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4228635614595D0400BF3ED2 /* GHImageDiffView.h */; };
-		00CEA046156C2E2100BA3276 /* GHImageDiffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228635714595D0400BF3ED2 /* GHImageDiffView.m */; };
 		421C7B8F13F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */; };
 		421C7B9013F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */; };
 		421C7B9113F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */; };
@@ -157,6 +155,8 @@
 		422863141458BC1200BF3ED2 /* GHViewTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 422863101458BC1200BF3ED2 /* GHViewTestCase.m */; };
 		4228635814595D0400BF3ED2 /* GHImageDiffView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4228635614595D0400BF3ED2 /* GHImageDiffView.h */; };
 		4228635914595D0400BF3ED2 /* GHImageDiffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228635714595D0400BF3ED2 /* GHImageDiffView.m */; };
+		423AF3371460965C00F04DC7 /* GHImageDiffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228635714595D0400BF3ED2 /* GHImageDiffView.m */; };
+		423AF3391460969000F04DC7 /* GHImageDiffView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4228635614595D0400BF3ED2 /* GHImageDiffView.h */; };
 		42A678EF1401423D0060D1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -640,7 +640,7 @@
 				421C7B9013F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */,
 				422863121458BC1200BF3ED2 /* GHViewTestCase.h in Headers */,
 				00CEA042156C2E0B00BA3276 /* GHUIImageViewControl.h in Headers */,
-				00CEA045156C2E1C00BA3276 /* GHImageDiffView.h in Headers */,
+				423AF3391460969000F04DC7 /* GHImageDiffView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,7 +836,7 @@
 				421C7B9213F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */,
 				422863141458BC1200BF3ED2 /* GHViewTestCase.m in Sources */,
 				00CEA044156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */,
-				00CEA046156C2E2100BA3276 /* GHImageDiffView.m in Sources */,
+				423AF3371460965C00F04DC7 /* GHImageDiffView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

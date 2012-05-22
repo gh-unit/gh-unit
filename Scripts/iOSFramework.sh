@@ -71,6 +71,7 @@ cp ../Classes/Mock/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes/GHTest/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes/SharedUI/*.h $FRAMEWORK_DIR/Headers/
 cp ../Classes-iOS/*.h $FRAMEWORK_DIR/Headers/
+cp ../Classes/Mock/*.h $FRAMEWORK_DIR/Headers/
 cp Framework.plist $FRAMEWORK_DIR/Resources/Info.plist
 
 echo ""

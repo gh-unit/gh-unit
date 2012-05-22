@@ -29,12 +29,12 @@
 
 #import "GHUnitIOSViewController.h"
 
-NSString *const GHUnitPrefixKey = @"Prefix";
+NSString *const GHUnitTextFilterKey = @"TextFilter";
 NSString *const GHUnitFilterKey = @"Filter";
 
 @interface GHUnitIOSViewController ()
-- (NSString *)_prefix;
-- (void)_setPrefix:(NSString *)prefix;
+- (NSString *)_textFilter;
+- (void)_setTextFilter:(NSString *)textFilter;
 - (void)_setFilterIndex:(NSInteger)index;
 - (NSInteger)_filterIndex;
 @end
@@ -74,8 +74,8 @@ NSString *const GHUnitFilterKey = @"Filter";
   
   view_ = [[GHUnitIOSView alloc] initWithFrame:CGRectMake(0, 0, 320, 344)];
   view_.searchBar.delegate = self;
-  NSString *prefix = [self _prefix];
-  if (prefix) view_.searchBar.text = prefix;  
+  NSString *textFilter = [self _textFilter];
+  if (textFilter) view_.searchBar.text = textFilter;  
   view_.filterControl.selectedSegmentIndex = [self _filterIndex];
   [view_.filterControl addTarget:self action:@selector(_filterChanged:) forControlEvents:UIControlEventValueChanged];
   view_.tableView.delegate = self;
@@ -93,7 +93,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)reload {
-  [self.dataSource.root setTextFilter:[self _prefix]];  
+  [self.dataSource.root setTextFilter:[self _textFilter]];  
   [self.dataSource.root setFilter:[self _filterIndex]];
   [view_.tableView reloadData]; 
 }
@@ -127,12 +127,12 @@ NSString *const GHUnitFilterKey = @"Filter";
 
 #pragma mark Properties
 
-- (NSString *)_prefix {
-  return [[NSUserDefaults standardUserDefaults] objectForKey:GHUnitPrefixKey];
+- (NSString *)_textFilter {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:GHUnitTextFilterKey];
 }
 
-- (void)_setPrefix:(NSString *)prefix {
-  [[NSUserDefaults standardUserDefaults] setObject:prefix forKey:GHUnitPrefixKey];
+- (void)_setTextFilter:(NSString *)textFilter {
+  [[NSUserDefaults standardUserDefaults] setObject:textFilter forKey:GHUnitTextFilterKey];
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -289,8 +289,8 @@ NSString *const GHUnitFilterKey = @"Filter";
     [self searchBarSearchButtonClicked:searchBar];
     return;
   }
-  NSString *prefix = [self _prefix];
-  searchBar.text = (prefix ? prefix : @"");
+  NSString *textFilter = [self _textFilter];
+  searchBar.text = (textFilter ? textFilter : @"");
   [searchBar resignFirstResponder];
   [searchBar setShowsCancelButton:NO animated:YES]; 
 }
@@ -299,7 +299,7 @@ NSString *const GHUnitFilterKey = @"Filter";
   [searchBar resignFirstResponder];
   [searchBar setShowsCancelButton:NO animated:YES]; 
   
-  [self _setPrefix:searchBar.text];
+  [self _setTextFilter:searchBar.text];
   [self reload];
 }
 
