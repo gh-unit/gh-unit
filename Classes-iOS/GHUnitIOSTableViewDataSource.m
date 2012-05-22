@@ -70,7 +70,7 @@
   static NSString *CellIdentifier = @"ReviewFeedViewItem";  
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (!cell)
-    cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];   
+    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];   
   
   if (editing_) {
     cell.textLabel.text = node.name;
@@ -88,7 +88,7 @@
       cell.textLabel.textColor = [UIColor blackColor];
     } else if ([node status] == GHTestStatusErrored) {
       if ([node.test.exception.name isEqualToString:@"GHViewUnavailableException"]) {
-        cell.textLabel.textColor = [UIColor colorWithRed:0.60 green:0.60 blue:0 alpha:1.0];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.6f green:0.6f blue:0.0f alpha:1.0f];
       } else {
         cell.textLabel.textColor = [UIColor redColor];
       }

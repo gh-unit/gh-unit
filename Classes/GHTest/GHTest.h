@@ -52,7 +52,7 @@ typedef NSInteger GHTestOptions;
  Generate string from GHTestStatus
  @param status
  */
-extern NSString* NSStringFromGHTestStatus(GHTestStatus status);
+extern NSString *NSStringFromGHTestStatus(GHTestStatus status);
 
 /*!
  Check if test is running (or trying to cancel).

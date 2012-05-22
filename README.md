@@ -1,6 +1,6 @@
 # GHUnit
 
-GHUnit is a test framework for Objective-C, Mac OS X 10.5 and above and iPhone 3.x and above.
+GHUnit is a test framework for Mac OS X and iOS.
 It can be used standalone or with other testing frameworks like SenTestingKit or GTM.
 
 ## Features

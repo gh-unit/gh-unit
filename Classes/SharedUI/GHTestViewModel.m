@@ -191,7 +191,9 @@
   runner_.delegate = delegate;
   runner_.options = options;
   [runner_ setInParallel:inParallel];
-	[runner_ runInBackground];
+  [runner_ runTests];
+  
+	//[runner_ runInBackground];
 }
 
 - (BOOL)isRunning {

@@ -19,6 +19,10 @@
 #import "GTMSenTestCase.h"
 #import <unistd.h>
 
+@protocol GTMSenTestCaseInternalSetup
+- (void)_setUp;
+@end
+
 //#if !GTM_IPHONE_SDK
 //#import "GTMGarbageCollection.h"
 //#endif  // !GTM_IPHONE_SDK
@@ -260,7 +264,7 @@ NSString *const SenTestLineNumberKey = @"SenTestLineNumberKey";
     // outer layers get the exceptions to report counts, etc.
     @try {
       // For internal setup
-      if ([self respondsToSelector:@selector(_setUp)]) [self _setUp];
+      if ([self respondsToSelector:@selector(_setUp)]) [(id)self _setUp];
       [self setUp];
       @try {
         [self performSelector:currentSelector_];

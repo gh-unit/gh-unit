@@ -384,7 +384,9 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 - (id)copyWithZone:(NSZone *)zone {
   NSMutableArray *tests = [NSMutableArray arrayWithCapacity:[children_ count]];
   for(id<GHTest> test in children_) {
-    [tests addObject:[test copyWithZone:zone]];
+    id<GHTest> testCopy = [test copyWithZone:zone];
+    [tests addObject:testCopy];
+    [testCopy release];
   }
   GHTestGroup *testGroup = [[GHTestGroup alloc] initWithName:name_ delegate:nil];
   [testGroup addTests:tests];

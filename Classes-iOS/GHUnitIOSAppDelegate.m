@@ -49,7 +49,6 @@
   [viewController release];
   CGSize size = [[UIScreen mainScreen] bounds].size;
   window_ = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-  GHUDebug(@"Setting window view");
   [window_ addSubview:navigationController_.view];
   [window_ makeKeyAndVisible];
 

@@ -141,6 +141,8 @@ typedef struct {
                                                        );
   if (!imageContext || !newImageContext) {
     GHUDebug(@"Unable to create image contexts for image comparison");
+    CGContextRelease(imageContext);
+    CGContextRelease(newImageContext);
     return NO;
   }
   // Draw the image in the bitmap
@@ -183,7 +185,7 @@ typedef struct {
   // Draw the original image
   [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
   // Overlay the new image inverted and at half alpha
-  CGContextSetAlpha(context, 0.5);
+  CGContextSetAlpha(context, 0.5f);
   CGContextBeginTransparencyLayer(context, NULL);
   [newImage drawInRect:CGRectMake(0, 0, newImage.size.width, newImage.size.height)];
   CGContextSetBlendMode(context, kCGBlendModeDifference);

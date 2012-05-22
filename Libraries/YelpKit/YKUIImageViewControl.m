@@ -41,8 +41,12 @@
   _imageView.highlighted = highlighted;
 }
 
-- (id)forwardingTargetForSelector:(SEL)aSelector {
-  return _imageView;
+- (UIImage *)image {
+  return _imageView.image;
+}
+
+- (void)setImage:(UIImage *)image {
+  _imageView.image = image;
 }
 
 @end

@@ -36,6 +36,7 @@
   [connection receiveData:testData_ afterDelay:0.2];
   [connection finishAfterDelay:0.3];
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+  [connection release];
 }
   
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -66,6 +67,7 @@
   error_ = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorNotConnectedToInternet userInfo:nil];
   [connection failWithError:error_ afterDelay:0.2];
   [self waitForStatus:kGHUnitWaitStatusFailure timeout:1.0];
+  [connection release];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -86,6 +88,7 @@
   GHMockNSURLConnection *connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:self];  
   [connection receiveFromPath:@"example.json" statusCode:200 MIMEType:@"text/json" afterDelay:0.1];
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+  [connection release];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

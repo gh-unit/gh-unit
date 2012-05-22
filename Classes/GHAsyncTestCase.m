@@ -43,7 +43,6 @@ typedef enum {
 
 - (void)dealloc {
   [_runLoopModes release];
-  _runLoopModes = nil;
   [super dealloc];
 }
 
@@ -89,7 +88,6 @@ typedef enum {
   BOOL timedOut = NO;
   NSInteger runIndex = 0;
   while(notifiedStatus_ == kGHUnitWaitStatusUnknown) {
-    
     NSString *mode = [_runLoopModes objectAtIndex:(runIndex++ % [_runLoopModes count])];
 
     [lock_ unlock];
