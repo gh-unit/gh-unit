@@ -38,7 +38,7 @@
 - (NSString *)JUnitXML {
   return [NSString stringWithFormat:
           @"<testcase name=\"%@\" classname=\"%@\" time=\"%0.4f\">%@</testcase>",
-          self.name, [self class], self.interval,
+          self.name, [self.target class], self.interval,
           (self.exception ? [NSString stringWithFormat:@"<failure message=\"%@\">%@</failure>", [[self.exception description] gtm_stringBySanitizingAndEscapingForXML], 
                              [[GHTesting descriptionForException:self.exception] gtm_stringBySanitizingAndEscapingForXML]] : @"")];
 }
