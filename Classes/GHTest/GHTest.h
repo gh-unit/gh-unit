@@ -40,6 +40,7 @@ typedef enum {
   GHTestStatusCancelled, //! Test was cancelled
   GHTestStatusSucceeded, //! Test finished and succeeded
   GHTestStatusErrored, //! Test finished and errored
+  GHTestStatusApproved, //! Test was approved
 } GHTestStatus;
 
 enum {

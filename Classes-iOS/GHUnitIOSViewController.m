@@ -84,6 +84,11 @@ NSString *const GHUnitFilterKey = @"Filter";
   [self reload];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self reload];
+}
+
 - (GHUnitIOSTableViewDataSource *)dataSource {
   if (!dataSource_) {
     dataSource_ = [[GHUnitIOSTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[GHTestSuite suiteFromEnv]];  
