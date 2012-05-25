@@ -94,8 +94,6 @@
       }
     } else if ([node status] == GHTestStatusSucceeded) {
       cell.textLabel.textColor = [UIColor blackColor];
-    } else if ([node status] == GHTestStatusApproved) {
-        cell.textLabel.textColor = [UIColor colorWithRed:0 green:0.392 blue:0 alpha:1.0];
     } else if (node.isSelected) {
       if (node.isSelected) cell.textLabel.textColor = [UIColor darkGrayColor];
     }
