@@ -67,9 +67,13 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 #pragma mark -
 
 - (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)delay {
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
-    [delegate_ connection:nil didReceiveData:data];
-  });
+  if (delay < 0) {
+    [delegate_ connection:(NSURLConnection *)self didReceiveData:data];
+  } else {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+      [delegate_ connection:(NSURLConnection *)self didReceiveData:data];
+    });
+  }
 }
 
 - (NSData *)loadDataFromPath:(NSString *)path {
