@@ -67,9 +67,13 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 #pragma mark -
 
 - (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)delay {
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
-    [delegate_ connection:nil didReceiveData:data];
-  });
+  if (delay < 0) {
+    [delegate_ connection:(NSURLConnection *)self didReceiveData:data];
+  } else {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+      [delegate_ connection:(NSURLConnection *)self didReceiveData:data];
+    });
+  }
 }
 
 - (NSData *)loadDataFromPath:(NSString *)path {
@@ -108,21 +112,33 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 }
 
 - (void)receiveResponse:(NSURLResponse *)response afterDelay:(NSTimeInterval)delay {
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+  if (delay < 0) {
     [delegate_ connection:(NSURLConnection *)self didReceiveResponse:response];
-  });
+  } else {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+      [delegate_ connection:(NSURLConnection *)self didReceiveResponse:response];
+    });
+  }
 }
 
 - (void)finishAfterDelay:(NSTimeInterval)delay {
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+  if (delay < 0) {
     [delegate_ connectionDidFinishLoading:(NSURLConnection *)self];
-  });
+  } else {  
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+      [delegate_ connectionDidFinishLoading:(NSURLConnection *)self];
+    });
+  }
 }
 
 - (void)failWithError:(NSError *)error afterDelay:(NSTimeInterval)delay {
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+  if (delay < 0) {
     [delegate_ connection:(NSURLConnection *)self didFailWithError:error];
-  });
+  } else {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+      [delegate_ connection:(NSURLConnection *)self didFailWithError:error];
+    });
+  }
 }
 
 @end

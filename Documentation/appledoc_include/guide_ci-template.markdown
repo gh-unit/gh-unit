@@ -15,12 +15,12 @@ want to configure `Source Code Management`, and then under `Build Triggers` chec
 
 - Under `Build`, enter the following command:
 
-        make clean && WRITE_JUNIT_XML=YES make test
+        make clean && WRITE_JUNIT_XML=YES JUNIT_XML_DIR=tmp/test-results make test
 
 
 - Under `Post-build Actions`, check `Publish JUnit test result report` and enter the following in `Test report XMLs`:
 
-        build/test-results/*.xml
+        tmp/test-results/*.xml
 
 
 That's all it takes. Check in a change that breaks one of your tests. Hudson should detect the change, run a build and test, and then report the failure. Fix the test, check in again, and you should see a successful build report.

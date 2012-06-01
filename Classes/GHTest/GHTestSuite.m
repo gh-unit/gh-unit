@@ -139,25 +139,22 @@ NSString *GHUnitTest = NULL;
  Override logic to write children individually, as we want each test group's
  JUnit XML to be in its own file.
  */
-- (BOOL)writeJUnitXML:(NSError **)error {
+- (BOOL)writeJUnitXMLToDirectory:(NSString *)directory error:(NSError **)error {
   NSParameterAssert(error);
   BOOL allSuccess = YES;
   
   NSFileManager *fileManager = [NSFileManager defaultManager];
-  NSString *tmpDir = NSTemporaryDirectory();
-  NSString *resultsDir = [tmpDir stringByAppendingPathComponent:@"test-results"];
-  
-  if (![fileManager fileExistsAtPath:resultsDir]) {
-    if (![fileManager createDirectoryAtPath:resultsDir withIntermediateDirectories:YES attributes:nil error:error]) {
-      NSLog (@"Error while creating results directory: %@", [*error localizedDescription]);
+  if (![fileManager fileExistsAtPath:directory]) {
+    if (![fileManager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:error]) {
+      NSLog(@"Error while creating results directory: %@", [*error localizedDescription]);
       return NO;
     }
   }
     
   for (id child in self.children) {
     if ([child respondsToSelector:@selector(writeJUnitXMLAtPath:error:)]) {
-      if (![child writeJUnitXMLAtPath:resultsDir error:error]) {
-        NSLog (@"Error writing JUnit XML: %@", [*error localizedDescription]);
+      if (![child writeJUnitXMLAtPath:directory error:error]) {
+        NSLog(@"Error writing JUnit XML: %@", [*error localizedDescription]);
         allSuccess = NO;
       }
     }

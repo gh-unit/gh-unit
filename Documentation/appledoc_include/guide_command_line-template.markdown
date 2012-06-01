@@ -63,4 +63,5 @@ The `TEST` environment variable can be used to run a single test or test case.
 - `GHUNIT_AUTOEXIT`: Default NO; If YES, will exit upon test completion (no matter what). For command line MacOSX testing
 - `GHUNIT_CLI`: Default NO; Specifies that the tests are being run from the command line. For command line MacOSX testing
 - `WRITE_JUNIT_XML`: Default NO; Whether to write out JUnit XML output. For Jenkins CI integration
+- `JUNIT_XML_DIR`: Default to temporary directory. Specify to have files written to a different directory. For Jenkins CI integration.
 
