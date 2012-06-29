@@ -35,15 +35,6 @@ typedef struct {
   unsigned char r, g, b, a;
 } GHPixel;
 
-@interface GHViewTestCase ()
-+ (NSString *)imagesDirectory;
-+ (NSString *)pathForFilename:(NSString *)filename;
-+ (void)createImagesDirectory;
-+ (UIImage *)imageWithView:(UIView *)view;
-+ (UIImage *)readImageWithFilename:(NSString *)name;
-+ (BOOL)compareImage:(UIImage *)image withRenderedImage:(UIImage *)renderedImage;
-@end
-
 @implementation GHViewTestCase
 
 + (NSString *)imagesDirectory {
@@ -82,7 +73,7 @@ typedef struct {
 }
 
 + (UIImage *)readImageWithFilename:(NSString *)filename {
-  NSString* filePath = [self pathForFilename:filename];
+  NSString *filePath = [self pathForFilename:filename];
   GHUDebug(@"Trying to load image at path %@", filePath);
   // First look in the documents directory for the image
   UIImage *image = [UIImage imageWithContentsOfFile:filePath];
@@ -240,8 +231,8 @@ typedef struct {
     [[NSException exceptionWithName:@"GHViewUnavailableException" reason:@"No image saved for view" userInfo:exceptionDictionary] raise];
   } else if (![[self class] compareImage:originalViewImage withRenderedImage:newViewImage]) {
     UIImage *diffImage = [[self class] diffWithImage:originalViewImage renderedImage:newViewImage];
-    [exceptionDictionary setObject:diffImage forKey:@"DiffImage"];
-    [exceptionDictionary setObject:originalViewImage forKey:@"SavedImage"];
+    if (diffImage) [exceptionDictionary setObject:diffImage forKey:@"DiffImage"];
+    if (originalViewImage) [exceptionDictionary setObject:originalViewImage forKey:@"SavedImage"];
     [[NSException exceptionWithName:@"GHViewChangeException" reason:@"View has changed" userInfo:exceptionDictionary] raise];
   }
   imageVerifyCount_++;
