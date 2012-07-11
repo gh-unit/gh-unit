@@ -2,7 +2,7 @@
 
 To run the tests from the command line:
 
-- Copy the [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Scripts/RunTests.sh) file into your project in the same directory as the xcodeproj file.
+- Copy [RunTests.sh](http://github.com/gabriel/gh-unit/tree/master/Scripts/RunTests.sh) and [RunIPhoneSecurityd.sh](http://github.com/gabriel/gh-unit/tree/master/Scripts/RunIPhoneSecurityd.sh) into your project in the same directory as the xcodeproj file.
 
 - In the Tests target, Build Phases, Select Add Build Phase + button, and select Add Run Script.
 
