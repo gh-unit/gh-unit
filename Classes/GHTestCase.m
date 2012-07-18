@@ -47,7 +47,7 @@
 - (void)tearDownClass { }
 
 - (BOOL)shouldRunOnMainThread { 
-  return NO;
+  return YES;
 }
 
 - (void)handleException:(NSException *)exception {
