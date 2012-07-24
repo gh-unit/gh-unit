@@ -119,6 +119,7 @@
   NSString *imageFilename = [testNode_.test.exception.userInfo objectForKey:@"ImageFilename"];
   UIImage *renderedImage = [testNode_.test.exception.userInfo objectForKey:@"RenderedImage"];
   [GHViewTestCase saveToDocumentsWithImage:renderedImage filename:imageFilename];
+  testNode_.test.status = GHTestStatusSucceeded;
   [self _runTest];
 }
 
