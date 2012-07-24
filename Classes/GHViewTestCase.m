@@ -233,8 +233,15 @@ typedef struct {
 - (void)verifyView:(UIView *)view filename:(NSString *)filename lineNumber:(int)lineNumber {
   // Fail if the view is nil
   if (!view) [[NSException ghu_failureInFile:filename atLine:lineNumber withDescription:@"View cannot be nil in GHVerifyView"] raise];
-  // Fail if the view has CGSizeZero
-  if (CGSizeEqualToSize(view.frame.size, CGSizeZero)) [[NSException ghu_failureInFile:filename atLine:lineNumber withDescription:@"View must have a nonzero size in GHVerifyView"] raise];
+
+  CGSize viewSize = [self sizeForView:view];
+  view.frame = CGRectMake(0, 0, viewSize.width, viewSize.height);
+
+  // Fail if the view has width == 0 or height == 0
+  if (CGRectIsEmpty(view.frame)) {
+    NSString *description = [NSString stringWithFormat:@"View must have a nonzero size in GHVerifyView (view.frame was %@)", NSStringFromCGRect(view.frame)];
+    [[NSException ghu_failureInFile:filename atLine:lineNumber withDescription:description] raise];
+  }
 
   // View testing file names have the format [test class name]-[test selector name]-[UIScreen scale]-[# of verify in selector]-[view class name]
   NSString *imageFilenamePrefix = [NSString stringWithFormat:@"%@-%@-%1.0f-%d-%@",
@@ -245,10 +252,6 @@ typedef struct {
                                    NSStringFromClass([view class])];
   NSString *imageFilename = [imageFilenamePrefix stringByAppendingString:@".png"];
   UIImage *originalViewImage = [[self class] readSavedTestImageWithFilename:imageFilename];
-
-  CGSize viewSize = [self sizeForView:view];
-  view.frame = CGRectMake(0, 0, viewSize.width, viewSize.height);
-
   UIImage *newViewImage = [[self class] imageWithView:view];
   NSMutableDictionary *exceptionDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                               newViewImage, @"RenderedImage",

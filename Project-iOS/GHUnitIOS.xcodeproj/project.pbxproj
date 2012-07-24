@@ -145,6 +145,7 @@
 		00CEA042156C2E0B00BA3276 /* GHUIImageViewControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 00CEA03F156C2E0B00BA3276 /* GHUIImageViewControl.h */; };
 		00CEA043156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */; };
 		00CEA044156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */; };
+		42187C1815BF472300E702B6 /* GHUnitIOSTestViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 42187C1715BF472300E702B6 /* GHUnitIOSTestViewTest.m */; };
 		421C7B8F13F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */; };
 		421C7B9013F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */; };
 		421C7B9113F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */; };
@@ -271,6 +272,7 @@
 		00C979CE13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneAppDelegate.m; sourceTree = "<group>"; };
 		00CEA03F156C2E0B00BA3276 /* GHUIImageViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUIImageViewControl.h; sourceTree = "<group>"; };
 		00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUIImageViewControl.m; sourceTree = "<group>"; };
+		42187C1715BF472300E702B6 /* GHUnitIOSTestViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestViewTest.m; sourceTree = "<group>"; };
 		421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIOSTestView.h; sourceTree = "<group>"; };
 		421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestView.m; sourceTree = "<group>"; };
 		4228630F1458BC1200BF3ED2 /* GHViewTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHViewTestCase.h; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				00C9798A13BA809600FC285C /* GHTestLogTest.m */,
 				00C9798B13BA809600FC285C /* GHTestMacrosTest.m */,
 				00C9798C13BA809600FC285C /* GHTestOnMainThread.m */,
+				42187C1715BF472300E702B6 /* GHUnitIOSTestViewTest.m */,
 				00C9798D13BA809600FC285C /* GHUnitIOSTestMain.m */,
 				00C9798E13BA809600FC285C /* GTM */,
 			);
@@ -690,6 +693,7 @@
 				0097C4A413BA7FC800D3BEF0 /* Sources */,
 				0097C4A513BA7FC800D3BEF0 /* Frameworks */,
 				0097C4A613BA7FC800D3BEF0 /* Resources */,
+				42187C1A15BF519500E702B6 /* Copy Test Images */,
 				00C979CC13BA886700FC285C /* ShellScript */,
 			);
 			buildRules = (
@@ -769,6 +773,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "sh ../Scripts/RunTests.sh";
+		};
+		42187C1A15BF519500E702B6 /* Copy Test Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Test Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ../Scripts/PrepareUITests.sh;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -861,6 +879,7 @@
 				00C979A113BA809600FC285C /* GHTestOnMainThread.m in Sources */,
 				00C979A213BA809600FC285C /* GHUnitIOSTestMain.m in Sources */,
 				00C979A313BA809600FC285C /* GTMSenTestCase.m in Sources */,
+				42187C1815BF472300E702B6 /* GHUnitIOSTestViewTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

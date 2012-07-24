@@ -95,6 +95,15 @@ reason:@"GHVerifyView can only be called from within a GHViewTestCase class"] ra
 + (void)clearTestImages;
 
 /*!
+ Creates a UIImage from the passed in view. This can be useful for testing
+ views that require images.
+
+ @param view UIView to render
+ @result UIImage of the rendered UIView
+ */
++ (UIImage *)imageWithView:(UIView *)view;
+
+/*!
  Save an approved view test image to the view test images directory.
 
  @param image Image to save
