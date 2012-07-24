@@ -37,43 +37,52 @@ typedef struct {
 
 @implementation GHViewTestCase
 
-+ (NSString *)imagesDirectory {
+#pragma mark File Operations
+
++ (NSString *)approvedTestImagesDirectory {
   return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/TestImages"];
 }
 
-+ (NSString *)pathForFilename:(NSString *)filename {
-  return [NSString stringWithFormat:@"%@/%@", [self imagesDirectory], filename];
++ (NSString *)failedTestImagesDirectory {
+  return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/FailedTestImages"];
 }
 
-+ (void)createImagesDirectory {
++ (NSString *)approvedTestImagePathForFilename:(NSString *)filename {
+  return [NSString stringWithFormat:@"%@/%@", [self approvedTestImagesDirectory], filename];
+}
+
++ (NSString *)failedTestImagePathForFilename:(NSString *)filename {
+  return [NSString stringWithFormat:@"%@/%@", [self failedTestImagesDirectory], filename];
+}
+
++ (void)createDirectory:(NSString *)directory {
   NSFileManager *fileManager = [NSFileManager defaultManager];
   NSError *error = nil;
-  [fileManager createDirectoryAtPath:[self imagesDirectory] withIntermediateDirectories:YES attributes:nil error:&error];
-  if (error) GHUDebug(@"Unable to create directory %@", [self imagesDirectory]);
+  [fileManager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:&error];
+  if (error) GHUDebug(@"Unable to create directory %@", directory);
 }
 
-+ (UIImage *)imageWithView:(UIView *)view {
-  [view setNeedsDisplay];
-  UIGraphicsBeginImageContext(view.frame.size);
-  CALayer *layer = view.layer;
-  CGContextRef context = UIGraphicsGetCurrentContext();
-  [layer renderInContext:context];
-  UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-  UIGraphicsEndImageContext();
-  return viewImage;
-}
-
-+ (void)saveToDocumentsWithImage:(UIImage *)image filename:(NSString *)filename {
-  NSString *filePath = [self pathForFilename:filename];
-  GHUDebug(@"Saving view test image to %@", filePath);
++ (void)saveImage:(UIImage *)image filePath:(NSString *)filePath {
+  GHUDebug(@"Saving image to %@", filePath);
   // Save image as PNG
-  [self createImagesDirectory];
   BOOL saved = [UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
   if (!saved) GHUDebug(@"Unable to save image to %@", filePath);
 }
 
-+ (UIImage *)readImageWithFilename:(NSString *)filename {
-  NSString *filePath = [self pathForFilename:filename];
++ (void)saveApprovedViewTestImage:(UIImage *)image filename:(NSString *)filename {
+  [self createDirectory:[self approvedTestImagesDirectory]];
+  NSString *filePath = [self approvedTestImagePathForFilename:filename];
+  [self saveImage:image filePath:filePath];
+}
+
++ (void)saveFailedViewTestImage:(UIImage *)image filename:(NSString *)filename {
+  [self createDirectory:[self failedTestImagesDirectory]];
+  NSString *filePath = [self failedTestImagePathForFilename:filename];
+  [self saveImage:image filePath:filePath];
+}
+
++ (UIImage *)readSavedTestImageWithFilename:(NSString *)filename {
+  NSString *filePath = [self approvedTestImagePathForFilename:filename];
   GHUDebug(@"Trying to load image at path %@", filePath);
   // First look in the documents directory for the image
   UIImage *image = [UIImage imageWithContentsOfFile:filePath];
@@ -86,17 +95,33 @@ typedef struct {
   return image;
 }
 
-// Delete all test images from the documents directory
-+ (void)clearTestImages {
++ (void)deleteFilesAtPath:(NSString *)path {
   NSFileManager *fileManager = [NSFileManager defaultManager];
-  NSString *directory = [self imagesDirectory];
   NSError *error = nil;
-  for (NSString *file in [fileManager contentsOfDirectoryAtPath:directory error:&error]) {
-    BOOL success = [fileManager removeItemAtPath:[NSString stringWithFormat:@"%@/%@", directory, file] error:&error];
+  for (NSString *file in [fileManager contentsOfDirectoryAtPath:path error:&error]) {
+    BOOL success = [fileManager removeItemAtPath:[NSString stringWithFormat:@"%@/%@", path, file] error:&error];
     if (!success || error) {
-      GHUDebug(@"Unable to delete file %@%@", directory, file);
+      GHUDebug(@"Unable to delete file %@%@", path, file);
     }
   }
+}
+
++ (void)clearTestImages {
+  [self deleteFilesAtPath:[self approvedTestImagesDirectory]];
+  [self deleteFilesAtPath:[self failedTestImagesDirectory]];
+}
+
+#pragma mark Image Operations
+
++ (UIImage *)imageWithView:(UIView *)view {
+  [view setNeedsDisplay];
+  UIGraphicsBeginImageContext(view.frame.size);
+  CALayer *layer = view.layer;
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  [layer renderInContext:context];
+  UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  return viewImage;
 }
 
 + (BOOL)compareImage:(UIImage *)image withRenderedImage:(UIImage *)renderedImage {
@@ -188,9 +213,13 @@ typedef struct {
   return returnImage;
 }
 
+#pragma mark Private
+
 - (void)_setUp {
   imageVerifyCount_ = 0;
 }
+
+#pragma mark Public
 
 - (CGSize)sizeForView:(UIView *)view {
   // If the view is a UIScrollView, return the contentSize
@@ -208,13 +237,14 @@ typedef struct {
   if (CGSizeEqualToSize(view.frame.size, CGSizeZero)) [[NSException ghu_failureInFile:filename atLine:lineNumber withDescription:@"View must have a nonzero size in GHVerifyView"] raise];
 
   // View testing file names have the format [test class name]-[test selector name]-[UIScreen scale]-[# of verify in selector]-[view class name]
-  NSString *imageFilename = [NSString stringWithFormat:@"%@-%@-%1.0f-%d-%@.png",
-                             NSStringFromClass([self class]),
-                             NSStringFromSelector(currentSelector_),
-                             [[UIScreen mainScreen] scale],
-                             imageVerifyCount_,
-                             NSStringFromClass([view class])];
-  UIImage *originalViewImage = [[self class] readImageWithFilename:imageFilename];
+  NSString *imageFilenamePrefix = [NSString stringWithFormat:@"%@-%@-%1.0f-%d-%@",
+                                   NSStringFromClass([self class]),
+                                   NSStringFromSelector(currentSelector_),
+                                   [[UIScreen mainScreen] scale],
+                                   imageVerifyCount_,
+                                   NSStringFromClass([view class])];
+  NSString *imageFilename = [imageFilenamePrefix stringByAppendingString:@".png"];
+  UIImage *originalViewImage = [[self class] readSavedTestImageWithFilename:imageFilename];
 
   CGSize viewSize = [self sizeForView:view];
   view.frame = CGRectMake(0, 0, viewSize.width, viewSize.height);
@@ -233,6 +263,9 @@ typedef struct {
     UIImage *diffImage = [[self class] diffWithImage:originalViewImage renderedImage:newViewImage];
     if (diffImage) [exceptionDictionary setObject:diffImage forKey:@"DiffImage"];
     if (originalViewImage) [exceptionDictionary setObject:originalViewImage forKey:@"SavedImage"];
+    // Save new and diff images
+    [[self class] saveFailedViewTestImage:diffImage filename:[imageFilenamePrefix stringByAppendingString:@"-diff.png"]];
+    [[self class] saveFailedViewTestImage:newViewImage filename:[imageFilenamePrefix stringByAppendingString:@"-new.png"]];
     [[NSException exceptionWithName:@"GHViewChangeException" reason:@"View has changed" userInfo:exceptionDictionary] raise];
   }
   imageVerifyCount_++;

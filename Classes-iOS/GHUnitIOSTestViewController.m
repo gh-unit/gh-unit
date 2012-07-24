@@ -118,7 +118,7 @@
   // Save new image as the approved version
   NSString *imageFilename = [testNode_.test.exception.userInfo objectForKey:@"ImageFilename"];
   UIImage *renderedImage = [testNode_.test.exception.userInfo objectForKey:@"RenderedImage"];
-  [GHViewTestCase saveToDocumentsWithImage:renderedImage filename:imageFilename];
+  [GHViewTestCase saveApprovedViewTestImage:renderedImage filename:imageFilename];
   testNode_.test.status = GHTestStatusSucceeded;
   [self _runTest];
 }

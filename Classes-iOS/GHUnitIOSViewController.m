@@ -84,7 +84,7 @@ NSString *const GHUnitFilterKey = @"Filter";
   [self reload];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   [self reload];
 }
