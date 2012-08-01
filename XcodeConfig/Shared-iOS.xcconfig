@@ -5,6 +5,9 @@ SDKROOT = iphoneos
 IPHONEOS_DEPLOYMENT_TARGET = 3.0
 //IPHONEOS_DEPLOYMENT_TARGET = 4.0
 
+PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/GHUnit
+PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/GHUnit
+
 // Testing with LLVM
 //GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 
