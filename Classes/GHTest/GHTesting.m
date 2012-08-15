@@ -251,12 +251,14 @@ static GHTesting *gSharedInstance;
         if (strstr(name, "test") == name) {
           returnType = method_copyReturnType(currMethod);
           if (returnType) {
+            // @gabriel from jjm - this does not appear to work, i am seeing
+            //                     memory leaks on exceptions
             // This handles disposing of returnType for us even if an
             // exception should fly. Length +1 for the terminator, not that
             // the length really matters here, as we never reference inside
             // the data block.
-            [NSData dataWithBytes:returnType
-                                 length:strlen(returnType) + 1];
+            //[NSData dataWithBytes:returnType
+            //                     length:strlen(returnType) + 1];
           }
         }
         // TODO: If a test class is a subclass of another, and they reuse the
@@ -273,8 +275,10 @@ static GHTesting *gSharedInstance;
           [invocation setSelector:sel];
           [invocations addObject:invocation];
         }
+        if (returnType != NULL) free(returnType);
       }
     }
+    if (methods != NULL) free(methods);
   }
   // Match SenTestKit and run everything in alphbetical order.
   [invocations sortUsingFunction:MethodSort context:nil];

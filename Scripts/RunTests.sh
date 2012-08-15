@@ -8,12 +8,12 @@ fi
 export DYLD_ROOT_PATH="$SDKROOT"
 export DYLD_FRAMEWORK_PATH="$CONFIGURATION_BUILD_DIR"
 export IPHONE_SIMULATOR_ROOT="$SDKROOT"
-#export CFFIXED_USER_HOME="$TEMP_FILES_DIR/iPhone Simulator User Dir" # Be compatible with google-toolbox-for-mac
+export CFFIXED_USER_HOME="$TEMP_FILES_DIR/iPhone Simulator User Dir" # Be compatible with google-toolbox-for-mac
 
-#if [ -d $"CFFIXED_USER_HOME" ]; then
-#  rm -rf "$CFFIXED_USER_HOME"
-#fi
-#mkdir -p "$CFFIXED_USER_HOME"
+if [ -d $"CFFIXED_USER_HOME" ]; then
+  rm -rf "$CFFIXED_USER_HOME"
+fi
+mkdir -p "$CFFIXED_USER_HOME"
 
 export NSDebugEnabled=YES
 export NSZombieEnabled=YES
