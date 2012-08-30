@@ -52,13 +52,10 @@
 		0083D10D13BCFE1700F71F21 /* GHTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D0DA13BCFE1700F71F21 /* GHTestViewModel.m */; };
 		0083D10F13BCFE1700F71F21 /* GHTestApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 0083D0DE13BCFE1700F71F21 /* GHTestApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0083D11013BCFE1700F71F21 /* GHTestApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D0DF13BCFE1700F71F21 /* GHTestApp.m */; };
-		0083D11113BCFE1700F71F21 /* GHTestApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0083D0E013BCFE1700F71F21 /* GHTestApp.xib */; };
 		0083D11213BCFE1700F71F21 /* GHTestOutlineViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0083D0E113BCFE1700F71F21 /* GHTestOutlineViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0083D11313BCFE1700F71F21 /* GHTestOutlineViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D0E213BCFE1700F71F21 /* GHTestOutlineViewModel.m */; };
-		0083D11413BCFE1700F71F21 /* GHTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0083D0E313BCFE1700F71F21 /* GHTestView.xib */; };
 		0083D11613BCFE1700F71F21 /* GHTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0083D0E513BCFE1700F71F21 /* GHTestViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0083D11713BCFE1700F71F21 /* GHTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D0E613BCFE1700F71F21 /* GHTestViewController.m */; };
-		0083D11813BCFE1700F71F21 /* GHTestWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0083D0E713BCFE1700F71F21 /* GHTestWindow.xib */; };
 		0083D11913BCFE1700F71F21 /* GHTestWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0083D0E813BCFE1700F71F21 /* GHTestWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0083D11A13BCFE1700F71F21 /* GHTestWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D0E913BCFE1700F71F21 /* GHTestWindowController.m */; };
 		0083D13413BCFFA400F71F21 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0083D08913BCFDDB00F71F21 /* Cocoa.framework */; };
@@ -764,9 +761,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0083D09413BCFDDB00F71F21 /* InfoPlist.strings in Resources */,
-				0083D11113BCFE1700F71F21 /* GHTestApp.xib in Resources */,
-				0083D11413BCFE1700F71F21 /* GHTestView.xib in Resources */,
-				0083D11813BCFE1700F71F21 /* GHTestWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -969,6 +963,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0083D11C13BCFE6D00F71F21 /* GHUnit-Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/..";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -984,11 +979,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0083D11D13BCFE6D00F71F21 /* GHUnit-Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/..";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = GHUnit;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../**";
 				WRAPPER_EXTENSION = framework;
