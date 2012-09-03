@@ -346,7 +346,6 @@
 		0083D1A813C28BE900F71F21 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0090D62F13C299B500C25A92 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		EB0DE700156A19D6002E3510 /* GHUnit-32.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "GHUnit-32.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB0DE701156A19D6002E3510 /* GHUnit copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GHUnit copy-Info.plist"; path = "/Users/eggers/freshfromrepo/vidhog/External/gh-unit/Project-MacOSX/GHUnit copy-Info.plist"; sourceTree = "<absolute>"; };
 		EB2475D815F3C89B0031239A /* GHUnit-64.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "GHUnit-64.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -397,7 +396,6 @@
 				0083D13513BCFFA400F71F21 /* Tests */,
 				0083D08813BCFDDB00F71F21 /* Frameworks */,
 				0083D08713BCFDDB00F71F21 /* Products */,
-				EB0DE701156A19D6002E3510 /* GHUnit copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1215,7 +1213,7 @@
 				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/..";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				INFOPLIST_FILE = "GHUnit copy-Info.plist";
+				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				PRODUCT_NAME = "GHUnit-32";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../**";
 				WRAPPER_EXTENSION = framework;
@@ -1230,7 +1228,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/..";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				INFOPLIST_FILE = "GHUnit copy-Info.plist";
+				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				PRODUCT_NAME = "GHUnit-32";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../**";
 				WRAPPER_EXTENSION = framework;
@@ -1246,7 +1244,7 @@
 				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/..";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				INFOPLIST_FILE = "GHUnit copy2-Info.plist";
+				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				PRODUCT_NAME = "GHUnit-64";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../**";
 				WRAPPER_EXTENSION = framework;
@@ -1262,7 +1260,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/..";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				INFOPLIST_FILE = "GHUnit copy2-Info.plist";
+				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "GHUnit-64";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../**";
