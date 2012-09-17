@@ -3,6 +3,10 @@
 GHUnit is a test framework for Mac OS X and iOS.
 It can be used standalone or with other testing frameworks like SenTestingKit or GTM.
 
+
+*Xcode 4.5 GM build has problems with running unit tests from the command line. This is being tracked at http://openradar.appspot.com/12306879 and https://devforums.apple.com/thread/167012 and https://github.com/gabriel/gh-unit/issues/96*
+
+
 ## Features
 
 - Run tests, breakpoint and interact directly with the XCode Debugger.
