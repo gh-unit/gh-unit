@@ -143,7 +143,7 @@ typedef enum {
   
 	NSInteger runIndex = 0;
   
-	while ([runUntilDate compare:[NSDate date]] == NSOrderedDescending) {
+	while ([runUntilDate compare:[NSDate dateWithTimeIntervalSinceNow:0]] == NSOrderedDescending) {
 		NSString *mode = [_runLoopModes objectAtIndex:(runIndex++ % [_runLoopModes count])];
     
 		[lock_ unlock];

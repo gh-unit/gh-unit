@@ -206,7 +206,7 @@ operationQueue=operationQueue_;
     });
 
   } else {
-    [self log:[NSString stringWithFormat:@"Cancelled\n", [source identifier]]];
+    [self log:@"Cancelled\n"];
   }
     
   if (cancelling_) {
