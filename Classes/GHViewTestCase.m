@@ -136,7 +136,9 @@ typedef struct {
   GHPixel *renderedImagePixels = (GHPixel *) calloc(1, image.size.width * image.size.height * sizeof(GHPixel));
   
   if (!imagePixels || !renderedImagePixels) {
-    GHUDebug(@"Unable to create pixel array for image comparieson.");
+    GHUDebug(@"Unable to create pixel array for image comparison.");
+    if (imagePixels) free(imagePixels);
+    if (renderedImagePixels) free(renderedImagePixels);
     return NO;
   }
   CGContextRef imageContext = CGBitmapContextCreate((void *)imagePixels,
@@ -159,6 +161,8 @@ typedef struct {
     GHUDebug(@"Unable to create image contexts for image comparison");
     CGContextRelease(imageContext);
     CGContextRelease(renderedImageContext);
+    free(imagePixels);
+    free(renderedImagePixels);
     return NO;
   }
   // Draw the image in the bitmap
