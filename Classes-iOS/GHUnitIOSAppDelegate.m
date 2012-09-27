@@ -51,6 +51,7 @@
   navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController];
   CGSize size = [[UIScreen mainScreen] bounds].size;
   window_ = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+  window_.rootViewController = navigationController_;
   [window_ addSubview:navigationController_.view];
   [window_ makeKeyAndVisible];
 
