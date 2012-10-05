@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
       retVal = [GHTestRunner run];
     } else {
       // To run all tests (from ENV)
-      GHTestApp *app = [[GHTestApp alloc] init];
+      [[GHTestApp alloc] init];
       // To run a different test suite:
       //GHTestSuite *suite = [GHTestSuite suiteWithTestFilter:@"GHSlowTest,GHAsyncTestCaseTest"];
       //GHTestApp *app = [[GHTestApp alloc] initWithSuite:suite];
