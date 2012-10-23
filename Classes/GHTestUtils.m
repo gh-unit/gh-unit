@@ -31,10 +31,10 @@
 
 void GHRunForInterval(NSTimeInterval interval) {
   NSTimeInterval checkEveryInterval = 0.01;
-  NSDate *runUntilDate = [NSDate dateWithTimeIntervalSinceNow:interval];
+  NSTimeInterval runUntilTime = [NSDate timeIntervalSinceReferenceDate] + interval;
   NSArray *runLoopModes = [NSArray arrayWithObjects:NSDefaultRunLoopMode, NSRunLoopCommonModes, nil];
   NSInteger runIndex = 0;
-  while ([runUntilDate compare:[NSDate dateWithTimeIntervalSinceNow:0]] == NSOrderedDescending) {
+  while ([NSDate timeIntervalSinceReferenceDate] < runUntilTime) {
     NSString *mode = [runLoopModes objectAtIndex:(runIndex++ % [runLoopModes count])];
     @autoreleasepool {
       if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
