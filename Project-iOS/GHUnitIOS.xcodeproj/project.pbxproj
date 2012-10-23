@@ -158,6 +158,11 @@
 		4228635914595D0400BF3ED2 /* GHImageDiffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228635714595D0400BF3ED2 /* GHImageDiffView.m */; };
 		423AF3371460965C00F04DC7 /* GHImageDiffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228635714595D0400BF3ED2 /* GHImageDiffView.m */; };
 		423AF3391460969000F04DC7 /* GHImageDiffView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4228635614595D0400BF3ED2 /* GHImageDiffView.h */; };
+		42A274AA16361D9500BA4C74 /* GHTestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 42A274A816361D9500BA4C74 /* GHTestUtils.h */; };
+		42A274AB16361D9500BA4C74 /* GHTestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 42A274A816361D9500BA4C74 /* GHTestUtils.h */; };
+		42A274AC16361D9500BA4C74 /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274A916361D9500BA4C74 /* GHTestUtils.m */; };
+		42A274AD16361D9500BA4C74 /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274A916361D9500BA4C74 /* GHTestUtils.m */; };
+		42A274B216361F4200BA4C74 /* GHTestUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274B116361F4200BA4C74 /* GHTestUtilsTest.m */; };
 		42A678EF1401423D0060D1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -279,6 +284,9 @@
 		422863101458BC1200BF3ED2 /* GHViewTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHViewTestCase.m; sourceTree = "<group>"; };
 		4228635614595D0400BF3ED2 /* GHImageDiffView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHImageDiffView.h; sourceTree = "<group>"; };
 		4228635714595D0400BF3ED2 /* GHImageDiffView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHImageDiffView.m; sourceTree = "<group>"; };
+		42A274A816361D9500BA4C74 /* GHTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestUtils.h; sourceTree = "<group>"; };
+		42A274A916361D9500BA4C74 /* GHTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestUtils.m; sourceTree = "<group>"; };
+		42A274B116361F4200BA4C74 /* GHTestUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestUtilsTest.m; sourceTree = "<group>"; };
 		42A678EE1401423D0060D1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -392,6 +400,8 @@
 				0041C62113BA7C9A0015FC22 /* GHAsyncTestCase.h */,
 				0041C62213BA7C9A0015FC22 /* GHAsyncTestCase.m */,
 				0041C63B13BA7C9A0015FC22 /* GHUnit.h */,
+				42A274A816361D9500BA4C74 /* GHTestUtils.h */,
+				42A274A916361D9500BA4C74 /* GHTestUtils.m */,
 				0041C63C13BA7C9A0015FC22 /* Mock */,
 				0041C64513BA7C9A0015FC22 /* SharedUI */,
 			);
@@ -547,6 +557,7 @@
 				00C9798C13BA809600FC285C /* GHTestOnMainThread.m */,
 				42187C1715BF472300E702B6 /* GHUnitIOSTestViewTest.m */,
 				00C9798D13BA809600FC285C /* GHUnitIOSTestMain.m */,
+				42A274B116361F4200BA4C74 /* GHTestUtilsTest.m */,
 				00C9798E13BA809600FC285C /* GTM */,
 			);
 			name = Tests;
@@ -607,6 +618,7 @@
 				422863111458BC1200BF3ED2 /* GHViewTestCase.h in Headers */,
 				4228635814595D0400BF3ED2 /* GHImageDiffView.h in Headers */,
 				00CEA041156C2E0B00BA3276 /* GHUIImageViewControl.h in Headers */,
+				42A274AA16361D9500BA4C74 /* GHTestUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +656,7 @@
 				422863121458BC1200BF3ED2 /* GHViewTestCase.h in Headers */,
 				00CEA042156C2E0B00BA3276 /* GHUIImageViewControl.h in Headers */,
 				423AF3391460969000F04DC7 /* GHImageDiffView.h in Headers */,
+				42A274AB16361D9500BA4C74 /* GHTestUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,6 +835,7 @@
 				422863131458BC1200BF3ED2 /* GHViewTestCase.m in Sources */,
 				4228635914595D0400BF3ED2 /* GHImageDiffView.m in Sources */,
 				00CEA043156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */,
+				42A274AC16361D9500BA4C74 /* GHTestUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,6 +869,7 @@
 				422863141458BC1200BF3ED2 /* GHViewTestCase.m in Sources */,
 				00CEA044156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */,
 				423AF3371460965C00F04DC7 /* GHImageDiffView.m in Sources */,
+				42A274AD16361D9500BA4C74 /* GHTestUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +895,7 @@
 				00C979A213BA809600FC285C /* GHUnitIOSTestMain.m in Sources */,
 				00C979A313BA809600FC285C /* GTMSenTestCase.m in Sources */,
 				42187C1815BF472300E702B6 /* GHUnitIOSTestViewTest.m in Sources */,
+				42A274B216361F4200BA4C74 /* GHTestUtilsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
