@@ -38,7 +38,7 @@
 
  @param interval Interval for the main loop to run
  */
-void GHRunForInterval(NSTimeInterval interval);
+void GHRunForInterval(CFTimeInterval interval);
 
 /*!
  Keep running the main runloop until whileBlock returns NO or timeout is reached.
@@ -48,4 +48,4 @@ void GHRunForInterval(NSTimeInterval interval);
  @param timeout Maximum time to run the main loop before giving up
  @param whileBlock Block that returns YES if the main runloop should keep running
  */
-void GHRunUntilTimeoutWhileBlock(NSTimeInterval timeout, BOOL(^whileBlock)());
+void GHRunUntilTimeoutWhileBlock(CFTimeInterval timeout, BOOL(^whileBlock)());

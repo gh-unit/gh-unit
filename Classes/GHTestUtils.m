@@ -28,25 +28,31 @@
 //
 
 #import "GHTestUtils.h"
+#import <QuartzCore/CoreAnimation.h>
 
-void GHRunForInterval(NSTimeInterval interval) {
-  NSTimeInterval checkEveryInterval = 0.01;
-  NSTimeInterval runUntilTime = [NSDate timeIntervalSinceReferenceDate] + interval;
-  NSArray *runLoopModes = [NSArray arrayWithObjects:NSDefaultRunLoopMode, NSRunLoopCommonModes, nil];
+void GHRunForInterval(CFTimeInterval interval) {
+  CFTimeInterval checkEveryInterval = 0.01;
+  // We use CACurrentMediaTime() instead of [NSDate timeIntervalSinceReferenceDate] here for two reasons
+  // 1. One testing strategy for time-dependent code is to mock NSDate methods using swizzling.
+  // 2. CACurrentMediaTime() is better for relative timing since it's not subject to network time synchronization.
+  CFTimeInterval runUntilTime = CACurrentMediaTime() + interval;
+  NSArray *runLoopModes = @[(NSString *)kCFRunLoopDefaultMode, (NSString *)kCFRunLoopCommonModes];
   NSInteger runIndex = 0;
-  while ([NSDate timeIntervalSinceReferenceDate] < runUntilTime) {
+  while (CACurrentMediaTime() < runUntilTime) {
     NSString *mode = [runLoopModes objectAtIndex:(runIndex++ % [runLoopModes count])];
     @autoreleasepool {
-      if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
+      SInt32 runLoopStatus = CFRunLoopRunInMode((__bridge CFStringRef)mode, checkEveryInterval, false);
+      if (!mode || (runLoopStatus == kCFRunLoopRunFinished)) {
         // If there were no run loop sources or timers then we should sleep for the interval
-        [NSThread sleepForTimeInterval:checkEveryInterval];
+        usleep(checkEveryInterval * USEC_PER_SEC);
+      }
     }
   }
 }
 
-void GHRunUntilTimeoutWhileBlock(NSTimeInterval timeout, BOOL(^whileBlock)()) {
-  NSTimeInterval endTime = [NSDate timeIntervalSinceReferenceDate] + timeout;
-  while (whileBlock() && ([NSDate timeIntervalSinceReferenceDate] < endTime)) {
+void GHRunUntilTimeoutWhileBlock(CFTimeInterval timeout, BOOL(^whileBlock)()) {
+  CFTimeInterval endTime = CACurrentMediaTime() + timeout;
+  while (whileBlock() && (CACurrentMediaTime() < endTime)) {
     GHRunForInterval(0.1);
   }
 }
