@@ -85,11 +85,14 @@ typedef struct {
   NSString *filePath = [self approvedTestImagePathForFilename:filename];
   GHUDebug(@"Trying to load image at path %@", filePath);
   // First look in the documents directory for the image
-  UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+  UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfFile:filePath] scale:[UIScreen mainScreen].scale];
   // Otherwise look in the app bundle
   if (image) GHUDebug(@"Found image in documents directory");
   if (!image) {
-    image = [UIImage imageNamed:filename];
+    NSString* fileName = [[filename lastPathComponent] stringByDeletingPathExtension];
+    NSString* extension = [filename pathExtension];
+    filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
+    image = [UIImage imageWithData:[NSData dataWithContentsOfFile:filePath] scale:[UIScreen mainScreen].scale];
     if (image) GHUDebug(@"Found image in app bundle");
   }
   return image;
@@ -115,7 +118,7 @@ typedef struct {
 
 + (UIImage *)imageWithView:(UIView *)view {
   [view setNeedsDisplay];
-  UIGraphicsBeginImageContext(view.frame.size);
+  UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, [[UIScreen mainScreen] scale]);
   CALayer *layer = view.layer;
   CGContextRef context = UIGraphicsGetCurrentContext();
   [layer renderInContext:context];
