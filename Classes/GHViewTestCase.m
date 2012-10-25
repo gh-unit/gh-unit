@@ -85,14 +85,13 @@ typedef struct {
   NSString *filePath = [self approvedTestImagePathForFilename:filename];
   GHUDebug(@"Trying to load image at path %@", filePath);
   // First look in the documents directory for the image
-  UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfFile:filePath] scale:[UIScreen mainScreen].scale];
+  UIImage *image = [GHViewTestCase _imageFromFilePath:filePath];
   // Otherwise look in the app bundle
   if (image) GHUDebug(@"Found image in documents directory");
   if (!image) {
-    NSString* fileName = [[filename lastPathComponent] stringByDeletingPathExtension];
     NSString* extension = [filename pathExtension];
-    filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
-    image = [UIImage imageWithData:[NSData dataWithContentsOfFile:filePath] scale:[UIScreen mainScreen].scale];
+    filePath = [[NSBundle mainBundle] pathForResource:[filename stringByDeletingPathExtension] ofType:extension];
+    image = [GHViewTestCase _imageFromFilePath:filePath];
     if (image) GHUDebug(@"Found image in app bundle");
   }
   return image;
@@ -224,6 +223,21 @@ typedef struct {
 
 - (void)_setUp {
   imageVerifyCount_ = 0;
+}
+
++ (UIImage *)_imageFromFilePath:(NSString *)filePath {
+  UIImage *image;
+    
+  NSData *imageData = [NSData dataWithContentsOfFile:filePath];
+  CGFloat scale = [UIScreen mainScreen].scale;
+  if ([UIImage respondsToSelector:@selector(imageWithData:scale:)]) {
+    image = [UIImage imageWithData:imageData scale:scale];
+  }
+  else {
+    UIImage *imageWithoutScale = [UIImage imageWithData:imageData];
+    image = [UIImage imageWithCGImage:imageWithoutScale.CGImage scale:scale orientation:UIImageOrientationUp];
+  }
+  return image;
 }
 
 #pragma mark Public
