@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00271A3813C28D1F00B06B98 /* GHUnit-NoXIB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0083D08613BCFDDB00F71F21 /* GHUnit-NoXIB.framework */; };
+		00271A3813C28D1F00B06B98 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0083D08613BCFDDB00F71F21 /* GHUnit.framework */; };
 		00271A3913C294F800B06B98 /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D0DC13BCFE1700F71F21 /* GHUnitTestMain.m */; };
 		004E186E13C518C1007D842B /* GTMGarbageCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 004E186B13C518C1007D842B /* GTMGarbageCollection.h */; };
 		004E186F13C518C1007D842B /* GTMNSString+XML.h in Headers */ = {isa = PBXBuildFile; fileRef = 004E186C13C518C1007D842B /* GTMNSString+XML.h */; };
@@ -60,7 +60,7 @@
 		0083D11A13BCFE1700F71F21 /* GHTestWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D0E913BCFE1700F71F21 /* GHTestWindowController.m */; };
 		0083D13413BCFFA400F71F21 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0083D08913BCFDDB00F71F21 /* Cocoa.framework */; };
 		0083D13A13BCFFA400F71F21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0083D13813BCFFA400F71F21 /* InfoPlist.strings */; };
-		0083D15F13C28A2E00F71F21 /* GHUnit-NoXIB.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0083D08613BCFDDB00F71F21 /* GHUnit-NoXIB.framework */; };
+		0083D15F13C28A2E00F71F21 /* GHUnit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0083D08613BCFDDB00F71F21 /* GHUnit.framework */; };
 		0083D17B13C28B3700F71F21 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 0083D16513C28B3700F71F21 /* example.json */; };
 		0083D17C13C28B3700F71F21 /* GHAsyncTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16613C28B3700F71F21 /* GHAsyncTestCaseTest.m */; };
 		0083D17D13C28B3700F71F21 /* GHGTMTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16713C28B3700F71F21 /* GHGTMTestCaseTest.m */; };
@@ -237,7 +237,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0083D15F13C28A2E00F71F21 /* GHUnit-NoXIB.framework in CopyFiles */,
+				0083D15F13C28A2E00F71F21 /* GHUnit.framework in CopyFiles */,
 				0083D1AA13C28BFA00F71F21 /* SenTestingKit.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,7 +249,7 @@
 		004E186B13C518C1007D842B /* GTMGarbageCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMGarbageCollection.h; sourceTree = "<group>"; };
 		004E186C13C518C1007D842B /* GTMNSString+XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+XML.h"; sourceTree = "<group>"; };
 		004E186D13C518C1007D842B /* GTMNSString+XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+XML.m"; sourceTree = "<group>"; };
-		0083D08613BCFDDB00F71F21 /* GHUnit-NoXIB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "GHUnit-NoXIB.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0083D08613BCFDDB00F71F21 /* GHUnit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GHUnit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0083D08913BCFDDB00F71F21 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0083D08C13BCFDDB00F71F21 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0083D08D13BCFDDB00F71F21 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -364,7 +364,7 @@
 			files = (
 				0083D1A913C28BE900F71F21 /* SenTestingKit.framework in Frameworks */,
 				0083D13413BCFFA400F71F21 /* Cocoa.framework in Frameworks */,
-				00271A3813C28D1F00B06B98 /* GHUnit-NoXIB.framework in Frameworks */,
+				00271A3813C28D1F00B06B98 /* GHUnit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +402,7 @@
 		0083D08713BCFDDB00F71F21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0083D08613BCFDDB00F71F21 /* GHUnit-NoXIB.framework */,
+				0083D08613BCFDDB00F71F21 /* GHUnit.framework */,
 				0083D13213BCFFA400F71F21 /* Tests.app */,
 				EB0DE700156A19D6002E3510 /* GHUnit-32.framework */,
 				EB2475D815F3C89B0031239A /* GHUnit.framework */,
@@ -796,7 +796,7 @@
 			);
 			name = "GHUnit-NoXIB";
 			productName = GHUnitMacOSX;
-			productReference = 0083D08613BCFDDB00F71F21 /* GHUnit-NoXIB.framework */;
+			productReference = 0083D08613BCFDDB00F71F21 /* GHUnit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		0083D13113BCFFA400F71F21 /* Tests */ = {
@@ -1143,7 +1143,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "GHUnit-NoXIB";
+				PRODUCT_NAME = GHUnit;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../**";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1159,7 +1159,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "GHUnit-NoXIB";
+				PRODUCT_NAME = GHUnit;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/../**";
 				WRAPPER_EXTENSION = framework;
 			};
