@@ -41,11 +41,10 @@
   return self;
 }
 
-
-- (void)loadView {
-  testView_ = [[GHUnitIOSTestView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+- (void)viewDidLoad {
+  testView_ = [[GHUnitIOSTestView alloc] initWithFrame:self.view.bounds];
   testView_.controlDelegate = self;
-  self.view = testView_;
+  [self.view addSubview:testView_];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

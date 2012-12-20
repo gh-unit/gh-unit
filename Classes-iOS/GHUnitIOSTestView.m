@@ -44,7 +44,7 @@
     const int AUTO_ADJUST = 100;
 
     textLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(PADDING, 0, frame.size.width - 2*PADDING, AUTO_ADJUST)];
-    textLabel_.font = [UIFont systemFontOfSize:12];
+    textLabel_.font = [UIFont fontWithName:@"Courier" size:12.0];
     textLabel_.textColor = [UIColor blackColor];
     textLabel_.numberOfLines = 0;
     [self addSubview:textLabel_];
@@ -56,7 +56,7 @@
     savedImageView_.hidden = YES;
     [self addSubview:savedImageView_];
 
-    renderedImageView_ = [[GHUIImageViewControl alloc] initWithFrame:CGRectMake(IMG_WIDTH+PADDING, PADDING, IMG_WIDTH, AUTO_ADJUST)];
+    renderedImageView_ = [[GHUIImageViewControl alloc] initWithFrame:CGRectMake(IMG_WIDTH + 2*PADDING, PADDING, IMG_WIDTH, AUTO_ADJUST)];
     [renderedImageView_ addTarget:self action:@selector(_selectRenderedImage) forControlEvents:UIControlEventTouchUpInside];
     [renderedImageView_.layer setBorderWidth:2.0];
     [renderedImageView_.layer setBorderColor:[UIColor blackColor].CGColor];
@@ -64,7 +64,7 @@
     [self addSubview:renderedImageView_];
 
     approveButton_ = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    approveButton_.frame = CGRectMake(PADDING, PADDING+AUTO_ADJUST, frame.size.width, BTN_HEIGHT);
+    approveButton_.frame = CGRectMake(PADDING, PADDING+AUTO_ADJUST, frame.size.width-2*PADDING, BTN_HEIGHT);
     [approveButton_ addTarget:self action:@selector(_approveChange) forControlEvents:UIControlEventTouchUpInside];
     approveButton_.hidden = YES;
     [approveButton_ setTitle:@"Approve this change" forState:UIControlStateNormal];
