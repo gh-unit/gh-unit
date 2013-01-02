@@ -37,8 +37,10 @@
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
     self.backgroundColor = [UIColor whiteColor];
+	 self.contentMode = UIViewContentModeScaleToFill;
 
-    textLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 100)];
+    textLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, frame.size.width - 20, 100)];
+	 textLabel_.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     textLabel_.font = [UIFont systemFontOfSize:12];
     textLabel_.textColor = [UIColor blackColor];
     textLabel_.numberOfLines = 0;

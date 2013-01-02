@@ -56,8 +56,10 @@
   id<GHTest> test = [testNode_.test copyWithZone:NULL];
   NSLog(@"Re-running: %@", test);
   [testView_ setText:@"Running..."];
-  [test run:GHTestOptionForceSetUpTearDownClass];  
-  [self setTest:test];
+	[self setTest:test];
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+		[test run:GHTestOptionForceSetUpTearDownClass];
+	});
 }
 
 - (void)_showImageDiff {
