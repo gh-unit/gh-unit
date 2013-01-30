@@ -32,18 +32,17 @@
 #import "GHTestSuite.h"
 #import "GHTestMacros.h"
 #import "GHTestRunner.h"
-
 #import "GHTest.h"
 #import "GHTesting.h"
 #import "GHTestOperation.h"
 #import "GHTestGroup.h"
 #import "GHTest+JUnitXML.h"
 #import "GHTestGroup+JUnitXML.h"
-#import "GHTestUtils.h"
 #import "NSException+GHTestFailureExceptions.h"
 #import "NSValue+GHValueFormatter.h"
 
 #if TARGET_OS_IPHONE
+#import "GHTestUtils.h"
 #import "GHUnitIOSAppDelegate.h"
 #import "GHViewTestCase.h"
 #endif
