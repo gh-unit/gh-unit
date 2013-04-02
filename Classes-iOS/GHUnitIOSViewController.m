@@ -118,10 +118,9 @@ NSString *const GHUnitFilterKey = @"Filter";
 	 ////////////////////////////////////
 	 // Default Class Suite.
 	 else {
-         dataSource_ = [[GHUnitIOSTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[GHTestSuite suiteFromEnv]];
+         dataSource_ = [[GHUnitIPhoneTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[GHTestSuite suiteFromEnv]];
 	 }
      [dataSource_ loadDefaults];
-	 [dataSource_ loadDefaults];
  }
  return dataSource_;
 }
