@@ -76,21 +76,12 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 + (GHTestGroup *)testGroupFromTestCaseClassName:(NSString*)anClassName delegate:(id<GHTestDelegate>)delegate {
-	return [[[GHTestGroup alloc] initWithTestCase:[self testCaseFromClassName:anClassName]
-										 delegate:delegate] autorelease];
+	return [[GHTestGroup alloc] initWithTestCase:[self testCaseFromClassName:anClassName]
+                                        delegate:delegate];
 }
 
 + (GHTestCase*)testCaseFromClassName:(NSString*)anClassName {
-	return [[[NSClassFromString(anClassName) alloc] init] autorelease];
-}
-
-+ (GHTestGroup *)testGroupFromTestCaseClassName:(NSString*)anClassName delegate:(id<GHTestDelegate>)delegate {
-	return [[[GHTestGroup alloc] initWithTestCase:[self testCaseFromClassName:anClassName]
-										 delegate:delegate] autorelease];
-}
-
-+ (GHTestCase*)testCaseFromClassName:(NSString*)anClassName {
-	return [[[NSClassFromString(anClassName) alloc] init] autorelease];
+	return [[NSClassFromString(anClassName) alloc] init];
 }
 
 - (void)dealloc {
