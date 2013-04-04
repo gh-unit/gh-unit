@@ -91,8 +91,34 @@ NSString *const GHUnitFilterKey = @"Filter";
 
 - (GHUnitIOSTableViewDataSource *)dataSource {
   if (!dataSource_) {
-    dataSource_ = [[GHUnitIOSTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[GHTestSuite suiteFromEnv]];  
-    [dataSource_ loadDefaults];    
+      // Conditionally grab an custom Test Suite from GH_UNIT_CLASSSUITE environment.
+      const char* cClassSuite = getenv("GH_UNIT_CLASSSUITE");
+      if (cClassSuite) {
+          NSString *name = [NSString stringWithUTF8String:cClassSuite];
+          Class customClassSuite = NSClassFromString( name );
+          
+          ////////////////////////////////////	 ////////////////////////////////////
+          // Init the suite.
+          GHTestSuite *anSuite = [[customClassSuite alloc] initWithName:name delegate:nil];
+          
+          // If can't initialize, raise exception.
+          if ( anSuite == nil ) {
+              [NSException raise:NSInternalInconsistencyException
+                          format:@"The Test Suite Class '%@' defined in 'GH_UNIT_CLASSSUITE' enviroment variable can't be initiated. Please check!", name];
+              return nil;
+          }
+          
+          ////////////////////////////////////
+          // Init the Data Source.
+          dataSource_ = [[GHUnitIOSTableViewDataSource alloc] initWithIdentifier:name suite:anSuite];
+      } 
+      
+      ////////////////////////////////////
+      // Default Class Suite.
+      else {
+        dataSource_ = [[GHUnitIOSTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[GHTestSuite suiteFromEnv]];  
+        [dataSource_ loadDefaults];
+      }
   }
   return dataSource_;
 }

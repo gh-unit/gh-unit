@@ -75,6 +75,15 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   return [[GHTestGroup alloc] initWithTestCase:testCase delegate:delegate];
 }
 
++ (GHTestGroup *)testGroupFromTestCaseClassName:(NSString*)anClassName delegate:(id<GHTestDelegate>)delegate {
+	return [[GHTestGroup alloc] initWithTestCase:[self testCaseFromClassName:anClassName]
+                                        delegate:delegate];
+}
+
++ (GHTestCase*)testCaseFromClassName:(NSString*)anClassName {
+	return [[NSClassFromString(anClassName) alloc] init];
+}
+
 - (void)dealloc {
   for(id<GHTest> test in children_)
     [test setDelegate:nil];
