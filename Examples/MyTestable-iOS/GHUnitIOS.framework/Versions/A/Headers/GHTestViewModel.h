@@ -192,6 +192,7 @@ typedef enum {
 - (NSString *)nameWithStatus;
 
 - (GHTestStatus)status;
+- (void) setStatus: (GHTestStatus) status;
 - (NSString *)statusString;
 - (NSString *)stackTrace;
 - (NSString *)exceptionFilename;
@@ -199,6 +200,7 @@ typedef enum {
 - (NSString *)log;
 - (BOOL)isRunning;
 - (BOOL)isDisabled;
+- (void) setDisabled:(BOOL) disabled;
 - (BOOL)isHidden;
 - (BOOL)isEnded;
 - (BOOL)isGroupTest; // YES if test has "sub tests"

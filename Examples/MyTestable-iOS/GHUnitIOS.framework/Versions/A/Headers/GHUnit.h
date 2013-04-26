@@ -39,11 +39,11 @@
 #import "GHTestGroup.h"
 #import "GHTest+JUnitXML.h"
 #import "GHTestGroup+JUnitXML.h"
+#import "GHTestUtils.h"
 #import "NSException+GHTestFailureExceptions.h"
 #import "NSValue+GHValueFormatter.h"
 
 #if TARGET_OS_IPHONE
-#import "GHUnitIOSAppDelegate.h"
 #import "GHViewTestCase.h"
 #endif
 

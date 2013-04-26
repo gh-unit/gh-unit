@@ -33,12 +33,30 @@
 /*
  Table view data source for iOS test application.
  */
+
+@protocol GHUnitIOSTableViewDataSourceDelegate  <NSObject>
+
+@required
+- (void) updateRunButtonState: (BOOL) enable;
+
+@end
 @interface GHUnitIOSTableViewDataSource : GHTestViewModel <UITableViewDataSource> {
-  
+      UITableView * myTableView;
 }
+
+//@property(nonatomic, assign) BOOL isHack;
+@property (nonatomic, assign) id <GHUnitIOSTableViewDataSourceDelegate> delegate;
 
 - (GHTestNode *)nodeForIndexPath:(NSIndexPath *)indexPath;
 
 - (void)setSelectedForAllNodes:(BOOL)selected;
+- (BOOL)isANodesSelected;
+- (void)setSelectedForAllNodesAndUpdateGHTestStatus:(BOOL)selected;
+//- (int)numberOfNode;
+//- (int)numberOfSelectedNode;
+//- (void) setMaxNodeSelected;//hack, because gh-unit can't run when selected 2 testcase
+//- (void) setMaxNodeStatusNone;
+
+//- (GHTestNode *) endNode;
 
 @end

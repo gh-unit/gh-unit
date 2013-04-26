@@ -1,0 +1,22 @@
+GHUnit is a test framework for Objective-C (Mac OS X 10.5 and above and iPhone 3.x and above).
+It can be used with SenTestingKit, GTM or all by itself. 
+
+For example, your test cases will be run if they subclass any of the following:
+
+- GHTestCase
+- SenTestCase
+- GTMTestCase
+
+## Using GHUnit
+
+How to [install, create and run tests](docs/index.html).
+
+## Other Links
+
+- [GHUnit on github](http://github.com/gabriel/gh-unit)
+- [Online documentation](http://gabriel.github.com/gh-unit/)
+
+## Install (Docset)
+
+- Open Xcode, Preferences and select the Documentation tab.
+- Select the plus icon (bottom left) and specify: `http://gabriel.github.com/gh-unit/publish/me.rel.GHUnit.atom`

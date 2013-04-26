@@ -35,7 +35,7 @@
 /*
  Main view controller for the iOS test application.
  */
-@interface GHUnitIOSViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate, UISearchBarDelegate> {
+@interface GHUnitIOSViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate, UISearchBarDelegate, GHUnitIOSTableViewDataSourceDelegate, GHUnitIOSTestViewControllerDelegate> {
     
   GHUnitIOSView *view_;
 
@@ -43,10 +43,12 @@
   GHTestSuite *suite_;
   
   UIBarButtonItem *runButton_;
+  UIBarButtonItem *selectAllNoneButton_;
   
   // If set then we will no longer auto scroll as tests are run
   BOOL userDidDrag_;
-  
+  GHUnitIOSTestViewController *testViewController;
+  BOOL isHack;
 }
 
 @property (strong, nonatomic) GHTestSuite *suite;

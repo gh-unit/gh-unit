@@ -35,6 +35,13 @@
 /*
  View controller for a test.
  */
+
+@protocol GHUnitIOSTestViewControllerDelegate <NSObject>
+
+@required
+- (void) setNullTestViewController;
+
+@end
 @interface GHUnitIOSTestViewController : UIViewController <GHTestRunnerDelegate, GHUnitIOSTestViewDelegate> {
   GHUnitIOSTestView *testView_;
   GHImageDiffView *imageDiffView_;
@@ -42,8 +49,10 @@
   GHTestNode *testNode_;
   
   GHTestRunner *runner_;
+  BOOL isTestSelected;
 }
 
-- (void)setTest:(id<GHTest>)test;
+@property (nonatomic, assign) id <GHUnitIOSTestViewControllerDelegate> delegate;
+- (void)setTest:(id<GHTest>)test isSelected: (BOOL) isSelected;
 
 @end
