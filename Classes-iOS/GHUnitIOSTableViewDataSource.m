@@ -150,24 +150,27 @@
     GHTestNode *node = [self nodeForIndexPath:indexPath];
     // NSLog(@"indexPath.section %d \n", indexPath.section);
     static NSString *CellIdentifier = @"ReviewFeedViewItem";
+    static NSInteger switchTag = 100;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell)
+    if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+
+        UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(0.0f, 5.0f, 60.0f, 25.0f)];
+        [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+        switchView.tag = switchTag;
+        [cell addSubview:switchView];
+    }
     cell.textLabel.textAlignment = UITextAlignmentRight;
-    
+
+    UISwitch *switchView = (id)[cell viewWithTag:switchTag];
+    [switchView setOn:node.isSelected animated:NO];
+
     //UITableViewCellAccessoryType accessoryType = UITableViewCellAccessoryNone;
     //if (self.isEditing && node.isSelected) accessoryType = UITableViewCellAccessoryCheckmark;
     //else if (node.isEnded)
         
     //accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-    //vanloi999
-    UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(0.0f, 5.0f, 60.0f, 25.0f)];
-    //cell.accessoryView = switchView;
-    [switchView setOn:node.isSelected animated:NO];
-    [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    [cell addSubview:switchView];
     if (editing_) {
         cell.textLabel.text = node.name;
     } else {
