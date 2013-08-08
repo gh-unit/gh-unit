@@ -104,6 +104,8 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 	[response setStatusCode:statusCode];
 	[self receiveResponse:response afterDelay:delay];
 	[self receiveData:data afterDelay:delay];
+  NSCachedURLResponse *cachedResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+  [delegate_ connection:(NSURLConnection *)self willCacheResponse:cachedResponse];
 	[self finishAfterDelay:delay];	
 }
 
