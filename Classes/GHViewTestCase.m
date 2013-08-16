@@ -39,20 +39,30 @@ typedef struct {
 
 #pragma mark File Operations
 
++ (NSString *)documentsDirectory {
+  // When run from the command line, the documents directory is the User's documents directory,
+  // so allow it to be overriden through an environment variable.
+  if (getenv("GHUNIT_CLI") && getenv("GHUNIT_DOCS_DIR")) {
+    return @(getenv("GHUNIT_DOCS_DIR"));
+  }
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  return [paths objectAtIndex:0];
+}
+
 + (NSString *)approvedTestImagesDirectory {
-  return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/TestImages"];
+  return [[self documentsDirectory] stringByAppendingPathComponent:@"TestImages"];
 }
 
 + (NSString *)failedTestImagesDirectory {
-  return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/FailedTestImages"];
+  return [[self documentsDirectory] stringByAppendingPathComponent:@"FailedTestImages"];
 }
 
 + (NSString *)approvedTestImagePathForFilename:(NSString *)filename {
-  return [NSString stringWithFormat:@"%@/%@", [self approvedTestImagesDirectory], filename];
+  return [[self approvedTestImagesDirectory] stringByAppendingPathComponent:filename];
 }
 
 + (NSString *)failedTestImagePathForFilename:(NSString *)filename {
-  return [NSString stringWithFormat:@"%@/%@", [self failedTestImagesDirectory], filename];
+  return [[self failedTestImagesDirectory] stringByAppendingPathComponent:filename];
 }
 
 + (void)createDirectory:(NSString *)directory {
