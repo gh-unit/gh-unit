@@ -224,9 +224,11 @@
 - (void) switchChanged:(id)sender {
     
     UISwitch *switchInCell = (UISwitch *)sender;
-    UITableViewCell * cell = (UITableViewCell*) switchInCell.superview;
-    
-    NSIndexPath * indexPath = [myTableView indexPathForCell:cell];
+	UIView *cell = switchInCell.superview;
+	while (![cell isKindOfClass:[UITableViewCell class]]) {
+		cell = [cell superview];
+	}
+    NSIndexPath * indexPath = [myTableView indexPathForCell:(UITableViewCell*)cell];
     GHTestNode *sectionNode = [[[self root] children] objectAtIndex:indexPath.section];
     GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
     NSLog(@"switchChanged %@ \n", switchInCell.on?@"YES":@"NO");
