@@ -180,31 +180,14 @@ typedef struct {
   // Draw the image in the bitmap
   CGContextDrawImage(imageContext, CGRectMake(0.0f, 0.0f, image.size.width, image.size.height), image.CGImage);
   CGContextDrawImage(renderedImageContext, CGRectMake(0.0f, 0.0f, renderedImage.size.width, renderedImage.size.height), renderedImage.CGImage);
-
-  for (int x = 0; x < image.size.width; x++) {
-    for (int y = 0; y < image.size.height; y++) {
-      NSInteger pixelIndex = x * y;
-      if ((imagePixels[pixelIndex].r != renderedImagePixels[pixelIndex].r)
-          || (imagePixels[pixelIndex].g != renderedImagePixels[pixelIndex].g)
-          || (imagePixels[pixelIndex].b != renderedImagePixels[pixelIndex].b)) {
-        NSLog(@"Image was different at pixel (%d, %d). Old was (r%d, g%d, b%d), new was (r%d, g%d, b%d)", x, y,
-              imagePixels[pixelIndex].r, imagePixels[pixelIndex].g, imagePixels[pixelIndex].b,
-              renderedImagePixels[pixelIndex].r, renderedImagePixels[pixelIndex].g, renderedImagePixels[pixelIndex].b);
-        CGContextRelease(imageContext);
-        CGContextRelease(renderedImageContext);
-        free(imagePixels);
-        free(renderedImagePixels);
-        return NO;
-      }
-    }
-  }
-  
   CGContextRelease(imageContext);
   CGContextRelease(renderedImageContext);
+  
+  // compare image
+  BOOL compareVal = (memcmp(imagePixels, renderedImagePixels, image.size.width * image.size.height * sizeof(GHPixel)) == 0);
   free(imagePixels);
   free(renderedImagePixels);
-  
-  return YES;
+  return compareVal;
 }
 
 + (UIImage *)diffWithImage:(UIImage *)image renderedImage:(UIImage *)renderedImage {
