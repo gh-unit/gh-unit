@@ -31,10 +31,6 @@
 #import "GHUnit.h"
 #import <QuartzCore/QuartzCore.h>
 
-typedef struct {
-  unsigned char r, g, b, a;
-} GHPixel;
-
 @implementation GHViewTestCase
 
 #pragma mark File Operations
@@ -139,13 +135,20 @@ typedef struct {
 + (BOOL)compareImage:(UIImage *)image withRenderedImage:(UIImage *)renderedImage {
   if (!image || !renderedImage) return NO;
   // If the images are different sizes, just fail
-  if ((image.size.width != renderedImage.size.width) || (image.size.height != renderedImage.size.height)) {
+  if (CGImageGetWidth(image.CGImage) != CGImageGetWidth(renderedImage.CGImage) || CGImageGetHeight(image.CGImage) != CGImageGetHeight(renderedImage.CGImage)) {
     GHUDebug(@"Images are differnt sizes");
     return NO;
   }
+  
+  // CALayer's renderInContext: can add byte padding, so we just choose
+  // the smaller number of bytes per row, since we already know the
+  // images are the same size at this point
+  size_t bytesPerRow = MIN(CGImageGetBytesPerRow(image.CGImage), CGImageGetBytesPerRow(renderedImage.CGImage));
+  
   // Allocate a buffer big enough to hold all the pixels
-  GHPixel *imagePixels = (GHPixel *) calloc(1, image.size.width * image.size.height * sizeof(GHPixel));
-  GHPixel *renderedImagePixels = (GHPixel *) calloc(1, image.size.width * image.size.height * sizeof(GHPixel));
+  size_t imageSizeBytes = CGImageGetHeight(image.CGImage) * bytesPerRow;
+  void *imagePixels = calloc(1, imageSizeBytes);
+  void *renderedImagePixels = calloc(1, imageSizeBytes);
   
   if (!imagePixels || !renderedImagePixels) {
     GHUDebug(@"Unable to create pixel array for image comparison.");
@@ -153,22 +156,23 @@ typedef struct {
     if (renderedImagePixels) free(renderedImagePixels);
     return NO;
   }
-  CGContextRef imageContext = CGBitmapContextCreate((void *)imagePixels,
-                                                    image.size.width,
-                                                    image.size.height,
-                                                    8,
-                                                    image.size.width * 4,
+  
+  CGContextRef imageContext = CGBitmapContextCreate(imagePixels,
+                                                    CGImageGetWidth(image.CGImage),
+                                                    CGImageGetHeight(image.CGImage),
+                                                    CGImageGetBitsPerComponent(image.CGImage),
+                                                    bytesPerRow,
                                                     CGImageGetColorSpace(image.CGImage),
                                                     kCGImageAlphaPremultipliedLast
                                                     );
-  CGContextRef renderedImageContext = CGBitmapContextCreate((void *)renderedImagePixels,
-                                                       renderedImage.size.width,
-                                                       renderedImage.size.height,
-                                                       8,
-                                                       renderedImage.size.width * 4,
-                                                       CGImageGetColorSpace(renderedImage.CGImage),
-                                                       kCGImageAlphaPremultipliedLast
-                                                       );
+  CGContextRef renderedImageContext = CGBitmapContextCreate(renderedImagePixels,
+                                                    CGImageGetWidth(renderedImage.CGImage),
+                                                    CGImageGetHeight(renderedImage.CGImage),
+                                                    CGImageGetBitsPerComponent(renderedImage.CGImage),
+                                                    bytesPerRow,
+                                                    CGImageGetColorSpace(renderedImage.CGImage),
+                                                    kCGImageAlphaPremultipliedLast
+                                                    );
   if (!imageContext || !renderedImageContext) {
     GHUDebug(@"Unable to create image contexts for image comparison");
     CGContextRelease(imageContext);
@@ -184,7 +188,7 @@ typedef struct {
   CGContextRelease(renderedImageContext);
   
   // compare image
-  BOOL compareVal = (memcmp(imagePixels, renderedImagePixels, image.size.width * image.size.height * sizeof(GHPixel)) == 0);
+  BOOL compareVal = (memcmp(imagePixels, renderedImagePixels, imageSizeBytes) == 0);
   free(imagePixels);
   free(renderedImagePixels);
   return compareVal;
