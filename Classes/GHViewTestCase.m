@@ -136,7 +136,7 @@
   if (!image || !renderedImage) return NO;
   // If the images are different sizes, just fail
   if (CGImageGetWidth(image.CGImage) != CGImageGetWidth(renderedImage.CGImage) || CGImageGetHeight(image.CGImage) != CGImageGetHeight(renderedImage.CGImage)) {
-    GHUDebug(@"Images are differnt sizes");
+    GHUDebug(@"Images are different sizes");
     return NO;
   }
   
