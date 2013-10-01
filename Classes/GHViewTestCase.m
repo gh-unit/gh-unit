@@ -140,6 +140,11 @@
     return NO;
   }
   
+  if (CGImageGetBitsPerComponent(image.CGImage) != CGImageGetBitsPerComponent(renderedImage.CGImage)) {
+    GHUDebug(@"Images have different component sizes");
+    return NO;
+  }
+  
   // CALayer's renderInContext: can add byte padding, so we just choose
   // the smaller number of bytes per row, since we already know the
   // images are the same size at this point
