@@ -8,12 +8,11 @@
 
 #import "GHTestWindowController.h"
 
-@interface GHTestApp : NSObject {
-	NSMutableArray *topLevelObjects_;
-	
-	GHTestWindowController *windowController_;
-	
-	GHTestSuite *suite_;
+@interface GHTestApp : NSObject
+{
+				NSMutableArray *topLevelObjects_;
+	 GHTestWindowController *windowController_;
+					GHTestSuite *suite_;
 }
 
 - (id)initWithSuite:(GHTestSuite *)suite;
