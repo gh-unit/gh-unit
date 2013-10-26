@@ -36,16 +36,16 @@
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
 }
   
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)connection:(NSURLConnection *) __unused connection didReceiveResponse:(NSURLResponse *)response {
   GHAssertEquals([(NSHTTPURLResponse *)response statusCode], (NSInteger)204, nil);
   GHAssertEqualObjects([(NSHTTPURLResponse *)response allHeaderFields], testHeaders_, nil);
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *) __unused connection didReceiveData:(NSData *)data {
   GHAssertEqualObjects(data, testData_, nil);
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(NSURLConnection *) __unused connection {
   [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testMock)];
 }
 
@@ -66,7 +66,7 @@
   [self waitForStatus:kGHUnitWaitStatusFailure timeout:1.0];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *) __unused connection didFailWithError:(NSError *)error {
   GHAssertEqualObjects(error, error_, nil);
   [self notify:kGHUnitWaitStatusFailure forSelector:@selector(testError)];
 }
@@ -86,7 +86,7 @@
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)connection:(NSURLConnection *) __unused connection didReceiveResponse:(NSURLResponse *)response {
   GHAssertEquals([(NSHTTPURLResponse *)response statusCode], (NSInteger)200, nil);
 
   NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
@@ -94,11 +94,11 @@
   //GHAssertEqualStrings(@"text/json", [headers objectForKey:@"Content-Type"], nil);
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *) __unused connection didReceiveData:(NSData *) __unused data {
   // TODO(gabe): Assert data
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(NSURLConnection *) __unused connection {
   [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testMock)];
 }
 

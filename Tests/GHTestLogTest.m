@@ -14,14 +14,14 @@
 @implementation GHTestLogTest
 
 - (void)testLog {
-  for(NSInteger i = 0; i < 30; i++) {
+  for(unsigned short i = 0; i < 30; i++) {
     GHTestLog(@"Line: %d", i);
     [NSThread sleepForTimeInterval:0.01];
   }
 }
 
 - (void)testNSLog {
-  for(int i = 0; i < 5; i++) {
+  for(unsigned short i = 0; i < 5; i++) {
     NSLog(@"Using NSLog: %d", i);
     fputs([@"stdout\n" UTF8String], stdout);
     fflush(stdout);   

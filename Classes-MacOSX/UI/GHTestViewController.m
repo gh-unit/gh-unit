@@ -98,7 +98,7 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 
 #pragma mark Running
 
-- (IBAction)runTests:(id)sender {
+- (IBAction)runTests:(id) __unused sender {
 	[self runTests];
 }
 
@@ -157,8 +157,9 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 	[_textView setNeedsDisplay:YES];
 }
 
-- (IBAction)updateMode:(id)sender {
-  GHUDebug(@"Update mode: %d", _segmentedControl.selectedSegment);
+- (IBAction)updateMode:(id) __unused sender {
+  // selectedSegment returns -1 if no segment is selected
+  GHUDebug(@"Update mode: %d", (short)_segmentedControl.selectedSegment);
   switch(_segmentedControl.selectedSegment) {
     case 0: {
       dataSource_.editing = NO;
@@ -180,7 +181,7 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
   [self reload];
 }
 
-- (IBAction)updateSearchFilter:(id)sender {
+- (IBAction)updateSearchFilter:(id) __unused sender {
   NSString *prefix = [_searchField stringValue];
   [dataSource_.root setTextFilter:prefix];
   [self _setPrefix:prefix];
@@ -191,14 +192,14 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 	[_textView copy:sender];
 }
 
-- (IBAction)openExceptionFilename:(id)sender {
+- (IBAction)openExceptionFilename:(id) __unused sender {
   if (self.exceptionFilename) {
     NSString *path = [self.exceptionFilename stringByExpandingTildeInPath];
     [[NSWorkspace sharedWorkspace] openFile:path];
   }
 }
 
-- (IBAction)rerunTest:(id)sender {
+- (IBAction)rerunTest:(id) __unused sender {
   id<GHTest> test = [[self selectedTest] copyWithZone:NULL];
   GHUDebug(@"Re-running: %@", test);
   [self _updateDetailForTest:nil prefix:@"Re-running test."];
@@ -252,7 +253,7 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
   [self setShowingDetails:YES];
 }
 
-- (IBAction)toggleDetails:(id)sender {	
+- (IBAction)toggleDetails:(id) __unused sender {	
 	if ([self isShowingDetails]) {
     [self hideDetails];
 	} else {
@@ -307,7 +308,7 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
   self.exceptionLineNumber = [GHTesting exceptionLineNumberForTest:test];
 }
 
-- (IBAction)updateTextSegment:(id)sender {
+- (IBAction)updateTextSegment:(id) __unused sender {
   [self _updateDetailForTest:[self selectedTest] prefix:nil];
 }
 
@@ -330,8 +331,9 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 }
 
 - (void)selectRow:(NSInteger)row {
-  if (row >= 0)
-    [_outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+  if (row >= 0) {
+    [_outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)row] byExtendingSelection:NO];
+  }
   
   [_textView setString:@""];
   
@@ -355,17 +357,17 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 
 #pragma mark Delegates (GHTestOutlineViewModel)
 
-- (void)testOutlineViewModelDidChangeSelection:(GHTestOutlineViewModel *)testOutlineViewModel {
+- (void)testOutlineViewModelDidChangeSelection:(GHTestOutlineViewModel *) __unused testOutlineViewModel {
   [self selectRow:-1];
 }
 
 #pragma mark Delegates (GHTestRunner)
 
-- (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message {
+- (void)testRunner:(GHTestRunner *) __unused runner didLog:(NSString *) __unused message {
 	
 }
 
-- (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message {
+- (void)testRunner:(GHTestRunner *) __unused runner test:(id<GHTest>)test didLog:(NSString *)message {
 	id<GHTest> selectedTest = self.selectedTest;
 	if ([_textSegmentedControl selectedSegment] == 1 && [selectedTest isEqual:test]) {
 		[_textView replaceCharactersInRange:NSMakeRange([[_textView string] length], 0) 
@@ -374,15 +376,15 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 	}	
 }
 
-- (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
+- (void)testRunner:(GHTestRunner *) __unused runner didStartTest:(id<GHTest>)test {
 	[self _updateTest:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test {
+- (void)testRunner:(GHTestRunner *) __unused runner didUpdateTest:(id<GHTest>)test {
 	[self _updateTest:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test {
+- (void)testRunner:(GHTestRunner *)__unused runner didEndTest:(id<GHTest>)test {
 	[self _updateTest:test];
   [self updateTextSegment:nil]; // In case test is selected before it ran
 }
@@ -406,11 +408,12 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
   if (getenv("GHUNIT_AUTOEXIT")) {
     NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
     exit((int)runner.test.stats.failureCount);
-    [NSApp terminate:self];
+    // this will never be executed
+    // [NSApp terminate:self];
   }  
 }
 
-- (void)testRunnerDidCancel:(GHTestRunner *)runner {
+- (void)testRunnerDidCancel:(GHTestRunner *) __unused runner {
 	self.runLabel = @"Run";
 	self.status = [dataSource_ statusString:@"Cancelled... "];
 	self.statusProgress = 0;
@@ -419,11 +422,11 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 
 #pragma mark Delegates (NSSplitView)
 
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMin ofSubviewAt:(NSInteger)dividerIndex {
+- (CGFloat)splitView:(NSSplitView *) __unused splitView constrainMinCoordinate:(CGFloat) __unused proposedMin ofSubviewAt:(NSInteger) __unused dividerIndex {
   return 300;
 }
 
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMax ofSubviewAt:(NSInteger)dividerIndex {
+- (CGFloat)splitView:(NSSplitView *) __unused splitView constrainMaxCoordinate:(CGFloat) __unused proposedMax ofSubviewAt:(NSInteger) __unused dividerIndex {
   return [self view].frame.size.width - 335;
 }
 

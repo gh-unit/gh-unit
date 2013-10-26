@@ -51,10 +51,14 @@
 #import "GHTesting.h"
 #import "GHTest.h"
 #import "GHTestCase.h"
-
 #import <objc/runtime.h>
 
-NSInteger ClassSort(id a, id b, void *context) {
+#pragma mark - Prototypes
+
+NSInteger ClassSort(id a, id b, void *context);
+
+
+NSInteger ClassSort(id a, id b, void __unused *context) {
   const char *nameA = class_getName([a class]);
   const char *nameB = class_getName([b class]);
   return strcmp(nameA, nameB);
@@ -62,7 +66,7 @@ NSInteger ClassSort(id a, id b, void *context) {
 
 // GTM_BEGIN
 // Used for sorting methods below
-static NSInteger MethodSort(id a, id b, void *context) {
+static NSInteger MethodSort(id a, id b, void __unused *context) {
   NSInvocation *invocationA = a;
   NSInvocation *invocationB = b;
   const char *nameA = sel_getName([invocationA selector]);
@@ -156,7 +160,7 @@ static GHTesting *gSharedInstance;
   NSMutableArray *testCases = [NSMutableArray array];
 
   int count = objc_getClassList(NULL, 0);
-  NSMutableData *classData = [NSMutableData dataWithLength:sizeof(Class) * count];
+  NSMutableData *classData = [NSMutableData dataWithLength:sizeof(Class) * (NSUInteger)count];
   Class *classes = (Class*)[classData mutableBytes];
   NSAssert(classes, @"Couldn't allocate class list");
   objc_getClassList(classes, count);
@@ -310,19 +314,27 @@ static GHTesting *gSharedInstance;
     // outer layers get the exceptions to report counts, etc.
       @try {
         // Private setUp internal to GHUnit (in case subclasses fail to call super)
-        if ([target respondsToSelector:@selector(_setUp)])
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wselector"
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        if ([target respondsToSelector:@selector(_setUp)]) {
           [target performSelector:@selector(_setUp)];
+        }
 
-        if ([target respondsToSelector:@selector(setUp)])
+        if ([target respondsToSelector:@selector(setUp)]) {
           [target performSelector:@selector(setUp)];
-        @try {  
-          if ([target respondsToSelector:@selector(setCurrentSelector:)])
+        }
+#pragma clang diagnostic pop
+        
+        @try {
+          if ([target respondsToSelector:@selector(setCurrentSelector:)]) {
             [target setCurrentSelector:selector];
+          }
 
           // If this isn't set SenTest macros don't raise
-          if ([target respondsToSelector:@selector(raiseAfterFailure)])
+          if ([target respondsToSelector:@selector(raiseAfterFailure)]) {
             [target raiseAfterFailure];
-          
+          }
           // Runs the test
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -330,24 +342,31 @@ static GHTesting *gSharedInstance;
 #pragma clang diagnostic pop
           
         } @catch (NSException *exception) {
-          if (!testException) testException = exception;
+          if (!testException) { testException = exception; }
         }
-        if ([target respondsToSelector:@selector(setCurrentSelector:)])
+        if ([target respondsToSelector:@selector(setCurrentSelector:)]) {
           [target setCurrentSelector:NULL];
+        }
 
-        if ([target respondsToSelector:@selector(tearDown)])
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wselector"
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        if ([target respondsToSelector:@selector(tearDown)]) {
           [target performSelector:@selector(tearDown)];
+        }
         
         // Private tearDown internal to GHUnit (in case subclasses fail to call super)
-        if ([target respondsToSelector:@selector(_tearDown)])
+        if ([target respondsToSelector:@selector(_tearDown)]) {
           [target performSelector:@selector(_tearDown)];
-
+        }
+#pragma clang diagnostic pop
+        
       } @catch (NSException *exception) {
-        if (!testException) testException = exception;
+        if (!testException) { testException = exception; }
       }
     }
   } @catch (NSException *exception) {
-    if (!testException) testException = exception; 
+    if (!testException) { testException = exception; }
   }  
 
   if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
@@ -367,36 +386,49 @@ static GHTesting *gSharedInstance;
   NSException *testException = nil;
   @autoreleasepool {
 
-    if ([target respondsToSelector:@selector(_setUp)])
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wselector"
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    if ([target respondsToSelector:@selector(_setUp)]) {
       [target performSelector:@selector(_setUp)];
-        
-    if ([target respondsToSelector:@selector(setUp)])
+    }
+#pragma clang diagnostic pop
+    
+    if ([target respondsToSelector:@selector(setUp)]) {
       [target performSelector:@selector(setUp)];
-
-    if ([target respondsToSelector:@selector(setCurrentSelector:)])
+    }
+    
+    if ([target respondsToSelector:@selector(setCurrentSelector:)]) {
       [target setCurrentSelector:selector];
-          
+    }
+    
     // If this isn't set SenTest macros don't raise
-    if ([target respondsToSelector:@selector(raiseAfterFailure)])
+    if ([target respondsToSelector:@selector(raiseAfterFailure)]) {
       [target raiseAfterFailure];
-          
+    }
+    
     // Runs the test
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [target performSelector:selector];
 #pragma clang diagnostic pop
           
-    if ([target respondsToSelector:@selector(setCurrentSelector:)])
+    if ([target respondsToSelector:@selector(setCurrentSelector:)]) {
       [target setCurrentSelector:NULL];
-        
-    if ([target respondsToSelector:@selector(tearDown)])
+    }
+    
+    if ([target respondsToSelector:@selector(tearDown)]) {
       [target performSelector:@selector(tearDown)];
-        
+    }
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wselector"
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     // Private tearDown internal to GHUnit (in case subclasses fail to call super)
-    if ([target respondsToSelector:@selector(_tearDown)])
+    if ([target respondsToSelector:@selector(_tearDown)]) {
       [target performSelector:@selector(_tearDown)];
-      
-  
+    }
+#pragma clang diagnostic pop
   }
   
   if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];

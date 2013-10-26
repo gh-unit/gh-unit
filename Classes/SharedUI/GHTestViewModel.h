@@ -117,14 +117,14 @@ typedef enum {
 /*!
  @result Returns the number of test groups.
  */
-- (NSInteger)numberOfGroups;
+- (NSUInteger)numberOfGroups;
 
 /*!
  Returns the number of tests in group.
  @param group Group number
  @result The number of tests in group.
  */
-- (NSInteger)numberOfTestsInGroup:(NSInteger)group;
+- (NSUInteger)numberOfTestsInGroup:(NSUInteger)group;
 
 /*!
  Search for path to test.

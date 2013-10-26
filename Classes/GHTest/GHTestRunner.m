@@ -165,33 +165,38 @@ operationQueue=operationQueue_;
   fputs("\n", stdout);
   fflush(stdout);
   
+  __weak typeof(self) wself = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    if ([delegate_ respondsToSelector:@selector(testRunner:didLog:)])
-      [delegate_ testRunner:self didLog:message];
+    NSObject<GHTestRunnerDelegate> *delegate = [wself delegate];
+    if ([delegate respondsToSelector:@selector(testRunner:didLog:)])
+      [delegate testRunner:self didLog:message];
   });  
 }
 
 #pragma mark Delegates (GHTest)
 
-- (void)testDidStart:(id<GHTest>)test source:(id<GHTest>)source {
+- (void)testDidStart:(id<GHTest>) __unused test source:(id<GHTest>)source {
   if (![source conformsToProtocol:@protocol(GHTestGroup)]) {
     [self log:[NSString stringWithFormat:@"Starting %@\n", [source identifier]]];
   }
-  
+  __weak typeof(self) wself = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    if ([delegate_ respondsToSelector:@selector(testRunner:didStartTest:)])
-    [delegate_ testRunner:self didStartTest:source]; 
+    NSObject<GHTestRunnerDelegate> *delegate = [wself delegate];
+    if ([delegate respondsToSelector:@selector(testRunner:didStartTest:)])
+    [delegate testRunner:self didStartTest:source];
   });
 }
 
-- (void)testDidUpdate:(id<GHTest>)test source:(id<GHTest>)source {  
+- (void)testDidUpdate:(id<GHTest>) __unused test source:(id<GHTest>)source {
+  __weak typeof(self) wself = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    if ([delegate_ respondsToSelector:@selector(testRunner:didUpdateTest:)])
-      [delegate_ testRunner:self didUpdateTest:source];  
+    NSObject<GHTestRunnerDelegate> *delegate = [wself delegate];
+    if ([delegate respondsToSelector:@selector(testRunner:didUpdateTest:)])
+      [delegate testRunner:self didUpdateTest:source];
   });
 }
 
-- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source { 
+- (void)testDidEnd:(id<GHTest>) __unused test source:(id<GHTest>)source { 
   
   if ([source status] != GHTestStatusCancelled) {
     if (![source conformsToProtocol:@protocol(GHTestGroup)]) {      
@@ -200,9 +205,11 @@ operationQueue=operationQueue_;
       [self log:message];
     }
     
+    __weak typeof(self) wself = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-      if ([delegate_ respondsToSelector:@selector(testRunner:didEndTest:)])
-        [delegate_ testRunner:self didEndTest:source];
+      NSObject<GHTestRunnerDelegate> *delegate = [wself delegate];
+      if ([delegate respondsToSelector:@selector(testRunner:didEndTest:)])
+        [delegate testRunner:self didEndTest:source];
     });
 
   } else {
@@ -217,11 +224,13 @@ operationQueue=operationQueue_;
   } 
 }
 
-- (void)test:(id<GHTest>)test didLog:(NSString *)message source:(id<GHTest>)source {
+- (void)test:(id<GHTest>) __unused test didLog:(NSString *)message source:(id<GHTest>)source {
   [self _log:[NSString stringWithFormat:@"%@: %@", source, message]];
+  __weak typeof(self) wself = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    if ([delegate_ respondsToSelector:@selector(testRunner:test:didLog:)])
-      [delegate_ testRunner:self test:source didLog:message];
+    NSObject<GHTestRunnerDelegate> *delegate = [wself delegate];
+    if ([delegate respondsToSelector:@selector(testRunner:test:didLog:)])
+      [delegate testRunner:self test:source didLog:message];
   });
 }
 
@@ -231,9 +240,11 @@ operationQueue=operationQueue_;
   NSString *message = [NSString stringWithFormat:@"Test Suite '%@' started.\n", [test_ name]];
   [self log:message];
   
+  __weak typeof(self) wself = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    if ([delegate_ respondsToSelector:@selector(testRunnerDidStart:)])
-      [delegate_ testRunnerDidStart:self];
+    NSObject<GHTestRunnerDelegate> *delegate = [wself delegate];
+    if ([delegate respondsToSelector:@selector(testRunnerDidStart:)])
+      [delegate testRunnerDidStart:self];
   });
 }
 
@@ -244,9 +255,11 @@ operationQueue=operationQueue_;
   cancelling_ = NO;
   running_ = NO;
   
+  __weak typeof(self) wself = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    if ([delegate_ respondsToSelector:@selector(testRunnerDidCancel:)])
-      [delegate_ testRunnerDidCancel:self];
+    NSObject<GHTestRunnerDelegate> *delegate = [wself delegate];
+    if ([delegate respondsToSelector:@selector(testRunnerDidCancel:)])
+      [delegate testRunnerDidCancel:self];
   });
 }
 
@@ -254,7 +267,7 @@ operationQueue=operationQueue_;
   NSString *message = [NSString stringWithFormat:@"Test Suite '%@' finished.\n"
                        "Executed %d of %d tests, with %d failures in %0.3f seconds (%d disabled).\n",
                        [test_ name], 
-                       ([test_ stats].succeedCount + [test_ stats].failureCount), 
+                       ([test_ stats].succeedCount + [test_ stats].failureCount),
                        [test_ stats].testCount,
                        [test_ stats].failureCount, 
                        [test_ interval],
@@ -300,9 +313,11 @@ operationQueue=operationQueue_;
   cancelling_ = NO;
   running_ = NO;
 
+  __weak typeof(self) wself = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    if ([delegate_ respondsToSelector:@selector(testRunnerDidEnd:)])
-      [delegate_ testRunnerDidEnd:self];   
+    NSObject<GHTestRunnerDelegate> *delegate = [wself delegate];
+    if ([delegate respondsToSelector:@selector(testRunnerDidEnd:)])
+      [delegate testRunnerDidEnd:self];
   });
 }
 

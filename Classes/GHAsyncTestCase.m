@@ -81,7 +81,7 @@ typedef enum {
   NSTimeInterval checkEveryInterval = 0.05;
   NSDate *runUntilDate = [NSDate dateWithTimeIntervalSinceNow:timeout];
   BOOL timedOut = NO;
-  NSInteger runIndex = 0;
+  NSUInteger runIndex = 0;
   while(notifiedStatus_ == kGHUnitWaitStatusUnknown) {
     NSString *mode = [_runLoopModes objectAtIndex:(runIndex++ % [_runLoopModes count])];
 
@@ -110,7 +110,7 @@ typedef enum {
   return kGHUnitAsyncErrorNone;
 }
 
-- (void)waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout {
+- (void)waitFor:(NSInteger) __unused status timeout:(NSTimeInterval) __unused timeout {
   [NSException raise:NSDestinationInvalidException format:@"Deprecated; Use waitForStatus:timeout:"];
 }
 
@@ -141,7 +141,7 @@ typedef enum {
 	if (!_runLoopModes)
 		_runLoopModes = [NSArray arrayWithObjects:NSDefaultRunLoopMode, NSRunLoopCommonModes, nil];
   
-	NSInteger runIndex = 0;
+	NSUInteger runIndex = 0;
   
 	while ([runUntilDate compare:[NSDate dateWithTimeIntervalSinceNow:0]] == NSOrderedDescending) {
 		NSString *mode = [_runLoopModes objectAtIndex:(runIndex++ % [_runLoopModes count])];

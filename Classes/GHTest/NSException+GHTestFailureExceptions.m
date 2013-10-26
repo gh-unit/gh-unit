@@ -55,6 +55,11 @@
 
 #import "NSValue+GHValueFormatter.h"
 
+
+#pragma mark - Prototypes
+
+NSString *GHComposeString(NSString *formatString, ...);
+
 NSString *const GHTestFilenameKey = @"GHTestFilenameKey";
 NSString *const GHTestLineNumberKey = @"GHTestLineNumberKey";
 NSString *const GHTestFailureException = @"GHTestFailureException";

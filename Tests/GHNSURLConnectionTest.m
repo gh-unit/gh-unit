@@ -29,18 +29,18 @@
   [connection cancel];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *) __unused connection didReceiveData:(NSData *)data {
   NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
   GHTestLog(@"%@", dataString);
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(NSURLConnection *) __unused connection {
   // Notify of success, specifying the method where wait is called.
   // This prevents stray notifies from affecting other tests.
   [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testURLConnection)];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *) __unused connection didFailWithError:(NSError *) __unused error {
   // Notify of connection failure
   [self notify:kGHUnitWaitStatusFailure forSelector:@selector(testURLConnection)];
 }

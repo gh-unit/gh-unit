@@ -1,4 +1,4 @@
-GHUNIT_VERSION = 0.5.6
+GHUNIT_VERSION = 0.5.7
 
 GHUNIT_GENERAL_OTHER_CFLAGS = -Wdiv-by-zero -Wbad-function-cast -Wnested-externs -Wold-style-definition
 

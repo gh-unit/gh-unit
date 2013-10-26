@@ -392,19 +392,24 @@ static int MethodSort(id a, id b, void *context) {
 
 @implementation GTMTestCase : SenTestCase
 - (void)invokeTest {
-@autoreleasepool {
-Class devLogClass = NSClassFromString(@"GTMUnitTestDevLog");
-if (devLogClass) {
-  [devLogClass performSelector:@selector(enableTracking)];
-  [devLogClass performSelector:@selector(verifyNoMoreLogsExpected)];
-  
-}
-[super invokeTest];
-if (devLogClass) {
-  [devLogClass performSelector:@selector(verifyNoMoreLogsExpected)];
-  [devLogClass performSelector:@selector(disableTracking)];
-}
-}
+  @autoreleasepool {
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wselector"
+    Class devLogClass = NSClassFromString(@"GTMUnitTestDevLog");
+    if (devLogClass) {
+      [devLogClass performSelector:@selector(enableTracking)];
+      [devLogClass performSelector:@selector(verifyNoMoreLogsExpected)];
+      
+    }
+    [super invokeTest];
+    if (devLogClass) {
+      [devLogClass performSelector:@selector(verifyNoMoreLogsExpected)];
+      [devLogClass performSelector:@selector(disableTracking)];
+    }
+  }
+#pragma clang diagnostic pop
 }
 
 + (BOOL)isAbstractTestCase {
