@@ -33,6 +33,12 @@
 																							 name:NSApplicationWillTerminateNotification object:nil];
 	windowController_.viewController.suite = suite_;
 	[windowController_ showWindow:nil];
+  
+  char *stderrRedirect = getenv("GHUNIT_STDERR_REDIRECT");
+  if (stderrRedirect) {
+    NSString *stderrRedirectPath = [NSString stringWithUTF8String:stderrRedirect];
+    freopen([stderrRedirectPath fileSystemRepresentation], "a", stderr);
+  }
 }
 
 - (void)dealloc {
