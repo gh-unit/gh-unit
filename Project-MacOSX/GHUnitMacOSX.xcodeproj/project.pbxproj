@@ -61,7 +61,6 @@
 		0083D15F13C28A2E00F71F21 /* GHUnit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0083D08613BCFDDB00F71F21 /* GHUnit.framework */; };
 		0083D17B13C28B3700F71F21 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 0083D16513C28B3700F71F21 /* example.json */; };
 		0083D17C13C28B3700F71F21 /* GHAsyncTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16613C28B3700F71F21 /* GHAsyncTestCaseTest.m */; };
-		0083D17D13C28B3700F71F21 /* GHGTMTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16713C28B3700F71F21 /* GHGTMTestCaseTest.m */; };
 		0083D17E13C28B3700F71F21 /* GHKVObserveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16813C28B3700F71F21 /* GHKVObserveTest.m */; };
 		0083D17F13C28B3700F71F21 /* GHMockNSURLConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16913C28B3700F71F21 /* GHMockNSURLConnectionTest.m */; };
 		0083D18113C28B3700F71F21 /* GHNSURLConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16B13C28B3700F71F21 /* GHNSURLConnectionTest.m */; };
@@ -75,9 +74,6 @@
 		0083D18913C28B3700F71F21 /* GHTestLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D17413C28B3700F71F21 /* GHTestLogTest.m */; };
 		0083D18A13C28B3700F71F21 /* GHTestMacrosTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D17513C28B3700F71F21 /* GHTestMacrosTest.m */; };
 		0083D18B13C28B3700F71F21 /* GHTestOnMainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D17613C28B3700F71F21 /* GHTestOnMainThread.m */; };
-		0083D18D13C28B3700F71F21 /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D17A13C28B3700F71F21 /* GTMSenTestCase.m */; };
-		0083D1A213C28B8700F71F21 /* GTMObjC2Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 0083D19713C28B8700F71F21 /* GTMObjC2Runtime.h */; };
-		0083D1A313C28B8700F71F21 /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D19813C28B8700F71F21 /* GTMObjC2Runtime.m */; };
 		0083D1A613C28B8700F71F21 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0083D19B13C28B8700F71F21 /* GTMDefines.h */; };
 		0083D1A913C28BE900F71F21 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0083D1A813C28BE900F71F21 /* SenTestingKit.framework */; };
 		0083D1AA13C28BFA00F71F21 /* SenTestingKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0083D1A813C28BE900F71F21 /* SenTestingKit.framework */; };
@@ -171,7 +167,6 @@
 		0083D13B13BCFFA400F71F21 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		0083D16513C28B3700F71F21 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.json; sourceTree = "<group>"; };
 		0083D16613C28B3700F71F21 /* GHAsyncTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCaseTest.m; sourceTree = "<group>"; };
-		0083D16713C28B3700F71F21 /* GHGTMTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHGTMTestCaseTest.m; sourceTree = "<group>"; };
 		0083D16813C28B3700F71F21 /* GHKVObserveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHKVObserveTest.m; sourceTree = "<group>"; };
 		0083D16913C28B3700F71F21 /* GHMockNSURLConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockNSURLConnectionTest.m; sourceTree = "<group>"; };
 		0083D16B13C28B3700F71F21 /* GHNSURLConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSURLConnectionTest.m; sourceTree = "<group>"; };
@@ -186,10 +181,6 @@
 		0083D17413C28B3700F71F21 /* GHTestLogTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestLogTest.m; sourceTree = "<group>"; };
 		0083D17513C28B3700F71F21 /* GHTestMacrosTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestMacrosTest.m; sourceTree = "<group>"; };
 		0083D17613C28B3700F71F21 /* GHTestOnMainThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestOnMainThread.m; sourceTree = "<group>"; };
-		0083D17913C28B3700F71F21 /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMSenTestCase.h; sourceTree = "<group>"; };
-		0083D17A13C28B3700F71F21 /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSenTestCase.m; sourceTree = "<group>"; };
-		0083D19713C28B8700F71F21 /* GTMObjC2Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMObjC2Runtime.h; sourceTree = "<group>"; };
-		0083D19813C28B8700F71F21 /* GTMObjC2Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMObjC2Runtime.m; sourceTree = "<group>"; };
 		0083D19B13C28B8700F71F21 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		0083D1A813C28BE900F71F21 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0090D62F13C299B500C25A92 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -406,7 +397,6 @@
 			children = (
 				0083D16413C28B3700F71F21 /* Data */,
 				0083D16613C28B3700F71F21 /* GHAsyncTestCaseTest.m */,
-				0083D16713C28B3700F71F21 /* GHGTMTestCaseTest.m */,
 				0083D16813C28B3700F71F21 /* GHKVObserveTest.m */,
 				0083D16913C28B3700F71F21 /* GHMockNSURLConnectionTest.m */,
 				0083D16B13C28B3700F71F21 /* GHNSURLConnectionTest.m */,
@@ -421,7 +411,6 @@
 				0083D17413C28B3700F71F21 /* GHTestLogTest.m */,
 				0083D17513C28B3700F71F21 /* GHTestMacrosTest.m */,
 				0083D17613C28B3700F71F21 /* GHTestOnMainThread.m */,
-				0083D17813C28B3700F71F21 /* GTM */,
 			);
 			name = Tests;
 			path = ../../Tests;
@@ -433,15 +422,6 @@
 				0083D16513C28B3700F71F21 /* example.json */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		0083D17813C28B3700F71F21 /* GTM */ = {
-			isa = PBXGroup;
-			children = (
-				0083D17913C28B3700F71F21 /* GTMSenTestCase.h */,
-				0083D17A13C28B3700F71F21 /* GTMSenTestCase.m */,
-			);
-			path = GTM;
 			sourceTree = "<group>";
 		};
 		0083D19513C28B8700F71F21 /* GTM */ = {
@@ -459,8 +439,6 @@
 			children = (
 				004E186C13C518C1007D842B /* GTMNSString+XML.h */,
 				004E186D13C518C1007D842B /* GTMNSString+XML.m */,
-				0083D19713C28B8700F71F21 /* GTMObjC2Runtime.h */,
-				0083D19813C28B8700F71F21 /* GTMObjC2Runtime.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -493,7 +471,6 @@
 				0083D11213BCFE1700F71F21 /* GHTestOutlineViewModel.h in Headers */,
 				0083D11613BCFE1700F71F21 /* GHTestViewController.h in Headers */,
 				0083D11913BCFE1700F71F21 /* GHTestWindowController.h in Headers */,
-				0083D1A213C28B8700F71F21 /* GTMObjC2Runtime.h in Headers */,
 				0083D1A613C28B8700F71F21 /* GTMDefines.h in Headers */,
 				004E186F13C518C1007D842B /* GTMNSString+XML.h in Headers */,
 			);
@@ -630,7 +607,6 @@
 				0083D11313BCFE1700F71F21 /* GHTestOutlineViewModel.m in Sources */,
 				0083D11713BCFE1700F71F21 /* GHTestViewController.m in Sources */,
 				0083D11A13BCFE1700F71F21 /* GHTestWindowController.m in Sources */,
-				0083D1A313C28B8700F71F21 /* GTMObjC2Runtime.m in Sources */,
 				004E187013C518C1007D842B /* GTMNSString+XML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,7 +616,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0083D17C13C28B3700F71F21 /* GHAsyncTestCaseTest.m in Sources */,
-				0083D17D13C28B3700F71F21 /* GHGTMTestCaseTest.m in Sources */,
 				0083D17E13C28B3700F71F21 /* GHKVObserveTest.m in Sources */,
 				0083D17F13C28B3700F71F21 /* GHMockNSURLConnectionTest.m in Sources */,
 				0083D18113C28B3700F71F21 /* GHNSURLConnectionTest.m in Sources */,
@@ -654,7 +629,6 @@
 				0083D18913C28B3700F71F21 /* GHTestLogTest.m in Sources */,
 				0083D18A13C28B3700F71F21 /* GHTestMacrosTest.m in Sources */,
 				0083D18B13C28B3700F71F21 /* GHTestOnMainThread.m in Sources */,
-				0083D18D13C28B3700F71F21 /* GTMSenTestCase.m in Sources */,
 				00271A3913C294F800B06B98 /* GHUnitTestMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,5 +13,5 @@ GCC_DYNAMIC_NO_PIC = NO
 
 // Static libs should not have their internal globals or external symbols stripped.
 STRIP_STYLE = debugging
-
+STRIP_INSTALLED_PRODUCT = NO
 PRODUCT_NAME = GHUnit

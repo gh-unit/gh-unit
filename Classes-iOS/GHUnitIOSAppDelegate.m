@@ -67,7 +67,7 @@
   if (getenv("GHUNIT_AUTORUN")) [viewController runTests];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {
+- (void)applicationWillTerminate:(UIApplication *) __unused application {
   // Called only graceful terminate; Closing simulator won't trigger this
   [[[navigationController_ viewControllers] objectAtIndex:0] saveDefaults]; 
 }

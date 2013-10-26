@@ -39,10 +39,11 @@
 - (void)testNodeDidChange:(GHTestNode *)node;
 @end
 
-typedef enum {
+typedef enum : unsigned short {
   GHTestNodeFilterNone = 0,
   GHTestNodeFilterFailed = 1
 } GHTestNodeFilter;
+
 
 /*!
  Test view model for use in a tree view.

@@ -35,8 +35,8 @@ NSString *const GHUnitFilterKey = @"Filter";
 @interface GHUnitIOSViewController ()
 - (NSString *)_textFilter;
 - (void)_setTextFilter:(NSString *)textFilter;
-- (void)_setFilterIndex:(NSInteger)index;
-- (NSInteger)_filterIndex;
+- (void)_setFilterIndex:(unsigned short)index;
+- (unsigned short)_filterIndex;
 @end
 
 @implementation GHUnitIOSViewController
@@ -141,23 +141,28 @@ NSString *const GHUnitFilterKey = @"Filter";
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)_setFilterIndex:(NSInteger)index {
-  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:index] forKey:GHUnitFilterKey];
+- (void)_setFilterIndex:(unsigned short)index {
+  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedShort:index] forKey:GHUnitFilterKey];
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSInteger)_filterIndex {
-  return [[[NSUserDefaults standardUserDefaults] objectForKey:GHUnitFilterKey] integerValue];
+- (unsigned short)_filterIndex {
+  return [[[NSUserDefaults standardUserDefaults] objectForKey:GHUnitFilterKey] unsignedShortValue];
 }
 
 #pragma mark -
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation) __unused interfaceOrientation {
   return YES;
 }
 
-- (void)_filterChanged:(id)sender {
-  [self _setFilterIndex:view_.filterControl.selectedSegmentIndex];
+- (void)_filterChanged:(id) __unused sender {
+  NSInteger selectedSeg = view_.filterControl.selectedSegmentIndex;
+  if (selectedSeg == -1) {
+    [view_.filterControl setSelectedSegmentIndex:GHTestNodeFilterNone];
+    selectedSeg = GHTestNodeFilterNone;
+  }
+  [self _setFilterIndex:(GHTestNodeFilter)selectedSeg];
   [self reload];
 }
 
@@ -175,10 +180,10 @@ NSString *const GHUnitFilterKey = @"Filter";
 }
 
 - (void)scrollToBottom {
-  NSInteger lastGroupIndex = [dataSource_ numberOfGroups] - 1;
-  if (lastGroupIndex < 0) return;
-  NSInteger lastTestIndex = [dataSource_ numberOfTestsInGroup:lastGroupIndex] - 1;
-  if (lastTestIndex < 0) return;
+  NSInteger lastGroupIndex = (NSInteger)[dataSource_ numberOfGroups] - 1;
+  if (lastGroupIndex < 0) { return; }
+  NSInteger lastTestIndex = (NSInteger)[dataSource_ numberOfTestsInGroup:(NSUInteger)lastGroupIndex] - 1;
+  if (lastTestIndex < 0) { return; }
   NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastTestIndex inSection:lastGroupIndex];
   [view_.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
@@ -198,8 +203,8 @@ NSString *const GHUnitFilterKey = @"Filter";
     [view_.tableView reloadData];
   } else {    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GHTestNode *sectionNode = [[[dataSource_ root] children] objectAtIndex:indexPath.section];
-    GHTestNode *testNode = [[sectionNode children] objectAtIndex:indexPath.row];
+    GHTestNode *sectionNode = [[[dataSource_ root] children] objectAtIndex:(NSUInteger)indexPath.section];
+    GHTestNode *testNode = [[sectionNode children] objectAtIndex:(NSUInteger)indexPath.row];
     
     GHUnitIOSTestViewController *testViewController = [[GHUnitIOSTestViewController alloc] init]; 
     [testViewController setTest:testNode.test];
@@ -207,13 +212,13 @@ NSString *const GHUnitFilterKey = @"Filter";
   }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *) __unused tableView heightForRowAtIndexPath:(NSIndexPath *) __unused indexPath {
   return 36.0f;
 }
 
 #pragma mark Delegates (UIScrollView) 
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+- (void)scrollViewWillBeginDragging:(UIScrollView *) __unused scrollView {
   userDidDrag_ = YES;
 }
 
@@ -235,24 +240,24 @@ NSString *const GHUnitFilterKey = @"Filter";
   }
 }
 
-- (void)testRunner:(GHTestRunner *)runner didLog:(NSString *)message {
+- (void)testRunner:(GHTestRunner *) __unused runner didLog:(NSString *)message {
   [self setStatusText:message];
 }
 
-- (void)testRunner:(GHTestRunner *)runner test:(id<GHTest>)test didLog:(NSString *)message {
+- (void)testRunner:(GHTestRunner *) __unused runner test:(id<GHTest>) __unused test didLog:(NSString *) __unused message {
   
 }
 
-- (void)testRunner:(GHTestRunner *)runner didStartTest:(id<GHTest>)test {
+- (void)testRunner:(GHTestRunner *) __unused runner didStartTest:(id<GHTest>) __unused test {
   [self setStatusText:[NSString stringWithFormat:@"Test '%@' started.", [test identifier]]];
   [self reloadTest:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didUpdateTest:(id<GHTest>)test {
+- (void)testRunner:(GHTestRunner *) __unused runner didUpdateTest:(id<GHTest>)test {
   [self reloadTest:test];
 }
 
-- (void)testRunner:(GHTestRunner *)runner didEndTest:(id<GHTest>)test { 
+- (void)testRunner:(GHTestRunner *) __unused runner didEndTest:(id<GHTest>)test {
   [self reloadTest:test];
 }
 
@@ -284,7 +289,7 @@ NSString *const GHUnitFilterKey = @"Filter";
   [searchBar setShowsCancelButton:YES animated:YES];  
 }
 
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *) __unused searchBar {
   return ![dataSource_ isRunning];
 }
 

@@ -86,7 +86,7 @@ reason:@"GHVerifyView can only be called from within a GHViewTestCase class"] ra
  usually corresponds to the latest iOS simulator available).
  */
 @interface GHViewTestCase : GHTestCase {
-  NSInteger imageVerifyCount_;
+  short imageVerifyCount_;
 }
 
 /*!

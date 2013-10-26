@@ -34,6 +34,7 @@
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
     scrollView_ = [[UIScrollView alloc] initWithFrame:CGRectZero];
+    // deprecated iOS 7
     scrollView_.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     scrollView_.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
     [self addSubview:scrollView_];

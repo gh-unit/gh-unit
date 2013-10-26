@@ -2,6 +2,4 @@
 #include "Shared-iOS.xcconfig"
 
 PRODUCT_NAME = GHUnitIOSDevice
-
 SDKROOT = iphoneos
-ARCHS = $(ARCHS_STANDARD_32_BIT)

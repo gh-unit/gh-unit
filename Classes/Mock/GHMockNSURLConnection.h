@@ -74,7 +74,7 @@ extern NSString *const GHMockNSURLConnectionException;
 
 @property (readonly, nonatomic, getter=isStarted) BOOL started;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
-@property (readonly, nonatomic, weak) id delegate;
+@property (readonly, nonatomic, assign) id delegate;
 
 // Mocked version of NSURLConnection#initWithRequest:delegate:
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate;

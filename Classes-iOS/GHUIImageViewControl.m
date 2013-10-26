@@ -61,7 +61,7 @@
   _imageView.highlighted = highlighted;
 }
 
-- (id)forwardingTargetForSelector:(SEL)aSelector {
+- (id)forwardingTargetForSelector:(SEL) __unused aSelector {
   return _imageView;
 }
 

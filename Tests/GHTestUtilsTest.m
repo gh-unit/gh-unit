@@ -30,12 +30,15 @@
 #import "GHTestCase.h"
 #import "GHTestUtils.h"
 
-@interface GHTestUtilsTest : GHTestCase {
-  BOOL _value;
-}
+@interface GHTestUtilsTest : GHTestCase
+
+@property (nonatomic, assign) BOOL value;
+
 @end
 
 @implementation GHTestUtilsTest
+
+@synthesize value = _value;
 
 - (BOOL)shouldRunOnMainThread { return YES; }
 
@@ -44,29 +47,38 @@
 }
 
 - (void)testRunForInterval {
+  
+  __weak typeof(self) wself = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    _value = YES;
+    [wself setValue:YES];
   });
   GHRunForInterval(0.1);
   GHAssertTrue(_value, @"_value should have been set to true when running the main loop.");
 }
 
 - (void)testRunWhile {
+  __weak typeof(self) wself = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    _value = YES;
+    [wself setValue:YES];
   });
+  
   GHRunUntilTimeoutWhileBlock(10.0, ^BOOL{
-    return !_value;
+    return ![wself value];
   });
   GHAssertTrue(_value, @"_value should have been set to true when running the main loop.");
 }
 
 - (void)testRunWhileTimesOut {
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
-    _value = YES;
+  
+  __weak typeof(self) wself = self;
+  double delayInSeconds = 0.5;
+  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+  dispatch_after(popTime, dispatch_get_current_queue(), ^(void){
+    [wself setValue:YES];
   });
+  
   GHRunUntilTimeoutWhileBlock(0.1, ^BOOL{
-    return !_value;
+    return ![wself value];
   });
   GHAssertFalse(_value, @"_value should not have been set to true since GHRunUntilTimeoutWhileBlock should have timed out.");
 }

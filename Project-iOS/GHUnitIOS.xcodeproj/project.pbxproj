@@ -106,24 +106,10 @@
 		0041C6AF13BA7C9A0015FC22 /* GHUnitIOSViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0041C65113BA7C9A0015FC22 /* GHUnitIOSViewController.h */; };
 		0041C6B013BA7C9A0015FC22 /* GHUnitIOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C65213BA7C9A0015FC22 /* GHUnitIOSViewController.m */; };
 		0041C6B113BA7C9A0015FC22 /* GHUnitIOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C65213BA7C9A0015FC22 /* GHUnitIOSViewController.m */; };
-		0066A0BF13C51359006B7022 /* GTMNSString+XML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0066A0BB13C51359006B7022 /* GTMNSString+XML.h */; };
-		0066A0C013C51359006B7022 /* GTMNSString+XML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0066A0BB13C51359006B7022 /* GTMNSString+XML.h */; };
-		0066A0C113C51359006B7022 /* GTMNSString+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066A0BC13C51359006B7022 /* GTMNSString+XML.m */; };
-		0066A0C213C51359006B7022 /* GTMNSString+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066A0BC13C51359006B7022 /* GTMNSString+XML.m */; };
 		0088BC9413F4C19E0084C69E /* GHUnitIPhoneAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 00C979CD13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.h */; };
-		0097C46713BA7EEC00D3BEF0 /* GTMObjC2Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 0097C45413BA7EEC00D3BEF0 /* GTMObjC2Runtime.h */; };
-		0097C46813BA7EEC00D3BEF0 /* GTMObjC2Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 0097C45413BA7EEC00D3BEF0 /* GTMObjC2Runtime.h */; };
-		0097C46913BA7EEC00D3BEF0 /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0097C45513BA7EEC00D3BEF0 /* GTMObjC2Runtime.m */; };
-		0097C46A13BA7EEC00D3BEF0 /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0097C45513BA7EEC00D3BEF0 /* GTMObjC2Runtime.m */; };
-		0097C46F13BA7EEC00D3BEF0 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0097C45813BA7EEC00D3BEF0 /* GTMDefines.h */; };
-		0097C47013BA7EEC00D3BEF0 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0097C45813BA7EEC00D3BEF0 /* GTMDefines.h */; };
-		0097C4AA13BA7FC800D3BEF0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0097C42313BA7E5000D3BEF0 /* UIKit.framework */; };
-		0097C4AB13BA7FC800D3BEF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0041C5ED13BA7B8A0015FC22 /* Foundation.framework */; };
-		0097C4AC13BA7FC800D3BEF0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0097C42613BA7E5000D3BEF0 /* CoreGraphics.framework */; };
 		0097C4B213BA7FC800D3BEF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0097C4B013BA7FC800D3BEF0 /* InfoPlist.strings */; };
 		00C9799113BA809600FC285C /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C9797B13BA809600FC285C /* example.json */; };
 		00C9799213BA809600FC285C /* GHAsyncTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9797C13BA809600FC285C /* GHAsyncTestCaseTest.m */; };
-		00C9799313BA809600FC285C /* GHGTMTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9797D13BA809600FC285C /* GHGTMTestCaseTest.m */; };
 		00C9799413BA809600FC285C /* GHKVObserveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9797E13BA809600FC285C /* GHKVObserveTest.m */; };
 		00C9799513BA809600FC285C /* GHMockNSURLConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9797F13BA809600FC285C /* GHMockNSURLConnectionTest.m */; };
 		00C9799713BA809600FC285C /* GHNSURLConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9798113BA809600FC285C /* GHNSURLConnectionTest.m */; };
@@ -138,7 +124,6 @@
 		00C979A013BA809600FC285C /* GHTestMacrosTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9798B13BA809600FC285C /* GHTestMacrosTest.m */; };
 		00C979A113BA809600FC285C /* GHTestOnMainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9798C13BA809600FC285C /* GHTestOnMainThread.m */; };
 		00C979A213BA809600FC285C /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9798D13BA809600FC285C /* GHUnitIOSTestMain.m */; };
-		00C979A313BA809600FC285C /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9799013BA809600FC285C /* GTMSenTestCase.m */; };
 		00C979CF13BA8A5100FC285C /* GHUnitIPhoneAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 00C979CD13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.h */; };
 		00C979D013BA8A5100FC285C /* GHUnitIPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C979CE13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.m */; };
 		00CEA041156C2E0B00BA3276 /* GHUIImageViewControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 00CEA03F156C2E0B00BA3276 /* GHUIImageViewControl.h */; };
@@ -163,8 +148,18 @@
 		42A274AC16361D9500BA4C74 /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274A916361D9500BA4C74 /* GHTestUtils.m */; };
 		42A274AD16361D9500BA4C74 /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274A916361D9500BA4C74 /* GHTestUtils.m */; };
 		42A274B216361F4200BA4C74 /* GHTestUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274B116361F4200BA4C74 /* GHTestUtilsTest.m */; };
-		42A274F61637535900BA4C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
 		42A678EF1401423D0060D1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
+		F5B19D16181BDAE30073B48F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B19D15181BDAE30073B48F /* Default-568h@2x.png */; };
+		F5B19D17181BDD3D0073B48F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
+		F5B19D18181BDD3D0073B48F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0041C5ED13BA7B8A0015FC22 /* Foundation.framework */; };
+		F5B19D19181BDD3D0073B48F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0097C42313BA7E5000D3BEF0 /* UIKit.framework */; };
+		F5B19D1A181BDD3D0073B48F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0097C42613BA7E5000D3BEF0 /* CoreGraphics.framework */; };
+		F5ECEF53181C65AF00A7F259 /* GTMNSString+XML.h in Headers */ = {isa = PBXBuildFile; fileRef = F5ECEF4E181C65AF00A7F259 /* GTMNSString+XML.h */; };
+		F5ECEF54181C65AF00A7F259 /* GTMNSString+XML.h in Headers */ = {isa = PBXBuildFile; fileRef = F5ECEF4E181C65AF00A7F259 /* GTMNSString+XML.h */; };
+		F5ECEF55181C65AF00A7F259 /* GTMNSString+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECEF4F181C65AF00A7F259 /* GTMNSString+XML.m */; };
+		F5ECEF56181C65AF00A7F259 /* GTMNSString+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = F5ECEF4F181C65AF00A7F259 /* GTMNSString+XML.m */; };
+		F5ECEF5B181C65AF00A7F259 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = F5ECEF52181C65AF00A7F259 /* GTMDefines.h */; };
+		F5ECEF5C181C65AF00A7F259 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = F5ECEF52181C65AF00A7F259 /* GTMDefines.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,13 +231,8 @@
 		0041C6B713BA7CBE0015FC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0041C6B813BA7CBE0015FC22 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		0041C6B913BA7CBE0015FC22 /* Tests_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tests_Prefix.pch; sourceTree = "<group>"; };
-		0066A0BB13C51359006B7022 /* GTMNSString+XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+XML.h"; sourceTree = "<group>"; };
-		0066A0BC13C51359006B7022 /* GTMNSString+XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+XML.m"; sourceTree = "<group>"; };
 		0097C42313BA7E5000D3BEF0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0097C42613BA7E5000D3BEF0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		0097C45413BA7EEC00D3BEF0 /* GTMObjC2Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMObjC2Runtime.h; sourceTree = "<group>"; };
-		0097C45513BA7EEC00D3BEF0 /* GTMObjC2Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMObjC2Runtime.m; sourceTree = "<group>"; };
-		0097C45813BA7EEC00D3BEF0 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		0097C45913BA7EEC00D3BEF0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		0097C47313BA7F1300D3BEF0 /* CombineLibs.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = CombineLibs.sh; sourceTree = "<group>"; };
 		0097C47413BA7F1300D3BEF0 /* iOSFramework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = iOSFramework.sh; sourceTree = "<group>"; };
@@ -254,7 +244,6 @@
 		00C9797613BA802400FC285C /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		00C9797B13BA809600FC285C /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.json; sourceTree = "<group>"; };
 		00C9797C13BA809600FC285C /* GHAsyncTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCaseTest.m; sourceTree = "<group>"; };
-		00C9797D13BA809600FC285C /* GHGTMTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHGTMTestCaseTest.m; sourceTree = "<group>"; };
 		00C9797E13BA809600FC285C /* GHKVObserveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHKVObserveTest.m; sourceTree = "<group>"; };
 		00C9797F13BA809600FC285C /* GHMockNSURLConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockNSURLConnectionTest.m; sourceTree = "<group>"; };
 		00C9798113BA809600FC285C /* GHNSURLConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSURLConnectionTest.m; sourceTree = "<group>"; };
@@ -270,8 +259,6 @@
 		00C9798B13BA809600FC285C /* GHTestMacrosTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestMacrosTest.m; sourceTree = "<group>"; };
 		00C9798C13BA809600FC285C /* GHTestOnMainThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestOnMainThread.m; sourceTree = "<group>"; };
 		00C9798D13BA809600FC285C /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
-		00C9798F13BA809600FC285C /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMSenTestCase.h; sourceTree = "<group>"; };
-		00C9799013BA809600FC285C /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSenTestCase.m; sourceTree = "<group>"; };
 		00C979CA13BA81E200FC285C /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		00C979CB13BA81E200FC285C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		00C979CD13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneAppDelegate.h; sourceTree = "<group>"; };
@@ -289,6 +276,11 @@
 		42A274A916361D9500BA4C74 /* GHTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestUtils.m; sourceTree = "<group>"; };
 		42A274B116361F4200BA4C74 /* GHTestUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestUtilsTest.m; sourceTree = "<group>"; };
 		42A678EE1401423D0060D1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		F5B19D15181BDAE30073B48F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F5B19D2D181BF2290073B48F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F5ECEF4E181C65AF00A7F259 /* GTMNSString+XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+XML.h"; sourceTree = "<group>"; };
+		F5ECEF4F181C65AF00A7F259 /* GTMNSString+XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+XML.m"; sourceTree = "<group>"; };
+		F5ECEF52181C65AF00A7F259 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,11 +304,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0097C4AA13BA7FC800D3BEF0 /* UIKit.framework in Frameworks */,
-				0097C4AB13BA7FC800D3BEF0 /* Foundation.framework in Frameworks */,
-				0097C4AC13BA7FC800D3BEF0 /* CoreGraphics.framework in Frameworks */,
+				F5B19D18181BDD3D0073B48F /* Foundation.framework in Frameworks */,
+				F5B19D19181BDD3D0073B48F /* UIKit.framework in Frameworks */,
+				F5B19D17181BDD3D0073B48F /* QuartzCore.framework in Frameworks */,
+				F5B19D1A181BDD3D0073B48F /* CoreGraphics.framework in Frameworks */,
 				0012D1EC140EFD960093EC59 /* libGHUnitIOSSimulator.a in Frameworks */,
-				42A274F61637535900BA4C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +318,7 @@
 		0041C5DF13BA7B8A0015FC22 = {
 			isa = PBXGroup;
 			children = (
+				F5B19D15181BDAE30073B48F /* Default-568h@2x.png */,
 				00C979CA13BA81E200FC285C /* CHANGELOG.md */,
 				00C979CB13BA81E200FC285C /* README.md */,
 				0041C6B813BA7CBE0015FC22 /* Makefile */,
@@ -360,6 +353,7 @@
 				0041C5ED13BA7B8A0015FC22 /* Foundation.framework */,
 				0097C42313BA7E5000D3BEF0 /* UIKit.framework */,
 				0097C42613BA7E5000D3BEF0 /* CoreGraphics.framework */,
+				F5B19D2D181BF2290073B48F /* XCTest.framework */,
 				0041C61613BA7C6C0015FC22 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -487,31 +481,11 @@
 		0097C44A13BA7EEC00D3BEF0 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				0097C45213BA7EEC00D3BEF0 /* GTM */,
+				F5ECEF4C181C65AF00A7F259 /* GTM */,
 				0097C45913BA7EEC00D3BEF0 /* README.md */,
 			);
 			name = Libraries;
 			path = ../Libraries;
-			sourceTree = "<group>";
-		};
-		0097C45213BA7EEC00D3BEF0 /* GTM */ = {
-			isa = PBXGroup;
-			children = (
-				0097C45313BA7EEC00D3BEF0 /* Foundation */,
-				0097C45813BA7EEC00D3BEF0 /* GTMDefines.h */,
-			);
-			path = GTM;
-			sourceTree = "<group>";
-		};
-		0097C45313BA7EEC00D3BEF0 /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-				0066A0BB13C51359006B7022 /* GTMNSString+XML.h */,
-				0066A0BC13C51359006B7022 /* GTMNSString+XML.m */,
-				0097C45413BA7EEC00D3BEF0 /* GTMObjC2Runtime.h */,
-				0097C45513BA7EEC00D3BEF0 /* GTMObjC2Runtime.m */,
-			);
-			path = Foundation;
 			sourceTree = "<group>";
 		};
 		0097C47113BA7F1300D3BEF0 /* Scripts */ = {
@@ -542,7 +516,6 @@
 				0097C4AE13BA7FC800D3BEF0 /* Supporting Files */,
 				00C9797A13BA809600FC285C /* Data */,
 				00C9797C13BA809600FC285C /* GHAsyncTestCaseTest.m */,
-				00C9797D13BA809600FC285C /* GHGTMTestCaseTest.m */,
 				00C9797E13BA809600FC285C /* GHKVObserveTest.m */,
 				00C9797F13BA809600FC285C /* GHMockNSURLConnectionTest.m */,
 				00C9798113BA809600FC285C /* GHNSURLConnectionTest.m */,
@@ -560,7 +533,6 @@
 				42187C1715BF472300E702B6 /* GHUnitIOSTestViewTest.m */,
 				00C9798D13BA809600FC285C /* GHUnitIOSTestMain.m */,
 				42A274B116361F4200BA4C74 /* GHTestUtilsTest.m */,
-				00C9798E13BA809600FC285C /* GTM */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -574,13 +546,22 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		00C9798E13BA809600FC285C /* GTM */ = {
+		F5ECEF4C181C65AF00A7F259 /* GTM */ = {
 			isa = PBXGroup;
 			children = (
-				00C9798F13BA809600FC285C /* GTMSenTestCase.h */,
-				00C9799013BA809600FC285C /* GTMSenTestCase.m */,
+				F5ECEF4D181C65AF00A7F259 /* Foundation */,
+				F5ECEF52181C65AF00A7F259 /* GTMDefines.h */,
 			);
 			path = GTM;
+			sourceTree = "<group>";
+		};
+		F5ECEF4D181C65AF00A7F259 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				F5ECEF4E181C65AF00A7F259 /* GTMNSString+XML.h */,
+				F5ECEF4F181C65AF00A7F259 /* GTMNSString+XML.m */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -597,7 +578,9 @@
 				0041C66613BA7C9A0015FC22 /* GHTestGroup.h in Headers */,
 				0041C66A13BA7C9A0015FC22 /* GHTesting.h in Headers */,
 				0041C66E13BA7C9A0015FC22 /* GHTestOperation.h in Headers */,
+				F5ECEF5B181C65AF00A7F259 /* GTMDefines.h in Headers */,
 				0041C67213BA7C9A0015FC22 /* GHTestRunner.h in Headers */,
+				F5ECEF53181C65AF00A7F259 /* GTMNSString+XML.h in Headers */,
 				0041C67613BA7C9A0015FC22 /* GHTestSuite.h in Headers */,
 				0041C67A13BA7C9A0015FC22 /* NSException+GHTestFailureExceptions.h in Headers */,
 				0041C67E13BA7C9A0015FC22 /* NSValue+GHValueFormatter.h in Headers */,
@@ -612,10 +595,7 @@
 				0041C6A613BA7C9A0015FC22 /* GHUnitIOSTestViewController.h in Headers */,
 				0041C6AA13BA7C9A0015FC22 /* GHUnitIOSView.h in Headers */,
 				0041C6AE13BA7C9A0015FC22 /* GHUnitIOSViewController.h in Headers */,
-				0097C46713BA7EEC00D3BEF0 /* GTMObjC2Runtime.h in Headers */,
-				0097C46F13BA7EEC00D3BEF0 /* GTMDefines.h in Headers */,
 				00C979CF13BA8A5100FC285C /* GHUnitIPhoneAppDelegate.h in Headers */,
-				0066A0BF13C51359006B7022 /* GTMNSString+XML.h in Headers */,
 				421C7B8F13F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */,
 				422863111458BC1200BF3ED2 /* GHViewTestCase.h in Headers */,
 				4228635814595D0400BF3ED2 /* GHImageDiffView.h in Headers */,
@@ -635,7 +615,9 @@
 				0041C66713BA7C9A0015FC22 /* GHTestGroup.h in Headers */,
 				0041C66B13BA7C9A0015FC22 /* GHTesting.h in Headers */,
 				0041C66F13BA7C9A0015FC22 /* GHTestOperation.h in Headers */,
+				F5ECEF5C181C65AF00A7F259 /* GTMDefines.h in Headers */,
 				0041C67313BA7C9A0015FC22 /* GHTestRunner.h in Headers */,
+				F5ECEF54181C65AF00A7F259 /* GTMNSString+XML.h in Headers */,
 				0041C67713BA7C9A0015FC22 /* GHTestSuite.h in Headers */,
 				0041C67B13BA7C9A0015FC22 /* NSException+GHTestFailureExceptions.h in Headers */,
 				0041C67F13BA7C9A0015FC22 /* NSValue+GHValueFormatter.h in Headers */,
@@ -650,9 +632,6 @@
 				0041C6A713BA7C9A0015FC22 /* GHUnitIOSTestViewController.h in Headers */,
 				0041C6AB13BA7C9A0015FC22 /* GHUnitIOSView.h in Headers */,
 				0041C6AF13BA7C9A0015FC22 /* GHUnitIOSViewController.h in Headers */,
-				0097C46813BA7EEC00D3BEF0 /* GTMObjC2Runtime.h in Headers */,
-				0097C47013BA7EEC00D3BEF0 /* GTMDefines.h in Headers */,
-				0066A0C013C51359006B7022 /* GTMNSString+XML.h in Headers */,
 				0088BC9413F4C19E0084C69E /* GHUnitIPhoneAppDelegate.h in Headers */,
 				421C7B9013F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */,
 				422863121458BC1200BF3ED2 /* GHViewTestCase.h in Headers */,
@@ -727,7 +706,7 @@
 		0041C5E113BA7B8A0015FC22 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 0041C5E413BA7B8A0015FC22 /* Build configuration list for PBXProject "GHUnitIOS" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -756,6 +735,7 @@
 			files = (
 				0097C4B213BA7FC800D3BEF0 /* InfoPlist.strings in Resources */,
 				00C9799113BA809600FC285C /* example.json in Resources */,
+				F5B19D16181BDAE30073B48F /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,6 +768,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "sh ../Scripts/RunTests.sh";
+			showEnvVarsInLog = 0;
 		};
 		42187C1A15BF519500E702B6 /* Copy Test Images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -802,6 +783,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = ../Scripts/PrepareUITests.sh;
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -830,12 +812,11 @@
 				0041C6A813BA7C9A0015FC22 /* GHUnitIOSTestViewController.m in Sources */,
 				0041C6AC13BA7C9A0015FC22 /* GHUnitIOSView.m in Sources */,
 				0041C6B013BA7C9A0015FC22 /* GHUnitIOSViewController.m in Sources */,
-				0097C46913BA7EEC00D3BEF0 /* GTMObjC2Runtime.m in Sources */,
 				00C979D013BA8A5100FC285C /* GHUnitIPhoneAppDelegate.m in Sources */,
-				0066A0C113C51359006B7022 /* GTMNSString+XML.m in Sources */,
 				421C7B9113F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */,
 				422863131458BC1200BF3ED2 /* GHViewTestCase.m in Sources */,
 				4228635914595D0400BF3ED2 /* GHImageDiffView.m in Sources */,
+				F5ECEF55181C65AF00A7F259 /* GTMNSString+XML.m in Sources */,
 				00CEA043156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */,
 				42A274AC16361D9500BA4C74 /* GHTestUtils.m in Sources */,
 			);
@@ -845,6 +826,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5ECEF56181C65AF00A7F259 /* GTMNSString+XML.m in Sources */,
 				0041C65913BA7C9A0015FC22 /* GHAsyncTestCase.m in Sources */,
 				0041C65D13BA7C9A0015FC22 /* GHTest+JUnitXML.m in Sources */,
 				0041C66113BA7C9A0015FC22 /* GHTest.m in Sources */,
@@ -865,8 +847,6 @@
 				0041C6A913BA7C9A0015FC22 /* GHUnitIOSTestViewController.m in Sources */,
 				0041C6AD13BA7C9A0015FC22 /* GHUnitIOSView.m in Sources */,
 				0041C6B113BA7C9A0015FC22 /* GHUnitIOSViewController.m in Sources */,
-				0097C46A13BA7EEC00D3BEF0 /* GTMObjC2Runtime.m in Sources */,
-				0066A0C213C51359006B7022 /* GTMNSString+XML.m in Sources */,
 				421C7B9213F0AF1D00E21E74 /* GHUnitIOSTestView.m in Sources */,
 				422863141458BC1200BF3ED2 /* GHViewTestCase.m in Sources */,
 				00CEA044156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */,
@@ -880,7 +860,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00C9799213BA809600FC285C /* GHAsyncTestCaseTest.m in Sources */,
-				00C9799313BA809600FC285C /* GHGTMTestCaseTest.m in Sources */,
 				00C9799413BA809600FC285C /* GHKVObserveTest.m in Sources */,
 				00C9799513BA809600FC285C /* GHMockNSURLConnectionTest.m in Sources */,
 				00C9799713BA809600FC285C /* GHNSURLConnectionTest.m in Sources */,
@@ -895,7 +874,6 @@
 				00C979A013BA809600FC285C /* GHTestMacrosTest.m in Sources */,
 				00C979A113BA809600FC285C /* GHTestOnMainThread.m in Sources */,
 				00C979A213BA809600FC285C /* GHUnitIOSTestMain.m in Sources */,
-				00C979A313BA809600FC285C /* GTMSenTestCase.m in Sources */,
 				42187C1815BF472300E702B6 /* GHUnitIOSTestViewTest.m in Sources */,
 				42A274B216361F4200BA4C74 /* GHTestUtilsTest.m in Sources */,
 			);
@@ -926,29 +904,124 @@
 		0041C5F213BA7B8A0015FC22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SHORT_ENUMS = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				GENERATE_PROFILING_CODE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-Wdiv-by-zero",
+					"-Wbad-function-cast",
+					"-Wnested-externs",
+					"-Wold-style-definition",
+				);
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
+				WARNING_CFLAGS = (
+					"-Wunreachable-code",
+					"-fcolor-diagnostics",
+					"-Wno-format-security",
+				);
 			};
 			name = Debug;
 		};
 		0041C5F313BA7B8A0015FC22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_SHORT_ENUMS = YES;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-Wdiv-by-zero",
+					"-Wbad-function-cast",
+					"-Wnested-externs",
+					"-Wold-style-definition",
+				);
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
+				WARNING_CFLAGS = (
+					"-Wunreachable-code",
+					"-fcolor-diagnostics",
+					"-Wno-format-security",
+				);
 			};
 			name = Release;
 		};
@@ -956,8 +1029,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0041C60913BA7BEF0015FC22 /* iOSSimulator-Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
+				GENERATE_PROFILING_CODE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = iphonesimulator;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -965,8 +1048,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0041C60A13BA7BEF0015FC22 /* iOSSimulator-Release.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = iphonesimulator;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
 		};
@@ -974,9 +1066,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0041C60713BA7BEF0015FC22 /* iOSDevice-Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -984,16 +1080,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0041C60813BA7BEF0015FC22 /* iOSDevice-Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		0097C44813BA7E7400D3BEF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				GCC_VERSION = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1001,7 +1103,9 @@
 		0097C44913BA7E7400D3BEF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				GCC_VERSION = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1010,24 +1114,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks\"",
+					"$(SRCROOT)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1037,24 +1145,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks\"",
+					"$(SRCROOT)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

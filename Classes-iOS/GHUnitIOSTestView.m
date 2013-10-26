@@ -78,7 +78,15 @@
   CGRect renderedImageFrame = CGRectZero;
 
   CGRect textLabelFrame = textLabel_.frame;
-  textLabelFrame.size.height = [textLabel_.text sizeWithFont:textLabel_.font constrainedToSize:CGSizeMake(textLabel_.frame.size.width, 10000) lineBreakMode:UILineBreakModeWordWrap].height;
+  
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wenum-conversion"
+
+  textLabelFrame.size.height = [textLabel_.text sizeWithFont:textLabel_.font
+                                           constrainedToSize:CGSizeMake(textLabel_.frame.size.width, 10000)
+                                               lineBreakMode:UILineBreakModeWordWrap].height;
+#pragma clang diagnostic pop
+  
   textLabel_.frame = textLabelFrame;
 
   if (savedImageView_.image && !savedImageView_.hidden) {
@@ -96,7 +104,7 @@
     renderedImageView_.frame = renderedImageFrame;
   }
 
-  y += roundf(MAX(savedImageFrame.size.height, renderedImageFrame.size.height) + 10);
+  y += round(MAX(savedImageFrame.size.height, renderedImageFrame.size.height) + 10.0);
 
   if (!approveButton_.hidden) {
     approveButton_.frame = CGRectMake(10, y, 300, 30);
