@@ -15,7 +15,7 @@
 		windowController_ = [[GHTestWindowController alloc] init];
 		NSBundle *bundle = [NSBundle bundleForClass:[self class]];	
 		topLevelObjects_ = [[NSMutableArray alloc] init]; 
-		NSDictionary *externalNameTable = [NSDictionary dictionaryWithObjectsAndKeys:self, @"NSOwner", topLevelObjects_, @"NSTopLevelObjects", nil]; 
+		NSDictionary *externalNameTable = @{@"NSOwner": self, @"NSTopLevelObjects": topLevelObjects_}; 
 		[bundle loadNibFile:@"GHTestApp" externalNameTable:externalNameTable withZone:nil];			
 	}
 	return self;
@@ -36,7 +36,7 @@
   
   char *stderrRedirect = getenv("GHUNIT_STDERR_REDIRECT");
   if (stderrRedirect) {
-    NSString *stderrRedirectPath = [NSString stringWithUTF8String:stderrRedirect];
+    NSString *stderrRedirectPath = @(stderrRedirect);
     freopen([stderrRedirectPath fileSystemRepresentation], "a", stderr);
   }
 }

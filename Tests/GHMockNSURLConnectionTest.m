@@ -18,7 +18,7 @@
 @implementation GHMockNSURLConnectionTest
 
 - (void)setUpClass {
-  testHeaders_= [NSDictionary dictionaryWithObjectsAndKeys:@"somehexdata", @"ETag", nil];
+  testHeaders_= @{@"ETag": @"somehexdata"};
   testData_ = [@"This is test data" dataUsingEncoding:NSUTF8StringEncoding];
 }
 

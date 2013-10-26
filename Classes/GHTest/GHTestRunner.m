@@ -294,7 +294,7 @@ operationQueue=operationQueue_;
       
       char *resultsDirStr = getenv("JUNIT_XML_DIR");
       if (resultsDirStr) {
-        resultsDir = [NSString stringWithUTF8String:resultsDirStr];
+        resultsDir = @(resultsDirStr);
       } else {
         NSString *tmpDir = NSTemporaryDirectory();
         resultsDir = [tmpDir stringByAppendingPathComponent:@"test-results"];

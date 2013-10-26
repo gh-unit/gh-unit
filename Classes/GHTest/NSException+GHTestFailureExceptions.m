@@ -75,10 +75,8 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
                         atLine:(int)lineNumber
                         reason:(NSString *)reason {
   NSDictionary *userInfo =
-  [NSDictionary dictionaryWithObjectsAndKeys:
-   [NSNumber numberWithInteger:lineNumber], GHTestLineNumberKey,
-   filename, GHTestFilenameKey,
-   nil];
+  @{GHTestLineNumberKey: @(lineNumber),
+   GHTestFilenameKey: filename};
   
   return [self exceptionWithName:GHTestFailureException
               reason:reason
@@ -254,10 +252,8 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
                               atLine:(int)lineNumber
                               reason:(NSString *)reason {
   NSDictionary *userInfo =
-  [NSDictionary dictionaryWithObjectsAndKeys:
-   [NSNumber numberWithInteger:lineNumber], GHTestLineNumberKey,
-   filename, GHTestFilenameKey,
-   nil];
+  @{GHTestLineNumberKey: @(lineNumber),
+   GHTestFilenameKey: filename};
   
   return [self exceptionWithName:name
                           reason:reason

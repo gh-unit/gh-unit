@@ -49,7 +49,7 @@
 - (void)dealloc {
 	// Clear delegates
 	for(NSString *identifier in map_) {
-		GHTestNode *node = [map_ objectForKey:identifier];
+		GHTestNode *node = map_[identifier];
     [node setDelegate:nil];
   }
 	
@@ -70,12 +70,12 @@
 }
 
 - (void)registerNode:(GHTestNode *)node {
-	[map_ setObject:node forKey:node.identifier];
+	map_[node.identifier] = node;
 	node.delegate = self;
 }
 
 - (GHTestNode *)findTestNodeForTest:(id<GHTest>)test {
-	return [map_ objectForKey:[test identifier]];
+	return map_[[test identifier]];
 }
 
 - (GHTestNode *)findFailure {
@@ -98,7 +98,7 @@
 - (NSUInteger)numberOfTestsInGroup:(NSUInteger)group {
 	NSArray *children = [root_ children];
 	if ([children count] == 0) { return 0; }
-	GHTestNode *groupNode = [children objectAtIndex:group];
+	GHTestNode *groupNode = children[group];
 	return [[groupNode children] count];
 }
 
@@ -134,12 +134,12 @@
   if ([paths count] == 0) return nil;
   NSString *identifier = identifier_;
   if (!identifier) identifier = @"Tests";
-  return [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"GHUnit-%@.tests", identifier]];
+  return [paths[0] stringByAppendingPathComponent:[NSString stringWithFormat:@"GHUnit-%@.tests", identifier]];
 }
 
 - (void)_updateTestNodeWithDefaults:(GHTestNode *)node {
   id<GHTest> test = node.test;
-  id<GHTest> testDefault = [defaults_ objectForKey:test.identifier];
+  id<GHTest> testDefault = defaults_[test.identifier];
   if (testDefault) {    
     test.status = testDefault.status;
     test.interval = testDefault.interval;
@@ -153,7 +153,7 @@
 }
 
 - (void)_saveTestNodeToDefaults:(GHTestNode *)node {
-  [defaults_ setObject:node.test forKey:node.test.identifier];
+  defaults_[node.test.identifier] = node.test;
   for(GHTestNode *childNode in [node children])
     [self _saveTestNodeToDefaults:childNode];
 }
