@@ -1,3 +1,32 @@
+
+#import "GHTestWindowController.h"
+
+
+@implementation GHTestWindowController
+
+- (id)init {	return [super initWithWindowNibName:@"GHTestWindow"]; }
+
+
+- (void)awakeFromNib { _viewController = GHTestViewController.new;
+
+	[_viewController loadTestSuite];
+	[_viewController  loadDefaults];
+	self.window.contentView = _viewController.view;
+	self.window.title 		= [NSString stringWithFormat:@"GHUnit %@", [NSBundle bundleForClass:self.class].infoDictionary[@"CFBundleVersion"]];
+	if (getenv("GHUNIT_AUTORUN")) [self runTests:nil];
+}
+
+- (IBAction)runTests:(id)x {	[_viewController runTests]; }
+- (IBAction)copy:		(id)x {	[_viewController   copy:x]; }
+
+- (void)windowWillClose:(NSNotification*)n {	[NSApplication.sharedApplication terminate:self];  }
+
+- (NSSize)windowWillResize:(NSWindow*)w toSize:(NSSize)frameSize {
+	return  _viewController.isShowingDetails && frameSize.width < MIN_WINDOW_WIDTH ? w.frame.size : frameSize;
+}
+
+@end
+
 //
 //  GHTestWindowController.m
 //  GHKit
@@ -26,45 +55,3 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
-
-#import "GHTestWindowController.h"
-
-
-@implementation GHTestWindowController
-
-@synthesize viewController=viewController_;
-
-- (id)init {
-	return [super initWithWindowNibName:@"GHTestWindow"];
-}
-
-- (void)awakeFromNib {	
-	viewController_ = [[GHTestViewController alloc] init];
-	[viewController_ loadTestSuite];
-	[viewController_ loadDefaults];	
-	self.window.contentView = viewController_.view;	
-	NSString *bundleVersion = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"CFBundleVersion"];
-	self.window.title = [NSString stringWithFormat:@"GHUnit %@", bundleVersion];	
-  
-  if (getenv("GHUNIT_AUTORUN")) [self runTests:nil];
-}
-
-- (IBAction)runTests:(id)sender {
-  [viewController_ runTests];
-}
-
-- (IBAction)copy:(id)sender {
-  [viewController_ copy:sender];
-}
-
-
-- (void)windowWillClose:(NSNotification *)notification {
-	[[NSApplication sharedApplication] terminate:self];
-}
-
-- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-  if ([viewController_ isShowingDetails] && frameSize.width < MIN_WINDOW_WIDTH) return sender.frame.size;
-  return frameSize;
-}
-
-@end

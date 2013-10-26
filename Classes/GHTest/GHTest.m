@@ -64,7 +64,7 @@ GHTestStats GHTestStatsMake(NSInteger succeedCount, NSInteger failureCount, NSIn
 const GHTestStats GHTestStatsEmpty = {0, 0, 0, 0};
 
 NSString *NSStringFromGHTestStats(GHTestStats stats) {
-  return [NSString stringWithFormat:@"%d/%d/%d/%d", stats.succeedCount, stats.failureCount, 
+  return [NSString stringWithFormat:@"%ld/%ld/%ld/%ld", stats.succeedCount, stats.failureCount, 
           stats.cancelCount, stats.testCount]; 
 }
 

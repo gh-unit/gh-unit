@@ -1,3 +1,15 @@
+
+#import "GHTestViewController.h"
+
+@interface GHTestWindowController : NSWindowController
+
+@property (strong, nonatomic) IBOutlet GHTestViewController *viewController;
+
+- (IBAction)runTests:(id)sender;
+- (IBAction)copy:(id)sender;
+
+@end
+
 //
 //  GHTestWindowController.h
 //  GHKit
@@ -26,16 +38,3 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
-
-#import "GHTestViewController.h"
-
-@interface GHTestWindowController : NSWindowController {
-	GHTestViewController *viewController_;
-}
-
-@property (strong, nonatomic) IBOutlet GHTestViewController *viewController;
-
-- (IBAction)runTests:(id)sender;
-- (IBAction)copy:(id)sender;
-
-@end

@@ -57,7 +57,6 @@
 		0083D11913BCFE1700F71F21 /* GHTestWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0083D0E813BCFE1700F71F21 /* GHTestWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0083D11A13BCFE1700F71F21 /* GHTestWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D0E913BCFE1700F71F21 /* GHTestWindowController.m */; };
 		0083D13413BCFFA400F71F21 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0083D08913BCFDDB00F71F21 /* Cocoa.framework */; };
-		0083D13A13BCFFA400F71F21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0083D13813BCFFA400F71F21 /* InfoPlist.strings */; };
 		0083D15F13C28A2E00F71F21 /* GHUnit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0083D08613BCFDDB00F71F21 /* GHUnit.framework */; };
 		0083D17B13C28B3700F71F21 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 0083D16513C28B3700F71F21 /* example.json */; };
 		0083D17C13C28B3700F71F21 /* GHAsyncTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16613C28B3700F71F21 /* GHAsyncTestCaseTest.m */; };
@@ -112,9 +111,6 @@
 		004E186D13C518C1007D842B /* GTMNSString+XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+XML.m"; sourceTree = "<group>"; };
 		0083D08613BCFDDB00F71F21 /* GHUnit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GHUnit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0083D08913BCFDDB00F71F21 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		0083D08C13BCFDDB00F71F21 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		0083D08D13BCFDDB00F71F21 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		0083D08E13BCFDDB00F71F21 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0083D09113BCFDDB00F71F21 /* GHUnitMacOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GHUnitMacOSX-Info.plist"; sourceTree = "<group>"; };
 		0083D09313BCFDDB00F71F21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0083D0B413BCFE1700F71F21 /* GHAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAsyncTestCase.h; sourceTree = "<group>"; };
@@ -167,7 +163,6 @@
 		0083D12513BCFE6D00F71F21 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		0083D13213BCFFA400F71F21 /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0083D13713BCFFA400F71F21 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
-		0083D13913BCFFA400F71F21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0083D13B13BCFFA400F71F21 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		0083D16513C28B3700F71F21 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.json; sourceTree = "<group>"; };
 		0083D16613C28B3700F71F21 /* GHAsyncTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCaseTest.m; sourceTree = "<group>"; };
@@ -224,7 +219,6 @@
 				0083D08F13BCFDDB00F71F21 /* GHUnitMacOSX */,
 				0083D11B13BCFE6D00F71F21 /* XcodeConfig */,
 				0083D13513BCFFA400F71F21 /* Tests */,
-				0083D08813BCFDDB00F71F21 /* Frameworks */,
 				0083D08713BCFDDB00F71F21 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -236,26 +230,6 @@
 				0083D13213BCFFA400F71F21 /* Tests.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		0083D08813BCFDDB00F71F21 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0083D08913BCFDDB00F71F21 /* Cocoa.framework */,
-				0083D1A813C28BE900F71F21 /* SenTestingKit.framework */,
-				0083D08B13BCFDDB00F71F21 /* Other Frameworks */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		0083D08B13BCFDDB00F71F21 /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0083D08C13BCFDDB00F71F21 /* AppKit.framework */,
-				0083D08D13BCFDDB00F71F21 /* CoreData.framework */,
-				0083D08E13BCFDDB00F71F21 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		0083D08F13BCFDDB00F71F21 /* GHUnitMacOSX */ = {
@@ -395,7 +369,8 @@
 			isa = PBXGroup;
 			children = (
 				0083D13713BCFFA400F71F21 /* Tests-Info.plist */,
-				0083D13813BCFFA400F71F21 /* InfoPlist.strings */,
+				0083D08913BCFDDB00F71F21 /* Cocoa.framework */,
+				0083D1A813C28BE900F71F21 /* SenTestingKit.framework */,
 				0083D13B13BCFFA400F71F21 /* Tests-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -582,7 +557,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0083D13A13BCFFA400F71F21 /* InfoPlist.strings in Resources */,
 				0083D17B13C28B3700F71F21 /* example.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,14 +652,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		0083D13813BCFFA400F71F21 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0083D13913BCFFA400F71F21 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -730,6 +696,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
@@ -747,6 +715,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
@@ -760,6 +730,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ANALYZER_OBJC_UNUSED_IVARS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -770,6 +741,8 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
@@ -783,6 +756,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ANALYZER_OBJC_UNUSED_IVARS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -793,6 +767,8 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
