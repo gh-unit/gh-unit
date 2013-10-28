@@ -15,7 +15,7 @@
 		windowController_ = [[GHTestWindowController alloc] init];
 		NSBundle *bundle = [NSBundle bundleForClass:[self class]];	
 		topLevelObjects_ = [[NSMutableArray alloc] init]; 
-		NSDictionary *externalNameTable = [NSDictionary dictionaryWithObjectsAndKeys:self, @"NSOwner", topLevelObjects_, @"NSTopLevelObjects", nil]; 
+		NSDictionary *externalNameTable = @{@"NSOwner": self, @"NSTopLevelObjects": topLevelObjects_}; 
 		[bundle loadNibFile:@"GHTestApp" externalNameTable:externalNameTable withZone:nil];			
 	}
 	return self;
@@ -33,6 +33,12 @@
 																							 name:NSApplicationWillTerminateNotification object:nil];
 	windowController_.viewController.suite = suite_;
 	[windowController_ showWindow:nil];
+  
+  char *stderrRedirect = getenv("GHUNIT_STDERR_REDIRECT");
+  if (stderrRedirect) {
+    NSString *stderrRedirectPath = @(stderrRedirect);
+    freopen([stderrRedirectPath fileSystemRepresentation], "a", stderr);
+  }
 }
 
 - (void)dealloc {
@@ -46,7 +52,7 @@
 
 #pragma mark Notifications (NSApplication)
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
+- (void)applicationWillTerminate:(NSNotification *) __unused aNotification {
 	[windowController_.viewController saveDefaults];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }

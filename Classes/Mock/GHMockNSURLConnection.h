@@ -67,7 +67,6 @@ extern NSString *const GHMockNSURLConnectionException;
  */
 @interface GHMockNSURLConnection : NSObject {
 	NSURLRequest *request_;
-	id delegate_; // weak
 	
 	BOOL cancelled_;	
 	BOOL started_;
@@ -75,6 +74,7 @@ extern NSString *const GHMockNSURLConnectionException;
 
 @property (readonly, nonatomic, getter=isStarted) BOOL started;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
+@property (readonly, nonatomic, assign) id delegate;
 
 // Mocked version of NSURLConnection#initWithRequest:delegate:
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate;
@@ -97,30 +97,11 @@ extern NSString *const GHMockNSURLConnectionException;
 - (void)receiveResponse:(NSURLResponse *)response afterDelay:(NSTimeInterval)afterDelay;
 
 /*!
- Send HTTP response to delegate with status code, headers, after delay.
- This is only the HTTP response (and not data or finished).
- (For asynchronous requests)
- @param statusCode HTTP status code
- @param headers Headers
- @param afterDelay Delay in seconds (if < 0, there is no delay)
- */
-- (void)receiveHTTPResponseWithStatusCode:(int)statusCode headers:(NSDictionary *)headers afterDelay:(NSTimeInterval)afterDelay;
-
-/*!
  Send data to connection delegate after delay.
  @param data Data to send
  @param afterDelay Delay in seconds
  */
 - (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)afterDelay;
-
-/*!
- Send data to connection delegate.
- @param data Data to send
- @param statusCode HTTP status code
- @param MIMEType Mime type
- @param afterDelay Delay
- */
-- (void)receiveData:(NSData *)data statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)afterDelay;
 
 /*!
  Send data (from file in bundle resource) to connection delegate after delay.
@@ -146,6 +127,17 @@ extern NSString *const GHMockNSURLConnectionException;
  @param afterDelay Delay before responding (if < 0, there is no delay)
  */
 - (void)receiveFromPath:(NSString *)path statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)afterDelay;
+
+
+/*!
+ Send HTTP response to delegate with status code, headers, after delay.
+ This is only the HTTP response (and not data or finished).
+ (For asynchronous requests)
+ @param statusCode HTTP status code
+ @param headers Headers
+ @param afterDelay Delay in seconds (if < 0, there is no delay)
+ */
+- (void)receiveHTTPResponseWithStatusCode:(int)statusCode headers:(NSDictionary *)headers afterDelay:(NSTimeInterval)afterDelay;
 
 /*!
  Sends mock response, sends data, and then calls finish.

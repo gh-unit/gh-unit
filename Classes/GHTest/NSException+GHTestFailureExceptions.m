@@ -55,6 +55,11 @@
 
 #import "NSValue+GHValueFormatter.h"
 
+
+#pragma mark - Prototypes
+
+NSString *GHComposeString(NSString *formatString, ...);
+
 NSString *const GHTestFilenameKey = @"GHTestFilenameKey";
 NSString *const GHTestLineNumberKey = @"GHTestLineNumberKey";
 NSString *const GHTestFailureException = @"GHTestFailureException";
@@ -70,10 +75,8 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
                         atLine:(int)lineNumber
                         reason:(NSString *)reason {
   NSDictionary *userInfo =
-  [NSDictionary dictionaryWithObjectsAndKeys:
-   [NSNumber numberWithInteger:lineNumber], GHTestLineNumberKey,
-   filename, GHTestFilenameKey,
-   nil];
+  @{GHTestLineNumberKey: @(lineNumber),
+   GHTestFilenameKey: filename};
   
   return [self exceptionWithName:GHTestFailureException
               reason:reason
@@ -249,10 +252,8 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
                               atLine:(int)lineNumber
                               reason:(NSString *)reason {
   NSDictionary *userInfo =
-  [NSDictionary dictionaryWithObjectsAndKeys:
-   [NSNumber numberWithInteger:lineNumber], GHTestLineNumberKey,
-   filename, GHTestFilenameKey,
-   nil];
+  @{GHTestLineNumberKey: @(lineNumber),
+   GHTestFilenameKey: filename};
   
   return [self exceptionWithName:name
                           reason:reason

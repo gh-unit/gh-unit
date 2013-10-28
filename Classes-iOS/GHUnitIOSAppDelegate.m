@@ -38,6 +38,12 @@
 @implementation GHUnitIOSAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+	char *stderrRedirect = getenv("GHUNIT_STDERR_REDIRECT");
+	if (stderrRedirect) {
+		NSString *stderrRedirectPath = [NSString stringWithUTF8String:stderrRedirect];
+		freopen([stderrRedirectPath fileSystemRepresentation], "a", stderr);
+	}
+	
   if (getenv("GHUNIT_CLI")) {
     int exitStatus = [GHTestRunner run];
     if ([application respondsToSelector:@selector(_terminateWithStatus:)]) {
@@ -61,7 +67,7 @@
   if (getenv("GHUNIT_AUTORUN")) [viewController runTests];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {
+- (void)applicationWillTerminate:(UIApplication *) __unused application {
   // Called only graceful terminate; Closing simulator won't trigger this
   [[[navigationController_ viewControllers] objectAtIndex:0] saveDefaults]; 
 }

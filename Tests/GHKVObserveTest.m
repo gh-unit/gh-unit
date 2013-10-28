@@ -26,7 +26,10 @@
 
 @implementation GHKVObserveTest
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+- (void)observeValueForKeyPath:(NSString *) __unused keyPath
+                      ofObject:(id) __unused object
+                        change:(NSDictionary *) __unused change
+                       context:(void *) __unused context {
   [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testObserve)];
 }
 
@@ -49,7 +52,10 @@
 
 
 - (void)updateText {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wselector"
   [self performSelector:@selector(setText:) withObject:@"Test" afterDelay:0.1];
+#pragma clang diagnostic pop
 }
 
 @end

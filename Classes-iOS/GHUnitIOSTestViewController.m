@@ -48,7 +48,7 @@
   self.view = testView_;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation) __unused interfaceOrientation {
   return YES;
 }
 
@@ -104,17 +104,17 @@
 
 #pragma mark Delegates (GHUnitIOSTestView)
 
-- (void)testViewDidSelectSavedImage:(GHUnitIOSTestView *)testView {
+- (void)testViewDidSelectSavedImage:(GHUnitIOSTestView *) __unused testView {
   [self _showImageDiff];
   [imageDiffView_ showSavedImage];
 }
 
-- (void)testViewDidSelectRenderedImage:(GHUnitIOSTestView *)testView {
+- (void)testViewDidSelectRenderedImage:(GHUnitIOSTestView *) __unused testView {
   [self _showImageDiff];
   [imageDiffView_ showRenderedImage];
 }
 
-- (void)testViewDidApproveChange:(GHUnitIOSTestView *)testView {
+- (void)testViewDidApproveChange:(GHUnitIOSTestView *) __unused testView {
   // Save new image as the approved version
   NSString *imageFilename = [testNode_.test.exception.userInfo objectForKey:@"ImageFilename"];
   UIImage *renderedImage = [testNode_.test.exception.userInfo objectForKey:@"RenderedImage"];

@@ -37,14 +37,14 @@ void GHRunForInterval(CFTimeInterval interval) {
   // 2. CACurrentMediaTime() is better for relative timing since it's not subject to network time synchronization.
   CFTimeInterval runUntilTime = CACurrentMediaTime() + interval;
   NSArray *runLoopModes = @[(NSString *)kCFRunLoopDefaultMode, (NSString *)kCFRunLoopCommonModes];
-  NSInteger runIndex = 0;
+  NSUInteger runIndex = 0;
   while (CACurrentMediaTime() < runUntilTime) {
     NSString *mode = [runLoopModes objectAtIndex:(runIndex++ % [runLoopModes count])];
     @autoreleasepool {
       SInt32 runLoopStatus = CFRunLoopRunInMode((__bridge CFStringRef)mode, checkEveryInterval, false);
       if (!mode || (runLoopStatus == kCFRunLoopRunFinished)) {
         // If there were no run loop sources or timers then we should sleep for the interval
-        usleep(checkEveryInterval * USEC_PER_SEC);
+        usleep((useconds_t)(checkEveryInterval * USEC_PER_SEC));
       }
     }
   }

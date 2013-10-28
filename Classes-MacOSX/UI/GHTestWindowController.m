@@ -49,7 +49,7 @@
   if (getenv("GHUNIT_AUTORUN")) [self runTests:nil];
 }
 
-- (IBAction)runTests:(id)sender {
+- (IBAction)runTests:(id) __unused sender {
   [viewController_ runTests];
 }
 
@@ -58,7 +58,7 @@
 }
 
 
-- (void)windowWillClose:(NSNotification *)notification {
+- (void)windowWillClose:(NSNotification *) __unused notification {
 	[[NSApplication sharedApplication] terminate:self];
 }
 

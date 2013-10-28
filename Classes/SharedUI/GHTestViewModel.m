@@ -48,8 +48,10 @@
 
 - (void)dealloc {
 	// Clear delegates
-	for(NSString *identifier in map_) 
-		[[map_ objectForKey:identifier] setDelegate:nil];
+	for(NSString *identifier in map_) {
+		GHTestNode *node = map_[identifier];
+    [node setDelegate:nil];
+  }
 	
   [runner_ cancel];
   runner_.delegate = nil;
@@ -61,19 +63,19 @@
 }
 
 - (NSString *)statusString:(NSString *)prefix {
-	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ disabledCount] + [suite_ stats].cancelCount);
+  short totalRunCount = [suite_ stats].testCount - ([suite_ disabledCount] + [suite_ stats].cancelCount);
 	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs (%0.3fs in test time)", (self.isRunning ? @"Running" : @"Took"), runner_.interval, [suite_ interval]];
 	return [NSString stringWithFormat:@"%@%@ %d/%d (%d failures)", prefix, statusInterval,
-					[suite_ stats].succeedCount, totalRunCount, [suite_ stats].failureCount];	
+					[suite_ stats].succeedCount, totalRunCount, [suite_ stats].failureCount];
 }
 
 - (void)registerNode:(GHTestNode *)node {
-	[map_ setObject:node forKey:node.identifier];
+	map_[node.identifier] = node;
 	node.delegate = self;
 }
 
 - (GHTestNode *)findTestNodeForTest:(id<GHTest>)test {
-	return [map_ objectForKey:[test identifier]];
+	return map_[[test identifier]];
 }
 
 - (GHTestNode *)findFailure {
@@ -89,24 +91,29 @@
 	return nil;
 }
 
-- (NSInteger)numberOfGroups {
+- (NSUInteger)numberOfGroups {
 	return [[root_ children] count];
 }
 
-- (NSInteger)numberOfTestsInGroup:(NSInteger)group {
+- (NSUInteger)numberOfTestsInGroup:(NSUInteger)group {
 	NSArray *children = [root_ children];
-	if ([children count] == 0) return 0;
-	GHTestNode *groupNode = [children objectAtIndex:group];
+	if ([children count] == 0) { return 0; }
+	GHTestNode *groupNode = children[group];
 	return [[groupNode children] count];
 }
 
 - (NSIndexPath *)indexPathToTest:(id<GHTest>)test {
-	NSInteger section = 0;
+  /*** UNEXPECTED ***
+   cannot use NSIndexPath indexPathForRow:inSection
+   because that is defined in UITableView - which is not compat with AppKit
+   *****************/
+	
+  NSUInteger section = 0;
 	for(GHTestNode *node in [root_ children]) {
-		NSInteger row = 0;		
+		NSUInteger row = 0;
 		if ([node.test isEqual:test]) {
 			NSUInteger pathIndexes[] = {section,row};
-			return [NSIndexPath indexPathWithIndexes:pathIndexes length:2]; // Not user row:section: for compatibility with MacOSX
+			return [NSIndexPath indexPathWithIndexes:pathIndexes length:2];
 		}
 		for(GHTestNode *childNode in [node children]) {
 			if ([childNode.test isEqual:test]) {
@@ -120,19 +127,19 @@
 	return nil;
 }
 
-- (void)testNodeDidChange:(GHTestNode *)node { }
+- (void)testNodeDidChange:(GHTestNode *) __unused node { }
 
 - (NSString *)_defaultsPath {
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
   if ([paths count] == 0) return nil;
   NSString *identifier = identifier_;
   if (!identifier) identifier = @"Tests";
-  return [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"GHUnit-%@.tests", identifier]];
+  return [paths[0] stringByAppendingPathComponent:[NSString stringWithFormat:@"GHUnit-%@.tests", identifier]];
 }
 
 - (void)_updateTestNodeWithDefaults:(GHTestNode *)node {
   id<GHTest> test = node.test;
-  id<GHTest> testDefault = [defaults_ objectForKey:test.identifier];
+  id<GHTest> testDefault = defaults_[test.identifier];
   if (testDefault) {    
     test.status = testDefault.status;
     test.interval = testDefault.interval;
@@ -146,7 +153,7 @@
 }
 
 - (void)_saveTestNodeToDefaults:(GHTestNode *)node {
-  [defaults_ setObject:node.test forKey:node.test.identifier];
+  defaults_[node.test.identifier] = node.test;
   for(GHTestNode *childNode in [node children])
     [self _saveTestNodeToDefaults:childNode];
 }
@@ -201,15 +208,15 @@
 		test_ = test;
 		
 		NSMutableArray *nodeChildren = [NSMutableArray array];
-		for(id<GHTest> test in children) {	
+		for(id<GHTest> childTest in children) {
 			
 			GHTestNode *node = nil;
-			if ([test conformsToProtocol:@protocol(GHTestGroup)]) {
-				NSArray *testChildren = [(id<GHTestGroup>)test children];
+			if ([childTest conformsToProtocol:@protocol(GHTestGroup)]) {
+				NSArray *testChildren = [(id<GHTestGroup>)childTest children];
 				if ([testChildren count] > 0) 
-					node = [GHTestNode nodeWithTest:test children:testChildren source:source];
+					node = [GHTestNode nodeWithTest:childTest children:testChildren source:source];
 			} else {
-				node = [GHTestNode nodeWithTest:test children:nil source:source];
+				node = [GHTestNode nodeWithTest:childTest children:nil source:source];
 			}			
 			if (node)
 				[nodeChildren addObject:node];

@@ -61,7 +61,6 @@
 		0083D15F13C28A2E00F71F21 /* GHUnit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0083D08613BCFDDB00F71F21 /* GHUnit.framework */; };
 		0083D17B13C28B3700F71F21 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 0083D16513C28B3700F71F21 /* example.json */; };
 		0083D17C13C28B3700F71F21 /* GHAsyncTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16613C28B3700F71F21 /* GHAsyncTestCaseTest.m */; };
-		0083D17D13C28B3700F71F21 /* GHGTMTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16713C28B3700F71F21 /* GHGTMTestCaseTest.m */; };
 		0083D17E13C28B3700F71F21 /* GHKVObserveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16813C28B3700F71F21 /* GHKVObserveTest.m */; };
 		0083D17F13C28B3700F71F21 /* GHMockNSURLConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16913C28B3700F71F21 /* GHMockNSURLConnectionTest.m */; };
 		0083D18113C28B3700F71F21 /* GHNSURLConnectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D16B13C28B3700F71F21 /* GHNSURLConnectionTest.m */; };
@@ -75,9 +74,6 @@
 		0083D18913C28B3700F71F21 /* GHTestLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D17413C28B3700F71F21 /* GHTestLogTest.m */; };
 		0083D18A13C28B3700F71F21 /* GHTestMacrosTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D17513C28B3700F71F21 /* GHTestMacrosTest.m */; };
 		0083D18B13C28B3700F71F21 /* GHTestOnMainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D17613C28B3700F71F21 /* GHTestOnMainThread.m */; };
-		0083D18D13C28B3700F71F21 /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D17A13C28B3700F71F21 /* GTMSenTestCase.m */; };
-		0083D1A213C28B8700F71F21 /* GTMObjC2Runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = 0083D19713C28B8700F71F21 /* GTMObjC2Runtime.h */; };
-		0083D1A313C28B8700F71F21 /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0083D19813C28B8700F71F21 /* GTMObjC2Runtime.m */; };
 		0083D1A613C28B8700F71F21 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0083D19B13C28B8700F71F21 /* GTMDefines.h */; };
 		0083D1A913C28BE900F71F21 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0083D1A813C28BE900F71F21 /* SenTestingKit.framework */; };
 		0083D1AA13C28BFA00F71F21 /* SenTestingKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0083D1A813C28BE900F71F21 /* SenTestingKit.framework */; };
@@ -171,7 +167,6 @@
 		0083D13B13BCFFA400F71F21 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		0083D16513C28B3700F71F21 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.json; sourceTree = "<group>"; };
 		0083D16613C28B3700F71F21 /* GHAsyncTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAsyncTestCaseTest.m; sourceTree = "<group>"; };
-		0083D16713C28B3700F71F21 /* GHGTMTestCaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHGTMTestCaseTest.m; sourceTree = "<group>"; };
 		0083D16813C28B3700F71F21 /* GHKVObserveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHKVObserveTest.m; sourceTree = "<group>"; };
 		0083D16913C28B3700F71F21 /* GHMockNSURLConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMockNSURLConnectionTest.m; sourceTree = "<group>"; };
 		0083D16B13C28B3700F71F21 /* GHNSURLConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHNSURLConnectionTest.m; sourceTree = "<group>"; };
@@ -186,10 +181,6 @@
 		0083D17413C28B3700F71F21 /* GHTestLogTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestLogTest.m; sourceTree = "<group>"; };
 		0083D17513C28B3700F71F21 /* GHTestMacrosTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestMacrosTest.m; sourceTree = "<group>"; };
 		0083D17613C28B3700F71F21 /* GHTestOnMainThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestOnMainThread.m; sourceTree = "<group>"; };
-		0083D17913C28B3700F71F21 /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMSenTestCase.h; sourceTree = "<group>"; };
-		0083D17A13C28B3700F71F21 /* GTMSenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMSenTestCase.m; sourceTree = "<group>"; };
-		0083D19713C28B8700F71F21 /* GTMObjC2Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMObjC2Runtime.h; sourceTree = "<group>"; };
-		0083D19813C28B8700F71F21 /* GTMObjC2Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMObjC2Runtime.m; sourceTree = "<group>"; };
 		0083D19B13C28B8700F71F21 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		0083D1A813C28BE900F71F21 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0090D62F13C299B500C25A92 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -406,7 +397,6 @@
 			children = (
 				0083D16413C28B3700F71F21 /* Data */,
 				0083D16613C28B3700F71F21 /* GHAsyncTestCaseTest.m */,
-				0083D16713C28B3700F71F21 /* GHGTMTestCaseTest.m */,
 				0083D16813C28B3700F71F21 /* GHKVObserveTest.m */,
 				0083D16913C28B3700F71F21 /* GHMockNSURLConnectionTest.m */,
 				0083D16B13C28B3700F71F21 /* GHNSURLConnectionTest.m */,
@@ -421,7 +411,6 @@
 				0083D17413C28B3700F71F21 /* GHTestLogTest.m */,
 				0083D17513C28B3700F71F21 /* GHTestMacrosTest.m */,
 				0083D17613C28B3700F71F21 /* GHTestOnMainThread.m */,
-				0083D17813C28B3700F71F21 /* GTM */,
 			);
 			name = Tests;
 			path = ../../Tests;
@@ -433,15 +422,6 @@
 				0083D16513C28B3700F71F21 /* example.json */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		0083D17813C28B3700F71F21 /* GTM */ = {
-			isa = PBXGroup;
-			children = (
-				0083D17913C28B3700F71F21 /* GTMSenTestCase.h */,
-				0083D17A13C28B3700F71F21 /* GTMSenTestCase.m */,
-			);
-			path = GTM;
 			sourceTree = "<group>";
 		};
 		0083D19513C28B8700F71F21 /* GTM */ = {
@@ -459,8 +439,6 @@
 			children = (
 				004E186C13C518C1007D842B /* GTMNSString+XML.h */,
 				004E186D13C518C1007D842B /* GTMNSString+XML.m */,
-				0083D19713C28B8700F71F21 /* GTMObjC2Runtime.h */,
-				0083D19813C28B8700F71F21 /* GTMObjC2Runtime.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -493,7 +471,6 @@
 				0083D11213BCFE1700F71F21 /* GHTestOutlineViewModel.h in Headers */,
 				0083D11613BCFE1700F71F21 /* GHTestViewController.h in Headers */,
 				0083D11913BCFE1700F71F21 /* GHTestWindowController.h in Headers */,
-				0083D1A213C28B8700F71F21 /* GTMObjC2Runtime.h in Headers */,
 				0083D1A613C28B8700F71F21 /* GTMDefines.h in Headers */,
 				004E186F13C518C1007D842B /* GTMNSString+XML.h in Headers */,
 			);
@@ -546,7 +523,7 @@
 		0083D07C13BCFDDB00F71F21 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 0083D07F13BCFDDB00F71F21 /* Build configuration list for PBXProject "GHUnitMacOSX" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -630,7 +607,6 @@
 				0083D11313BCFE1700F71F21 /* GHTestOutlineViewModel.m in Sources */,
 				0083D11713BCFE1700F71F21 /* GHTestViewController.m in Sources */,
 				0083D11A13BCFE1700F71F21 /* GHTestWindowController.m in Sources */,
-				0083D1A313C28B8700F71F21 /* GTMObjC2Runtime.m in Sources */,
 				004E187013C518C1007D842B /* GTMNSString+XML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,7 +616,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0083D17C13C28B3700F71F21 /* GHAsyncTestCaseTest.m in Sources */,
-				0083D17D13C28B3700F71F21 /* GHGTMTestCaseTest.m in Sources */,
 				0083D17E13C28B3700F71F21 /* GHKVObserveTest.m in Sources */,
 				0083D17F13C28B3700F71F21 /* GHMockNSURLConnectionTest.m in Sources */,
 				0083D18113C28B3700F71F21 /* GHNSURLConnectionTest.m in Sources */,
@@ -654,7 +629,6 @@
 				0083D18913C28B3700F71F21 /* GHTestLogTest.m in Sources */,
 				0083D18A13C28B3700F71F21 /* GHTestMacrosTest.m in Sources */,
 				0083D18B13C28B3700F71F21 /* GHTestOnMainThread.m in Sources */,
-				0083D18D13C28B3700F71F21 /* GTMSenTestCase.m in Sources */,
 				00271A3913C294F800B06B98 /* GHUnitTestMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -692,32 +666,98 @@
 		0083D0AB13BCFDDC00F71F21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = NO;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
+				WARNING_CFLAGS = (
+					"-Wunreachable-code",
+					"-fcolor-diagnostics",
+					"-Wno-format-security",
+				);
 			};
 			name = Debug;
 		};
 		0083D0AC13BCFDDC00F71F21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = NO;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
+				WARNING_CFLAGS = (
+					"-Wunreachable-code",
+					"-fcolor-diagnostics",
+					"-Wno-format-security",
+				);
 			};
 			name = Release;
 		};
@@ -725,13 +765,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0083D11C13BCFE6D00F71F21 /* GHUnit-Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_ENABLE_OBJC_GC = unsupported;
 				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				PRODUCT_NAME = GHUnit;
+				WARNING_CFLAGS = "$(inherited)";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -740,13 +782,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0083D11D13BCFE6D00F71F21 /* GHUnit-Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_ENABLE_OBJC_GC = unsupported;
 				INFOPLIST_FILE = "GHUnitMacOSX/GHUnitMacOSX-Info.plist";
 				PRODUCT_NAME = GHUnit;
+				WARNING_CFLAGS = "$(inherited)";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -755,8 +799,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -766,6 +810,8 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -777,8 +823,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -788,6 +834,8 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

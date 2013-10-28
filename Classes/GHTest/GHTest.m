@@ -52,7 +52,7 @@ NSString* NSStringFromGHTestStatus(GHTestStatus status) {
   }
 }
 
-GHTestStats GHTestStatsMake(NSInteger succeedCount, NSInteger failureCount, NSInteger cancelCount, NSInteger testCount) {
+GHTestStats GHTestStatsMake(short succeedCount, short failureCount, short cancelCount, short testCount) {
   GHTestStats stats;
   stats.succeedCount = succeedCount;
   stats.failureCount = failureCount; 
@@ -64,7 +64,7 @@ GHTestStats GHTestStatsMake(NSInteger succeedCount, NSInteger failureCount, NSIn
 const GHTestStats GHTestStatsEmpty = {0, 0, 0, 0};
 
 NSString *NSStringFromGHTestStats(GHTestStats stats) {
-  return [NSString stringWithFormat:@"%d/%d/%d/%d", stats.succeedCount, stats.failureCount, 
+  return [NSString stringWithFormat:@"%d/%d/%d/%d", stats.succeedCount, stats.failureCount,
           stats.cancelCount, stats.testCount]; 
 }
 
@@ -155,7 +155,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
   [delegate_ testDidUpdate:self source:self];
 }
 
-- (NSInteger)disabledCount {
+- (short)disabledCount {
   return (disabled_ || hidden_ ? 1 : 0);
 }
 
@@ -226,7 +226,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
   [delegate_ testDidEnd:self source:self];
 }
 
-- (void)log:(NSString *)message testCase:(id)testCase {
+- (void)log:(NSString *)message testCase:(id) __unused testCase {
   if (!log_) log_ = [NSMutableArray array];
   [log_ addObject:message];
   [delegate_ test:self didLog:message source:self];

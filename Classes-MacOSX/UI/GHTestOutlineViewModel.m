@@ -14,23 +14,25 @@
 
 #pragma mark DataSource (NSOutlineView)
 
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
+- (id)outlineView:(NSOutlineView *) __unused outlineView child:(NSInteger)index ofItem:(id)item {
 	if (!item) {
 		return [self root];
-	} else {
-		return [[item children] objectAtIndex:index];
+	} else if (index < 0) {
+    return [self root];
+  } else {
+		return [item children][(NSUInteger)index];
 	}
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {	
+- (BOOL)outlineView:(NSOutlineView *) __unused outlineView isItemExpandable:(id)item {
 	return (!item) ? YES : ([[item children] count] > 0);
 }
 
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-	return (!item) ? (self ? 1 : 0) : [[item children] count];
+- (NSInteger)outlineView:(NSOutlineView *) __unused outlineView numberOfChildrenOfItem:(id)item {
+	return (!item) ? (self ? 1 : 0) : (NSInteger)[[item children] count];
 }
 
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
+- (id)outlineView:(NSOutlineView *) __unused outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
 	if (!item) return nil;
 	
 	if (tableColumn == nil) {
@@ -50,7 +52,7 @@
 	}
 }
 
-- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+- (void)outlineView:(NSOutlineView *) __unused outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
 	
 	GHTestNode *test = (GHTestNode *)item;
 	
@@ -63,10 +65,8 @@
 		
 		if (self.isEditing) {
 			[cell setState:[item isSelected] ? NSOnState : NSOffState];
-			NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-																	textColor, NSForegroundColorAttributeName,
-																	[cell font],  NSFontAttributeName,
-																	nil];
+			NSDictionary *attributes = @{NSForegroundColorAttributeName: textColor,
+																	NSFontAttributeName: [cell font]};
 			
 			NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[item name] attributes:attributes];
 			[cell setAttributedTitle:attributedString];
@@ -90,7 +90,7 @@
 }
 
 // We can return a different cell for each row, if we want
-- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+- (NSCell *)outlineView:(NSOutlineView *) __unused outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
 	// If we return a cell for the 'nil' tableColumn, it will be used as a "full width" cell and span all the columns
 //	if (tableColumn == nil && [item hasChildren]) {
 //		// We want to use the cell for the name column, but we could construct a new cell if we wanted to, or return a different cell for each row.
@@ -114,7 +114,7 @@
 
 #pragma mark Delegates (NSOutlineView)
 
-- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+- (void)outlineViewSelectionDidChange:(NSNotification *) __unused notification {
 	[self.delegate testOutlineViewModelDidChangeSelection:self];
 }
 
@@ -131,7 +131,7 @@
 	return (![item hasChildren]);
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item {
+- (BOOL)outlineView:(NSOutlineView *) __unused outlineView isGroupItem:(id)item {
 	return ([item hasChildren]);
 }
 
@@ -139,7 +139,7 @@
 	// We want to allow tracking for all the button cells, even if we don't allow selecting that particular row. 
 	if ([cell isKindOfClass:[NSButtonCell class]]) {
 		// We can also take a peek and make sure that the part of the cell clicked is an area that is normally tracked. Otherwise, clicking outside of the checkbox may make it check the checkbox
-		NSRect cellFrame = [outlineView frameOfCellAtColumn:[[outlineView tableColumns] indexOfObject:tableColumn] row:[outlineView rowForItem:item]];
+		NSRect cellFrame = [outlineView frameOfCellAtColumn:(NSInteger)[[outlineView tableColumns] indexOfObject:tableColumn] row:[outlineView rowForItem:item]];
 		NSUInteger hitTestResult = [cell hitTestForEvent:[NSApp currentEvent] inRect:cellFrame ofView:outlineView];
 		if (hitTestResult && NSCellHitTrackableArea != 0) {
 			return YES;

@@ -32,8 +32,8 @@
 @implementation GHUnitIOSTableViewDataSource
 
 - (GHTestNode *)nodeForIndexPath:(NSIndexPath *)indexPath {
-  GHTestNode *sectionNode = [[[self root] children] objectAtIndex:indexPath.section];
-  return [[sectionNode children] objectAtIndex:indexPath.row];
+  GHTestNode *sectionNode = [[[self root] children] objectAtIndex:(NSUInteger)indexPath.section];
+  return [[sectionNode children] objectAtIndex:(NSUInteger)indexPath.row];
 }
 
 - (void)setSelectedForAllNodes:(BOOL)selected {
@@ -46,26 +46,26 @@
 
 #pragma mark Data Source (UITableView)
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  NSInteger numberOfSections = [self numberOfGroups];
-  if (numberOfSections > 0) return numberOfSections;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *) __unused tableView {
+  NSUInteger numberOfSections = [self numberOfGroups];
+  if (numberOfSections > 0) { return (NSInteger)numberOfSections; }
   return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
-  return [self numberOfTestsInGroup:section];
+- (NSInteger)tableView:(UITableView *) __unused table numberOfRowsInSection:(NSInteger)section {
+  return (NSInteger)[self numberOfTestsInGroup:(NSUInteger)section];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *) __unused tableView titleForHeaderInSection:(NSInteger)section {
   NSArray *children = [[self root] children];
   if ([children count] == 0) return nil;
-  GHTestNode *sectionNode = [children objectAtIndex:section];
+  GHTestNode *sectionNode = [children objectAtIndex:(NSUInteger)section];
   return sectionNode.name;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  GHTestNode *sectionNode = [[[self root] children] objectAtIndex:indexPath.section];
-  GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
+  GHTestNode *sectionNode = [[[self root] children] objectAtIndex:(NSUInteger)indexPath.section];
+  GHTestNode *node = [[sectionNode children] objectAtIndex:(NSUInteger)indexPath.row];
   
   static NSString *CellIdentifier = @"ReviewFeedViewItem";  
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

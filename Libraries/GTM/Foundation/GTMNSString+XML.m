@@ -125,7 +125,7 @@ static NSString *AutoreleasedCloneForXML(NSString *src, BOOL escaping) {
   }
   
   const UniChar *goodRun = buffer;
-  NSUInteger goodRunLength = 0;
+  NSInteger goodRunLength = 0;
   
   for (NSUInteger i = 0; i < length; ++i) {
     

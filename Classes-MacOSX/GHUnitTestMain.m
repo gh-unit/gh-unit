@@ -32,7 +32,7 @@
 #import <GHUnit/GHUnit.h>
 #import <GHUnit/GHTestApp.h>
 
-int main(int argc, char *argv[]) {
+int main(int __unused argc, char __unused *argv[]) {
   @autoreleasepool {
   
   // Register any special test case classes
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
       retVal = [GHTestRunner run];
     } else {
       // To run all tests (from ENV)
-      [[GHTestApp alloc] init];
+      GHTestApp *ghTestApp __unused = [[GHTestApp alloc] init];
       // To run a different test suite:
       //GHTestSuite *suite = [GHTestSuite suiteWithTestFilter:@"GHSlowTest,GHAsyncTestCaseTest"];
       //GHTestApp *app = [[GHTestApp alloc] initWithSuite:suite];

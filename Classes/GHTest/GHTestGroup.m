@@ -120,7 +120,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 // Forward up
-- (void)test:(id<GHTest>)test didLog:(NSString *)message source:(id<GHTest>)source {
+- (void)test:(id<GHTest>) __unused test didLog:(NSString *)message source:(id<GHTest>)source {
   [delegate_ test:self didLog:message source:source]; 
 }
 
@@ -201,8 +201,8 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   return YES;
 }
 
-- (NSInteger)disabledCount {
-  NSInteger disabledCount = 0;
+- (short)disabledCount {
+  short disabledCount = 0;
   for(id<GHTest> test in children_) {
     disabledCount += [test disabledCount];
   }
@@ -253,7 +253,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 - (BOOL)hasEnabledChildren {
-  return (([children_ count] - [self disabledCount]) <= 0);
+  return (((short)[children_ count] - [self disabledCount]) <= 0);
 }
 
 - (void)_run:(NSOperationQueue *)operationQueue {
@@ -333,12 +333,12 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 
 #pragma mark Delegates (GHTestDelegate)
 
-- (void)testDidStart:(id<GHTest>)test source:(id<GHTest>)source {
+- (void)testDidStart:(id<GHTest>) __unused test source:(id<GHTest>)source {
   [delegate_ testDidStart:self source:source];
   [delegate_ testDidUpdate:self source:self]; 
 }
 
-- (void)testDidUpdate:(id<GHTest>)test source:(id<GHTest>)source {
+- (void)testDidUpdate:(id<GHTest>) __unused test source:(id<GHTest>)source {
   [delegate_ testDidUpdate:self source:source]; 
   [delegate_ testDidUpdate:self source:self]; 
 }
