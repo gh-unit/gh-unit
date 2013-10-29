@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>11E53</string>
+	<string>13A603</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
@@ -21,21 +21,21 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.5.1</string>
+	<string>0.5.7</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>4E2002</string>
+	<string>5A2034a</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>11D50a</string>
+	<string>13A595</string>
 	<key>DTSDKName</key>
-	<string>macosx10.7</string>
+	<string>macosx10.9</string>
 	<key>DTXcode</key>
-	<string>0432</string>
+	<string>0501</string>
 	<key>DTXcodeBuild</key>
-	<string>4E2002</string>
+	<string>5A2034a</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2011 rel.me. All rights reserved.</string>
 </dict>

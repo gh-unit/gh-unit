@@ -111,7 +111,7 @@ extern NSString *GHUnitTest;
 
 @interface GHTestSuite (JUnitXML)
 
-- (BOOL)writeJUnitXML:(NSError **)error;
+- (BOOL)writeJUnitXMLToDirectory:(NSString *)directory error:(NSError **)error;
 
 @end
 
