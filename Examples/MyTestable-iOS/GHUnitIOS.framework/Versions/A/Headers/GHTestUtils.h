@@ -1,9 +1,9 @@
 //
-//  GHUnit.h
-//  GHUnit
+//  GHTestUtils.h
+//  GHUnitIOS
 //
-//  Created by Gabriel Handford on 1/19/09.
-//  Copyright 2009. All rights reserved.
+//  Created by John Boiles on 10/22/12.
+//  Copyright 2012. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,30 +27,25 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "GHTestCase.h"
-#import "GHAsyncTestCase.h"
-#import "GHTestSuite.h"
-#import "GHTestMacros.h"
-#import "GHTestRunner.h"
-#import "GHTest.h"
-#import "GHTesting.h"
-#import "GHTestOperation.h"
-#import "GHTestGroup.h"
-#import "GHTest+JUnitXML.h"
-#import "GHTestGroup+JUnitXML.h"
-#import "NSException+GHTestFailureExceptions.h"
-#import "NSValue+GHValueFormatter.h"
+#import <Foundation/Foundation.h>
 
-#if TARGET_OS_IPHONE
-#import "GHTestUtils.h"
-#import "GHUnitIOSAppDelegate.h"
-#import "GHViewTestCase.h"
-#endif
+#define GHRunWhile(__CONDITION__) GHRunUntilTimeoutWhileBlock(10.0, ^BOOL{ return (__CONDITION__); })
 
-#ifdef DEBUG
-#define GHUDebug(fmt, ...) do { \
-fputs([[[NSString stringWithFormat:fmt, ##__VA_ARGS__] stringByAppendingString:@"\n"] UTF8String], stdout); \
-} while(0)
-#else
-#define GHUDebug(fmt, ...) do {} while(0)
-#endif
+/*!
+ Run the main run loop for a period of time. This is useful to give views time to
+ render any asynchronously rendered views. However when possible, GHRunUntilTimeoutWhileBlock
+ should be used instead since it will provide more determinate output.
+
+ @param interval Interval for the main loop to run
+ */
+void GHRunForInterval(CFTimeInterval interval);
+
+/*!
+ Keep running the main runloop until whileBlock returns NO or timeout is reached.
+ This is useful for waiting until certain parts of views render. This method should be
+ used instead of putting GHRunForInterval in a while loop.
+
+ @param timeout Maximum time to run the main loop before giving up
+ @param whileBlock Block that returns YES if the main runloop should keep running
+ */
+void GHRunUntilTimeoutWhileBlock(CFTimeInterval timeout, BOOL(^whileBlock)());

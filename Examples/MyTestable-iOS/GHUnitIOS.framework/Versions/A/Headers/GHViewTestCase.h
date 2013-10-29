@@ -90,17 +90,26 @@ reason:@"GHVerifyView can only be called from within a GHViewTestCase class"] ra
 }
 
 /*!
- Clear all test images in the documents directory
+ Clear all test images in the documents directory.
  */
 + (void)clearTestImages;
 
 /*!
- Save an image to the documents directory as filename
+ Creates a UIImage from the passed in view. This can be useful for testing
+ views that require images.
+
+ @param view UIView to render
+ @result UIImage of the rendered UIView
+ */
++ (UIImage *)imageWithView:(UIView *)view;
+
+/*!
+ Save an approved view test image to the view test images directory.
 
  @param image Image to save
  @param filename Filename for the saved image
  */
-+ (void)saveToDocumentsWithImage:(UIImage *)image filename:(NSString *)filename;
++ (void)saveApprovedViewTestImage:(UIImage *)image filename:(NSString *)filename;
 
 /*!
  Size for a given view. Subclasses can override this to provide custom sizes
