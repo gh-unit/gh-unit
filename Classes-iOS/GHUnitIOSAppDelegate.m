@@ -38,6 +38,12 @@
 @implementation GHUnitIOSAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+	char *stderrRedirect = getenv("GHUNIT_STDERR_REDIRECT");
+	if (stderrRedirect) {
+		NSString *stderrRedirectPath = [NSString stringWithUTF8String:stderrRedirect];
+		freopen([stderrRedirectPath fileSystemRepresentation], "a", stderr);
+	}
+	
   if (getenv("GHUNIT_CLI")) {
     int exitStatus = [GHTestRunner run];
     if ([application respondsToSelector:@selector(_terminateWithStatus:)]) {
