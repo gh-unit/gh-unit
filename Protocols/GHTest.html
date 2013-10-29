@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>GHTest Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -166,8 +165,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -193,98 +192,84 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/identifier">&nbsp;&nbsp;identifier</a></code>
-		<span class="tooltip"><p>Unique identifier for test.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
-		<span class="tooltip"><p>Name (readable) for test.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/interval">&nbsp;&nbsp;interval</a></code>
-		<span class="tooltip"><p>How long the test took to run. Defaults to -1, if not run.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/status">&nbsp;&nbsp;status</a></code>
-		<span class="tooltip"><p>Test status.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/stats">&nbsp;&nbsp;stats</a></code>
-		<span class="tooltip"><p>Test stats.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/exception">&nbsp;&nbsp;exception</a></code>
-		<span class="tooltip"><p>Exception that occurred.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/disabled">&nbsp;&nbsp;disabled</a></code>
-		<span class="tooltip"><p>Whether test is disabled.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/hidden">&nbsp;&nbsp;hidden</a></code>
-		<span class="tooltip"><p>Whether test is hidden.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
-		<span class="tooltip"><p>Delegate for test.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/run:">&ndash;&nbsp;run:</a></code>
-		<span class="tooltip"><p>Run the test.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/log">&ndash;&nbsp;log</a></code>
-		<span class="tooltip"><p>Messages logged during this test run</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/reset">&ndash;&nbsp;reset</a></code>
-		<span class="tooltip"><p>Reset the test.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
-		<span class="tooltip"><p>Cancel the test.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/disabledCount">&ndash;&nbsp;disabledCount</a></code>
-		<span class="tooltip"><p>The number of <a href="../Protocols/GHTest.html#//api/name/disabled">disabled</a> tests</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
@@ -313,7 +298,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) id&lt;&gt; delegate</code></div>
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) id&lt;GHTestDelegate&gt; delegate</code></div>
 
     
 	
@@ -838,6 +823,8 @@
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -848,9 +835,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 GHUnit. All rights reserved. (Last updated: 2012-07-11)</span><br />
+						<p><span class="copyright">&copy; 2013 GHUnit. All rights reserved. (Last updated: 2013-10-29)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>

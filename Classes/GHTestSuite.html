@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>GHTestSuite Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -134,8 +133,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -150,17 +149,12 @@ A test group is a collection of tests; A collection of id<a href="../Classes/GHT
 your test suite might look like:</p>
 
 <p>&ldquo;Tests&rdquo; (GHTestSuite)
-  <a href="../Classes/GHTestGroup.html">GHTestGroup</a> (collection of tests from GHTestCase1)</p>
-
-<pre><code>- (void)testA1 (GHTest with target GHTestCase1 + testA1)
-- (void)testA2 (GHTest with target GHTestCase1 + testA2)
-</code></pre>
-
-<p>  <a href="../Classes/GHTestGroup.html">GHTestGroup</a> (collection of tests from GHTestCase2)</p>
-
-<pre><code>- (void)testB1; (GHTest with target GHTestCase2 + testB1)
-- (void)testB2; (GHTest with target GHTestCase2 + testB2)  
-</code></pre>
+  <a href="../Classes/GHTestGroup.html">GHTestGroup</a> (collection of tests from GHTestCase1)
+    - (void)testA1 (<a href="../Classes/GHTest.html">GHTest</a> with target GHTestCase1 + testA1)
+    - (void)testA2 (<a href="../Classes/GHTest.html">GHTest</a> with target GHTestCase1 + testA2)
+  <a href="../Classes/GHTestGroup.html">GHTestGroup</a> (collection of tests from GHTestCase2)
+    - (void)testB1; (<a href="../Classes/GHTest.html">GHTest</a> with target GHTestCase2 + testB1)
+    - (void)testB2; (<a href="../Classes/GHTest.html">GHTest</a> with target GHTestCase2 + testB2)</p>
 					</div>
 					
 					
@@ -179,44 +173,36 @@ your test suite might look like:</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithName:testCases:delegate:">&ndash;&nbsp;initWithName:testCases:delegate:</a></code>
-		<span class="tooltip"><p>Create test suite with test cases.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/allTests">+&nbsp;allTests</a></code>
-		<span class="tooltip"><p>Creates a suite of all tests.
-Will load all classes that subclass from <a href="../Classes/GHTestCase.html">GHTestCase</a>, SenTestCase or GTMTestCase (or register test case class).</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/suiteWithTestFilter:">+&nbsp;suiteWithTestFilter:</a></code>
-		<span class="tooltip"><p>Create suite of tests with filter.
-This is useful for running a single test or all tests in a single test case.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/suiteWithPrefix:options:">+&nbsp;suiteWithPrefix:options:</a></code>
-		<span class="tooltip"><p>Create suite of tests that start with prefix.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/suiteWithTestCaseClass:method:">+&nbsp;suiteWithTestCaseClass:method:</a></code>
-		<span class="tooltip"><p>Suite for a single test/method.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/suiteFromEnv">+&nbsp;suiteFromEnv</a></code>
-		<span class="tooltip"><p>Return test suite based on environment (TEST=TestFoo/foo)</p></span>
 	</span>
 	
 	
@@ -466,8 +452,8 @@ This is useful for running a single test or all tests in a single test case.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>For example,
-&lsquo;GHSlowTest&rsquo; &mdash; Runs all test method in GHSlowTest
-&lsquo;GHSlowTest/testSlowA &mdash; Only runs the test method testSlowA in GHSlowTest</p>
+&lsquo;GHSlowTest&rsquo; &ndash; Runs all test method in GHSlowTest
+&lsquo;GHSlowTest/testSlowA &ndash; Only runs the test method testSlowA in GHSlowTest</p>
 	</div>
 	
 	
@@ -551,6 +537,8 @@ This is useful for running a single test or all tests in a single test case.</p>
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -561,9 +549,9 @@ This is useful for running a single test or all tests in a single test case.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 GHUnit. All rights reserved. (Last updated: 2012-07-11)</span><br />
+						<p><span class="copyright">&copy; 2013 GHUnit. All rights reserved. (Last updated: 2013-10-29)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>

@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>GHViewTestCase Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -44,7 +43,9 @@
 	
 	<option value="//api/name/clearTestImages">&nbsp;&nbsp;&nbsp;&nbsp;+ clearTestImages</option>
 	
-	<option value="//api/name/saveToDocumentsWithImage:filename:">&nbsp;&nbsp;&nbsp;&nbsp;+ saveToDocumentsWithImage:filename:</option>
+	<option value="//api/name/imageWithView:">&nbsp;&nbsp;&nbsp;&nbsp;+ imageWithView:</option>
+	
+	<option value="//api/name/saveApprovedViewTestImage:filename:">&nbsp;&nbsp;&nbsp;&nbsp;+ saveApprovedViewTestImage:filename:</option>
 	
 	
 	
@@ -83,7 +84,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clearTestImages">clearTestImages</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/saveToDocumentsWithImage:filename:">saveToDocumentsWithImage:filename:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageWithView:">imageWithView:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/saveApprovedViewTestImage:filename:">saveApprovedViewTestImage:filename:</a></span></li>
 	
 </ul></li>
 
@@ -126,8 +129,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -189,33 +192,30 @@ usually corresponds to the latest iOS simulator available).</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/clearTestImages">+&nbsp;clearTestImages</a></code>
-		<span class="tooltip"><p>Clear all test images in the documents directory</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/saveToDocumentsWithImage:filename:">+&nbsp;saveToDocumentsWithImage:filename:</a></code>
-		<span class="tooltip"><p>Save an image to the documents directory as filename</p></span>
+		<code><a href="#//api/name/imageWithView:">+&nbsp;imageWithView:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/saveApprovedViewTestImage:filename:">+&nbsp;saveApprovedViewTestImage:filename:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sizeForView:">&ndash;&nbsp;sizeForView:</a></code>
-		<span class="tooltip"><p>Size for a given view. Subclasses can override this to provide custom sizes
-for views before rendering. The default implementation returns contentSize
-for scrollviews and returns self.frame.size for all other views.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/verifyView:filename:lineNumber:">&ndash;&nbsp;verifyView:filename:lineNumber:</a></code>
-		<span class="tooltip"><p>Called from the GHVerifyView macro. This method should not be called manually.
-Verifies that a view hasn&rsquo;t changed since the last time it was approved. Raises
-a GHViewChangeException if the view has changed. Raises a GHViewUnavailableException
-if there is no image from a previous run.</p></span>
 	</span>
 	
 	
@@ -241,7 +241,7 @@ if there is no image from a previous run.</p></span>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Clear all test images in the documents directory</p>
+		<p>Clear all test images in the documents directory.</p>
 	</div>		
 	
     
@@ -271,18 +271,70 @@ if there is no image from a previous run.</p></span>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/saveToDocumentsWithImage:filename:" title="saveToDocumentsWithImage:filename:"></a>
-	<h3 class="subsubtitle method-title">saveToDocumentsWithImage:filename:</h3>
+	<a name="//api/name/imageWithView:" title="imageWithView:"></a>
+	<h3 class="subsubtitle method-title">imageWithView:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Save an image to the documents directory as filename</p>
+		<p>Creates a UIImage from the passed in view. This can be useful for testing
+views that require images.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)saveToDocumentsWithImage:(UIImage *)<em>image</em> filename:(NSString *)<em>filename</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (UIImage *)imageWithView:(UIView *)<em>view</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>UIView to render</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>UIImage of the rendered UIView</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GHViewTestCase.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/saveApprovedViewTestImage:filename:" title="saveApprovedViewTestImage:filename:"></a>
+	<h3 class="subsubtitle method-title">saveApprovedViewTestImage:filename:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Save an approved view test image to the view test images directory.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)saveApprovedViewTestImage:(UIImage *)<em>image</em> filename:(NSString *)<em>filename</em></code></div>
 
     
 	
@@ -444,6 +496,8 @@ if there is no image from a previous run.</p>
 					</div>
 					
 					
+                    
+                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -454,9 +508,9 @@ if there is no image from a previous run.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 GHUnit. All rights reserved. (Last updated: 2012-07-11)</span><br />
+						<p><span class="copyright">&copy; 2013 GHUnit. All rights reserved. (Last updated: 2013-10-29)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						
 					</div>
 				</div>
