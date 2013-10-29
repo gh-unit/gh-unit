@@ -1,3 +1,11 @@
+# Release 0.5.7
+- Support for Retina view tests
+- Fix issue #105
+- Using CACurrentMediaTime for GHRunForInterval so as to not interfere with swizzled NSDate methods.
+
+# Release 0.4.29 to 0.5.6
+- TODO
+
 # Release 0.4.29
 - Changing paths to use iOS instead of iPhone
 - Rebuilding iOS project using XCode 4
