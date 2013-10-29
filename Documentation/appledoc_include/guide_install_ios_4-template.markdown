@@ -1,4 +1,3 @@
-
 ## Installing in iOS (Xcode 4)
 
 To use GHUnit in your project, you'll need to create and configure a test target.
@@ -13,14 +12,14 @@ To use GHUnit in your project, you'll need to create and configure a test target
 
 ![Select Application](images/2_select_application.png)
 
-- Name it Tests or something similar. Select Finish.
+- Name it Tests or something similar. Select Finish. If there is a checkbox labeled *Use Automatic Reference Counting* then ensure that it is checked.
 
 ![Name it](images/3_name_it.png)
 
 
 ## Configure the Test Target
 
-- Download and copy the GHUnitIOS.framework to your project. Command click on Frameworks in the Project Navigator and select: Add Files to "MyTestable". (This should automatically add GHUnitIOS.framework to your Link Binary With Libraries Build Phase for the Tests target.)
+- Download and copy the [GHUnitIOS.framework](https://github.com/gabriel/gh-unit/downloads) to your project. Command click on Frameworks in the Project Navigator and select: Add Files to "MyTestable". (This should automatically add GHUnitIOS.framework to your Link Binary With Libraries Build Phase for the Tests target.)
 
 ![Add Framework](images/6_add_framework.png)
 
@@ -44,7 +43,7 @@ To use GHUnit in your project, you'll need to create and configure a test target
 
 ![Select Target](images/11_select_target.png)
 
-- Hit Run, and you'll hopefully see the test application running (but without any tests).
+- Hit Run, and you'll hopefully see the test application running (but without any tests). If you receive an error about *_CACurrentMediaTime* then please ensure that QuartzCore.framework has been added to *Linked Frameworks and Libraries in your new test target's "Summary" page.
 
 ![Run It](images/12_running.png)
 
