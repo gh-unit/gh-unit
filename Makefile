@@ -1,7 +1,7 @@
 
 NAME=GHUnit
 COMPANY_ID=me.rel
-GITHUB_DOC_URL=http://gabriel.github.com/gh-unit
+GITHUB_DOC_URL=http://gh-unit.github.io/gh-unit/
 VERSION=$(shell cat XcodeConfig/Shared.xcconfig | grep "GHUNIT_VERSION =" | cut -d '=' -f 2 | tr -d " ")
 
 docs:
