@@ -38,20 +38,25 @@
   if ((self = [super initWithFrame:frame])) {
     self.backgroundColor = [UIColor whiteColor];
 
-    textLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 100)];
-    textLabel_.font = [UIFont systemFontOfSize:12];
+    const int PADDING     = 10;
+    const int BTN_HEIGHT  = 30;
+    const int IMG_WIDTH   = (frame.size.width - 3*PADDING) / 2;
+    const int AUTO_ADJUST = 100;
+
+    textLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(PADDING, 0, frame.size.width - 2*PADDING, AUTO_ADJUST)];
+    textLabel_.font = [UIFont fontWithName:@"Courier" size:12.0];
     textLabel_.textColor = [UIColor blackColor];
     textLabel_.numberOfLines = 0;
     [self addSubview:textLabel_];
 
-    savedImageView_ = [[GHUIImageViewControl alloc] initWithFrame:CGRectMake(10, 10, 145, 100)];
+    savedImageView_ = [[GHUIImageViewControl alloc] initWithFrame:CGRectMake(PADDING, PADDING, IMG_WIDTH, AUTO_ADJUST)];
     [savedImageView_ addTarget:self action:@selector(_selectSavedImage) forControlEvents:UIControlEventTouchUpInside];
     [savedImageView_.layer setBorderWidth:2.0];
     [savedImageView_.layer setBorderColor:[UIColor blackColor].CGColor];
     savedImageView_.hidden = YES;
     [self addSubview:savedImageView_];
 
-    renderedImageView_ = [[GHUIImageViewControl alloc] initWithFrame:CGRectMake(165, 10, 145, 100)];
+    renderedImageView_ = [[GHUIImageViewControl alloc] initWithFrame:CGRectMake(IMG_WIDTH + 2*PADDING, PADDING, IMG_WIDTH, AUTO_ADJUST)];
     [renderedImageView_ addTarget:self action:@selector(_selectRenderedImage) forControlEvents:UIControlEventTouchUpInside];
     [renderedImageView_.layer setBorderWidth:2.0];
     [renderedImageView_.layer setBorderColor:[UIColor blackColor].CGColor];
@@ -59,6 +64,7 @@
     [self addSubview:renderedImageView_];
 
     approveButton_ = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    approveButton_.frame = CGRectMake(PADDING, PADDING+AUTO_ADJUST, frame.size.width-2*PADDING, BTN_HEIGHT);
     [approveButton_ addTarget:self action:@selector(_approveChange) forControlEvents:UIControlEventTouchUpInside];
     approveButton_.hidden = YES;
     [approveButton_ setTitle:@"Approve this change" forState:UIControlStateNormal];
@@ -99,7 +105,9 @@
   y += roundf(MAX(savedImageFrame.size.height, renderedImageFrame.size.height) + 10);
 
   if (!approveButton_.hidden) {
-    approveButton_.frame = CGRectMake(10, y, 300, 30);
+    CGRect approveButtonFrame = approveButton_.frame;
+    approveButtonFrame.origin.y = y;
+    approveButton_.frame = approveButtonFrame;
     y += 40;
   }
 
