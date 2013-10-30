@@ -1,7 +1,10 @@
 #!/bin/sh
 
 echo "Build iOS"
-$(MAKE) -C Project-iOS
+make -C Project-iOS
+
+echo "Build OSX"
+make -C Project-MacOSX
 
 echo "Validate PodSpec"
 pod --version
