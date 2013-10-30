@@ -397,8 +397,6 @@
 				0041C63813BA7C9A0015FC22 /* GHTestCase.h */,
 				0041C63913BA7C9A0015FC22 /* GHTestCase.m */,
 				0041C63A13BA7C9A0015FC22 /* GHTestMacros.h */,
-				4228630F1458BC1200BF3ED2 /* GHViewTestCase.h */,
-				422863101458BC1200BF3ED2 /* GHViewTestCase.m */,
 				0041C62113BA7C9A0015FC22 /* GHAsyncTestCase.h */,
 				0041C62213BA7C9A0015FC22 /* GHAsyncTestCase.m */,
 				0041C63B13BA7C9A0015FC22 /* GHUnit.h */,
@@ -479,6 +477,8 @@
 				4228635714595D0400BF3ED2 /* GHImageDiffView.m */,
 				00CEA03F156C2E0B00BA3276 /* GHUIImageViewControl.h */,
 				00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */,
+				4228630F1458BC1200BF3ED2 /* GHViewTestCase.h */,
+				422863101458BC1200BF3ED2 /* GHViewTestCase.m */,
 			);
 			name = "Classes-iOS";
 			path = "../Classes-iOS";
