@@ -21,11 +21,44 @@ GH-Unit is moved from gabriel/gh-unit to gh-unit/gh-unit.
 - Quickly approve and record view changes
 - View image diff to see where views have changed
 
+## Install (Cocoapods)
+
+Using [CocoaPods](http://cocoapods.org/):
+
+### iOS
+```
+target :Testtarget do
+	pod 'GHUnitIOS', '~> 0.5.7'`
+end
+```
+### OSX
+```
+target :Testtarget do
+	pod 'GHUnitOSX', '~> 0.5.7'`
+end
+```
+
+## Install (From Source)
+Checkout gh-unit.
+
+### iOS
+```bash
+cd Project-iOS && make
+```
+
+Add the `GHUnitIOS.framework` to your project
+
+### OS X
+```bash
+cd Project-MacOSX && make
+```
+Add the `GHUnit.framework` to your project
+
 ## Documentation
 
 - [How to install, create and run tests](http://gh-unit.github.io//gh-unit/docs/index.html)
 - [Online documentation](http://gh-unit.github.io/gh-unit/)
-- [Google Group](http://groups.google.com/group/ghunit)
+- [Google Group (Deprecated - Use Github Issues instead)](http://groups.google.com/group/ghunit)
 
 ## Install (Docset)
 
