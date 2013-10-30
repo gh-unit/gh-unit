@@ -1,0 +1,3 @@
+language: objective-c
+before_install: Scripts/install-travis.sh
+script: Scripts/build-travis.sh
