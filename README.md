@@ -23,14 +23,14 @@ GH-Unit is moved from gabriel/gh-unit to gh-unit/gh-unit.
 
 ## Documentation
 
-- [How to install, create and run tests](http://gabriel.github.com/gh-unit/docs/index.html)
-- [Online documentation](http://gabriel.github.com/gh-unit/)
+- [How to install, create and run tests](http://gh-unit.github.io//gh-unit/docs/index.html)
+- [Online documentation](http://gh-unit.github.io/gh-unit/)
 - [Google Group](http://groups.google.com/group/ghunit)
 
 ## Install (Docset)
 
 - Open Xcode, Preferences and select the Documentation tab.
-- Select the plus icon (bottom left) and specify: `http://gabriel.github.com/gh-unit/publish/me.rel.GHUnit.atom`
+- Select the plus icon (bottom left) and specify: `http://gh-unit.github.io/gh-unit/publish/me.rel.GHUnit.atom`
 
 
 ## Mac OS X
