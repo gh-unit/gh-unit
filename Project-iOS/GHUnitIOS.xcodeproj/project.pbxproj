@@ -20,7 +20,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0012D1EC140EFD960093EC59 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0041C5EA13BA7B8A0015FC22 /* libGHUnitIOSSimulator.a */; };
+		0012D1EC140EFD960093EC59 /* libGHUnitIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0041C5EA13BA7B8A0015FC22 /* libGHUnitIOS.a */; };
 		0041C5EE13BA7B8A0015FC22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0041C5ED13BA7B8A0015FC22 /* Foundation.framework */; };
 		0041C65613BA7C9A0015FC22 /* GHAsyncTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0041C62113BA7C9A0015FC22 /* GHAsyncTestCase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0041C65713BA7C9A0015FC22 /* GHAsyncTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0041C62113BA7C9A0015FC22 /* GHAsyncTestCase.h */; };
@@ -178,7 +178,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0041C5EA13BA7B8A0015FC22 /* libGHUnitIOSSimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGHUnitIOSSimulator.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0041C5EA13BA7B8A0015FC22 /* libGHUnitIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGHUnitIOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0041C5ED13BA7B8A0015FC22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0041C60713BA7BEF0015FC22 /* iOSDevice-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOSDevice-Debug.xcconfig"; sourceTree = "<group>"; };
 		0041C60813BA7BEF0015FC22 /* iOSDevice-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOSDevice-Release.xcconfig"; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 				0097C4AA13BA7FC800D3BEF0 /* UIKit.framework in Frameworks */,
 				0097C4AB13BA7FC800D3BEF0 /* Foundation.framework in Frameworks */,
 				0097C4AC13BA7FC800D3BEF0 /* CoreGraphics.framework in Frameworks */,
-				0012D1EC140EFD960093EC59 /* libGHUnitIOSSimulator.a in Frameworks */,
+				0012D1EC140EFD960093EC59 /* libGHUnitIOS.a in Frameworks */,
 				42A274F61637535900BA4C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +345,7 @@
 		0041C5EB13BA7B8A0015FC22 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0041C5EA13BA7B8A0015FC22 /* libGHUnitIOSSimulator.a */,
+				0041C5EA13BA7B8A0015FC22 /* libGHUnitIOS.a */,
 				0041C61313BA7C6C0015FC22 /* libGHUnitIOSDevice.a */,
 				0097C4A813BA7FC800D3BEF0 /* Tests.app */,
 			);
@@ -680,7 +680,7 @@
 			);
 			name = "GHUnitIOS (Simulator)";
 			productName = GHUnitIOS;
-			productReference = 0041C5EA13BA7B8A0015FC22 /* libGHUnitIOSSimulator.a */;
+			productReference = 0041C5EA13BA7B8A0015FC22 /* libGHUnitIOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		0041C61213BA7C6C0015FC22 /* GHUnitIOS (Device) */ = {
