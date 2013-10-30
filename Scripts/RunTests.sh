@@ -8,12 +8,12 @@ fi
 export DYLD_ROOT_PATH="$SDKROOT"
 export DYLD_FRAMEWORK_PATH="$CONFIGURATION_BUILD_DIR"
 export IPHONE_SIMULATOR_ROOT="$SDKROOT"
-#export CFFIXED_USER_HOME="$TEMP_FILES_DIR/iPhone Simulator User Dir" # Be compatible with google-toolbox-for-mac
+export CFFIXED_USER_HOME="$TEMP_FILES_DIR/iPhone Simulator User Dir" # Be compatible with google-toolbox-for-mac
 
-#if [ -d $"CFFIXED_USER_HOME" ]; then
-#  rm -rf "$CFFIXED_USER_HOME"
-#fi
-#mkdir -p "$CFFIXED_USER_HOME"
+if [ -d $"CFFIXED_USER_HOME" ]; then
+  rm -rf "$CFFIXED_USER_HOME"
+fi
+mkdir -p "$CFFIXED_USER_HOME"
 
 export NSDebugEnabled=YES
 export NSZombieEnabled=YES
@@ -37,10 +37,11 @@ if [ ! -e "$TEST_TARGET_EXECUTABLE_PATH" ]; then
 fi
 
 # If trapping fails, make sure we kill any running securityd
-launchctl list | grep GHUNIT_RunIPhoneSecurityd && launchctl remove GHUNIT_RunIPhoneSecurityd
-SCRIPTS_PATH=`cd $(dirname $0); pwd`
-launchctl submit -l GHUNIT_RunIPhoneSecurityd -- "$SCRIPTS_PATH"/RunIPhoneSecurityd.sh $IPHONE_SIMULATOR_ROOT $CFFIXED_USER_HOME
-trap "launchctl remove GHUNIT_RunIPhoneSecurityd" EXIT TERM INT
+# TODO: Can we remove that code? Why is it used?
+#launchctl list | grep GHUNIT_RunIPhoneSecurityd && launchctl remove GHUNIT_RunIPhoneSecurityd
+#SCRIPTS_PATH=`cd $(dirname $0); pwd`
+#launchctl submit -l GHUNIT_RunIPhoneSecurityd -- "$SCRIPTS_PATH"/RunIPhoneSecurityd.sh $IPHONE_SIMULATOR_ROOT $CFFIXED_USER_HOME
+#trap "launchctl remove GHUNIT_RunIPhoneSecurityd" EXIT TERM INT
 
 RUN_CMD="\"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
 
