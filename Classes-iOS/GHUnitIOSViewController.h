@@ -35,7 +35,7 @@
 /*
  Main view controller for the iOS test application.
  */
-@interface GHUnitIOSViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate, UISearchBarDelegate> {
+@interface GHUnitIOSViewController : UIViewController <UITableViewDelegate, GHTestRunnerDelegate, UISearchBarDelegate, GHUnitIOSTestViewControllerDelegate> {
     
   GHUnitIOSView *view_;
 

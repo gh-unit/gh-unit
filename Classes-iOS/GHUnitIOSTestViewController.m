@@ -34,13 +34,14 @@
 
 - (id)init {
   if ((self = [super init])) {
-    UIBarButtonItem *runButton = [[UIBarButtonItem alloc] initWithTitle:@"Re-run" style:UIBarButtonItemStyleDone
-                                                 target:self action:@selector(_runTest)];
-    self.navigationItem.rightBarButtonItem = runButton;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+      self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(_loadNextFailingTest)];
+    self.navigationItem.rightBarButtonItem = nextButton;
   }
   return self;
 }
-
 
 - (void)loadView {
   testView_ = [[GHUnitIOSTestView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
@@ -61,6 +62,13 @@
   return UIInterfaceOrientationMaskAll;
 }
 
+- (void)_loadNextFailingTest {
+  id<GHTest> test = [self.delegate testViewControllerLoadedNextFailingTest:self];
+  if (test) {
+    [self setTest:test];
+  }
+}
+
 - (void)_runTest {
   id<GHTest> test = [testNode_.test copyWithZone:NULL];
   NSLog(@"Re-running: %@", test);
@@ -71,9 +79,9 @@
 
 - (void)_showImageDiff {
   if (!imageDiffView_) imageDiffView_ = [[GHImageDiffView alloc] initWithFrame:CGRectZero];
-  UIImage *savedImage = (testNode_.test.exception.userInfo)[@"SavedImage"];
-  UIImage *renderedImage = (testNode_.test.exception.userInfo)[@"RenderedImage"];
-  UIImage *diffImage = (testNode_.test.exception.userInfo)[@"DiffImage"];
+  UIImage *savedImage = (testNode_.test.exception.userInfo)[GHUnitSavedImageKey];
+  UIImage *renderedImage = (testNode_.test.exception.userInfo)[GHUnitRenderedImageKey];
+  UIImage *diffImage = (testNode_.test.exception.userInfo)[GHUnitDiffImageKey];
   [imageDiffView_ setSavedImage:savedImage renderedImage:renderedImage diffImage:diffImage];
   UIViewController *viewController = [[UIViewController alloc] init];
   viewController.view = imageDiffView_;
@@ -81,6 +89,7 @@
 }
 
 - (NSString *)updateTestView {
+  [testView_ setPasses:testNode_.test.status == GHTestStatusSucceeded];
   NSMutableString *text = [NSMutableString stringWithCapacity:200];
   [text appendFormat:@"%@ %@\n", [testNode_ identifier], [testNode_ statusString]];
   NSString *log = [testNode_ log];
@@ -89,15 +98,18 @@
   if (stackTrace) [text appendFormat:@"\n%@\n", stackTrace];
   if ([testNode_.test.exception.name isEqualToString:@"GHViewChangeException"]) {
     NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
-    UIImage *savedImage = exceptionUserInfo[@"SavedImage"];
-    UIImage *renderedImage = exceptionUserInfo[@"RenderedImage"];
+    UIImage *savedImage = exceptionUserInfo[GHUnitSavedImageKey];
+    UIImage *renderedImage = exceptionUserInfo[GHUnitRenderedImageKey];
     [testView_ setSavedImage:savedImage renderedImage:renderedImage text:text];
   } else if ([testNode_.test.exception.name isEqualToString:@"GHViewUnavailableException"]) {
     NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
-    UIImage *renderedImage = exceptionUserInfo[@"RenderedImage"];
+    UIImage *renderedImage = exceptionUserInfo[GHUnitRenderedImageKey];
     [testView_ setSavedImage:nil renderedImage:renderedImage text:text];
   } else {
     [testView_ setText:text];
+    if (testNode_.test.image) {
+      [testView_ setPassingImage:testNode_.test.image];
+    }
   }
   return text;
 }
@@ -126,9 +138,13 @@
 - (void)testViewDidApproveChange:(GHUnitIOSTestView *)testView {
   // Save new image as the approved version
   NSString *imageFilename = (testNode_.test.exception.userInfo)[@"ImageFilename"];
-  UIImage *renderedImage = (testNode_.test.exception.userInfo)[@"RenderedImage"];
+  UIImage *renderedImage = (testNode_.test.exception.userInfo)[GHUnitRenderedImageKey];
   [GHViewTestCase saveApprovedViewTestImage:renderedImage filename:imageFilename];
   testNode_.test.status = GHTestStatusSucceeded;
+  [self _runTest];
+}
+
+- (void)testViewDidRunTest:(GHUnitIOSTestView *)testView {
   [self _runTest];
 }
 
