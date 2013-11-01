@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name     = 'GHUnitOSX'
+  s.name     = 'GHUnit'
   s.version  = '0.5.7'
   s.license  = 'MIT'
   s.summary  = 'Test Framework for Objective-C.'
