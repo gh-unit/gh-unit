@@ -40,8 +40,8 @@
 	if ((self = [super init])) {		
     identifier_ = identifier;
 		suite_ = suite;				
+		map_ = [NSMutableDictionary dictionary];
 		root_ = [[GHTestNode alloc] initWithTest:suite_ children:[suite_ children] source:self];
-		map_ = [NSMutableDictionary dictionary];		
 	}
 	return self;
 }
