@@ -68,14 +68,8 @@ Add the `GHUnit.framework` to your project
 
 ## Mac OS X
 
-![GHUnit-0.4.18](http://rel.me.s3.amazonaws.com/images/GHUnit-0.4.18.png)
+![GHUnit-0.5.8](https://raw.github.com/gh-unit/gh-unit/master/Documentation/images/macosx01.png)
 
 ## iOS
 
-![GHUnit-IPhone-0.4.18](http://rel.me.s3.amazonaws.com/images/GHUnit-IPhone-0.4.18.png)
-
-![GHUnit-IPhone-0.4.34](https://johnboiles.s3.amazonaws.com/ghunittestview.png)
-
-![GHUnit-IPhone-0.4.34](https://johnboiles.s3.amazonaws.com/ghunitnewimage.png)
-
-![GHUnit-IPhone-0.4.34](https://johnboiles.s3.amazonaws.com/ghunitdiff.png)
+![GHUnit-IPhone-0.5.8](https://raw.github.com/gh-unit/gh-unit/master/Documentation/images/ios.png)
