@@ -11,12 +11,12 @@ See [Installing in Xcode 3](appledoc_include/guide_install_old.html) for help in
 - [Command Line](appledoc_include/guide_command_line.html): Running from the command line, using a Makefile, env variables
 - [Continuous Integration](appledoc_include/guide_ci.html): Setting up Jenkins for continuous integration
 
-<div style="float:left;margin:0 10px 10px 0" markdown="1">
-<img src="appledoc_include/images/GHUnit-IPhone-0.4.18.png"/>
+<div style="float:left;margin:30px 10px 10px 20px" markdown="1">
+<img src="appledoc_include/images/GHUnit-IPhone-0.5.8.png"/>
 </div>
 
 <div markdown="1">
-<img src="appledoc_include/images/GHUnit-0.4.18.png"/>
+<img src="appledoc_include/images/GHUnit-0.5.8.png"/>
 </div>
 
 ## Reference
