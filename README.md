@@ -28,13 +28,13 @@ Using [CocoaPods](http://cocoapods.org/):
 ### iOS
 ```
 target :Testtarget do
-	pod 'GHUnitIOS', '~> 0.5.7'`
+	pod 'GHUnitIOS', '~> 0.5.8'`
 end
 ```
 ### OSX
 ```
 target :Testtarget do
-	pod 'GHUnitOSX', '~> 0.5.7'`
+	pod 'GHUnitOSX', '~> 0.5.8'`
 end
 ```
 
