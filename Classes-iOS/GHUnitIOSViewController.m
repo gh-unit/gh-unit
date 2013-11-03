@@ -207,8 +207,8 @@ NSString *const GHUnitFilterKey = @"Filter";
     [view_.tableView reloadData];
   } else {    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GHTestNode *sectionNode = [[[dataSource_ root] children] objectAtIndex:indexPath.section];
-    GHTestNode *testNode = [[sectionNode children] objectAtIndex:indexPath.row];
+    GHTestNode *sectionNode = [[dataSource_ root] children][indexPath.section];
+    GHTestNode *testNode = [sectionNode children][indexPath.row];
     
     GHUnitIOSTestViewController *testViewController = [[GHUnitIOSTestViewController alloc] init]; 
     [testViewController setTest:testNode.test];

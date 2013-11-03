@@ -32,8 +32,8 @@
 @implementation GHUnitIOSTableViewDataSource
 
 - (GHTestNode *)nodeForIndexPath:(NSIndexPath *)indexPath {
-  GHTestNode *sectionNode = [[[self root] children] objectAtIndex:indexPath.section];
-  return [[sectionNode children] objectAtIndex:indexPath.row];
+  GHTestNode *sectionNode = [[self root] children][indexPath.section];
+  return [sectionNode children][indexPath.row];
 }
 
 - (void)setSelectedForAllNodes:(BOOL)selected {
@@ -59,13 +59,13 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
   NSArray *children = [[self root] children];
   if ([children count] == 0) return nil;
-  GHTestNode *sectionNode = [children objectAtIndex:section];
+  GHTestNode *sectionNode = children[section];
   return sectionNode.name;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  GHTestNode *sectionNode = [[[self root] children] objectAtIndex:indexPath.section];
-  GHTestNode *node = [[sectionNode children] objectAtIndex:indexPath.row];
+  GHTestNode *sectionNode = [[self root] children][indexPath.section];
+  GHTestNode *node = [sectionNode children][indexPath.row];
   
   static NSString *CellIdentifier = @"ReviewFeedViewItem";  
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

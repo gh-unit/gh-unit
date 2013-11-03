@@ -42,7 +42,7 @@
     return @(getenv("GHUNIT_DOCS_DIR"));
   }
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  return [paths objectAtIndex:0];
+  return paths[0];
 }
 
 + (NSString *)approvedTestImagesDirectory {
@@ -279,7 +279,7 @@
   NSMutableDictionary *exceptionDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                               newViewImage, @"RenderedImage",
                                               imageFilename, @"ImageFilename",
-                                              [NSNumber numberWithInteger:lineNumber], GHTestLineNumberKey,
+                                              @(lineNumber), GHTestLineNumberKey,
                                               filename, GHTestFilenameKey,
                                               nil];
   if (!originalViewImage) {
@@ -287,8 +287,8 @@
     [[NSException exceptionWithName:@"GHViewUnavailableException" reason:@"No image saved for view" userInfo:exceptionDictionary] raise];
   } else if (![[self class] compareImage:originalViewImage withRenderedImage:newViewImage]) {
     UIImage *diffImage = [[self class] diffWithImage:originalViewImage renderedImage:newViewImage];
-    if (diffImage) [exceptionDictionary setObject:diffImage forKey:@"DiffImage"];
-    if (originalViewImage) [exceptionDictionary setObject:originalViewImage forKey:@"SavedImage"];
+    if (diffImage) exceptionDictionary[@"DiffImage"] = diffImage;
+    if (originalViewImage) exceptionDictionary[@"SavedImage"] = originalViewImage;
     // Save new and diff images
     [[self class] saveFailedViewTestImage:diffImage filename:[imageFilenamePrefix stringByAppendingString:@"-diff.png"]];
     [[self class] saveFailedViewTestImage:newViewImage filename:[imageFilenamePrefix stringByAppendingString:@"-new.png"]];
