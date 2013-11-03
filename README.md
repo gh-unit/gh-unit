@@ -49,7 +49,7 @@ Add the `GHUnit.framework` to your project
 
 ## Documentation
 
-- [How to install, create and run tests](http://gh-unit.github.io//gh-unit/docs/index.html)
+- [How to install, create and run tests](http://gh-unit.github.io/gh-unit/docs/index.html)
 - [Online documentation](http://gh-unit.github.io/gh-unit/)
 - [Google Group (Deprecated - Use Github Issues instead)](http://groups.google.com/group/ghunit)
 
