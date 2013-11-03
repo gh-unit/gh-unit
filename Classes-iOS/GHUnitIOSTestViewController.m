@@ -71,9 +71,9 @@
 
 - (void)_showImageDiff {
   if (!imageDiffView_) imageDiffView_ = [[GHImageDiffView alloc] initWithFrame:CGRectZero];
-  UIImage *savedImage = [testNode_.test.exception.userInfo objectForKey:@"SavedImage"];
-  UIImage *renderedImage = [testNode_.test.exception.userInfo objectForKey:@"RenderedImage"];
-  UIImage *diffImage = [testNode_.test.exception.userInfo objectForKey:@"DiffImage"];
+  UIImage *savedImage = (testNode_.test.exception.userInfo)[@"SavedImage"];
+  UIImage *renderedImage = (testNode_.test.exception.userInfo)[@"RenderedImage"];
+  UIImage *diffImage = (testNode_.test.exception.userInfo)[@"DiffImage"];
   [imageDiffView_ setSavedImage:savedImage renderedImage:renderedImage diffImage:diffImage];
   UIViewController *viewController = [[UIViewController alloc] init];
   viewController.view = imageDiffView_;
@@ -89,12 +89,12 @@
   if (stackTrace) [text appendFormat:@"\n%@\n", stackTrace];
   if ([testNode_.test.exception.name isEqualToString:@"GHViewChangeException"]) {
     NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
-    UIImage *savedImage = [exceptionUserInfo objectForKey:@"SavedImage"];
-    UIImage *renderedImage = [exceptionUserInfo objectForKey:@"RenderedImage"];
+    UIImage *savedImage = exceptionUserInfo[@"SavedImage"];
+    UIImage *renderedImage = exceptionUserInfo[@"RenderedImage"];
     [testView_ setSavedImage:savedImage renderedImage:renderedImage text:text];
   } else if ([testNode_.test.exception.name isEqualToString:@"GHViewUnavailableException"]) {
     NSDictionary *exceptionUserInfo = testNode_.test.exception.userInfo;
-    UIImage *renderedImage = [exceptionUserInfo objectForKey:@"RenderedImage"];
+    UIImage *renderedImage = exceptionUserInfo[@"RenderedImage"];
     [testView_ setSavedImage:nil renderedImage:renderedImage text:text];
   } else {
     [testView_ setText:text];
@@ -125,8 +125,8 @@
 
 - (void)testViewDidApproveChange:(GHUnitIOSTestView *)testView {
   // Save new image as the approved version
-  NSString *imageFilename = [testNode_.test.exception.userInfo objectForKey:@"ImageFilename"];
-  UIImage *renderedImage = [testNode_.test.exception.userInfo objectForKey:@"RenderedImage"];
+  NSString *imageFilename = (testNode_.test.exception.userInfo)[@"ImageFilename"];
+  UIImage *renderedImage = (testNode_.test.exception.userInfo)[@"RenderedImage"];
   [GHViewTestCase saveApprovedViewTestImage:renderedImage filename:imageFilename];
   testNode_.test.status = GHTestStatusSucceeded;
   [self _runTest];

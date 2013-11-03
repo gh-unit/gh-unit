@@ -40,7 +40,7 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	char *stderrRedirect = getenv("GHUNIT_STDERR_REDIRECT");
 	if (stderrRedirect) {
-		NSString *stderrRedirectPath = [NSString stringWithUTF8String:stderrRedirect];
+		NSString *stderrRedirectPath = @(stderrRedirect);
 		freopen([stderrRedirectPath fileSystemRepresentation], "a", stderr);
 	}
 	
@@ -69,7 +69,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
   // Called only graceful terminate; Closing simulator won't trigger this
-  [[[navigationController_ viewControllers] objectAtIndex:0] saveDefaults]; 
+  [[navigationController_ viewControllers][0] saveDefaults]; 
 }
 
 
