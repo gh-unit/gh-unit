@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.documentation_url = 'http://gh-unit.github.io/gh-unit/'
   s.authors   = { 'Gabriel Handford' => 'gabrielh@gmail.com', 'Felix Schulze' => 'code@felixschulze.de' }
   s.source   = { :git => 'https://github.com/gh-unit/gh-unit.git', :tag => s.version.to_s}
-  s.description = 'GHUnit is a test framework for Objective-C, Mac OS X 10.6 and above and iPhone 4.3 and above. It can be used standalone or with other testing frameworks like SenTestingKit or GTM.'
+  s.description = 'GHUnit is a test framework for Objective-C, Mac OS X 10.7 and above and iPhone 4.3 and above. It can be used standalone or with other testing frameworks like SenTestingKit or GTM.'
   s.source_files = 'Classes/**/*.{h,m}', 'Classes-iOS/**/*.{h,m}', 'Libraries/GTM/**/*.{h,m}'
   s.platform = :ios
   s.ios.deployment_target = '4.3'
