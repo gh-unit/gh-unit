@@ -1,9 +1,9 @@
 ## Installing GHUnit
 
-- [iOS](appledoc_include/guide_install_ios_4.html)
+- [iOS](appledoc_include/guide_install_ios_7.html)
 - [Mac OS X](appledoc_include/guide_install_macosx_4.html)
 
-See [Installing in Xcode 3](appledoc_include/guide_install_old.html) for help installing in older projects.
+See [Installing in Xcode 4](appledoc_include/guide_install_ios_4.html) or [Installing in Xcode 3](appledoc_include/guide_install_old.html) for help installing in older projects.
 
 ## Using GHUnit
 
