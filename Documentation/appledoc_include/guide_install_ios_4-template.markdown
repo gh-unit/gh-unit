@@ -19,6 +19,8 @@ To use GHUnit in your project, you'll need to create and configure a test target
 
 ## Configure the Test Target
 
+- Link your Test Target against QuartzCore Framework.
+
 - Download and copy the [GHUnitIOS.framework](https://github.com/gabriel/gh-unit/downloads) to your project. Command click on Frameworks in the Project Navigator and select: Add Files to "MyTestable". (This should automatically add GHUnitIOS.framework to your Link Binary With Libraries Build Phase for the Tests target.)
 
 ![Add Framework](images/6_add_framework.png)

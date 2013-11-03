@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
   s.ios.source_files = 'Classes-iOS/**/*.{h,m}'
   s.osx.source_files = 'Classes-MacOSX/UI/*.{h,m}'
   s.osx.resources = 'Classes-MacOSX/UI/*.xib'
+  s.ios.frameworks = 'QuartzCore'
   s.requires_arc = true
 end
 

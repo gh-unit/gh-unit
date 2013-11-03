@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Classes/**/*.{h,m}', 'Classes-iOS/**/*.{h,m}', 'Libraries/GTM/**/*.{h,m}'
   s.platform = :ios
   s.ios.deployment_target = '4.3'
+  s.ios.frameworks = 'QuartzCore'
   s.requires_arc = true
 end
 
