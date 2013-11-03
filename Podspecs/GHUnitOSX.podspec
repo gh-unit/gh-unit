@@ -12,5 +12,9 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.6'
   s.resources = 'Classes-MacOSX/UI/*.xib'
   s.requires_arc = true
+  
+  def s.post_install(target)
+   puts "GHUnitOSX is deprecated - Please switch to GHUnit to stay up to date."
+  end
 end
 
