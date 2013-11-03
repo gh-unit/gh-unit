@@ -435,7 +435,7 @@ static void _GTMRunLeaks(void) {
   const char* cExclusionsEnv = getenv("GTM_LEAKS_SYMBOLS_TO_IGNORE");
   NSMutableString *exclusions = [NSMutableString string];
   if (cExclusionsEnv) {
-    NSString *exclusionsEnv = [NSString stringWithUTF8String:cExclusionsEnv];
+    NSString *exclusionsEnv = @(cExclusionsEnv);
     NSArray *exclusionsArray = [exclusionsEnv componentsSeparatedByString:@","];
     NSString *exclusion;
     NSCharacterSet *wcSet = [NSCharacterSet whitespaceCharacterSet];

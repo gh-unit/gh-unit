@@ -2,105 +2,53 @@
 //  GHTestViewController.h
 //  GHKit
 //
-//  Created by Gabriel Handford on 1/17/09.
-//  Copyright 2009. All rights reserved.
-//
-//  Permission is hereby granted, free of charge, to any person
-//  obtaining a copy of this software and associated documentation
-//  files (the "Software"), to deal in the Software without
-//  restriction, including without limitation the rights to use,
-//  copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the
-//  Software is furnished to do so, subject to the following
-//  conditions:
-//
-//  The above copyright notice and this permission notice shall be
-//  included in all copies or substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-//  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-//  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-//  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-//  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-//  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-//  OTHER DEALINGS IN THE SOFTWARE.
-//
 
 #import "GHTestViewModel.h"
 #import "GHTestGroup.h"
 #import "GHTestOutlineViewModel.h"
 
 
-@interface GHTestViewController : NSViewController <GHTestRunnerDelegate, GHTestOutlineViewModelDelegate, NSSplitViewDelegate> {
-
+@interface GHTestViewController : NSViewController 
+											<GHTestRunnerDelegate, GHTestOutlineViewModelDelegate, NSSplitViewDelegate> 
+{
 	IBOutlet NSSplitView *_splitView;
-	IBOutlet NSView *_statusView;
-	IBOutlet NSView *_detailsView;	
-	IBOutlet NSOutlineView *_outlineView;	
+	IBOutlet NSView *_statusView, *_detailsView;
+	IBOutlet NSOutlineView *_outlineView;
 	IBOutlet NSTextView *_textView;
-	IBOutlet NSSegmentedControl *_textSegmentedControl;
-  IBOutlet NSSegmentedControl *_segmentedControl;
-  IBOutlet NSSearchField *_searchField;
-  IBOutlet NSButton *_detailsToggleButton;
-	
-	BOOL wrapInTextView_;		
-	NSString *status_;
-	double statusProgress_;
-	BOOL runInParallel_;	
-	NSString *runLabel_;
-  
-  NSString *exceptionFilename_;
-  NSInteger exceptionLineNumber_;
-	
-	GHTestSuite *suite_;
-	
-	GHTestOutlineViewModel *dataSource_;
-  BOOL running_;
+	IBOutlet NSSegmentedControl *_textSegmentedControl, *_segmentedControl;
+	IBOutlet NSSearchField *_searchField;
+	IBOutlet NSButton *_detailsToggleButton;
 }
-
-@property (assign, nonatomic) BOOL wrapInTextView;
-@property (readonly, nonatomic) id<GHTest> selectedTest;
-@property (readonly, nonatomic) GHTestOutlineViewModel *dataSource;
-
-@property (strong, nonatomic) NSString *status;
-@property (assign, nonatomic) double statusProgress;
-@property (strong, nonatomic) NSString *runLabel;
-
-@property (strong, nonatomic) GHTestSuite *suite;
-@property (assign, nonatomic, getter=isRunning) BOOL running;
-
-@property (strong, nonatomic) NSString *exceptionFilename;
-@property (assign, nonatomic) NSInteger exceptionLineNumber;
-
-@property (assign, nonatomic) BOOL reraiseExceptions;
-@property (assign, nonatomic) BOOL runInParallel;
+@property (nonatomic) 						 BOOL   wrapInTextView,
+															  reraiseExceptions,
+															  runInParallel;
+@property (nonatomic, getter=isRunning) BOOL   running;
+@property  (readonly) 				 id<GHTest>   selectedTest;
+@property  (readonly) GHTestOutlineViewModel * dataSource;
+@property (nonatomic) 			   GHTestSuite * suite;
+@property (nonatomic) 				   NSString * status, *runLabel, *exceptionFilename;
+@property (nonatomic) 					  double   statusProgress;
+@property (nonatomic) 				  NSInteger   exceptionLineNumber;
 
 
-- (void)loadTestSuite;
 
-- (void)selectFirstFailure;
+- 	  	  (void) selectRow:					(NSInteger)row;
+-   (IBAction) copy:							(id)sender;
+-   (IBAction) runTests:					(id)sender;
+-   (IBAction) toggleDetails:				(id)sender;
+-   (IBAction) updateTextSegment:		(id)sender;
+-   (IBAction) updateMode:					(id)sender;
+-   (IBAction) updateSearchFilter:		(id)sender;
+-   (IBAction) openExceptionFilename:	(id)sender;
+- 	 (IBAction) rerunTest:					(id)sender;
+- (id<GHTest>) selectedTest;
+-       (void) loadTestSuite;
+- 		  (void) selectFirstFailure;
+-  	  (void) runTests;
+-		  (void) reload;
+- 	  	  (void) loadDefaults;
+- 	  	  (void) saveDefaults;
+- 	  	  (BOOL) isShowingDetails;
 
-- (IBAction)copy:(id)sender;
-- (IBAction)runTests:(id)sender;
-- (IBAction)toggleDetails:(id)sender;
-- (IBAction)updateTextSegment:(id)sender;
-- (IBAction)updateMode:(id)sender;
-- (IBAction)updateSearchFilter:(id)sender;
-- (IBAction)openExceptionFilename:(id)sender;
-- (IBAction)rerunTest:(id)sender;
-
-- (id<GHTest>)selectedTest;
-
-- (void)runTests;
-
-- (void)reload;
-
-- (void)loadDefaults;
-- (void)saveDefaults;
-
-- (BOOL)isShowingDetails;
-
-- (void)selectRow:(NSInteger)row;
 
 @end

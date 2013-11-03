@@ -13,6 +13,7 @@
 		00F6106410A20061000E0CB3 /* MyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F6106310A20061000E0CB3 /* MyTest.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* MyTestable_MacOSXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* MyTestable_MacOSXAppDelegate.m */; };
+		7B586ED3180D80C2001D0850 /* GHUnitIOSTestViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B586ED2180D80C2001D0850 /* GHUnitIOSTestViewTest.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		256AC3F00F4B6AF500CF3369 /* MyTestable_MacOSX_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTestable_MacOSX_Prefix.pch; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		7B586ED2180D80C2001D0850 /* GHUnitIOSTestViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestViewTest.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MyTestable_MacOSX-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MyTestable_MacOSX-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MyTestable-MacOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyTestable-MacOSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 		00F6106210A2004A000E0CB3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				7B586ED2180D80C2001D0850 /* GHUnitIOSTestViewTest.m */,
 				00F6106310A20061000E0CB3 /* MyTest.m */,
 			);
 			path = Tests;
@@ -94,24 +97,6 @@
 				256AC3D90F4B6AC300CF3369 /* MyTestable_MacOSXAppDelegate.m */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-			);
-			name = "Linked Frameworks";
-			sourceTree = "<group>";
-		};
-		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
-				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -162,8 +147,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
-				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,6 +266,7 @@
 			files = (
 				00F6106110A2000F000E0CB3 /* GHUnitTestMain.m in Sources */,
 				00F6106410A20061000E0CB3 /* MyTest.m in Sources */,
+				7B586ED3180D80C2001D0850 /* GHUnitIOSTestViewTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

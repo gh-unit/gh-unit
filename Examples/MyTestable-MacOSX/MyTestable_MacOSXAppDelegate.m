@@ -8,6 +8,11 @@
 
 #import "MyTestable_MacOSXAppDelegate.h"
 
+int main(int argc, char *argv[])
+{
+	return NSApplicationMain(argc, (const char **)argv);
+}
+
 @implementation MyTestable_MacOSXAppDelegate
 
 @synthesize window;
