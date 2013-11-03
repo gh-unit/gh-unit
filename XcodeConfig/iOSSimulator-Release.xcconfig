@@ -4,5 +4,5 @@
 PRODUCT_NAME = GHUnitIOSSimulator
 
 SDKROOT = iphonesimulator
-ARCHS = i386
-VALID_ARCHS = i386
+ARCHS = i386 x86_64
+VALID_ARCHS = i386 x86_64
