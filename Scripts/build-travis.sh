@@ -8,5 +8,6 @@ make -C Project-MacOSX
 
 echo "Validate PodSpec"
 pod --version
-pod spec lint GHUnitIOS.podspec
-pod spec lint GHUnitOSX.podspec
+pod spec lint Podspecs/GHUnit.podspec
+pod spec lint Podspecs/GHUnitIOS.podspec
+pod spec lint Podspecs/GHUnitOSX.podspec
