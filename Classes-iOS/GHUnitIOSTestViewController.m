@@ -52,6 +52,15 @@
   return YES;
 }
 
+- (BOOL)shouldAutorotate {
+  return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+  return UIInterfaceOrientationMaskAll;
+}
+
 - (void)_runTest {
   id<GHTest> test = [testNode_.test copyWithZone:NULL];
   NSLog(@"Re-running: %@", test);

@@ -156,6 +156,15 @@ NSString *const GHUnitFilterKey = @"Filter";
   return YES;
 }
 
+- (BOOL)shouldAutorotate {
+  return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+  return UIInterfaceOrientationMaskAll;
+}
+
 - (void)_filterChanged:(id)sender {
   [self _setFilterIndex:view_.filterControl.selectedSegmentIndex];
   [self reload];
