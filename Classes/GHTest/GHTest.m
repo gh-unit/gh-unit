@@ -159,6 +159,10 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
   return (disabled_ || hidden_ ? 1 : 0);
 }
 
+- (NSInteger)testCount {
+  return 1;
+}
+
 - (void)setException:(NSException *)exception {
   exception_ = exception;
   status_ = GHTestStatusErrored;

@@ -209,6 +209,14 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   return disabledCount;
 }
 
+- (NSInteger)testCount {
+  NSInteger testCount = 0;
+  for(id<GHTest> test in children_) {
+    testCount += [test testCount];
+  }
+  return testCount;
+}
+
 - (void)setUpClass {
   if (didSetUpClass_) return;
   didSetUpClass_ = YES;
@@ -253,7 +261,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 - (BOOL)hasEnabledChildren {
-  return (([children_ count] - [self disabledCount]) <= 0);
+  return (([self testCount] - [self disabledCount]) <= 0);
 }
 
 - (void)_run:(NSOperationQueue *)operationQueue {

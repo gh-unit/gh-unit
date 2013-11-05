@@ -166,6 +166,11 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  */
 - (NSInteger)disabledCount;
 
+/*!
+ @result The number of tests
+ */
+- (NSInteger)testCount;
+
 @end
 
 /*!
