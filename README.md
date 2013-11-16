@@ -27,7 +27,7 @@ Using [CocoaPods](http://cocoapods.org/):
 
 ```
 target :Testtarget do
-	pod 'GHUnit', '~> 0.5.8'`
+	pod 'GHUnit', '~> 0.5.8'
 end
 ```
 
