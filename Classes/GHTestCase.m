@@ -34,10 +34,6 @@
 
 @synthesize logWriter=logWriter_, currentSelector=currentSelector_;
 
-- (void)failWithException:(NSException *)exception {
-  [exception raise];
-}
-
 - (void)setUp { }
 
 - (void)tearDown { }
