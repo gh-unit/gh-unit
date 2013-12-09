@@ -120,11 +120,11 @@ static const CGFloat kOverlayViewVerticalMargin = 10.0;
   NSDictionary *views = NSDictionaryOfVariableBindings(self, _overlayView, _scrollView, _contentView, _textLabel, _savedImageView, _renderedImageView, _approveButton);
   
   // Pin the overlay view to self so that it doesn't scroll with the scroll view
-  NSMutableArray *overlayViewConstraints = @[
-                                             [NSLayoutConstraint constraintWithItem:_overlayView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0],
-                                             [NSLayoutConstraint constraintWithItem:_overlayView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0],
-                                             [NSLayoutConstraint constraintWithItem:_overlayView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]
-                                             ];
+  NSArray *overlayViewConstraints = @[
+                                      [NSLayoutConstraint constraintWithItem:_overlayView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0],
+                                      [NSLayoutConstraint constraintWithItem:_overlayView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0],
+                                      [NSLayoutConstraint constraintWithItem:_overlayView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]
+                                      ];
   [self addConstraints:overlayViewConstraints];
   
   // Fill up self with the scroll view
