@@ -33,10 +33,9 @@ NSString *const GHUnitTextFilterKey = @"TextFilter";
 NSString *const GHUnitFilterKey = @"Filter";
 
 @interface GHUnitIOSViewController ()
-- (NSString *)_textFilter;
-- (void)_setTextFilter:(NSString *)textFilter;
-- (void)_setFilterIndex:(NSInteger)index;
-- (NSInteger)_filterIndex;
+
+@property (strong, nonatomic) NSIndexPath *lastSelectedIndexPath;
+
 @end
 
 @implementation GHUnitIOSViewController
@@ -46,6 +45,9 @@ NSString *const GHUnitFilterKey = @"Filter";
 - (id)init {
   if ((self = [super init])) {
     self.title = @"Tests";
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+      self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
   }
   return self;
 }
@@ -72,7 +74,7 @@ NSString *const GHUnitFilterKey = @"Filter";
   view_.tableView.delegate = nil;
   view_.searchBar.delegate = nil;
   
-  view_ = [[GHUnitIOSView alloc] initWithFrame:CGRectMake(0, 0, 320, 344)];
+  view_ = [[GHUnitIOSView alloc] init];
   view_.searchBar.delegate = self;
   NSString *textFilter = [self _textFilter];
   if (textFilter) view_.searchBar.text = textFilter;  
@@ -87,6 +89,11 @@ NSString *const GHUnitFilterKey = @"Filter";
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   [self reload];
+  if (self.lastSelectedIndexPath) {
+    GHTestNode *testNode = [self _testNodeForIndexPath:self.lastSelectedIndexPath];
+    [self scrollToTest:testNode.test];
+    self.lastSelectedIndexPath = nil;
+  }
 }
 
 - (GHUnitIOSTableViewDataSource *)dataSource {
@@ -196,6 +203,11 @@ NSString *const GHUnitFilterKey = @"Filter";
   view_.statusLabel.text = message;
 }
 
+- (GHTestNode *)_testNodeForIndexPath:(NSIndexPath *)indexPath {
+  GHTestNode *sectionNode = self.dataSource.root.children[indexPath.section];
+  return sectionNode.children[indexPath.row];
+}
+
 #pragma mark Delegates (UITableView)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -207,12 +219,13 @@ NSString *const GHUnitFilterKey = @"Filter";
     [view_.tableView reloadData];
   } else {    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GHTestNode *sectionNode = [[dataSource_ root] children][indexPath.section];
-    GHTestNode *testNode = [sectionNode children][indexPath.row];
+    GHTestNode *testNode = [self _testNodeForIndexPath:indexPath];
     
-    GHUnitIOSTestViewController *testViewController = [[GHUnitIOSTestViewController alloc] init]; 
+    GHUnitIOSTestViewController *testViewController = [[GHUnitIOSTestViewController alloc] init];
+    testViewController.delegate = self;
     [testViewController setTest:testNode.test];
     [self.navigationController pushViewController:testViewController animated:YES];
+    self.lastSelectedIndexPath = indexPath;
   }
 }
 
@@ -315,6 +328,29 @@ NSString *const GHUnitFilterKey = @"Filter";
   
   [self _setTextFilter:searchBar.text];
   [self reload];
+}
+
+#pragma mark Delegates (GHUnitIOSTestViewController)
+
+- (id<GHTest>)testViewControllerLoadedNextFailingTest:(GHUnitIOSTestViewController *)controller {
+  NSUInteger sectionIndex = self.lastSelectedIndexPath.section;
+  NSUInteger testIndex = self.lastSelectedIndexPath.row + 1;
+  GHTestNode *nextNode = nil;
+  while (!nextNode && sectionIndex < self.dataSource.root.children.count) {
+    GHTestNode *sectionNode = self.dataSource.root.children[sectionIndex];
+    while (testIndex < sectionNode.children.count) {
+      GHTestNode *testNode = sectionNode.children[testIndex];
+      if (testNode.test.status != GHTestStatusSucceeded) {
+        nextNode = testNode;
+        self.lastSelectedIndexPath = [NSIndexPath indexPathForRow:testIndex inSection:sectionIndex];
+        break;
+      }
+      testIndex++;
+    }
+    testIndex = 0;
+    sectionIndex++;
+  }
+  return nextNode.test;
 }
 
 @end

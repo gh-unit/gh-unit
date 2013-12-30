@@ -87,7 +87,7 @@
   [self saveImage:image filePath:filePath];
 }
 
-+ (UIImage *)readSavedTestImageWithFilename:(NSString *)filename {
++ (UIImage *)readSavedTestImageWithFilename:(NSString *)filename systemVersion:(NSString *)systemVersion {
   NSString *filePath = [self approvedTestImagePathForFilename:filename];
   GHUDebug(@"Trying to load image at path %@", filePath);
   // First look in the documents directory for the image
@@ -96,6 +96,11 @@
   if (image) GHUDebug(@"Found image in documents directory");
   if (!image) {
     NSString* extension = [filename pathExtension];
+    // Test images are bundled in subdirectories based on the iOS major version number
+    //   Example:  running iOS 7.1  ->  7/testimage.png
+    NSRange dotRange = [systemVersion rangeOfString:@"."];
+    NSString *majorVersion = [systemVersion substringToIndex:dotRange.location];
+    filename = [majorVersion stringByAppendingPathComponent:filename];
     filePath = [[NSBundle mainBundle] pathForResource:[filename stringByDeletingPathExtension] ofType:extension];
     image = [GHViewTestCase _imageFromFilePath:filePath];
     if (image) GHUDebug(@"Found image in app bundle");
@@ -274,10 +279,11 @@
                                    imageVerifyCount_,
                                    NSStringFromClass([view class])];
   NSString *imageFilename = [imageFilenamePrefix stringByAppendingString:@".png"];
-  UIImage *originalViewImage = [[self class] readSavedTestImageWithFilename:imageFilename];
+  NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
+  UIImage *originalViewImage = [[self class] readSavedTestImageWithFilename:imageFilename systemVersion:systemVersion];
   UIImage *newViewImage = [[self class] imageWithView:view];
   NSMutableDictionary *exceptionDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                              newViewImage, @"RenderedImage",
+                                              newViewImage, GHUnitRenderedImageKey,
                                               imageFilename, @"ImageFilename",
                                               @(lineNumber), GHTestLineNumberKey,
                                               filename, GHTestFilenameKey,
@@ -287,12 +293,15 @@
     [[NSException exceptionWithName:@"GHViewUnavailableException" reason:@"No image saved for view" userInfo:exceptionDictionary] raise];
   } else if (![[self class] compareImage:originalViewImage withRenderedImage:newViewImage]) {
     UIImage *diffImage = [[self class] diffWithImage:originalViewImage renderedImage:newViewImage];
-    if (diffImage) exceptionDictionary[@"DiffImage"] = diffImage;
-    if (originalViewImage) exceptionDictionary[@"SavedImage"] = originalViewImage;
+    if (diffImage) exceptionDictionary[GHUnitDiffImageKey] = diffImage;
+    if (originalViewImage) exceptionDictionary[GHUnitSavedImageKey] = originalViewImage;
     // Save new and diff images
     [[self class] saveFailedViewTestImage:diffImage filename:[imageFilenamePrefix stringByAppendingString:@"-diff.png"]];
     [[self class] saveFailedViewTestImage:newViewImage filename:[imageFilenamePrefix stringByAppendingString:@"-new.png"]];
     [[NSException exceptionWithName:@"GHViewChangeException" reason:@"View has changed" userInfo:exceptionDictionary] raise];
+  } else {
+    // Passing test, forward passing image
+    [[NSNotificationCenter defaultCenter] postNotificationName:GHUnitViewTestPassNotificiation object:self userInfo:@{GHUnitRenderedImageKey: newViewImage}];
   }
   imageVerifyCount_++;
 }

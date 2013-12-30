@@ -44,7 +44,7 @@
 @implementation GHTestGroup
 
 @synthesize stats=stats_, parent=parent_, children=children_, delegate=delegate_, interval=interval_, 
-status=status_, testCase=testCase_, exception=exception_, options=options_;
+status=status_, testCase=testCase_, exception=exception_, options=options_, image=image_;
 
 - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate {
   if ((self = [super init])) {

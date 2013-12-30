@@ -28,7 +28,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
+/*!
+ Keys for image types for notification or exception dictionary.
+ */
+extern NSString *const GHUnitRenderedImageKey;
+extern NSString *const GHUnitSavedImageKey;
+extern NSString *const GHUnitDiffImageKey;
+
+/*!
+ Notification name that a view test passed.
+ */
+extern NSString *const GHUnitViewTestPassNotificiation;
 
 /*!
  Test status.
@@ -119,6 +131,11 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  Test stats.
  */
 @property (readonly, nonatomic) GHTestStats stats;
+
+/*!
+ An image for a passing view test.
+ */
+@property (retain, nonatomic) UIImage *image;
 
 /*!
  Exception that occurred.

@@ -103,10 +103,10 @@
 
 // GTM_BEGIN
 //! Run before each test method
-- (void)setUp;
+- (void)setUp NS_REQUIRES_SUPER;
 
 //! Run after each test method
-- (void)tearDown;
+- (void)tearDown NS_REQUIRES_SUPER;
 
 /*! 
  By default exceptions are raised, causing a test failure
@@ -119,12 +119,12 @@
 /*! 
  Run before the tests (once per test case).
  */
-- (void)setUpClass;
+- (void)setUpClass NS_REQUIRES_SUPER;
 
 /*! 
  Run after the tests (once per test case).
  */
-- (void)tearDownClass;
+- (void)tearDownClass NS_REQUIRES_SUPER;
 
 /*!
  Whether to run the tests on a separate thread. Override this method in your

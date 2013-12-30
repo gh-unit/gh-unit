@@ -32,6 +32,14 @@
 #import "GHUnitIOSTestView.h"
 #import "GHImageDiffView.h"
 
+@class GHUnitIOSTestViewController;
+
+@protocol GHUnitIOSTestViewControllerDelegate <NSObject>
+
+- (id<GHTest>)testViewControllerLoadedNextFailingTest:(GHUnitIOSTestViewController *)controller;
+
+@end
+
 /*
  View controller for a test.
  */
@@ -43,6 +51,8 @@
   
   GHTestRunner *runner_;
 }
+
+@property (unsafe_unretained, nonatomic) id<GHUnitIOSTestViewControllerDelegate> delegate;
 
 - (void)setTest:(id<GHTest>)test;
 
