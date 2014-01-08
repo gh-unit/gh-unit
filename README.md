@@ -3,9 +3,6 @@
 GHUnit is a test framework for Mac OS X and iOS.
 It can be used standalone or with other testing frameworks like SenTestingKit or GTM.
 
-## Moved repostitory
-GH-Unit is moved from gabriel/gh-unit to gh-unit/gh-unit.
-
 ## Features
 
 - Run tests, breakpoint and interact directly with the XCode Debugger.
