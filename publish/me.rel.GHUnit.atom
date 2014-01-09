@@ -1,18 +1,18 @@
 <?xml version="1.0" standalone="no"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:docset="http://developer.apple.com/rss/docset_extensions" xml:lang="en">
-    <id>http://gh-unit.github.io/gh-unit//publish/me.rel.GHUnit.atom/20140108181441</id>
+    <id>http://gh-unit.github.io/gh-unit//publish/me.rel.GHUnit.atom/20140108181658</id>
     <title type="text">GHUnit Documentation</title>
     <rights>Copyright © 2014 GHUnit. All rights reserved.</rights>
     <link rel="self" href="http://gh-unit.github.io/gh-unit//publish/me.rel.GHUnit.atom"></link>
     <docset:publisherName>GHUnit</docset:publisherName>
     <docset:publisherID>me.rel.documentation</docset:publisherID>
-    <updated>2014-01-08T18:14:41-08:00</updated>
+    <updated>2014-01-08T18:16:58-08:00</updated>
     <entry>
         <id>tag:gh-unit.github.io,2014-01-08:me.rel.GHUnit/0.5.8</id>
         <title type="text">GHUnit Documentation</title>
-        <updated>2014-01-08T18:14:41-08:00</updated>
+        <updated>2014-01-08T18:16:58-08:00</updated>
         <content type="text">GHUnit Documentation (v0.5.8)</content>
-        <link rel="enclosure" type="application/octet-stream" href="http:/gh-unit.github.io/gh-unit/publish/me.rel.GHUnit-0.5.8.xar" length="5359135"></link>
+        <link rel="enclosure" type="application/octet-stream" href="http:/gh-unit.github.io/gh-unit/publish/me.rel.GHUnit-0.5.8.xar" length="5356179"></link>
         <docset:identifier>me.rel.GHUnit</docset:identifier>
         <docset:version>0.5.8</docset:version>
         <docset:minimumXcodeVersion>3.0.0</docset:minimumXcodeVersion>
