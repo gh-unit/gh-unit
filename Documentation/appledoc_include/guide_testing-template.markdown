@@ -6,19 +6,19 @@
 - Name the file MyTest.m and make sure its enabled only for the "Tests" target.
 - Delete the MyTest.h file and update the MyTest.m file.
 
-        #import <GHUnitIOS/GHUnit.h> 
+        #import <GHUnit/GHUnit.h>
 
         @interface MyTest : GHTestCase { }
         @end
 
         @implementation MyTest
 
-        - (void)testStrings {       
+        - (void)testStrings {
           NSString *string1 = @"a string";
           GHTestLog(@"I can log to the GHUnit test console: %@", string1);
 
           // Assert string1 is not NULL, with no custom error description
-          GHAssertNotNULL(string1, nil);
+          GHAssertNotNil(string1, nil);
 
           // Assert equal objects, add custom error description
           NSString *string2 = @"a string";
@@ -38,10 +38,7 @@
 
 ExampleTest.m:
 
-    // For iOS
-    #import <GHUnitIOS/GHUnit.h> 
-    // For Mac OS X
-    //#import <GHUnit/GHUnit.h>
+    #import <GHUnit/GHUnit.h>
 
     @interface ExampleTest : GHTestCase { }
     @end
@@ -68,14 +65,14 @@ ExampleTest.m:
 
     - (void)tearDown {
       // Run after each test method
-    }	
+    }
 
-    - (void)testFoo {       
+    - (void)testFoo {
       NSString *a = @"foo";
       GHTestLog(@"I can log to the GHUnit test console: %@", a);
 
       // Assert a is not NULL, with no custom error description
-      GHAssertNotNULL(a, nil);
+      GHAssertNotNil(a, nil);
 
       // Assert equal objects, add custom error description
       NSString *b = @"bar";
@@ -91,18 +88,15 @@ ExampleTest.m:
 
 ExampleAsyncTest.m:
 
-    // For iOS
-    #import <GHUnitIOS/GHUnit.h> 
-    // For Mac OS X
-    //#import <GHUnit/GHUnit.h> 
+    #import <GHUnit/GHUnit.h>
 
     @interface ExampleAsyncTest : GHAsyncTestCase { }
     @end
 
     @implementation ExampleAsyncTest
- 
+
     - (void)testURLConnection {
-  
+
       // Call prepare to setup the asynchronous action.
       // This helps in cases where the action is synchronous and the
       // action occurs before the wait is actually called.
@@ -131,7 +125,7 @@ ExampleAsyncTest.m:
 
     - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
       GHTestLog(@"%@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
-    } 
+    }
 
     @end
 
@@ -139,13 +133,13 @@ Example projects can be found at: http://github.com/gabriel/gh-unit/tree/master/
 
 ## Assert Macros
 
-The following test macros are included. 
- 
+The following test macros are included.
+
 These macros are directly from: [GTMSenTestCase.h](http://code.google.com/p/google-toolbox-for-mac/source/browse/trunk/UnitTesting/GTMSenTestCase.h)
 prefixed with GH so as not to conflict with the GTM macros if you are using those in your project.
 
 The description argument appends extra information for when the assert fails; though most of the time you might leave it as nil.
- 
+
     GHAssertNoErr(a1, description, ...)
     GHAssertErr(a1, a2, description, ...)
     GHAssertNotNULL(a1, description, ...)

@@ -21,6 +21,13 @@
 
 /* Begin PBXBuildFile section */
 		0012D1EC140EFD960093EC59 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0041C5EA13BA7B8A0015FC22 /* libGHUnitIOSSimulator.a */; };
+		002D8802187E39DD009FDBCC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002D8801187E39DD009FDBCC /* QuartzCore.framework */; };
+		002D8805187E3BA2009FDBCC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002D8804187E3BA2009FDBCC /* CoreGraphics.framework */; };
+		002D8806187E3BB0009FDBCC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002D8804187E3BA2009FDBCC /* CoreGraphics.framework */; };
+		002D8807187E3BB0009FDBCC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002D8801187E39DD009FDBCC /* QuartzCore.framework */; };
+		002D8808187E3BB0009FDBCC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0097C42313BA7E5000D3BEF0 /* UIKit.framework */; };
+		002D8809187E3BC7009FDBCC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002D8804187E3BA2009FDBCC /* CoreGraphics.framework */; };
+		002D880A187E3BF3009FDBCC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 002D8801187E39DD009FDBCC /* QuartzCore.framework */; };
 		0041C5EE13BA7B8A0015FC22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0041C5ED13BA7B8A0015FC22 /* Foundation.framework */; };
 		0041C65613BA7C9A0015FC22 /* GHAsyncTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0041C62113BA7C9A0015FC22 /* GHAsyncTestCase.h */; };
 		0041C65713BA7C9A0015FC22 /* GHAsyncTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0041C62113BA7C9A0015FC22 /* GHAsyncTestCase.h */; };
@@ -119,7 +126,6 @@
 		0097C47013BA7EEC00D3BEF0 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0097C45813BA7EEC00D3BEF0 /* GTMDefines.h */; };
 		0097C4AA13BA7FC800D3BEF0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0097C42313BA7E5000D3BEF0 /* UIKit.framework */; };
 		0097C4AB13BA7FC800D3BEF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0041C5ED13BA7B8A0015FC22 /* Foundation.framework */; };
-		0097C4AC13BA7FC800D3BEF0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0097C42613BA7E5000D3BEF0 /* CoreGraphics.framework */; };
 		0097C4B213BA7FC800D3BEF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0097C4B013BA7FC800D3BEF0 /* InfoPlist.strings */; };
 		00C9799113BA809600FC285C /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C9797B13BA809600FC285C /* example.json */; };
 		00C9799213BA809600FC285C /* GHAsyncTestCaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9797C13BA809600FC285C /* GHAsyncTestCaseTest.m */; };
@@ -163,8 +169,6 @@
 		42A274AC16361D9500BA4C74 /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274A916361D9500BA4C74 /* GHTestUtils.m */; };
 		42A274AD16361D9500BA4C74 /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274A916361D9500BA4C74 /* GHTestUtils.m */; };
 		42A274B216361F4200BA4C74 /* GHTestUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274B116361F4200BA4C74 /* GHTestUtilsTest.m */; };
-		42A274F61637535900BA4C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
-		42A678EF1401423D0060D1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A678EE1401423D0060D1B5 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +182,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		002D8801187E39DD009FDBCC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		002D8804187E3BA2009FDBCC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		0041C5EA13BA7B8A0015FC22 /* libGHUnitIOSSimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGHUnitIOSSimulator.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0041C5ED13BA7B8A0015FC22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0041C60713BA7BEF0015FC22 /* iOSDevice-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "iOSDevice-Debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,10 +242,10 @@
 		0041C6B713BA7CBE0015FC22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0041C6B813BA7CBE0015FC22 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		0041C6B913BA7CBE0015FC22 /* Tests_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tests_Prefix.pch; sourceTree = "<group>"; };
+		0042ADCB187E3658005200E7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0066A0BB13C51359006B7022 /* GTMNSString+XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+XML.h"; sourceTree = "<group>"; };
 		0066A0BC13C51359006B7022 /* GTMNSString+XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+XML.m"; sourceTree = "<group>"; };
 		0097C42313BA7E5000D3BEF0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		0097C42613BA7E5000D3BEF0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0097C45413BA7EEC00D3BEF0 /* GTMObjC2Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMObjC2Runtime.h; sourceTree = "<group>"; };
 		0097C45513BA7EEC00D3BEF0 /* GTMObjC2Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMObjC2Runtime.m; sourceTree = "<group>"; };
 		0097C45813BA7EEC00D3BEF0 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -288,7 +294,6 @@
 		42A274A816361D9500BA4C74 /* GHTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestUtils.h; sourceTree = "<group>"; };
 		42A274A916361D9500BA4C74 /* GHTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestUtils.m; sourceTree = "<group>"; };
 		42A274B116361F4200BA4C74 /* GHTestUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestUtilsTest.m; sourceTree = "<group>"; };
-		42A678EE1401423D0060D1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,7 +301,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42A678EF1401423D0060D1B5 /* QuartzCore.framework in Frameworks */,
+				002D8805187E3BA2009FDBCC /* CoreGraphics.framework in Frameworks */,
+				002D8802187E39DD009FDBCC /* QuartzCore.framework in Frameworks */,
 				0041C5EE13BA7B8A0015FC22 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +311,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				002D8806187E3BB0009FDBCC /* CoreGraphics.framework in Frameworks */,
+				002D8807187E3BB0009FDBCC /* QuartzCore.framework in Frameworks */,
+				002D8808187E3BB0009FDBCC /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,10 +322,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0097C4AA13BA7FC800D3BEF0 /* UIKit.framework in Frameworks */,
+				002D8809187E3BC7009FDBCC /* CoreGraphics.framework in Frameworks */,
+				002D880A187E3BF3009FDBCC /* QuartzCore.framework in Frameworks */,
 				0097C4AB13BA7FC800D3BEF0 /* Foundation.framework in Frameworks */,
-				0097C4AC13BA7FC800D3BEF0 /* CoreGraphics.framework in Frameworks */,
 				0012D1EC140EFD960093EC59 /* libGHUnitIOSSimulator.a in Frameworks */,
-				42A274F61637535900BA4C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,11 +364,12 @@
 		0041C5EC13BA7B8A0015FC22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				42A678EE1401423D0060D1B5 /* QuartzCore.framework */,
+				002D8804187E3BA2009FDBCC /* CoreGraphics.framework */,
+				002D8801187E39DD009FDBCC /* QuartzCore.framework */,
+				0042ADCB187E3658005200E7 /* XCTest.framework */,
 				00C9797613BA802400FC285C /* GHUnitIOS.framework */,
 				0041C5ED13BA7B8A0015FC22 /* Foundation.framework */,
 				0097C42313BA7E5000D3BEF0 /* UIKit.framework */,
-				0097C42613BA7E5000D3BEF0 /* CoreGraphics.framework */,
 				0041C61613BA7C6C0015FC22 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -926,16 +936,14 @@
 		0041C5F213BA7B8A0015FC22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -943,13 +951,11 @@
 		0041C5F313BA7B8A0015FC22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -959,7 +965,6 @@
 			baseConfigurationReference = 0041C60913BA7BEF0015FC22 /* iOSSimulator-Debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 			};
 			name = Debug;
 		};
@@ -968,7 +973,6 @@
 			baseConfigurationReference = 0041C60A13BA7BEF0015FC22 /* iOSSimulator-Release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 			};
 			name = Release;
 		};
@@ -978,7 +982,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 			};
 			name = Debug;
 		};
@@ -988,7 +992,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 			};
 			name = Release;
 		};
@@ -1015,11 +1019,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks\"",
-				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
@@ -1042,11 +1041,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;

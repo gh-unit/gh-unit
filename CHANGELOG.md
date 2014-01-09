@@ -1,3 +1,7 @@
+# Release (in progress)
+- Cleanup deployment target and project file
+- Fixing example test case documentation
+
 # Release 0.5.8
 - Move GHViewTestCase to iOS specific folder
 - Fix issue #119 (Xcode 4.6.1/iOS 6.1 support)
