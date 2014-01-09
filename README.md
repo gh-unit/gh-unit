@@ -10,7 +10,7 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 - Run tests in parallel.
 - Allow testing of UI components.
 - Capture and display test metrics.
-- Search and filter tests by keywords. 
+- Search and filter tests by keywords.
 - View logging by test case.
 - Show stack traces and useful debugging information.
 - Include as a framework in your projects
@@ -23,7 +23,7 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 Using [CocoaPods](http://cocoapods.org/):
 
 ```
-target :Testtarget do
+target :TestTarget, :exclusive => true do
 	pod 'GHUnit', '~> 0.5.8'
 end
 ```
@@ -49,11 +49,6 @@ Add the `GHUnit.framework` to your project
 - [How to install, create and run tests](http://gh-unit.github.io/gh-unit/docs/index.html)
 - [Online documentation](http://gh-unit.github.io/gh-unit/)
 - [Google Group (Deprecated - Use Github Issues instead)](http://groups.google.com/group/ghunit)
-
-## Install (Docset)
-
-- Open Xcode, Preferences and select the Documentation tab.
-- Select the plus icon (bottom left) and specify: `http://gh-unit.github.io/gh-unit/publish/me.rel.GHUnit.atom`
 
 
 ## Mac OS X
