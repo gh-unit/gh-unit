@@ -1,6 +1,6 @@
 
 default:
-	xcodebuild -target GHUnit -configuration Release -sdk macosx build && open build/Release
+	xcodebuild -target GHUnit -configuration Release -sdk macosx build SYMROOT=build && open build/Release
 
 # If you need to clean a specific target/configuration: $(COMMAND) -target $(TARGET) -configuration DebugOrRelease -sdk $(SDK) clean
 clean:

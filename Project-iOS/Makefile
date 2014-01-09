@@ -1,7 +1,7 @@
 
 default:
-	xcodebuild -target "GHUnitIOS (Device)" -configuration Release
-	xcodebuild -target "GHUnitIOS (Simulator)" -configuration Release
+	xcodebuild -target "GHUnitIOS (Device)" -configuration Release SYMROOT=build
+	xcodebuild -target "GHUnitIOS (Simulator)" -configuration Release SYMROOT=build
 	BUILD_DIR="build" BUILD_STYLE="Release" sh ../Scripts/CombineLibs.sh
 	sh ../Scripts/iOSFramework.sh
 
