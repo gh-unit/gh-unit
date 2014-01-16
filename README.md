@@ -23,7 +23,7 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 Using [CocoaPods](http://cocoapods.org/):
 
 ```
-target :TestTarget, :exclusive => true do
+target :TestTarget do
 	pod 'GHUnit', '~> 0.5.8'
 end
 ```
