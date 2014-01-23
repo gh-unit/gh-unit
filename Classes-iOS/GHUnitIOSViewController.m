@@ -274,12 +274,17 @@ NSString *const GHUnitFilterKey = @"Filter";
   [self setStatusText:@"Cancelled..."];
 }
 
+
+void __attribute__((weak)) __gcov_flush(void) {
+}
+
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
   [self _setRunning:NO runner:runner];
   [self setStatusText:[dataSource_ statusString:@"Tests finished. "]];
   
   // Save defaults after test run
   [self saveDefaults];
+   __gcov_flush();
   
   if (getenv("GHUNIT_AUTOEXIT")) 
   {
