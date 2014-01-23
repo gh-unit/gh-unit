@@ -49,6 +49,7 @@
 
 // GTM_BEGIN - Contains modifications by JR
 
+#import <Foundation/Foundation.h>
 
 #import "NSException+GHTestFailureExceptions.h"
 
@@ -69,10 +70,8 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
                         atLine:(int)lineNumber
                         reason:(NSString *)reason {
   NSDictionary *userInfo =
-  [NSDictionary dictionaryWithObjectsAndKeys:
-   [NSNumber numberWithInteger:lineNumber], GHTestLineNumberKey,
-   filename, GHTestFilenameKey,
-   nil];
+  @{GHTestLineNumberKey: @(lineNumber),
+   GHTestFilenameKey: filename};
   
   return [self exceptionWithName:GHTestFailureException
               reason:reason
@@ -91,7 +90,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -111,7 +110,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -132,7 +131,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -154,7 +153,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -177,7 +176,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -205,7 +204,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -226,7 +225,7 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
     va_list vl;
     va_start(vl, formatString);
     testDescription =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   
@@ -243,6 +242,19 @@ NSString *const GHTestFailureException = @"GHTestFailureException";
   return [self ghu_failureInFile:filename atLine:lineNumber reason:reason];
 }
 
++ (NSException *)ghu_failureWithName:(NSString *)name
+                              inFile:(NSString *)filename
+                              atLine:(int)lineNumber
+                              reason:(NSString *)reason {
+  NSDictionary *userInfo =
+  @{GHTestLineNumberKey: @(lineNumber),
+   GHTestFilenameKey: filename};
+  
+  return [self exceptionWithName:name
+                          reason:reason
+                        userInfo:userInfo];
+}
+
 @end
 
 NSString *GHComposeString(NSString *formatString, ...) {
@@ -251,7 +263,7 @@ NSString *GHComposeString(NSString *formatString, ...) {
     va_list vl;
     va_start(vl, formatString);
     reason =
-    [[[NSString alloc] initWithFormat:formatString arguments:vl] autorelease];
+    [[NSString alloc] initWithFormat:formatString arguments:vl];
     va_end(vl);
   }
   return reason;

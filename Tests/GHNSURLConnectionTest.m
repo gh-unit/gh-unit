@@ -1,6 +1,6 @@
 //
 //  GHNSURLConnectionTest.m
-//  GHUnitIPhone
+//  GHUnitIOS
 //
 //  Created by Gabriel Handford on 11/14/10.
 //  Copyright 2010. All rights reserved.
@@ -26,12 +26,12 @@
   // Wait until notify called for timeout (seconds); If notify is not called with kGHUnitWaitStatusSuccess then
   // we will throw an error.
   [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
-  
-  [connection release];
+  [connection cancel];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-  GHTestLog(@"%@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
+  NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+  GHTestLog(@"%@", dataString);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

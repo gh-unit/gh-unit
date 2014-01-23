@@ -1,6 +1,6 @@
 //
 //  GHUnitIOSTestMain.m
-//  GHUnitIPhone
+//  GHUnitIOS
 //
 //  Created by Gabriel Handford on 1/25/09.
 //  Copyright 2009. All rights reserved.
@@ -27,61 +27,44 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//
-// DON'T USE THIS FILE, USE THE FILE IN PROJECT-IPHONE ROOT
-// This is special cased since we can't build the framework from XCode
-//
+#import <objc/runtime.h>
 
-#import <UIKit/UIKit.h>
+//see https://github.com/gh-unit/gh-unit/issues/96#issuecomment-12881447
 
-// If you are using the framework
-//#import <GHUnitIOS/GHUnit.h>
-// If you are using the static library and importing header files manually
-#import "GHUnit.h"
+@interface UIWindow (Private)
+- (void) swizzled_createContext;
+@end
 
-// Default exception handler
-void exceptionHandler(NSException *exception) { 
-  NSLog(@"%@\n%@", [exception reason], GHUStackTraceFromException(exception));
+@implementation UIWindow (Private)
+
+- (void) swizzled_createContext {
+    // Should not create a context
 }
 
+@end
+
 int main(int argc, char *argv[]) {
-  
-  /*!
-   For debugging:
-   Go into the "Get Info" contextual menu of your (test) executable (inside the "Executables" group in the left panel of XCode). 
-   Then go in the "Arguments" tab. You can add the following environment variables:
-   
-   Default:   Set to:
-   NSDebugEnabled                        NO       "YES"
-   NSZombieEnabled                       NO       "YES"
-   NSDeallocateZombies                   NO       "YES"
-   NSHangOnUncaughtException             NO       "YES"
-   
-   NSEnableAutoreleasePool              YES       "NO"
-   NSAutoreleaseFreedObjectCheckEnabled  NO       "YES"
-   NSAutoreleaseHighWaterMark             0       non-negative integer
-   NSAutoreleaseHighWaterResolution       0       non-negative integer
-   
-   For info on these varaiables see NSDebug.h; http://theshadow.uw.hu/iPhoneSDKdoc/Foundation.framework/NSDebug.h.html
-   
-   For malloc debugging see: http://developer.apple.com/mac/library/documentation/Performance/Conceptual/ManagingMemory/Articles/MallocDebug.html
-   */
-  
-  NSSetUncaughtExceptionHandler(&exceptionHandler);
-  
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  
-  // Register any special test case classes
-  //[[GHTesting sharedInstance] registerClassName:@"GHSpecialTestCase"];  
-  
-  int retVal = 0;
-  // If GHUNIT_CLI is set we are using the command line interface and run the tests
-  // Otherwise load the GUI app
-  if (getenv("GHUNIT_CLI")) {
-    retVal = [GHTestRunner run];
-  } else {
-    retVal = UIApplicationMain(argc, argv, nil, @"GHUnitIPhoneAppDelegate");
-  }
-  [pool release];
-  return retVal;
+    int retVal;
+    @autoreleasepool {
+        
+        BOOL isCli = getenv("GHUNIT_CLI") ? YES : NO;
+        CFMessagePortRef portRef = NULL;
+        if (isCli == YES) {
+            
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wselector"
+            Method originalWindowCreateContext = class_getInstanceMethod([UIWindow class], @selector(_createContext));
+#pragma clang diagnostic pop
+            
+            Method swizzledWindowCreateConext = class_getInstanceMethod([UIWindow class], @selector(swizzled_createContext));
+            method_exchangeImplementations(originalWindowCreateContext, swizzledWindowCreateConext);
+            
+            portRef = CFMessagePortCreateLocal(NULL, (CFStringRef) @"PurpleWorkspacePort", NULL, NULL, NULL);
+        }
+        
+        retVal = UIApplicationMain(argc, argv, NSStringFromClass([UIApplication class]), @"GHUnitIOSAppDelegate");
+        if (portRef != NULL) { CFRelease(portRef); }
+    }
+    return retVal;
 }

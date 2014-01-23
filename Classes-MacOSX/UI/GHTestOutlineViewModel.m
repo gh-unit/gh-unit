@@ -10,7 +10,7 @@
 
 @implementation GHTestOutlineViewModel
 
-@synthesize delegate=delegate_;
+@synthesize delegate;
 
 #pragma mark DataSource (NSOutlineView)
 
@@ -18,7 +18,7 @@
 	if (!item) {
 		return [self root];
 	} else {
-		return [[item children] objectAtIndex:index];
+		return [item children][index];
 	}
 }
 
@@ -63,14 +63,11 @@
 		
 		if (self.isEditing) {
 			[cell setState:[item isSelected] ? NSOnState : NSOffState];
-			NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-																	textColor, NSForegroundColorAttributeName,
-																	[cell font],  NSFontAttributeName,
-																	nil];
+			NSDictionary *attributes = @{NSForegroundColorAttributeName: textColor,
+																	NSFontAttributeName: [cell font]};
 			
 			NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[item name] attributes:attributes];
 			[cell setAttributedTitle:attributedString];
-			[attributedString release];			
 		} else {			
 			[cell setTitle:[item name]];	
 			[cell setTextColor:textColor];
@@ -101,7 +98,7 @@
 	if ([[tableColumn identifier] isEqual:@"name"] && self.isEditing) {		
 		// TODO(gabe): Doesn't work if you try to re-use cells so making a new one; 
 		// Need help with this; This might explode if you have a lot of tests
-		NSButtonCell *cell = [[[NSButtonCell alloc] init] autorelease];
+		NSButtonCell *cell = [[NSButtonCell alloc] init];
 		[cell setControlSize:NSSmallControlSize];
 		[cell setFont:[NSFont fontWithName:@"Lucida Grande" size:11]];
 		[cell setButtonType:NSSwitchButton];		
@@ -116,7 +113,7 @@
 #pragma mark Delegates (NSOutlineView)
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification {
-	[delegate_ testOutlineViewModelDidChangeSelection:self];
+	[self.delegate testOutlineViewModelDidChangeSelection:self];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {

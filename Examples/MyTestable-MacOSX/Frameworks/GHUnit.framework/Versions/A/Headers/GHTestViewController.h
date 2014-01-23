@@ -31,11 +31,10 @@
 #import "GHTestGroup.h"
 #import "GHTestOutlineViewModel.h"
 
-#import "BWSplitView.h"
 
-@interface GHTestViewController : NSViewController <GHTestRunnerDelegate, GHTestOutlineViewModelDelegate> {
+@interface GHTestViewController : NSViewController <GHTestRunnerDelegate, GHTestOutlineViewModelDelegate, NSSplitViewDelegate> {
 
-	IBOutlet BWSplitView *_splitView;
+	IBOutlet NSSplitView *_splitView;
 	IBOutlet NSView *_statusView;
 	IBOutlet NSView *_detailsView;	
 	IBOutlet NSOutlineView *_outlineView;	
@@ -43,6 +42,7 @@
 	IBOutlet NSSegmentedControl *_textSegmentedControl;
   IBOutlet NSSegmentedControl *_segmentedControl;
   IBOutlet NSSearchField *_searchField;
+  IBOutlet NSButton *_detailsToggleButton;
 	
 	BOOL wrapInTextView_;		
 	NSString *status_;
@@ -63,15 +63,18 @@
 @property (readonly, nonatomic) id<GHTest> selectedTest;
 @property (readonly, nonatomic) GHTestOutlineViewModel *dataSource;
 
-@property (retain, nonatomic) NSString *status;
+@property (strong, nonatomic) NSString *status;
 @property (assign, nonatomic) double statusProgress;
-@property (retain, nonatomic) NSString *runLabel;
+@property (strong, nonatomic) NSString *runLabel;
 
-@property (retain, nonatomic) GHTestSuite *suite;
+@property (strong, nonatomic) GHTestSuite *suite;
 @property (assign, nonatomic, getter=isRunning) BOOL running;
 
-@property (retain, nonatomic) NSString *exceptionFilename;
+@property (strong, nonatomic) NSString *exceptionFilename;
 @property (assign, nonatomic) NSInteger exceptionLineNumber;
+
+@property (assign, nonatomic) BOOL reraiseExceptions;
+@property (assign, nonatomic) BOOL runInParallel;
 
 
 - (void)loadTestSuite;

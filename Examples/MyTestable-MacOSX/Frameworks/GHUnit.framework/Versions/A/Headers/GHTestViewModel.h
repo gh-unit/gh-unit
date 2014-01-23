@@ -30,6 +30,8 @@
 //! @cond DEV
 
 #import "GHTestGroup.h"
+#import "GHTestSuite.h"
+#import "GHTestRunner.h"
 
 @class GHTestNode;
 
@@ -65,52 +67,101 @@ typedef enum {
 
 /*!
  Create view model with root test group node.
+
  @param identifier Unique identifier for test model (used to load defaults)
- @param suite
+ @param suite Suite
  */
 - (id)initWithIdentifier:(NSString *)identifier suite:(GHTestSuite *)suite;
 
+/*!
+ @result Name of test suite.
+ */
 - (NSString *)name;
+
+/*!
+ Status description.
+
+ @param prefix Prefix to append
+ @result Current status string
+ */
 - (NSString *)statusString:(NSString *)prefix;
 
 /*!
- Get the test node from the test.
- @param test
- */
-- (GHTestNode *)findTestNode:(id<GHTest>)test;
+ Find the test node from the test.
 
+ @param test Find test
+ */
+- (GHTestNode *)findTestNodeForTest:(id<GHTest>)test;
+
+/*!
+ Find the first failure.
+
+ @result The first failure
+ */
 - (GHTestNode *)findFailure;
+
+/*!
+ Find the next failure starting from node.
+
+ @param node Node to start from
+ */
 - (GHTestNode *)findFailureFromNode:(GHTestNode *)node;
 
 /*!
- Register node, so that we can do a lookup later (see #findTestNode).
- @param node
+ Register node, so that we can do a lookup later. See findTestNodeForTest:.
+
+ @param node Node to register
  */
 - (void)registerNode:(GHTestNode *)node;
 
-// Return number of test groups
+/*!
+ @result Returns the number of test groups.
+ */
 - (NSInteger)numberOfGroups;
 
-// Return number of tests in group
+/*!
+ Returns the number of tests in group.
+ @param group Group number
+ @result The number of tests in group.
+ */
 - (NSInteger)numberOfTestsInGroup:(NSInteger)group;
 
 /*!
  Search for path to test.
- @param test
+ @param test Test
  @result Index path
  */
 - (NSIndexPath *)indexPathToTest:(id<GHTest>)test;
 
+/*!
+ Load defaults (user settings saved with saveDefaults).
+ */
 - (void)loadDefaults;
+
+/*!
+ Save defaults (user settings to be loaded with loadDefaults).
+ */
 - (void)saveDefaults;
 
 /*!
  Run with current test suite.
+
+ @param delegate Callback
+ @param inParallel If YES, will run tests in operation queue
+ @param options Options
  */
 - (void)run:(id<GHTestRunnerDelegate>)delegate inParallel:(BOOL)inParallel options:(GHTestOptions)options;
 
+/*!
+ Cancel test run.
+ */
 - (void)cancel;
 
+/*!
+ Check if running.
+
+ @result YES if running.
+ */
 - (BOOL)isRunning;
 
 @end
@@ -122,16 +173,16 @@ typedef enum {
 	NSMutableArray */*of GHTestNode*/children_;
   NSMutableArray */* of GHTestNode*/filteredChildren_;
 
-	id<GHTestNodeDelegate> delegate_;
+	id<GHTestNodeDelegate> __unsafe_unretained delegate_;
   GHTestNodeFilter filter_;
   NSString *textFilter_;
 }
 
-@property (readonly, nonatomic) NSArray */* of GHTestNode*/children;
-@property (readonly, nonatomic) id<GHTest> test;
-@property (assign, nonatomic) id<GHTestNodeDelegate> delegate;
+@property (readonly, strong, nonatomic) NSArray */* of GHTestNode*/children;
+@property (readonly, strong, nonatomic) id<GHTest> test;
+@property (unsafe_unretained, nonatomic) id<GHTestNodeDelegate> delegate;
 @property (assign, nonatomic) GHTestNodeFilter filter;
-@property (retain, nonatomic) NSString *textFilter;
+@property (strong, nonatomic) NSString *textFilter;
 
 - (id)initWithTest:(id<GHTest>)test children:(NSArray */*of id<GHTest>*/)children source:(GHTestViewModel *)source;
 + (GHTestNode *)nodeWithTest:(id<GHTest>)test children:(NSArray */*of id<GHTest>*/)children source:(GHTestViewModel *)source;

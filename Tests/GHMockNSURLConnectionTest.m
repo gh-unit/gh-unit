@@ -18,14 +18,12 @@
 @implementation GHMockNSURLConnectionTest
 
 - (void)setUpClass {
-  testHeaders_= [[NSDictionary dictionaryWithObjectsAndKeys:@"somehexdata", @"ETag", nil] retain];
-  testData_ = [[@"This is test data" dataUsingEncoding:NSUTF8StringEncoding] retain];
+  testHeaders_= [NSDictionary dictionaryWithObjectsAndKeys:@"somehexdata", @"ETag", nil];
+  testData_ = [@"This is test data" dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (void)tearDownClass {
-  [testHeaders_ release];
   testHeaders_ = nil;
-  [testData_ release];
   testData_ = nil;
 }
 

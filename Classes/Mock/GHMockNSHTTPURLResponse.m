@@ -41,11 +41,6 @@
 	return self;
 }
 
-- (void)dealloc {
-	[headers_ release];
-	[super dealloc];
-}
-
 - (void)setStatusCode:(NSInteger)code {
 	statusCode_ = code;
 }
@@ -55,13 +50,11 @@
 }
 
 - (void)setHeaders:(NSDictionary *)headers {
-	[headers retain];
-	[headers_ release];
 	headers_ = headers;
 }
 
 - (NSDictionary *)allHeaderFields {
-	return headers_ ? [[headers_ copy] autorelease] : [super allHeaderFields];
+	return headers_ ? [headers_ copy] : [super allHeaderFields];
 }
 
 @end

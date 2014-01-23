@@ -6,9 +6,11 @@
 //  Copyright 2009. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import "GHTestViewModel.h"
 @class GHTestOutlineViewModel;
 
+#define MIN_WINDOW_WIDTH (635.0)
 
 @protocol GHTestOutlineViewModelDelegate <NSObject>
 - (void)testOutlineViewModelDidChangeSelection:(GHTestOutlineViewModel *)testOutlineViewModel;
@@ -20,12 +22,11 @@
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060 // on lines like this to not confuse IB
   <NSOutlineViewDelegate, NSOutlineViewDataSource> 	
 #endif
-{
-	id<GHTestOutlineViewModelDelegate> delegate_; // weak
-	
+{	
+  __unsafe_unretained id<GHTestOutlineViewModelDelegate> delegate_;
 	NSButtonCell *editCell_;
 }
 
-@property (assign, nonatomic) id<GHTestOutlineViewModelDelegate> delegate;
+@property (unsafe_unretained, nonatomic) id<GHTestOutlineViewModelDelegate> delegate;
 
 @end

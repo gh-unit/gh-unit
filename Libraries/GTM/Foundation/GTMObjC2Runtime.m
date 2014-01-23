@@ -6,9 +6,9 @@
 //  Licensed under the Apache License, Version 2.0 (the "License"); you may not
 //  use this file except in compliance with the License.  You may obtain a copy
 //  of the License at
-// 
+//
 //  http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 //  Unless required by applicable law or agreed to in writing, software
 //  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 //  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -18,7 +18,7 @@
 
 #import "GTMObjC2Runtime.h"
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5
+#if GTM_MACOS_SDK && (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5)
 #import <stdlib.h>
 #import <string.h>
 
@@ -58,6 +58,10 @@ Class class_getSuperclass(Class cls) {
   return cls->super_class;
 }
 
+BOOL class_respondsToSelector(Class cls, SEL sel) {
+  return class_getInstanceMethod(cls, sel) != nil;
+}
+
 Method *class_copyMethodList(Class cls, unsigned int *outCount) {
   if (!cls) return NULL;
 
@@ -69,7 +73,7 @@ Method *class_copyMethodList(Class cls, unsigned int *outCount) {
 
   while ( (mlist = class_nextMethodList(cls, &iterator)) ) {
     if (mlist->method_count == 0) continue;
-    methods = (Method *)realloc(methods, 
+    methods = (Method *)realloc(methods,
                                 sizeof(Method) * (count + mlist->method_count + 1));
     if (!methods) {
       //Memory alloc failed, so what can we do?
@@ -103,7 +107,7 @@ IMP method_setImplementation(Method method, IMP imp) {
   // We intentionally don't test method for nil.
   // Leopard fails here, so should we.
   // I logged this as Radar:
-  // 5572981 method_setImplementation crashes if you pass nil for the 
+  // 5572981 method_setImplementation crashes if you pass nil for the
   // method arg (arg 1)
   // because it seems odd that this API won't accept nil for method considering
   // all the other apis will accept nil args.
@@ -117,7 +121,7 @@ IMP method_setImplementation(Method method, IMP imp) {
   if (imp) {
     oldImp = method->method_imp;
     method->method_imp = imp;
-  } 
+  }
   return oldImp;
 }
 
@@ -150,7 +154,10 @@ struct objc_method_description protocol_getMethodDescription(Protocol *p,
   return desc;
 }
 
+BOOL sel_isEqual(SEL lhs, SEL rhs) {
+  // Apple (informally) promises this will work in the future:
+  // http://twitter.com/#!/gparker/status/2400099786
+  return (lhs == rhs) ? YES : NO;
+}
 
-#endif
-
-
+#endif  // GTM_MACOS_SDK && (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5)

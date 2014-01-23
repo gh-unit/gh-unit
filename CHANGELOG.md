@@ -1,3 +1,36 @@
+# Release (in progress)
+- Cleanup deployment target and project file
+- Fixing example test case documentation
+
+# Release 0.5.8
+- Move GHViewTestCase to iOS specific folder
+- Fix issue #119 (Xcode 4.6.1/iOS 6.1 support)
+- Added the environment variable `GHUNIT_STDERR_REDIRECT` for GHUnitIOS stderr redirection.
+- Added bits per component to comparison
+- Fixed spelling error
+- Updated compiler settings for ARC and latest compiler
+- Compare images based on pixel sizes instead of point sizes
+- Switched to memcmp for view image comparison
+- Change save location with GHUNIT_DOCS_DIR.
+- Fix issue #96 (Fix GHUNIT_CLI test run for iOS 6.1+)
+# Release 0.5.7
+- Support for Retina view tests
+- Fix issue #105
+- Using CACurrentMediaTime for GHRunForInterval so as to not interfere with swizzled NSDate methods.
+- Fix issue #135 (Fix performance which was causing us to fail on a low RAM virtual machines)
+
+# Release 0.5.7
+- Support for Retina view tests
+- Fix issue #105
+- Using CACurrentMediaTime for GHRunForInterval so as to not interfere with swizzled NSDate methods.
+
+# Release 0.4.29 to 0.5.6
+- TODO
+
+# Release 0.4.29
+- Changing paths to use iOS instead of iPhone
+- Rebuilding iOS project using XCode 4
+
 # Release 0.4.28
 - Building as GHUnitIOS.framework for iOS.
 - Fix issue #37
@@ -7,7 +40,7 @@
 - Fix issue #19
 
 # Release 0.4.27
-- Added in GHUnitIPhoneAppDelegate for subclassing test app delegate
+- Added in GHUnitIOSAppDelegate for subclassing test app delegate
 
 # Release 0.4.26
 - Fixing LLVM/clang warnings (Whitney Young, nolanw)
@@ -98,7 +131,7 @@
 - UI fixes
 
 # Release 0.4.5 (2008-07-21)
-- Including GHUnitIPhoneAppDelegate so you can subclass and interact with UIApplication delegate in tests
+- Including GHUnitIOSAppDelegate so you can subclass and interact with UIApplication delegate in tests
 
 # Release 0.4.4 (2008-07-20)
 - Ignore disable/cancelled tests in scroll (iPhone)

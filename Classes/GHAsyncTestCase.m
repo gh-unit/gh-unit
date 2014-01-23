@@ -41,11 +41,6 @@ typedef enum {
 
 @synthesize runLoopModes=_runLoopModes;
 
-- (void)dealloc {
-  [_runLoopModes release];
-  _runLoopModes = nil;
-  [super dealloc];
-}
 
 // Internal GHUnit setUp
 - (void)_setUp {
@@ -58,7 +53,6 @@ typedef enum {
 - (void)_tearDown { 
   waitSelector_ = NULL;
   if (prepared_) [lock_ unlock]; // If we prepared but never waited we need to unlock
-  [lock_ release];
   lock_ = nil;
 }
 
@@ -82,22 +76,21 @@ typedef enum {
   waitForStatus_ = status;
   
   if (!_runLoopModes)
-    _runLoopModes = [[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSRunLoopCommonModes, nil] retain];
+    _runLoopModes = @[NSDefaultRunLoopMode, NSRunLoopCommonModes];
 
   NSTimeInterval checkEveryInterval = 0.05;
   NSDate *runUntilDate = [NSDate dateWithTimeIntervalSinceNow:timeout];
   BOOL timedOut = NO;
   NSInteger runIndex = 0;
   while(notifiedStatus_ == kGHUnitWaitStatusUnknown) {
-    
-    NSString *mode = [_runLoopModes objectAtIndex:(runIndex++ % [_runLoopModes count])];
+    NSString *mode = _runLoopModes[(runIndex++ % [_runLoopModes count])];
 
     [lock_ unlock];
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
-      // If there were no run loop sources or timers then we should sleep for the interval
-      [NSThread sleepForTimeInterval:checkEveryInterval];
-    [pool release];
+    @autoreleasepool {
+      if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
+        // If there were no run loop sources or timers then we should sleep for the interval
+        [NSThread sleepForTimeInterval:checkEveryInterval];
+    }
     [lock_ lock];
     
     // If current date is after the run until date
@@ -146,19 +139,19 @@ typedef enum {
 	NSDate *runUntilDate = [NSDate dateWithTimeIntervalSinceNow:interval];
   
 	if (!_runLoopModes)
-		_runLoopModes = [[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSRunLoopCommonModes, nil] retain];
+		_runLoopModes = @[NSDefaultRunLoopMode, NSRunLoopCommonModes];
   
 	NSInteger runIndex = 0;
   
-	while ([runUntilDate compare:[NSDate date]] == NSOrderedDescending) {
-		NSString *mode = [_runLoopModes objectAtIndex:(runIndex++ % [_runLoopModes count])];
+	while ([runUntilDate compare:[NSDate dateWithTimeIntervalSinceNow:0]] == NSOrderedDescending) {
+		NSString *mode = _runLoopModes[(runIndex++ % [_runLoopModes count])];
     
 		[lock_ unlock];
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
-			// If there were no run loop sources or timers then we should sleep for the interval
-			[NSThread sleepForTimeInterval:checkEveryInterval];
-		[pool release];
+		@autoreleasepool {
+			if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
+				// If there were no run loop sources or timers then we should sleep for the interval
+				[NSThread sleepForTimeInterval:checkEveryInterval];
+		}
 		[lock_ lock];		
 	}
 }
@@ -169,18 +162,18 @@ typedef enum {
 
 - (void)notify:(NSInteger)status forSelector:(SEL)selector {
   // Note: If this is called from a stray thread or delayed call, we may not be in an autorelease pool
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  @autoreleasepool {
   
   // Make sure the notify is for the currently waiting test
-  if (selector != NULL && !sel_isEqual(waitSelector_, selector)) {
-    NSLog(@"Warning: Notified from %@ but we were waiting for %@", NSStringFromSelector(selector), NSStringFromSelector(waitSelector_));
-  }  else {
-    [lock_ lock];
-    notifiedStatus_ = status;
-    [lock_ unlock];
-  }
+    if (selector != NULL && !sel_isEqual(waitSelector_, selector)) {
+      NSLog(@"Warning: Notified from %@ but we were waiting for %@", NSStringFromSelector(selector), NSStringFromSelector(waitSelector_));
+    }  else {
+      [lock_ lock];
+      notifiedStatus_ = status;
+      [lock_ unlock];
+    }
 
-  [pool release];
+  }
 }
 
 @end

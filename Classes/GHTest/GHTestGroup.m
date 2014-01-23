@@ -33,7 +33,6 @@
 #import "GHTestOperation.h"
 
 #import "GHTesting.h"
-#import "GTMStackTrace.h"
 
 #import "GHTestGroup+JUnitXML.h"
 
@@ -49,40 +48,36 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 
 - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate {
   if ((self = [super init])) {
-    name_ = [name retain];        
-    children_ = [[NSMutableArray array] retain];
+    name_ = name;        
+    children_ = [NSMutableArray array];
     delegate_ = delegate;
   } 
   return self;
 }
 
 - (id)initWithTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
-  if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
-    testCase_ = [testCase retain];
+  if ((self = [self initWithName:NSStringFromClass([testCase class]) delegate:delegate])) {
+    testCase_ = testCase;
     [self _addTestsFromTestCase:testCase];
   }
   return self;
 }
 
 - (id)initWithTestCase:(id)testCase selector:(SEL)selector delegate:(id<GHTestDelegate>)delegate {
-  if ([self initWithName:NSStringFromClass([testCase class]) delegate:delegate]) {
-    testCase_ = [testCase retain];
+  if ((self = [self initWithName:NSStringFromClass([testCase class]) delegate:delegate])) {
+    testCase_ = testCase;
     [self addTest:[GHTest testWithTarget:testCase selector:selector]];
   }
   return self;
 }
 
 + (GHTestGroup *)testGroupFromTestCase:(id)testCase delegate:(id<GHTestDelegate>)delegate {
-  return [[[GHTestGroup alloc] initWithTestCase:testCase delegate:delegate] autorelease];
+  return [[GHTestGroup alloc] initWithTestCase:testCase delegate:delegate];
 }
 
 - (void)dealloc {
   for(id<GHTest> test in children_)
     [test setDelegate:nil];
-  [name_ release];
-  [children_ release];
-  [testCase_ release];
-  [super dealloc];
 }
 
 - (NSString *)description {
@@ -102,7 +97,6 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 - (void)addTestCase:(id)testCase {
   GHTestGroup *testCaseGroup = [[GHTestGroup alloc] initWithTestCase:testCase delegate:self];
   [self addTestGroup:testCaseGroup];
-  [testCaseGroup release];
 }
 
 - (void)addTestGroup:(GHTestGroup *)testGroup {
@@ -147,7 +141,6 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   status_ = GHTestStatusNone;
   stats_ = GHTestStatsMake(0, 0, 0, stats_.testCount);
   interval_ = 0;
-  [exception_ release];
   exception_ = nil; 
 }
 
@@ -166,8 +159,6 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 - (void)setException:(NSException *)exception {
-  [exception retain];
-  [exception_ release];
   exception_ = exception;
   status_ = GHTestStatusErrored;
   [delegate_ testDidUpdate:self source:self];
@@ -227,7 +218,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
       [testCase_ setUpClass];
   } @catch(NSException *exception) {
     // If we fail in the setUpClass, then we will cancel all the child tests (below)
-    exception_ = [exception retain];
+    exception_ = exception;
     status_ = GHTestStatusErrored;
     for(id<GHTest> test in children_) {
       if (![test isDisabled]) {
@@ -245,7 +236,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
     if ([testCase_ respondsToSelector:@selector(tearDownClass)])    
       [testCase_ tearDownClass];
   } @catch(NSException *exception) {          
-    exception_ = [exception retain];
+    exception_ = exception;
     status_ = GHTestStatusErrored;
     // We need to reverse any successes in the test run above
     // and set the error on all the child tests
@@ -287,7 +278,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
       [test setException:exception_];
     } else {        
       if (operationQueue) {
-        [operationQueue addOperation:[[[GHTestOperation alloc] initWithTest:test options:options_] autorelease]];
+        [operationQueue addOperation:[[GHTestOperation alloc] initWithTest:test options:options_]];
       } else {
         if (![test isDisabled])
           [self setUpClass];
@@ -384,7 +375,8 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 - (id)copyWithZone:(NSZone *)zone {
   NSMutableArray *tests = [NSMutableArray arrayWithCapacity:[children_ count]];
   for(id<GHTest> test in children_) {
-    [tests addObject:[test copyWithZone:zone]];
+    id<GHTest> testCopy = [test copyWithZone:zone];
+    [tests addObject:testCopy];
   }
   GHTestGroup *testGroup = [[GHTestGroup alloc] initWithName:name_ delegate:nil];
   [testGroup addTests:tests];

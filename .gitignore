@@ -4,11 +4,12 @@ build
 *.pbxuser
 *.perspectivev3
 .DS_Store
-Documentation/html
-Documentation/GHUnit.docset.tgz
+Documentation/output
 *.tm_build_errors
 *.swp
 *~.nib
 .gitattributes
 GHUnit.docset
 *.xcuserdatad
+Project-iOS/GHUnitIOS.xcodeproj/xcuserdata
+Project-iOS/GHUnitIOS.xcodeproj/project.xcworkspace/xcuserdata

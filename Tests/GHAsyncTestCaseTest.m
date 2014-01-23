@@ -81,3 +81,23 @@
 @end
 
 
+@interface GHAsyncExceptionTest : GHAsyncTestCase { }
+@end
+
+@implementation GHAsyncExceptionTest
+
+- (BOOL)shouldRunOnMainThread {
+  return YES;
+}
+
+// This test crashes
+- (void)_test_EXPECTED {
+  [self prepare];
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+    [NSException raise:NSGenericException format:@"Test exception"];
+  });
+  [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+}
+
+@end
+

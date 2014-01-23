@@ -51,13 +51,8 @@
 #import "GHTesting.h"
 #import "GHTest.h"
 #import "GHTestCase.h"
-#import "GTMStackTrace.h"
 
 #import <objc/runtime.h>
-
-NSString *GHUStackTraceFromException(NSException *e) {
-  return GHU_GTMStackTraceFromException(e);
-}
 
 NSInteger ClassSort(id a, id b, void *context) {
   const char *nameA = class_getName([a class]);
@@ -67,11 +62,21 @@ NSInteger ClassSort(id a, id b, void *context) {
 
 // GTM_BEGIN
 // Used for sorting methods below
+static NSInteger MethodSort(id a, id b, void *context) {
+  NSInvocation *invocationA = a;
+  NSInvocation *invocationB = b;
+  const char *nameA = sel_getName([invocationA selector]);
+  const char *nameB = sel_getName([invocationB selector]);
+  return strcmp(nameA, nameB);
+}
+
+/*
 static int MethodSort(const void *a, const void *b) {
   const char *nameA = sel_getName(method_getName(*(Method*)a));
   const char *nameB = sel_getName(method_getName(*(Method*)b));
   return strcmp(nameA, nameB);
 }
+ */
 
 BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
   if (testCaseClass == NULL) return NO;
@@ -100,11 +105,11 @@ static GHTesting *gSharedInstance;
 - (id)init {
   if ((self = [super init])) {
     // Default test cases
-    testCaseClassNames_ = [[NSMutableArray arrayWithObjects:
+    testCaseClassNames_ = [NSMutableArray arrayWithObjects:
                             @"GHTestCase",
                             @"SenTestCase",
                             @"GTMTestCase", 
-                            nil] retain];
+                            nil];
   }
   return self;
 }
@@ -125,9 +130,9 @@ static GHTesting *gSharedInstance;
 }
 
 + (NSString *)descriptionForException:(NSException *)exception {
-  NSNumber *lineNumber = [[exception userInfo] objectForKey:GHTestLineNumberKey];
+  NSNumber *lineNumber = [exception userInfo][GHTestLineNumberKey];
   NSString *lineDescription = (lineNumber ? [lineNumber description] : @"Unknown");
-  NSString *filename = [[[[exception userInfo] objectForKey:GHTestFilenameKey] stringByStandardizingPath] stringByAbbreviatingWithTildeInPath];
+  NSString *filename = [[[exception userInfo][GHTestFilenameKey] stringByStandardizingPath] stringByAbbreviatingWithTildeInPath];
   NSString *filenameDescription = (filename ? filename : @"Unknown");
   
   return [NSString stringWithFormat:@"\n\tName: %@\n\tFile: %@\n\tLine: %@\n\tReason: %@\n\n%@", 
@@ -135,15 +140,15 @@ static GHTesting *gSharedInstance;
           filenameDescription, 
           lineDescription, 
           [exception reason], 
-          GHU_GTMStackTraceFromException(exception)];
+          [exception callStackSymbols]];
 }  
 
 + (NSString *)exceptionFilenameForTest:(id<GHTest>)test {
-  return [[[[[test exception] userInfo] objectForKey:GHTestFilenameKey] stringByStandardizingPath] stringByAbbreviatingWithTildeInPath];
+  return [[[[test exception] userInfo][GHTestFilenameKey] stringByStandardizingPath] stringByAbbreviatingWithTildeInPath];
 }
 
 + (NSInteger)exceptionLineNumberForTest:(id<GHTest>)test {
-  return [[[[test exception] userInfo] objectForKey:GHTestLineNumberKey] integerValue];
+  return [[[test exception] userInfo][GHTestLineNumberKey] integerValue];
 }
 
 
@@ -167,7 +172,6 @@ static GHTesting *gSharedInstance;
     }
     
     [testCases addObject:testcase];
-    [testcase release];
   }
   
   return [testCases sortedArrayUsingFunction:ClassSort context:NULL];
@@ -175,6 +179,7 @@ static GHTesting *gSharedInstance;
 
 // GTM_BEGIN
 
+/*
 - (NSArray *)loadTestsFromTarget:(id)target {
   NSMutableArray *tests = [NSMutableArray array];
   
@@ -219,6 +224,72 @@ static GHTesting *gSharedInstance;
   
   return tests;
 }
+*/
+- (NSArray *)loadTestsFromTarget:(id)target {
+  NSMutableArray *invocations = nil;
+  // Need to walk all the way up the parent classes collecting methods (in case
+  // a test is a subclass of another test).
+  for (Class currentClass = [target class];
+       currentClass && (currentClass != [NSObject class]);
+       currentClass = class_getSuperclass(currentClass)) {
+    unsigned int methodCount;
+    Method *methods = class_copyMethodList(currentClass, &methodCount);
+    if (methods) {
+      // This handles disposing of methods for us even if an exception should fly.
+      [NSData dataWithBytes:methods
+                           length:sizeof(Method) * methodCount];
+      if (!invocations) {
+        invocations = [NSMutableArray arrayWithCapacity:methodCount];
+      }
+      for (size_t i = 0; i < methodCount; ++i) {
+        Method currMethod = methods[i];
+        SEL sel = method_getName(currMethod);
+        const char *name = sel_getName(sel);
+        char *returnType = NULL;
+        // If it starts with test, takes 2 args (target and sel) and returns
+        // void run it.
+        if (strstr(name, "test") == name) {
+          returnType = method_copyReturnType(currMethod);
+          if (returnType) {
+            // @gabriel from jjm - this does not appear to work, i am seeing
+            //                     memory leaks on exceptions
+            // This handles disposing of returnType for us even if an
+            // exception should fly. Length +1 for the terminator, not that
+            // the length really matters here, as we never reference inside
+            // the data block.
+            //[NSData dataWithBytes:returnType
+            //                     length:strlen(returnType) + 1];
+          }
+        }
+        // TODO: If a test class is a subclass of another, and they reuse the
+        // same selector name (ie-subclass overrides it), this current loop
+        // and test here will cause cause it to get invoked twice.  To fix this
+        // the selector would have to be checked against all the ones already
+        // added, so it only gets done once.
+        if (returnType  // True if name starts with "test"
+            && strcmp(returnType, @encode(void)) == 0
+            && method_getNumberOfArguments(currMethod) == 2) {
+          NSMethodSignature *sig = [[target class] instanceMethodSignatureForSelector:sel];
+          NSInvocation *invocation
+          = [NSInvocation invocationWithMethodSignature:sig];
+          [invocation setSelector:sel];
+          [invocations addObject:invocation];
+        }
+        if (returnType != NULL) free(returnType);
+      }
+    }
+    if (methods != NULL) free(methods);
+  }
+  // Match SenTestKit and run everything in alphbetical order.
+  [invocations sortUsingFunction:MethodSort context:nil];
+  
+  NSMutableArray *tests = [[NSMutableArray alloc] initWithCapacity:[invocations count]];
+  for (NSInvocation *invocation in invocations) {
+    GHTest *test = [GHTest testWithTarget:target selector:invocation.selector];
+    [tests addObject:test];
+  }
+  return tests;
+}
 
 + (BOOL)runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval
  reraiseExceptions:(BOOL)reraiseExceptions {
@@ -233,47 +304,50 @@ static GHTesting *gSharedInstance;
     // Wrap things in autorelease pools because they may
     // have an STMacro in their dealloc which may get called
     // when the pool is cleaned up
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
     // We don't log exceptions here, instead we let the person that called
     // this log the exception.  This ensures they are only logged once but the
     // outer layers get the exceptions to report counts, etc.
-    @try {
-      // Private setUp internal to GHUnit (in case subclasses fail to call super)
-      if ([target respondsToSelector:@selector(_setUp)])
-        [target performSelector:@selector(_setUp)];
+      @try {
+        // Private setUp internal to GHUnit (in case subclasses fail to call super)
+        if ([target respondsToSelector:@selector(_setUp)])
+          [target performSelector:@selector(_setUp)];
 
-      if ([target respondsToSelector:@selector(setUp)])
-        [target performSelector:@selector(setUp)];
-      @try {  
+        if ([target respondsToSelector:@selector(setUp)])
+          [target performSelector:@selector(setUp)];
+        @try {  
+          if ([target respondsToSelector:@selector(setCurrentSelector:)])
+            [target setCurrentSelector:selector];
+
+          // If this isn't set SenTest macros don't raise
+          if ([target respondsToSelector:@selector(raiseAfterFailure)])
+            [target raiseAfterFailure];
+          
+          // Runs the test
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+          [target performSelector:selector];
+#pragma clang diagnostic pop
+          
+        } @catch (NSException *exception) {
+          if (!testException) testException = exception;
+        }
         if ([target respondsToSelector:@selector(setCurrentSelector:)])
-          [target setCurrentSelector:selector];
+          [target setCurrentSelector:NULL];
 
-        // If this isn't set SenTest macros don't raise
-        if ([target respondsToSelector:@selector(raiseAfterFailure)])
-          [target raiseAfterFailure];
+        if ([target respondsToSelector:@selector(tearDown)])
+          [target performSelector:@selector(tearDown)];
         
-        // Runs the test
-        [target performSelector:selector];
-        
+        // Private tearDown internal to GHUnit (in case subclasses fail to call super)
+        if ([target respondsToSelector:@selector(_tearDown)])
+          [target performSelector:@selector(_tearDown)];
+
       } @catch (NSException *exception) {
-        if (!testException) testException = [exception retain];
+        if (!testException) testException = exception;
       }
-      if ([target respondsToSelector:@selector(setCurrentSelector:)])
-        [target setCurrentSelector:NULL];
-
-      if ([target respondsToSelector:@selector(tearDown)])
-        [target performSelector:@selector(tearDown)];
-      
-      // Private tearDown internal to GHUnit (in case subclasses fail to call super)
-      if ([target respondsToSelector:@selector(_tearDown)])
-        [target performSelector:@selector(_tearDown)];
-
-    } @catch (NSException *exception) {
-      if (!testException) testException = [exception retain];
     }
-    [pool release];
   } @catch (NSException *exception) {
-    if (!testException) testException = [exception retain]; 
+    if (!testException) testException = exception; 
   }  
 
   if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
@@ -291,36 +365,39 @@ static GHTesting *gSharedInstance;
   
   NSDate *startDate = [NSDate date];  
   NSException *testException = nil;
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  @autoreleasepool {
 
-  if ([target respondsToSelector:@selector(_setUp)])
-    [target performSelector:@selector(_setUp)];
-      
-  if ([target respondsToSelector:@selector(setUp)])
-    [target performSelector:@selector(setUp)];
+    if ([target respondsToSelector:@selector(_setUp)])
+      [target performSelector:@selector(_setUp)];
+        
+    if ([target respondsToSelector:@selector(setUp)])
+      [target performSelector:@selector(setUp)];
 
-  if ([target respondsToSelector:@selector(setCurrentSelector:)])
-    [target setCurrentSelector:selector];
+    if ([target respondsToSelector:@selector(setCurrentSelector:)])
+      [target setCurrentSelector:selector];
+          
+    // If this isn't set SenTest macros don't raise
+    if ([target respondsToSelector:@selector(raiseAfterFailure)])
+      [target raiseAfterFailure];
+          
+    // Runs the test
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [target performSelector:selector];
+#pragma clang diagnostic pop
+          
+    if ([target respondsToSelector:@selector(setCurrentSelector:)])
+      [target setCurrentSelector:NULL];
         
-  // If this isn't set SenTest macros don't raise
-  if ([target respondsToSelector:@selector(raiseAfterFailure)])
-    [target raiseAfterFailure];
+    if ([target respondsToSelector:@selector(tearDown)])
+      [target performSelector:@selector(tearDown)];
         
-  // Runs the test
-  [target performSelector:selector];
-        
-  if ([target respondsToSelector:@selector(setCurrentSelector:)])
-    [target setCurrentSelector:NULL];
-      
-  if ([target respondsToSelector:@selector(tearDown)])
-    [target performSelector:@selector(tearDown)];
-      
-  // Private tearDown internal to GHUnit (in case subclasses fail to call super)
-  if ([target respondsToSelector:@selector(_tearDown)])
-    [target performSelector:@selector(_tearDown)];
+    // Private tearDown internal to GHUnit (in case subclasses fail to call super)
+    if ([target respondsToSelector:@selector(_tearDown)])
+      [target performSelector:@selector(_tearDown)];
       
   
-  [pool release];
+  }
   
   if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
   if (exception) *exception = testException;

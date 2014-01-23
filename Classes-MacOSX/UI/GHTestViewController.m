@@ -46,36 +46,36 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 
 - (id)init {
 	if ((self = [super initWithNibName:@"GHTestView" bundle:[NSBundle bundleForClass:[GHTestViewController class]]])) { 
-		suite_ = [[GHTestSuite suiteFromEnv] retain];
+		suite_ = [GHTestSuite suiteFromEnv];
     
-    NSString *identifier = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"] retain];
+    NSString *identifier = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
     if (!identifier) identifier = @"Tests";
     GHUDebug(@"Using identifier: %@", identifier);
     
 		dataSource_ = [[GHTestOutlineViewModel alloc] initWithIdentifier:identifier suite:suite_];
 		dataSource_.delegate = self;
     [dataSource_ loadDefaults];
-		self.view; // Force nib awaken
+		[self view]; // Force nib awaken
 	}
 	return self;
 }
 
 - (void)dealloc {
 	dataSource_.delegate = nil;
-	[dataSource_ release];
-	[suite_ release];
-	[status_ release];
-	[super dealloc];
 }
 
 - (void)awakeFromNib {
 	_outlineView.delegate = dataSource_;
-	_outlineView.dataSource = dataSource_;		
+	_outlineView.dataSource = dataSource_;
+  
+   // If we remove from superview, need to keep it retained
 	
 	[_textView setTextColor:[NSColor whiteColor]];
 	[_textView setFont:[NSFont fontWithName:@"Monaco" size:10.0]];
 	[_textView setString:@""];
   _textSegmentedControl.selectedSegment = [[NSUserDefaults standardUserDefaults] integerForKey:@"TextSelectedSegment"];
+  
+  _splitView.delegate = self;
   
   NSString *prefix = [self _prefix];
   if (prefix) {
@@ -111,12 +111,12 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 		[self loadTestSuite];
 		self.status = @"Starting tests...";
 		self.runLabel = @"Cancel";
-		BOOL inParallel = [[NSUserDefaults standardUserDefaults] boolForKey:@"RunInParallel"];
-    BOOL reraiseExceptions = [[NSUserDefaults standardUserDefaults] boolForKey:@"ReraiseExceptions"];
+		BOOL inParallel = self.runInParallel;
+    BOOL reraiseExceptions = self.reraiseExceptions;
     // TODO(gabe): This is confusing; Choosing reraise over in parallel since can't have both
     if (inParallel && reraiseExceptions) inParallel = NO;
-    GHTestOptions options;
-    if (reraiseExceptions) options |= GHTestOptionReraiseExceptions;
+    GHTestOptions options = 0;
+    if (self.reraiseExceptions) options |= GHTestOptionReraiseExceptions;
 		[dataSource_ run:self inParallel:inParallel options:options];
 	}
 }
@@ -204,31 +204,65 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
   [self _updateDetailForTest:nil prefix:@"Re-running test."];
   [test run:GHTestOptionForceSetUpTearDownClass];  
   [self _updateDetailForTest:test prefix:@"Re-ran test. (This feature is experimental.)"];  
-  [test release];
-} 
+}
 
 - (BOOL)isShowingDetails {
   return ![[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"];
 }
 
+- (void)setShowingDetails:(BOOL)showingDetails {
+  [[NSUserDefaults standardUserDefaults] setBool:(!showingDetails) forKey:@"ViewCollapsed"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setReraiseExceptions:(BOOL)reraiseExceptions {
+  [[NSUserDefaults standardUserDefaults] setBool:reraiseExceptions forKey:@"ReraiseExceptions"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)reraiseExceptions {
+  return [[NSUserDefaults standardUserDefaults] boolForKey:@"ReraiseExceptions"];  
+}
+
+- (void)setRunInParallel:(BOOL)runInParallel {
+  [[NSUserDefaults standardUserDefaults] setBool:runInParallel forKey:@"RunInParallel"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)runInParallel {
+  return [[NSUserDefaults standardUserDefaults] boolForKey:@"RunInParallel"];  
+}
+
+- (void)hideDetails {
+  [_detailsView removeFromSuperview];
+  [_detailsToggleButton setState:NSOffState];
+  [self setShowingDetails:NO];
+}
+
+- (void)showDetails {
+  CGFloat windowWidth = self.view.window.frame.size.width;
+  CGFloat minWindowWidth = MIN_WINDOW_WIDTH;
+  if (windowWidth < minWindowWidth) {
+    NSRect frame = self.view.window.frame;
+    frame.size.width = minWindowWidth;
+    [self.view.window setFrame:frame display:YES animate:YES];
+  }
+  [_splitView addSubview:_detailsView];
+  [_detailsToggleButton setState:NSOnState];
+  [self setShowingDetails:YES];
+}
+
 - (IBAction)toggleDetails:(id)sender {	
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"]) {
-		[_detailsView removeFromSuperview];
+	if ([self isShowingDetails]) {
+    [self hideDetails];
 	} else {
-		CGFloat windowWidth = self.view.window.frame.size.width;
-		CGFloat minWindowWidth = 600;
-		if (windowWidth < minWindowWidth) {
-			NSRect frame = self.view.window.frame;
-			frame.size.width = minWindowWidth;
-			[self.view.window setFrame:frame display:YES animate:YES];
-		}
-		[_splitView addSubview:_detailsView];
-	}
+    [self showDetails];
+  }
 }
 
 - (void)loadDefaults {
-	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ViewCollapsed"]) {
-		[self toggleDetails:nil];				
+	if (![self isShowingDetails]) {
+    [self hideDetails];
 	}
 }
 
@@ -309,7 +343,7 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 }
 
 - (void)_updateTest:(id<GHTest>)test {
-	GHTestNode *testNode = [dataSource_ findTestNode:test];
+	GHTestNode *testNode = [dataSource_ findTestNodeForTest:test];
 	[_outlineView reloadItem:testNode];	
 
 	NSInteger runCount = [suite_ stats].succeedCount + [suite_ stats].failureCount;
@@ -363,13 +397,15 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 	[self _updateTest:runner.test];
 	self.status = [dataSource_ statusString:@"Status: "];
 	//[self selectFirstFailure];
+  // TODO(gabe): This should be unnecessary
+  self.statusProgress = 100.0;
 	self.runLabel = @"Run";
   [dataSource_ saveDefaults];
   self.running = NO;
   
   if (getenv("GHUNIT_AUTOEXIT")) {
     NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
-    exit(runner.test.stats.failureCount);
+    exit((int)runner.test.stats.failureCount);
     [NSApp terminate:self];
   }  
 }
@@ -379,6 +415,16 @@ running=running_, exceptionFilename=exceptionFilename_, exceptionLineNumber=exce
 	self.status = [dataSource_ statusString:@"Cancelled... "];
 	self.statusProgress = 0;
   self.running = NO;
+}
+
+#pragma mark Delegates (NSSplitView)
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMin ofSubviewAt:(NSInteger)dividerIndex {
+  return 300;
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMax ofSubviewAt:(NSInteger)dividerIndex {
+  return [self view].frame.size.width - 335;
 }
 
 @end

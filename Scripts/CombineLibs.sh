@@ -23,9 +23,6 @@ if [ ! -d ${ZIP_DIR} ]; then
 fi
 
 cp ${OUTPUT_DIR}/${OUTPUT_FILE} ${ZIP_DIR}
-cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/*.h ${ZIP_DIR}
-cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/*.m ${ZIP_DIR}
-cp ${BUILD_DIR}/${BUILD_STYLE}-iphonesimulator/Makefile ${ZIP_DIR}
 
 cd ${ZIP_DIR}
 zip -m ${NAME}${FLAVOR}-${GHUNIT_VERSION}.zip *

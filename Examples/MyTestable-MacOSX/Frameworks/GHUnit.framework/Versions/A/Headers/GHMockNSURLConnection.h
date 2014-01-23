@@ -27,8 +27,6 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//! @cond DEV
-
 #import <Foundation/Foundation.h>
 
 extern NSString *const GHMockNSURLConnectionException;
@@ -38,37 +36,34 @@ extern NSString *const GHMockNSURLConnectionException;
  
  Use with GHAsyncTestCase to mock out connections.
  
- @code
- 
- @interface GHNSURLConnectionMockTest : GHAsyncTestCase {}
- @end
- 
- @implementation GHNSURLConnectionMockTest
- 
- - (void)testMock {
-	 [self prepare];
-	 GHMockNSURLConnection *connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:self];	
-	 [connection receiveHTTPResponseWithStatusCode:204 headers:testHeaders_ afterDelay:0.1];
-	 [connection receiveData:testData_ afterDelay:0.2];
-	 [connection finishAfterDelay:0.3];
-	 [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
- }
- 
- - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	 GHAssertEquals([(NSHTTPURLResponse *)response statusCode], 204, nil);
-	 GHAssertEqualObjects([(NSHTTPURLResponse *)response allHeaderFields], testHeaders_, nil);
- }
- 
- - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	GHAssertEqualObjects(data, testData_, nil);
- }
- 
- - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	 [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testMock)];
- }
- @end
- 
- @endcode
+     @interface GHNSURLConnectionMockTest : GHAsyncTestCase {}
+     @end
+     
+     @implementation GHNSURLConnectionMockTest
+     
+     - (void)testMock {
+       [self prepare];
+       GHMockNSURLConnection *connection = [[GHMockNSURLConnection alloc] initWithRequest:nil delegate:self];	
+       [connection receiveHTTPResponseWithStatusCode:204 headers:testHeaders_ afterDelay:0.1];
+       [connection receiveData:testData_ afterDelay:0.2];
+       [connection finishAfterDelay:0.3];
+       [self waitForStatus:kGHUnitWaitStatusSuccess timeout:1.0];
+     }
+     
+     - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+       GHAssertEquals([(NSHTTPURLResponse *)response statusCode], 204, nil);
+       GHAssertEqualObjects([(NSHTTPURLResponse *)response allHeaderFields], testHeaders_, nil);
+     }
+     
+     - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+       GHAssertEqualObjects(data, testData_, nil);
+     }
+     
+     - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+       [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testMock)];
+     }
+     @end
+
  */
 @interface GHMockNSURLConnection : NSObject {
 	NSURLRequest *request_;
@@ -96,9 +91,10 @@ extern NSString *const GHMockNSURLConnectionException;
 /*!
  Send generic response to delegate after delay.
  (For asynchronous requests)
- @param delay Delay in seconds (if < 0, there is no delay)
+ @param response Response
+ @param afterDelay Delay in seconds (if < 0, there is no delay)
  */
-- (void)receiveResponse:(NSURLResponse *)response afterDelay:(NSTimeInterval)delay;
+- (void)receiveResponse:(NSURLResponse *)response afterDelay:(NSTimeInterval)afterDelay;
 
 /*!
  Send HTTP response to delegate with status code, headers, after delay.
@@ -106,16 +102,16 @@ extern NSString *const GHMockNSURLConnectionException;
  (For asynchronous requests)
  @param statusCode HTTP status code
  @param headers Headers
- @param delay Delay in seconds (if < 0, there is no delay)
+ @param afterDelay Delay in seconds (if < 0, there is no delay)
  */
-- (void)receiveHTTPResponseWithStatusCode:(int)statusCode headers:(NSDictionary *)headers afterDelay:(NSTimeInterval)delay;
+- (void)receiveHTTPResponseWithStatusCode:(int)statusCode headers:(NSDictionary *)headers afterDelay:(NSTimeInterval)afterDelay;
 
 /*!
  Send data to connection delegate after delay.
  @param data Data to send
- @param delay Delay in seconds
+ @param afterDelay Delay in seconds
  */
-- (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)delay;
+- (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)afterDelay;
 
 /*!
  Send data to connection delegate.
@@ -124,15 +120,15 @@ extern NSString *const GHMockNSURLConnectionException;
  @param MIMEType Mime type
  @param afterDelay Delay
  */
-- (void)receiveData:(NSData *)data statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay;
+- (void)receiveData:(NSData *)data statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)afterDelay;
 
 /*!
  Send data (from file in bundle resource) to connection delegate after delay.
  (For asynchronous requests)
  @param path Path to file
- @param delay Delay in seconds
+ @param afterDelay Delay in seconds
  */
-- (void)receiveDataFromPath:(NSString *)path afterDelay:(NSTimeInterval)delay;
+- (void)receiveDataFromPath:(NSString *)path afterDelay:(NSTimeInterval)afterDelay;
 
 /*!
  Calls connectionDidFinish: delegate after delay.
@@ -149,7 +145,7 @@ extern NSString *const GHMockNSURLConnectionException;
  @param MIMEType Content type for response header
  @param afterDelay Delay before responding (if < 0, there is no delay)
  */
-- (void)receiveFromPath:(NSString *)path statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay;
+- (void)receiveFromPath:(NSString *)path statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)afterDelay;
 
 /*!
  Sends mock response, sends data, and then calls finish.
@@ -159,15 +155,13 @@ extern NSString *const GHMockNSURLConnectionException;
  @param MIMEType Content type for response header
  @param afterDelay Delay before responding (if < 0, there is no delay)
  */ 
-- (void)receiveData:(NSData *)data statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay;
+- (void)receiveData:(NSData *)data statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)afterDelay;
 
 /*!
  Calls connection:didFailWithError: on delegate after specified delay.
  @param error The error to pass to the delegate.
- @param delay Delay before responding (if < 0, there is no delay)
+ @param afterDelay Delay before responding (if < 0, there is no delay)
  */
-- (void)failWithError:(NSError *)error afterDelay:(NSTimeInterval)delay;
+- (void)failWithError:(NSError *)error afterDelay:(NSTimeInterval)afterDelay;
 
 @end
-
-//! @endcond

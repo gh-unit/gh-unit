@@ -28,7 +28,6 @@
 //
 
 #import "GHTestCase.h"
-#import "GTMStackTrace.h"
 #import "GHTesting.h"
 
 @implementation GHTestCase
@@ -53,6 +52,10 @@
 
 - (void)handleException:(NSException *)exception {
   NSLog(@"%@", [GHTesting descriptionForException:exception]);
+}
+
+- (BOOL)isCLIDisabled {
+  return NO;
 }
 
 #pragma mark Logging

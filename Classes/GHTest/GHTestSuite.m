@@ -36,6 +36,10 @@
 
 NSString *GHUnitTest = NULL;
 
+@interface GHTestSuite (CLIDisabled)
+- (BOOL)isCLIDisabled;
+@end
+
 @implementation GHTestSuite
 
 - (id)initWithName:(NSString *)name testCases:(NSArray *)testCases delegate:(id<GHTestDelegate>)delegate {
@@ -51,22 +55,22 @@ NSString *GHUnitTest = NULL;
   NSArray *testCases = [[GHTesting sharedInstance] loadAllTestCases];
   GHTestSuite *allTests = [[self alloc] initWithName:@"Tests" testCases:nil delegate:nil];  
   for(id testCase in testCases) {
-    [allTests addTestCase:testCase];
+    // Ignore test cases that can't be run at the command line
+    if (!([testCase respondsToSelector:@selector(isCLIDisabled)] && [testCase isCLIDisabled] && getenv("GHUNIT_CLI"))) [allTests addTestCase:testCase];
   }
-  return [allTests autorelease];
+  return allTests;
 }
 
 + (GHTestSuite *)suiteWithTestCaseClass:(Class)testCaseClass method:(SEL)method { 
   NSString *name = [NSString stringWithFormat:@"%@/%@", NSStringFromClass(testCaseClass), NSStringFromSelector(method)];
-  GHTestSuite *testSuite = [[[GHTestSuite alloc] initWithName:name testCases:nil delegate:nil] autorelease];
-  id testCase = [[[testCaseClass alloc] init] autorelease];
+  GHTestSuite *testSuite = [[GHTestSuite alloc] initWithName:name testCases:nil delegate:nil];
+  id testCase = [[testCaseClass alloc] init];
   if (!testCase) {
     NSLog(@"Couldn't instantiate test: %@", NSStringFromClass(testCaseClass));
     return nil;
   }
   GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:method delegate:nil];
   [testSuite addTestGroup:group];
-  [group release];
   return testSuite;
 }
 
@@ -81,7 +85,7 @@ NSString *GHUnitTest = NULL;
     if ([className compare:prefix options:options range:NSMakeRange(0, [prefix length])] == NSOrderedSame)
       [testSuite addTestCase:testCase];
   }
-  return [testSuite autorelease];
+  return testSuite;
   
 }
 
@@ -92,20 +96,19 @@ NSString *GHUnitTest = NULL;
   for(NSString *testFilter in testFilters) {
     NSArray *components = [testFilter componentsSeparatedByString:@"/"];
     if ([components count] == 2) {    
-      NSString *testCaseClassName = [components objectAtIndex:0];
+      NSString *testCaseClassName = components[0];
       Class testCaseClass = NSClassFromString(testCaseClassName);
-      id testCase = [[[testCaseClass alloc] init] autorelease];
+      id testCase = [[testCaseClass alloc] init];
       if (!testCase) {
         NSLog(@"Couldn't find test: %@", testCaseClassName);
         continue;
       }
-      NSString *methodName = [components objectAtIndex:1];
+      NSString *methodName = components[1];
       GHTestGroup *group = [[GHTestGroup alloc] initWithTestCase:testCase selector:NSSelectorFromString(methodName) delegate:nil];
       [testSuite addTestGroup:group];
-      [group release];
     } else {
       Class testCaseClass = NSClassFromString(testFilter);
-      id testCase = [[[testCaseClass alloc] init] autorelease];
+      id testCase = [[testCaseClass alloc] init];
       if (!testCase) {
         NSLog(@"Couldn't find test: %@", testFilter);
         continue;
@@ -114,13 +117,13 @@ NSString *GHUnitTest = NULL;
     }
   }
   
-  return [testSuite autorelease];
+  return testSuite;
 }
 
 + (GHTestSuite *)suiteFromEnv {
   const char* cTestFilter = getenv("TEST");
   if (cTestFilter) {
-    NSString *testFilter = [NSString stringWithUTF8String:cTestFilter];
+    NSString *testFilter = @(cTestFilter);
     return [GHTestSuite suiteWithTestFilter:testFilter];
   } else {  
     if (GHUnitTest != NULL) return [GHTestSuite suiteWithTestFilter:GHUnitTest];
@@ -132,29 +135,26 @@ NSString *GHUnitTest = NULL;
 
 @implementation GHTestSuite (JUnitXML)
 
-/*!
+/*
  Override logic to write children individually, as we want each test group's
  JUnit XML to be in its own file.
  */
-- (BOOL)writeJUnitXML:(NSError **)error {
+- (BOOL)writeJUnitXMLToDirectory:(NSString *)directory error:(NSError **)error {
   NSParameterAssert(error);
   BOOL allSuccess = YES;
   
   NSFileManager *fileManager = [NSFileManager defaultManager];
-  NSString *tmpDir = NSTemporaryDirectory();
-  NSString *resultsDir = [tmpDir stringByAppendingPathComponent:@"test-results"];
-  
-  if (![fileManager fileExistsAtPath:resultsDir]) {
-    if (![fileManager createDirectoryAtPath:resultsDir withIntermediateDirectories:YES attributes:nil error:error]) {
-      NSLog (@"Error while creating results directory: %@", [*error localizedDescription]);
+  if (![fileManager fileExistsAtPath:directory]) {
+    if (![fileManager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:error]) {
+      NSLog(@"Error while creating results directory: %@", [*error localizedDescription]);
       return NO;
     }
   }
     
   for (id child in self.children) {
     if ([child respondsToSelector:@selector(writeJUnitXMLAtPath:error:)]) {
-      if (![child writeJUnitXMLAtPath:resultsDir error:error]) {
-        NSLog (@"Error writing JUnit XML: %@", [*error localizedDescription]);
+      if (![child writeJUnitXMLAtPath:directory error:error]) {
+        NSLog(@"Error writing JUnit XML: %@", [*error localizedDescription]);
         allSuccess = NO;
       }
     }

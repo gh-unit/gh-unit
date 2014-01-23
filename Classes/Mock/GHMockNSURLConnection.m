@@ -31,7 +31,6 @@
 
 #import "GHMockNSURLConnection.h"
 #import "GHMockNSHTTPURLResponse.h"
-#import "GHNSObject+Invocation.h"
 
 NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionException";
 
@@ -41,7 +40,7 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate {
 	if ((self = [super init])) {
-		request_ = [request retain];
+		request_ = request;
 		delegate_ = delegate;
 	}
 	return self;
@@ -49,12 +48,6 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate startImmediately:(BOOL)startImmediately {
 	return [self initWithRequest:request delegate:delegate];
-}
-
-- (void)dealloc {
-	[request_ release];
-	delegate_ = nil;
-	[super dealloc];
 }
 
 - (void)scheduleInRunLoop:(NSRunLoop *)aRunLoop forMode:(NSString *)mode { }
@@ -74,7 +67,13 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 #pragma mark -
 
 - (void)receiveData:(NSData *)data afterDelay:(NSTimeInterval)delay {
-	[delegate_ ghu_performSelector:@selector(connection:didReceiveData:) afterDelay:delay withObjects:[NSNull null], data, nil];
+  if (delay < 0) {
+    [delegate_ connection:(NSURLConnection *)self didReceiveData:data];
+  } else {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+      [delegate_ connection:(NSURLConnection *)self didReceiveData:data];
+    });
+  }
 }
 
 - (NSData *)loadDataFromPath:(NSString *)path {
@@ -98,10 +97,10 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 }
 
 - (void)receiveData:(NSData *)data statusCode:(NSInteger)statusCode MIMEType:(NSString *)MIMEType afterDelay:(NSTimeInterval)delay {	
-	GHMockNSHTTPURLResponse *response = [[[GHMockNSHTTPURLResponse alloc] initWithURL:[request_ URL] 
+	GHMockNSHTTPURLResponse *response = [[GHMockNSHTTPURLResponse alloc] initWithURL:[request_ URL] 
 																																					 MIMEType:MIMEType
 																															expectedContentLength:[data length] 
-																																	 textEncodingName:nil] autorelease];
+																																	 textEncodingName:nil];
 	[response setStatusCode:statusCode];
 	[self receiveResponse:response afterDelay:delay];
 	[self receiveData:data afterDelay:delay];
@@ -109,19 +108,37 @@ NSString *const GHMockNSURLConnectionException = @"GHMockNSURLConnectionExceptio
 }
 
 - (void)receiveHTTPResponseWithStatusCode:(int)statusCode headers:(NSDictionary *)headers afterDelay:(NSTimeInterval)delay {
-	[self receiveResponse:[[[GHMockNSHTTPURLResponse alloc] initWithStatusCode:statusCode headers:headers] autorelease] afterDelay:delay];
+	[self receiveResponse:[[GHMockNSHTTPURLResponse alloc] initWithStatusCode:statusCode headers:headers] afterDelay:delay];
 }
 
 - (void)receiveResponse:(NSURLResponse *)response afterDelay:(NSTimeInterval)delay {
-	[delegate_ ghu_performSelector:@selector(connection:didReceiveResponse:) afterDelay:delay withObjects:self, response, nil];
+  if (delay < 0) {
+    [delegate_ connection:(NSURLConnection *)self didReceiveResponse:response];
+  } else {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+      [delegate_ connection:(NSURLConnection *)self didReceiveResponse:response];
+    });
+  }
 }
 
 - (void)finishAfterDelay:(NSTimeInterval)delay {
-	[delegate_ ghu_performSelector:@selector(connectionDidFinishLoading:) afterDelay:delay withObjects:self, nil];
+  if (delay < 0) {
+    [delegate_ connectionDidFinishLoading:(NSURLConnection *)self];
+  } else {  
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+      [delegate_ connectionDidFinishLoading:(NSURLConnection *)self];
+    });
+  }
 }
 
 - (void)failWithError:(NSError *)error afterDelay:(NSTimeInterval)delay {
-	[delegate_ ghu_performSelector:@selector(connection:didFailWithError:) afterDelay:delay withObjects:self, error, nil];
+  if (delay < 0) {
+    [delegate_ connection:(NSURLConnection *)self didFailWithError:error];
+  } else {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+      [delegate_ connection:(NSURLConnection *)self didFailWithError:error];
+    });
+  }
 }
 
 @end

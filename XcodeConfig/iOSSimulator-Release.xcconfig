@@ -1,0 +1,8 @@
+
+#include "Shared-iOS.xcconfig"
+
+PRODUCT_NAME = GHUnitIOSSimulator
+
+SDKROOT = iphonesimulator
+
+ARCHS = $(ARCHS_STANDARD_INCLUDING_64_BIT)
