@@ -277,6 +277,8 @@ NSString *const GHUnitFilterKey = @"Filter";
 
 void __attribute__((weak)) __gcov_flush(void) {
 
+    NSLog( @"stub __gcov_flush() invoked - ghunit" );
+    
 // @dodikk : an stub is defined to be called when coverage flags below are not enabled.
 //    GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO
 //    GCC_GENERATE_TEST_COVERAGE_FILES = NO
@@ -295,23 +297,33 @@ void __attribute__((weak)) __gcov_flush(void) {
   // Save defaults after test run
   [self saveDefaults];
     
+    NSLog(@"checking __gcov_flush() symbol resolved");
     // checking if |weak symbol| is available
     if ( __gcov_flush )
     {
+        NSLog(@"__gcov_flush() resolved. Invoking...");
         
         // @dodikk : A workaround to fix issue #148
         // https://github.com/gh-unit/gh-unit/issues/148
         __gcov_flush();
+    }
+    else
+    {
+        NSLog(@"__gcov_flush() unresolved");
     }
   
     
     
   if (getenv("GHUNIT_AUTOEXIT")) 
   {
+      NSLog( @"GHUNIT_AUTOEXIT = YES" );
+      
+      NSLog( @"Invoking UIApplicationDidEnterBackgroundNotification ..." );
       NSNotificationCenter* defaultCenter = [ NSNotificationCenter defaultCenter ];
       [ defaultCenter postNotificationName: UIApplicationDidEnterBackgroundNotification
                                     object: nil
                                   userInfo: nil ];
+      NSLog( @"Done." );
       
      NSNumber* failures_count_ = [ NSNumber numberWithInt: runner.test.stats.failureCount ];
      NSDictionary* user_info_ = [ NSDictionary dictionaryWithObject: failures_count_
