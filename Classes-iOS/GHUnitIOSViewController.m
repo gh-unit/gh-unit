@@ -276,6 +276,16 @@ NSString *const GHUnitFilterKey = @"Filter";
 
 
 void __attribute__((weak)) __gcov_flush(void) {
+
+// @dodikk : an stub is defined to be called when coverage flags below are not enabled.
+//    GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO
+//    GCC_GENERATE_TEST_COVERAGE_FILES = NO
+
+// If they are enabled then actual implementation of __gcov_flush() will be used.
+// __attribute__((weak)) makes it is behaviuour possible.
+    
+// This approach has been used in the CEDAR framework
+// https://github.com/pivotal/cedar/search?q=gcov&ref=cmdform
 }
 
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
@@ -284,8 +294,13 @@ void __attribute__((weak)) __gcov_flush(void) {
   
   // Save defaults after test run
   [self saveDefaults];
+    
+    // @dodikk : A workaround to fix issue #148
+    // https://github.com/gh-unit/gh-unit/issues/148
    __gcov_flush();
   
+    
+    
   if (getenv("GHUNIT_AUTOEXIT")) 
   {
       NSNotificationCenter* defaultCenter = [ NSNotificationCenter defaultCenter ];
