@@ -295,9 +295,14 @@ void __attribute__((weak)) __gcov_flush(void) {
   // Save defaults after test run
   [self saveDefaults];
     
-    // @dodikk : A workaround to fix issue #148
-    // https://github.com/gh-unit/gh-unit/issues/148
-   __gcov_flush();
+    // checking if |weak symbol| is available
+    if ( __gcov_flush )
+    {
+        
+        // @dodikk : A workaround to fix issue #148
+        // https://github.com/gh-unit/gh-unit/issues/148
+        __gcov_flush();
+    }
   
     
     
