@@ -288,6 +288,11 @@ void __attribute__((weak)) __gcov_flush(void) {
   
   if (getenv("GHUNIT_AUTOEXIT")) 
   {
+      NSNotificationCenter* defaultCenter = [ NSNotificationCenter defaultCenter ];
+      [ defaultCenter postNotificationName: UIApplicationDidEnterBackgroundNotification
+                                    object: nil
+                                  userInfo: nil ];
+      
      NSNumber* failures_count_ = [ NSNumber numberWithInt: runner.test.stats.failureCount ];
      NSDictionary* user_info_ = [ NSDictionary dictionaryWithObject: failures_count_
                                                              forKey: @"failed tests count" ];
