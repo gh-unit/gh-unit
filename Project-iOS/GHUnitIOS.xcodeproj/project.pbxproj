@@ -169,6 +169,41 @@
 		42A274AC16361D9500BA4C74 /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274A916361D9500BA4C74 /* GHTestUtils.m */; };
 		42A274AD16361D9500BA4C74 /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274A916361D9500BA4C74 /* GHTestUtils.m */; };
 		42A274B216361F4200BA4C74 /* GHTestUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274B116361F4200BA4C74 /* GHTestUtilsTest.m */; };
+		7EC5452B1892942A00A0ADFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0041C5ED13BA7B8A0015FC22 /* Foundation.framework */; };
+		7EC545381892942A00A0ADFB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0042ADCB187E3658005200E7 /* XCTest.framework */; };
+		7EC545391892942A00A0ADFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0041C5ED13BA7B8A0015FC22 /* Foundation.framework */; };
+		7EC5453A1892942A00A0ADFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0097C42313BA7E5000D3BEF0 /* UIKit.framework */; };
+		7EC5453D1892942A00A0ADFB /* libGHUnitIOS-src.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC5452A1892942A00A0ADFB /* libGHUnitIOS-src.a */; };
+		7EC545431892942A00A0ADFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EC545411892942A00A0ADFB /* InfoPlist.strings */; };
+		7EC545451892942A00A0ADFB /* GHUnitIOS_srcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC545441892942A00A0ADFB /* GHUnitIOS_srcTests.m */; };
+		7EC5454C1892945500A0ADFB /* GHUnitIOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C64A13BA7C9A0015FC22 /* GHUnitIOSAppDelegate.m */; };
+		7EC5454D1892945500A0ADFB /* GHUnitIPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C979CE13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.m */; };
+		7EC5454E1892945500A0ADFB /* GHUnitIOSTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C64C13BA7C9A0015FC22 /* GHUnitIOSTableViewDataSource.m */; };
+		7EC5454F1892945500A0ADFB /* GHUnitIOSTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C64E13BA7C9A0015FC22 /* GHUnitIOSTestViewController.m */; };
+		7EC545501892945500A0ADFB /* GHUnitIOSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C65013BA7C9A0015FC22 /* GHUnitIOSView.m */; };
+		7EC545511892945500A0ADFB /* GHUnitIOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C65213BA7C9A0015FC22 /* GHUnitIOSViewController.m */; };
+		7EC545521892945500A0ADFB /* GHUnitIOSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */; };
+		7EC545531892945500A0ADFB /* GHImageDiffView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228635714595D0400BF3ED2 /* GHImageDiffView.m */; };
+		7EC545541892945500A0ADFB /* GHUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */; };
+		7EC545551892945500A0ADFB /* GHViewTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 422863101458BC1200BF3ED2 /* GHViewTestCase.m */; };
+		7EC545561892947C00A0ADFB /* GHTest+JUnitXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C62513BA7C9A0015FC22 /* GHTest+JUnitXML.m */; };
+		7EC545571892947C00A0ADFB /* GHTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C62713BA7C9A0015FC22 /* GHTest.m */; };
+		7EC545581892947C00A0ADFB /* GHTestGroup+JUnitXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C62913BA7C9A0015FC22 /* GHTestGroup+JUnitXML.m */; };
+		7EC545591892947C00A0ADFB /* GHTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C62B13BA7C9A0015FC22 /* GHTestGroup.m */; };
+		7EC5455A1892947C00A0ADFB /* GHTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C62D13BA7C9A0015FC22 /* GHTesting.m */; };
+		7EC5455B1892947C00A0ADFB /* GHTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C62F13BA7C9A0015FC22 /* GHTestOperation.m */; };
+		7EC5455C1892947C00A0ADFB /* GHTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C63113BA7C9A0015FC22 /* GHTestRunner.m */; };
+		7EC5455D1892947C00A0ADFB /* GHTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C63313BA7C9A0015FC22 /* GHTestSuite.m */; };
+		7EC5455E1892947C00A0ADFB /* NSException+GHTestFailureExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C63513BA7C9A0015FC22 /* NSException+GHTestFailureExceptions.m */; };
+		7EC5455F1892947C00A0ADFB /* NSValue+GHValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C63713BA7C9A0015FC22 /* NSValue+GHValueFormatter.m */; };
+		7EC545601892947C00A0ADFB /* GHTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C63913BA7C9A0015FC22 /* GHTestCase.m */; };
+		7EC545611892947C00A0ADFB /* GHAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C62213BA7C9A0015FC22 /* GHAsyncTestCase.m */; };
+		7EC545621892947C00A0ADFB /* GHTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A274A916361D9500BA4C74 /* GHTestUtils.m */; };
+		7EC545631892948200A0ADFB /* GHMockNSHTTPURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C63E13BA7C9A0015FC22 /* GHMockNSHTTPURLResponse.m */; };
+		7EC545641892948200A0ADFB /* GHMockNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C64013BA7C9A0015FC22 /* GHMockNSURLConnection.m */; };
+		7EC545651892948800A0ADFB /* GHTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041C64713BA7C9A0015FC22 /* GHTestViewModel.m */; };
+		7EC545661892949D00A0ADFB /* GTMNSString+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0066A0BC13C51359006B7022 /* GTMNSString+XML.m */; };
+		7EC545671892949D00A0ADFB /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0097C45513BA7EEC00D3BEF0 /* GTMObjC2Runtime.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,7 +214,26 @@
 			remoteGlobalIDString = 0041C5E913BA7B8A0015FC22;
 			remoteInfo = "GHUnitIOS (Simulator)";
 		};
+		7EC5453B1892942A00A0ADFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0041C5E113BA7B8A0015FC22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7EC545291892942A00A0ADFB;
+			remoteInfo = "GHUnitIOS-src";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7EC545281892942A00A0ADFB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		002D8801187E39DD009FDBCC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -294,6 +348,12 @@
 		42A274A816361D9500BA4C74 /* GHTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestUtils.h; sourceTree = "<group>"; };
 		42A274A916361D9500BA4C74 /* GHTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestUtils.m; sourceTree = "<group>"; };
 		42A274B116361F4200BA4C74 /* GHTestUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTestUtilsTest.m; sourceTree = "<group>"; };
+		7EC5452A1892942A00A0ADFB /* libGHUnitIOS-src.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libGHUnitIOS-src.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EC5452E1892942A00A0ADFB /* GHUnitIOS-src-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GHUnitIOS-src-Prefix.pch"; sourceTree = "<group>"; };
+		7EC545371892942A00A0ADFB /* GHUnitIOS-srcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GHUnitIOS-srcTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EC545401892942A00A0ADFB /* GHUnitIOS-srcTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GHUnitIOS-srcTests-Info.plist"; sourceTree = "<group>"; };
+		7EC545421892942A00A0ADFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7EC545441892942A00A0ADFB /* GHUnitIOS_srcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOS_srcTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +389,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7EC545271892942A00A0ADFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EC5452B1892942A00A0ADFB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7EC545341892942A00A0ADFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EC545381892942A00A0ADFB /* XCTest.framework in Frameworks */,
+				7EC5453A1892942A00A0ADFB /* UIKit.framework in Frameworks */,
+				7EC545391892942A00A0ADFB /* Foundation.framework in Frameworks */,
+				7EC5453D1892942A00A0ADFB /* libGHUnitIOS-src.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -346,6 +425,8 @@
 				0041C60313BA7BEF0015FC22 /* XcodeConfig */,
 				0097C47113BA7F1300D3BEF0 /* Scripts */,
 				00C9797913BA809600FC285C /* Tests */,
+				7EC5452C1892942A00A0ADFB /* GHUnitIOS-src */,
+				7EC5453E1892942A00A0ADFB /* GHUnitIOS-srcTests */,
 				0041C5EC13BA7B8A0015FC22 /* Frameworks */,
 				0041C5EB13BA7B8A0015FC22 /* Products */,
 			);
@@ -357,6 +438,8 @@
 				0041C5EA13BA7B8A0015FC22 /* libGHUnitIOSSimulator.a */,
 				0041C61313BA7C6C0015FC22 /* libGHUnitIOSDevice.a */,
 				0097C4A813BA7FC800D3BEF0 /* Tests.app */,
+				7EC5452A1892942A00A0ADFB /* libGHUnitIOS-src.a */,
+				7EC545371892942A00A0ADFB /* GHUnitIOS-srcTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -593,6 +676,40 @@
 			path = GTM;
 			sourceTree = "<group>";
 		};
+		7EC5452C1892942A00A0ADFB /* GHUnitIOS-src */ = {
+			isa = PBXGroup;
+			children = (
+				7EC5452D1892942A00A0ADFB /* Supporting Files */,
+			);
+			path = "GHUnitIOS-src";
+			sourceTree = "<group>";
+		};
+		7EC5452D1892942A00A0ADFB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7EC5452E1892942A00A0ADFB /* GHUnitIOS-src-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7EC5453E1892942A00A0ADFB /* GHUnitIOS-srcTests */ = {
+			isa = PBXGroup;
+			children = (
+				7EC545441892942A00A0ADFB /* GHUnitIOS_srcTests.m */,
+				7EC5453F1892942A00A0ADFB /* Supporting Files */,
+			);
+			path = "GHUnitIOS-srcTests";
+			sourceTree = "<group>";
+		};
+		7EC5453F1892942A00A0ADFB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7EC545401892942A00A0ADFB /* GHUnitIOS-srcTests-Info.plist */,
+				7EC545411892942A00A0ADFB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -731,6 +848,41 @@
 			productReference = 0097C4A813BA7FC800D3BEF0 /* Tests.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7EC545291892942A00A0ADFB /* GHUnitIOS-src */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7EC5454A1892942A00A0ADFB /* Build configuration list for PBXNativeTarget "GHUnitIOS-src" */;
+			buildPhases = (
+				7EC545261892942A00A0ADFB /* Sources */,
+				7EC545271892942A00A0ADFB /* Frameworks */,
+				7EC545281892942A00A0ADFB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GHUnitIOS-src";
+			productName = "GHUnitIOS-src";
+			productReference = 7EC5452A1892942A00A0ADFB /* libGHUnitIOS-src.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7EC545361892942A00A0ADFB /* GHUnitIOS-srcTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7EC5454B1892942A00A0ADFB /* Build configuration list for PBXNativeTarget "GHUnitIOS-srcTests" */;
+			buildPhases = (
+				7EC545331892942A00A0ADFB /* Sources */,
+				7EC545341892942A00A0ADFB /* Frameworks */,
+				7EC545351892942A00A0ADFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7EC5453C1892942A00A0ADFB /* PBXTargetDependency */,
+			);
+			name = "GHUnitIOS-srcTests";
+			productName = "GHUnitIOS-srcTests";
+			productReference = 7EC545371892942A00A0ADFB /* GHUnitIOS-srcTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -738,6 +890,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
+				TargetAttributes = {
+					7EC545361892942A00A0ADFB = {
+						TestTargetID = 0097C4A713BA7FC800D3BEF0;
+					};
+				};
 			};
 			buildConfigurationList = 0041C5E413BA7B8A0015FC22 /* Build configuration list for PBXProject "GHUnitIOS" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -755,6 +912,8 @@
 				0041C61213BA7C6C0015FC22 /* GHUnitIOS (Device) */,
 				0097C44613BA7E7400D3BEF0 /* Run make in Project-iOS to build */,
 				0097C4A713BA7FC800D3BEF0 /* Tests */,
+				7EC545291892942A00A0ADFB /* GHUnitIOS-src */,
+				7EC545361892942A00A0ADFB /* GHUnitIOS-srcTests */,
 			);
 		};
 /* End PBXProject section */
@@ -780,6 +939,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7EC545351892942A00A0ADFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EC545431892942A00A0ADFB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,6 +1078,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7EC545261892942A00A0ADFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EC545621892947C00A0ADFB /* GHTestUtils.m in Sources */,
+				7EC545651892948800A0ADFB /* GHTestViewModel.m in Sources */,
+				7EC545541892945500A0ADFB /* GHUIImageViewControl.m in Sources */,
+				7EC5455D1892947C00A0ADFB /* GHTestSuite.m in Sources */,
+				7EC545501892945500A0ADFB /* GHUnitIOSView.m in Sources */,
+				7EC5455A1892947C00A0ADFB /* GHTesting.m in Sources */,
+				7EC545591892947C00A0ADFB /* GHTestGroup.m in Sources */,
+				7EC545641892948200A0ADFB /* GHMockNSURLConnection.m in Sources */,
+				7EC5454E1892945500A0ADFB /* GHUnitIOSTableViewDataSource.m in Sources */,
+				7EC545551892945500A0ADFB /* GHViewTestCase.m in Sources */,
+				7EC545561892947C00A0ADFB /* GHTest+JUnitXML.m in Sources */,
+				7EC5455C1892947C00A0ADFB /* GHTestRunner.m in Sources */,
+				7EC545601892947C00A0ADFB /* GHTestCase.m in Sources */,
+				7EC545571892947C00A0ADFB /* GHTest.m in Sources */,
+				7EC545631892948200A0ADFB /* GHMockNSHTTPURLResponse.m in Sources */,
+				7EC545661892949D00A0ADFB /* GTMNSString+XML.m in Sources */,
+				7EC545521892945500A0ADFB /* GHUnitIOSTestView.m in Sources */,
+				7EC5455F1892947C00A0ADFB /* NSValue+GHValueFormatter.m in Sources */,
+				7EC5455E1892947C00A0ADFB /* NSException+GHTestFailureExceptions.m in Sources */,
+				7EC5454F1892945500A0ADFB /* GHUnitIOSTestViewController.m in Sources */,
+				7EC545511892945500A0ADFB /* GHUnitIOSViewController.m in Sources */,
+				7EC5454D1892945500A0ADFB /* GHUnitIPhoneAppDelegate.m in Sources */,
+				7EC5454C1892945500A0ADFB /* GHUnitIOSAppDelegate.m in Sources */,
+				7EC545611892947C00A0ADFB /* GHAsyncTestCase.m in Sources */,
+				7EC545531892945500A0ADFB /* GHImageDiffView.m in Sources */,
+				7EC545581892947C00A0ADFB /* GHTestGroup+JUnitXML.m in Sources */,
+				7EC545671892949D00A0ADFB /* GTMObjC2Runtime.m in Sources */,
+				7EC5455B1892947C00A0ADFB /* GHTestOperation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7EC545331892942A00A0ADFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EC545451892942A00A0ADFB /* GHUnitIOS_srcTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -919,6 +1129,11 @@
 			target = 0041C5E913BA7B8A0015FC22 /* GHUnitIOS (Simulator) */;
 			targetProxy = 0012D1ED140EFD9B0093EC59 /* PBXContainerItemProxy */;
 		};
+		7EC5453C1892942A00A0ADFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7EC545291892942A00A0ADFB /* GHUnitIOS-src */;
+			targetProxy = 7EC5453B1892942A00A0ADFB /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -926,6 +1141,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				0097C4B113BA7FC800D3BEF0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7EC545411892942A00A0ADFB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7EC545421892942A00A0ADFB /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1063,6 +1286,162 @@
 			};
 			name = Release;
 		};
+		7EC545461892942A00A0ADFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/GHUnitIOS_src.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GHUnitIOS-src/GHUnitIOS-src-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7EC545471892942A00A0ADFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/GHUnitIOS_src.dst;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GHUnitIOS-src/GHUnitIOS-src-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7EC545481892942A00A0ADFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tests.app/Tests";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GHUnitIOS-src/GHUnitIOS-src-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "GHUnitIOS-srcTests/GHUnitIOS-srcTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		7EC545491892942A00A0ADFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tests.app/Tests";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GHUnitIOS-src/GHUnitIOS-src-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "GHUnitIOS-srcTests/GHUnitIOS-srcTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1110,6 +1489,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7EC5454A1892942A00A0ADFB /* Build configuration list for PBXNativeTarget "GHUnitIOS-src" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7EC545461892942A00A0ADFB /* Debug */,
+				7EC545471892942A00A0ADFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7EC5454B1892942A00A0ADFB /* Build configuration list for PBXNativeTarget "GHUnitIOS-srcTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7EC545481892942A00A0ADFB /* Debug */,
+				7EC545491892942A00A0ADFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
