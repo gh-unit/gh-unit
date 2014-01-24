@@ -274,16 +274,66 @@ NSString *const GHUnitFilterKey = @"Filter";
   [self setStatusText:@"Cancelled..."];
 }
 
+
+void __attribute__((weak)) __gcov_flush(void) {
+
+    NSLog( @"stub __gcov_flush() invoked - ghunit" );
+    
+// @dodikk : an stub is defined to be called when coverage flags below are not enabled.
+//    GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO
+//    GCC_GENERATE_TEST_COVERAGE_FILES = NO
+
+// If they are enabled then actual implementation of __gcov_flush() will be used.
+// __attribute__((weak)) makes it is behaviuour possible.
+    
+// This approach has been used in the CEDAR framework
+// https://github.com/pivotal/cedar/search?q=gcov&ref=cmdform
+}
+
 - (void)testRunnerDidEnd:(GHTestRunner *)runner {
   [self _setRunning:NO runner:runner];
   [self setStatusText:[dataSource_ statusString:@"Tests finished. "]];
   
   // Save defaults after test run
   [self saveDefaults];
+    
+    NSLog(@"checking __gcov_flush() symbol resolved");
+    // checking if |weak symbol| is available
+    if ( __gcov_flush )
+    {
+        NSLog(@"__gcov_flush() resolved. Invoking...");
+        
+        // @dodikk : A workaround to fix issue #148
+        // https://github.com/gh-unit/gh-unit/issues/148
+        __gcov_flush();
+    }
+    else
+    {
+        NSLog(@"__gcov_flush() unresolved");
+    }
   
-  if (getenv("GHUNIT_AUTOEXIT")) {
-    NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
-    exit(runner.test.stats.failureCount);
+    
+    
+  if (getenv("GHUNIT_AUTOEXIT")) 
+  {
+      NSLog( @"GHUNIT_AUTOEXIT = YES" );
+      
+      NSLog( @"Invoking UIApplicationDidEnterBackgroundNotification ..." );
+      NSNotificationCenter* defaultCenter = [ NSNotificationCenter defaultCenter ];
+      [ defaultCenter postNotificationName: UIApplicationDidEnterBackgroundNotification
+                                    object: nil
+                                  userInfo: nil ];
+      NSLog( @"Done." );
+      
+     NSNumber* failures_count_ = [ NSNumber numberWithInt: runner.test.stats.failureCount ];
+     NSDictionary* user_info_ = [ NSDictionary dictionaryWithObject: failures_count_
+                                                             forKey: @"failed tests count" ];
+     
+     NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
+     NSException* exception_ = [ NSException exceptionWithName: @"autoexit exception" 
+                                                        reason: @"tests launched successfully"
+                                                      userInfo: user_info_ ];     
+     @throw exception_;
   }
 }
 
