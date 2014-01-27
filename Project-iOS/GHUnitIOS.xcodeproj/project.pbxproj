@@ -151,6 +151,9 @@
 		00CEA042156C2E0B00BA3276 /* GHUIImageViewControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 00CEA03F156C2E0B00BA3276 /* GHUIImageViewControl.h */; };
 		00CEA043156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */; };
 		00CEA044156C2E0B00BA3276 /* GHUIImageViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */; };
+		36C0B4FC1893217D00D0F053 /* PGMockRunLoop.h in Headers */ = {isa = PBXBuildFile; fileRef = 36C0B4FA1893217D00D0F053 /* PGMockRunLoop.h */; };
+		36C0B4FD1893217D00D0F053 /* PGMockRunLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0B4FB1893217D00D0F053 /* PGMockRunLoop.m */; };
+		36C0B4FE18943A0600D0F053 /* PGMockRunLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0B4FB1893217D00D0F053 /* PGMockRunLoop.m */; };
 		42187C1815BF472300E702B6 /* GHUnitIOSTestViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 42187C1715BF472300E702B6 /* GHUnitIOSTestViewTest.m */; };
 		421C7B8F13F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */; };
 		421C7B9013F0AF1D00E21E74 /* GHUnitIOSTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */; };
@@ -284,6 +287,8 @@
 		00C979CE13BA8A5000FC285C /* GHUnitIPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneAppDelegate.m; sourceTree = "<group>"; };
 		00CEA03F156C2E0B00BA3276 /* GHUIImageViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUIImageViewControl.h; sourceTree = "<group>"; };
 		00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUIImageViewControl.m; sourceTree = "<group>"; };
+		36C0B4FA1893217D00D0F053 /* PGMockRunLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMockRunLoop.h; sourceTree = "<group>"; };
+		36C0B4FB1893217D00D0F053 /* PGMockRunLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMockRunLoop.m; sourceTree = "<group>"; };
 		42187C1715BF472300E702B6 /* GHUnitIOSTestViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestViewTest.m; sourceTree = "<group>"; };
 		421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIOSTestView.h; sourceTree = "<group>"; };
 		421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestView.m; sourceTree = "<group>"; };
@@ -442,6 +447,8 @@
 				0041C63513BA7C9A0015FC22 /* NSException+GHTestFailureExceptions.m */,
 				0041C63613BA7C9A0015FC22 /* NSValue+GHValueFormatter.h */,
 				0041C63713BA7C9A0015FC22 /* NSValue+GHValueFormatter.m */,
+				36C0B4FA1893217D00D0F053 /* PGMockRunLoop.h */,
+				36C0B4FB1893217D00D0F053 /* PGMockRunLoop.m */,
 			);
 			path = GHTest;
 			sourceTree = "<group>";
@@ -607,6 +614,7 @@
 				0041C66613BA7C9A0015FC22 /* GHTestGroup.h in Headers */,
 				0041C66A13BA7C9A0015FC22 /* GHTesting.h in Headers */,
 				0041C66E13BA7C9A0015FC22 /* GHTestOperation.h in Headers */,
+				36C0B4FC1893217D00D0F053 /* PGMockRunLoop.h in Headers */,
 				0041C67213BA7C9A0015FC22 /* GHTestRunner.h in Headers */,
 				0041C67613BA7C9A0015FC22 /* GHTestSuite.h in Headers */,
 				0041C67A13BA7C9A0015FC22 /* NSException+GHTestFailureExceptions.h in Headers */,
@@ -836,6 +844,7 @@
 				0041C69013BA7C9A0015FC22 /* GHMockNSURLConnection.m in Sources */,
 				0041C69C13BA7C9A0015FC22 /* GHTestViewModel.m in Sources */,
 				0041C6A013BA7C9A0015FC22 /* GHUnitIOSAppDelegate.m in Sources */,
+				36C0B4FD1893217D00D0F053 /* PGMockRunLoop.m in Sources */,
 				0041C6A413BA7C9A0015FC22 /* GHUnitIOSTableViewDataSource.m in Sources */,
 				0041C6A813BA7C9A0015FC22 /* GHUnitIOSTestViewController.m in Sources */,
 				0041C6AC13BA7C9A0015FC22 /* GHUnitIOSView.m in Sources */,
@@ -864,6 +873,7 @@
 				0041C67113BA7C9A0015FC22 /* GHTestOperation.m in Sources */,
 				0041C67513BA7C9A0015FC22 /* GHTestRunner.m in Sources */,
 				0041C67913BA7C9A0015FC22 /* GHTestSuite.m in Sources */,
+				36C0B4FE18943A0600D0F053 /* PGMockRunLoop.m in Sources */,
 				0041C67D13BA7C9A0015FC22 /* NSException+GHTestFailureExceptions.m in Sources */,
 				0041C68113BA7C9A0015FC22 /* NSValue+GHValueFormatter.m in Sources */,
 				0041C68513BA7C9A0015FC22 /* GHTestCase.m in Sources */,

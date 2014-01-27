@@ -28,6 +28,7 @@
 //
 
 #import "GHAsyncTestCase.h"
+#import "PGMockRunLoop.h"
 #import <objc/runtime.h>
 
 typedef enum {
@@ -40,20 +41,24 @@ typedef enum {
 @implementation GHAsyncTestCase
 
 @synthesize runLoopModes=_runLoopModes;
+@synthesize notifiedStatus = notifiedStatus_;
 
 
 // Internal GHUnit setUp
 - (void)_setUp {
-  lock_ = [[NSRecursiveLock alloc] init];
+  //lock_ = [[NSRecursiveLock alloc] init];
+    notified_status_lock_ = [[NSRecursiveLock alloc] init];
   prepared_ = NO;
+    [notified_status_lock_ lock];
   notifiedStatus_ = kGHUnitWaitStatusUnknown;
+    [notified_status_lock_ unlock];
 }
 
 // Internal GHUnit tear down
 - (void)_tearDown { 
   waitSelector_ = NULL;
-  if (prepared_) [lock_ unlock]; // If we prepared but never waited we need to unlock
-  lock_ = nil;
+  //if (prepared_) [lock_ unlock]; // If we prepared but never waited we need to unlock
+  //lock_ = nil;
 }
 
 - (void)prepare {
@@ -61,75 +66,102 @@ typedef enum {
 }
 
 - (void)prepare:(SEL)selector { 
-  [lock_ lock];
+  //[lock_ lock];
   prepared_ = YES;
   waitSelector_ = selector;
+    [notified_status_lock_ lock];
   notifiedStatus_ = kGHUnitWaitStatusUnknown;
+    [notified_status_lock_ unlock];
 }
 
-- (GHUnitAsyncError)_waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout {  
-  if (!prepared_) {   
-    return kGHUnitAsyncErrorUnprepared;
-  }
-  prepared_ = NO;
-  
-  waitForStatus_ = status;
-  
-  if (!_runLoopModes)
-    _runLoopModes = @[NSDefaultRunLoopMode, NSRunLoopCommonModes];
+- (void)_waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout callbackTarget:(id) target selector:(SEL) selector {
+    NSArray* args = [NSArray arrayWithObjects:[NSNumber numberWithLong:status], target, [NSValue valueWithPointer:selector], nil];
+    [PGMockRunLoop addTimeoutTarget:self selector:@selector(_wait_callback:) argument:args timeout:timeout status:(NSInteger) status testCase:self];
 
-  NSTimeInterval checkEveryInterval = 0.05;
-  NSDate *runUntilDate = [NSDate dateWithTimeIntervalSinceNow:timeout];
-  BOOL timedOut = NO;
-  NSInteger runIndex = 0;
-  while(notifiedStatus_ == kGHUnitWaitStatusUnknown) {
-    NSString *mode = _runLoopModes[(runIndex++ % [_runLoopModes count])];
+}
 
-    [lock_ unlock];
-    @autoreleasepool {
-      if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
-        // If there were no run loop sources or timers then we should sleep for the interval
-        [NSThread sleepForTimeInterval:checkEveryInterval];
+
+-(void) _wait_callback:(NSArray*) args {
+    int status = ((NSNumber*)args[0]).intValue;
+    id callbackTarget = args[1];
+    SEL callbackSelector = (SEL)((NSValue*)args[2]).pointerValue;
+    GHUnitAsyncError testCaseError;
+    [notified_status_lock_ lock];
+    if (self.failedWithException) {
+        testCaseError = kGHUnitAsyncErrorInvalidStatus;
+    } else if (status == kGHUnitWaitStatusUnknown) {
+        testCaseError = kGHUnitAsyncErrorTimedOut;
+    } else if (status!= notifiedStatus_) {
+        testCaseError = kGHUnitAsyncErrorInvalidStatus;
+    } else {
+        testCaseError = kGHUnitAsyncErrorNone;
     }
-    [lock_ lock];
-    
-    // If current date is after the run until date
-    if ([runUntilDate compare:[NSDate date]] == NSOrderedAscending) {
-      timedOut = YES;
-      break;
-    }
-  }
-  [lock_ unlock];
 
-  if (timedOut) {
-    return kGHUnitAsyncErrorTimedOut;
-  } else if (waitForStatus_ != notifiedStatus_) {
-    return kGHUnitAsyncErrorInvalidStatus;
-  } 
-  
-  return kGHUnitAsyncErrorNone;
+    NSArray* callback_args = [NSArray arrayWithObjects:[NSNumber numberWithInt:testCaseError],
+                     [NSNumber numberWithInt:status],
+                     [NSNumber numberWithLong:notifiedStatus_],
+                              nil];
+        [notified_status_lock_ unlock];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [callbackTarget performSelector:callbackSelector withObject:callback_args];
+#pragma clang diagnostic pop
+
+
 }
 
 - (void)waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout {
   [NSException raise:NSDestinationInvalidException format:@"Deprecated; Use waitForStatus:timeout:"];
 }
 
+- (void)waitForStatus:(NSInteger)status {
+    [PGMockRunLoop requestCallbackAfterCurrentRunLoopCompleteTarget:self selector:@selector(waitForStatusCallback:) argument:[NSNumber numberWithLong:status]];
+
+}
+
+- (void)waitForStatusCallback:(NSNumber*)status {
+        [notified_status_lock_ lock];
+    if (self.failedWithException) {
+        [notified_status_lock_ unlock];
+        GHFail(@"Request failed with an exception: %@", self.failedWithException);
+    } else if (notifiedStatus_ != status.intValue) {
+        [notified_status_lock_ unlock];
+        GHFail(@"Request finished with the wrong status: %d != %d", status.intValue, notifiedStatus_);
+    } else {
+        [notified_status_lock_ unlock];
+    }
+}
+
+
 - (void)waitForStatus:(NSInteger)status timeout:(NSTimeInterval)timeout {
-  GHUnitAsyncError error = [self _waitFor:status timeout:timeout];    
-  if (error == kGHUnitAsyncErrorTimedOut) {
-    GHFail(@"Request timed out");
-  } else if (error == kGHUnitAsyncErrorInvalidStatus) {
-    GHFail(@"Request finished with the wrong status: %d != %d", status, notifiedStatus_); 
-  } else if (error == kGHUnitAsyncErrorUnprepared) {
-    GHFail(@"Call prepare before calling asynchronous method and waitForStatus:timeout:");
-  }
+
+  [self _waitFor:status timeout:timeout callbackTarget:self selector:@selector(waitForStatusCleanup:)];
+
+}
+
+-(void) waitForStatusCleanup:(NSArray*) args {
+    GHUnitAsyncError errorFromTest = ((NSNumber*)args[0]).intValue;
+    if (errorFromTest == kGHUnitAsyncErrorTimedOut) {
+        GHFail(@"Request timed out");
+    } else if (errorFromTest == kGHUnitAsyncErrorInvalidStatus) {
+        int requestedStatus =((NSNumber*)args[1]).intValue;
+        int notifiedStatus =((NSNumber*)args[2]).intValue;
+        GHFail(@"Request finished with the wrong status: %d != %d", requestedStatus, notifiedStatus);
+    } else if (errorFromTest == kGHUnitAsyncErrorUnprepared) {
+        GHFail(@"Call prepare before calling asynchronous method and waitForStatus:timeout:");
+    }
 }
 
 - (void)waitForTimeout:(NSTimeInterval)timeout {
-  GHUnitAsyncError error = [self _waitFor:-1 timeout:timeout];    
-  if (error != kGHUnitAsyncErrorTimedOut) {
-    GHFail(@"Request should have timed out");
-  }
+
+  [self _waitFor:-1 timeout:timeout callbackTarget:self selector:@selector(waitForTimeoutCleanup:)];
+}
+
+-(void) waitForTimeoutCleanup:(NSArray*) args {
+    GHUnitAsyncError errorFromTest = ((NSNumber*)args[0]).intValue;
+    if (errorFromTest != kGHUnitAsyncErrorTimedOut) {
+        GHFail(@"Request should have timed out");
+    }
 }
 
 // Similar to _waitFor:timeout: but just runs the loops
@@ -146,13 +178,13 @@ typedef enum {
 	while ([runUntilDate compare:[NSDate dateWithTimeIntervalSinceNow:0]] == NSOrderedDescending) {
 		NSString *mode = _runLoopModes[(runIndex++ % [_runLoopModes count])];
     
-		[lock_ unlock];
+		//[lock_ unlock];
 		@autoreleasepool {
 			if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
 				// If there were no run loop sources or timers then we should sleep for the interval
 				[NSThread sleepForTimeInterval:checkEveryInterval];
 		}
-		[lock_ lock];		
+		//[lock_ lock];
 	}
 }
 
@@ -168,9 +200,9 @@ typedef enum {
     if (selector != NULL && !sel_isEqual(waitSelector_, selector)) {
       NSLog(@"Warning: Notified from %@ but we were waiting for %@", NSStringFromSelector(selector), NSStringFromSelector(waitSelector_));
     }  else {
-      [lock_ lock];
-      notifiedStatus_ = status;
-      [lock_ unlock];
+          [notified_status_lock_ lock];
+            notifiedStatus_ = status;
+          [notified_status_lock_ unlock];
     }
 
   }

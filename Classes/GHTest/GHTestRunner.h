@@ -140,6 +140,9 @@
   NSTimeInterval startInterval_;
   
   NSOperationQueue *operationQueue_; //! If running a suite in operation queue
+
+    id _callbackTarget;
+    SEL _callbackSelector;
 }
 
 @property  (strong) id<GHTest> test;
@@ -191,7 +194,7 @@
  Reads the TEST environment variable and filters on that; or all tests are run.
  @result 0 is success, otherwise the failure count
  */
-+ (int)run;
+- (void)runTestsWithCallbackDelegate:(id) callbackTarget andSelector:(SEL) callbackSelector  callbackArgument:(id) arg;
 
 /*!
  Run in the background.
@@ -202,7 +205,7 @@
  Start the test runner.
  @result 0 is success, otherwise the failure count
  */
-- (int)runTests;
+- (void)runTestsWithCallbackDelegate:(id) callbackTarget andSelector:(SEL) callbackSelector callbackArgument:(id) arg;
 
 /*!
  Cancel test run.
@@ -214,7 +217,7 @@
  @param message Message to log
  */
 - (void)log:(NSString *)message;
-
++ (int)run;
 @end
 
 //! @endcond

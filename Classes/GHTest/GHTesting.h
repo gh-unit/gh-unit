@@ -132,8 +132,8 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass);
  @param interval Time to run the test
  @param reraiseExceptions If YES, will re-raise exceptions
  */
-+ (BOOL)runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception 
-       interval:(NSTimeInterval *)interval reraiseExceptions:(BOOL)reraiseExceptions;
++ (void)runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval
+        reraiseExceptions:(BOOL)reraiseExceptions options:(GHTestOptions)options ghTest:(GHTest*) ghtest argument:(id) arg;
 
 /*!
  Same as normal runTest without catching exceptions.

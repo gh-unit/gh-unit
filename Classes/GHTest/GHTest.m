@@ -189,12 +189,28 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
   }
 }
 
-- (void)run:(GHTestOptions)options {
-  if (status_ == GHTestStatusCancelled || disabled_ || hidden_) return;
+-(void) callback:(id) callbackargs {
+    [delegate_ testDidEnd:self source:self callbackarg:nil];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [_callbackTarget performSelector:_callbackSelector withObject:callbackargs];
+#pragma clang diagnostic pop
+}
+
+- (void)run:(GHTestOptions)options withCallback:(id) callbacktarget selector:(SEL)callbackselector argument:(id)arg callbackargs:(id) callbackArgs {
+    _callbackSelector = callbackselector;
+    _callbackTarget = callbacktarget;
+    if (status_ == GHTestStatusCancelled || disabled_ || hidden_) {
+        [self callback:callbackArgs];
+        return;
+    }
   
   if ((options & GHTestOptionForceSetUpTearDownClass) == GHTestOptionForceSetUpTearDownClass) {
     [self setUpClass];
-    if (status_ == GHTestStatusErrored) return; 
+      if (status_ == GHTestStatusErrored) {
+          [self callback:callbackArgs];
+          return;
+      }
   }
   
   status_ = GHTestStatusRunning;
@@ -205,7 +221,9 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 
   BOOL reraiseExceptions = ((options & GHTestOptionReraiseExceptions) == GHTestOptionReraiseExceptions);
   NSException *exception = nil;
-  [GHTesting runTestWithTarget:target_ selector:selector_ exception:&exception interval:&interval_ reraiseExceptions:reraiseExceptions];
+    [GHTesting runTestWithTarget:target_ selector:selector_ exception:&exception interval:&interval_ reraiseExceptions:reraiseExceptions options:options ghTest:self argument:callbackArgs];
+}
+-(void) runCallbackPassed:(BOOL) passed exception:(NSException*) exception options:(GHTestOptions) options callbackargs:(id) callbackargs {
   exception_ = exception;
   
   [self _setLogWriter:nil];
@@ -223,7 +241,8 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
   if ((options & GHTestOptionForceSetUpTearDownClass) == GHTestOptionForceSetUpTearDownClass)
     [self tearDownClass];
   
-  [delegate_ testDidEnd:self source:self];
+  
+    [self callback:callbackargs];
 }
 
 - (void)log:(NSString *)message testCase:(id)testCase {

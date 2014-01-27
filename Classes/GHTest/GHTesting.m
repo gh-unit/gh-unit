@@ -51,7 +51,7 @@
 #import "GHTesting.h"
 #import "GHTest.h"
 #import "GHTestCase.h"
-
+#import "PGMockRunLoop.h"
 #import <objc/runtime.h>
 
 NSInteger ClassSort(id a, id b, void *context) {
@@ -291,11 +291,21 @@ static GHTesting *gSharedInstance;
   return tests;
 }
 
-+ (BOOL)runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval
- reraiseExceptions:(BOOL)reraiseExceptions {
+
+
++ (void)runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval
+        reraiseExceptions:(BOOL)reraiseExceptions options:(GHTestOptions)options ghTest:(GHTest*) ghtest argument:(id)arg {
+
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [self _runTestWithTarget:target selector:selector exception:exception interval:interval reraiseExceptions:reraiseExceptions options:options ghTest:ghtest argument:arg];
+    });
+}
+
++ (void)_runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval
+        reraiseExceptions:(BOOL)reraiseExceptions options:(GHTestOptions)options ghTest:(GHTest*) ghtest argument:(id)arg {
 
   // If re-raising, run runTestOrRaise
-  if (reraiseExceptions) return [self runTestOrRaiseWithTarget:target selector:selector exception:exception interval:interval];
+  //if (reraiseExceptions) return [self runTestOrRaiseWithTarget:target selector:selector exception:exception interval:interval];
   
   NSDate *startDate = [NSDate date];  
   NSException *testException = nil;
@@ -309,56 +319,123 @@ static GHTesting *gSharedInstance;
     // this log the exception.  This ensures they are only logged once but the
     // outer layers get the exceptions to report counts, etc.
       @try {
+          if ([target respondsToSelector:@selector(setCurrentSelector:)])
+              [target setCurrentSelector:selector];
+          
         // Private setUp internal to GHUnit (in case subclasses fail to call super)
         if ([target respondsToSelector:@selector(_setUp)])
           [target performSelector:@selector(_setUp)];
 
         if ([target respondsToSelector:@selector(setUp)])
           [target performSelector:@selector(setUp)];
-        @try {  
-          if ([target respondsToSelector:@selector(setCurrentSelector:)])
-            [target setCurrentSelector:selector];
+        {
+
 
           // If this isn't set SenTest macros don't raise
           if ([target respondsToSelector:@selector(raiseAfterFailure)])
             [target raiseAfterFailure];
-          
-          // Runs the test
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-          [target performSelector:selector];
-#pragma clang diagnostic pop
-          
-        } @catch (NSException *exception) {
-          if (!testException) testException = exception;
         }
-        if ([target respondsToSelector:@selector(setCurrentSelector:)])
-          [target setCurrentSelector:NULL];
-
-        if ([target respondsToSelector:@selector(tearDown)])
-          [target performSelector:@selector(tearDown)];
-        
-        // Private tearDown internal to GHUnit (in case subclasses fail to call super)
-        if ([target respondsToSelector:@selector(_tearDown)])
-          [target performSelector:@selector(_tearDown)];
-
       } @catch (NSException *exception) {
-        if (!testException) testException = exception;
+          if (!testException) testException = exception;
+          [self runLoopCallback:[NSMutableArray arrayWithObjects:target, testException, nil]];
+          return;
       }
     }
-  } @catch (NSException *exception) {
-    if (!testException) testException = exception; 
-  }  
+  }@catch (NSException *exception) {
+      if (!testException) testException = exception;
+      [self runLoopCallback:[NSMutableArray arrayWithObjects:target, testException, nil]];
+      return;
+  }
+    if (arg == nil) {
+        arg = [NSNull null];
+    }
+    // Runs the test
+    [PGMockRunLoop runInFakeRunLoopTarget:target selector:selector withCallbackTarget:self callbackSelector:@selector(runLoopCallback:) callBackArguments:[NSMutableArray arrayWithObjects:target, startDate,[NSValue valueWithPointer:interval],[NSValue valueWithPointer:exception],[NSNumber numberWithBool:reraiseExceptions], [NSNumber numberWithLong:options], ghtest, arg, nil]];
+
+
+
+           
+
+
+
+}
+
+
+
+
++(void) runLoopCallback:(NSArray*) arguments {
+    id target = arguments[0];
+    NSDate *startDate = arguments[1];
+    NSTimeInterval* interval = ((NSValue*)arguments[2]).pointerValue;
+    //__autoreleasing NSException** exception = ( NSException  *  __autoreleasing *  )( ((NSValue*)arguments[3]).pointerValue);
+    GHTestOptions options = ((NSNumber*)arguments[5]).intValue;
+    GHTest* ghtest = arguments[6];
+    id callbackarg = arguments[7];
+    if (callbackarg == [NSNull null]) {
+        callbackarg = nil;
+    }
+    NSException* testException = nil;
+    if (arguments.count == 9) {
+        testException = arguments[8];
+    }
+
+
+    //if (!testException)
+    {
+        @try {
+            @autoreleasepool {
+
+
+                @try {
+                    @try {
+                        if ([target respondsToSelector:@selector(verifyExpectations)]) {
+                            [target performSelector:@selector(verifyExpectations)];
+                        }
+
+                    }
+                    @catch (NSException *exception) {
+                        if (!testException) testException = exception;
+                    }
+                    @finally {
+
+                    }
+
+                    if ([target respondsToSelector:@selector(setCurrentSelector:)])
+                        [target setCurrentSelector:NULL];
+
+                    if ([target respondsToSelector:@selector(tearDown)])
+                        [target performSelector:@selector(tearDown)];
+
+                    // Private tearDown internal to GHUnit (in case subclasses fail to call super)
+                    if ([target respondsToSelector:@selector(_tearDown)])
+                        [target performSelector:@selector(_tearDown)];
+                }
+                @catch (NSException *exception) {
+                    if (!testException) testException = exception;
+                }
+                @finally {
+
+                }
+            }
+        }
+        @catch (NSException *exception) {
+            if (!testException) testException = exception;
+        }
+        @finally {
+
+        }
+    }
+
 
   if (interval) *interval = [[NSDate date] timeIntervalSinceDate:startDate];
-  if (exception) *exception = testException;
+  //if (exception) *exception = testException;
   BOOL passed = (!testException);
   
   if (testException && [target respondsToSelector:@selector(handleException:)]) {
     [target handleException:testException];
   }
-  
-  return passed;
+    [ghtest  runCallbackPassed:passed exception:testException options:options callbackargs:callbackarg];
+
 }
 
 + (BOOL)runTestOrRaiseWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval {
