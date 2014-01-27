@@ -80,6 +80,7 @@ enum {
   
   BOOL prepared_; // Whether prepared was called before waitForStatus:timeout:
   NSRecursiveLock *lock_; // Lock to synchronize on
+  NSRecursiveLock *notified_status_lock_; // Lock to synchronize on
   SEL waitSelector_; // The selector we are waiting on
     
   NSArray *_runLoopModes;
@@ -90,6 +91,8 @@ enum {
  Defaults to NSDefaultRunLoopMode, NSRunLoopCommonModes, NSConnectionReplyMode
  */
 @property (strong, nonatomic) NSArray *runLoopModes; 
+
+@property (readonly, assign)  NSInteger notifiedStatus;
 
 /*!
  Prepare before calling the asynchronous method. 
@@ -128,6 +131,9 @@ enum {
  @deprecated Use waitForTimeout:
  */
 - (void)waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout;
+
+
+- (void)waitForStatus:(NSInteger)status;
 
 /*!
  Wait for timeout to occur.

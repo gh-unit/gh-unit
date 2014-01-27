@@ -45,10 +45,11 @@
 //  License for the specific language governing permissions and limitations under
 //  the License.
 //
-
+#import "GHTestGroup.h"
 #import "GHTestRunner.h"
 #import "GHTestSuite.h"
 #import "GHTesting.h"
+#import "GHTestGroup.h"
 
 #import <stdio.h>
 
@@ -115,8 +116,10 @@ operationQueue=operationQueue_;
   return (!!self.operationQueue);
 }
 
-- (int)runTests {
-  if (cancelling_ || running_) return -1;
+- (void)runTestsWithCallbackDelegate:(id) callbackTarget andSelector:(SEL) callbackSelector callbackArgument:(id) arg {
+    _callbackTarget = callbackTarget;
+    _callbackSelector = callbackSelector;
+  if (cancelling_ || running_) return;
   
   running_ = YES;
   startInterval_ = [NSDate timeIntervalSinceReferenceDate];
@@ -125,9 +128,19 @@ operationQueue=operationQueue_;
   if (operationQueue_ && [test_ respondsToSelector:@selector(runInOperationQueue:options:)]) {
     [(id)test_ runInOperationQueue:operationQueue_ options:options_];
   } else {
-    [test_ run:options_];
+
+      [((GHTestSuite*)test_) run:options_ withCallback:callbackTarget selector:callbackSelector];
+                           //run:options_ withCallback:self selector:@selector(runTestsCallback) argument:arg callbackargs:nil];
   }
-  return (int)self.stats.failureCount;
+
+}
+
+-(void) runTestsCallback {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [_callbackTarget performSelectorInBackground:_callbackSelector withObject:nil];
+#pragma clang diagnostic pop
+    return;
 }
 
 - (NSTimeInterval)interval {
@@ -147,8 +160,11 @@ operationQueue=operationQueue_;
 
 - (void)_runInBackground {
   @autoreleasepool {
-    [self runTests];
+    [self runTestsWithCallbackDelegate:self andSelector:@selector(_runInBackgroundCallback)  callbackArgument:nil];
   }
+}
+-(void) _runInBackgroundCallback {
+    //
 }
 
 - (GHTestStats)stats {
@@ -191,7 +207,7 @@ operationQueue=operationQueue_;
   });
 }
 
-- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source { 
+- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source callbackarg:(id) callbackarg { 
   
   if ([source status] != GHTestStatusCancelled) {
     if (![source conformsToProtocol:@protocol(GHTestGroup)]) {      

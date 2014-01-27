@@ -95,6 +95,7 @@
   id<GHTestCaseLogWriter> __unsafe_unretained logWriter_; // weak
 
   SEL currentSelector_;
+    NSException* failedWithException;
 }
 
 //! The current test selector

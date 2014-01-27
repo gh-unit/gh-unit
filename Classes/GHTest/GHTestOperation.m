@@ -48,8 +48,8 @@
 
 - (void)main {
   @autoreleasepool {
-    if (!self.isCancelled) 
-      [test_ run:options_];
+    if (!self.isCancelled)
+      [test_ run:options_ withCallback:nil selector:NULL argument:nil callbackargs:nil];
   }
 }
 
