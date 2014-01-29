@@ -267,11 +267,11 @@
   }
 
   // View testing file names have the format [test class name]-[test selector name]-[UIScreen scale]-[# of verify in selector]-[view class name]
-  NSString *imageFilenamePrefix = [NSString stringWithFormat:@"%@-%@-%1.0f-%d-%@",
+  NSString *imageFilenamePrefix = [NSString stringWithFormat:@"%@-%@-%1.0f-%@-%@",
                                    NSStringFromClass([self class]),
                                    NSStringFromSelector(currentSelector_),
                                    [[UIScreen mainScreen] scale],
-                                   imageVerifyCount_,
+                                   @(imageVerifyCount_),
                                    NSStringFromClass([view class])];
   NSString *imageFilename = [imageFilenamePrefix stringByAppendingString:@".png"];
   UIImage *originalViewImage = [[self class] readSavedTestImageWithFilename:imageFilename];

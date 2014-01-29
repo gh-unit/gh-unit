@@ -63,8 +63,8 @@
 - (NSString *)statusString:(NSString *)prefix {
 	NSInteger totalRunCount = [suite_ stats].testCount - ([suite_ disabledCount] + [suite_ stats].cancelCount);
 	NSString *statusInterval = [NSString stringWithFormat:@"%@ %0.3fs (%0.3fs in test time)", (self.isRunning ? @"Running" : @"Took"), runner_.interval, [suite_ interval]];
-	return [NSString stringWithFormat:@"%@%@ %d/%d (%d failures)", prefix, statusInterval,
-					[suite_ stats].succeedCount, totalRunCount, [suite_ stats].failureCount];	
+	return [NSString stringWithFormat:@"%@%@ %@/%@ (%@ failures)", prefix, statusInterval,
+					@([suite_ stats].succeedCount), @(totalRunCount), @([suite_ stats].failureCount)];
 }
 
 - (void)registerNode:(GHTestNode *)node {
@@ -325,9 +325,9 @@
 	}
 
 	if (self.isGroupTest) {
-		NSString *statsString = [NSString stringWithFormat:@"%d/%d (%d failed)", 
-														 ([test_ stats].succeedCount+[test_ stats].failureCount), 
-														 [test_ stats].testCount, [test_ stats].failureCount];
+		NSString *statsString = [NSString stringWithFormat:@"%@/%@ (%@ failed)",
+														 @([test_ stats].succeedCount+[test_ stats].failureCount),
+														 @([test_ stats].testCount), @([test_ stats].failureCount)];
 		return [NSString stringWithFormat:@"%@ %@ %@", status, statsString, interval];
 	} else {
 		return [NSString stringWithFormat:@"%@ %@", status, interval];

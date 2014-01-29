@@ -737,7 +737,7 @@
 		0041C5E113BA7B8A0015FC22 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 0041C5E413BA7B8A0015FC22 /* Build configuration list for PBXProject "GHUnitIOS" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -944,6 +944,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;

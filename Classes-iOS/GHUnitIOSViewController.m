@@ -283,7 +283,7 @@ NSString *const GHUnitFilterKey = @"Filter";
   
   if (getenv("GHUNIT_AUTOEXIT")) {
     NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
-    exit(runner.test.stats.failureCount);
+    exit((int)runner.test.stats.failureCount);
   }
 }
 
