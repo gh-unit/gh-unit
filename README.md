@@ -18,18 +18,40 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 - Quickly approve and record view changes
 - View image diff to see where views have changed
 
-## Install (Cocoapods)
+## Install
 
-Using [CocoaPods](http://cocoapods.org/):
+### Add the GHUnit gem
 
 ```
-target :TestTarget do
+gem install ghunit
+```
+
+### Create the Tests target
+
+
+```
+ghunit -n NameProject
+```
+
+### Add the Tests target to your Podfile
+
+In your Podfile:
+
+```
+target :Tests do
 	pod 'GHUnit', '~> 0.5.8'
 end
 ```
 
+And install the GHUnit pod into the workspace:
+
+```
+pod install
+```
+
+Then open the .xcworkspace. Switch to the Tests scheme to run the tests.
+
 ## Install (From Source)
-Checkout gh-unit.
 
 ### iOS
 ```bash
