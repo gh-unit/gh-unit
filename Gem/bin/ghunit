@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require 'slop'
+require 'ghunit'
+require 'colorize'
+
+opts = Slop.parse do
+  banner "Usage: ghunit [options]"
+
+  on :n, :name=, "Project name"
+  on :p, :path=, "Project path, defaults to <Project Name>.xcodeproj", argument: :optional
+  on :t, :test_target=, "Test target name, defaults to Tests", argument: :optional
+
+end
+
+if !opts[:name]
+  puts " "
+  puts "Need to specify project name.".red
+  puts " "
+  puts opts.to_s
+  puts " "
+  exit 1
+end
+
+target_name = opts[:name]
+project_path = opts[:path] || "#{target_name}.xcodeproj"
+test_target_name = opts[:test_target] || "Tests"
+
+project = GHUnit::Project.open(project_path, target_name, test_target_name)
+if project
+  puts " "
+  project.create_test_target
+end
+
+
