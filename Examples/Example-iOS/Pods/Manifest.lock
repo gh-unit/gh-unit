@@ -1,0 +1,14 @@
+PODS:
+  - GHUnit (0.5.9)
+
+DEPENDENCIES:
+  - GHUnit (from `../../`)
+
+EXTERNAL SOURCES:
+  GHUnit:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  GHUnit: 2f3ea0192633e92afaef959476a8d28db179797d
+
+COCOAPODS: 0.29.0
