@@ -55,10 +55,9 @@
   GHUnitIOSViewController *viewController = [[GHUnitIOSViewController alloc] init];
   [viewController loadDefaults];
   navigationController_ = [[UINavigationController alloc] initWithRootViewController:viewController];
-  CGSize size = [[UIScreen mainScreen] bounds].size;
-  window_ = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+  window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  window_.backgroundColor = [UIColor whiteColor];
   window_.rootViewController = navigationController_;
-  [window_ addSubview:navigationController_.view];
   [window_ makeKeyAndVisible];
 
   // Delete all interim saved images from previous UI tests

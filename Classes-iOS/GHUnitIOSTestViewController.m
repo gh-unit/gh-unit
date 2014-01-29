@@ -43,7 +43,7 @@
 
 
 - (void)loadView {
-  testView_ = [[GHUnitIOSTestView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+  testView_ = [[GHUnitIOSTestView alloc] init];
   testView_.controlDelegate = self;
   self.view = testView_;
 }
@@ -56,8 +56,7 @@
   return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
+- (NSUInteger)supportedInterfaceOrientations {
   return UIInterfaceOrientationMaskAll;
 }
 

@@ -46,6 +46,8 @@ NSString *const GHUnitFilterKey = @"Filter";
 - (id)init {
   if ((self = [super init])) {
     self.title = @"Tests";
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+      self.edgesForExtendedLayout = UIRectEdgeNone;
   }
   return self;
 }
