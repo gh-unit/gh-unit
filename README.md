@@ -18,7 +18,7 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 - Quickly approve and record view changes
 - View image diff to see where views have changed
 
-## Install
+## Install (iOS)
 
 ### Install the GHUnit gem
 
@@ -73,11 +73,11 @@ Add the `GHUnit.framework` to your project
 - [Online documentation](http://gh-unit.github.io/gh-unit/)
 - [Google Group (Deprecated - Use Github Issues instead)](http://groups.google.com/group/ghunit)
 
+## iOS
+
+![GHUnit-IPhone-0.5.8](https://raw.github.com/gh-unit/gh-unit/master/Documentation/images/ios.png)
 
 ## Mac OS X
 
 ![GHUnit-0.5.8](https://raw.github.com/gh-unit/gh-unit/master/Documentation/images/macosx01.png)
 
-## iOS
-
-![GHUnit-IPhone-0.5.8](https://raw.github.com/gh-unit/gh-unit/master/Documentation/images/ios.png)
