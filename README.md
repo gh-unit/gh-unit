@@ -20,7 +20,7 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 
 ## Install
 
-### Add the GHUnit gem
+### Install the GHUnit gem
 
 ```
 gem install ghunit
@@ -28,6 +28,7 @@ gem install ghunit
 
 ### Create the Tests target
 
+This will open up your NameProject.xcodeproj file and create a Tests target, scheme, and a sample test file.
 
 ```
 ghunit -n NameProject
