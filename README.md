@@ -36,7 +36,7 @@ $ ghunit install -n ProjectName
 
 ### Add the Tests target to your Podfile
 
-1. Create a new file named `Podfile` in the directory that contains the your `.xcodeproj` file, or edit it if it already exists.
+Create a new file named `Podfile` in the directory that contains the your `.xcodeproj` file, or edit it if it already exists.
 
 ```ruby
 # Podfile
@@ -47,14 +47,14 @@ target :Tests do
 end
 ```
 
-2. Install your project's pods. CocoaPods will then download and configure the required libraries for your project:
+Install your project's pods. CocoaPods will then download and configure the required libraries for your project:
 ```xml
 $ pod install
 ```
 
-3. You should use the `.xcworkspace` file to work on your project:
+You should use the `.xcworkspace` file to work on your project:
 ```xml
-$ open myproject.xcworkspace
+$ open ProjectName.xcworkspace
 ```
 
 ### Install Command Line
@@ -74,6 +74,15 @@ Now you can run tests from the command line:
 ```xml
 $ ghunit run -n ProjectName
 ```
+
+### Add a test
+
+To generate a test in your test target with name SampleTest:
+
+```xml
+$ ghunit add -n ProjectName -f SampleTest
+```
+
 
 ## Install (From Source)
 
