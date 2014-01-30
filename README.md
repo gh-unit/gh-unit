@@ -28,7 +28,7 @@ gem install ghunit
 
 ### Create the Tests target
 
-This will open up your NameProject.xcodeproj file and create a Tests target, scheme, and a sample test file.
+This will edit your NameProject.xcodeproj file and create a Tests target, scheme, and a sample test file.
 
 ```
 ghunit -n NameProject
