@@ -263,11 +263,14 @@ operationQueue=operationQueue_;
   
   if ([test_ isKindOfClass:[GHTestGroup class]]) {
     GHTestGroup *testGroup = (GHTestGroup *)test_;
-    [self log:@"\nFailed tests:\n"];
-    for(id<GHTest> test in [testGroup failedTests]) {
-      [self log:[NSString stringWithFormat:@"\t%@\n", [test identifier]]];
+    NSArray *failedTests = [testGroup failedTests];
+    if ([failedTests count] > 0) {
+      [self log:@"\nFailed tests:\n"];
+      for(id<GHTest> test in failedTests) {
+        [self log:[NSString stringWithFormat:@"\t%@\n", [test identifier]]];
+      }
+      [self log:@"\n"];
     }
-    [self log:@"\n"];
   }
   
   if ([test_ isKindOfClass:[GHTestSuite class]]) {

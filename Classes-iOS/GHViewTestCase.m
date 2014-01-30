@@ -168,7 +168,7 @@
                                                     CGImageGetBitsPerComponent(image.CGImage),
                                                     bytesPerRow,
                                                     CGImageGetColorSpace(image.CGImage),
-                                                    kCGImageAlphaPremultipliedLast
+                                                    (CGBitmapInfo)kCGImageAlphaPremultipliedLast
                                                     );
   CGContextRef renderedImageContext = CGBitmapContextCreate(renderedImagePixels,
                                                     CGImageGetWidth(renderedImage.CGImage),
@@ -176,7 +176,7 @@
                                                     CGImageGetBitsPerComponent(renderedImage.CGImage),
                                                     bytesPerRow,
                                                     CGImageGetColorSpace(renderedImage.CGImage),
-                                                    kCGImageAlphaPremultipliedLast
+                                                    (CGBitmapInfo)kCGImageAlphaPremultipliedLast
                                                     );
   if (!imageContext || !renderedImageContext) {
     GHUDebug(@"Unable to create image contexts for image comparison");
