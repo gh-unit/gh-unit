@@ -22,35 +22,58 @@ It can be used standalone or with other testing frameworks like SenTestingKit or
 
 ### Install the GHUnit gem
 
-```
-gem install ghunit
+```xml
+$ gem install ghunit
 ```
 
-### Create the Tests target
+### Install the Tests target
 
-This will edit your NameProject.xcodeproj file and create a Tests target, scheme, and a sample test file.
+This will edit your ProjectName.xcodeproj file and create a Tests target, scheme, and a sample test file.
 
-```
-ghunit -n NameProject
+```xml
+$ ghunit install -n ProjectName
 ```
 
 ### Add the Tests target to your Podfile
 
-In your Podfile:
+1. Create a new file named `Podfile` in the directory that contains the your `.xcodeproj` file, or edit it if it already exists.
 
-```
+```ruby
+# Podfile
+platform :ios, '6.0'
+
 target :Tests do
 	pod 'GHUnit', '~> 0.5.9'
 end
 ```
 
-And install the GHUnit pod into the workspace:
-
+2. Install your project's pods. CocoaPods will then download and configure the required libraries for your project:
+```xml
+$ pod install
 ```
-pod install
+
+3. You should use the `.xcworkspace` file to work on your project:
+```xml
+$ open myproject.xcworkspace
 ```
 
-Then open the .xcworkspace. Switch to the Tests scheme to run the tests.
+### Install Command Line
+
+```xml
+$ ghunit install_cli -n ProjectName
+```
+
+Install ios-sim using homebrew:
+
+```xml
+$ brew install ios-sim
+```
+
+Now you can run tests from the command line:
+
+```xml
+$ ghunit run -n ProjectName
+```
 
 ## Install (From Source)
 
