@@ -54,18 +54,32 @@ class GHUnitTest < Test::Unit::TestCase
     project = GHUnit::Project.open(project_path, target_name, test_target_name)
     assert project.create_test_target
 
+    # Add another test
+    project.create_test("SampleTest")
+    #project.create_test("SampleKiwiSpec", :kiwi)
+    project.save
+
     # Write a podfile pointing at ourselves
     podfile_content =<<-EOS
 platform :ios, '7.0'
 
 target :Tests do
   pod 'GHUnit', :path => "../../../../"
+  pod 'Kiwi'
 end
 EOS
     File.open("Podfile", "w") { |f| f.write(podfile_content) }
 
     system("pod install")
-    system("open #{tmp_dir}/Example-iOS/Example-iOS.xcworkspace")
+
+    # Install run tests script
+    project = GHUnit::Project.open(project_path, target_name, test_target_name)
+    project.install_run_tests_script
+
+    workspace = "#{tmp_dir}/Example-iOS/Example-iOS.xcworkspace"
+    puts ""
+    puts "\t#{workspace}".green
+    puts ""
   end
 
 end

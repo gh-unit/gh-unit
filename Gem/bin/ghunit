@@ -2,34 +2,72 @@
 
 require 'slop'
 require 'ghunit'
-require 'colorize'
 
-opts = Slop.parse do
-  banner "Usage: ghunit [options]"
-
-  on :n, :name=, "Project name"
-  on :p, :path=, "Project path, defaults to <Project Name>.xcodeproj", argument: :optional
-  on :t, :test_target=, "Test target name, defaults to Tests", argument: :optional
-
+def require_opt(opts, key, desc)
+  if !opts[key]
+    puts " "
+    puts desc.red
+    puts " "
+    puts opts.to_s
+    puts " "
+    exit 1
+  end
 end
 
-if !opts[:name]
-  puts " "
-  puts "Need to specify project name.".red
-  puts " "
-  puts opts.to_s
-  puts " "
-  exit 1
+Slop.parse do
+  banner "Usage: ghunit install|run|add [options]"
+
+  command "install" do
+    on :n, :name=, "Project name"
+    on :p, :path=, "Project path, defaults to <Project Name>.xcodeproj", argument: :optional
+    on :t, :test_target=, "Test target name, defaults to Tests", argument: :optional
+
+    run do |opts, args|
+      project = GHUnit::Project.open_from_opts(opts)
+      project.create_test_target
+    end
+  end
+
+  command "add" do
+    on :n, :name=, "Project name"
+    on :f, :file=, "Test name, MyTest"
+    #on :r, :framework=, "Test case framework (kiwi,ghunit), defaults to ghunit"
+    on :p, :path=, "Project path, defaults to <Project Name>.xcodeproj", argument: :optional
+    on :t, :test_target=, "Test target name, defaults to Tests", argument: :optional
+
+    run do |opts, args|
+      require_opt(opts, :file, "Need to specify a test name with -f.")
+      project = GHUnit::Project.open_from_opts(opts)
+      project.create_test(opts[:file]) #, opts[:framework])
+      project.save
+    end
+  end
+
+  command "run" do
+    on :n, :name=, "Project name"
+    on :t, :test_target=, "Test target name, defaults to Tests", argument: :optional
+    on :p, :path=, "Workspace path, defaults to <Project Name>.xcworkspace", argument: :optional
+
+    run do |opts, args|
+      require_opt(opts, :name, "Need to specify a project name with -n.")
+
+      name = opts[:name]
+      # Scheme name should match the test target name
+      test_target = opts[:test_target] || "Tests"
+      path = opts[:path] || "#{name}.xcworkspace"
+      system("GHUNIT_CLI=1 xcodebuild -workspace #{path} -scheme #{test_target} -configuration Debug -sdk iphonesimulator build")
+    end
+  end
+
+  command "install_cli" do
+    on :n, :name=, "Project name"
+    on :t, :test_target=, "Test target name, defaults to Tests", argument: :optional
+    on :p, :path=, "Workspace path, defaults to <Project Name>.xcworkspace", argument: :optional
+
+    run do |opts, args|
+      project = GHUnit::Project.open_from_opts(opts)
+      project.install_run_tests_script
+    end
+  end
+
 end
-
-target_name = opts[:name]
-project_path = opts[:path] || "#{target_name}.xcodeproj"
-test_target_name = opts[:test_target] || "Tests"
-
-project = GHUnit::Project.open(project_path, target_name, test_target_name)
-if project
-  puts " "
-  project.create_test_target
-end
-
-

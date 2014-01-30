@@ -3,6 +3,14 @@ require 'xcodeproj/ext'
 require 'fileutils'
 require 'logger'
 require 'colorize'
+require 'erb'
+require 'ostruct'
+
+class ErbalT < OpenStruct
+  def render(template)
+    ERB.new(template).result(binding)
+  end
+end
 
 class GHUnit::Project
 
@@ -49,6 +57,9 @@ class GHUnit::Project
   end
 
   class << self
+
+    # Initialize and open a project.
+    #
     def open(project_path, target_name, test_target_name, logger=nil)
       project = GHUnit::Project.new(project_path, target_name, test_target_name, logger)
       if project.open
@@ -56,6 +67,27 @@ class GHUnit::Project
       else
         nil
       end
+    end
+
+    # Open from slop options.
+    # This is only meant to be called from the ghunit bin executable,
+    # it outputs to STDOUT and calls exit.
+    #
+    def open_from_opts(opts)
+      target_name = opts[:name]
+      project_path = opts[:path] || "#{target_name}.xcodeproj"
+      test_target_name = opts[:test_target] || "Tests"
+
+      if !target_name
+        puts " "
+        puts "Need to specify a project name.".red
+        puts " "
+        puts opts.to_s
+        puts " "
+        exit 1
+      end
+
+      self.open(project_path, target_name, test_target_name)
     end
   end
 
@@ -101,15 +133,15 @@ class GHUnit::Project
       create_test_file("main.m", template("main.m"), true)
       create_test("MyTest")
 
+      # Use same resources build phase as main target
+      # Have to compare with class name because of funky const loading in xcodeproj gem
+      resources_build_phase = main_target.build_phases.select { |p|
+        p.class == Xcodeproj::Project::Object::PBXResourcesBuildPhase }.first
+      test_target.build_phases << resources_build_phase if resources_build_phase
+
     else
       logger.debug "Test target already exists, skipping..."
     end
-
-    # Use same resources build phase as main target
-    # Have to compare with class name because of funky const loading in xcodeproj gem
-    resources_build_phase = main_target.build_phases.select { |p|
-      p.class.to_s == "Xcodeproj::Project::Object::PBXResourcesBuildPhase" }.first
-    test_target.build_phases << resources_build_phase if resources_build_phase
 
     # Get main target prefix header
     prefix_header = main_target.build_settings("Debug")["GCC_PREFIX_HEADER"]
@@ -120,6 +152,9 @@ class GHUnit::Project
       c.build_settings["INFOPLIST_FILE"] = test_info_path
       c.build_settings["GCC_PREFIX_HEADER"] = prefix_header if prefix_header
     end
+
+    # Write any test support files
+    write_test_file("RunTests.sh", template("RunTests.sh"), true)
 
     # Create test scheme if it doesn't exist
     logger.debug "Checking for Test scheme..."
@@ -140,15 +175,19 @@ class GHUnit::Project
     check_pod
   end
 
-  def template(name)
+  def template(name, template_vars=nil)
     template_path = File.join(File.dirname(__FILE__), "templates", name)
-    File.read(template_path)
+    content = File.read(template_path)
+
+    if template_path.end_with?(".erb")
+      et = ErbalT.new(template_vars)
+      content = et.render(content)
+    end
+    content
   end
 
-  # Create a file with content and add to the test target
-  #
-  def create_test_file(file_name, content, force=false)
-    # Create main.m for test target
+  def write_test_file(file_name, content, force=false)
+    # Create file in tests dir
     path = File.join(test_target_name, file_name)
 
     if !force && File.exists?(path)
@@ -157,7 +196,13 @@ class GHUnit::Project
 
     logger.debug "Creating: #{path}"
     File.open(path, "w") { |f| f.write(content) }
+    path
+  end
 
+  # Create a file with content and add to the test target
+  #
+  def create_test_file(file_name, content, force=false)
+    path = write_test_file(file_name, content, force)
     add_test_file(path)
     path
   end
@@ -182,10 +227,31 @@ class GHUnit::Project
     true
   end
 
-  def create_test(name)
-    name = "#{name}.m" unless name.end_with?(".m")
-    path = create_test_file(name, template("Test.m"))
-    logger.debug "Created test: #{path}"
+  # Create test file and add it to the test target.
+  #
+  # @param name Name of test class and file name
+  # @param template_type nil or "kiwi"
+  #
+  def create_test(name, template_type=nil)
+    template_type ||= :ghunit
+
+    template_name = case template_type.to_sym
+    when :kiwi
+      "TestKiwi.m.erb"
+    when :ghunit
+      "Test.m.erb"
+    end
+
+    if name.end_with?(".m")
+      name = name[0...-2]
+    end
+    template_vars = {test_class_name: name}
+    path = create_test_file("#{name}.m", template(template_name, template_vars))
+    path
+  end
+
+  def save
+    @project.save
   end
 
   # Check the Podfile or just display some Podfile help
@@ -200,5 +266,22 @@ Add the following to your Podfile and run pod install.
 Make sure to open the .xcworkspace.
 
 EOS
+  end
+
+  def install_run_tests_script
+    run_script_name = "Run Tests (CLI)"
+    # Find run script build phase and install RunTests.sh
+    test_target = find_test_target
+    run_script_phase = test_target.build_phases.select { |p|
+      p.class == Xcodeproj::Project::Object::PBXShellScriptBuildPhase &&
+      p.name == run_script_name }.first
+    if !run_script_phase
+      logger.debug "Installing run tests script..."
+      run_script_phase = project.new(Xcodeproj::Project::Object::PBXShellScriptBuildPhase)
+      run_script_phase.name = run_script_name
+      run_script_phase.shell_script = "sh Tests/RunTests.sh"
+      test_target.build_phases << run_script_phase
+    end
+    project.save
   end
 end
