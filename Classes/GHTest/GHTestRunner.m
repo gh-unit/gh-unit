@@ -252,13 +252,13 @@ operationQueue=operationQueue_;
 
 - (void)_notifyFinished {
   NSString *message = [NSString stringWithFormat:@"Test Suite '%@' finished.\n"
-                       "Executed %d of %d tests, with %d failures in %0.3f seconds (%d disabled).\n",
+                       "Executed %ld of %ld tests, with %ld failures in %0.3f seconds (%ld disabled).\n",
                        [test_ name], 
                        ([test_ stats].succeedCount + [test_ stats].failureCount), 
-                       [test_ stats].testCount,
-                       [test_ stats].failureCount, 
+                       (long)[test_ stats].testCount,
+                       (long)[test_ stats].failureCount, 
                        [test_ interval],
-                       [test_ disabledCount]];
+                       (long)[test_ disabledCount]];
   [self log:message];
   
   if ([test_ isKindOfClass:[GHTestGroup class]]) {

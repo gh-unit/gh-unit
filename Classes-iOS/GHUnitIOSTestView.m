@@ -78,7 +78,7 @@
   CGRect renderedImageFrame = CGRectZero;
 
   CGRect textLabelFrame = textLabel_.frame;
-  textLabelFrame.size.height = [textLabel_.text sizeWithFont:textLabel_.font constrainedToSize:CGSizeMake(textLabel_.frame.size.width, 10000) lineBreakMode:UILineBreakModeWordWrap].height;
+  textLabelFrame.size.height = [textLabel_.text sizeWithFont:textLabel_.font constrainedToSize:CGSizeMake(textLabel_.frame.size.width, 10000) lineBreakMode:NSLineBreakByWordWrapping].height;
   textLabel_.frame = textLabelFrame;
 
   if (savedImageView_.image && !savedImageView_.hidden) {
