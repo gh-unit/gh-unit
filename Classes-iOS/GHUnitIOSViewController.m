@@ -99,7 +99,7 @@ NSString *const GHUnitFilterKey = @"Filter";
 
 - (void)reload {
   [self.dataSource.root setTextFilter:[self _textFilter]];  
-  [self.dataSource.root setFilter:[self _filterIndex]];
+  [self.dataSource.root setFilter:(GHTestNodeFilter)[self _filterIndex]];
   [view_.tableView reloadData]; 
 }
 
@@ -283,7 +283,7 @@ NSString *const GHUnitFilterKey = @"Filter";
   
   if (getenv("GHUNIT_AUTOEXIT")) {
     NSLog(@"Exiting (GHUNIT_AUTOEXIT)");
-    exit(runner.test.stats.failureCount);
+    exit((int)runner.test.stats.failureCount);
   }
 }
 

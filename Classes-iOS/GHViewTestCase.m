@@ -271,7 +271,7 @@
                                    NSStringFromClass([self class]),
                                    NSStringFromSelector(currentSelector_),
                                    [[UIScreen mainScreen] scale],
-                                   imageVerifyCount_,
+                                   (int)imageVerifyCount_,
                                    NSStringFromClass([view class])];
   NSString *imageFilename = [imageFilenamePrefix stringByAppendingString:@".png"];
   UIImage *originalViewImage = [[self class] readSavedTestImageWithFilename:imageFilename];

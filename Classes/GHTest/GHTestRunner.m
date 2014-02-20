@@ -254,7 +254,7 @@ operationQueue=operationQueue_;
   NSString *message = [NSString stringWithFormat:@"Test Suite '%@' finished.\n"
                        "Executed %ld of %ld tests, with %ld failures in %0.3f seconds (%ld disabled).\n",
                        [test_ name], 
-                       ([test_ stats].succeedCount + [test_ stats].failureCount), 
+                       (long)([test_ stats].succeedCount + [test_ stats].failureCount),
                        (long)[test_ stats].testCount,
                        (long)[test_ stats].failureCount, 
                        [test_ interval],

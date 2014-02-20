@@ -49,7 +49,7 @@
 - (NSString *)JUnitXML {
   NSMutableString *JUnitXML = [NSMutableString stringWithFormat:
                                @"<testsuite name=\"%@\" tests=\"%d\" failures=\"%ld\" time=\"%0.4f\">",
-                               self.name, self.stats.testCount, (long)self.stats.failureCount, self.interval];
+                               self.name, (int)self.stats.testCount, (long)self.stats.failureCount, self.interval];
   
   for (id child in self.children) {
     if ([child respondsToSelector:@selector(JUnitXML)])

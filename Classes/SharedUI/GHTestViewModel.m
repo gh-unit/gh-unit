@@ -325,9 +325,9 @@
 	}
 
 	if (self.isGroupTest) {
-		NSString *statsString = [NSString stringWithFormat:@"%%ld%ld (%ld failed)", 
-														 ([test_ stats].succeedCount+[test_ stats].failureCount),
-														 [test_ stats].testCount, (long)[test_ stats].failureCount];
+		NSString *statsString = [NSString stringWithFormat:@"%ld/%ld (%ld failed)",
+														 (long)([test_ stats].succeedCount+[test_ stats].failureCount),
+														 (long)[test_ stats].testCount, (long)[test_ stats].failureCount];
 		return [NSString stringWithFormat:@"%@ %@ %@", status, statsString, interval];
 	} else {
 		return [NSString stringWithFormat:@"%@ %@", status, interval];

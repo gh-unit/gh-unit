@@ -82,7 +82,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 
 - (NSString *)description {
   return [NSString stringWithFormat:@"%@, %d %0.3f %d/%d (%ld failures)", 
-                 name_, status_, interval_, stats_.succeedCount, stats_.testCount, (long)stats_.failureCount];
+                 name_, status_, interval_, (int)stats_.succeedCount, (int)stats_.testCount, (long)stats_.failureCount];
 }
   
 - (NSString *)name {
