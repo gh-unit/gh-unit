@@ -983,6 +983,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_THUMB_SUPPORT = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = NO;
 			};
 			name = Debug;
 		};
