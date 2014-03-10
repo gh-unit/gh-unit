@@ -77,5 +77,3 @@ cp Framework.plist $FRAMEWORK_DIR/Resources/Info.plist
 echo ""
 echo "The framework was built at: $FRAMEWORK_DIR"
 echo ""
-
-open "$FRAMEWORK_BUILD_PATH"
