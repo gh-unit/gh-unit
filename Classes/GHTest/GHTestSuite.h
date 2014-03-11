@@ -55,6 +55,31 @@ extern NSString *GHUnitTest;
     - (void)testB1; (GHTest with target GHTestCase2 + testB1)
     - (void)testB2; (GHTest with target GHTestCase2 + testB2)  
  
+ If you want to create an custom Test Suite to your iPhone Application in order to have more control
+ over the Test Cases follow this steps:
+ 
+ Create your own subclasse of GHTestSuite.
+ Here is an example:
+ 
+ @interface myTestSuite : GHTestSuite {}
+ @end
+ 
+ @implementation myTestSuite
+ - (id)initWithName:(NSString *)name delegate:(id<GHTestDelegate>)delegate {
+     [super initWithName:name delegate:delegate];
+     
+     [self addTestGroup:
+     [GHTestGroup testGroupFromTestCaseClassName:@"myTestCaseForDelegates" delegate:nil]];
+     
+     [self addTestGroup:
+     [GHTestGroup testGroupFromTestCaseClassName:@"myTestCaseForClasses" delegate:nil]];
+ }
+ 
+ Once that you have your Test Suite created, <b>you must inform that you will use an custom Suite Class</b>.
+ To do that, open your executable properties and under Arguments > Variables to be set in the environment,
+ create a new record named <tt>GH_UNIT_CLASSSUITE</tt> and set <tt>myTestSuite</tt> as value.
+ 
+ Now when you run, the test application will use your custom <b>Test Suite Class</b>.
  */
 @interface GHTestSuite : GHTestGroup { }
 
