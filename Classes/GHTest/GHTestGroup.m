@@ -35,7 +35,7 @@
 #import "GHTesting.h"
 
 #import "GHTestGroup+JUnitXML.h"
-
+#import "GHArgumentKeyConstants.h"
 @interface GHTestGroup ()
 - (void)_addTestsFromTestCase:(id)testCase;
 - (void)_reset;
@@ -264,9 +264,9 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 
     if ([arg isKindOfClass:[NSOperationQueue class]]) {
         //operationQueue = (NSOperationQueue *) arg;
-    } else {
-        callbackTarget = arg[0];
-        callbackSelector = ((NSValue*)arg[1]).pointerValue;
+    } else if ([arg isKindOfClass:[NSDictionary class]]){
+        callbackTarget = ((NSDictionary*)arg)[kGHArgKeyCallbackTarget];
+        callbackSelector = ((NSValue*)(((NSDictionary*)arg)[kGHArgKeyCallbackSelector])).pointerValue;
     }
 
   if (status_ == GHTestStatusCancelled || [self hasEnabledChildren]) {
@@ -362,7 +362,10 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 }
 
 - (void)run:(GHTestOptions)options withCallback:(id)callbacktarget selector:(SEL)callbackselector {
-    NSArray* arg = [NSArray arrayWithObjects:callbacktarget,[NSValue valueWithPointer:callbackselector],nil];
+    NSDictionary* arg = @{kGHArgKeyCallbackTarget: callbacktarget,
+                          kGHArgKeyCallbackSelector: [NSValue valueWithPointer:callbackselector]};
+
+
   options_ = options;
   [self _reset];
   if ([self shouldRunOnMainThread]) {
@@ -388,7 +391,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   [delegate_ testDidUpdate:self source:self]; 
 }
 
-- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source callbackarg:(id) callbackarg{
+- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source callbackarg:(NSDictionary*) callbackarg{
   if (source == test) {
     if ([test interval] >= 0)
       interval_ += [test interval]; 
@@ -398,9 +401,11 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   }
   [delegate_ testDidEnd:self source:source callbackarg:(id) callbackarg];
   [delegate_ testDidUpdate:self source:self];
+    id callback_target = callbackarg[kGHArgKeyCallbackTarget];
+    SEL callback_selector = ((NSValue*)callbackarg[kGHArgKeyCallbackSelector]).pointerValue;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [callbackarg[0] performSelectorInBackground:((NSValue*)callbackarg[1]).pointerValue withObject:nil];
+    [callback_target performSelectorInBackground:callback_selector withObject:nil];
 #pragma clang diagnostic pop
 }
 

@@ -30,6 +30,7 @@
 #import "GHAsyncTestCase.h"
 #import "PGMockRunLoop.h"
 #import <objc/runtime.h>
+#import "GHArgumentKeyConstants.h"
 
 typedef enum {
   kGHUnitAsyncErrorNone,
@@ -46,7 +47,7 @@ typedef enum {
 
 // Internal GHUnit setUp
 - (void)_setUp {
-  //lock_ = [[NSRecursiveLock alloc] init];
+
     notified_status_lock_ = [[NSRecursiveLock alloc] init];
   prepared_ = NO;
     [notified_status_lock_ lock];
@@ -57,8 +58,7 @@ typedef enum {
 // Internal GHUnit tear down
 - (void)_tearDown { 
   waitSelector_ = NULL;
-  //if (prepared_) [lock_ unlock]; // If we prepared but never waited we need to unlock
-  //lock_ = nil;
+
 }
 
 - (void)prepare {
@@ -66,7 +66,7 @@ typedef enum {
 }
 
 - (void)prepare:(SEL)selector { 
-  //[lock_ lock];
+
   prepared_ = YES;
   waitSelector_ = selector;
     [notified_status_lock_ lock];
@@ -75,16 +75,19 @@ typedef enum {
 }
 
 - (void)_waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout callbackTarget:(id) target selector:(SEL) selector {
-    NSArray* args = [NSArray arrayWithObjects:[NSNumber numberWithLong:status], target, [NSValue valueWithPointer:selector], nil];
+    NSDictionary* args = @{kGHArgKeyStatus: [NSNumber numberWithLong:status],
+                           kGHArgKeyTarget: target,
+                           kGHArgKeySelector: [NSValue valueWithPointer:selector]};
+
     [PGMockRunLoop addTimeoutTarget:self selector:@selector(_wait_callback:) argument:args timeout:timeout status:(NSInteger) status testCase:self];
 
 }
 
 
--(void) _wait_callback:(NSArray*) args {
-    int status = ((NSNumber*)args[0]).intValue;
-    id callbackTarget = args[1];
-    SEL callbackSelector = (SEL)((NSValue*)args[2]).pointerValue;
+-(void) _wait_callback:(NSDictionary*) args {
+    int status = ((NSNumber*)args[kGHArgKeyStatus]).intValue;
+    id callbackTarget = (id)(args[kGHArgKeyTarget]);
+    SEL callbackSelector = (SEL)(((NSValue*)args[kGHArgKeySelector]).pointerValue);
     GHUnitAsyncError testCaseError;
     [notified_status_lock_ lock];
     if (self.failedWithException) {
@@ -97,10 +100,10 @@ typedef enum {
         testCaseError = kGHUnitAsyncErrorNone;
     }
 
-    NSArray* callback_args = [NSArray arrayWithObjects:[NSNumber numberWithInt:testCaseError],
-                     [NSNumber numberWithInt:status],
-                     [NSNumber numberWithLong:notifiedStatus_],
-                              nil];
+    NSDictionary* callback_args = @{kGHArgKeyTestCaseError: [NSNumber numberWithInt:testCaseError],
+                                    kGHArgKeyStatus : [NSNumber numberWithInt:status],
+                                    kGHArgKeyNotifiedStatus : [NSNumber numberWithLong:notifiedStatus_]};
+
         [notified_status_lock_ unlock];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -139,13 +142,13 @@ typedef enum {
 
 }
 
--(void) waitForStatusCleanup:(NSArray*) args {
-    GHUnitAsyncError errorFromTest = ((NSNumber*)args[0]).intValue;
+-(void) waitForStatusCleanup:(NSDictionary*) args {
+    GHUnitAsyncError errorFromTest = ((NSNumber*)args[kGHArgKeyTestCaseError]).intValue;
     if (errorFromTest == kGHUnitAsyncErrorTimedOut) {
         GHFail(@"Request timed out");
     } else if (errorFromTest == kGHUnitAsyncErrorInvalidStatus) {
-        int requestedStatus =((NSNumber*)args[1]).intValue;
-        int notifiedStatus =((NSNumber*)args[2]).intValue;
+        int requestedStatus =((NSNumber*)args[kGHArgKeyStatus]).intValue;
+        int notifiedStatus =((NSNumber*)args[kGHArgKeyNotifiedStatus]).intValue;
         GHFail(@"Request finished with the wrong status: %d != %d", requestedStatus, notifiedStatus);
     } else if (errorFromTest == kGHUnitAsyncErrorUnprepared) {
         GHFail(@"Call prepare before calling asynchronous method and waitForStatus:timeout:");
@@ -157,8 +160,8 @@ typedef enum {
   [self _waitFor:-1 timeout:timeout callbackTarget:self selector:@selector(waitForTimeoutCleanup:)];
 }
 
--(void) waitForTimeoutCleanup:(NSArray*) args {
-    GHUnitAsyncError errorFromTest = ((NSNumber*)args[0]).intValue;
+-(void) waitForTimeoutCleanup:(NSDictionary*) args {
+    GHUnitAsyncError errorFromTest = ((NSNumber*)args[kGHArgKeyTestCaseError]).intValue;
     if (errorFromTest != kGHUnitAsyncErrorTimedOut) {
         GHFail(@"Request should have timed out");
     }
@@ -178,13 +181,13 @@ typedef enum {
 	while ([runUntilDate compare:[NSDate dateWithTimeIntervalSinceNow:0]] == NSOrderedDescending) {
 		NSString *mode = _runLoopModes[(runIndex++ % [_runLoopModes count])];
     
-		//[lock_ unlock];
+
 		@autoreleasepool {
 			if (!mode || ![[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:checkEveryInterval]])
 				// If there were no run loop sources or timers then we should sleep for the interval
 				[NSThread sleepForTimeInterval:checkEveryInterval];
 		}
-		//[lock_ lock];
+
 	}
 }
 

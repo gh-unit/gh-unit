@@ -10,7 +10,7 @@
 #import "GHAsyncTestCase.h"
 @interface PGMockRunLoop : NSObject
 
-+(void) runInFakeRunLoopTarget:(id) target selector:(SEL) selector withCallbackTarget:(id) callbacktarget callbackSelector:(SEL) callbackselctor callBackArguments:(NSMutableArray*) arg;
++(void) runInFakeRunLoopTarget:(id) target selector:(SEL) selector withCallbackTarget:(id) callbacktarget callbackSelector:(SEL) callbackselctor callBackArguments:(NSDictionary*) arg;
 
 +(void) requestCallbackAfterCurrentRunLoopCompleteTarget:(id) target selector:(SEL) selector argument:(id) argument;
 

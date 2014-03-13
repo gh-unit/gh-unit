@@ -49,7 +49,7 @@
 #import "GHTestRunner.h"
 #import "GHTestSuite.h"
 #import "GHTesting.h"
-#import "GHTestGroup.h"
+
 
 #import <stdio.h>
 
@@ -130,7 +130,7 @@ operationQueue=operationQueue_;
   } else {
 
       [((GHTestSuite*)test_) run:options_ withCallback:callbackTarget selector:callbackSelector];
-                           //run:options_ withCallback:self selector:@selector(runTestsCallback) argument:arg callbackargs:nil];
+                     
   }
 
 }

@@ -8,6 +8,7 @@
 
 #import "PGMockRunLoop.h"
 #import "GHAsyncTestCase.h"
+#import "GHArgumentKeyConstants.h"
 #import <objc/runtime.h>
 
 @interface PGRunLoopExecutionElement : NSObject
@@ -31,7 +32,7 @@
 @property (readwrite, assign) BOOL methodsSwizzled;
 @property (readwrite, retain) id callbackTarget;
 @property (readwrite, assign) SEL callbackSelector;
-@property (readwrite, retain) NSMutableArray* callbackArgument;
+@property (readwrite, retain) NSDictionary* callbackArgument;
 @property (readwrite, retain) NSException* testException;
 @property (readwrite, retain) NSMutableSet* testCases;
 @end
@@ -236,7 +237,7 @@ void swizzleMethod(Class classA, SEL selectorA, Class classB, SEL selectorB) {
 }
 
 
-+(void) runInFakeRunLoopTarget:(id) target selector:(SEL) selector withCallbackTarget:(id) callbacktarget callbackSelector:(SEL) callbackselctor callBackArguments:(NSMutableArray*) arg {
++(void) runInFakeRunLoopTarget:(id) target selector:(SEL) selector withCallbackTarget:(id) callbacktarget callbackSelector:(SEL) callbackselctor callBackArguments:(NSDictionary*) arg {
     if ([PGMockRunLoop singleton].started) {
         @throw [NSException exceptionWithName:nil reason:nil userInfo:nil];
     }
@@ -287,11 +288,15 @@ void swizzleMethod(Class classA, SEL selectorA, Class classB, SEL selectorB) {
         return;
     }
     if (self.testException) {
-        [self.callbackArgument addObject:self.testException];
+        NSMutableDictionary* callbackArgumentMutableDictCopy = [NSMutableDictionary dictionaryWithDictionary:self.callbackArgument];
+        callbackArgumentMutableDictCopy[kGHArgKeyTestException] = self.testException;
+        self.callbackArgument = callbackArgumentMutableDictCopy;
     } else {
         for (GHTestCase* testCase in self.testCases) {
             if (testCase.failedWithException) {
-                [self.callbackArgument addObject:testCase.failedWithException];
+                NSMutableDictionary* callbackArgumentMutableDictCopy = [NSMutableDictionary dictionaryWithDictionary:self.callbackArgument];
+                callbackArgumentMutableDictCopy[kGHArgKeyTestException] = self.testException;
+                self.callbackArgument = callbackArgumentMutableDictCopy;
                 break;
             }
         }

@@ -45,7 +45,8 @@
 	}
 	
   if (getenv("GHUNIT_CLI")) {
-      int exitStatus = 0;  [GHTestRunner run];
+      int exitStatus = 0;
+      [GHTestRunner run];
     if ([application respondsToSelector:@selector(_terminateWithStatus:)]) {
       [(id)application _terminateWithStatus:exitStatus];
     } else {

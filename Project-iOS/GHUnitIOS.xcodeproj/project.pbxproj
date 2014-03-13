@@ -289,6 +289,7 @@
 		00CEA040156C2E0B00BA3276 /* GHUIImageViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUIImageViewControl.m; sourceTree = "<group>"; };
 		36C0B4FA1893217D00D0F053 /* PGMockRunLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMockRunLoop.h; sourceTree = "<group>"; };
 		36C0B4FB1893217D00D0F053 /* PGMockRunLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMockRunLoop.m; sourceTree = "<group>"; };
+		36D058A618D23B3700D9509B /* GHArgumentKeyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHArgumentKeyConstants.h; sourceTree = "<group>"; };
 		42187C1715BF472300E702B6 /* GHUnitIOSTestViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestViewTest.m; sourceTree = "<group>"; };
 		421C7B8D13F0AF1D00E21E74 /* GHUnitIOSTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIOSTestView.h; sourceTree = "<group>"; };
 		421C7B8E13F0AF1D00E21E74 /* GHUnitIOSTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestView.m; sourceTree = "<group>"; };
@@ -419,6 +420,7 @@
 				42A274A916361D9500BA4C74 /* GHTestUtils.m */,
 				0041C63C13BA7C9A0015FC22 /* Mock */,
 				0041C64513BA7C9A0015FC22 /* SharedUI */,
+				36D058A618D23B3700D9509B /* GHArgumentKeyConstants.h */,
 			);
 			name = Classes;
 			path = ../Classes;

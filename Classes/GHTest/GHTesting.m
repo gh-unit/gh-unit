@@ -52,6 +52,7 @@
 #import "GHTest.h"
 #import "GHTestCase.h"
 #import "PGMockRunLoop.h"
+#import "GHArgumentKeyConstants.h"
 #import <objc/runtime.h>
 
 NSInteger ClassSort(id a, id b, void *context) {
@@ -337,20 +338,34 @@ static GHTesting *gSharedInstance;
         }
       } @catch (NSException *exception) {
           if (!testException) testException = exception;
-          [self runLoopCallback:[NSMutableArray arrayWithObjects:target, testException, nil]];
+          NSDictionary* args = @{kGHArgKeyCallbackTarget: target,
+                                 kGHArgKeyTestException : testException};
+          [self runLoopCallback:args];
           return;
       }
     }
   }@catch (NSException *exception) {
       if (!testException) testException = exception;
-      [self runLoopCallback:[NSMutableArray arrayWithObjects:target, testException, nil]];
+      NSDictionary* args = @{kGHArgKeyCallbackTarget: target,
+                             kGHArgKeyTestException : testException};
+      [self runLoopCallback:args];
       return;
   }
     if (arg == nil) {
         arg = [NSNull null];
     }
     // Runs the test
-    [PGMockRunLoop runInFakeRunLoopTarget:target selector:selector withCallbackTarget:self callbackSelector:@selector(runLoopCallback:) callBackArguments:[NSMutableArray arrayWithObjects:target, startDate,[NSValue valueWithPointer:interval],[NSValue valueWithPointer:exception],[NSNumber numberWithBool:reraiseExceptions], [NSNumber numberWithLong:options], ghtest, arg, nil]];
+    NSDictionary* args = @{kGHArgKeyTarget : target,
+                           kGHArgKeyStartDate : startDate,
+                           kGHArgKeyInterval : [NSValue valueWithPointer:interval],
+                           kGHArgKeyExceptionPointer : [NSValue valueWithPointer:exception],
+                           kGHArgKeyReraiseExceptions: [NSNumber numberWithBool:reraiseExceptions],
+                           kGHArgKeyOptions : [NSNumber numberWithLong:options],
+                           kGHArgKeyGHTest : ghtest,
+                           kGHArgKeySubArgs : arg};
+
+   
+    [PGMockRunLoop runInFakeRunLoopTarget:target selector:selector withCallbackTarget:self callbackSelector:@selector(runLoopCallback:) callBackArguments:args];
 
 
 
@@ -363,20 +378,20 @@ static GHTesting *gSharedInstance;
 
 
 
-+(void) runLoopCallback:(NSArray*) arguments {
-    id target = arguments[0];
-    NSDate *startDate = arguments[1];
-    NSTimeInterval* interval = ((NSValue*)arguments[2]).pointerValue;
++(void) runLoopCallback:(NSDictionary*) arguments {
+    id target = arguments[kGHArgKeyTarget];
+    NSDate *startDate = arguments[kGHArgKeyStartDate];
+    NSTimeInterval* interval = ((NSValue*)arguments[kGHArgKeyInterval]).pointerValue;
     //__autoreleasing NSException** exception = ( NSException  *  __autoreleasing *  )( ((NSValue*)arguments[3]).pointerValue);
-    GHTestOptions options = ((NSNumber*)arguments[5]).intValue;
-    GHTest* ghtest = arguments[6];
-    id callbackarg = arguments[7];
+    GHTestOptions options = ((NSNumber*)arguments[kGHArgKeyOptions]).intValue;
+    GHTest* ghtest = arguments[kGHArgKeyGHTest];
+    id callbackarg = arguments[kGHArgKeySubArgs];
     if (callbackarg == [NSNull null]) {
         callbackarg = nil;
     }
     NSException* testException = nil;
-    if (arguments.count == 9) {
-        testException = arguments[8];
+    if (arguments[kGHArgKeyTestException]) {
+        testException = arguments[kGHArgKeyTestException];
     }
 
 
