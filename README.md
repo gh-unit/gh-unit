@@ -52,6 +52,8 @@ Install your project's pods. CocoaPods will then download and configure the requ
 $ pod install
 ```
 
+Note: If you don't have a Tests target in your project, you will get an error: "[!] Unable to find a target named Tests".
+
 You should use the `.xcworkspace` file to work on your project:
 ```xml
 $ open ProjectName.xcworkspace
