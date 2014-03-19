@@ -146,9 +146,13 @@ operationQueue=operationQueue_;
 }
 
 - (void)_runInBackground {
-  @autoreleasepool {
-    [self runTests];
-  }
+    BOOL RUN_UNIT_TESTS_FOREVER_IN_LOOP = NO;
+    while (RUN_UNIT_TESTS_FOREVER_IN_LOOP) {
+        @autoreleasepool {
+            [self runTests];
+        }
+    }
+
 }
 
 - (GHTestStats)stats {
