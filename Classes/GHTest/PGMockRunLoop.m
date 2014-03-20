@@ -11,6 +11,9 @@
 #import "GHArgumentKeyConstants.h"
 #import <objc/runtime.h>
 
+
+
+
 @interface PGRunLoopExecutionElement : NSObject
 @property (readwrite,assign) double executionTime;
 @property (readwrite,retain) id target;
@@ -136,17 +139,78 @@ static PGMockRunLoop* pgrunloopSingleton = nil;
     [[PGMockRunLoop singleton] addElementToQueue:new_element];
 }
 
+-(void) removePerformRequestsWithTarget:(id) aTarget {
+    NSMutableArray* elementsToRemove = [NSMutableArray array];
+    @synchronized(self) {
+        for (PGRunLoopExecutionElement* element in self.queue) {
+            if (element.target == aTarget) {
+                [elementsToRemove addObject:element];
+            }
+        }
+        for (PGRunLoopExecutionElement* element in elementsToRemove) {
+            [self.queue removeObject:element];
+        }
+    }
+}
+
+-(void) removePerformRequestsWithTarget:(id) aTarget selector:(SEL)aSelector object:(id)anArgument {
+    NSMutableArray* elementsToRemove = [NSMutableArray array];
+    @synchronized(self) {
+        for (PGRunLoopExecutionElement* element in self.queue) {
+            if (element.target == aTarget &&
+                element.selector == aSelector &&
+                (((element.arguments == nil || element.arguments.count == 0) && anArgument == nil) ||
+                 (element.arguments.count == 1 && [anArgument isEqual:element.arguments[0]]))
+                ) {
+                [elementsToRemove addObject:element];
+            }
+        }
+        for (PGRunLoopExecutionElement* element in elementsToRemove) {
+            [self.queue removeObject:element];
+        }
+    }
+}
+
++(void) fake_cancelPreviousPerformRequestsWithTarget:(id)aTarget {
+    [[PGMockRunLoop singleton] removePerformRequestsWithTarget:aTarget];
+}
+
++(void) cancelPreviousPerformRequestsWithTarget:(id)aTarget {
+    [[PGMockRunLoop singleton] removePerformRequestsWithTarget:aTarget];
+}
+
++(void) fake_cancelPreviousPerformRequestsWithTarget:(id)aTarget selector:(SEL)aSelector object:(id)anArgument {
+    [[PGMockRunLoop singleton] removePerformRequestsWithTarget:aTarget selector:aSelector object:anArgument];
+}
+
++(void) cancelPreviousPerformRequestsWithTarget:(id)aTarget selector:(SEL)aSelector object:(id)anArgument {
+    [[PGMockRunLoop singleton] removePerformRequestsWithTarget:aTarget selector:aSelector object:anArgument];
+}
+
 void swizzleMethod(Class classA, SEL selectorA, Class classB, SEL selectorB) {
     Method methodA = class_getInstanceMethod(classA, selectorA);
     Method methodB = class_getInstanceMethod(classB, selectorB);
     method_exchangeImplementations(methodA, methodB);
 }
 
+
+
+void swizzleClassMethod(Class classA, SEL selectorA, Class classB, SEL selectorB) {
+    Method methodA = class_getClassMethod(classA, selectorA);
+    Method methodB = class_getClassMethod(classB, selectorB);
+    method_exchangeImplementations(methodA, methodB);
+}
+
+
+
 -(void) __swizzleMethods_internal {
     swizzleMethod([PGMockRunLoop class], @selector(fake_performSelector:withObject:afterDelay:),
                   [NSObject class], @selector(performSelector:withObject:afterDelay:));
     swizzleMethod([PGMockRunLoop class], @selector(fake_performSelector:withObject:withObject:afterDelay:),
                   [NSObject class], @selector(performSelector:withObject:withObject:afterDelay:));
+    swizzleClassMethod([PGMockRunLoop class], @selector(fake_cancelPreviousPerformRequestsWithTarget:), [NSObject class], @selector(cancelPreviousPerformRequestsWithTarget:));
+    swizzleClassMethod([PGMockRunLoop class], @selector(fake_cancelPreviousPerformRequestsWithTarget:), [NSObject class], @selector(cancelPreviousPerformRequestsWithTarget:));
+
 
 }
 

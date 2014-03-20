@@ -296,10 +296,13 @@ static GHTesting *gSharedInstance;
 
 + (void)runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval
         reraiseExceptions:(BOOL)reraiseExceptions options:(GHTestOptions)options ghTest:(GHTest*) ghtest argument:(id)arg {
-
-    dispatch_sync(dispatch_get_main_queue(), ^{
+    if ([NSThread isMainThread]) {
         [self _runTestWithTarget:target selector:selector exception:exception interval:interval reraiseExceptions:reraiseExceptions options:options ghTest:ghtest argument:arg];
-    });
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self _runTestWithTarget:target selector:selector exception:exception interval:interval reraiseExceptions:reraiseExceptions options:options ghTest:ghtest argument:arg];
+        });
+    }
 }
 
 + (void)_runTestWithTarget:(id)target selector:(SEL)selector exception:(NSException **)exception interval:(NSTimeInterval *)interval

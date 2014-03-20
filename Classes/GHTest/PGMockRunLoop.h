@@ -16,4 +16,6 @@
 
 +(void) addTimeoutTarget:(id) target selector:(SEL) selector argument:(id) argument timeout:(CFTimeInterval) timeout status:(NSInteger) status testCase:(GHAsyncTestCase*)testCase;
 
++(void) cancelPreviousPerformRequestsWithTarget:(id)aTarget;
+
 @end
