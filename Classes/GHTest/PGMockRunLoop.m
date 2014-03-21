@@ -38,6 +38,8 @@
 @property (readwrite, retain) NSDictionary* callbackArgument;
 @property (readwrite, retain) NSException* testException;
 @property (readwrite, retain) NSMutableSet* testCases;
+@property (readwrite,assign) IMP cancel_implementation1;
+@property (readwrite,assign) IMP cancel_implementation2;
 @end
 
 @implementation PGMockRunLoop
@@ -47,7 +49,26 @@ static PGMockRunLoop* pgrunloopSingleton = nil;
 
 +(void) initialize {
     pgrunloopSingleton = [[PGMockRunLoop alloc] init];
+    [pgrunloopSingleton initialize];
+}
 
+-(void) initialize {
+    Class nsObjectClass = objc_getClass("NSObject");
+
+    Method cancel1 = class_getClassMethod(nsObjectClass, @selector(cancelPreviousPerformRequestsWithTarget:));
+    Method cancel2 = class_getClassMethod(nsObjectClass, @selector(cancelPreviousPerformRequestsWithTarget:selector:object:));
+
+    self.cancel_implementation1 =  method_getImplementation(cancel1);
+    self.cancel_implementation2 =  method_getImplementation(cancel2);
+
+
+
+
+    Method dummy_cancel1 = class_getClassMethod(nsObjectClass, @selector(dummyMethodToBeReplacedWithRealCancelFunction1:));
+    Method dummy_cancel2 = class_getClassMethod(nsObjectClass, @selector(dummyMethodToBeReplacedWithRealCancelFunction2:selector:object:));
+
+    method_setImplementation(dummy_cancel1, self.cancel_implementation1);
+    method_setImplementation(dummy_cancel2, self.cancel_implementation2);
 }
 
 +(PGMockRunLoop*) singleton {
@@ -195,12 +216,52 @@ void swizzleMethod(Class classA, SEL selectorA, Class classB, SEL selectorB) {
 
 
 
-void swizzleClassMethod(Class classA, SEL selectorA, Class classB, SEL selectorB) {
+-(void) overrideCancelPreviousPerformSelector {
+
+
+    Class nsObjectClass = objc_getClass("NSObject");
+
+    Method cancel1 = class_getClassMethod(nsObjectClass, @selector(cancelPreviousPerformRequestsWithTarget:));
+    Method cancel2 = class_getClassMethod(nsObjectClass, @selector(cancelPreviousPerformRequestsWithTarget:selector:object:));
+
+
+
+    method_setImplementation(cancel1, imp_implementationWithBlock(^(Class self, id target) {
+        [[PGMockRunLoop singleton] removePerformRequestsWithTarget:target];
+    }));
+    method_setImplementation(cancel2, imp_implementationWithBlock(^(Class self, id target, SEL selector, id object) {
+        [[PGMockRunLoop singleton] removePerformRequestsWithTarget:target selector:selector object:object];
+    }));
+}
+
+-(void) undoOverrideCancelPreviousPerformSelector {
+    Class nsObjectClass = objc_getClass("NSObject");
+
+    Method cancel1 = class_getClassMethod(nsObjectClass, @selector(cancelPreviousPerformRequestsWithTarget:));
+    Method cancel2 = class_getClassMethod(nsObjectClass, @selector(cancelPreviousPerformRequestsWithTarget:selector:object:));
+
+    method_setImplementation(cancel1, self.cancel_implementation1);
+    method_setImplementation(cancel2, self.cancel_implementation2);
+}
+void swizzleClassMethod(Class classA, SEL selectorA, Class classB,  SEL selectorB) {
     Method methodA = class_getClassMethod(classA, selectorA);
     Method methodB = class_getClassMethod(classB, selectorB);
     method_exchangeImplementations(methodA, methodB);
 }
 
++(void) dummyMethodToBeReplacedWithRealCancelFunction1:(id) target {
+
+}
++(void) dummyMethodToBeReplacedWithRealCancelFunction2:(id) target selector:(SEL) sel object:(id) arg {
+
+}
+
++(void) performRealCancelPreviousPerformRequestsWithTarget:(id) target {
+    [self dummyMethodToBeReplacedWithRealCancelFunction1:target];
+}
++(void) performRealCancelPreviousPerformRequestsWithTarget:(id) target  selector:(SEL) selector object:(id) arg {
+    [self dummyMethodToBeReplacedWithRealCancelFunction2:target selector:selector object:arg];
+}
 
 
 -(void) __swizzleMethods_internal {
@@ -211,6 +272,7 @@ void swizzleClassMethod(Class classA, SEL selectorA, Class classB, SEL selectorB
     swizzleClassMethod([PGMockRunLoop class], @selector(fake_cancelPreviousPerformRequestsWithTarget:), [NSObject class], @selector(cancelPreviousPerformRequestsWithTarget:));
     swizzleClassMethod([PGMockRunLoop class], @selector(fake_cancelPreviousPerformRequestsWithTarget:), [NSObject class], @selector(cancelPreviousPerformRequestsWithTarget:));
 
+    [PGMockRunLoop performRealCancelPreviousPerformRequestsWithTarget:self];
 
 }
 
@@ -219,6 +281,7 @@ void swizzleClassMethod(Class classA, SEL selectorA, Class classB, SEL selectorB
         if (!self.methodsSwizzled) {
             self.methodsSwizzled = YES;
             [self __swizzleMethods_internal];
+            [self overrideCancelPreviousPerformSelector];
         }
     }
 }
@@ -228,6 +291,7 @@ void swizzleClassMethod(Class classA, SEL selectorA, Class classB, SEL selectorB
         if (self.methodsSwizzled) {
             self.methodsSwizzled = NO;
             [self __swizzleMethods_internal];
+            [self undoOverrideCancelPreviousPerformSelector];
         }
     }
 }
