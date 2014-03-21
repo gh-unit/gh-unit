@@ -159,9 +159,12 @@ operationQueue=operationQueue_;
 }
 
 - (void)_runInBackground {
-  @autoreleasepool {
-    [self runTestsWithCallbackDelegate:self andSelector:@selector(_runInBackgroundCallback)  callbackArgument:nil];
-  }
+	BOOL RUN_UNIT_TESTS_FOREVER_IN_LOOP = NO;
+	while (RUN_UNIT_TESTS_FOREVER_IN_LOOP) {
+		@autoreleasepool {
+    		[self runTestsWithCallbackDelegate:self andSelector:@selector(_runInBackgroundCallback)  callbackArgument:nil];
+  		}
+  	}
 }
 -(void) _runInBackgroundCallback {
     //
