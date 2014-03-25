@@ -202,12 +202,6 @@
 - (void)runInBackground;
 
 /*!
- Start the test runner.
- @result 0 is success, otherwise the failure count
- */
-- (void)runTestsWithCallbackDelegate:(id) callbackTarget andSelector:(SEL) callbackSelector callbackArgument:(id) arg;
-
-/*!
  Cancel test run.
  */
 - (void)cancel;
