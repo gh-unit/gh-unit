@@ -160,10 +160,12 @@ operationQueue=operationQueue_;
 
 - (void)_runInBackground {
 	BOOL RUN_UNIT_TESTS_FOREVER_IN_LOOP = NO;
-	while (RUN_UNIT_TESTS_FOREVER_IN_LOOP) {
+    BOOL first = YES;
+	while (RUN_UNIT_TESTS_FOREVER_IN_LOOP || first) {
 		@autoreleasepool {
     		[self runTestsWithCallbackDelegate:self andSelector:@selector(_runInBackgroundCallback)  callbackArgument:nil];
   		}
+        first = NO;
   	}
 }
 -(void) _runInBackgroundCallback {
