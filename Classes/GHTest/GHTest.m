@@ -270,7 +270,7 @@ exception=exception_, status=status_, log=log_, identifier=identifier_, disabled
 - (id)initWithCoder:(NSCoder *)coder {
   GHTest *test = [self initWithIdentifier:[coder decodeObjectForKey:@"identifier"] name:nil];
   test.hidden = [coder decodeBoolForKey:@"hidden"];
-  test.status = [coder decodeIntegerForKey:@"status"];
+  test.status = (GHTestStatus)[coder decodeIntegerForKey:@"status"];
   test.interval = [coder decodeDoubleForKey:@"interval"];
   return test;
 }

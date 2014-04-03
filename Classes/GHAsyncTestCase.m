@@ -74,12 +74,12 @@ typedef enum {
     [notified_status_lock_ unlock];
 }
 
-- (void)_waitFor:(NSInteger)status timeout:(NSTimeInterval)timeout callbackTarget:(id) target selector:(SEL) selector {
+- (void)_waitFor:(GHTestStatus)status timeout:(NSTimeInterval)timeout callbackTarget:(id) target selector:(SEL) selector {
     NSDictionary* args = @{kGHArgKeyStatus: [NSNumber numberWithLong:status],
                            kGHArgKeyTarget: target,
                            kGHArgKeySelector: [NSValue valueWithPointer:selector]};
 
-    [PGMockRunLoop addTimeoutTarget:self selector:@selector(_wait_callback:) argument:args timeout:timeout status:(NSInteger) status testCase:self];
+    [PGMockRunLoop addTimeoutTarget:self selector:@selector(_wait_callback:) argument:args timeout:timeout status: status testCase:self];
 
 }
 
@@ -136,7 +136,7 @@ typedef enum {
 }
 
 
-- (void)waitForStatus:(NSInteger)status timeout:(NSTimeInterval)timeout {
+- (void)waitForStatus:(GHTestStatus)status timeout:(NSTimeInterval)timeout {
 
   [self _waitFor:status timeout:timeout callbackTarget:self selector:@selector(waitForStatusCleanup:)];
 

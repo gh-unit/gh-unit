@@ -352,7 +352,7 @@ void swizzleClassMethod(Class classA, SEL selectorA, Class classB,  SEL selector
     [[self singleton] addElementToPostExecutionQueue:e];
 }
 
-+(void) addTimeoutTarget:(id) target selector:(SEL) selector argument:(id) argument timeout:(CFTimeInterval) timeout  status:(NSInteger) status testCase:(GHAsyncTestCase*)testCase {
++(void) addTimeoutTarget:(id) target selector:(SEL) selector argument:(id) argument timeout:(CFTimeInterval) timeout  status:(GHTestStatus) status testCase:(GHAsyncTestCase*)testCase {
     PGRunLoopExecutionElement* e = [[PGRunLoopExecutionElement alloc] init];
     e.target = target;
     e.selector = selector;

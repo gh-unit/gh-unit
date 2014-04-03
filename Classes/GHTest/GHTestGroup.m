@@ -419,7 +419,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
 
 - (id)initWithCoder:(NSCoder *)coder {
   GHTestGroup *test = [self initWithName:[coder decodeObjectForKey:@"identifier"] delegate:nil];
-  test.status = [coder decodeIntegerForKey:@"status"];
+  test.status = (GHTestStatus)[coder decodeIntegerForKey:@"status"];
   test.interval = [coder decodeDoubleForKey:@"interval"];
   return test;
 }

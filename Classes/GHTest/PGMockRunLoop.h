@@ -14,7 +14,7 @@
 
 +(void) requestCallbackAfterCurrentRunLoopCompleteTarget:(id) target selector:(SEL) selector argument:(id) argument;
 
-+(void) addTimeoutTarget:(id) target selector:(SEL) selector argument:(id) argument timeout:(CFTimeInterval) timeout status:(NSInteger) status testCase:(GHAsyncTestCase*)testCase;
++(void) addTimeoutTarget:(id) target selector:(SEL) selector argument:(id) argument timeout:(CFTimeInterval) timeout status:(GHTestStatus) status testCase:(GHAsyncTestCase*)testCase;
 
 +(void) cancelPreviousPerformRequestsWithTarget:(id)aTarget;
 

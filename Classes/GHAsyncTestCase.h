@@ -123,7 +123,7 @@ enum {
  @param status kGHUnitWaitStatusSuccess, kGHUnitWaitStatusFailure or custom status 
  @param timeout Timeout in seconds
  */
-- (void)waitForStatus:(NSInteger)status timeout:(NSTimeInterval)timeout;
+- (void)waitForStatus:(GHTestStatus)status timeout:(NSTimeInterval)timeout;
 
 /*! 
  @param status kGHUnitWaitStatusSuccess, kGHUnitWaitStatusFailure or custom status 
