@@ -133,12 +133,21 @@ class GHUnit::Project
       create_test_file("main.m", template("main.m"), true)
       create_test("MyTest")
 
+      #
+      # No longer doing this (using same resource build phase as main target).
+      # It causes crashes in latest xCode.
+      #
       # Use same resources build phase as main target
       # Have to compare with class name because of funky const loading in xcodeproj gem
-      resources_build_phase = main_target.build_phases.select { |p|
-        p.class == Xcodeproj::Project::Object::PBXResourcesBuildPhase }.first
-      test_target.build_phases << resources_build_phase if resources_build_phase
+      # resources_build_phase = main_target.build_phases.select { |p|
+      #   p.class == Xcodeproj::Project::Object::PBXResourcesBuildPhase }.first
+      # test_target.build_phases << resources_build_phase if resources_build_phase
 
+      # Add resources build phase if one doesn't exist
+      resources_build_phase = test_target.build_phases.select { |p|
+        p.class == Xcodeproj::Project::Object::PBXResourcesBuildPhase }.first
+
+      test_target.build_phases << project.new(Xcodeproj::Project::Object::PBXResourcesBuildPhase) unless resources_build_phase
     else
       logger.debug "Test target already exists, skipping..."
     end

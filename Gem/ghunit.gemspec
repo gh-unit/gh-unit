@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name = "ghunit"
-  s.version = "1.0.1"
+  s.version = "1.0.3"
   s.executables << "ghunit"
-  s.date = "2014-01-29"
+  s.date = "2014-07-14"
   s.summary = "GHUnit"
   s.description = "Utilities for GHUnit iOS/MacOSX test framework."
   s.authors = ["Gabriel Handford"]
@@ -13,4 +13,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "xcodeproj"
   s.add_runtime_dependency "slop"
   s.add_runtime_dependency "colorize"
+  s.add_runtime_dependency "xcpretty"
 end
