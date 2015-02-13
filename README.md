@@ -3,6 +3,8 @@
 GHUnit is a test framework for Mac OS X and iOS.
 It can be used standalone or with other testing frameworks like SenTestingKit or GTM.
 
+If you need support for asynchronous tests you might want to check out [GRUnit](https://github.com/gabriel/GRUnit) which is a recent fork of this project.
+
 ## Features
 
 - Run tests, breakpoint and interact directly with the XCode Debugger.
