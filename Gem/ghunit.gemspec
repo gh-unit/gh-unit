@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "ghunit"
-  s.version = "1.0.3"
+  s.version = "1.0.5"
   s.executables << "ghunit"
   s.date = "2014-07-14"
   s.summary = "GHUnit"

@@ -1,5 +1,4 @@
 require 'xcodeproj'
-require 'xcodeproj/ext'
 require 'fileutils'
 require 'logger'
 require 'colorize'
@@ -153,7 +152,8 @@ class GHUnit::Project
     end
 
     # Get main target prefix header
-    prefix_header = main_target.build_settings("Debug")["GCC_PREFIX_HEADER"]
+    debug_settings = main_target.build_settings("Debug")
+    prefix_header = debug_settings["GCC_PREFIX_HEADER"] if debug_settings
 
     # Clear default OTHER_LDFLAGS (otherwise CocoaPods gives a warning)
     test_target.build_configurations.each do |c|
@@ -275,6 +275,39 @@ Add the following to your Podfile and run pod install.
 Make sure to open the .xcworkspace.
 
 EOS
+  end
+
+  def sync_test_target_membership
+    test_target = find_test_target
+    if !test_target
+      logger.error "No test target to add to"
+      return false
+    end
+
+    tests_group = project.groups.select { |g| g.name == test_target_name }.first
+    if !tests_group
+      logger.error "No test group to add to"
+      return false
+    end
+
+    sources_phase = main_target.build_phases.select { |p|
+      p.class == Xcodeproj::Project::Object::PBXSourcesBuildPhase }.first
+
+    if !sources_phase
+      logger.error "No main target source phase found"
+      return false
+    end
+
+    logger.debug "Adding to test target: "
+    sources_phase.files_references.each do |file_ref|
+      next if file_ref.path == "main.m"
+      test_file = tests_group.find_file_by_path(file_ref.path)
+      if !test_file
+        logger.debug "  #{file_ref.path}"
+        test_target.add_file_references([file_ref])
+      end
+    end
+    project.save
   end
 
   def install_run_tests_script
