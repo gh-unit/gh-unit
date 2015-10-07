@@ -8,4 +8,4 @@ make -C Project-MacOSX
 
 echo "Validate PodSpec"
 pod --version
-pod spec lint GHUnit.podspec
+pod spec lint GHUnit.podspec --allow-warnings
