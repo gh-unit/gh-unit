@@ -1,8 +1,6 @@
 language: objective-c
 before_install: 
- - echo "Update CocoaPods"
  - gem install cocoapods
  - pod --version
- - echo "Install appledoc"
- - brew install appledoc
+ - brew install appledoc22
 script: Scripts/build-travis.sh
