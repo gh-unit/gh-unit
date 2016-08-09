@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'GHUnit'
-  s.version  = '0.5.9'
+  s.version  = '0.6.0'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
   s.summary  = 'Test Framework for Objective-C.'
   s.homepage = 'https://github.com/gh-unit/gh-unit'
@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.osx.source_files = 'Classes-MacOSX/UI/*.{h,m}'
   s.osx.resources = 'Classes-MacOSX/UI/*.xib'
   s.ios.frameworks = 'QuartzCore'
+  s.deprecated = true
   s.requires_arc = true
 end
-
