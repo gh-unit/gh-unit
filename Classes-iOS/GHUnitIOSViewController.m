@@ -46,8 +46,10 @@ NSString *const GHUnitFilterKey = @"Filter";
 - (id)init {
   if ((self = [super init])) {
     self.title = @"Tests";
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
       self.edgesForExtendedLayout = UIRectEdgeNone;
+#endif
   }
   return self;
 }
