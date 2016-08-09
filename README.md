@@ -7,7 +7,7 @@ If you need support for asynchronous tests you might want to check out [GRUnit](
 
 ## Features
 
-- Run tests, breakpoint and interact directly with the XCode Debugger.
+- Run tests, breakpoint and interact directly with the Xcode Debugger.
 - Run from the command line or via a Makefile.
 - Run tests in parallel.
 - Allow testing of UI components.
