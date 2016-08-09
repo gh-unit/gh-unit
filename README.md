@@ -1,4 +1,4 @@
-# GHUnit [![Maintained](https://img.shields.io/badge/Maintained-NO-red.svg)] [![Build Status](https://travis-ci.org/gh-unit/gh-unit.png)](https://travis-ci.org/gh-unit/gh-unit) [![Cocoa Pod](https://cocoapod-badges.herokuapp.com/v/GHUnit/badge.png)](http://gh-unit.github.io/gh-unit/) [![Cocoa Pod](https://cocoapod-badges.herokuapp.com/p/GHUnit/badge.png)](http://gh-unit.github.io/gh-unit/) [![License](https://img.shields.io/github/license/gh-unit/gh-unit.svg)](http://opensource.org/licenses/MIT)
+# GHUnit [![Maintained](https://img.shields.io/badge/Maintained-NO-red.svg)](https://github.com/gh-unit/gh-unit) [![Build Status](https://travis-ci.org/gh-unit/gh-unit.png)](https://travis-ci.org/gh-unit/gh-unit) [![Cocoa Pod](https://cocoapod-badges.herokuapp.com/v/GHUnit/badge.png)](http://gh-unit.github.io/gh-unit/) [![Cocoa Pod](https://cocoapod-badges.herokuapp.com/p/GHUnit/badge.png)](http://gh-unit.github.io/gh-unit/) [![License](https://img.shields.io/github/license/gh-unit/gh-unit.svg)](http://opensource.org/licenses/MIT)
 
 ## GHUnit is deprecated and not actively maintained! Use `XCTest` instead.
 
