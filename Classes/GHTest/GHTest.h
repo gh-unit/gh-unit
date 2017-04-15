@@ -144,7 +144,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  Run the test.
  @param options Options
  */
-- (void)run:(GHTestOptions)options;
+- (void)run:(GHTestOptions)options withCallback:(id) callbacktarget selector:(SEL)callbackselector argument:(id)arg callbackargs:(id) callbackArgs ;
 
 /*!
  @result Messages logged during this test run
@@ -192,7 +192,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  @param test Test
  @param source If tests are nested, than source corresponds to the originator of the delegate call
  */
-- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source;
+- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source callbackarg:(id) callbackarg;
 
 /*!
  Test logged a message.
@@ -242,6 +242,9 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
     
   NSMutableArray *log_;
 
+    id _callbackTarget;
+    SEL _callbackSelector;
+
 }
 
 @property (readonly, strong, nonatomic) id target;
@@ -268,5 +271,7 @@ extern NSString *NSStringFromGHTestStats(GHTestStats stats);
  @param selector Selector (usually a test method)
  */
 + (id)testWithTarget:(id)target selector:(SEL)selector;
+
+-(void) runCallbackPassed:(BOOL) passed exception:(NSException*) exception options:(GHTestOptions) options callbackargs:(id) callbackargs;
 
 @end

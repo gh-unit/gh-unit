@@ -256,40 +256,79 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   return (([children_ count] - [self disabledCount]) <= 0);
 }
 
-- (void)_run:(NSOperationQueue *)operationQueue {
+- (void)_run:(id )arg {
+
+    NSOperationQueue *operationQueue = nil;
+    id callbackTarget = nil;
+    SEL callbackSelector = NULL;
+
+    if ([arg isKindOfClass:[NSOperationQueue class]]) {
+        operationQueue = (NSOperationQueue *) arg;
+    } else {
+        callbackTarget = arg[0];
+        callbackSelector = ((NSValue*)arg[1]).pointerValue;
+    }
+
   if (status_ == GHTestStatusCancelled || [self hasEnabledChildren]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+      [callbackTarget performSelector:callbackSelector withObject:nil];
+#pragma clang diagnostic pop
+
     return;
   }
   
   didSetUpClass_ = NO;
   status_ = GHTestStatusRunning;  
   [delegate_ testDidStart:self source:self];
-  
-  // Run the tests
-  for(id<GHTest> test in children_) {
+
+    _childrenLeftToTest = [[NSMutableArray alloc] initWithArray:children_];
+    [self iterateTests:arg];
+
+}
+-(void) iterateTests:(id)arg {
+    if (_childrenLeftToTest.count == 0) {
+        [self cleanupAfterRun:arg];
+
+        return;
+    }
+    id<GHTest> test = [_childrenLeftToTest objectAtIndex:0];
+    [_childrenLeftToTest removeObjectAtIndex:0];
+
     // If we are cancelling mark all child tests cancelled (and update stats)
     // If we errored (above), then set the error on the test (and update stats)
     // Otherwise run it
     if (status_ == GHTestStatusCancelling) {
       stats_.cancelCount++;
       [test cancel];
+
     } else if (status_ == GHTestStatusErrored) {
       stats_.failureCount++;
       [test setException:exception_];
-    } else {        
-      if (operationQueue) {
-        [operationQueue addOperation:[[GHTestOperation alloc] initWithTest:test options:options_]];
-      } else {
-        if (![test isDisabled])
-          [self setUpClass];
+        [self iterateTests:arg];
 
-        if (status_ == GHTestStatusErrored) break;
-        [test run:options_];
-      }
+    } else {        
+
+        if (![test isDisabled]) {
+             [self setUpClass];
+        }
+
+
+        if (status_ == GHTestStatusErrored) {
+            [self iterateTests:arg];
+            return;
+        };
+        if ([test isKindOfClass:[GHTestGroup class]]) {
+            [(GHTestGroup*)test run:options_ withCallback:self selector:@selector(iterateTests:) ];
+        } else {
+            [test run:options_ withCallback:self selector:@selector(iterateTests:) argument:nil callbackargs:arg];
+        }
+        return;
     }
-  }
-  [operationQueue waitUntilAllOperationsAreFinished];
-  
+}
+
+
+-(void) cleanupAfterRun:(id) arg {
   // Tear down class only if we called setUpClass
   if (didSetUpClass_) 
     [self tearDownClass];
@@ -301,7 +340,8 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   } else {
     status_ = GHTestStatusSucceeded;
   } 
-  [delegate_ testDidEnd:self source:self];
+  [delegate_ testDidEnd:self source:self callbackarg:arg];
+
 }
 
 - (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options {
@@ -321,13 +361,14 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   return NO;
 }
 
-- (void)run:(GHTestOptions)options {  
+- (void)run:(GHTestOptions)options withCallback:(id)callbacktarget selector:(SEL)callbackselector {
+    NSArray* arg = [NSArray arrayWithObjects:callbacktarget,[NSValue valueWithPointer:callbackselector],nil];
   options_ = options;
   [self _reset];
   if ([self shouldRunOnMainThread]) {
-    [self performSelectorOnMainThread:@selector(_run:) withObject:nil waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(_run:) withObject:arg waitUntilDone:YES];
   } else {
-    [self _run:nil];
+    [self _run:arg];
   } 
 }
 
@@ -343,7 +384,7 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
   [delegate_ testDidUpdate:self source:self]; 
 }
 
-- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source { 
+- (void)testDidEnd:(id<GHTest>)test source:(id<GHTest>)source callbackarg:(id) callbackarg{
   if (source == test) {
     if ([test interval] >= 0)
       interval_ += [test interval]; 
@@ -351,8 +392,12 @@ status=status_, testCase=testCase_, exception=exception_, options=options_;
     stats_.succeedCount += [test stats].succeedCount;
     stats_.cancelCount += [test stats].cancelCount;   
   }
-  [delegate_ testDidEnd:self source:source];
-  [delegate_ testDidUpdate:self source:self]; 
+  [delegate_ testDidEnd:self source:source callbackarg:(id) callbackarg];
+  [delegate_ testDidUpdate:self source:self];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [callbackarg[0] performSelectorInBackground:((NSValue*)callbackarg[1]).pointerValue withObject:nil];
+#pragma clang diagnostic pop
 }
 
 #pragma mark NSCoding

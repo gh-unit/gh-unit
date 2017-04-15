@@ -78,6 +78,7 @@
   id<GHTestGroup> __unsafe_unretained parent_; // weak
   
   NSMutableArray */*of id<GHTest>*/children_;
+    NSMutableArray */*of id<GHTest>*/_childrenLeftToTest;
     
   NSString *name_; // The name of the test group (usually the class name of the test case
   NSTimeInterval interval_; // Total time of child tests
@@ -181,6 +182,8 @@
  */
 - (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options;
 
+
+- (void)run:(GHTestOptions)options withCallback:(id)callbacktarget selector:(SEL)callbackselector;
 @end
 
 //! @endcond

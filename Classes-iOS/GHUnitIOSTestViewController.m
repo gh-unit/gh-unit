@@ -64,7 +64,7 @@
   id<GHTest> test = [testNode_.test copyWithZone:NULL];
   NSLog(@"Re-running: %@", test);
   [testView_ setText:@"Running..."];
-  [test run:GHTestOptionForceSetUpTearDownClass];  
+  [test run:GHTestOptionForceSetUpTearDownClass withCallback:nil selector:NULL argument:nil callbackargs:nil];
   [self setTest:test];
 }
 

@@ -35,7 +35,9 @@
 @synthesize logWriter=logWriter_, currentSelector=currentSelector_;
 
 - (void)failWithException:(NSException *)exception {
-  [exception raise];
+    if (failedWithException == nil && exception != nil) {
+        failedWithException = exception;
+    }
 }
 
 - (void)setUp { }
